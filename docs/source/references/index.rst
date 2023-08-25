@@ -32,14 +32,12 @@ Software
     
     :doc:`Astrid's Scheduling Block Commands <software/scheduling-blocks>` 
 
-    :doc:`Astrid's Scheduling Block Commands <software/scheduling-blocks-auto>` (auto-generated)
 
 .. toctree::
     :maxdepth: 3
     :hidden:
 
     software/scheduling-blocks
-    software/scheduling-blocks-auto 
 
 
 

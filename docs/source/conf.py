@@ -38,8 +38,10 @@ extensions = ['sphinx.ext.todo',
 
 autosummary_generate = False
 add_module_names=False
+toc_object_entries_show_parents = 'hide'
 
 todo_include_todos = True
+
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
