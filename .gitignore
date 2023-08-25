@@ -1,1 +1,2 @@
-build
+docs/build
+sparrow/__pycache__

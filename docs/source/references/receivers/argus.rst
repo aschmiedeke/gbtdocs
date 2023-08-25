@@ -1,6 +1,6 @@
 
 Argus
-=========
+-------
 
 .. pull-quote::
     
@@ -9,7 +9,7 @@ Argus
 
 
 Introduction
-_____________
+^^^^^^^^^^^^^
 
 Argus is a 16 element focal-plane-array operating from 74 GHz o 116 GHz. The feeds are configured in a 4x4 array and are each separated by 30.4 arcsec on the sky. 
 
@@ -27,7 +27,8 @@ Argus does not have noise diodes.
 
 
 Configuration
-______________
+^^^^^^^^^^^^^^^^^
+
 
 Argus uses the standard config-tool software that automatically configures the system based on user input (e.g., frequency and bandwidth). Example Argus configuration files are given in /home/astro-util/projects/Argus/OBS. The configuration keywords specific to Argus are the following:
 
@@ -42,7 +43,7 @@ Argus uses the standard config-tool software that automatically configures the s
 
 
 Observing
-___________
+^^^^^^^^^^^
 
 The observing strategies for Argus are similar to those presented for the 4mm W-Band receiver. To maximize the telescope efficiency for targets smaller or similar in size to the beam (~8 arcsec), observations should be carried out during the night under stable thermal conditions. Depending on the science goal, successful daytime observations are possible for extended sources, where accurate beam shapes are not as crucial. Example Argus observing scripts are located at /home/astro-util/projects/Argus/OBS. The recommended observing procedures are the following
 
@@ -71,7 +72,7 @@ The observing strategies for Argus are similar to those presented for the 4mm W-
 
 
 Monitoring and Diagnostics
-_____________________________
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Argus pyCleo page can be used to monitor the status of the instrument. 
 
@@ -87,7 +88,7 @@ The LNA and CIF (low noise amplifiers and cold IF electronics) need to be in the
 
 
 IF Routing
-___________
+^^^^^^^^^^^^^
 
 The mapping between the VEGAS channels, Converter Modules, IF channels, and the VEGAS beams is shown below
 
@@ -101,7 +102,7 @@ As an example shown by Figure fig:argusvegas, the VEGAS channel H1 is $-33$ dBm 
 
 
 Troubleshooting Guide
-______________________
+^^^^^^^^^^^^^^^^^^^^^^
 
 The Argus CLEO window can be used to troubleshoot Argus issues, which can be launched from cleo under the Receivers tab by selecting "RcvrArray75-115"
 
@@ -130,7 +131,7 @@ The Argus CLEO window can be used to troubleshoot Argus issues, which can be lau
 
 
 Data Reduction
-________________
+^^^^^^^^^^^^^^^^
 
 Argus is calibrated on the T_A* antenna temperature scale. Observations need to run a set of vanecal observations for each set of science data.  For absolute flux calibration, a source of known flux density should be observed.  The ALMA Calibrator Source Catalog has an extensive record of the flux density histories for many of the bright 3mm point sources (https://almascience.eso.org/sc/).  By using ALMA flux density values as a function of time, ~10% absolute calibration uncertainties can be obtained for Argus data. The methods and equations for calibrating Argus data are presented in GBT Memo #302.
 
@@ -138,7 +139,7 @@ The standard GBTIDL scripts (getps, getnod, getfs) do not work with Argus data, 
 
 
 Documentation
-______________
+^^^^^^^^^^^^^^
 
 * **Argus Web Page**: http://www.gb.nrao.edu/argus/
 * **GBT Calibration Memo**: https://library.nrao.edu/public/memos/gbt/GBT_302.pdf

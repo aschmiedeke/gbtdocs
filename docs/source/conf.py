@@ -10,10 +10,9 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
-
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../../sparrow'))
 
 # -- Project information -----------------------------------------------------
 
@@ -30,8 +29,17 @@ release = '0.1'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = [
+extensions = ['sphinx.ext.todo',
+              'sphinx.ext.autodoc',
+              'sphinx.ext.coverage',
+              'sphinx.ext.napoleon',
+              'sphinx.ext.autosummary'
 ]
+
+autosummary_generate = False
+add_module_names=False
+
+todo_include_todos = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -40,6 +48,17 @@ templates_path = ['_templates']
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
+
+
+#I was trying to get the color part working, but it is not.
+rst_prolog = """
+.. include:: <s5defs.txt>
+
+"""
+
+html_css_files = [
+    'css/custom.css',
+]
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -54,3 +73,20 @@ html_theme = 'furo'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+
+
+# -- Options for latexpdf output ---------------------------------------------
+
+latex_use_parts=True
+
+# Grouping the document tree into LaTeX files. List of tuples
+# (source start file, target name, title, author, document class [howto/manual]).
+#latex_documents = [
+#  ('tutorials', 'Tutorials.tex', ur'GBTdocs Tutorials', ur'The GBTdocs Team', 'manual', False),
+#  ]
+#
+#  ('how-tos', 'HowToGuides.tex', ur'GBTdocs How-To Guides', ur'The GBTdocs Team', 'manual', False),
+#  ('references', 'ReferenceGuides.tex', ur'GBTdocs Reference Guides', ur'The GBTdocs Team', 'manual', False),
+#  ('explanations', 'ExplanationGuides.tex', ur'GBTdocs Explanation Guides', ur'The GBTdocs Team', 'manual', False),
+#]
