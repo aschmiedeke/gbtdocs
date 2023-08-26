@@ -500,6 +500,139 @@ def OnOffSameHA(location, scanDuration, beamName='1'):
     """
 
 
+def Nod(location, beamName1, beamName2, scanDuration):
+    
+    """
+    The Nod procedure does two scans on the same sky location with different beams.
+
+    
+
+    Caution
+    ________
+
+        Nod should only be used with multi-beam receivers.
+
+
+
+    Parameters
+    ----------
+
+    location: 
+        A Catalog source name or Location object. It specifies the source upon which
+        to do the Nod.
+
+    
+    beamName1: str
+        It specifies the receiver beam to use for the first scan. beamName1 can be '1'
+        or '2'or any valid beam for the receiver you are using.
+
+
+    beamName2: str
+        It specifies the receiver beam to use for the second scan. beamName2 can be
+        'C', '1', '2' or any valid beam for the receiver you are using.
+
+
+    scanDuration: float
+        It specifies the length of each scan in seconds.
+
+
+
+
+
+    Examples
+    _________
+
+    
+    .. code-block:: python
+
+        # Nod between beams 3 and 7 with a 60s scan duration
+        Nod('1011-2610', '3', '7', 60.)
+
+    """
+
+
+def SubBeamNod(location, scanDuration, beamName, nodLength, nodUnit='seconds'):
+    
+    """
+    For multi-beam receivers SubBeamNod causes the subreflector to tilt about its axis
+    between two feeds at the given periodicity. The primary mirror is centered on the
+    midpoint between the two beams. The beam selections are extracted from the scan's 
+    beamName, i.e. 'MR12'. The "first" beam ('1') performs the first integration. The
+    periodicity is specified in seconds per nod (half-cycle). A subBeamNod is limited
+    to a minimum of 4.483 s for a half cycle.
+    
+    
+    Parameters
+    ----------
+
+    location: 
+        A Catalog source name or Location object. It specifies the source upon which
+        to do the Nod.
+
+
+    scanDuration: float
+        It specifies the length of each scan in seconds.   
+
+    beamName: str
+        It specifies the receiver beam pair to use for nodding. beamName can be 'MR12'.
+
+    nodLengt: depends on unit of nodUnit (int for 'integrations', float or int for 'seconds')
+        It specifies the half-cycle time which is the time spent in one position plus move
+        time to the second position.
+
+    nodUnit: str
+        Either 'integrations' or 'seconds'. 
+
+
+    Examples
+    _________
+
+    
+    .. code-block:: python
+
+        # nodLength units in second
+        SubBeamNod('3C48', scanDuration=60.0, beamName='MR12', nodLength=4.4826624)
+
+        # nodLength units are 'tint' as set in the configuration
+        SubBeamNod('3C48', scanDuration=60.0, beamName='MR12', nodLength=3, nodUnit='integrations')
+
+
+    Hint
+    _____
+    
+
+        The scan will end at the end of the scanDuration (once the current integration is complete)
+        regardless of the phase of the nod cycle. When the subreflector is moving the entire
+        integration during which this occurs is flagged. It takes about 0.5 seconds for the 
+        subreflector to move between beams plus additional time to settle on source (total time 
+        is about ~1.5 second).
+            
+        For example, if we had previously configured for Rcvr26 40 and an integration time of
+        1.5 sec- onds (tint=1.5 in the configuration), example 2 in script 7.49 would blank roughly
+        one out of every three integrations in a half-cycle (nodLength=3) while the subreflector was
+        moving between beams. If nodLength=5, then only one in five integrations would be blanked.
+        A resonable compromise in terms of performance and to minimize the amount of data blanked
+        is to use subBeamNod with an integration time of 0.2s and a nodLength=30 (6 sec nodding 
+        between beams). It is important to use a small tint value to avoid blanking too much data
+        (e.g., 0.5 sec or less).
+
+        The subBeamNod mode is useful to produce good baselines for the measurement of broad
+        extra-galactic lines. For Ka-band, Q-band, and Argus, the performance of subBeamNod is
+        signficantly better than Nod observations. For W-band and the KFPA, the beams are farther
+        apart and the subBeamNod technique does not work as well, and users are recommended to use 
+        Nod observations.
+
+        The antenna uses the average position of the two beams for tracking the target, and SDFITS
+        reports the positions of the beams relative to the tracking position. Although the SDFITS
+        header postion will not match the target position, SubBeamNod successfully nods between the
+        two beams during the scan. Control of the subreflector may be done with any scan type using
+        the submotion class. This should only be done by expert observers. Those observers interested
+        in using this class should contact their GBT “Friend”.
+
+    """
+
+    
+
 
 
 
