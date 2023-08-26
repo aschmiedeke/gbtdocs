@@ -1,99 +1,97 @@
 .. _home:
 
-Welcome to GBT Docs
-====================================
+GBT documentation
+==================
 
-.. only:: html
+GBT documentation is segmented into 4 pillars.
 
-    Our documentation is segmented into 4 pillars:
-    
+------------------
+
+.. grid:: 1 2 2 2
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        :octicon:`mortar-board;3em;orange` **Tutorials**
+
+        Learning-oriented lessons that take you through a series
+        of steps to complete a project. 
+        
+        Most useful when you want to get started with the GBT.
+
    
-    ###############################################
-    :doc:`Tutorials <tutorials/index>`
-    ###############################################
+        .. button-link:: tutorials/index.html
+            :color: primary
+            :outline:
 
-    Learning-oriented lessons that take you through a series of steps to complete a project. 
-    
-    Most useful when you want to get started with the GBT.
+            Go to Tutorials
+        
+        
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
 
+        :octicon:`terminal;3em;green` **How-To Guides**
 
-    #####################################
-    :doc:`How-To Guides <how-tos/index>`
-    #####################################
+        Practical step-by-step guides to help you achieve a specific goal. 
+        
+        Most useful when you're trying to get something done.
 
-    Practical step-by-step guides to help you achieve a specific goal. 
-    
-    Most useful when you're trying to get something done.
+   
+        .. button-link:: how-tos/index.html
+            :color: primary
+            :outline:
 
-    ###########################################
-    :doc:`Reference Guides <references/index>` 
-    ###########################################
-
-    Nitty-gritty technical descriptions of how the GBT works. 
-    
-    Most useful when you need detailed information about different GBT components (receivers, observation procedures, data analysis tools). 
-
-
-    ###############################################
-    :doc:`Explanation Guides <explanations/index>` 
-    ###############################################
-
-    Big-picture explanations of higher-level concepts. 
-    
-    Most useful for building understanding of a particular topic.
+            Go to How-To Guides
 
 
+            
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
 
-    .. Maybe with this comment all the toctree things are actually plotted properly in the pdf. Let's see
-    .. It is still leaving the tutorial part off.
+        :octicon:`repo;3em;purple` **Explanation**
 
-    .. Test
+        Big-picture explanations of higher-level concepts. 
+        
+        Most useful for building understanding of a particular topic.
+
+
+        .. button-link:: explanations/index.html
+            :color: primary
+            :outline:
+
+            Go to Explanation Material
 
 
 
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
 
-.. .. raw:: latex
+        :octicon:`tools;3em;sd-text-primary` **References**
 
-   \part{Tutorial}
+        Nitty-gritty technical descriptions of how the GBT works. 
+        
+        Most useful when you need detailed information about different GBT 
+        components. 
 
+   
+        .. button-link:: references/index.html
+            :color: primary
+            :outline:
+
+            Go to Reference Guides
+
+             
 
 .. toctree::
    :maxdepth: 4
    :hidden:
 
    tutorials/index
-
-
-.. .. raw:: latex
-   
-   \part{How-To Guides}
-
-.. toctree::
-   :maxdepth: 4
-   :hidden:
-
    how-tos/index
-
-
-.. .. raw:: latex
-
-   \part{Reference Guides}
-
-
-.. toctree::
-   :maxdepth: 4
-   :hidden:
-
-   references/index
-
-.. .. raw:: latex
-
-   \part{Explanation Guides}
-
-
-.. toctree::
-   :maxdepth: 4
-   :hidden:
-
    explanations/index
+   references/index
 
