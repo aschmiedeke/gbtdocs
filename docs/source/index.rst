@@ -1,9 +1,15 @@
 .. _home:
 
-GBT documentation
-==================
+GBT Documentation Hub
+========================
 
 GBT documentation is segmented into 4 pillars.
+
+.. only:: html
+
+    The entire documentation is also available as a :octicon:`file;1em;sd-text-primary` `single pdf file <../../source/_assets/gbtdocs.pdf>`_.
+
+
 
 ------------------
 
