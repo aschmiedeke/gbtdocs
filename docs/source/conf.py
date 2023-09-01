@@ -34,6 +34,7 @@ extensions = ['sphinx.ext.todo',
               'sphinx.ext.coverage',
               'sphinx.ext.napoleon',
               'sphinx.ext.autosummary',
+              'sphinx.ext.mathjax', 
               'sphinx_design'
 ]
 
