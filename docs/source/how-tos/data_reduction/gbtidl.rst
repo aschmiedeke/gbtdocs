@@ -56,6 +56,7 @@ In order to see anything useful, we may have to smooth the data. This is usually
 We can convert the data to the same velocity frame specified in the observing configuration with “setxunit”. By default this will apply a doppler correction. This can also be done by selecting “km/s” in the GUI - the fourth dropdown menu from the left.
 
 .. code:: idl
+
     setxunit, "km/s"
 
 We may learn that the TCAL value in the database is out of date, and the signals are too weak by a factor of 1.2. “scale” removes this systematic offset.
@@ -119,6 +120,7 @@ Load in the data. This is a directory, so either “dirin” or “filein” wil
 In here, there is one frequency-switched scan (#64), and two nodding scans (#62 and #63). For the KFPA, which is 7 beams arranged in a hexagon, the :func:`Track() <astrid_commands.Track>` command will use the central beam by default, so fdnum=0. The frequency-switched scan is calibrated with 
 
 .. code:: idl
+
     getfs,64,fdnum=0
 
 .. image:: images/gbtidl_basic-fsw_00-getfs.png
@@ -212,7 +214,7 @@ Beam 7 was also part of the nod, but was offset in the opposite way. So, scan 63
 
 The continuum is slightly offset from 0, so we can use the baseline feature to subtract that out. “setregion” sets the areas the fitting procedure uses, and this can be done either on the GUI with the left/right mouse buttons or by designating a series of start/stop points in channel number from the command line input. The regions in this case should be everything except for the rolloff at the edges of the band and around the signal itself.
 
-.. image:: idl
+.. code:: idl
 
     setregion
 
@@ -279,11 +281,13 @@ From this, we can see there is only a portion in the latter half of the OFF scan
     getps,19, intnum=51
     getps,19, intnum=52
 
+
 .. image:: images/gbtidl_advanced-onoff_01-intnums.png
 
 So let’s accumulate all the clean integrations for both polarizations, and see if there’s any HI detection. Keep in mind the IDL for loops are inclusive on both ends.
 
 .. code:: idl
+
     sclear
     for i=0,42 do begin & getps, 19, intnum=i, plnum=0 & accum & end
     for i=0,42 do begin & getps, 19, intnum=i, plnum=1 & accum & end
