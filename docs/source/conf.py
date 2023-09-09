@@ -35,7 +35,9 @@ extensions = ['sphinx.ext.todo',
               'sphinx.ext.napoleon',
               'sphinx.ext.autosummary',
               'sphinx.ext.mathjax', 
-              'sphinx_design'
+              'sphinx_design',
+              'sphinx_copybutton',
+              'sphinx_inline_tabs'
 ]
 
 autosummary_generate = False
@@ -60,9 +62,7 @@ rst_prolog = """
 
 """
 
-html_css_files = [
-    'css/custom.css',
-]
+
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -77,6 +77,17 @@ html_theme = 'furo'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static', '_assets']
+
+html_css_files = [
+    'css/custom.css',
+]
+
+html_theme_options = {
+        "announcement": "The GBT is currently offline for maintenance and expected to return to full operations by the end of September.",
+        "dark_css_variables": {"color-announcement-background": "darkred"},
+        "light_css_variables": {"color-announcement-background": "darkred"},
+
+    }
 
 
 
