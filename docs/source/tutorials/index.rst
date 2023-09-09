@@ -1,7 +1,5 @@
 .. _tutorials:
 
-.. only:: html
-
 ############################################
 :octicon:`mortar-board;2em;orange` Tutorials
 ############################################

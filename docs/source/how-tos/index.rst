@@ -45,7 +45,3 @@ Data Processing
 
     data_reduction/gbtidl
 
-
-
-----------
-
