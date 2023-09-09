@@ -9,6 +9,24 @@ Practical step-by-step guides to help you achieve a specific goal. Most useful w
 
 ----------------
 
+Quick Guides
+============
+
+.. button-link:: quick_guides/HI_single-pointing.html
+    :color: primary
+    :tooltip: Practical steps to obtain a single-pointing HI spectrum using either position-switching or frequency-switching.
+
+    How to observe an HI spectrum and process it?
+
+
+
+.. toctree::
+    :maxdepth: 3
+    :hidden:
+
+    quick_guides/HI_single-pointing
+
+
 
 Data Processing
 ================
@@ -18,25 +36,16 @@ Data Processing
     :color: primary 
     :tooltip: Shows practical steps to calibrate and process GBT data using GBTIDL.
 
-    Data Reduction Examples using GBTIDL 
+    How to process spectra using GBTIDL (examples) 
 
 
-Quick Guides
-============
+.. toctree::
+    :maxdepth: 3
+    :hidden:
 
-.. button-link:: quick_guides/HI_psw_sp.html
-    :color: primary
-    :tooltip: Practical steps to observe and process HI using position-switching with a single-pointing.
+    data_reduction/gbtidl
 
-    HI, position-switched, single-pointing
 
 
 ----------
 
-
-.. toctree::
-    :maxdepth: 1
-    :hidden:
-
-    data_reduction/gbtidl
-    quick_guides/HI_psw_sp

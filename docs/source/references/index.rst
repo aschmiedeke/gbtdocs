@@ -5,31 +5,30 @@
 :octicon:`tools;2em;sd-text-primary` Reference Guides
 #####################################################
 
-Nitty-gritty technical descriptions of how the GBT works. Most useful when you need detailed information about different GBT components (receivers, observation procedures, data analysis tools). 
+Nitty-gritty technical descriptions of how the GBT works. Most useful when you need detailed information about different GBT components or applications (receivers, observation procedures, data analysis tools). 
 
 -----------
 
 
+Hardware
+========
+
 Receivers
-===========
+---------
+
+.. button-link:: receivers/argus.html
+    :color: primary
+    :tooltip: Argus, a 16-pixel receiver operating from 75-115 GHz
+
+    Argus
 
 
-.. grid:: 1 2 2 2
 
-   .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0
+.. toctree::
+    :maxdepth: 3
+    :hidden:
 
-        **Argus** 
-
-        16-pixel receiver operating from 75-115 GHz.
-
-        .. button-link:: receivers/argus.html
-            :color: primary
-            :outline:
-
-            Argus
-
+    receivers/argus
 
 
 ----------
@@ -39,30 +38,19 @@ Software
 ==========
 
 
-.. grid:: 1 2 2 2
-    
-   .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0
+.. button-link:: software/scheduling-blocks.html
+    :color: primary
+    :tooltip: Details on AstrID's scheduling block (SB) commands.
 
-        **Astrid commands** 
-
-        Details on Astrid's scheduling block (SB) commands.
-
-        .. button-link:: software/scheduling-blocks.html
-            :color: primary
-            :outline:
-
-            Astrid's Scheduling Block Commands
+    AstrID Scheduling Block Commands
 
 
 
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 3
     :hidden:
 
-    receivers/argus
     software/scheduling-blocks
 
 

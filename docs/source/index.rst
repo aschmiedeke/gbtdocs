@@ -81,7 +81,7 @@ GBT documentation is segmented into 4 pillars.
         Nitty-gritty technical descriptions of how the GBT works. 
         
         Most useful when you need detailed information about different GBT 
-        components. 
+        components or applications. 
 
    
         .. button-link:: references/index.html

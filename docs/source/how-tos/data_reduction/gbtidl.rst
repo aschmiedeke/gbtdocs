@@ -1,6 +1,6 @@
-##############################
-GBTIDL Data Reduction Examples
-##############################
+##############################################
+How to process spectra using GBTIDL (examples)
+##############################################
 
 Below are a series of common data reduction GBTIDL processes with explanations and screenshots mixed in.
 To get an in-depth explanation for any gbtidl-specifig procedure or function, you can type "usage" with the procedure/function name and the "/verbose" option: 
