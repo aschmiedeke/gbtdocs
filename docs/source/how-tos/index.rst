@@ -6,6 +6,7 @@
 
 Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.
 
+
 ----------------
 
 
@@ -13,22 +14,21 @@ Data Processing
 ================
 
 
-.. grid:: 1 2 2 2
+.. button-link:: data_reduction/gbtidl.html
+    :color: primary 
+    :tooltip: Shows practical steps to calibrate and process GBT data using GBTIDL.
 
-   .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0
+    Data Reduction Examples using GBTIDL 
 
-        **GBTIDL** 
 
-        GBTIDL Data Reduction Examples.
+Quick Guides
+============
 
-        .. button-link:: data_reduction/gbtidl.html
-            :color: primary
-            :outline:
+.. button-link:: quick_guides/HI_psw_sp.html
+    :color: primary
+    :tooltip: Practical steps to observe and process HI using position-switching with a single-pointing.
 
-            GBTIDL
-
+    HI, position-switched, single-pointing
 
 
 ----------
@@ -39,3 +39,4 @@ Data Processing
     :hidden:
 
     data_reduction/gbtidl
+    quick_guides/HI_psw_sp
