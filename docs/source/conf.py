@@ -35,9 +35,11 @@ extensions = ['sphinx.ext.todo',
               'sphinx.ext.napoleon',
               'sphinx.ext.autosummary',
               'sphinx.ext.mathjax', 
+              'sphinx.ext.intersphinx', 
               'sphinx_design',
               'sphinx_copybutton',
               'sphinx_inline_tabs',
+              'hoverxref.extension',
               #'sphinx_idl.domain', 
               #'sphinx_idl.auto'
 ]
@@ -48,6 +50,42 @@ toc_object_entries_show_parents = 'hide'
 
 todo_include_todos = True
 
+intersphinx_mapping = {
+        'dysh': ("https://dysh.readthedocs.io/en/latest", None)
+}
+
+# We recommend adding the following config value.
+# Sphinx defaults to automatically resolve *unresolved* labels using all your Intersphinx mappings.
+# This behavior has unintended side-effects, namely that documentations local references can
+# suddenly resolve to an external location.
+# See also:
+# https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html#confval-intersphinx_disabled_reftypes
+intersphinx_disabled_reftypes = ["*"]
+
+
+hoverxref_api_host = 'https://readthedocs.org'
+hoverxref_auto_ref = True
+hoverxref_domains = ["py"]
+hoverxref_roles = [
+    "option",
+    # Documentation pages
+    # Not supported yet: https://github.com/readthedocs/sphinx-hoverxref/issues/18
+    "doc",
+    # Glossary terms
+    "term",
+]
+hoverxref_role_types = {
+    "mod": "modal",  # for Python Sphinx Domain
+    "doc": "modal",  # for whole docs
+    "class": "tooltip",  # for Python Sphinx Domain
+    "ref": "tooltip",  # for hoverxref_auto_ref config
+    "confval": "tooltip",  # for custom object
+    "term": "tooltip",  # for glossaries
+}
+
+hoverxref_intersphinx = [
+        "dysh"
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
