@@ -4,12 +4,6 @@
 alabaster==0.7.12
 babel==2.11.0
 beautifulsoup4==4.12.2
-brotlipy==0.7.0
-bzip2==1.0.8
-ca-certificates==2023.08.22
-certifi==2023.7.22
-cffi==1.15.1=
-charset-normalizer==2.0.4
 colorama==0.4.6
 cryptography==41.0.2
 docutils==0.18.1
@@ -52,12 +46,3 @@ sphinxcontrib-htmlhelp==2.0.0
 sphinxcontrib-jsmath==1.0.1
 sphinxcontrib-qthelp==1.0.3
 sphinxcontrib-serializinghtml==1.1.5
-sqlite==3.41.2
-tk==8.6.12
-tornado==6.3.2
-tzdata==2023c
-urllib3==1.26.16
-wheel==0.38.4
-xz==5.4.2
-zipp==3.11.0
-zlib==1.2.13
