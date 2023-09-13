@@ -24,7 +24,7 @@ The hub follows the diataxis approach, where documentation is categorized with t
 
         :octicon:`mortar-board;3em;orange` **Tutorials**
 
-        Learning-oriented lessons that take you through a series
+        Learning-oriented lessons take you through a series
         of steps to complete a project. 
         
         Most useful when you want to get started with the GBT.
@@ -43,7 +43,7 @@ The hub follows the diataxis approach, where documentation is categorized with t
 
         :octicon:`terminal;3em;green` **How-To Guides**
 
-        Practical step-by-step guides to help you achieve a specific goal. 
+        Practical step-by-step guides to help you achieve a specific goal.
         
         Most useful when you're trying to get something done.
 
