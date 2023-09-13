@@ -1,8 +1,15 @@
 Scheduling Block Commands
 ----------------------------
 
-..
-    This is not showing up?
+
+
+.. automodule:: astrid_commands
+    :members:
+
+
+Testing
+This is not showing up?
+
 
     - :func:`average() <dysh:dysh.spectra.core.average>` 
 
@@ -17,12 +24,6 @@ Scheduling Block Commands
 
 
 :func:`DecLatMap() <astrid_commands.DecLatMap>`
-
-
-
-
-.. automodule:: astrid_commands
-    :members:
 
 
 

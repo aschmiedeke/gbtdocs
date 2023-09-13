@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath('../../sparrow'))
 
 project = 'GBT Docs'
 copyright = '2023, A. Schmiedeke'
-author = 'A. Schmiedeke'
+author = 'Green Bank Observatory'
 
 # The full version, including alpha/beta/rc tags
 release = '0.1'
