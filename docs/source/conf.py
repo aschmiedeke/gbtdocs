@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.abspath('../../sparrow'))
 # -- Project information -----------------------------------------------------
 
 project = 'GBT Docs'
-copyright = '2023, A. Schmiedeke'
+copyright = '2023, Green Bank Observatory, A. Schmiedeke'
 author = 'Green Bank Observatory'
 
 # The full version, including alpha/beta/rc tags
@@ -113,6 +113,7 @@ rst_prolog = """
 # html_theme = 'alabaster'
 html_theme = 'furo'
 
+
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
@@ -123,6 +124,9 @@ html_css_files = [
 ]
 
 html_theme_options = {
+        "light_logo": "GBO-vertical-PGGradient.svg",
+        "dark_logo": "GBO-vertical-PGGradient.svg",
+        "sidebar_hide_name": True,
         "announcement": "The GBT is currently offline for maintenance and expected to return to full operations by the end of September.",
         "dark_css_variables": {"color-announcement-background": "darkred"},
         "light_css_variables": {"color-announcement-background": "darkred"},
