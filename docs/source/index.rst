@@ -5,14 +5,9 @@ GBT Documentation Hub
 
 The GBT Documentation Hub is a prototype documentation system under active development. It is meant to consolidate all user documentation to use the GBT and process data obtained with the GBT. 
 
-The hub follows the diataxis approach, where documentation is categorized with the user's need in mind. As a GBT user, you will be able to find Tutorials, How-to Guides, Explanations and Reference material that support your learning and the working aspects of your day-to-day tasks with either practical step-by-step instructions or knowledge-providing material.
-
-
 .. only:: html
 
-    The entire documentation is also available as a :octicon:`file;1em;sd-text-primary` `single pdf file <../../source/_assets/gbtdocs.pdf>`_. Unfortunately this link appears to be broken at the moment. We are working on it.
-
-
+    The entire documentation is also available as a :octicon:`file;1em;sd-text-primary` single pdf file from the fly-out menu in the bottom left corner.
 
 ------------------
 
@@ -93,7 +88,11 @@ The hub follows the diataxis approach, where documentation is categorized with t
 
             Go to Reference Guides
 
-             
+       
+-------------------
+
+The hub follows the diataxis approach, where documentation is categorized with the user's need in mind. As a GBT user, you will be able to find Tutorials, How-to Guides, Explanations and Reference material that support your learning and the working aspects of your day-to-day tasks with either practical step-by-step instructions or knowledge-providing material.
+
 
 .. toctree::
    :maxdepth: 4
