@@ -44,6 +44,9 @@ extensions = ['sphinx.ext.todo',
               #'sphinx_idl.auto'
 ]
 
+#extensions = ['sphinx_idl.domain', 'sphinx_idl.auto']
+
+
 autosummary_generate = False
 add_module_names=False
 toc_object_entries_show_parents = 'hide'

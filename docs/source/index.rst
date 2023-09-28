@@ -1,9 +1,9 @@
 .. _home:
 
-GBT Documentation Hub
-========================
+GBT User Documentation Hub
+===========================
 
-The GBT Documentation Hub is a prototype documentation system under active development. It is meant to consolidate all user documentation to use the GBT and process data obtained with the GBT. 
+The GBT User Documentation Hub is a prototype documentation system under active development. It is meant to consolidate all user documentation to use the GBT and process data obtained with the GBT. 
 
 .. only:: html
 
