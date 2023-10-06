@@ -130,7 +130,7 @@ html_theme_options = {
         "light_logo": "GBO-vertical-PGGradient.svg",
         "dark_logo": "GBO-vertical-PGGradient.svg",
         "sidebar_hide_name": True,
-        "announcement": "The GBT is currently offline for maintenance and expected to return to full operations by the end of September.",
+        #"announcement": "The GBT is currently offline for maintenance and expected to return to full operations by the end of September.",
         "dark_css_variables": {"color-announcement-background": "darkred"},
         "light_css_variables": {"color-announcement-background": "darkred"},
 
