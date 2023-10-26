@@ -12,6 +12,8 @@ Practical step-by-step guides to help you achieve a specific goal. Most useful w
 Quick Guides
 ============
 
+These quides contain end-to-end instructions, i.e. how to set up specific observations and how to calibrate and post-process the obtained data.
+
 .. button-link:: quick_guides/HI_single-pointing.html
     :color: primary
     :tooltip: Practical steps to obtain a single-pointing HI spectrum using either position-switching or frequency-switching.
@@ -26,10 +28,34 @@ Quick Guides
 
     quick_guides/HI_single-pointing
 
+----------------
+
+
+
+Receiver specific Guides
+========================
+
+These guides provide receiver specific information on how to achieve a specific goal.
+
+.. button-link:: receivers/argus.html
+    :color: primary
+    :tooltip: Practical steps for observations using Argus.
+
+    How to observe using Argus?
+
+.. toctree::
+    :maxdepth: 3
+    :hidden:
+
+    receivers/argus
+
+
+----------------
 
 
 Data Processing
 ================
+
 
 
 .. button-link:: data_reduction/gbtidl.html
@@ -44,4 +70,7 @@ Data Processing
     :hidden:
 
     data_reduction/gbtidl
+
+
+----------------
 
