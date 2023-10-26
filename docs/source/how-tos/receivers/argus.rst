@@ -81,6 +81,8 @@ Run **AutoPeakFocus** using *KFPA* to determine the focus offset between Argus (
     SetValues("ScanCoordinator", {"receiver": "RcvrArray18_26"})
     SetValues("LO1", {"restFrequency_A": 25000})
 
+    AutoPeakFocus(source)
+
 
 Step 2.2 provides :math:`\text{focus}_\text{Argus}` at your target frequency and Step 2.3 provides :math:`\text{focus}_\text{KFPA, primary}`. Using those two numbers we can calculate the focus offset, :math:`\Delta_\text{focus}`, as :math:`\Delta_\text{focus} = \text{focus}_\text{Argus} - \text{focus}_\text{KFPA, primary}`. 
 
