@@ -3,8 +3,8 @@ How to observe using Argus?
 ###########################
 
 
-This guide contains instructions for the recommended observing procedure for the 23B semester.
-Check that Argus is turned on.
+This guide contains instructions for the recommended observing procedure for the 23B/24A winter observing season.
+
 
 1. Turn on Argus
 ================
