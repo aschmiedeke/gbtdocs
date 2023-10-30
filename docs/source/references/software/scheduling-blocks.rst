@@ -7,24 +7,23 @@ Scheduling Block Commands
     :members:
 
 
-Testing
-This is not showing up?
+.. Testing
+.. This is not showing up?
 
 
-    - :func:`average() <dysh:dysh.spectra.core.average>` 
+.. - :func:`average() <dysh:dysh.spectra.core.average>` 
 
 
-    - :ref:`dysh:core functions`
-    - :ref:`average <dysh:core functions>`
-    - :doc:`dysh:dysh.spectra`
-    - :doc:`DYSH.spectra <dysh:dysh.spectra>`
+.. - :ref:`dysh:core functions`
+.. - :ref:`average <dysh:core functions>`
+.. - :doc:`dysh:dysh.spectra`
+.. - :doc:`DYSH.spectra <dysh:dysh.spectra>`
 
     It is showing up now, but I cannot seem to get the tooltips ready to show :( 
 
 
 
 :func:`DecLatMap() <astrid_commands.DecLatMap>`
-
 
 
 

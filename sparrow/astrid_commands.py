@@ -1,10 +1,511 @@
+def AutoPeakFocus(source=None, location=None, frequency=None, flux=None,
+                  radius=10., balance=True, configure=True, beamName=None, refBeam=None,
+                  elAzOrder=False, calSeq=True, gold=False):
+
+    """
+    An utility scan. The intent of this scan type is to automatically peak and focus the antenna
+    for the current location on the sky and with the current receiver. Therefore it should not
+    require any user input. However, by setting any of the optional arguments the user may partially
+    or fully override the search and/or procedural steps as described below.
+
+    Warning
+    -------
+        AutoPeakFocus() should not be used with Prime Focus receivers. The prime focus receivers have 
+        pre-determined focus positions and there is not enough travel in the feed to move them significantly
+        out of focus.
+
+    AutoPeakFocus() will execute its own default continuum configuration unless “configure=False”
+    is supplied as an optional argument, which is not recommended in general unless one knows the
+    system well.
+
+
+    Parameters
+    ----------
+    
+    source: str
+        It specifies the name of a particular source in the pointing catalog or in a user-defined
+        Catalog. Specifying a source bypasses the search process. Please note that NVSS source names
+        are used in the pointing catalog. If the name is not located in the pointing catalog then all
+        the user-specified catalogs previously defined in the Scheduling Block are searched. If the
+        name is not in the pointing catalog or in the user defined catalog(s) then the procedure fails.
+
+    location:
+        A Catalog source name or Location object. It specifies the center of the search radius. The 
+        default is the antenna’s current beam location on the sky. Planets and other moving objects
+        may not be used.
+
+    frequency: float
+        It specifies the observing frequency in MHz. The default is the rest frequency used by the
+        standard continuum configurations, or the current configuration value if “configure=False”.
+
+    flux: float
+        It specifies the minimum acceptable calibration flux in Jy at the observing frequency. The
+        default is 20 times the continuum point-source sensitivity.
+
+    radius: float
+        The routine selects the closest calibrator within the radius (in degrees) having the minimum
+        acceptable flux. The default radius is 10 degrees. If no calibrator is found within the radius,
+        the search is continued out to 180 degrees and if a qualified calibrator is found the user is
+        given the option of using it [default], aborting the scan, or continuing the scheduling block
+        without running this procedure.
+
+    balance: bool
+        Controls whether after slewing to the calibrator the routine balances the power along the IF path
+        and again to set the power levels just before collecting data. Allowed values are True or False.
+
+    configure: bool
+        This argument causes the telescope to configure for continuum observing for the specified receiver.
+        
+        .. note::
+            
+            Because AutoPeakFocus() is self-configuring when set to True, you must re-configure the GBT IF
+            path for your science observations after the pointing and focus observations are done. If set to
+            False, then no configuration is done, and the observer must ensure that the system is properly
+            configured first before running the command.
+
+    beamName: str
+        It specifies which receiver beam will be the center of the cross-scan. beamName can be ‘C’, ‘1’, ‘2’,
+        ‘3’, ‘4’, etc, up to ‘7’ for the KFPA receiver. This keyword should not be specified unless there is
+        an issue with the default beams used for pointing (7.6). 
+
+    refBeam: str
+        It specifies which beam will be the reference beam for subtracting the sky contribution for the pointing
+        observations. The name strings are the same as for the beamName argument. This keyword should not be
+        specified unless there is an issue with the default beams used for pointing (7.6). The KFPA and Argus
+        have backup beam pairs that can be used for pointing and focus if there is an issue with one of the
+        default beams. The valid beam pairs for the KFPA are beamName=’4’, refBeam=’6’ (default beam pair) 
+        or beamName=’3’, refBeam=’7’ (backup beam pair), while the valid beam pairs for Argus are beamName=’10’,
+        refBeam=’11’ (default beam pair) or beamName=’14’, refBeam=’15’ (backup beam pair). 
+
+    elAzOrder: bool
+        If True, the elevation peak scans will be done first before the azimuth peak scans. This can be helpful
+        for high-frequency observations (> 40GHz) to provide more successful initial pointing solutions, since
+        the elevation pointing offsets are typically larger than the azimuth offsets. The default is False, 
+        for which the azimuth pointing scans will be done before the elevation scans.
+
+    calSeq: bool
+        If True, then for ‘Rcvr68 92’ (W-Band) the observations will be preceeded by calibration calSeq observations,
+        or for ‘RcvrArray75 115’ (argus) the calibration “vanecal” observations. If False, then the calibration
+        vanecal or calSeq observations will be skipped. This keyword is only applicable for receivers operating
+        above 66 GHz, and the associated calibration observations depend on the receiver (‘Rcvr68 92’,
+        ‘RcvrArray75 115’, and ‘Rcrv PAR’) and the particular Auto utilty procedure (see the individual receiver
+        chapters for specifics). The default value is True.
+
+    gold: bool
+        If True then only “Gold standard sources” (.i.e. sources suitable for pointing at high frequencies) will be
+        used by AutoPeakFocus(). This parameter is ignored if the “source” parameter is specified.
+
+
+    AutoPeakFocus will use the default scanning rates and lengths listed in Table 7.6.
+    
+    .. todo::
+
+        Copy Table 7.6 from Observer's Guide here. 
+
+        
+    .. admonition:: Sequence of events done by AutoPeakFocus() in full automatic mode, i.e. with no arguments
+        :class: note
+
+        1. Determine the appropriate receiver based on the selection in the scan coordinator.
+        2. Determine the recommended beam, antenna/subreflector motions, and duration for peak and focus scans.
+        3. Get current antenna beam location from the control system.
+        4. Configure for continuum observations with the current receiver.
+        5. Run a balance (see § 7.4.1.9) to place the IF power levels appropriately.
+        6. Determine the source as specified by the user or as chosen by software using the minimum flux, observing frequency, location, and search radius. If no pointing source is found within the specified radius, then provide the observer the option to use a more distant source (default), and if none found either aborting (second default) or continuing the scheduling block.
+        7. Slew to source.
+        8. Run another balance to set the power levels at the location of the source.
+        9. Run a set of four pointing scans using the Peak command.
+        10. Run a scan using the Focus command.
+
+
+    Examples
+    --------
+    The script below gives examples demonstrating the expected use of AutoPeakFocus.
+
+    .. code-block:: python
+
+        #Configure for correct receiver at start of session...
+        execfile('/home/astro-util/projects/GBTog/configs/tp_config.py')
+        Configure(tp_config)
+        
+        #Default (fully automatic)
+        AutoPeakFocus()
+
+        #point and focus on 3C286
+        AutoPeakFocus('3C286')
+
+        # find a pointing source near ra=16:30:00 dec=47:23:00
+        AutoPeakFocus(location=Location('J2000','16:30:00','47:23:00'))
+
+        # Since AutoPeakFocus has executed its own configuration Reconfigure for science observations
+        Configure(tp_config)
+
+    """
+
+
+def AutoPeak(source=None, location=None, frequency=None, flux=None,
+             radius=10., balance=True, configure=True, beamName=None, refBeam=None,
+             elAzOrder=False, calSeq=True, gold=False):
+
+    """
+    An utility scan. AutoPeak() is the same as AutoPeakFocus() except that it does not perform a focus scan.
+    The intent of this scan type is to automatically peak the antenna for the current location on the sky and
+    with the current receiver. Therefore it should not require any user input. However, by setting any of the
+    optional arguments the user may partially or fully override the search and/or procedural steps as described
+    below.
+
+    Warning
+    -------
+        AutoPeak() should not be used with Prime Focus receivers. The prime focus receivers have 
+        pre-determined focus positions and there is not enough travel in the feed to move them significantly
+        out of focus.
+
+    AutoPeak() will execute its own default continuum configuration unless “configure=False”
+    is supplied as an optional argument, which is not recommended in general unless one knows the
+    system well.
+
+
+    Parameters
+    ----------
+    
+    source: str
+        It specifies the name of a particular source in the pointing catalog or in a user-defined
+        Catalog. Specifying a source bypasses the search process. Please note that NVSS source names
+        are used in the pointing catalog. If the name is not located in the pointing catalog then all
+        the user-specified catalogs previously defined in the Scheduling Block are searched. If the
+        name is not in the pointing catalog or in the user defined catalog(s) then the procedure fails.
+
+    location:
+        A Catalog source name or Location object. It specifies the center of the search radius. The 
+        default is the antenna’s current beam location on the sky. Planets and other moving objects
+        may not be used.
+
+    frequency: float
+        It specifies the observing frequency in MHz. The default is the rest frequency used by the
+        standard continuum configurations, or the current configuration value if “configure=False”.
+
+    flux: float
+        It specifies the minimum acceptable calibration flux in Jy at the observing frequency. The
+        default is 20 times the continuum point-source sensitivity.
+
+    radius: float
+        The routine selects the closest calibrator within the radius (in degrees) having the minimum
+        acceptable flux. The default radius is 10 degrees. If no calibrator is found within the radius,
+        the search is continued out to 180 degrees and if a qualified calibrator is found the user is
+        given the option of using it [default], aborting the scan, or continuing the scheduling block
+        without running this procedure.
+
+    balance: bool
+        Controls whether after slewing to the calibrator the routine balances the power along the IF path
+        and again to set the power levels just before collecting data. Allowed values are True or False.
+
+    configure: bool
+        This argument causes the telescope to configure for continuum observing for the specified receiver.
+        
+        .. note::
+            
+            Because AutoPeak() is self-configuring when set to True, you must re-configure the GBT IF
+            path for your science observations after the pointing and focus observations are done. If set to
+            False, then no configuration is done, and the observer must ensure that the system is properly
+            configured first before running the command.
+
+    beamName: str
+        It specifies which receiver beam will be the center of the cross-scan. beamName can be ‘C’, ‘1’, ‘2’,
+        ‘3’, ‘4’, etc, up to ‘7’ for the KFPA receiver. This keyword should not be specified unless there is
+        an issue with the default beams used for pointing (7.6). 
+
+    refBeam: str
+        It specifies which beam will be the reference beam for subtracting the sky contribution for the pointing
+        observations. The name strings are the same as for the beamName argument. This keyword should not be
+        specified unless there is an issue with the default beams used for pointing (7.6). The KFPA and Argus
+        have backup beam pairs that can be used for pointing and focus if there is an issue with one of the
+        default beams. The valid beam pairs for the KFPA are beamName=’4’, refBeam=’6’ (default beam pair) 
+        or beamName=’3’, refBeam=’7’ (backup beam pair), while the valid beam pairs for Argus are beamName=’10’,
+        refBeam=’11’ (default beam pair) or beamName=’14’, refBeam=’15’ (backup beam pair). 
+
+    elAzOrder: bool
+        If True, the elevation peak scans will be done first before the azimuth peak scans. This can be helpful
+        for high-frequency observations (> 40GHz) to provide more successful initial pointing solutions, since
+        the elevation pointing offsets are typically larger than the azimuth offsets. The default is False, 
+        for which the azimuth pointing scans will be done before the elevation scans.
+
+    calSeq: bool
+        If True, then for ‘Rcvr68 92’ (W-Band) the observations will be preceeded by calibration calSeq observations,
+        or for ‘RcvrArray75 115’ (argus) the calibration “vanecal” observations. If False, then the calibration
+        vanecal or calSeq observations will be skipped. This keyword is only applicable for receivers operating
+        above 66 GHz, and the associated calibration observations depend on the receiver (‘Rcvr68 92’,
+        ‘RcvrArray75 115’, and ‘Rcrv PAR’) and the particular Auto utilty procedure (see the individual receiver
+        chapters for specifics). The default value is True.
+
+    gold: bool
+        If True then only “Gold standard sources” (.i.e. sources suitable for pointing at high frequencies) will be
+        used by AutoPeakFocus(). This parameter is ignored if the “source” parameter is specified.
+
+
+    AutoPeak will use the default scanning rates and lengths listed in Table 7.6.
+    
+    .. todo::
+
+        Copy Table 7.6 from Observer's Guide here. 
+
+        
+    .. admonition:: Sequence of events done by AutoPeak() in full automatic mode, i.e. with no arguments
+        :class: note
+
+        1. Determine the appropriate receiver based on the selection in the scan coordinator.
+        2. Determine the recommended beam, antenna/subreflector motions, and duration for peak and focus scans.
+        3. Get current antenna beam location from the control system.
+        4. Configure for continuum observations with the current receiver.
+        5. Run a balance (see § 7.4.1.9) to place the IF power levels appropriately.
+        6. Determine the source as specified by the user or as chosen by software using the minimum flux, observing frequency, location, and search radius. If no pointing source is found within the specified radius, then provide the observer the option to use a more distant source (default), and if none found either aborting (second default) or continuing the scheduling block.
+        7. Slew to source.
+        8. Run another balance to set the power levels at the location of the source.
+        9. Run a set of four pointing scans using the Peak command.
+
+
+    Examples
+    --------
+    The script below gives examples demonstrating the expected use of AutoPeakFocus.
+
+    .. code-block:: python
+
+        #Configure for correct receiver at start of session...
+        execfile('/home/astro-util/projects/GBTog/configs/tp_config.py')
+        Configure(tp_config)
+        
+        #Default (fully automatic)
+        AutoPeak()
+
+        #point and focus on 3C286
+        AutoPeak('3C286')
+
+        # find a pointing source near ra=16:30:00 dec=47:23:00
+        AutoPeak(location=Location('J2000','16:30:00','47:23:00'))
+
+        # Since AutoPeak has executed its own configuration Reconfigure for science observations
+        Configure(tp_config)
+
+
+    """
+
+
+def AutoFocus(source=None, location=None, frequency=None, flux=None,
+              radius=10., balance=True, configure=True, 
+              beamName=None, refBeam=None, calSeq=True, gold=False):
+
+    """
+    An utility scan. AutoFocus() is the same as AutoPeakFocus() except that it does not perform pointing scans.
+    The intent of this scan type is to automatically focus the antenna for the current location on the sky and
+    with the current receiver. Therefore it should not require any user input. However, by setting any of the
+    optional arguments the user may partially or fully override the search and/or procedural steps as described
+    below.
+
+    Warning
+    -------
+        AutoFocus() should not be used with Prime Focus receivers. The prime focus receivers have pre-determined
+        focus positions and there is not enough travel in the feed to move them significantly out of focus.
+
+    AutoFocus() will execute its own default continuum configuration unless “configure=False”
+    is supplied as an optional argument, which is not recommended in general unless one knows the
+    system well.
+
+
+    Parameters
+    ----------
+    
+    source: str
+        It specifies the name of a particular source in the pointing catalog or in a user-defined
+        Catalog. Specifying a source bypasses the search process. Please note that NVSS source names
+        are used in the pointing catalog. If the name is not located in the pointing catalog then all
+        the user-specified catalogs previously defined in the Scheduling Block are searched. If the
+        name is not in the pointing catalog or in the user defined catalog(s) then the procedure fails.
+
+    location:
+        A Catalog source name or Location object. It specifies the center of the search radius. The 
+        default is the antenna’s current beam location on the sky. Planets and other moving objects
+        may not be used.
+
+    frequency: float
+        It specifies the observing frequency in MHz. The default is the rest frequency used by the
+        standard continuum configurations, or the current configuration value if “configure=False”.
+
+    flux: float
+        It specifies the minimum acceptable calibration flux in Jy at the observing frequency. The
+        default is 20 times the continuum point-source sensitivity.
+
+    radius: float
+        The routine selects the closest calibrator within the radius (in degrees) having the minimum
+        acceptable flux. The default radius is 10 degrees. If no calibrator is found within the radius,
+        the search is continued out to 180 degrees and if a qualified calibrator is found the user is
+        given the option of using it [default], aborting the scan, or continuing the scheduling block
+        without running this procedure.
+
+    balance: bool
+        Controls whether after slewing to the calibrator the routine balances the power along the IF path
+        and again to set the power levels just before collecting data. Allowed values are True or False.
+
+    configure: bool
+        This argument causes the telescope to configure for continuum observing for the specified receiver.
+        
+        .. note::
+            
+            Because AutoFocus() is self-configuring when set to True, you must re-configure the GBT IF
+            path for your science observations after the pointing and focus observations are done. If set to
+            False, then no configuration is done, and the observer must ensure that the system is properly
+            configured first before running the command.
+
+    beamName: str
+        It specifies which receiver beam will be the center of the cross-scan. beamName can be ‘C’, ‘1’, ‘2’,
+        ‘3’, ‘4’, etc, up to ‘7’ for the KFPA receiver. This keyword should not be specified unless there is
+        an issue with the default beams used for pointing (7.6). 
+
+    refBeam: str
+        It specifies which beam will be the reference beam for subtracting the sky contribution for the pointing
+        observations. The name strings are the same as for the beamName argument. This keyword should not be
+        specified unless there is an issue with the default beams used for pointing (7.6). The KFPA and Argus
+        have backup beam pairs that can be used for pointing and focus if there is an issue with one of the
+        default beams. The valid beam pairs for the KFPA are beamName=’4’, refBeam=’6’ (default beam pair) 
+        or beamName=’3’, refBeam=’7’ (backup beam pair), while the valid beam pairs for Argus are beamName=’10’,
+        refBeam=’11’ (default beam pair) or beamName=’14’, refBeam=’15’ (backup beam pair). 
+
+
+    calSeq: bool
+        If True, then for ‘Rcvr68 92’ (W-Band) the observations will be preceeded by calibration calSeq observations,
+        or for ‘RcvrArray75 115’ (argus) the calibration “vanecal” observations. If False, then the calibration
+        vanecal or calSeq observations will be skipped. This keyword is only applicable for receivers operating
+        above 66 GHz, and the associated calibration observations depend on the receiver (‘Rcvr68 92’,
+        ‘RcvrArray75 115’, and ‘Rcrv PAR’) and the particular Auto utilty procedure (see the individual receiver
+        chapters for specifics). The default value is True.
+
+    gold: bool
+        If True then only “Gold standard sources” (.i.e. sources suitable for pointing at high frequencies) will be
+        used by AutoPeakFocus(). This parameter is ignored if the “source” parameter is specified.
+
+
+    AutoPeak will use the default scanning rates and lengths listed in Table 7.6.
+    
+    .. todo::
+
+        Copy Table 7.6 from Observer's Guide here. 
+
+        
+    .. admonition:: Sequence of events done by AutoFocus() in full automatic mode, i.e. with no arguments
+        :class: note
+
+        1. Determine the appropriate receiver based on the selection in the scan coordinator.
+        2. Determine the recommended beam, antenna/subreflector motions, and duration for peak and focus scans.
+        3. Get current antenna beam location from the control system.
+        4. Configure for continuum observations with the current receiver.
+        5. Run a balance (see § 7.4.1.9) to place the IF power levels appropriately.
+        6. Determine the source as specified by the user or as chosen by software using the minimum flux, observing frequency, location, and search radius. If no pointing source is found within the specified radius, then provide the observer the option to use a more distant source (default), and if none found either aborting (second default) or continuing the scheduling block.
+        7. Slew to source.
+        8. Run another balance to set the power levels at the location of the source.
+        9. Run a scan using the Focus command.
+
+
+
+    Examples
+    --------
+    The script below gives examples demonstrating the expected use of AutoPeakFocus.
+
+    .. code-block:: python
+
+        #Configure for correct receiver at start of session...
+        execfile('/home/astro-util/projects/GBTog/configs/tp_config.py')
+        Configure(tp_config)
+        
+        #Default (fully automatic)
+        AutoFocus()
+
+        #point and focus on 3C286
+        AutoFocus('3C286')
+
+        # find a pointing source near ra=16:30:00 dec=47:23:00
+        AutoFocus(location=Location('J2000','16:30:00','47:23:00'))
+
+        # Since AutoFocus() has executed its own configuration reconfigure for science observations
+        Configure(tp_config)
+
+    
+    """
+
+
+def AutoOOF(source, location, frequency, flux, radius, balance, configure, beamName, refBeam,
+calSeq, gold, nseq="optional"):
+
+    """
+    An utility scan. Out-Of-Focus (OOF) holography is a technique for measuring large-scale errors in the shape
+    of the reflecting surface by mapping a strong point source both in and out of focus. The procedure derives
+    surface corrections which can be sent to the active surface controller to correct surface errors. The 
+    procedure is recommended when observing at frequencies of 40 GHz and higher. 
+
+    AutoOOF() can only be used for observations above 26 GHz. Receiver choices are limited
+        - 'Rcvr26_40' (Ka-Band)
+        - 'Rcvr40_52' (Q-Band)
+        - 'Rcvr68_92' (W-Band)
+        - 'RcvrArray75_115' (Argus)
+        - 'Rcvr_PAR'(MUSTANG-2)
+
+    Note
+    ----
+
+        AutoOOF is used in a similar manner to AutoPeakFocus. The command should normally be run without any
+        arguments, since the default options are handled best by the OOF processing software. It is important
+        to only OOF on bright sources (at least 3-4 Jy). 
+
+
+    Parameters
+    ----------
+
+    nseq:
+        Is an optional parameter for use with ‘Rcvr PAR’. It is used to specify the number of OTF maps made
+        with AutoOOF and may take values of 3 or 5.
+        
+    calSeq: bool
+        The default value is True which will run a set of calibration scans before the OOF map scans for 
+        ‘Rcvr68 92’ and ‘RcvrArray75 115’. This keyword is only applicable for receivers operating above 66 GHz
+        and the associated calibration observations depend on the receiver (‘Rcvr68 92’, ‘RcvrArray75 115’, and
+        ‘Rcrv PAR’; see the individual receiver chapters for specifics).
+
+
+    Examples
+    --------
+    
+    .. code-block:: python
+        
+        # Specifying a source for AutoOOF
+        AutoOOF('2253+1608')
+
+
+    Note
+    ----
+        The example OOF command above is applicable for all receivers, and users should refer to the individual
+        reciever chapters to understand the specifics on how the OOF data are calibrated via the calSeq keyword.
+        For Ka-band, the default backend for the AutoOOF procedure is the CCB. Besides the much higher sensitivity
+        provided by the CCB (a fast beam-switching backend designed for continuum measurements), the larger beam at
+        lower frequency makes the surface solutions less affected by winds. Since the Ka+CCB system provides the most
+        accurate measurements of the surface parameters, it should be used whenever possible.
+
+        Users should refrain from using non-standard defaults for the AutoOOF measurements since the processing
+        software is customized per receiver based on the default parameters (e.g., avoid running an AutoOOF at
+        a non-default frequency or pre-configuring and running with the configuration=False keyword).
+
+    Todo
+    ----
+
+    Add receiver specific instructions in the Hardware segment of the reference guides.
+    
+    """
+
+
+
 def Peak(location, hLength=None, vLength=None, scanDuration=None, 
          beamName=None, refBeam=None, elAzOrder=False):
 
 
 
     """
-    A utility scan. Peak scan type sweeps through the specified sky location in the four cardinal directions.
+    An utility scan. Peak scan type sweeps through the specified sky location in the four cardinal directions.
     Its primary use is to determine pointing corrections for use in subsequent scans.
 
     
@@ -64,7 +565,7 @@ def Focus(location, start=None, focusLength=None, scanDuration=None,
 
 
     """
-    A Utility Scan. Focus scan type moves the subreflector or prime focus receiver (depending on the receiver in use)
+    An utility scan. Focus scan type moves the subreflector or prime focus receiver (depending on the receiver in use)
     through the axis aligned with the beam. Its primary use is to determine focus positions for use in 
     subsequent scans.
 
@@ -114,7 +615,7 @@ def Tip(location, endOffset, beamName='1', scanDuration=None,
         startTime=None, stopTime=None):
 
     """
-    A utility scan. Tip scan moves the beam on the sky from one elevation to another
+    An utility scan. Tip scan moves the beam on the sky from one elevation to another
     elevation while taking data and maintaining a constant azimuth. It is recommended
     to tip from 6 deg to 45 deg as the atmosphere will not change significantly above
     45 deg.
@@ -171,7 +672,7 @@ def Slew(location=None, offset=None, beamName='1', submotion=None):
 
 
     """
-    A utility scan. Slew moves the telescope beam to point to a specified locaiton on 
+    An utility scan. Slew moves the telescope beam to point to a specified locaiton on 
     the sky without collecting any data.
 
 
@@ -223,7 +724,7 @@ def Slew(location=None, offset=None, beamName='1', submotion=None):
 def Balance():
 
     """
-    A utility scan. The Balance() command is used to balance the electronic signal 
+    An utility scan. The Balance() command is used to balance the electronic signal 
     throughout the GBT IF system so that each devise is operating in its linear response
     regime. Balance() will work for any device with attenuators and for a particular
     backend. Individual devices can be balanced such as Prime Focus receivers, the
@@ -269,7 +770,7 @@ def Balance():
 def BalanceOnOff(location, offset=None, beamName='1'):
 
     """
-    A utility scan. When there is a large difference in power received by the GBT between two positions
+    An utility scan. When there is a large difference in power received by the GBT between two positions
     on the sky, it is advantageous to balance the IF system power levels to be at the mid-point of the
     two power levels. Typically this is needed when the "source position" is a strong continuum source.
     This scan type has been created to handle this scenario; one chouls consider using it when the system 
@@ -323,7 +824,7 @@ def Track(location, endOffset, scanDuration=None, beamName='1',
           submotion=None, startTime=None, stopTime=None, fixedOffset=None):
 
     """
-    The Track scan type follows a sky location while taking data.
+    An observing scan. The Track scan type follows a sky location while taking data.
     
     
     Parameters
@@ -393,7 +894,7 @@ def OnOff(location, referenceOffset, scanDuration=None, beamName='1'):
 
 
     """
-    The OnOff scan type performs two scans. The first scan is on source, and the second scan is
+    An observing scan. The OnOff scan type performs two scans. The first scan is on source, and the second scan is
     at an offset from the source location used in the first scan.
     
     
@@ -432,7 +933,8 @@ def OnOff(location, referenceOffset, scanDuration=None, beamName='1'):
 def OffOn(location, referenceOffset, scanDuration=None, beamName='1'):
     
     """
-    The OffOn scan type is the same as the OnOff scan except that the first scan is offset from the source location. 
+    An observing scan. The OffOn scan type is the same as the OnOff scan except that the first scan is offset
+    from the source location. 
     
     
     Parameters
@@ -469,7 +971,7 @@ def OffOn(location, referenceOffset, scanDuration=None, beamName='1'):
 def OnOffSameHA(location, scanDuration, beamName='1'):
     
     """
-    The OnOffSameHA scan type performs two scans. The first scan is on the source and the
+    An observing scan. The OnOffSameHA scan type performs two scans. The first scan is on the source and the
     second scan follows the same HA track used in the first scan. 
     
     
@@ -503,7 +1005,7 @@ def OnOffSameHA(location, scanDuration, beamName='1'):
 def Nod(location, beamName1, beamName2, scanDuration):
     
     """
-    The Nod procedure does two scans on the same sky location with different beams.
+    An observing scan. The Nod procedure does two scans on the same sky location with different beams.
 
     
 
@@ -554,11 +1056,11 @@ def Nod(location, beamName1, beamName2, scanDuration):
 def SubBeamNod(location, scanDuration, beamName, nodLength, nodUnit='seconds'):
     
     """
-    For multi-beam receivers SubBeamNod causes the subreflector to tilt about its axis
-    between two feeds at the given periodicity. The primary mirror is centered on the
-    midpoint between the two beams. The beam selections are extracted from the scan's 
-    beamName, i.e. 'MR12'. The "first" beam ('1') performs the first integration. The
-    periodicity is specified in seconds per nod (half-cycle). A subBeamNod is limited
+    An observing scan. For multi-beam receivers SubBeamNod causes the subreflector to tilt
+    about its axis between two feeds at the given periodicity. The primary mirror is 
+    centered on the midpoint between the two beams. The beam selections are extracted from
+    the scan's beamName, i.e. 'MR12'. The "first" beam ('1') performs the first integration.
+    The periodicity is specified in seconds per nod (half-cycle). A subBeamNod is limited
     to a minimum of 4.483 s for a half cycle.
     
     
@@ -637,27 +1139,1131 @@ def SubBeamNod(location, scanDuration, beamName, nodLength, nodUnit='seconds'):
 
 
 
+def RALongMap(location, hLength, vLength, vDelta, scanDuration,
+              beamName="1", unidirectional=False, start=1, stop=None):
+
+    """
+    A mapping scan. A Right Ascension/Longitude (RALong) map performs an on-the-fly (OTF) raster scan centered
+    on a sky location. Scans are performed along the major axis of the selected coordinate system.
+    One can map in a variety of corrdinate systems, including J2000, Galactic, and AzEl. The
+    selected coordinate system is defined by the coordinateMode keyword for the Offset object.
+    The starting point of the map is defined as (-hLength/2, -vLength/2) from the specified center
+    location.
+
+    Parameters
+    ----------
+
+    location:
+        A Catalog source name or Location object. It specifies the center of the map.
+
+    hLength:
+        An Offset object. It specifies the horizontal width of the map (i.e., the extent in the
+        longitude-like direction). hLength values may be negative.
+
+    vLength:
+        An Offset object. It specifies the vertical height of the map (i.e., the extent in the
+        latitude-like direction). vLength values may be negative.
+
+    vDelta: 
+        An Offset object. It specifies the distance between map rows. vDelta values must be
+        positive. 
+
+    scanDuration: float
+        It specifies the length of each scan in seconds.
+
+    beamName: str
+        It specifies the receiver beam to use for the scan. beamName can be ‘C’, ‘1’, ‘2’, ‘3’, ‘4’
+        or any valid combination for the receiver you are using such as ‘MR12’.
+
+    unidirectional: bool
+        It specifies whether the map is unidirectional (True) or boustrophedonic (False;
+        from the Greek meaning 'as the ox plows, i.e. back and forth).
+
+    start: int
+        It specifies the starting row for the map. This is useful for doing parts of a map at
+        different times. For example, if map has 42 rows, one can do rows 1-12 by setting 
+        "start=1, stop=12", and later finishing the map using "start=13, stop=42".
+
+    stop: int
+        It specifies the stopping row for the map. The default is None, meaning "go to the end".
+
+
+    Note
+    ----
+    Observers should limit scanDuration so that no more than 2 scans (or accelerations)
+    are performed per minute. Overhead is ∼20 seconds per scan.
+
+
+    Example
+    --------
+    The following script produces a map with 41 rows each 120 arcmin long, using a row spacing
+    of 3 arcmin and scan rate of 20 arcmin/min with beam 1 (default). 
+
+    .. code-block:: python
+
+        RALongMap('NGC4258',                                    # center of the map
+                  Offset('J2000', 2.0, 0.0, cosv=True),         # 120 arcmin width
+                  Offset('J2000', 0.0, 2.0, cosv=True),         # 120 arcmin height
+                  Offset('J2000', 0.0, 0.05, cosv=True),        # 3 arcmin row spacing
+                  360.0)                                        # 6 minutes per row
+
+
+    Caution
+    -------
+    Observers should ensure that they are sampling sufficiently in the scanning direction when using
+    OTF mapping. In this example data were recorded every 5 seconds (tint=5.0 in the configuration).
+    This results in one sample every 1.67arcmin in the scanning direction using the above scan rate 
+    of 20arcmin/min. This is suitable for observations at 1420 MHz, where the FWHM of the beam is 
+    8.8 arcmin. as the beam will be sampled at least 5 times.
+
+    """
+
+
+def RALongMapWithReference(location, hLength, vLength, vDelta,
+                           referenceOffset, referenceInterval, scanDuration,
+                           beamName="1", unidirectional=False, start=1, stop=None):
+
+
+    """
+    A mapping scan. A right ascension/longitude (RALong) map performs an on-the-fly (OTF) raster scan centered on a sky
+    location.  Scans are performed in the right ascension, longitude, or azimuth coordinate depending
+    on the desired coordinate system. This procedure allows the user to periodically move to a reference
+    location on the sky. If no reference location is needed, please use RALongMap instead.
+
+    Parameters
+    ----------
+
+    location:
+        A Catalog source name or Location object. It specifies the center of the map.
+
+    hLength:
+        An Offset object. It specifies the horizontal width of the map (i.e., the extent in the
+        longitude-like direction). hLength values may be negative.
+
+    vLength:
+        An Offset object. It specifies the vertical height of the map (i.e., the extent in the
+        latitude-like direction). vLength values may be negative.
+
+    vDelta: 
+        An Offset object. It specifies the distance between map rows. vDelta values must be
+        positive. 
+
+    referenceOffset:
+        An Offset object. It specifies the position of the reference source on the sky relative to the
+        Location specified by the first input parameter.
+        
+    referenceInterval: int
+        It specifies when to do a reference scan in terms of map rows. For example, setting 
+        referenceInterval=4 will periodically perform one scan on the reference source followed by
+        4 mapping scans.
+
+    scanDuration: float
+        It specifies the length of each scan in seconds.
+
+    beamName: str
+        It specifies the receiver beam to use for the scan. beamName can be ‘C’, ‘1’, ‘2’, ‘3’, ‘4’
+        or any valid combination for the receiver you are using such as ‘MR12’.
+
+    unidirectional: bool
+        It specifies whether the map is unidirectional (True) or boustrophedonic (False;
+        from the Greek meaning 'as the ox plows, i.e. back and forth).
+
+    start: int
+        It specifies the starting row for the map. This is useful for doing parts of a map at
+        different times. For example, if map has 42 rows, one can do rows 1-12 by setting 
+        "start=1, stop=12", and later finishing the map using "start=13, stop=42".
+
+    stop: int
+        It specifies the stopping row for the map. The default is None, meaning "go to the end".
+
+
+    Example
+    --------
+    The following script a map that is 120 arcmin long and 60 arcmin wide, using a row spacing of 3’ and
+    scan rate of 4 arcmin/s. A reference position will be observed once before every 3 rows. The sequence
+    of scans will be: reference → rows 1-3 → reference → rows 4-6 ...
+
+    .. code-block:: python
+
+        RALongMapWithReference('CygA',                                      # center of map
+                               Offset('J2000', 2.0, 0.0, cosv=True),        # 120 arcmin length
+                               Offset('J2000', 0.0, 1.0, cosv=True),        # 60 arcmin height
+                               Offset('J2000', 0.0, 0.05, cosv=True),       # 3 arcmin row spacing
+                               Offset('J2000', 2.0, 0.0, cosv=True),        # 2 degree ref offset in RA
+                               3,                                           # reference before every 3 rows
+                               30.0)                                        # 30 second scan duration
+
+    """
+
+
+
 def DecLatMap(location, hLength, vLength, hDelta, scanDuration,
-              beamName = "1", unidirectional = False, start = 1,
-              stop = None):
+              beamName="1", unidirectional=False, start=1, stop=None):
 
     """
-    A Declination/Latitude map, or DecLatMap, does a raster scan centered on
-    a specific location on the sky.  Scanning is done in the declination, 
-    latitude, or elevation coordinate depending on the desired coordinate mode.
-    This procedure does not allow the user to periodically move to a reference
-    location on the sky, please see DecLatMapWithReference for such a map.
+    A mapping scan. A Declination/Latitude map, or DecLatMap, performs and on-the-fly (OTF) raster scan centered on
+    a specific location on the sky. Scans are performed in declination, latitude, or elevation
+    coordinates depending on the desired coordinate system. This procedure does not allow the user
+    to periodically move to a reference location on the sky, please see DecLatMapWithReference for
+    such a map. The starting point of the map is at (-hLength/2, -vLength/2).
+
+
+    Parameters
+    ----------
+
+    location:
+        A Catalog source name or Location object. It specifies the center of the map.
+
+    hLength:
+        An Offset object. It specifies the horizontal width of the map, i.e., the extent in the 
+        longitude-like direction. hLength values may be negative.
+
+    vLength:
+        An Offset object. It specifies the vertical height of the map, i.e., the extent in the 
+        latitude-like direction. cLength values may be negative.
+
+    hDelta:
+        An Offset object. Similar to vDelta in RALongMap. It specifies the horizontal distance
+        between map columns. hDelta values must be positive.
+
+    scanDuration: float
+        It specifies the length of each scan in seconds.
+        
+    beamName: str
+        It specifies the receiver beam to use for the scan. beamName can be 'C', '1', '2', '3', '4'
+        or any valid combination for the receiver you are using such as 'MR12'.
+
+    unidirectional: bool
+        It specifies whether the map is unidirectional (True) or boustrophedonic (False;
+        from the Greek meaning 'as the ox plows, i.e. back and forth). 
+
+    start: int
+        It specifies the starting row for the map. This is useful for doing parts of a map at 
+        different times. For example, if map has 42 rows, one can do rows 1-12 by setting
+        "start=1, stop=12", and later finish the map using "start=13, stop=42".
+
+    stop: int
+        It specifies the stopping row for the map. The default is None, meaning "go to the end".
+
+
+    Note
+    ----
+    Observers should limit scanDuration, so that no more than 2 scans (or accelerations) are
+    performed per minute. Overhead is ~20 seconds per scan.'
+
+
+    Example
+    --------
+    The following script produces a map with 41 rows each 120’ long, using a row spacing of 3’
+    and scan rate of 20’/min with beam 1 (default). 
+
+
+    .. code-block:: python
+
+        DecLatMap('NGC4258',                                # center of the map
+                  Offset('J2000', 2.0, 0.0,cosv=True),      # 120' width
+                  Offset('J2000', 0.0, 2.0,cosv=True),      # 120' height
+                  Offset('J2000', 0.05,0.0,cosv=True),      # 3' column spacing
+                  360.0)                                    # 6 minutes per column
+
+
+    Todo
+    ----
+    Add a plot showing the actual trajectory of the antenna on the sky. Figure 7.4 in the Observer's
+    Guide unfortunately shows the inverted RA axis, providing the impression the scan is obtained in
+    negative RA direction.
+
+
+    """
+
+
+def DecLatMapWithReference(location, hLength, vLength, hDelta,
+                        referenceOffset, referenceInterval, scanDuration,
+                        beamName="1", unidirectional=False, start=1, stop=None):
+
+    """
+    A mapping scan. A Declination/Latitude map, or DecLatMap, performs an On-the-fly (OTF) raster scan centered on
+    a specific location on the sky.  Scanning is done in the declination, latitude, or elevation 
+    coordinate depending on the desired coordinate mode. This procedure allows the user to periodically
+    move to a reference location on the sky. Please see DecLatMap if no reference point is required.
     The starting point of the map is at (-hLength/2, -vLength/2).
-    """
+
+
+    Parameters
+    ----------
+
+    location:
+        A Catalog source name or Location object. It specifies the center of the map.
+
+    hLength:
+        An Offset object. It specifies the horizontal width of the map, i.e., the extent in the 
+        longitude-like direction. hLength values may be negative.
+
+    vLength:
+        An Offset object. It specifies the vertical height of the map, i.e., the extent in the 
+        latitude-like direction. cLength values may be negative.
+
+    hDelta:
+        An Offset object. Similar to vDelta in RALongMap. It specifies the horizontal distance
+        between map columns. hDelta values must be positive.
+
+    referenceOffset:
+        An Offset object. It specifies the position of the reference source on the sky relative 
+        to the Location specified by the first input parameter.
+        
+    referenceInterval: int
+        It specifies when to do a reference scan in terms of map columns. For example, setting
+        referenceInterval=4 will periodically perform one scan on the reference source followed
+        by 4 mapping scans.
+
+    scanDuration: float
+        It specifies the length of each scan in seconds.
+        
+    beamName: str
+        It specifies the receiver beam to use for the scan. beamName can be 'C', '1', '2', '3', '4'
+        or any valid combination for the receiver you are using such as 'MR12'.
+
+    unidirectional: bool
+        It specifies whether the map is unidirectional (True) or boustrophedonic (False;
+        from the Greek meaning 'as the ox plows, i.e. back and forth). 
+
+    start: int
+        It specifies the starting row for the map. This is useful for doing parts of a map at 
+        different times. For example, if map has 42 rows, one can do rows 1-12 by setting
+        "start=1, stop=12", and later finish the map using "start=13, stop=42".
+
+    stop: int
+        It specifies the stopping row for the map. The default is None, meaning "go to the end".
+
+    
+    Example
+    --------
+    The following script produces a map 120 arcmin long and 60 arcmin wide using a column spacing of
+    3 arcmin and scan rate of 4 arcmin/min. A reference position will be observed once before every
+    3 columns. The sequence of scans will be: reference → columns 1-3 → reference → columns 4-6 ...
+
+    .. code-block:: python
+
+        DecLatMapWithReference('CygA',                                  # center of map
+                               Offset('J2000', 1.0, 0.0, cosv=True),    # 60 arcmin width
+                               Offset('J2000', 0.0, 2.0, cosv=True),    # 120 arcmin length
+                               Offset('J2000', 0.05, 0., cosv=True),    # 3 arcmin column spacing
+                               Offset('J2000', 2.0, 0.0, cosv=True),    # 2 degree ref offset in RA
+                               3,                                       # reference before every 3 columns
+                               30.0)                                    # 30 second scan duration
 
     """
-    A really simple class.
 
-    Args:
-        foo (str): We all know what foo does.
+def PointMap(location, hLength, vLength, hDelta, vDelta, 
+             scanDuration, beamName="1", start=1, stop=None):
 
-    Kwargs:
-        bar (str): Really, same as foo.
+
+    """
+    A mapping scan. A PointMap constructs a map by tracking fixed positions layed out on a grid. This procedure does
+    not allow the user to periodically move to a reference location on the sky, please see
+    PointMapWithReference for such a map. The starting point of the map is defined as
+    (-hlength/2,-vLength/2).
+
+    Parameters
+    ----------
+
+    location:
+        A Catalog source name or Location object. It specifies the center of the map.
+
+    hLength:
+        An Offset object. It specifies the horizontal width of the map. hLength values may be negative.
+
+    vLength:
+        An Offset object. It specifies the vertical height of the map. vLength values may be negative.
+
+    hDelta:
+        An Offset object. It specifies the horizontal distance between points in the map. hDelta values
+        must be positive.
+
+    vDelta:
+        An Offset object. It specifies the vertical distance between points in the map. vDelta values 
+        must be positive.
+
+    scanDuratio: float
+        It specifies the length of each scan in seconds.
+
+    beamName: str
+        It specifies the receiver beam to use for the scan. beamName can be ‘C’, ‘1’, ‘2’, ‘3’, ‘4’ or
+        any valid combination for the receiver you are using such as ‘MR12’.
+
+    start: int
+        It specifies the starting point for the map. Note in PointMap this counts points, not stripes.
+
+    stop: int
+        It specifies the stopping point for the map. The default is None, meaning "go to the end".
+
+
+
+    Example
+    -------
+    The script below produces a 9 point map using a 3x3 grid. Points are separated by 10 arcsec in RA
+    and 10 arcsec in Dec. Each point will be observed for 30 seconds using beam 1 (default).
+
+    .. code-block::
+    
+        PointMap('W75N',                                                # center of map
+                 Offset('J2000', 20.0 / 3600.0, 0.00, cosv=True),       # 20 arcsec width
+                 Offset('J2000', 0.00, 20.0 / 3600.0, cosv=True),       # 20 arcsec height
+                 Offset('J2000', 10.0 / 3600.0, 0.00, cosv=True),       # 10 arcsec horizontal spacing
+                 Offset('J2000', 0.00, 10.0 / 3600.0, cosv=True),       # 10 arcsec vertical spacing
+                 30.0)                                                  # 30 second scan length
+
+    Todo
+    ----
+    Add a plot showing the actual trajectory of the antenna on the sky. Figure 7.5 in the Observer's
+    Guide unfortunately shows the inverted RA axis, providing the impression the scan is obtained in
+    negative RA direction. The figure itself it correct, but I think it can be misleading to observers 
+    who may not pay attention to the x-axis.
 
     """
 
+
+def PointMapWithReference(location, hLength, vLength, hDelta, vDelta,
+                          referenceOffset, referenceInterval, scanDuration,
+                          beamName="1", start=1, stop=None):
+
+
+    """
+    A mapping scan. A PointMap constructs a map by tracking on fixed positions layed out on a grid. This procedure
+    allows the user to periodically move to a reference location on the sky. Please see PointMap if
+    no reference location is required.
+
+
+    Parameters
+    ----------
+    location:
+        A Catalog source name or Location object. It specifies the center of the map.
+
+    hLength:
+        An Offset object. It specifies the horizontal width of the map. hLength values may be negative.
+
+    vLength:
+        An Offset object. It specifies the vertical height of the map. vLength values may be negative.
+
+    hDelta:
+        An Offset object. It specifies the horizontal distance between points in the map. hDelta values
+        must be positive.
+
+    vDelta:
+        An Offset object. It specifies the vertical distance between points in the map. vDelta values 
+        must be positive.
+
+    referenceOffset: 
+        An Offset object. It specifies the position of the reference source on the sky relative to the
+        Location specified by the first input parameter.
+
+    referenceInterval: int
+        It specifies when to do a reference scan in terms of map points. For example, setting 
+        referenceInterval=4 will periodically perform one scan on the reference source followed by
+        4 pointed scans.
+
+    scanDuratio: float
+        It specifies the length of each scan in seconds.
+
+    beamName: str
+        It specifies the receiver beam to use for the scan. beamName can be ‘C’, ‘1’, ‘2’, ‘3’, ‘4’ or
+        any valid combination for the receiver you are using such as ‘MR12’.
+
+    start: int
+        It specifies the starting point for the map. Note in PointMap this counts points, not stripes.
+
+    stop: int
+        It specifies the stopping point for the map. The default is None, meaning "go to the end".
+
+
+    Example
+    -------
+    The script below produces a 4×4 point map using beam 1 (default). A reference position will be observed
+    before every 2 points. The sequence of scans will be: 
+    reference (r) → points 1 and 2 (P1,2)→ r → P3,4 → r → P5,6 → r → P7,8 → r → P9,10 → r → P11,12 → r → P13,14 → r → P15,16.
+
+    .. code-block:: python
+
+        PointMapWithReference('2023+2223',                                      # center of map
+                              Offset('J2000', 90. / 60., 0.0, cosv=True),       # 90 arcmin width
+                              Offset('J2000', 0.0, 90. / 60., cosv=True),       # 90 arcmin height
+                              Offset('J2000', 30. / 60., 0.0, cosv=True),       # 30 arcmin horizontal step spacing
+                              Offset('J2000', 0.0, 30. / 60., cosv=True),       # 30 arcmin vertical step spacing
+                              Offset('J2000', 3.0, 0.0, cosv=True),             # 3 degree ref offset in RA
+                              2,                                                # reference before every 2 points
+                              2.0)                                              # 2 second scan duration
+
+    """
+
+def Daisy(location, map_radius, radial_osc_period, radial_phase, rotation_phase, scanDuration,
+          beamName="1", cos_v=True, coordMode="AzEl", calc_dt=0.1, scantype="MAP",
+          nseq=1, annons={}, procseq=1):
+
+
+    """
+    A mapping scan. The Daisy scan type performs an OTF scan around a central point in the form of daisy petals. It is a 
+    useful observing mode for focal plane arrays, allowing more integration time in the central field of
+    view. The Daisy scan will produce an approximately closed circular pattern on the sky after 22 radial
+    oscillation periods.
+
+    .. todo::
+
+        Add figure 7.6 from the Observer's Guide above. Same issue with the x-axis here as in the figures
+        for RALongMap, DecLatMap etc.
+
+
+    
+    For beam-sizes of 20 arcsec FWHM or so, the circular area mapped will be fully sampled if the map radius
+    is less than 6 arcmin. It is not an especially useful observing mode for general-purpose single-beam mapping,
+    since the largest “hole” in the map is ~0.3× the map radius.
+
+    Trajectories are generated according to 
+
+
+    :math:`\Delta \hat{x}(t) = \\frac{r_0 sin(2\pi t/\\tau + \phi_1) cos(2t/\\tau + \phi_2)}{cos(\hat{y}_0)}`
+
+    and
+
+    :math:`\Delta \hat{y}(t) = r_0 sin(2\pi t/\\tau + \phi_1) sin(2t/\\tau + \phi_2),`    
+
+    where 
+    :math:`\hat{x}` and :math:`\hat{y}` are the major and minor coordinates of a sperical coordinate system,
+    :math:`t` is the time, 
+    :math:`r_0` is the map radius, 
+    :math:`\\tau` is the radial oscillation period,
+    :math:`\phi_1` and :math:`\phi_2` are the radial and rotational phases, and
+    :math:`\hat{y}_0` is the minor coordinate of the map center.
+    
+
+    Parameters
+    ----------
+
+    location:
+        A Catalog source name or Location object. It specifies the center of the map.
+
+    map_radius: float
+        :math:`r_0` in equation above. It specifies the radius of the map’s “daisy petals” in arcmin.
+
+    radial_osc_period: float
+        :math:`\\tau` in the equations above. It specifies the period of the radial oscillation in seconds.
+
+        .. caution::
+
+            Not to be less than 15 sec x :math:`\sqrt{r_0/1.5 arcmin}` for radii > 1.5 arcmin and in no
+            case under 15 seconds.
+
+    radial_phase: float
+        :math:`\phi_1` in equations above. It specifies the radial phase in radians.
+
+    rotation_phase: float
+        :math:`\phi_2` in equations above. It specifies the rotational phase in radians.
+
+    scanDuration: float
+        It specifies the length of the scan in seconds.
+
+    beamName: str. 
+        It specifies the receiver beam to use for both scans. beamName can be ‘C’, ‘1’, ‘2’, ‘3’, ‘4’
+        or any valid combination for the receiver you are using such as ‘MR12’. 
+
+    cos_v: bool
+        It specifies whether secant minor corrections (the :math:`cos(\hat{y}_0)` term in the first equation
+        above should be used for the major axis of the coordinate system. 
+
+    coordMode: str
+        It specifies the coordinate mode for the radius that generates the map.
+
+    calc_dt: float
+        It specifies time sampling used by the control system to calculate a path. Values should be between
+        0.1 and 0.5. Calculating many points for a long daisy scan can significantly increase overhead at
+        scan startup.
+    
+
+    Note
+    -------
+    It takes approximately 22 radial oscillation periods to complete a closed Daisy pattern. However,
+    radial oscillation period is typically set to be in the range of 15–60 seconds depending on the
+    radius being used. As an example, 22 oscillations of 20 seconds would take 440 seconds. If a long
+    trajectory such as this is sent to the antenna manager, intrinsic inefficiencies in the array handling
+    mechanism can significantly increase overhead at the start of a scan. Therefore one should try to
+    keep individual scans to 5 minutes or less.
+
+
+    Example
+    -------
+    The script below will do 22 radial periods over 5 scans lasting 110 seconds each. The rotation phase
+    and radial phase arguments are used so that each scan starts where the previous scan finished. This
+    will produce the closed Daisy pattern. The entire SB should take approximately
+    10 minutes to complete.
+
+
+    .. code-block:: python
+
+        nosc = 22.0                                         # 22 radial oscillations for closed Daisy pattern
+        map_radius = 2.8                                    # in arcmin
+        radial_osc_period = 25.0                            # in seconds
+        n_scans = 5                                         # split 22 oscillations over 5 scans
+        scanDuration = nosc * radial_osc_period / n_scans
+        phi2 = 2.0 * nosc / n_scans
+        phi1 = 3.14159265 * phi2
+
+        
+        # NOTE:
+        #       - increment rotation_phase by phi2 each scan
+        #       - increment radial_phase by phi1 each scan
+
+        for i in range(n_scans):
+            Daisy('3C123', map_radius, radial_osc_period, i * phi1, i * phi2, scanDuration,
+                  beamName='1', coordMode='J2000', cos_v=True, calc_dt=0.2)
+
+
+    Todo
+    ----
+    Add figure 7.7 from Observer's Guide here. Same issue with the x-axis here as in the figures for
+    RALongMap, DecLatMap etc.
+
+    """
+
+
+def Annotation(key, value=None, comment=None):
+
+    """
+
+    An utility function. It allows you to add any keyword and value to the GO FITS file. This could be
+    useful if there is any information you would like to record about your observation for later data
+    processing, or for record keeping.
+
+    Note
+    ----
+    The information in a FITS KEYWORD created via the Annotation() function will be ignored by the standard
+    GBT data reduction package GBTIDL.
+
+
+    Parameters
+    ----------
+
+    key: str
+        A completely uppercase string of eight characters or less. Do not use any standard FITS keywords!
+
+    value: str
+        A value for the key.
+
+    comment: str
+        A comment to be added.
+
+
+    Example
+    -------
+    An example use of the Annotation() function is if you wish to specify what type of source you are observing.
+    Your sources might include HII regions and Planetary Nebulae for example. You could specify each type with
+
+    .. code-block:: python
+
+        Annotation('SRCTYPE',value='HII', comment='Type of source observed.')
+        Annotation('SRCTYPE',value='PNe', comment='Type of source observed.')
+
+
+    Todo
+    ----
+    The Observer's Guide does not mention comment as a parameter and does not explicitely state value in the command.
+    Exact code usage needs to be checked.
+
+    """
+
+
+def Break(message="Observation paused.", timeout=300.0):
+
+    """
+    An utility function. It inserts a breakpoint into your SB and gives you the choice of continuing 
+    or terminating the SB. When a breakpoint is encountered during execution, your SB is paused and a
+    pop-up window is created. The SB remains paused for a set amount of time or until you acknowledge
+    the pop-up window and tell Astrid to continue running your script.
+
+    The Break() function can take two optional arguments, a message string and a timeout length.
+
+    Parameters
+    ----------
+
+    message: str
+        Displayed in the pop-up dialog with a default of “Observation paused”.
+
+    timeout: float
+        The number of seconds to get user-input before continuing the SB. If you wish for the timeout to
+        last forever then use None. The default is 300 seconds, or 5 minutes.
+
+        .. note::
+            
+        Why have a timeout? If an observer walks away from the control room during his or her observing
+        session (e.g. to go to lunch or the bathroom) and a breakpoint is reached, it would be 
+        counterproductive to pause the observation indefinitely. This will help save valuable 
+        telescope time.
+
+
+    Example
+    -------
+
+    .. code-block:: python
+
+        Break('This will time out in 5 minutes, the default.')
+        Break('This will time out after 10 minutes.', 600)
+        Break('This will never time out.', None)
+
+    """
+
+def Comment(message):
+
+    """
+    An utility function. It allows you to add a comment into the Astrid observing process which will be
+    echoed to the observation log during the observation. What’s the difference between this, and just
+    writing comments with the pound (#) sign in your SB? When you use the pound sign to write your
+    comments, they will not appear in the observation log when your SB is run. Using the Comment()
+    function directs your comment to the output in the observation log.
+
+    Parameters
+    ----------
+
+    message: str
+        Text to display during the observation.
+
+
+    Example
+    -------
+
+    .. code-block:: python
+
+        # now slew to the source
+        Comment('Now slewing to 3C 286')
+        Slew('3C286')
+
+    """
+
+
+def GetUTC():
+
+    """
+    An utility function. 
+
+    
+    Parameters
+    ----------
+
+    Return value: float
+        The current UTC time in decimal hours since midnight.
+
+    
+    Warning
+    -------
+    If Astrid is in "offline" mode, then GetUTC() will return a value of None. Attempting to validate the 
+    script below without checking the return value is not equal to None while "offline" will result in an 
+    infinite loop.
+
+
+    Example
+    -------
+    
+    .. code-block:: python
+
+        while GetUTC() < 12.0 and GetUTC() != None:
+            Track('0353+2234', None, 600.)
+
+    """
+
+
+def GetLST():
+
+    """
+    An utility function.
+
+    Parameters
+    ----------
+
+    Return value: float
+        The current Local Sidereal Time in decimal hours.
+
+    
+    Warning
+    -------
+    If Astrid is in "offline" mode, then GetLST() will return a value of None. Attempting to validate the 
+    script below without checking the return value is not equal to None while "offline" will result in an
+    infinite loop.
+
+    
+    Example
+    -------
+    The following example will repeatedly perform Track scans on the source “1153+1107” until the LST is
+    past 13.5 hours when the source “1712+035” will be observed once.
+
+    .. code-block:: python
+
+        while GetLST() < 13.5 and GetLST() != None:
+            Track('1153+1107',None,600.)
+
+        Track('1712+036',None,600.)
+
+    """
+
+
+def Now():
+
+    """
+    An utility function.
+
+    Parameters
+    ----------
+
+    Return value: 
+        A UTC time object containing the UTC time and date.
+
+
+    Warning
+    -------
+    If Astrid is in "offline" mode, then Now() will return a value of None. Attempting to validate the
+    script below without checking the return value is not equal to None while "offline" will result in an
+    infinite loop.
+
+    Example
+    -------
+    The following example will repeatedly perform Track scans on the source “1153+1107” until
+    09:54:12 UTC on 12 June 2016.
+
+    .. code-block:: python
+
+        while Now() < '2016-06-12 09:54:12' and Now() != None:
+            Track('1153+1107',None,600.)
+
+    """
+
+
+def WaitFor(time):
+
+    """
+    An utility function. It pauses the SB until the specified time is reached. The expected wait time is
+    printed in the observation log including a warning if the wait is longer than 10 minutes. WaitFor()
+    will immediately return if the specified time has already passed and is within the last 30 minutes.
+    While WaitFor() has the SB paused, it does not prevent the user from aborting. However if the user
+    chooses to continue once the abort is detected, then the WaitFor() abandons the wait and returns
+    immediately.
+
+    Parameters
+    ----------
+
+    time:
+        A valid time object.
+
+        .. note::
+
+            If a value of None is used as an argument to WaitFor(), the SB will abort with a message
+            to the observation log. This can occur when passing a value from Horizon().GetRise() or 
+            Horizon().GetSet() when such an event may never occur, such as the rise time for a 
+            circumpolar source.
+
+
+    Examples
+    --------
+    The following example will pause the SB until a Local Sidereal Time of 15:13, then wait for the
+    source “1532 3421” to rise above 10 deg elevation, and finally wait for the Sun to set below 5 deg
+    elevation.
+
+    .. code-block:: python
+
+        #Wait for 15:13 LST
+        WaitFor('15:13:00 LST')
+
+        #Wait until source is above 10 deg elevation
+        WaitFor(Horizon(10.0).GetRise('1532+3421'))
+
+        #Wait for the Sun to set below 5 deg elevation
+        WaitFor(Horizon(5.0).GetSet('Sun'))
+
+
+    """
+
+def ChangeAttenuation(devicename, attnchange):
+
+    """
+    An utility function. It allows the observer to change all the attenuators in the IF Rack or the
+    Converter Rack by the same amount.
+
+    Parameters
+    ----------
+
+    devicename: str
+        Can be either ‘IFRack’ or ‘ConverterRack’. This specifies the device in which the attenuators
+        will be changed.
+
+    attnchange: float. 
+        This specifies how much the attenuators should be changed. This value can be either positive or negative.
+
+        .. note::
+
+            If any new attenuator setting is less than zero or exceeds the maximum value, 31 for the IF Rack
+            and 31.875 for the Converter Rack, then the attenuator setting is made to be the appropriate
+            limiting value.
+
+    Examples
+    --------
+    The following examples adds 1 to the attenuation value in the IF rack and subtracts 0.5 from the attenuation
+    value in the converter rack.
+
+    .. code-block:: python
+        
+        ChangeAttenuation('IFRack', 1.0)
+        ChangeAttenuation('ConverterRack',-0.5)
+
+
+    """
+
+
+def Location(coordinateMode, value1, value2):
+
+    """
+    A scheduling block object. It is used to represent a particular location on the sky.
+
+    Parameters
+    ----------
+
+    coordinateMode: str
+        The following modes are allowed: 
+            - 'J2000'
+            - 'B1950'
+            - 'RaDecOfDate'
+            - 'HaDec'
+            - 'ApparentRaDec'
+            - 'Galactic'
+            - 'AzEl'
+            - 'Encoder'
+
+    value1: float or str
+        A location must be specified by this value, the meaning depends on both the chosen coordinate mode
+        and value type of the unit:
+        
+        - float value: 
+            Will always denote units in degrees of arc, regardless of the coordinate mode.
+            This should not be confused with decimal use in Catalogs which denote decimal hours for RA 
+            and HA, and degrees of arc for all other angles.
+        - sexagesimal string:
+            Represents units of time for J2000, B1950, ApparentRaDec, and RaDecOfDate (i.e. 'hh:mm:ss.s')
+            and degrees of arc for HaDec, Galactic, AzEl and Encoder (i.e. 'dd:mm:ss.s') 
+
+    value2: float or str
+        A location must be specified by this value, the meaning depends on both the chosen coordinate mode
+        and value type of the unit:
+
+        - float value:
+            Will always denote units in degrees of arc, regardless of the coordinate mode.
+            This should not be confused with decimal use in Catalogs which denote decimal hours for RA 
+            and HA, and degrees of arc for all other angles.
+        - sexagesimal string:
+            Represents degrees of arc (i.e. 'dd:mm:ss.s')
+
+
+    Examples
+    --------
+
+    .. code-block:: python
+
+        # RA is in units of *time*, Dec is in degrees
+        location = Location('J2000', '16:30:00', '47:15:00')
+
+        # Same location - RA is in degrees, Dec is in degrees
+        location = Location('J2000', 247.5, 47.25)
+
+        # Az is in degrees, El is in degrees
+        location = Location('AzEl', '45:00:00', '72:30:00')
+
+    """
+
+
+def Offset(coordinateMode, value1, value2, cosv=True):
+
+    """
+    A scheduling block object. An Offset is a displacement from the position of a source or from the
+    center position of a map. Offset objects may be added to other offset objects with the same coordinate
+    mode and cosv correction. Offset objects may be added to Location objects with the same coordinate 
+    mode. Note that such addition is not commutative and must be of the form (Location+Offset). 
+    Offset+Location will produce a validation error.
+
+    Parameters
+    ----------
+
+    coordinateMode: str
+        The following modes are allowed: 
+            - 'J2000'
+            - 'B1950'
+            - 'RaDecOfDate'
+            - 'HaDec'
+            - 'ApparentRaDec'
+            - 'Galactic'
+            - 'AzEl' 
+            - 'Encoder'
+
+    value1: float or str
+        A location must be specified by this value, the meaning depends on both the chosen coordinate mode
+        and value type of the unit:
+        
+        - float value: 
+            Will always denote units in degrees of arc, regardless of the coordinate mode.
+            This should not be confused with decimal use in Catalogs which denote decimal hours for RA 
+            and HA, and degrees of arc for all other angles.
+        - sexagesimal string:
+            Represents units of time for J2000, B1950, ApparentRaDec, and RaDecOfDate (i.e. 'hh:mm:ss.s')
+            and degrees of arc for HaDec, Galactic, AzEl and Encoder (i.e. 'dd:mm:ss.s')
+
+    value2: float or str
+        A location must be specified by this value, the meaning depends on both the chosen coordinate mode
+        and value type of the unit:
+
+        - float value:
+            Will always denote units in degrees of arc, regardless of the coordinate mode.
+            This should not be confused with decimal use in Catalogs which denote decimal hours for RA 
+            and HA, and degrees of arc for all other angles.
+        - sexagesimal string:
+            Represents degrees of arc (i.e. 'dd:mm:ss.s')
+
+    cosv: bool
+        It specifies whether secant minor corrections in equation the equation below should be used for the
+        major axis of the coordinate system (i.e. :math:`h/cos(v)` is the offset value in the direction of h).
+        Since coordinate distances and angular separations are not equivalent for spherical coordinate systems,
+        the following approximations may be used for small separations:
+
+        :math:`\Delta v = v_1 − v_2`
+
+        and
+
+        :math:`\Delta h = (h_1 − h_2) \\times cos(v)`, 
+        
+        where
+        :math:`h` is the value of the major coordinate axis and
+        :math:`v` is the value of the minor coordinate axis.
+
+        For example, setting cosv=True with J2000 coordinate offsets will apply a cos(Dec) term from the second
+        equation above to make maps appear rectangular if plotted with :math:`\Delta RA` vs. :math:`\Delta Dec`
+        relative to a central location.
+
+    Examples
+    --------
+    The script below gives examples of adding Offset objects to Location and other Offset objects. The resulting
+    coordinates are printed to screen.
+
+    .. code-block:: python
+
+        start_location = Location('J2000','12:00:00','45:00:00')
+
+        offset1 = Offset('J2000','00:04:00','01:00:00',cosv=False)
+        offset2 = Offset('J2000', 2.0 , 2.0 ,cosv=False)
+        offset3 = offset1 + offset2
+
+        loc1 = start_location + offset1 #loc1 (RA,Dec) = (12:04:00, 45:00:00)
+        loc2 = start_location - offset2 #loc2 (RA,Dec) = (11:52:00, 43:00:00)
+        loc3 = start_location + offset3 #loc3 (RA,Dec) = (12:12:00, 48:00:00)
+
+        print 'RA,Dec of loc3 = (%s,%s)'%(loc3.GetH(),loc3.GetV())
+
+    """
+
+
+def Horizon(elevation=5.25):
+
+    """
+    A scheduling block object. Observing Scripts allow an observer to specify a definition of the horizon. 
+    The user defined horizon can be used to begin an observation when an object "rises" and/or end the
+    observation when it "sets" relative to the specified elevation of the “horizon”. The Horizon object
+    may be used to obtain the initial time that a given source is above the specified horizon (including 
+    an approximate atmospheric refraction correction).
+
+    
+    Parameters
+    ----------
+
+    location:
+        A Catalog source name or Location object using a spherical coordinate mode. Horizon() will not work
+        with planets and ephemeris tables.
+
+    elevation: float. 
+        The Horizon elevation in degrees. The default is 5.25 (the nominal GBT horizon limit).
+
+        
+    Return Value: 
+        A UTC time object containing the UTC time and date.
+
+        .. admonition:: Horizon(elevation).GetRise(location)
+
+            Will return the most recent rise time if the source is currently above the horizon, or the next
+            rise time if the source has not yet risen. GetRise(source) will return None if the source never
+            rises and the current time if the source never sets.
+
+
+        .. admonition:: Horizon(elevation).GetSet(location)
+
+            Will return the next set time of the source. GetSet(source) will return None if the
+            source never sets and the current time if the source never rises.
+
+
+    Examples
+    --------
+    Any Horizon object may be substituted as a start or stop time in scan types, such as Track(). The script
+    below will display the time when VirgoA rises above 20◦ elevation. Depending on the position of the source
+    at the time of execution, the SB would then either begin a Track() scan immediately or wait for VirgoA
+    to rise above 5.25◦ elevation before beginning the scan. In both cases, the SB would terminate the next 
+    time VirgoA sets below 5.25◦ elevation.
+
+    .. code-block:: python
+
+        print Horizon(20.0).GetRise('VirgoA')
+
+        h = Horizon()                           #default horizon of 5.25 degrees elevation  
+        Track('VirgoA', None, startTime=h, stopTime=h)
+
+    """
+
+
+def TimeObject():
+
+    """
+    The Time Object is primarily used for defining scan start or stop times. The time may be represented a"
+    either a sexegesimal string or in a python mxDateTime object. You can learn more about mxDateTime at
+    http://www.egenix.com/files/python/mxDateTime.html.
+
+    .. note::
+
+        One must access the python DateTime module directly from an observation script to generate
+        time objects, i.e., using from mx import DateTime.
+
+    The Time Object can be expressed in either UTC or LST. The time can be either absolute or relative.
+    An absolute or dated time specifies both the time of day and the date. An absolute time may be
+    represented by either a sexagesimal string, i.e., "yyyy-mm-dd hh:mm:ss" or by a DateTime object. 
+    Relative or dateless times are specified by the time of day for "today". "WaitFor" will treat a dateless 
+    time that is more than 30 minutes in the past as being in the future, i.e., the next day. Relative times 
+    may be represented by either a sexagesimal string, i.e., "hh:mm:ss" or a DateTimeDelta object. For UTC
+    times, the sexagesimal representation may include a “UTC" suffix. Note that mxDate-Time objects are always
+    UTC. LST time may only be used with relative times and the sexagesimal representation must include a "LST"
+    suffix. Time Objects can have slightly varying formats and can be created in a few different ways.
+
+    Some examples are
+        - Absolute time in UTC represented by a string: 
+            **"2006-03-22 15:34:10"**
+        - Relative time in UTC as a mxDateTime object: 
+            **DateTime.TimeDelta(12, 0, 0)**
+        - Absolute time in UTC represented by a string: 
+            **"2006/03/22 15:34:10 UTC"**
+        - Relative time in LST as a string: 
+            **"22:15:48 LST"**
+        - Absolute time in UTC as a mxDateTime object: 
+            **DateTime.DateTime(2006, 1, 21, 3, 45, 0)**
+        
+    Examples
+    --------
+    In this example we will continue to do one minute observations of srcA until Feb 12, 2016 at 13:15 UTC when
+    we will then do a ten minute observations of srcB. 
+
+    .. code-block:: python
+
+        from mx import DateTime
+
+        switchTime=DateTime.DateTime(2016,2,12,13,15,0) # Feb 12, 2016, 13:15 UTC
+
+        while Now() < switchTime and Now() != None:
+            Track(srcA, None, 60)
+
+        Track(srcB, None, 600)
+
+    """
