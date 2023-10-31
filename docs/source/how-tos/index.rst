@@ -9,10 +9,29 @@ Practical step-by-step guides to help you achieve a specific goal. Most useful w
 
 ----------------
 
+
+Infrastructure
+==============
+
+These guides provide information on how to use GBO infrastructure.
+
+.. button-link:: infrastructure/remote-connection.html
+    :color: primary
+    :tooltip: Practical steps on how to connect remotely to the GBO network.
+
+    How to connect remotely to the GBO network.
+
+.. toctree::
+    :maxdepth: 3
+    :hidden:
+
+    infrastructure/remote-connection
+
+
 Quick Guides
 ============
 
-These quides contain end-to-end instructions, i.e. how to set up specific observations and how to calibrate and post-process the obtained data.
+These guides contain end-to-end instructions, i.e. how to set up specific observations and how to calibrate and post-process the obtained data.
 
 .. button-link:: quick_guides/HI_single-pointing.html
     :color: primary
