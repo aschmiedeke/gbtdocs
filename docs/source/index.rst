@@ -21,13 +21,13 @@ The GBT User Documentation Hub is a prototype documentation system under active 
 
         Learning-oriented lessons take you through a series
         of steps to complete a project. 
-        
+       
         Most useful when you want to get started with the GBT.
-
    
         .. button-link:: tutorials/index.html
             :color: primary
             :outline:
+            :click-parent:
 
             Go to Tutorials
         
@@ -46,6 +46,7 @@ The GBT User Documentation Hub is a prototype documentation system under active 
         .. button-link:: how-tos/index.html
             :color: primary
             :outline:
+            :click-parent:
 
             Go to How-To Guides
 
@@ -65,6 +66,7 @@ The GBT User Documentation Hub is a prototype documentation system under active 
         .. button-link:: explanations/index.html
             :color: primary
             :outline:
+            :click-parent:
 
             Go to Explanation Material
 
@@ -85,6 +87,7 @@ The GBT User Documentation Hub is a prototype documentation system under active 
         .. button-link:: references/index.html
             :color: primary
             :outline:
+            :click-parent:
 
             Go to Reference Guides
 
