@@ -106,10 +106,10 @@ You can copy the link and share with e.g. the staff member. **This must be done 
 
     Once a session has been shared it must be terminated after use and not left running to connect to later!
 
-What to do if the GBO network is down
--------------------------------------
+What to do if the GBO network is down/slow
+------------------------------------------
 
-Occassionally we are experiencing network issues. In such a case you can try to establish a FastX connection through Charlottesville. Point your browser to https://fastx.cv.nrao.edu. You will be prompted for a username and password. This should be your NRAO/GBO username and your UNIX password (the same you're using to connect to the GBO network described above).
+Occassionally we are experiencing network issues where either the entire Green Bank network is down or FastX and VNC sessions through Green Bank are extremely slow. In such a case you can try to establish a FastX connection through Charlottesville. Point your browser to https://fastx.cv.nrao.edu. You will be prompted for a username and password. This should be your NRAO/GBO username and your UNIX password (the same you're using to connect to the GBO network described above).
 
 .. image:: images/fastX_cv_login.png
 
