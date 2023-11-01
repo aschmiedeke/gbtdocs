@@ -443,7 +443,7 @@ There have been times when a local port is taken by another user or another VNC 
     
     netstat -a | grep :59
 
-This will list all used ports (they may be a delay of a few seconds before this list appears). In these cases, the tunnel has to be changed to :code:`590m:stargate.gb.nrao.edu:590n` where 590m is some unused port numbered somewhere above 5900. And wherever :code:`localhost:n` occurs in the above instructions, substitute with :code:`localhost:m`.
+This will list all used ports (there may be a delay of a few seconds before this list appears). In these cases, the tunnel has to be changed to :code:`590m:stargate.gb.nrao.edu:590n` where 590m is some unused port numbered somewhere above 5900. And wherever :code:`localhost:n` occurs in the above instructions, substitute with :code:`localhost:m`.
 
 If you would like to check if you are already running a VNC server (really, there should only be one), use any terminal that is logged into an NRAO computer and type:
 
