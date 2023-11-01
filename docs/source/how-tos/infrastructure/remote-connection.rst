@@ -7,8 +7,8 @@ This connection is needed for performing observations and is also available to p
 
 There are multiple ways to connect remotely to the GBO network:
 
-1. FastX connection
-2. VNC connection
+1. :ref:`FastX connection`
+2. :ref:`VNC connection`
 
 
 FastX connection
@@ -45,18 +45,23 @@ After selecting your target machine, and if your system supports it, you might s
 .. image:: images/fastX_gb_connection-choice.png
 
 
-You will be asked for your UNIX password one more time and then you should see your XFCE desktop on your machine of choice.
-FastX session should resize your Linux screen automatically to adjust to the size of your browser.
+You will be asked for your UNIX password one more time and then you should see your XFCE desktop on the machine of your choice. FastX session should resize your Linux screen automatically to adjust to the size of your browser.
 
 
 FastX session controls
 ----------------------
 
-While in a FastX session, there is a small drop-down menu in the top part of the window that appears when you hover over it and allows some control over the session:
+While in a FastX session, there is a small drop-down menu in the top part of the window that appears when you hover over it and allows some control over the session.
 
 .. image:: images/fastX_gb_session-controls.png
 
-From left to right: The first icon (house) brings you back to the FastX dashboard. The second icon (keyboard) allows you to set the keyboard. The third icon (people) controls the sharing of the session (more later) and the forth icon (folder) allows to open files to the clipboard. The fifth and last icon (settings) allows you to change other settings such as the window size. Tinkering with these settings should not generally be required but on a very slow connection lowering refresh rates and picture quality may be helpful. 
+From left to right: 
+
+    1. **House** brings you back to the FastX dashboard.
+    2. **Keyboard** allows you to set the keyboard.
+    3. **People** controls the sharing of the session (more :ref:`here<Sharing a session>`).
+    4. **Folder** allows to open files to the clipboard. 
+    5. **Settings** allows you to change other settings such as the window size. Tinkering with these settings should not generally be required but on a very slow connection lowering refresh rates and picture quality may be helpful. 
 
 
 Ending a FastX session
@@ -119,15 +124,15 @@ Once you have logged in, you will be greeted by the same screen informing you to
 
 In the application panel on the left-hand side, you might not see a lot of preset connections yet. You can create your own connection by clicking the circled plus sign next to "Applications". A pop-up will open. Provide the following details:
 
-- Command \*: ssh <machine-name>.gb.nrao.edu startxfce4
-- Run As User: <your user name>
-- Name: <name of the machine or whatever identifier you want to use>
+- Command \*: :code:`ssh <machine-name>.gb.nrao.edu startxfce`
+- Run As User: :code:`<your user name>`
+- Name: :code:`<name of the machine or whatever identifier you want to use>`
 
 
 Available machine names are: 
 
-- for observing only: ariel, titania (for observing only)
-- for data processing: euclid, fourier, maxwell, newton, planck, thales
+- **for observing only**: *ariel*, *titania* 
+- **for data processing**: *euclid*, *fourier*, *maxwell*, *newton*, *planck*, *thales*
 
 .. image:: images/fastX_cv_new-application.png
 
@@ -136,7 +141,7 @@ You can permanently save the connection details, by clicking the down-arrow next
 
 .. image:: images/fastX_cv_new-application_create.png
 
-You will be asked for your password twice: (1) to establish the ssh connection to a machine called polaris and then to log into the machine you choose (ariel in the example here). You may experience longer load times to start the session, but once you're logged in, things usually work well.
+You will be asked for your password twice: (1) to establish the ssh connection to a machine called polaris and then (2) to log into the machine you choose (ariel in the example here). You may experience longer load times to start the session, but once you're logged in, things usually work well.
 
 .. image:: images/fastX_cv_ssh-login.png
 
