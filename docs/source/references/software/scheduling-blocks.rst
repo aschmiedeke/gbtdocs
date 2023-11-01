@@ -3,12 +3,20 @@ Scheduling Block Commands
 
 
 
+
 .. automodule:: astrid_commands
     :members:
 
 
 .. Testing
 .. This is not showing up?
+
+
+:func:`DecLatMap() <astrid_commands.DecLatMap>`
+
+:hoverxref:`show a tooltip <How to connect remotely to the GBO network?>`
+
+
 
 
 .. - :func:`average() <dysh:dysh.spectra.core.average>` 
@@ -22,8 +30,6 @@ Scheduling Block Commands
     It is showing up now, but I cannot seem to get the tooltips ready to show :( 
 
 
-
-:func:`DecLatMap() <astrid_commands.DecLatMap>`
 
 
 
