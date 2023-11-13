@@ -128,7 +128,7 @@ Once you have logged in, you will be greeted by the same screen informing you to
 
 In the application panel on the left-hand side, you might not see a lot of preset connections yet. You can create your own connection by clicking the circled plus sign next to "Applications". A pop-up will open. Provide the following details:
 
-- Command \*: :code:`ssh <machine-name>.gb.nrao.edu startxfce`
+- Command \*: :code:`ssh <machine-name>.gb.nrao.edu startxfce4`
 - Run As User: :code:`<your user name>`
 - Name: :code:`<name of the machine or whatever identifier you want to use>`
 
