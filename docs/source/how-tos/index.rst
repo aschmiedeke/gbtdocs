@@ -39,13 +39,18 @@ These guides contain end-to-end instructions, i.e. how to set up specific observ
 
     How to observe an HI spectrum and process it?
 
+.. button-link:: quick_guides/C-band_Mueller_matrix.html
+    :color: primary
+    :tooltip: Practical steps to obtain a Mueller matrix using spider scans.
 
+    How to derive a Mueller matrix?
 
 .. toctree::
     :maxdepth: 3
     :hidden:
 
     quick_guides/HI_single-pointing
+    quick_guides/C-band_Mueller_matrix
 
 ----------------
 
