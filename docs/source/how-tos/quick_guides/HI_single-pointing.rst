@@ -54,7 +54,7 @@ Configuration
         nchan           = 32768             # Specifies number of channels in spectral window
         vegas.subband   = 1                 # Specifies single or multiple spectral windows (1 or 8)
         swmode          = 'tp'              # Specifies switching mode, switching power with noise diode
-        swtype          = None              # Specifies frequency switching
+        swtype          = None              # Specifies type of switching, no switching
         swper           = 1.0               # Specifies length of full switching cycle (seconds)
         swfreq          = 0, 0              # Specifies frequency offset (MHz)
         tint            = 6.0               # Specifies integration time (sec; integer multiple of swper)
@@ -81,7 +81,7 @@ Configuration
         nchan           = 32768             # Specifies number of channels in spectral window
         vegas.subband   = 1                 # Specifies single or multiple spectral windows (1 or 8)
         swmode          = 'sp'              # Specifies switching mode, switching power with noise diode
-        swtype          = 'fsw'             # Specifies frequency switching
+        swtype          = 'fsw'             # Specifies type of switching, no switching
         swper           = 1.0               # Specifies length of full switching cycle (seconds)
         swfreq          = 0, -5.0           # Specifies frequency offset (MHz)
         tint            = 6.0               # Specifies integration time (sec; integer multiple of swper)
