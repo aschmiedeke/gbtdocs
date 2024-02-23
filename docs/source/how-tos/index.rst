@@ -61,17 +61,76 @@ Receiver specific Guides
 
 These guides provide receiver specific information on how to achieve a specific goal.
 
-.. button-link:: receivers/argus.html
-    :color: primary
-    :tooltip: Practical steps for observations using Argus.
 
-    How to observe using Argus?
+Argus
+-----
+
+
+.. card-carousel:: 2
+
+    .. card:: Argus Observations
+        :link: argus_obs
+        :link-type: ref
+
+        How to observe using Argus?
+
+    .. card:: Sensitivity Calculation
+
+        How to calculate sensitivies for Argus
+
+    
 
 .. toctree::
     :maxdepth: 3
     :hidden:
 
-    receivers/argus
+    receivers/argus/argus_obs
+
+    
+    
+MUSTANG-2
+---------
+
+.. card-carousel:: 3
+
+    .. card:: PropGuide (under development)
+
+        Instructions for Proposers.
+
+
+    .. card:: Setup - Tuning and Biasing
+        :link: mustang2_setup
+        :link-type: ref
+
+        Setting up MUSTANG-2 for observations.
+
+
+    .. card:: Observing
+        :link: mustang2_obs
+        :link-type: ref
+
+        Observing instructions.
+
+    .. card:: Noise
+
+        How-to guide Noise 
+
+
+    .. card:: Data Processing
+
+        How-to guide data
+
+
+.. toctree::
+    :maxdepth: 3
+    :hidden:
+
+    receivers/mustang2/mustang2_setup
+    receivers/mustang2/mustang2_obs
+
+
+
+
 
 
 ----------------
