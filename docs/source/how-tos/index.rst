@@ -109,11 +109,7 @@ MUSTANG-2
         :link: mustang2_obs
         :link-type: ref
 
-        Observing instructions.
-
-    .. card:: Noise
-
-        How-to guide Noise 
+        Observing instructions. 
 
 
     .. card:: Data Processing
