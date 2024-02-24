@@ -179,7 +179,7 @@ All previous steps (tuning) can take place in the 1-hour prep before your allott
 
     A good set of biases will look like this:
 
-    .. image:: images/03_detbias_good_example-1.png
+    .. image:: images/03_detbias_good_example.png
 
     You will get 4 sets of graphs like this, one for each roach. This one is for roach D, or roach 4, as shown in the title. See  https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/TuningResults for some examples of bad detbias plots.
 
