@@ -1,5 +1,6 @@
 docs/build
 docs/source/_assets/gbtdocs.pdf
+docs/*.sublime-workspace
 sparrow/__pycache__
 gbtidl/
 doc/backupFiles
