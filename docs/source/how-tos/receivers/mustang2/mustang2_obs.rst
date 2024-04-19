@@ -63,6 +63,7 @@ If you are creating the scripts for the first time for your project, you will wa
          
     #. One of the science scripts
         - ``5_XXX``
+
         .. note::
 
             The radius of the daisy will depend on your science - reach out to the M2 instrument team for guidance.
@@ -95,7 +96,7 @@ During observing, you are expected to edit the MUSTANG-2 observing run notes wik
 
 
 2.1 Connect
--------
+------------
 Open and connect to :ref:`VNC session <Quick VNC Reference>` or start an XFCE :ref:`FastX session <FastX connection>` on ``titania`` or ``ariel`` via FastX.
 
 Connection Issues?
@@ -530,7 +531,7 @@ where ``old_project_session`` is the full name of the previous M2 project and ``
     The last modified file will tell you what the most recent project ID was.
 
 6.2 ``Run m2setup``
-----------------
+-------------------
 
 When the observing time for the second project starts, you need run m2setup in AstrID again. This is already outlined in the directions.
 
