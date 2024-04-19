@@ -1,8 +1,6 @@
 ###########################################
-How to connect remotely to the GBO network?
+How to connect remotely to the GBO network
 ###########################################
-
-
 
 This connection is needed for performing observations and is also available to process data. 
 
@@ -114,55 +112,8 @@ You can copy the link and share with e.g. the staff member. **This must be done 
 
     Once a session has been shared it must be terminated after use and not left running to connect to later!
 
-What to do if the GBO network is down/slow
-------------------------------------------
-
-Occassionally we are experiencing network issues where either the entire Green Bank network is down or FastX and VNC sessions through Green Bank are extremely slow. 
-If you are unsure which end of the internet is slow, try running a speed test on your network connection. If your speed levels are where they should according to your internet provider, the problem is likely on the Green Bank end of the network. In that case you can try to establish a FastX connection through Charlottesville. Point your browser to https://fastx.cv.nrao.edu. You will be prompted for a username and password. This should be your NRAO/GBO username and your UNIX password (the same you're using to connect to the GBO network described above).
-
-.. image:: images/fastX_cv_login.png
-
-Once you have logged in, you will be greeted by the same screen informing you to abide by the terms of the NRAO Computing Security and Computing Use Policies again. Click "Proceed" to continue to your FastX dashboard.
-
-.. image:: images/fastX_cv_dashboard.png
-
-In the application panel on the left-hand side, you might not see a lot of preset connections yet. You can create your own connection by clicking the circled plus sign next to "Applications". A pop-up will open. Provide the following details:
-
-- Command \*: :code:`ssh <machine-name>.gb.nrao.edu startxfce4`
-- Run As User: :code:`<your user name>`
-- Name: :code:`<name of the machine or whatever identifier you want to use>`
-
-
-Available machine names are: 
-
-- **for observing only**: *ariel*, *titania* 
-- **for data processing**: *euclid*, *fourier*, *maxwell*, *newton*, *planck*, *thales*
-
-.. image:: images/fastX_cv_new-application.png
-
-You can permanently save the connection details, by clicking the down-arrow next to Launch and selecting "Create Application". Then click Launch to start the connection.
-
-
-.. image:: images/fastX_cv_new-application_create.png
-
-You will be asked for your password twice: (1) to establish the ssh connection to a machine called polaris and then (2) to log into the machine you choose (ariel in the example here). You may experience longer load times to start the session, but once you're logged in, things usually work well.
-
-.. image:: images/fastX_cv_ssh-login.png
-
-.. image:: images/fastX_cv_ariel_login.png
-  
-
-If you don't see your newly created application in the dashboard, you might need to change the filter settings by clicking the filter icon and selecting "User".
-
-.. image:: images/fastX_cv_filter.png
-
-
-
 VNC connection
 ==============
-
-
-
 .. What is a Virtual Network Connection (VNC)?
 .. -------------------------------------------
 .. 
@@ -173,6 +124,19 @@ VNC connection
 .. ---------------------------------------------
 .. 
 .. VNC allows the remote GBT observer to connect to a computer in the GBT control room (*titania*, *ariel*) from the observer's home/work machine in order to observe. Once the VNC session is set up, the remote observer can open astrid, cleo, gbtidl, etc. and perform other functions, just as if they were actually in the GBT control room sitting in front of one of the GBT computers.
+
+Quick VNC Reference
+-------------------
+
+#. Login to GBO ``ssh username@ssh.gb.nrao.edu``
+#. ssh to either titiania or ariel by ``ssh titania``
+#. Start vnc session with ``vncserver -your_screen_geometry``. This will give you your session number.
+#. Open a new terminal on your computer with 
+    .. code:: bash
+    ``ssh -N -C -L 590#:titania.gbt.nrao.edu:590# username@ssh.gb.nrao.edu`` 
+    
+    where # is the number you were given in step 3. After entering your password, it will just sit there and that’s good.
+#. Use your vnc viewer on your computer to view your session.
 
 How do I get the necessary software?
 -------------------------------------
@@ -489,9 +453,81 @@ Once you have done remote observing with VNC under Windows, the instructions bel
 - exit out of second PuTTY window.
 
 
+What to do if the GBO network is down/slow
+==========================================
+Occassionally we experience network issues where either the entire Green Bank network is down or intermittent which causes FastX and VNC sessions through Green Bank to be extremely slow. 
+
+Suggested checks:
+
+- If you are unsure which end of the internet is slow, try running a speed test on your network connection. If your speed levels are where they should according to your internet provider, the problem is likely on the Green Bank end of the network. 
+- Check `this status page <https://status.gb.nrao.edu/>`_ to see the status of the ssh gateways. Orange means that it was down for a small portion of that time slice. Red is down for a significant portion of the time span that slice of the bar covers. Each vertical bar is a day.
+
+In the case that the internet issue is on the GBO side, you can run your FastX or VNC connection through Charlottesville. Or with FastX, if you get kicked out, just keep trying to re-connect.
+
+FastX through Charlottesville
+------------------------------
+Point your browser to https://fastx.cv.nrao.edu. You will be prompted for a username and password. This should be your NRAO/GBO username and your UNIX password (the same you're using to connect to the GBO network described above).
+
+.. image:: images/fastX_cv_login.png
+
+Once you have logged in, you will be greeted by the same screen informing you to abide by the terms of the NRAO Computing Security and Computing Use Policies again. Click "Proceed" to continue to your FastX dashboard.
+
+.. image:: images/fastX_cv_dashboard.png
+
+In the application panel on the left-hand side, you might not see a lot of preset connections yet. You can create your own connection by clicking the circled plus sign next to "Applications". A pop-up will open. Provide the following details:
+
+- Command \*: :code:`ssh <machine-name>.gb.nrao.edu startxfce4`
+- Run As User: :code:`<your user name>`
+- Name: :code:`<name of the machine or whatever identifier you want to use>`
 
 
+Available machine names are: 
 
+- **for observing only**: *ariel*, *titania* 
+- **for data processing**: *euclid*, *fourier*, *maxwell*, *newton*, *planck*, *thales*
+
+.. image:: images/fastX_cv_new-application.png
+
+You can permanently save the connection details, by clicking the down-arrow next to Launch and selecting "Create Application". Then click Launch to start the connection.
+
+
+.. image:: images/fastX_cv_new-application_create.png
+
+You will be asked for your password twice: (1) to establish the ssh connection to a machine called polaris and then (2) to log into the machine you choose (ariel in the example here). You may experience longer load times to start the session, but once you're logged in, things usually work well.
+
+.. image:: images/fastX_cv_ssh-login.png
+
+.. image:: images/fastX_cv_ariel_login.png
+  
+
+If you don't see your newly created application in the dashboard, you might need to change the filter settings by clicking the filter icon and selecting "User".
+
+.. image:: images/fastX_cv_filter.png
+
+VNC through Charlottesville
+------------------------------
+If you cannot even connect to green bank to start your VNC session:
+        .. code:: bash
+
+        ssh username@ssh.cv.nrao.edu
+        ssh titania
+        vncserver -geometry dimension1xdimension2 :session#
+
+    .. hint::
+
+    Manually choose a higher number session to decrease the likelihood that that number is being used on either a GBO or Charlottesville computer.
+
+    Then make your tunnel
+        .. code:: bash
+
+        ssh -N -C -L 590#:titania.gbt.nrao.edu:590# username@ssh.cv.nrao.edu
+
+    And with your VNC viewer connect to `localhost:590#`
+
+    .. hint::
+
+    
+    You may encounter an error when trying to create a tunnel through Charlottesville ``bind [\:\:\#]:590\#: address already in use, channel_setup_fwd_listener_tcpip: cannot listen to port: 590\#, could not request local forwarding`` This was thought to mean that that # port was already taken on a Charlottesville computer so you will have to choose a different VNC session number. Hence the earlier suggestion to manually choose a session number that is higher initially to avoid such issues.
 
 -----------
 
