@@ -1,7 +1,7 @@
 .. _argus_obs:
 
 ###########################
-How to observe using Argus?
+How to observe using Argus
 ###########################
 
 
