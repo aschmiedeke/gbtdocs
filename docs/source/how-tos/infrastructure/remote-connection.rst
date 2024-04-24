@@ -132,10 +132,11 @@ Quick VNC Reference
 #. ssh to either titiania or ariel by ``ssh titania``
 #. Start vnc session with ``vncserver -your_screen_geometry``. This will give you your session number.
 #. Open a new terminal on your computer with 
-    .. code:: bash
-    ``ssh -N -C -L 590#:titania.gbt.nrao.edu:590# username@ssh.gb.nrao.edu`` 
+    .. code-block:: bash
     
-    where # is the number you were given in step 3. After entering your password, it will just sit there and that’s good.
+        ssh -N -C -L 590n:titania.gbt.nrao.edu:590n username@ssh.gb.nrao.edu
+    
+    where `n` is the number you were given in step 3. After entering your password, it will just sit there and that’s good.
 #. Use your vnc viewer on your computer to view your session.
 
 How do I get the necessary software?
@@ -506,27 +507,26 @@ If you don't see your newly created application in the dashboard, you might need
 
 VNC through Charlottesville
 ------------------------------
-If you cannot even connect to green bank to start your VNC session:
-        .. code:: bash
+If you cannot even connect to green bank to start your VNC session through Charlottesville instead:
+    .. code-block:: bash
 
         ssh username@ssh.cv.nrao.edu
         ssh titania
-        vncserver -geometry dimension1xdimension2 :session#
+        vncserver -geometry dimension1xdimension2 :n
 
     .. hint::
 
-    Manually choose a higher number session to decrease the likelihood that that number is being used on either a GBO or Charlottesville computer.
+        Manually choose a higher number session to decrease the likelihood that that number is being used on either a GBO or Charlottesville computer.
 
-    Then make your tunnel
-        .. code:: bash
+Then make your tunnel
+    .. code-block:: bash
 
-        ssh -N -C -L 590#:titania.gbt.nrao.edu:590# username@ssh.cv.nrao.edu
+        ssh -N -C -L 590N:titania.gbt.nrao.edu:590n username@ssh.cv.nrao.edu
 
-    And with your VNC viewer connect to `localhost:590#`
+And with your VNC viewer connect to `localhost:590n`
 
-    .. hint::
+.. hint::
 
-    
     You may encounter an error when trying to create a tunnel through Charlottesville ``bind [\:\:\#]:590\#: address already in use, channel_setup_fwd_listener_tcpip: cannot listen to port: 590\#, could not request local forwarding`` This was thought to mean that that # port was already taken on a Charlottesville computer so you will have to choose a different VNC session number. Hence the earlier suggestion to manually choose a session number that is higher initially to avoid such issues.
 
 -----------

@@ -78,7 +78,7 @@ Argus
 
         How to calculate sensitivies for Argus
 
-    
+
 
 .. toctree::
     :maxdepth: 3
@@ -86,8 +86,8 @@ Argus
 
     receivers/argus/argus_obs
 
-    
-    
+
+
 MUSTANG-2
 ---------
 
@@ -111,14 +111,11 @@ MUSTANG-2
 
         Observing instructions.
 
-    .. card:: Noise
-
-        How-to guide Noise 
-
-
     .. card:: Data Processing
+        :link: mustang2_data
+        :link-type: ref
 
-        How-to guide data
+        Information on data processing.
 
 
 .. toctree::
@@ -127,8 +124,7 @@ MUSTANG-2
 
     receivers/mustang2/mustang2_setup
     receivers/mustang2/mustang2_obs
-
-
+    receivers/mustang2/mustang2_data
 
 
 
@@ -142,10 +138,10 @@ Data Processing
 
 
 .. button-link:: data_reduction/gbtidl.html
-    :color: primary 
+    :color: primary
     :tooltip: Shows practical steps to calibrate and process GBT data using GBTIDL.
 
-    How to process spectra using GBTIDL (examples) 
+    How to process spectra using GBTIDL (examples)
 
 
 .. toctree::
@@ -154,6 +150,4 @@ Data Processing
 
     data_reduction/gbtidl
 
-
-----------------
 

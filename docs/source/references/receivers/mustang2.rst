@@ -44,6 +44,21 @@ Here are various technical aspects that an observer will want to know about MUST
         :shadow: md
         :margin: 2 2 0 0 
 
+        :octicon:`telescope;3em;sd-text-primary` **Filtering**
+
+        Description of MUSTANG-2 transfer functions with various filtering and scans sizes.
+
+        .. button-link:: mustang2/mustang2_filtering.html
+            :color: primary
+            :outline:
+            :click-parent:
+
+            See Details
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
         :octicon:`globe;3em;sd-text-primary` **Mapping**
 
         Description of mapping parameters.
@@ -73,7 +88,8 @@ Here are various technical aspects that an observer will want to know about MUST
 .. toctree::
     :hidden:
 
-    mustang2/mustang2_bandpass
-    mustang2/mustang2_dev
     mustang2/mustang2_instrument_team
+    mustang2/mustang2_bandpass
+    mustang2/mustang2_filtering
     mustang2/mustang2_mapping
+    mustang2/mustang2_dev
