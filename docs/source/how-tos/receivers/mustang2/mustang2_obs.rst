@@ -60,7 +60,7 @@ If you are creating the scripts for the first time for your project, you will wa
         - ``2_m2oof``
         - ``3_m2quickDaisyOOF``
         - ``4_m2quickDaisyPC``
-         
+
     #. One of the science scripts labeled ``5_XXX``
         .. note::
 
@@ -95,6 +95,7 @@ During observing, you are expected to edit the MUSTANG-2 observing run notes wik
 
 2.1 Connect
 -----------
+
 Open and connect to :ref:`VNC session <Quick VNC Reference>` or start an XFCE :ref:`FastX session <FastX connection>` on ``titania`` or ``ariel`` via FastX.
 
 Connection Issues?
