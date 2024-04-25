@@ -6,10 +6,7 @@ Like any other ground-based millimeter continuum observations, our default data 
 
 There is an early :download:`memo <files/Observing_Galaxy_Clusters_With_M2.pdf>` on filtering which compared the results of observing simulated galaxy clusters using two different (Lissajous daisy) scan sizes and two different sets of filtering parameters. There is an executive summary :download:`here <files/Observing_with_MUSTANG_2_Executive.pdf>`.
 
-Working Title
--------------
-
-The following figures show transmission functions for a broad range of (Lissajous) scan sizes (from 2.5′ to 5.0′) with a fairly gentle filtering (3 components subtracted from the timestreams via PCA and a windowed filter, keeping frequencies between 0.06 Hz and 41.0 Hz). 
+The following figures show transfer functions for a broad range of (Lissajous) scan sizes (from 2.5′ to 5.0′) with a fairly gentle filtering (3 components subtracted from the timestreams via PCA and a windowed filter, keeping frequencies between 0.06 Hz and 41.0 Hz). 
 
 .. Figure:: images/PCA3_0f06_Xfers.png
 
@@ -21,11 +18,11 @@ Below are the transfer functions from above with the same scan sizes but instead
 
 	Figure 2. Transfer functions for reduction parameters of PCA=5, and a Fourier window between 0.08 Hz and 41.0 Hz. **Left:** large-scale transmission by scan size (raw binned data). **Right:** fitted curves of the form Transmission = p[0] – (r/p[1])^p[2], by scan size (in arcminutes).
 
-Splitting the scan sizes among two plots below that show the differences between these two reductions:
+Below we show the differences between these two reductions (PCA=3 with a Fourier window between 0.06 Hz and 41.0 Hz vs PCA=5 with a Fourier window between 0.08 Hz and 41.0 Hz) by splitting the scan sizes used above among two plots:
 
 .. Figure:: images/PCA3_0f06_vs_PCA5_0f08_fitted.png
 
-	Figure 3. Dashed lines indicate the harsher filtering; solid lines are the gentler filtering.
+	Figure 3. Dashed lines indicate the harsher filtering (CA=5 with a Fourier window between 0.08 Hz and 41.0 Hz); solid lines are the gentler filtering (PCA=3 with a Fourier window between 0.06 Hz and 41.0 Hz).
 
 A filtering with a highpass of 0.06 Hz is, unfortunately, a bit more gentler than we find is necessary. Rather, a highpass at 0.07 or 0.08 Hz often results in acceptable noise in our maps. There are still other datasets which require still more aggressive filtering, either a highpass at 0.09 Hz, or even 0.1 Hz.
 
