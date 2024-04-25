@@ -1,10 +1,10 @@
 .. _mustang2_technical:
 
-################################
-Technical Details for MUSTANG-2
-################################
+#########
+MUSTANG-2
+#########
 
-Here are various technical aspects that an observer will want to know about MUSTANG-2.
+Here are various technical aspects and references that an observer or a MUSTANG-2 team member may want to know about MUSTANG-2.
 
 ----------------
 
@@ -24,6 +24,10 @@ Here are various technical aspects that an observer will want to know about MUST
             :click-parent:
 
             See Members
+
+Technical Aspects
+-----------------
+.. grid:: 1 2 2 2
 
     .. grid-item-card::
         :shadow: md
@@ -70,6 +74,25 @@ Here are various technical aspects that an observer will want to know about MUST
 
             See Details
 
+Useful References
+-----------------
+.. grid:: 1 2 2 2
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        :octicon:`book;3em;sd-text-primary` **Publications**
+
+        List of MUSTANG-2 publications and press releases.
+
+        .. button-link:: mustang2/mustang2_publications.html
+            :color: primary
+            :outline:
+            :click-parent:
+
+            See Publications
+
     .. grid-item-card::
         :shadow: md
         :margin: 2 2 0 0 
@@ -92,4 +115,5 @@ Here are various technical aspects that an observer will want to know about MUST
     mustang2/mustang2_bandpass
     mustang2/mustang2_filtering
     mustang2/mustang2_mapping
+    mustang2/mustang2_publications
     mustang2/mustang2_dev
