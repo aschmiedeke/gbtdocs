@@ -93,41 +93,39 @@ MUSTANG-2
 
 .. card-carousel:: 3
 
-    .. card:: PropGuide (under development)
+    .. card:: Proposal Information
+        :link: mustang2_proposal
+        :link-type: ref
 
-        Instructions for Proposers.
-
+        Instructions and information for proposers.
 
     .. card:: Setup - Tuning and Biasing
         :link: mustang2_setup
         :link-type: ref
 
-        Setting up MUSTANG-2 for observations.
-
+        How to setup MUSTANG-2 for observations.
 
     .. card:: Observing
         :link: mustang2_obs
         :link-type: ref
 
-        Observing instructions.
+        How to observe with MUSTANG-2.
 
-    .. card:: Data Processing
+    .. card:: Data
         :link: mustang2_data
         :link-type: ref
 
-        Information on data processing.
+        Information on data products and data processing.
 
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 4
     :hidden:
 
+    receivers/mustang2/mustang2_proposal
     receivers/mustang2/mustang2_setup
     receivers/mustang2/mustang2_obs
     receivers/mustang2/mustang2_data
-
-
-
 
 ----------------
 

@@ -1,10 +1,10 @@
 .. _mustang2_data:
 
-#############################
-Data Processing For MUSTANG-2
-#############################
+##############
+MUSTANG-2 data
+##############
 
-Here are the current options for obtaining and working with MUSTANG-2 data. Unless the PI is well-versed in working with MUSTANG-2 data, most often PIs request one of the :ref:`deliverables <mustang2_deliv>` that the MUSTANG-2 team offers. One can also do a few quick reductions with the :ref:`MUSTANG-2 GUI <mustang2_gui>`. 
+Here are the current options for obtaining and working with MUSTANG-2 data. Unless the PI is well-versed in working with MUSTANG-2 data, most often PIs request one or more of the :ref:`deliverables <mustang2_deliv>` that the MUSTANG-2 team offers. One can also do a quick, simple reduction (see Basic Reduction below). 
 
 ----------------
 

@@ -4,7 +4,7 @@ MUSTANG-2 Filtering
 
 Like any other ground-based millimeter continuum observations, our default data processing attempts to remove the Earth’s atmosphere with either a common-mode subtraction or something quite similar to it (e.g. PCA).
 
-There is an early :download:`memo <files/Observing_Galaxy_Clusters_With_M2.pdf>` on filtering which compared the results of observing simulated galaxy clusters using two different (Lissajous daisy) scan sizes and two different sets of filtering parameters. There is an executive summary :download:`here <files/Observing_with_MUSTANG_2_Executive.pdf>`.
+There is an early :download:`memo </_static/mustang2_documents/Observing_Galaxy_Clusters_With_M2.pdf>` on filtering which compared the results of observing simulated galaxy clusters using two different (Lissajous daisy) scan sizes and two different sets of filtering parameters. There is an executive summary :download:`here </_static/mustang2_documents/Observing_with_MUSTANG_2_Executive.pdf>`.
 
 The following figures show transfer functions for a broad range of (Lissajous) scan sizes (from 2.5′ to 5.0′) with a fairly gentle filtering (3 components subtracted from the timestreams via PCA and a windowed filter, keeping frequencies between 0.06 Hz and 41.0 Hz). 
 

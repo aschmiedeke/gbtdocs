@@ -43,12 +43,11 @@ Historically, we have reported mapping speeds based on the RMS within a circle o
 	  - 3.2E-5
 
 Notes on the above table:
-- The mapping speeds above are calculated based on the RMS in the central 2 arcminutes. For small scans, this region has roughly uniform noise.
-- The conversion from :math:`\mu` K to :math:`\mu` Jy/beam is roughly 0.77; i.e. multiple the :math:`\mu` K noise by 0.77 to get a noise estimate in :math:`\mu` Jy/beam.
-- The conversion from :math:`\mu` K to Compton y is roughly 2.74E-7; i.e. multiple the :math:`\mu` K noise by 2.74E-7 to get a noise estimate in Compton y.
-- Extended signal on scales up to 5' should be imaged with reasonable fidelity, but faint signal more extended than this may be difficult to detect. Bright emission (20 mJy/beam or more) can be reconstructed over scales of many arcminutes. The angular resolution of MUSTANG on the GBT is typcally 9" (FWHM) and the instantaneous field of view is a 4' diameter circle.
+	* The mapping speeds above are calculated based on the RMS in the central 2 arcminutes. For small scans, this region has roughly uniform noise.
+	* The conversion from :math:`\mu` K to :math:`\mu` Jy/beam is roughly 0.77; i.e. multiple the :math:`\mu` K noise by 0.77 to get a noise estimate in :math:`\mu` Jy/beam.
+	* The conversion from :math:`\mu` K to Compton y is roughly 2.74E-7; i.e. multiple the :math:`\mu` K noise by 2.74E-7 to get a noise estimate in Compton y.
+	* Extended signal on scales up to 5' should be imaged with reasonable fidelity, but faint signal more extended than this may be difficult to detect. Bright emission (20 mJy/beam or more) can be reconstructed over scales of many arcminutes. The angular resolution of MUSTANG on the GBT is typcally 9" (FWHM) and the instantaneous field of view is a 4' diameter circle. Recovery of signal depends on data processing.
 
-    Recovery of signal depends on data processing.
-
-
-Here is a :download:`MUSTANG-2 mapping speeds memo <files/MUSTANG_2_Mapping_Speeds_public.pdf>`.
+Mapping Memo
+------------
+Here is a :download:`MUSTANG-2 mapping speeds memo </_static/mustang2_documents/MUSTANG_2_Mapping_Speeds_public.pdf>`.

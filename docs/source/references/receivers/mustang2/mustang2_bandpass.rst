@@ -48,4 +48,4 @@ MUSTANG-2 Bandpass Information
    * - 5.0
      - 92.654768
 
-You can download a text file with these spectral index and frequency values :download:`here <files/M2_center_frequencies_07082023.txt>`.
+You can download a text file with these spectral index and frequency values :download:`here </_static/mustang2_documents/M2_center_frequencies_07082023.txt>`.

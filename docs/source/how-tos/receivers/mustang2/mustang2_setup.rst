@@ -4,8 +4,6 @@
 How to setup MUSTANG-2
 ######################
 
-
-
 Tuning
 ======
 
