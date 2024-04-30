@@ -23,13 +23,19 @@ Receivers
     Argus
 
 
+.. button-link:: receivers/mustang2.html
+    :color: primary
+    :tooltip: MUSTANG-2, a 223-feedhorn bolometer camera operating at 90 GHz.
+
+    MUSTANG-2
+
 
 .. toctree::
     :maxdepth: 3
     :hidden:
 
     receivers/argus
-
+    receivers/mustang2
 
 ----------
 

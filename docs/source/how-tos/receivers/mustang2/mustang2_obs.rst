@@ -60,10 +60,8 @@ If you are creating the scripts for the first time for your project, you will wa
         - ``2_m2oof``
         - ``3_m2quickDaisyOOF``
         - ``4_m2quickDaisyPC``
-         
-    #. One of the science scripts
-        - ``5_XXX``
 
+    #. One of the science scripts labeled ``5_XXX``
         .. note::
 
             The radius of the daisy will depend on your science - reach out to the M2 instrument team for guidance.
@@ -96,12 +94,13 @@ During observing, you are expected to edit the MUSTANG-2 observing run notes wik
 
 
 2.1 Connect
-------------
+-----------
+
 Open and connect to :ref:`VNC session <Quick VNC Reference>` or start an XFCE :ref:`FastX session <FastX connection>` on ``titania`` or ``ariel`` via FastX.
 
 Connection Issues?
 ^^^^^^^^^^^^^^^^^^
-The internet at GBO can be intermitent at times. Specifically there are days that the internet goes down for 30-60 seconds at a time quite often. Are you having issues with FastX or your VNC being really laggy? Check `this status page <https://status.gb.nrao.edu/>`_ to see the status of the ssh gateways. See :ref:`these instructions <What to do if the GBO network is down/slow` for FastX and VNC workarounds using Charlottesville to potentially better your connection. 
+The internet at GBO can be intermitent at times. Specifically there are days that the internet goes down for 30-60 seconds at a time quite often. Are you having issues with FastX or your VNC being really laggy? Check `this status page <https://status.gb.nrao.edu/>`_ to see the status of the ssh gateways. See :ref:`these instructions <What to do if the GBO network is down/slow>` for FastX and VNC workarounds using Charlottesville to potentially better your connection. 
 
 
 2.2 AstrID 
@@ -226,7 +225,7 @@ Run the ``1_m2setup`` script in Astrid.
 
 .. note:: 
 
-   During this initial data acquisition (and to some extent, throughout the night) check your Mustang2 CLEO screen, and make sure that the numbers in sections such as ``Frame Cntr`` and ``Roach Data`` are continuing to change with time (if so, the boxes will mostly be blue). However, if they stop (indicated when the boxes turn lavender) then the Mustang2 manager has crashed, and you’ll need to :ref:`restart it <6.1 MUSTANG-2 Manager>`.
+   During this initial data acquisition (and to some extent, throughout the night) check your Mustang2 CLEO screen, and make sure that the numbers in sections such as ``Frame Cntr`` and ``Roach Data`` are continuing to change with time (if so, the boxes will mostly be blue). However, if they stop (indicated when the boxes turn lavender) then the Mustang2 manager has crashed, and you’ll need to :ref:`restart it <7.1 MUSTANG-2 Manager>`.
  
 
 3.8 Take science data
@@ -508,7 +507,7 @@ Again, when in doubt you can always call an M2 team member to help you make the 
 
 If you are observing for an M2 project that is not the first M2 project of the night then before observing you will need to create a link for the tuning so that OOF & data reduction can find the right tuning. 
 
-6.1. Make symlink
+6.1 Make symlink
 -----------------
 
 Before you begin observing, login to egret and type:
