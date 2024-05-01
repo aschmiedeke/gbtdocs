@@ -40,6 +40,16 @@ Below are various technical aspects and references that an observer or a MUSTANG
 
             See Members
 
+
+.. toctree::
+    :hidden:
+
+    mustang2/mustang2_overview
+    mustang2/mustang2_instrument_team
+
+
+
+
 Technical Aspects
 -----------------
 .. grid:: 1 2 2 2
@@ -89,6 +99,15 @@ Technical Aspects
 
             See Details
 
+.. toctree::
+    :hidden:
+
+    mustang2/mustang2_bandpass
+    mustang2/mustang2_filtering
+    mustang2/mustang2_mapping
+
+
+
 Useful References
 -----------------
 .. grid:: 1 2 2 2
@@ -126,10 +145,5 @@ Useful References
 .. toctree::
     :hidden:
 
-    mustang2/mustang2_overview
-    mustang2/mustang2_instrument_team
-    mustang2/mustang2_bandpass
-    mustang2/mustang2_filtering
-    mustang2/mustang2_mapping
     mustang2/mustang2_publications
     mustang2/mustang2_dev

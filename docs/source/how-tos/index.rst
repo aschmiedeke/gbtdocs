@@ -35,6 +35,12 @@ These guides provide information on how to use GBO infrastructure.
             Remote connections
 
 
+.. toctree::
+    :hidden:
+    :maxdepth: 3
+
+    infrastructure/remote-connection
+
 
 
 Observing Mode Guides
@@ -69,6 +75,13 @@ These guides contain end-to-end instructions, i.e. how to set up specific observ
 ..
 ..        How to observe an HI spectrum and process it?
 
+
+.. toctree::
+    :hidden:
+    :maxdepth: 3
+
+    quick_guides/HI_single-pointing
+    quick_guides/C-band_Mueller_matrix
 
 
 ----------------
@@ -116,6 +129,13 @@ These guides provide receiver specific information on how to achieve a specific 
             MUSTANG-2
 
 
+.. toctree::
+    :hidden:
+    :maxdepth: 3
+
+    receivers/argus/argus_obs
+    receivers/mustang2
+
 
 ----------------
 
@@ -144,17 +164,9 @@ Software
             GBTIDL
 
 
-
-
-
 .. toctree::
     :hidden:
     :maxdepth: 3
 
-    infrastructure/remote-connection
-    quick_guides/HI_single-pointing
-    quick_guides/C-band_Mueller_matrix
-    receivers/argus/argus_obs
-    receivers/mustang2
     data_reduction/gbtidl
 
