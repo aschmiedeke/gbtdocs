@@ -36,17 +36,32 @@ These guides provide information on how to use GBO infrastructure.
 
 
 
-.. toctree::
-    :maxdepth: 3
-    :hidden:
 
-    infrastructure/remote-connection
-
-
-Quick Guides
-============
+Observing Mode Guides
+======================
 
 These guides contain end-to-end instructions, i.e. how to set up specific observations and how to calibrate and post-process the obtained data.
+
+
+.. grid:: 1 2 2 2
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **Polarization** 
+
+        How to derive a Mueller matrix?
+
+        .. button-link:: quick_guides/C-band_Mueller_matrix.html
+            :color: primary
+            :tooltip: Practical steps to obtain a Mueller matric using spider scans.
+            :outline:
+            :click-parent:
+
+            Mueller matrix
+
+
 
 .. button-link:: quick_guides/HI_single-pointing.html
     :color: primary
@@ -60,12 +75,7 @@ These guides contain end-to-end instructions, i.e. how to set up specific observ
 
     How to derive a Mueller matrix?
 
-.. toctree::
-    :maxdepth: 3
-    :hidden:
 
-    quick_guides/HI_single-pointing
-    quick_guides/C-band_Mueller_matrix
 
 ----------------
 
@@ -77,90 +87,80 @@ Receiver specific Guides
 These guides provide receiver specific information on how to achieve a specific goal.
 
 
-Argus
------
+.. grid:: 1 2 3 3
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **Argus** 
+
+        How-to observe with Argus (75-115 GHz)
+
+        .. button-link:: receivers/argus/argus_obs.html
+            :color: primary
+            :tooltip: How-to use Argus (75-115 GHz receiver).
+            :outline:
+            :click-parent:
+
+            Argus
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0
+
+        **MUSTANG-2**
+
+        Guides for MUSTANG-2 (bolometer camera)
+
+        .. button-link:: receivers/mustang2.html
+            :color: primary
+            :tooltip: How-to use MUSTANG-2 (bolometer camera).
+            :outline:
+            :click-parent:
+
+            MUSTANG-2
 
 
-.. card-carousel:: 2
-
-    .. card:: Argus Observations
-        :link: argus_obs
-        :link-type: ref
-
-        How to observe using Argus?
-
-    .. card:: Sensitivity Calculation
-
-        How to calculate sensitivies for Argus
-
-
-
-.. toctree::
-    :maxdepth: 3
-    :hidden:
-
-    receivers/argus/argus_obs
-
-
-
-MUSTANG-2
----------
-
-.. card-carousel:: 3
-
-    .. card:: Proposal Information
-        :link: mustang2_proposal
-        :link-type: ref
-
-        Instructions and information for proposers.
-
-    .. card:: Setup - Tuning and Biasing
-        :link: mustang2_setup
-        :link-type: ref
-
-        How to setup MUSTANG-2 for observations.
-
-    .. card:: Observing
-        :link: mustang2_obs
-        :link-type: ref
-
-        How to observe with MUSTANG-2.
-
-    .. card:: Data
-        :link: mustang2_data
-        :link-type: ref
-
-        Information on data products and data processing.
-
-
-.. toctree::
-    :maxdepth: 4
-    :hidden:
-
-    receivers/mustang2/mustang2_proposal
-    receivers/mustang2/mustang2_setup
-    receivers/mustang2/mustang2_obs
-    receivers/mustang2/mustang2_data
 
 ----------------
 
 
-Data Processing
-================
+Software
+========
 
 
 
-.. button-link:: data_reduction/gbtidl.html
-    :color: primary
-    :tooltip: Shows practical steps to calibrate and process GBT data using GBTIDL.
+.. grid:: 1 2 3 3
 
-    How to process spectra using GBTIDL (examples)
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **GBTIDL** 
+
+        How-to process spectra using GBTIDL (examples)
+
+        .. button-link:: data_reduction/gbtidl.html
+            :color: primary
+            :tooltip: Shows practical steps to calibrate and process gbt data using gbtidl
+            :outline:
+            :click-parent:
+
+            GBTIDL
+
+
+
 
 
 .. toctree::
-    :maxdepth: 3
     :hidden:
+    :maxdepth: 3
 
+    infrastructure/remote-connection
+    quick_guides/HI_single-pointing
+    quick_guides/C-band_Mueller_matrix
+    receivers/argus/argus_obs
+    receivers/mustang2
     data_reduction/gbtidl
-
 
