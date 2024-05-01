@@ -15,11 +15,26 @@ Infrastructure
 
 These guides provide information on how to use GBO infrastructure.
 
-.. button-link:: infrastructure/remote-connection.html
-    :color: primary
-    :tooltip: Practical steps on how to connect remotely to the GBO network.
 
-    How to connect remotely to the GBO network.
+.. grid:: 1 2 2 2
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        :octicon:`globe;3em;green` **Remote Connection** 
+
+        How to connect remotely to the GBO network?
+
+        .. button-link:: infrastructure/remote-connection.html
+            :color: primary
+            :tooltip: Practical steps on how to connect remotely to the GBO network.
+            :outline:
+            :click-parent:
+
+            Remote connections
+
+
 
 .. toctree::
     :maxdepth: 3
