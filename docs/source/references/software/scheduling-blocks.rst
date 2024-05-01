@@ -14,7 +14,7 @@ Scheduling Block Commands
 
 :func:`DecLatMap() <astrid_commands.DecLatMap>`
 
-:hoverxref:`show a tooltip <How to connect remotely to the GBO network?>`
+:hoverxref:`show a tooltip <How to connect remotely to the GBO network>`
 
 
 

@@ -1,5 +1,9 @@
+doc/backupFiles
+
 docs/build
 docs/source/_assets/gbtdocs.pdf
-sparrow/__pycache__
+docs/*.sublime-workspace
+
 gbtidl/
-doc/backupFiles
+
+sparrow/__pycache__

@@ -76,18 +76,71 @@ Receiver specific Guides
 
 These guides provide receiver specific information on how to achieve a specific goal.
 
-.. button-link:: receivers/argus.html
-    :color: primary
-    :tooltip: Practical steps for observations using Argus.
 
-    How to observe using Argus?
+Argus
+-----
+
+
+.. card-carousel:: 2
+
+    .. card:: Argus Observations
+        :link: argus_obs
+        :link-type: ref
+
+        How to observe using Argus?
+
+    .. card:: Sensitivity Calculation
+
+        How to calculate sensitivies for Argus
+
+
 
 .. toctree::
     :maxdepth: 3
     :hidden:
 
-    receivers/argus
+    receivers/argus/argus_obs
 
+
+
+MUSTANG-2
+---------
+
+.. card-carousel:: 3
+
+    .. card:: Proposal Information
+        :link: mustang2_proposal
+        :link-type: ref
+
+        Instructions and information for proposers.
+
+    .. card:: Setup - Tuning and Biasing
+        :link: mustang2_setup
+        :link-type: ref
+
+        How to setup MUSTANG-2 for observations.
+
+    .. card:: Observing
+        :link: mustang2_obs
+        :link-type: ref
+
+        How to observe with MUSTANG-2.
+
+    .. card:: Data
+        :link: mustang2_data
+        :link-type: ref
+
+        Information on data products and data processing.
+
+
+.. toctree::
+    :maxdepth: 4
+    :hidden:
+
+    receivers/mustang2/mustang2_proposal
+    receivers/mustang2/mustang2_setup
+    receivers/mustang2/mustang2_obs
+    receivers/mustang2/mustang2_data
 
 ----------------
 
@@ -98,10 +151,10 @@ Data Processing
 
 
 .. button-link:: data_reduction/gbtidl.html
-    :color: primary 
+    :color: primary
     :tooltip: Shows practical steps to calibrate and process GBT data using GBTIDL.
 
-    How to process spectra using GBTIDL (examples) 
+    How to process spectra using GBTIDL (examples)
 
 
 .. toctree::
@@ -110,6 +163,4 @@ Data Processing
 
     data_reduction/gbtidl
 
-
-----------------
 
