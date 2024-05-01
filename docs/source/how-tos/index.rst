@@ -63,17 +63,11 @@ These guides contain end-to-end instructions, i.e. how to set up specific observ
 
 
 
-.. button-link:: quick_guides/HI_single-pointing.html
-    :color: primary
-    :tooltip: Practical steps to obtain a single-pointing HI spectrum using either position-switching or frequency-switching.
-
-    How to observe an HI spectrum and process it?
-
-.. button-link:: quick_guides/C-band_Mueller_matrix.html
-    :color: primary
-    :tooltip: Practical steps to obtain a Mueller matrix using spider scans.
-
-    How to derive a Mueller matrix?
+..  .. button-link:: quick_guides/HI_single-pointing.html
+..        :color: primary
+..        :tooltip: Practical steps to obtain a single-pointing HI spectrum using either position-switching or frequency-switching.
+..
+..        How to observe an HI spectrum and process it?
 
 
 
