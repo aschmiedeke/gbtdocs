@@ -62,13 +62,56 @@ At the GBT we use `AstrID` to prepare and execute scheduling blocks. `AstrID` is
 ===============
 
 
-To execute the observations, please follow the observation guide here.
-
-.. todo::
-
-   Add the instructions into a separate tutorial and then reference that one here.
+To learn how to execute your observing scripts, please follow the :ref:`GBT observations 101` guide.
 
 
+2.1 AutoPeakFocus observations
+------------------------------
+
+Recall that after slewing near your source, the script looks for a nearby bright point source and runs a series of Peak (pointing) and Focus scans. When everything is working well, the scans look like this (switch to the DataDisplayTab in AstrID to see them).
+
+.. figure:: material/HI_observing_astrid_DataDisplay_peak.png
+    
+    L-Band peak observations. Four scans are taken, two scanning in Azimuth, two scanning in Elevation.
+
+.. figure:: material/HI_observing_astrid_DataDisplay_focus.png
+    
+    L-Band focus observation.
+
+
+.. warning::
+
+   Sometimes, though, the focus curve fails to fit properly. This is typically due to the chosen source not having enough power. When this happens, you can look at the results and decide if they are close enough to simply have the operator put the focus offset into the system. This will also be true as long as the peak appears to be at :math:`-20\pm10` mm. 
+   
+   A couple examples of this situation are shown below.
+
+   .. image:: material/HI_observing_astrid_DataDisplay_focus_poor_01.png
+   .. image:: material/HI_observing_astrid_DataDisplay_focus_poor_02.png
+
+.. danger::
+
+   **When you're online (observing), you should never click on any of the scan numbers.** This will cause AstrID to re-process the data and can change your pointing and focus values.
+
+.. note::
+
+   You can always look at your observations after your observing session has ended. Start AstrID in offline mode and then under the DataDisplay Tab, open the ScanLog.fits file in the directory of your observations of interest.
+
+2.2 Source observations
+-----------------------
+
+Once the AutoPeakFocus routines are complete, the telescope should configure for your spectral line observations, go to your source and balance the power, and then observe! You can check the status of your observations using the GBTStatus tab in AstrID. 
+
+.. note::
+
+   The DataDisplay - Spectral Line subtab is often not able to keep up with the incoming data, and so issues with not displaying data can be ignored.
+
+Once your first set of data is written to disk (here when the first ON scan is complete, after 5 minutes),  you should go into gbtidl and look at the data. 
+
+.. note:: 
+
+   You cannot look at the fully processed spectrum (ON+OFF) in gbtidl until the ON+OFF pair is complete (after about 10.5 minutes). You can, however, look to see that the data looks ok, using gbtidl and the :code:`gettp, 5` command (where 5 is the scan number of interest). 
+   
+More information on data processing in the :ref:`next section <3. Data Reduction>`. Happy Observing!
 
 3. Data Reduction
 =================
@@ -84,7 +127,7 @@ We will show two examples of how to process the obtained spectra:
 
 .. admonition:: Example 2
 
-    :ref:`More complicated example <3.2 More Complicated Sxample>`
+    :ref:`More complicated example <3.2 More Complicated Example>`
     
     Many observations were taken with the noise diodes turned off, followed by a short period where the noise diodes are firing. As a result you need to determine :math:`T_{sys}` and then apply it to the on+off scans.
 
@@ -323,8 +366,8 @@ Using the AWV (area, width, velocity) routine, determine the line's properties, 
 Check your results against the online database available here: http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml.
 
 
-3.2. More Complicated Example
------------------------------
+3.2 More Complicated Example
+----------------------------
 
 
 This example is from the HI survey dataset (http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml). 

@@ -42,6 +42,36 @@ These guides provide information on how to use GBO infrastructure.
     infrastructure/remote-connection
 
 
+General Guides
+==============
+
+These guides provide information on how to perform general and common tasks with the GBT.
+
+
+.. grid:: 1 2 2 2
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        :octicon:`telescope;3em;green` **Observing Instructions** 
+
+        Most basic steps to observe with the GBT
+
+        .. button-link:: general_guides/gbt_observing.html
+            :color: primary
+            :tooltip: Most basic steps to observe with the GBT.
+            :outline:
+            :click-parent:
+
+            GBT observing
+
+
+.. toctree::
+    :hidden:
+    :maxdepth: 3
+
+    general_guides/gbt_observing
 
 Observing Mode Guides
 ======================
@@ -59,7 +89,7 @@ These guides contain end-to-end instructions, i.e. how to set up specific observ
 
         How to derive a Mueller matrix?
 
-        .. button-link:: quick_guides/C-band_Mueller_matrix.html
+        .. button-link:: observing_modes/C-band_Mueller_matrix.html
             :color: primary
             :tooltip: Practical steps to obtain a Mueller matric using spider scans.
             :outline:
@@ -80,8 +110,7 @@ These guides contain end-to-end instructions, i.e. how to set up specific observ
     :hidden:
     :maxdepth: 3
 
-    quick_guides/HI_single-pointing
-    quick_guides/C-band_Mueller_matrix
+    observing_modes/C-band_Mueller_matrix
 
 
 ----------------
