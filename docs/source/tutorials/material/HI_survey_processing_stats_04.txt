@@ -1,0 +1,5 @@
+    Chans    bchan    echan        Xmin        Xmax        Ymin        Ymax
+       62       40      101      3496.8      4000.3  -0.0062628   0.0065100
+
+                       Mean      Median         RMS    Variance        Area
+                -3.3634E-05 -0.00021309   0.0024638  6.0704E-06   -0.017239

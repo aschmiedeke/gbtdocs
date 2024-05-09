@@ -1,0 +1,13 @@
+ #INDEX           SOURCE       SCAN PROCEDURE POL IFNUM FDNUM        INT SIG CAL
+   2712           U10629        299     Track  XX     0     0          0   T   T
+   2713           U10629        299     Track  XX     0     0          0   T   F
+   2714           U10629        299     Track  YY     0     0          0   T   T
+   2715           U10629        299     Track  YY     0     0          0   T   F
+   2716           U10629        299     Track  XX     0     0          1   T   T
+   2717           U10629        299     Track  XX     0     0          1   T   F
+   2718           U10629        299     Track  YY     0     0          1   T   T
+   2719           U10629        299     Track  YY     0     0          1   T   F
+   2720           U10629        299     Track  XX     0     0          2   T   T
+   2721           U10629        299     Track  XX     0     0          2   T   F
+   2722           U10629        299     Track  YY     0     0          2   T   T
+   2723           U10629        299     Track  YY     0     0          2   T   F

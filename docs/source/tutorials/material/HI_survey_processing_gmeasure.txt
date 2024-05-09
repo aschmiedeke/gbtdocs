@@ -1,0 +1,1 @@
+  Area, Width, Velocity (followed by errors in same order) =    3.67   83.31 4677.81    0.22    0.00    0.00

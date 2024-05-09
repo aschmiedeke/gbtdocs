@@ -1,0 +1,29 @@
+IDL Version 7.1.1 (linux x86_64 m64). (c) 2009, ITT Visual Information Solutions
+Installation number: 15269-3.
+Licensed for use by: National Radio Astronomy Observatory
+
+Starting GBTIDL
+
+Display Device  : X
+Visual Class    : TrueColor
+Visual Depth    : 24-Bit
+Color Table Size: 256
+Number of Colors: 16777216
+Decomposed Color: 0
+
+--------------------------------------------------------------------
+                    Welcome to GBTIDL v2.10.1
+
+    For news, documentation, enhancement requests, bug tracking,
+               discussion, and contributions, visit:
+
+                   http://gbtidl.nrao.edu
+
+    For help with a GBTIDL routine from the command line, use
+             the procedure 'usage'.  For example:
+
+   usage,'show'           ; gives the syntax of the procedure 'show'
+   usage,'show',/verbose  ; gives more information on 'show'
+--------------------------------------------------------------------
+
+GBTIDL ->
