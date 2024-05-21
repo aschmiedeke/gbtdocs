@@ -3,7 +3,6 @@ Scheduling Block Commands
 
 
 
-
 .. automodule:: astrid_commands
     :members:
 

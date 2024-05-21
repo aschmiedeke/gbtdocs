@@ -51,6 +51,13 @@ Receivers
             MUSTANG-2
 
 
+.. toctree::
+    :maxdepth: 3
+    :hidden:
+
+
+    receivers/argus
+    receivers/mustang2
 
 
 ----------
@@ -60,11 +67,23 @@ Software
 ==========
 
 
-.. button-link:: software/scheduling-blocks.html
-    :color: primary
-    :tooltip: Details on AstrID's scheduling block (SB) commands.
+.. grid:: 1 2 2 2
 
-    AstrID Scheduling Block Commands
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **AstrID commands** 
+
+        References for AstrID scheduling block commands
+
+        .. button-link:: software/scheduling-blocks.html
+            :color: primary
+            :tooltip: Reference for AstrID commands.
+            :outline:
+            :click-parent:
+
+            AstrID Scheduling Block Commands
 
 
 
@@ -73,9 +92,6 @@ Software
     :maxdepth: 3
     :hidden:
 
-
-    receivers/argus
-    receivers/mustang2
     software/scheduling-blocks
 
 

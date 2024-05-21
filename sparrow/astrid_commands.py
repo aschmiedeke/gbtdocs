@@ -154,12 +154,6 @@ def AutoPeak(source=None, location=None, frequency=None, flux=None,
     optional arguments the user may partially or fully override the search and/or procedural steps as described
     below.
 
-    Warning
-    -------
-        AutoPeak() should not be used with Prime Focus receivers. The prime focus receivers have 
-        pre-determined focus positions and there is not enough travel in the feed to move them significantly
-        out of focus.
-
     AutoPeak() will execute its own default continuum configuration unless “configure=False”
     is supplied as an optional argument, which is not recommended in general unless one knows the
     system well.
@@ -1792,10 +1786,10 @@ def Break(message="Observation paused.", timeout=300.0):
 
         .. note::
             
-        Why have a timeout? If an observer walks away from the control room during his or her observing
-        session (e.g. to go to lunch or the bathroom) and a breakpoint is reached, it would be 
-        counterproductive to pause the observation indefinitely. This will help save valuable 
-        telescope time.
+            Why have a timeout? If an observer walks away from the control room during his or her observing
+            session (e.g. to go to lunch or the bathroom) and a breakpoint is reached, it would be 
+            counterproductive to pause the observation indefinitely. This will help save valuable 
+            telescope time.
 
 
     Example
