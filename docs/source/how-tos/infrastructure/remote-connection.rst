@@ -131,7 +131,7 @@ Quick VNC Reference
 .. tab:: Mac OS X
 
 	#. (Once) Login to GBO ``ssh [username]@ssh.gb.nrao.edu``
-	#. (Once) ssh to either titiania or ariel by e.g. ``ssh titania`` or ``ssh ariel``
+	#. (Once) ssh to either titania or ariel by e.g. ``ssh titania`` or ``ssh ariel``
 	#. (Once) Start vnc session with ``vncserver -geometry [horiz_len]x[vert_len]``, with the lengths given in pixels, e.g. ``-geometry 1800x1000``. This command starts the persistent VNC session and will give you your session number.
 	#. Every time you want to connect to the VNC session, open a new terminal on your computer and type
 
@@ -145,7 +145,7 @@ Quick VNC Reference
 .. tab:: Linux
 	
 	#. (Once) Login to GBO ``ssh [username]@ssh.gb.nrao.edu``
-	#. (Once) ssh to either titiania or ariel by e.g. ``ssh titania`` or ``ssh ariel``
+	#. (Once) ssh to either titania or ariel by e.g. ``ssh titania`` or ``ssh ariel``
 	#. (Once) Start vnc session with ``vncserver -geometry [horiz_len]x[vert_len]``, with the lengths given in pixels, e.g. ``-geometry 1800x1000``. This command starts the persistent VNC session and will give you your session number.
 	#. Every time you want to connect to the VNC session and view it, open a new terminal on your computer and type
 
