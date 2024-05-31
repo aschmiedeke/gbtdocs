@@ -140,7 +140,7 @@ Quick VNC Reference
         	ssh -N -C -L 590n:titania.gb.nrao.edu:590n username@ssh.gb.nrao.edu
 	
 	where `n` is the number you were given in step 3. After entering your password, this terminal window will just keep the tunnel open, and there is no need to interact with it anymore.
-	#. Use the Screen Sharing applicatoin to view your session, with "localhost:n" as the VNC session name.
+	#. Use the Screen Sharing application to view your session, with "localhost:n" as the VNC session name.
 
 .. tab:: Linux
 	
