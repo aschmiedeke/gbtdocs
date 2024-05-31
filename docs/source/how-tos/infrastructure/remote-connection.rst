@@ -131,7 +131,7 @@ Quick VNC Reference
 .. tab:: Mac OS X
 
 	#. (Once) Login to GBO ``ssh [username]@ssh.gb.nrao.edu``
-	#. (Once) ssh to either titiania or ariel by ``ssh titania``
+	#. (Once) ssh to either titania or ariel by e.g. ``ssh titania`` or ``ssh ariel``
 	#. (Once) Start vnc session with ``vncserver -geometry [horiz_len]x[vert_len]``, with the lengths given in pixels, e.g. ``-geometry 1800x1000``. This command starts the persistent VNC session and will give you your session number.
 	#. Every time you want to connect to the VNC session, open a new terminal on your computer and type
 
@@ -140,12 +140,12 @@ Quick VNC Reference
         	ssh -N -C -L 590n:titania.gb.nrao.edu:590n username@ssh.gb.nrao.edu
 	
 	where `n` is the number you were given in step 3. After entering your password, this terminal window will just keep the tunnel open, and there is no need to interact with it anymore.
-	#. Use your vnc viewer on your computer to view your session, with "localhost:n" as the VNC session name.
+	#. Use the Screen Sharing application to view your session, with "localhost:n" as the VNC session name.
 
 .. tab:: Linux
 	
 	#. (Once) Login to GBO ``ssh [username]@ssh.gb.nrao.edu``
-	#. (Once) ssh to either titiania or ariel by ``ssh titania``
+	#. (Once) ssh to either titania or ariel by e.g. ``ssh titania`` or ``ssh ariel``
 	#. (Once) Start vnc session with ``vncserver -geometry [horiz_len]x[vert_len]``, with the lengths given in pixels, e.g. ``-geometry 1800x1000``. This command starts the persistent VNC session and will give you your session number.
 	#. Every time you want to connect to the VNC session and view it, open a new terminal on your computer and type
 
@@ -161,7 +161,7 @@ Quick VNC Reference
 
 
 	#. (Once) Start PuTTY, Host Name is *ssh.gb.nrao.edu*, choose 'Open' to open terminal window, log in to Linux account.
-	#. (Once) ssh to either titiania or ariel by ``ssh titania``
+	#. (Once) ssh to either titiania or ariel by e.g. ``ssh titania`` or ``ssh ariel``
 	#. (Once) ``vncserver -geometry [horiz_len]x[vert_len]``, with the lengths given in pixels, e.g. ``-geometry 1800x1000``. This command starts the persistent VNC session and will give you your session number "n".
 	#. Every time you want to connect to the VNC session, start PuTTY again with the following options:
 
@@ -242,7 +242,7 @@ If this is your first session ever with VNC, you need to setup a VNC password. I
    
    Choose a VNC password that is different from your NRAO Linux account as you may later wish to share your VNC password with other who can then watch your VNC session. For example, if you are having difficulties during a remote observing session, you might wish to share your VNC password with a Green Bank staff member who can access your virtual desktop and suggest solutions to your problems.
 
-To create a VNC password, you must :ref:`log into a GBO computer <Log into the gateway machine>`. Once you are logged into the GBO computer, type at the Linux prompt in the terminal window on the remote computer
+To create a VNC password, you must :ref:`log into a GBO computer <Log into the host machine>`. Once you are logged into the GBO computer, type at the Linux prompt in the terminal window on the remote computer
 
 .. code-block:: bash
     
@@ -267,7 +267,7 @@ You only need to do this section once, upon starting the VNC session. As long as
     vncserver -geometry [horiz_len]x[vert_len]
 
 
-With the lengths given in pixels, e.g. ``-geometry 1800x1000``. Without this flag, the system will use the default screen resolution, which can be pretty small. You can also append ``:n`` at the end to manually choose a session number "n", as long as it is unclaimed.
+With the lengths given in pixels, e.g. ``-geometry 1800x1000``. Without this flag, the system will use the default screen resolution, which can be pretty small. You may want to change these values to suit your preferences. You can also append ``:n`` at the end to manually choose a session number "n", as long as it is unclaimed.
 
 .. note::
 
@@ -303,14 +303,12 @@ You will need to establish a SSH tunnel and start a VNC viewer in order to view 
         If you are not using an SSH agent, you will be prompted for your GBO Linux account password. 
         
         
-        To start a VNC viewer, launch TigerVNC from your Mac's Applications folder.
+        To start a VNC viewer, launch Screen Sharing by typing Cmd+Space  and searching for the application. It can be found under System > Library > Core Services > Applications.
 
-        .. todo::
-
-            Add screenshot of tiger vnc.
+        .. image:: images/RemoteInstructions_Screenshot3.png
 
 
-        Set Host to localhost, set Display to **n**, enter your VNC password, check Remember Password, and check Allow other clients to connect and hit the Connect button. The VNC Viewer window to titania will now appear. In this window you can start astrid and cleo, open xterm, etc.
+        Select File > New Connection, type in ``localhost:n``, and type in your VNC password. The VNC Viewer window to titania will now appear. In this window you can start astrid and cleo, open xterm, etc.
 
 
 .. tab:: Linux
@@ -356,7 +354,8 @@ You will need to establish a SSH tunnel and start a VNC viewer in order to view 
         
         * Connection > SSH > Tunnels - Remove any previously used ports with the Remove button. For Source port enter ``590n``, where n is the VNC session number reported in the first PuTTY window (the VNC server). For Destination, enter ``titania.gb.nrao.edu:590n`` Then choose Add, then Open. As mentioned above, if you are using a data reduction machine, you will replace ``titania`` with the name of your machine (e.g. ``euclid``, ``fourier``, etc.)
 
-	..image:: images/puTTY_titania_2.png
+
+	.. image:: images/puTTY_titania_2.png
 
         A terminal screen will open to ssh.gb.nrao.edu. If you are not using an SSH agent, you will be prompted for your GBO Linux account password.
 
@@ -368,7 +367,7 @@ You will need to establish a SSH tunnel and start a VNC viewer in order to view 
 
 	If using RealVNC, select File > New Connection and fill in localhost:n under the VNC server field. You may want to switch to the Options tab and deselect the options for passing media/audio keys to the VNC server.
 
-	..image:: images/realVNC_titania_3.png
+	.. image:: images/realVNC_titania_3.png
 
         Next a VNC Viewer: Authentication window will pop up. Enter your vncserver password (not your GBO Linux password).
 
@@ -390,7 +389,7 @@ ______________________________
 
 Also, please **do not start more than one VNC session at a time**. Note that you do not need to start a new VNC session every time you want to connect to an already existing VNC. If you are using a data reduction machine to perform long-running scripts, you do not need to worry about closing the VNC session until you are done with data reduction.
 
-To stop your VNC session, use a separate terminal window on your local machine and connect to the computer hosting the VNC session as described :ref:`above <Log into the gateway machine>`. This can be the same window you used to start the VNC session, if you still have it open. Type:
+To stop your VNC session, use a separate terminal window on your local machine and connect to the computer hosting the VNC session as described :ref:`above <Log into the host machine>`. This can be the same window you used to start the VNC session, if you still have it open. Type:
 
 
 .. code-block:: bash
@@ -417,6 +416,21 @@ If you would like to check if you are already running a VNC session (really, the
 .. code-block:: bash
 
     ls ~YOURLOGIN/.vnc | grep .pid
+
+On Mac OS X, if your n>9 (two digits), then the following command 
+
+
+.. code-block:: bash
+
+    ssh -N -C -L 590n:titania.gb.nrao.edu:590n [username]@ssh.gb.nrao.edu
+
+becomes
+
+.. code-block:: bash
+
+    ssh -N -C -L 59nn:titania.gb.nrao.edu:59nn [username]@ssh.gb.nrao.edu
+
+A similar fix must be applied to the puTTY Tunnels tab as well, for Windows users.
 
 
 
