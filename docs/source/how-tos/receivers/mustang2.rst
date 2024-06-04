@@ -14,7 +14,7 @@ Practical step-by-step guides to help you using MUSTANG-2.
         :shadow: md
         :margin: 2 2 0 0 
 
-        **Proposal Information** 
+        :octicon:`file;3em;green` **Proposal Information** 
 
         Instructions and information for proposers
 
@@ -30,7 +30,7 @@ Practical step-by-step guides to help you using MUSTANG-2.
         :shadow: md
         :margin: 2 2 0 0
 
-        **Setup - Tuning and Biasing**
+        :octicon:`gear;3em;green` **Setup - Tuning and Biasing**
 
         How to setup MUSTANG-2 for observations
 
@@ -46,7 +46,7 @@ Practical step-by-step guides to help you using MUSTANG-2.
         :shadow: md
         :margin: 2 2 0 0
 
-        **Observing**
+        :octicon:`telescope;3em;green` **Observing**
 
         How to setup MUSTANG-2 for observations
 
@@ -62,7 +62,7 @@ Practical step-by-step guides to help you using MUSTANG-2.
         :shadow: md
         :margin: 2 2 0 0
 
-        **Data**
+        :octicon:`graph;3em;green` **Data**
 
         Information on data products and data processing
 

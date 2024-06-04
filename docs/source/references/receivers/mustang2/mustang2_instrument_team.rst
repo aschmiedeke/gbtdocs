@@ -3,20 +3,21 @@ MUSTANG-2 Instrument Team
 ##########################
 The following are members of the MUSTANG-2 Instrument Team and should be included on all proposals:
 
-- Simon Dicker
-- Charles Romero
-- Brian Mason
 - Mark Devlin
-- Tony Mroczkowski
-- Jonathan Sievers
-- Craig Sarazin
-- Emily Moravec
-- Luca Di Mascolo
-- Tanay Bhandarkar
-- Karen Perez Sarmiento
+- Simon Dicker
 - Saianeesh Haridas
+- Ian Lowe
+- Luca Di Mascolo
+- Brian Mason
+- Emily Moravec
+- Tony Mroczkowski
 - Jack Orlowski-Scherer
-- Julia Robe
+- Charles Romero
+- Craig Sarazin
+- Karen Perez Sarmiento
+- Jonathan Sievers
+- Joshiwa van Marrewijk
+
 
 Contact Details
 ---------------

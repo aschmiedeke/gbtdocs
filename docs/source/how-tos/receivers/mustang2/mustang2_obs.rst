@@ -264,14 +264,15 @@ If the new ``Peak_Height`` is down by more than ~15%, or if ``WidthA`` and ``Wid
 
 3.11 Be aware - Issue with quadrant detector
 --------------------------------------------
-
-In early 2023 it was discovered that over the past year or two the quadrant detector sometimes isn't workint and doesn't write files to ``/home/gbtdata/project_code_sesion/QuadrantDetector`` as we expect. The GUI now will pop up a warning box (``WARNING QD Values are missing for scans: ...``) if it detects that the quadrant detector files are not being written.
+In early 2023 it was discovered that over the past year or two the quadrant detector sometimes isn't working and doesn't write files to ``/home/gbtdata/project_code_sesion/QuadrantDetector`` as we expect. The GUI now will pop up a warning box (``WARNING QD Values are missing for scans: ...``) if it detects that the quadrant detector files are not being written.
 
 .. image:: images/05_quadrantDetector_warning.png
 
 If this happens during observing, press ok and ask the operator to restart the quadrant detector manager.
 
+.. warning::
 
+    However if you get a warning about just ONE file, this is not a problem. Most likely the scan is not finished yet. There may be an issue with the quadrant detector only if you get a pop-up notification about SEVERAL scans.
 
 4. Checking data with the m2gui
 ===============================
@@ -421,19 +422,19 @@ It is a good idea to check the time streams (checking how the sky temperature is
 - Click ``show time stream`` button underneath the ``Fit Map`` button after making your map
     .. image:: images/18_show_time_stream_button.png
 
-    .. admonition:: Examples
+    .. admonition:: Example Time Streams
 
-        .. tab:: Good time stream
+        .. tab:: Faint Science Time Stream
 
-            .. image:: images/19_m2gui_time_stream_good_example.png
+            .. image:: images/timestreams_science_good_AGBT23B_005_08_scan13.png
 
-            Faint science time streams (a cluster) in good weather.
+            Faint science time streams (a cluster) in good weather. Notice how nice a flat the time streams are.
 
-        .. tab:: Bad time stream
+        .. tab:: Calibrator Time Stream
 
-            .. image:: images/20_m2gui_time_stream_bad_example.png
+            .. image:: images/timestream_calibrator_AGBT23B_005_08_scan9.png
 
-            Calibrator time streams in bad weather. Note that these calibrator time streams still look similar to calibrator calibrator time streams in good weather due to the bright nature of the calibrator sources.
+            This is an exemplar time stream for a calibrator source. Notice that you see the point-like source as a gaussian peak in most time streams.
 
 
 4.6 Troubleshooting: m2gui hangs
@@ -456,13 +457,14 @@ Find the PIDs of startm2gui and idl and kill both.
 ======================================================
 Once you have some indication of bad weather (bad skydip, bad time streams, or physical weather indication), you will want to make an educated guess as to what the trajectory of the weather/data is in order to determine whether or not to keep observing or give up the time. There are many tools that you can use to an assessment of this trajectory. Consider, do the following suggest that the remainder of your scans would be scientifically useful? (this can be used as a checklist of sorts)
     - Time streams
-        - Check the time streams of the science scans as laid out above in B3.4. Are they wiggly? How wiggly?
+        - Check the time streams of the science scans as laid out above in :ref:`4.5 Checking Time Streams`. Are they wiggly? How wiggly? See examples below in :ref:`5.1 Examples of effect of bad weather`.
         - How many “bad” science scans have there been in a row?
 
     - Skydip(s)
-        - How does the first skydip of night look? How wiggly is it?
+        - How does the first skydip of night look? How wiggly is it? See examples below :ref:`5.1 Examples of effect of bad weather`.
         - If you are seeing indications of bad weather and you decide to OOF again one could add a skydip in to test the weather (calSeq=True).
         - One could even do a one off skydip.
+
     - Beam
         - Has the beam been deteriorating?
 
@@ -502,15 +504,56 @@ When making a judgment call as to whether to give up the time due to bad weather
 
 Again, when in doubt you can always call an M2 team member to help you make the call of whether or not to give up the time.
 
+
+5.1 Examples of effect of bad weather
+-------------------------------------
+Here are some examples of science time streams and skydips in good and bad weather.
+
+.. admonition:: Faint Science
+
+    .. tab:: Good Time Stream
+
+        .. image:: images/timestreams_science_good_AGBT23B_005_08_scan13.png
+
+        This is what a good, unaffected faint science time streams (a cluster) looks like in good weather - very flat.
+
+    .. tab:: Bad Time Stream
+
+        .. image:: images/timestreams_science_bad_AGBT23B_005_08_scan14.png
+
+        This is what faint science time streams look like when they are heavily affected by weather - very wiggly.
+
+
+.. admonition:: Skydip
+
+    .. tab:: Good Skydip
+
+        .. image:: images/skydip_good_AGBT23B_005_08.png
+
+        This is what a good skydip looks like in good weather - not wiggly.
+        
+    .. tab:: Bad Skydip
+
+        .. image:: images/skydip_bad_AGBT23B_005_06_scan13.png
+
+        This is what a skydip looks like when it is heavily affected by weather - very wiggly.
+
+.. note::
+        
+    It is difficult to see the affect of weather in calibrator time streams as the signal from the point source is quite bright.
+
 6. Changing M2 Projects/Second M2 Project of the Night
 ======================================================
 
-If you are observing for an M2 project that is not the first M2 project of the night then before observing you will need to create a link for the tuning so that OOF & data reduction can find the right tuning. 
+6.1 Check Tuning for Files
+--------------------------
+Tuning files need to be linked to an observing session. This is done one of two ways either:
+- the tuner includes the second project in the tuning process (put the second observing project/session as a second argument separated by a comma in the tuning process)
+- or if they did not, you will have to create a symlink. 
 
-6.1 Make symlink
------------------
+If you are observing for a second project in the night, it is best to communicate with the tuner to make sure they include the second project. But if you didn't, before you start observing check to see if the tuning directory for this second project exists `/home/gbtlogs/Rcvr_MBA1_5tuning/`. If it does not follow the instructions below to create a symlink for the tuning.
 
-Before you begin observing, login to egret and type:
+Before you begin observing, login to egret as lmonctrl (`ssh lmonctrl@egret.gbt.nrao.edu`) and type:
 
 .. code:: bash
 
@@ -540,8 +583,7 @@ When the observing time for the second project starts, you need run m2setup in A
 
 6.3 Skydip/OOF 
 --------------
-
-You can possibly skip OOFing at the beginning of this second project. You can ask the previous observer when they last did an OOF and what the progression of the beam was.
+You need a skydip at the beginning of this project, but you can possibly skip OOFing at the beginning of this second project. You can ask the previous observer when they last did an OOF and what the progression of the beam was.
 
 - If you need to re-OOF
     - make sure that ``calSeq=True`` to get a skydip
@@ -601,10 +643,15 @@ For the shutdown process you can either do this **(a) automatically** or **(b) m
 
 .. tab:: Automatic Shutdown
 
-    Run the following script in a terminal:
+    Execute ONE of the following in a terminal:
         .. code:: bash
         
             /users/penarray/Public/stopMUSTANG.bash 
+
+        OR
+
+        .. code:: bash
+        
             cd /users/penarray/Public  
             ./stopMUSTANG.bash
 

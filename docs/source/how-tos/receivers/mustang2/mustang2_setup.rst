@@ -234,7 +234,7 @@ If the manager crashed and you need to re-enter the values that were previously 
 
 
 Issues with Manager? Restart the Manager
-======================================
+========================================
 
 If you are having issues with the manager or it crashed, you will need to restart the M2 manager. To do this, do the following:
 
