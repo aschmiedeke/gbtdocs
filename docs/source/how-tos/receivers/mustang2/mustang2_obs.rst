@@ -237,7 +237,7 @@ It's a good idea to check the time streams (see the :ref:`check time streams sec
 
 .. note:: 
 
-    If you try to look at the science data in the m2gui, make sure you choose the "faint science" option under ``source type``.
+    If you try to look at science data in the m2gui, make sure you choose the "faint science" option under ``source type``.
 
 
 .. admonition:: What is ``science_r2p5`` and ``science_r3``?
@@ -330,7 +330,7 @@ After you have opened the m2gui follow these steps to check the tipping scan, mo
 
             .. image:: images/m2gui_05_tip_scan_bad_example.png
 
-    If the tipping scan doesn’t look right (a lot of wiggles), try running the ``skydip`` script in AstrID. This reruns the tipping scan without having to redo the whole OOF. If it still looks bad, check the weather conditions in CLEO. The weather might not be good enough to observe. You can also call one of the M2 instrument team and get their advice.
+    If the tipping scan doesn’t look right (a lot of wiggles), try running the ``skydip`` script in AstrID. This reruns the tipping scan without having to redo the whole OOF. If it still looks bad, check the weather conditions in CLEO. The weather might not be good enough to observe (consult :ref:`5. General Advice for Determining “Bad Weather“` for advice). You can also call one of the M2 instrument team and get their advice.
 
 
 #. **Check the number of live detectors**
@@ -404,31 +404,27 @@ After you have opened the m2gui follow these steps to check the tipping scan, mo
 4.4 Checking Science Scans
 --------------------------
 
-If you would like to make a map of of a science scan(s), you can do so by following the same steps as making a map of a calibrator with the following modification
+If you would like to make a map of a science scan(s), you can do so by following the same steps as making a map of a calibrator with the following modification
     - under ``Source Type`` select ``Faint Science`` 
 
+.. note::
+
+    The ``Faint Science`` option is for targets that do not have bright sources in the field. If you have bright sources in your science target, you can use the ``Science`` option instead. 
 
 .. note::
 
     You can add several science scans together by putting them all separated by commas in the scan list.
-
 
 4.5 Checking Time Streams
 ------------------------------------
 
 It is a good idea to check the time streams (checking how the sky temperature is changing over time) as well as the maps. To do so:
 
-- Make your map (see :ref:`4.3 Checking Calibrator/Beam Parameters`)
+- Make your map (see :ref:`4.3 Checking Calibrator/Beam Parameters` or :ref:`4.4 Checking Science Scans`)
 - Click ``show time stream`` button underneath the ``Fit Map`` button after making your map
     .. image:: images/18_show_time_stream_button.png
 
     .. admonition:: Example Time Streams
-
-        .. tab:: Faint Science Time Stream
-
-            .. image:: images/timestreams_science_good_AGBT23B_005_08_scan13.png
-
-            Faint science time streams (a cluster) in good weather. Notice how nice a flat the time streams are.
 
         .. tab:: Calibrator Time Stream
 
@@ -436,8 +432,48 @@ It is a good idea to check the time streams (checking how the sky temperature is
 
             This is an exemplar time stream for a calibrator source. Notice that you see the point-like source as a gaussian peak in most time streams.
 
+        .. tab:: Faint Science Time Stream
 
-4.6 Troubleshooting: m2gui hangs
+            .. image:: images/timestream_faint_sci_good_AGBT23B_005_08_scan13.png
+
+            Faint science time streams (a cluster) in good weather. Notice how nice a flat the time streams are.
+
+.. note::
+
+    There may be detectors that have glitches that are not flagged by the imaging making pipeline used by the GUI. In this case, you can identify the glitchy detector and flag it using `Set crmask` and remake the map.
+
+4.6 Use crmask to Mask Bad Detectors
+------------------------------------
+
+1. **Identify bad detector**. See in image below that detector 60 on roach 3 has a glitch that has not been flagged and thus is throwing off the autoscaling. Note that in this example, type=``Science`` is being used for making a science map which is not correct but is being using for demonstration here.
+
+.. image:: images/crmask01.png
+
+2. **Set crmask**. Click the ``Set crmask`` button and another window will pop up with 4 columns: ``r`` is the detector number and ``c`` stands for column which is the roach number. There is a button next to each detector that is selected or "pressed in" if it is being used and is unselected or "not pressed in" if it is being masked (see images below).
+
+.. admonition:: Setting crmask
+
+    .. tab:: Default crmask
+
+        .. image:: images/crmask02_default.png
+
+        In this example we find detector 60 on roach 3 or ``r 60 c 3`` and see it is not included in the crmask.
+
+    .. tab:: Add detector to crmask
+
+        .. image:: images/crmask03_changed.png
+
+        Click the box next to ``r 60 c 3`` to include it in the detectors that are masked.
+
+.. warning::
+
+    Once you add something to a crmask it will stay included in the mask (in crmask) for future maps.
+
+3. **Remake the map**. Then click ``Make Map`` again and ``Show Time Stream`` after the map has been made to see the effects of adding this detector to the crmask. You can see in the image below that the bad detector has been masked and now one can see the time stream structure better.
+
+.. image:: images/crmask04_set.png
+
+4.7 Troubleshooting: m2gui hangs
 --------------------------------
 
 If your m2gui is hanging (won't quit) do the following in a terminal:
@@ -513,13 +549,13 @@ Here are some examples of science time streams and skydips in good and bad weath
 
     .. tab:: Good Time Stream
 
-        .. image:: images/timestreams_science_good_AGBT23B_005_08_scan13.png
+        .. image:: images/timestream_faint_sci_good_AGBT23B_005_08_scan13.png
 
-        This is what a good, unaffected faint science time streams (a cluster) looks like in good weather - very flat.
+        This is what a good, unaffected faint science time streams (a cluster) looks like in good weather - flat.
 
     .. tab:: Bad Time Stream
 
-        .. image:: images/timestreams_science_bad_AGBT23B_005_08_scan14.png
+        .. image:: images/timestream_faint_sci_bad_AGBT18A_215_04_scan93.png
 
         This is what faint science time streams look like when they are heavily affected by weather - very wiggly.
 
