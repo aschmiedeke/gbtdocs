@@ -161,4 +161,5 @@ Useful References
     :hidden:
 
     mustang2/mustang2_publications
+    mustang2/mustang2_datasets
     mustang2/mustang2_dev

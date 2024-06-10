@@ -53,8 +53,14 @@ Detailed M2 instrument team instructions on tuning and biasing that can be used 
 
     .. note:: 
     
-        It’s important when typing out your session number that the session number has two digits. For example, if this is your 9th session, type out ``AGBTProjectID_09`` NOT ``AGBTProjectID_9``. If you do the latter option then you will not be able to take data correctly.
+        It’s important when typing out your session number that the session number has two digits. For example, if this is your 9th session, type out ``AGBTProjectID_09`` **not** ``AGBTProjectID_9``. If you do the latter option then you will not be able to take data correctly.
 
+    .. note:: 
+        If there are to be two MUSTANG-2 projects observed in the coming night, you should include both projects/sessions separated by a comma: 
+
+        ``./startMUSTANG.bash FirstProjectCode_SessionNumber,SecondProjectCode_SessionNumber``
+    
+    See further documentation about ``./startMUSTANG.bash`` at https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Newest_Method_45_25_473_472022 under the "Advanced Usage of startMUSTANG.bash heading" (e.g., how to reconnect to the tuning during observing).
 
     If you make a mistake and get the session number wrong, after tuning is done it can be corrected by creating soft links in the same way as you do when changing projects. If you’ve accidentally mislabeled your Project ID and session number, ssh to egret using lmonctrl and type this command:
 
@@ -90,25 +96,23 @@ Detailed M2 instrument team instructions on tuning and biasing that can be used 
 
         #. Then it will set the manager into observing mode and check if data are flowing - if not it will attempt to fix this.
 
-..
-    .. note:: 
-        
-        April 2024 there have been issues with connecting to the roaches. If several or all of the roaches do not connect run the shutdown script and restart the tuning process as the user ``penarray`` instead. You will have to ask the operator to put penarray in the gateway. 
+    **Troubleshooting**
+        See https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Newest_Method_45_25_473_472022 -> Advanced Usage of startMUSTANG.bash -> Common Problems & solutions for a few issues that have come up.
 
-#. **Troubleshooting - Roach Not Awake**
-    If one of the roaches is not awake you may see an error in the tuning process like this:
+        Additionally if **roaches is not awake** you may see an error in the tuning process like this:
 
-      .. image:: images/roach_connection_error.png
+          .. image:: images/roach_connection_error.png
 
-    with the main error being "Roach is not connected."
+        with the main error being "Roach is not connected."
 
-    If one of the roaches will not wake up, first ssh to it:
+        If one of the roaches will not wake up, first ssh to it:
 
-    .. code-block:: bash
+        .. code-block:: bash
 
-        ssh root@mustangr1-#
+            ssh root@mustangr1-#
 
-    where \# is the roach number. It may take a while for the ssh to go through (several minutes). Once the ssh goes through, in the ipython session for that roach you can redo the tuning by doing the ``um1=startDAQ()`` command. Simply type in um1= and do the up arrow to find the command; you are looking for a command that looks like ``um1=startDAQ(rootdir=rootdir, SaveDir=SaveDir, project=proj, doVNA=False, logLevel=”DEBUG”, tuneKwds=tuneKwds,…)``. If that does not work, you will have to do restart the tuning process using the same project code and session number.
+        where \# is the roach number. It may take a while for the ssh to go through (several minutes). Once the ssh goes through, in the ipython session for that roach you can redo the tuning by doing the ``um1=startDAQ()`` command. Simply type in um1= and do the up arrow to find the command; you are looking for a command that looks like ``um1=startDAQ(rootdir=rootdir, SaveDir=SaveDir, project=proj, doVNA=False, logLevel=”DEBUG”, tuneKwds=tuneKwds,…)``. If that does not work, you will have to do restart the tuning process using the same project code and session number.
+
 
 #. **Check the IQ, Flux Ramp, and Phase Response plots output** by the script.
     See https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/TuningResults for explanations and examples of good and bad tuning results.
