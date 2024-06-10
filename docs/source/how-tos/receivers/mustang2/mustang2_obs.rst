@@ -237,7 +237,7 @@ It's a good idea to check the time streams (see the :ref:`check time streams sec
 
 .. note:: 
 
-    If you try to look at the science data in the m2gui, make sure you choose the "faint science" option under ``source type``.
+    If you try to look at science data in the m2gui, make sure you choose the "faint science" option under ``source type``.
 
 
 .. admonition:: What is ``science_r2p5`` and ``science_r3``?
@@ -264,14 +264,15 @@ If the new ``Peak_Height`` is down by more than ~15%, or if ``WidthA`` and ``Wid
 
 3.11 Be aware - Issue with quadrant detector
 --------------------------------------------
-
-In early 2023 it was discovered that over the past year or two the quadrant detector sometimes isn't workint and doesn't write files to ``/home/gbtdata/project_code_sesion/QuadrantDetector`` as we expect. The GUI now will pop up a warning box (``WARNING QD Values are missing for scans: ...``) if it detects that the quadrant detector files are not being written.
+In early 2023 it was discovered that over the past year or two the quadrant detector sometimes isn't working and doesn't write files to ``/home/gbtdata/project_code_sesion/QuadrantDetector`` as we expect. The GUI now will pop up a warning box (``WARNING QD Values are missing for scans: ...``) if it detects that the quadrant detector files are not being written.
 
 .. image:: images/05_quadrantDetector_warning.png
 
 If this happens during observing, press ok and ask the operator to restart the quadrant detector manager.
 
+.. warning::
 
+    However if you get a warning about just ONE file, this is not a problem. Most likely the scan is not finished yet. There may be an issue with the quadrant detector only if you get a pop-up notification about SEVERAL scans.
 
 4. Checking data with the m2gui
 ===============================
@@ -329,7 +330,7 @@ After you have opened the m2gui follow these steps to check the tipping scan, mo
 
             .. image:: images/m2gui_05_tip_scan_bad_example.png
 
-    If the tipping scan doesn’t look right (a lot of wiggles), try running the ``skydip`` script in AstrID. This reruns the tipping scan without having to redo the whole OOF. If it still looks bad, check the weather conditions in CLEO. The weather might not be good enough to observe. You can also call one of the M2 instrument team and get their advice.
+    If the tipping scan doesn’t look right (a lot of wiggles), try running the ``skydip`` script in AstrID. This reruns the tipping scan without having to redo the whole OOF. If it still looks bad, check the weather conditions in CLEO. The weather might not be good enough to observe (consult :ref:`5. General Advice for Determining “Bad Weather“` for advice). You can also call one of the M2 instrument team and get their advice.
 
 
 #. **Check the number of live detectors**
@@ -403,40 +404,76 @@ After you have opened the m2gui follow these steps to check the tipping scan, mo
 4.4 Checking Science Scans
 --------------------------
 
-If you would like to make a map of of a science scan(s), you can do so by following the same steps as making a map of a calibrator with the following modification
+If you would like to make a map of a science scan(s), you can do so by following the same steps as making a map of a calibrator with the following modification
     - under ``Source Type`` select ``Faint Science`` 
 
+.. note::
+
+    The ``Faint Science`` option is for targets that do not have bright sources in the field. If you have bright sources in your science target, you can use the ``Science`` option instead. 
 
 .. note::
 
     You can add several science scans together by putting them all separated by commas in the scan list.
-
 
 4.5 Checking Time Streams
 ------------------------------------
 
 It is a good idea to check the time streams (checking how the sky temperature is changing over time) as well as the maps. To do so:
 
-- Make your map (see :ref:`4.3 Checking Calibrator/Beam Parameters`)
+- Make your map (see :ref:`4.3 Checking Calibrator/Beam Parameters` or :ref:`4.4 Checking Science Scans`)
 - Click ``show time stream`` button underneath the ``Fit Map`` button after making your map
     .. image:: images/18_show_time_stream_button.png
 
-    .. admonition:: Examples
+    .. admonition:: Example Time Streams
 
-        .. tab:: Good time stream
+        .. tab:: Calibrator Time Stream
 
-            .. image:: images/19_m2gui_time_stream_good_example.png
+            .. image:: images/timestream_calibrator_AGBT23B_005_08_scan9.png
 
-            Faint science time streams (a cluster) in good weather.
+            This is an exemplar time stream for a calibrator source. Notice that you see the point-like source as a gaussian peak in most time streams.
 
-        .. tab:: Bad time stream
+        .. tab:: Faint Science Time Stream
 
-            .. image:: images/20_m2gui_time_stream_bad_example.png
+            .. image:: images/timestream_faint_sci_good_AGBT23B_005_08_scan13.png
 
-            Calibrator time streams in bad weather. Note that these calibrator time streams still look similar to calibrator calibrator time streams in good weather due to the bright nature of the calibrator sources.
+            Faint science time streams (a cluster) in good weather. Notice how nice a flat the time streams are.
 
+.. note::
 
-4.6 Troubleshooting: m2gui hangs
+    There may be detectors that have glitches that are not flagged by the imaging making pipeline used by the GUI. In this case, you can identify the glitchy detector and flag it using `Set crmask` and remake the map.
+
+4.6 Use crmask to Mask Bad Detectors
+------------------------------------
+
+1. **Identify bad detector**. See in image below that detector 60 on roach 3 has a glitch that has not been flagged and thus is throwing off the autoscaling. Note that in this example, type=``Science`` is being used for making a science map which is not correct but is being using for demonstration here.
+
+.. image:: images/crmask01.png
+
+2. **Set crmask**. Click the ``Set crmask`` button and another window will pop up with 4 columns: ``r`` is the detector number and ``c`` stands for column which is the roach number. There is a button next to each detector that is selected or "pressed in" if it is being used and is unselected or "not pressed in" if it is being masked (see images below).
+
+.. admonition:: Setting crmask
+
+    .. tab:: Default crmask
+
+        .. image:: images/crmask02_default.png
+
+        In this example we find detector 60 on roach 3 or ``r 60 c 3`` and see it is not included in the crmask.
+
+    .. tab:: Add detector to crmask
+
+        .. image:: images/crmask03_changed.png
+
+        Click the box next to ``r 60 c 3`` to include it in the detectors that are masked.
+
+.. warning::
+
+    Once you add something to a crmask it will stay included in the mask (in crmask) for future maps.
+
+3. **Remake the map**. Then click ``Make Map`` again and ``Show Time Stream`` after the map has been made to see the effects of adding this detector to the crmask. You can see in the image below that the bad detector has been masked and now one can see the time stream structure better.
+
+.. image:: images/crmask04_set.png
+
+4.7 Troubleshooting: m2gui hangs
 --------------------------------
 
 If your m2gui is hanging (won't quit) do the following in a terminal:
@@ -456,13 +493,14 @@ Find the PIDs of startm2gui and idl and kill both.
 ======================================================
 Once you have some indication of bad weather (bad skydip, bad time streams, or physical weather indication), you will want to make an educated guess as to what the trajectory of the weather/data is in order to determine whether or not to keep observing or give up the time. There are many tools that you can use to an assessment of this trajectory. Consider, do the following suggest that the remainder of your scans would be scientifically useful? (this can be used as a checklist of sorts)
     - Time streams
-        - Check the time streams of the science scans as laid out above in B3.4. Are they wiggly? How wiggly?
+        - Check the time streams of the science scans as laid out above in :ref:`4.5 Checking Time Streams`. Are they wiggly? How wiggly? See examples below in :ref:`5.1 Examples of effect of bad weather`.
         - How many “bad” science scans have there been in a row?
 
     - Skydip(s)
-        - How does the first skydip of night look? How wiggly is it?
+        - How does the first skydip of night look? How wiggly is it? See examples below :ref:`5.1 Examples of effect of bad weather`.
         - If you are seeing indications of bad weather and you decide to OOF again one could add a skydip in to test the weather (calSeq=True).
         - One could even do a one off skydip.
+
     - Beam
         - Has the beam been deteriorating?
 
@@ -502,15 +540,56 @@ When making a judgment call as to whether to give up the time due to bad weather
 
 Again, when in doubt you can always call an M2 team member to help you make the call of whether or not to give up the time.
 
+
+5.1 Examples of effect of bad weather
+-------------------------------------
+Here are some examples of science time streams and skydips in good and bad weather.
+
+.. admonition:: Faint Science
+
+    .. tab:: Good Time Stream
+
+        .. image:: images/timestream_faint_sci_good_AGBT23B_005_08_scan13.png
+
+        This is what a good, unaffected faint science time streams (a cluster) looks like in good weather - flat.
+
+    .. tab:: Bad Time Stream
+
+        .. image:: images/timestream_faint_sci_bad_AGBT18A_215_04_scan93.png
+
+        This is what faint science time streams look like when they are heavily affected by weather - very wiggly.
+
+
+.. admonition:: Skydip
+
+    .. tab:: Good Skydip
+
+        .. image:: images/skydip_good_AGBT23B_005_08.png
+
+        This is what a good skydip looks like in good weather - not wiggly.
+        
+    .. tab:: Bad Skydip
+
+        .. image:: images/skydip_bad_AGBT23B_005_06_scan13.png
+
+        This is what a skydip looks like when it is heavily affected by weather - very wiggly.
+
+.. note::
+        
+    It is difficult to see the affect of weather in calibrator time streams as the signal from the point source is quite bright.
+
 6. Changing M2 Projects/Second M2 Project of the Night
 ======================================================
 
-If you are observing for an M2 project that is not the first M2 project of the night then before observing you will need to create a link for the tuning so that OOF & data reduction can find the right tuning. 
+6.1 Check Tuning for Files
+--------------------------
+Tuning files need to be linked to an observing session. This is done one of two ways either:
+- the tuner includes the second project in the tuning process (put the second observing project/session as a second argument separated by a comma in the tuning process)
+- or if they did not, you will have to create a symlink. 
 
-6.1 Make symlink
------------------
+If you are observing for a second project in the night, it is best to communicate with the tuner to make sure they include the second project. But if you didn't, before you start observing check to see if the tuning directory for this second project exists `/home/gbtlogs/Rcvr_MBA1_5tuning/`. If it does not follow the instructions below to create a symlink for the tuning.
 
-Before you begin observing, login to egret and type:
+Before you begin observing, login to egret as lmonctrl (`ssh lmonctrl@egret.gbt.nrao.edu`) and type:
 
 .. code:: bash
 
@@ -540,8 +619,7 @@ When the observing time for the second project starts, you need run m2setup in A
 
 6.3 Skydip/OOF 
 --------------
-
-You can possibly skip OOFing at the beginning of this second project. You can ask the previous observer when they last did an OOF and what the progression of the beam was.
+You need a skydip at the beginning of this project, but you can possibly skip OOFing at the beginning of this second project. You can ask the previous observer when they last did an OOF and what the progression of the beam was.
 
 - If you need to re-OOF
     - make sure that ``calSeq=True`` to get a skydip
@@ -601,10 +679,15 @@ For the shutdown process you can either do this **(a) automatically** or **(b) m
 
 .. tab:: Automatic Shutdown
 
-    Run the following script in a terminal:
+    Execute ONE of the following in a terminal:
         .. code:: bash
         
             /users/penarray/Public/stopMUSTANG.bash 
+
+        OR
+
+        .. code:: bash
+        
             cd /users/penarray/Public  
             ./stopMUSTANG.bash
 

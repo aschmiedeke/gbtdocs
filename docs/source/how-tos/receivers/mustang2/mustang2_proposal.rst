@@ -47,4 +47,6 @@ As a general rule one can use the relationship between integration time (t) and 
 	* set up in a proportional relationship :math:`t_2`/:math:`t_1` :math:`\propto` (:math:`\sigma_1`/:math:`\sigma_2`) :math:`^2` where :math:`t_2` is the required integration time that you are solving for, :math:`t_1` is 1 hour, :math:`\sigma_1` is the sensitivity corresponding to the map size from the table on the mapping :ref:`webpage <MUSTANG-2 Mapping Information>`, and :math:`\sigma_2` is the desired sensitivity that you have calculated
 	* :math:`t_2` :math:`\propto` (:math:`\sigma_1`/:math:`\sigma_2`) :math:`^2` :math:`\times` :math:`t_1` and thus :math:`t_2` is your integration time
 
-
+Proposal Tools
+--------------
+`M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_ is a Python library for simulating MUSTANG-2 observations. A specific application of this library is that a proposer can simulate the effect of filtering on the S/N acquired.

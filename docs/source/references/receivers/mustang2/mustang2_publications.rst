@@ -4,8 +4,8 @@ MUSTANG-2 Publications
 
 Peer Reviewed Publications
 --------------------------
-* `Library <https://ui.adsabs.harvard.edu/user/libraries/1LT-cb7HRMatZGonZYZfVw>`_ of MUSTANG-2 peer reviewed publications.
-* `Library <https://ui.adsabs.harvard.edu/user/libraries/sa83k8AzRha8QbLRPTNfdg>`_ of MUSTANG peer reviewed publications.
+* `Library of MUSTANG2 peer reviewed publications <https://ui.adsabs.harvard.edu/user/libraries/1LT-cb7HRMatZGonZYZfVw>`_
+* `Library of MUSTANG peer reviewed publications <https://ui.adsabs.harvard.edu/user/libraries/sa83k8AzRha8QbLRPTNfdg>`_
 
 Press Releases
 --------------

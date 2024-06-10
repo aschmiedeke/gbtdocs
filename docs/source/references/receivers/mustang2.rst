@@ -131,6 +131,21 @@ Useful References
         :shadow: md
         :margin: 2 2 0 0 
 
+        :octicon:`file-media;3em;sd-text-primary` **Data Sets**
+
+        List of MUSTANG-2 published data sets/images.
+
+        .. button-link:: mustang2/mustang2_datasets.html
+            :color: primary
+            :outline:
+            :click-parent:
+
+            See Data
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
         :octicon:`hourglass;3em;sd-text-primary` **Development**
 
         Description MUSTANG-2's historical development.
@@ -146,4 +161,5 @@ Useful References
     :hidden:
 
     mustang2/mustang2_publications
+    mustang2/mustang2_datasets
     mustang2/mustang2_dev
