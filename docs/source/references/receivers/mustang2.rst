@@ -4,7 +4,7 @@
 MUSTANG-2
 #########
 
-Below are various technical aspects and references that an observer or a MUSTANG-2 team member may want to know about MUSTANG-2.
+Welcome to the hub of MUSTANG-2 documentation! On this page you will find links to instrument information, proposal instructions, how-to guides, various technical aspects, and references.
 
 ----------------
 
@@ -47,8 +47,13 @@ Below are various technical aspects and references that an observer or a MUSTANG
     mustang2/mustang2_overview
     mustang2/mustang2_instrument_team
 
+Proposal Information
+--------------------
+Go :ref:`here <mustang2_proposal>` for requirements and information on submitting a proposal to use MUSTANG-2.
 
-
+How-to Guides
+-------------
+Go :ref:`here <mustang2-howtos>` for guides on how set-up and observe with MUSTANG-2 and information on MUSTANG-2 data products/reduction.
 
 Technical Aspects
 -----------------

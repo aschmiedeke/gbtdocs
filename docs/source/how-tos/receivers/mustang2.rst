@@ -4,7 +4,7 @@
 MUSTANG-2 How-To Guides
 #####################################################
 
-Practical step-by-step guides to help you using MUSTANG-2. 
+Practical step-by-step guides to help you use MUSTANG-2. 
 
 ----------------
 
