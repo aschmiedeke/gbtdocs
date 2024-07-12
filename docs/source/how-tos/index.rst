@@ -98,6 +98,21 @@ These guides contain end-to-end instructions, i.e. how to set up specific observ
             Mueller matrix
 
 
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **Pulsars** 
+
+        How to observe Pulsars?
+
+        .. button-link:: observing_modes/pulsars.html
+            :color: primary
+            :tooltip: Practical steps to execute Pulsar observations.
+            :outline:
+            :click-parent:
+
+            Pulsar observations
 
 ..  .. button-link:: quick_guides/HI_single-pointing.html
 ..        :color: primary
@@ -111,7 +126,7 @@ These guides contain end-to-end instructions, i.e. how to set up specific observ
     :maxdepth: 3
 
     observing_modes/C-band_Mueller_matrix
-
+    observing_modes/pulsars
 
 ----------------
 

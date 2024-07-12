@@ -1,0 +1,6 @@
+format = spherical
+coordmode = J2000
+head = name         ra                      dec                     parfile
+J1713+0747          17:13:49.5335615        +07:47:37.482501        /home/gpu/tzpar/J1713+0747.par
+B1937+21            19:39:38.561224         +21:34:59.12570         /home/gpu/tzpar/B1937+21.par
+B1929+10            19:32:13.9497           +10:59:32.420           /home/gpu/tzpar/B1929+10.par
