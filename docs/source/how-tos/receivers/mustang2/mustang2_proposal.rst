@@ -20,7 +20,7 @@ In order to get your proposal approved by the MUSTANG-2 team, contact one or all
 
 Technical Justification
 -----------------------
-The technical justification on a proposal should reference publicly available mapping speeds (e.g. from the MUSTANG-2 mapping :ref:`webpage <MUSTANG-2 Mapping Information>` and/or :download:`MUSTANG-2 mapping speeds memo </_static/mustang2_documents/MUSTANG_2_Mapping_Speeds_public.pdf>`). The GBT sensitivity calculator does not currently incorporate MUSTANG-2 mapping speeds.
+The technical justification on a proposal should reference publicly available mapping speeds (e.g. from the MUSTANG-2 mapping :ref:`webpage <MUSTANG-2 Mapping Information>` and/or MUSTANG-2 :download:`mapping speeds memo </_static/mustang2_documents/MUSTANG_2_Mapping_Speeds_public.pdf>`). The GBT sensitivity calculator does not currently incorporate MUSTANG-2 mapping speeds.
 
 If you are targeting a specific S/N for your proposal and you have an extended object, you must account for/explore the effect of filtering and include this in your technical justification. You can run simulations using `M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_, run your own simulations, or consult the instrument team.
 
@@ -48,7 +48,7 @@ Calculating sensitivities
 -------------------------
 MUSTANG-2 is NOT included in the GBT sensitivity calculator thus sensitivities are typically calculated using simulations or previous observations.
 
-For galaxy clusters, one can run simulations or use the tables in this :download:`memo </_static/mustang2_documents/Observing_Galaxy_Clusters_With_M2.pdf>` to compute the expected compton Y or peak and corresponding required sensitivity. Then reference the table on the :ref:`mapping webpage <MUSTANG-2 Mapping Information>` and use the following relation to compute required integration time. 
+For galaxy clusters, one can run simulations or use the tables in this :download:`Observing Galaxy Clusters with M2 memo </_static/mustang2_documents/Observing_Galaxy_Clusters_With_M2.pdf>` to compute the expected compton Y or peak and corresponding required sensitivity. Then reference the table on the :ref:`mapping webpage <MUSTANG-2 Mapping Information>` and use the following relation to compute required integration time. 
 
 As a general rule one can use the relationship between integration time (t) and sensitivity (:math:`\sigma`) where t :math:`\propto` 1/:math:`\sigma ^2` and the values in the table above to calculate the required integration time or desired sensitivity. For example, if one would like to calculate the required integration time corresponding to a desired sensitivity:
 	* From the radiometer equation :math:`t \propto` 1/:math:`\sigma ^2`
