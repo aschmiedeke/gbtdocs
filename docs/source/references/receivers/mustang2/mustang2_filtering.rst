@@ -4,7 +4,7 @@ MUSTANG-2 Filtering
 
 Like any other ground-based millimeter continuum observations, our default data processing attempts to remove the Earth’s atmosphere with either a common-mode subtraction or something quite similar to it (e.g. PCA).
 
-There is an early :download:`memo </_static/mustang2_documents/Observing_Galaxy_Clusters_With_M2.pdf>` on filtering which compared the results of observing simulated galaxy clusters using two different (Lissajous daisy) scan sizes and two different sets of filtering parameters. There is an executive summary :download:`here </_static/mustang2_documents/Observing_with_MUSTANG_2_Executive.pdf>`.
+There is an early :download:`memo </_static/mustang2_documents/Observing_Galaxy_Clusters_With_M2.pdf>` on filtering which compared the results of observing simulated galaxy clusters using two different (Lissajous daisy) scan sizes and two different sets of filtering parameters. There is an :download:`executive summary </_static/mustang2_documents/Observing_with_MUSTANG_2_Executive.pdf>` of that memo.
 
 The following figures show transfer functions for a broad range of (Lissajous) scan sizes (from 2.5′ to 5.0′) with a fairly gentle filtering (3 components subtracted from the timestreams via PCA and a windowed filter, keeping frequencies between 0.06 Hz and 41.0 Hz). 
 
@@ -29,3 +29,7 @@ A filtering with a highpass of 0.06 Hz is, unfortunately, a bit more gentler tha
 Transfer Functions for Download
 -------------------------------
 A repository of transfer functions (ascii files) is available `here <https://astrocloud.nrao.edu/s/RAwkBWecPBc7wK7>`_.
+
+Simulating the Effects of Filtering
+-----------------------------------
+`M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_ is a Python library for simulating MUSTANG-2 observations. A specific application of this library is that a proposer can simulate the effect of filtering on the S/N acquired.

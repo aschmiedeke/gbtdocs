@@ -50,4 +50,4 @@ Notes on the above table:
 
 Mapping Memo
 ------------
-Here is a :download:`MUSTANG-2 mapping speeds memo </_static/mustang2_documents/MUSTANG_2_Mapping_Speeds_public.pdf>`.
+Here is a MUSTANG-2 :download:`mapping speeds memo </_static/mustang2_documents/MUSTANG_2_Mapping_Speeds_public.pdf>`.
