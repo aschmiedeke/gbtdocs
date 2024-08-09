@@ -34,7 +34,8 @@ The following configuration string is common to all pulsar modes.
 
 
 
-Receiver-Specific Configuration Keywords
+Receiver-Specific Configuration Keywords    "use_repository_button": True,
+
 ----------------------------------------
 
 The following configuration keywords are receiver-specific. In this example, we will use the L-Band receiver.
@@ -120,6 +121,6 @@ Tips
   returning the following output: 
 
   .. literalinclude:: scripts/fluxcal_output.txt
-    :language: ascii
+    :language: text
     :linenos:
 

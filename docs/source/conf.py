@@ -45,6 +45,7 @@ extensions = ['sphinx.ext.todo',
               #'sphinx_idl.auto'
 ]
 
+suppress_warnings = ['autosectionlabel.*']
 
 autosummary_generate = False
 add_module_names = False
