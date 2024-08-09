@@ -34,7 +34,7 @@ extensions = ['sphinx.ext.todo',
               'sphinx.ext.coverage',
               'sphinx.ext.napoleon',
               'sphinx.ext.autosummary',
-              'sphinx.ext.mathjax', 
+              'sphinx.ext.mathjax',
               'sphinx.ext.intersphinx',
               'sphinx.ext.autosectionlabel',
               'sphinx_design',
@@ -45,11 +45,9 @@ extensions = ['sphinx.ext.todo',
               #'sphinx_idl.auto'
 ]
 
-#extensions = ['sphinx_idl.domain', 'sphinx_idl.auto']
-
 
 autosummary_generate = False
-add_module_names=False
+add_module_names = False
 toc_object_entries_show_parents = 'hide'
 
 todo_include_todos = True
@@ -64,6 +62,7 @@ intersphinx_mapping = {
 # suddenly resolve to an external location.
 # See also:
 # https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html#confval-intersphinx_disabled_reftypes
+
 intersphinx_disabled_reftypes = ["*"]
 
 
@@ -115,8 +114,8 @@ rst_prolog = """
 # a list of builtin themes.
 #
 # html_theme = 'alabaster'
-html_theme = 'furo'
-#html_themer = 'sphinx_book_theme'
+#html_theme = 'furo'
+html_theme = 'sphinx_book_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -127,23 +126,43 @@ html_css_files = [
     'css/custom.css',
 ]
 
-html_theme_options = {
-        "light_logo": "GBO-vertical-PGGradient.svg",
-        "dark_logo": "GBO-vertical-PGGradient.svg",
-        "sidebar_hide_name": True,
-        #"announcement": "The GBT is currently offline for maintenance and expected to return to full operations by the end of September.",
-        "dark_css_variables": {"color-announcement-background": "darkred"},
-        "light_css_variables": {"color-announcement-background": "darkred"},
-        "source_repository": "https://github.com/aschmiedeke/gbtdocs/",
-        "source_branch": "main",
-        "source_directory": "docs/source/",
-        #"use_edit_page_button": True,
-        #"use_source_button": True,
-        #"use_issues_button": True,
-        #"use_download_button": True,
-        #"use_sidenotes": True
+## for sphinx_book_theme
 
-    }
+html_theme_options = {
+    "logo": {
+        "image_light": "GBO-vertical-PGGradient.svg",
+        "image_dark": "GBO-vertical-PGGradient.svg"
+    },
+    "use_edit_page_button": True,
+}
+
+html_context = {
+    "github_user": "aschmiedeke",
+    "github_repo": "gbtdocs",
+    "github_version": "main",
+    "doc_path": "docs/source",
+}
+
+html_show_sourcelink = False
+
+
+## for furo theme
+#html_theme_options = {
+#        "light_logo": "GBO-vertical-PGGradient.svg",
+#        "dark_logo": "GBO-vertical-PGGradient.svg",
+#        "sidebar_hide_name": True,
+#        #"announcement": "The GBT is currently offline for maintenance and expected to return to full operations by the end of September.",
+#        "dark_css_variables": {"color-announcement-background": "darkred"},
+#        "light_css_variables": {"color-announcement-background": "darkred"},
+#        "source_repository": "https://github.com/aschmiedeke/gbtdocs/",
+#        "source_branch": "main",
+#        "source_directory": "docs/source/",
+#        #"use_edit_page_button": True,
+#        #"use_source_button": True,
+#        #"use_issues_button": True,
+#        #"use_download_button": True,
+#        #"use_sidenotes": True
+#    }
 
 
 
