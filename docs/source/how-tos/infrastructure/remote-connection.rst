@@ -184,7 +184,7 @@ VNC comes with most Linux distributions and is easily set up, the same applies t
 
 .. tab:: Mac OS
 
-        Mac users can use the built-in VNC viewer, `RealVNC <www.realvnc.com/en/connect/download/viewer/>`_ or `TigerVNC <https://tigervnc.org>`_. Note: Chicken of the VNC is no longer supported.
+        Mac users can use the built-in VNC viewer, `RealVNC <https://realvnc.com/en/connect/download/viewer/>`_ or `TigerVNC <https://tigervnc.org>`_. Note: Chicken of the VNC is no longer supported.
 
         Mac OS includes a SSH client. You can open a terminal by launching either Terminal or X11, both of which are in your Mac's Applications > Utilities folder.
 
