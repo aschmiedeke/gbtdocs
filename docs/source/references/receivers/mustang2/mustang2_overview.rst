@@ -2,7 +2,7 @@
 MUSTANG-2 Overview
 ##################
 
-MUSTANG-2 is a 223-feedhorn bolometer (continuum) camera with a bandpass from 75 to 105 GHz on the GBT. 
+MUSTANG-2 is a bolometer (continuum) camera with ~215 feedhorns and a bandpass from 75 to 105 GHz on the GBT. 
 
 MUSTANG-2 is inherently a mapping instrument and observes by scanning “on-the-fly” (OTF). Our most common scan pattern is that of a Lissajous Daisy that can observe objects from our resolution (9″) to several arcminutes in size (more details on :ref:`mapping <MUSTANG-2 Mapping Information>`). For scans of ~a degree, we have switched to a raster scan. If you would like to consider another mapping strategy, please contact a member of :ref:`the MUSTANG-2 instrument <MUSTANG-2 Instrument Team>` team to inquire about it. The instantaneous field of view (FOV) is just over 4 arcminutes (4.2′). For full bandpass details see :ref:`this page <MUSTANG-2 Bandpass Information>`.
 
