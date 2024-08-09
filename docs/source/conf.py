@@ -133,7 +133,9 @@ html_theme_options = {
         "image_light": "GBO-vertical-PGGradient.svg",
         "image_dark": "GBO-vertical-PGGradient.svg"
     },
-    "use_edit_page_button": True,
+    "use_edit_page_button": False,
+    "use_repository_button": True,
+    "use_issues_button": True,
 }
 
 html_context = {
