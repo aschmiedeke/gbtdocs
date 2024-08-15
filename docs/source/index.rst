@@ -94,7 +94,7 @@ The GBT User Documentation Hub is a prototype documentation system under active 
        
 -------------------
 
-The hub follows the diataxis approach, where documentation is categorized with the user's need in mind. As a GBT user, you will be able to find Tutorials, How-to Guides, Explanations and Reference material that support your learning and the working aspects of your day-to-day tasks with either practical step-by-step instructions or knowledge-providing material.
+The hub follows the `diataxis <https://diataxis.fr/>`_ approach, where documentation is categorized with the user's need in mind. As a GBT user, you will be able to find Tutorials, How-to Guides, Explanations and Reference material that support your learning and the working aspects of your day-to-day tasks with either practical step-by-step instructions or knowledge-providing material.
 
 
 .. toctree::
