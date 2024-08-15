@@ -663,7 +663,12 @@ Using the AWV (area, width, velocity) routine, we can determine the line's prope
 
 This example is from the HI survey dataset (http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml). 
 
-.. literalinclude:: material/HI_survey_idlscript.pro
+* You can download the example script shown below here: |HI_survey_process.pro|
+
+.. |HI_survey_process.pro| replace::
+    :download:`HI_survey_process.pro <material/HI_survey_process.pro>`
+
+.. literalinclude:: material/HI_survey_process.pro
     :language: idl
 
 
