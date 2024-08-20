@@ -145,9 +145,7 @@ Quick VNC Reference
             * Replace ``titania`` with the name of the machine you ssh-ed into in step 2. 
         
         After entering your password, this terminal window will just keep the tunnel open, and there is no need to interact with it anymore.  
-    #. You can e.g. use the MacOS native application "Screen Sharing" to view your session, with ``localhost:590n`` as the VNC session name. Alternative applications are `RealVNC <https://realvnc.com/en/connect/download/viewer/>`_ or `TigerVNC <https://tigervnc.org>`_.
-
-
+    #. You can e.g. use the MacOS native application "Screen Sharing" to view your session, with ``localhost:590n`` as the VNC session name. Alternative third-party applications are e.g. `RealVNC <https://realvnc.com/en/connect/download/viewer/>`_ or `TigerVNC <https://tigervnc.org>`_.
 .. tab:: Linux
 	
 	#. (Once) Login to GBO ``ssh [username]@ssh.gb.nrao.edu``
@@ -195,13 +193,13 @@ VNC comes with most Linux distributions and is easily set up, the same applies t
 
 .. tab:: Mac OS
 
-        Mac users can use the built-in VNC viewer (Screen sharing application), `RealVNC <https://realvnc.com/en/connect/download/viewer/>`_ or `TigerVNC <https://tigervnc.org>`_. Note: Chicken of the VNC is no longer supported. 
+        Mac users can use the built-in VNC viewer (Screen sharing application), `RealVNC <https://realvnc.com/en/connect/download/viewer/>`__ or `TigerVNC <https://tigervnc.org>`__. 
 
         Mac OS includes a SSH client. You can open a terminal by launching either Terminal or X11, both of which are in your Mac's Applications > Utilities folder.
 
 .. tab:: Windows
 
-        VNC for Windows is available from `TightVNC <www.tightvnc.com>`_ or `RealVNC <www.realvnc.com/en/connect/download/viewer/>`_. Several commercial versions of VNC are available, but the free edition is suitable for remote GBT observations. For purposes of remote GBT observations, only the VNC viewer has to be installed on your computer. The VNC server has already been installed on the GBT control room computers and other appropriate machines in Green Bank.
+        VNC for Windows is available from `TightVNC <www.tightvnc.com>`_ or `RealVNC <www.realvnc.com/en/connect/download/viewer/>`__. Several commercial versions of VNC are available, but the free edition is suitable for remote GBT observations. For purposes of remote GBT observations, only the VNC viewer has to be installed on your computer. The VNC server has already been installed on the GBT control room computers and other appropriate machines in Green Bank.
 
         You will also need an SSH client. An SSH client allows you to make a secure SSH connection from your work/home machine to the Linux machines in the GBT control room. That is, with SSH client software running on your computer, you can open a terminal window to the remote Linux computer. For Windows users, `PuTTY <www.chiark.greenend.org.uk/~sgtatham/putty/download.html>`_ is a freeware SSH client. Although other SSH client software exists (e.g. SSH Secure Shell, Secure CRT, Git Bash), our instructions assume you are using PuTTY.
 
