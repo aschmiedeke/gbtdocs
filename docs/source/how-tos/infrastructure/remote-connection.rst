@@ -129,7 +129,7 @@ Quick VNC Reference
 .. tab:: Mac OS X
 
     #. (Once) Login to GBO ``ssh [username]@ssh.gb.nrao.edu``
-    #. (Once) SSH to your machine of choice by ``ssh <machine>``. If you're actively observing, pick either titania or ariel, otherwise use one of our data reduction machines ``fourier``, ``planck``, ``newton``, ``euclid``, ``thales``, or ``arcturus``. 
+    #. (Once) SSH to your machine of choice by ``ssh <machine>``. If you're actively observing, pick either ``titania`` or ``ariel``, otherwise use one of our data reduction machines ``fourier``, ``planck``, ``newton``, ``euclid``, ``thales``, or ``arcturus``. 
     #. (Once) Start vnc session with ``vncserver -geometry [horiz_len]x[vert_len]``, with the lengths given in pixels, e.g. ``-geometry 1800x1000``. This command starts the persistent VNC session and will give you your session number.
     #. Every time you want to connect to the VNC session, open a new terminal on your computer and type
 
@@ -151,7 +151,7 @@ Quick VNC Reference
 .. tab:: Linux
 	
 	#. (Once) Login to GBO ``ssh [username]@ssh.gb.nrao.edu``
-	#. (Once) SSH to your machine of choice by ``ssh <machine>``. If you're actively observing, pick either titania or ariel, otherwise use one of our data reduction machines ``fourier``, ``planck``, ``newton``, ``euclid``, ``thales``, or ``arcturus``.
+	#. (Once) SSH to your machine of choice by ``ssh <machine>``. If you're actively observing, pick either ``titania`` or ``ariel``, otherwise use one of our data reduction machines ``fourier``, ``planck``, ``newton``, ``euclid``, ``thales``, or ``arcturus``.
 	#. (Once) Start vnc session with ``vncserver -geometry [horiz_len]x[vert_len]``, with the lengths given in pixels, e.g. ``-geometry 1800x1000``. This command starts the persistent VNC session and will give you your session number.
 	#. Every time you want to connect to the VNC session and view it, open a new terminal on your computer and type
 
@@ -172,7 +172,7 @@ Quick VNC Reference
 .. tab:: Windows
 
 	#. (Once) Start PuTTY, Host Name is *ssh.gb.nrao.edu*, choose 'Open' to open terminal window, log in to Linux account.
-	#. (Once) SSH to your machine of choice by ``ssh <machine>``. If you're actively observing, pick either titania or ariel, otherwise use one of our data reduction machines ``fourier``, ``planck``, ``newton``, ``euclid``, ``thales``, or ``arcturus``.
+	#. (Once) SSH to your machine of choice by ``ssh <machine>``. If you're actively observing, pick either ``titania`` or ``ariel``, otherwise use one of our data reduction machines ``fourier``, ``planck``, ``newton``, ``euclid``, ``thales``, or ``arcturus``.
 	#. (Once) ``vncserver -geometry [horiz_len]x[vert_len]``, with the lengths given in pixels, e.g. ``-geometry 1800x1000``. This command starts the persistent VNC session and will give you your session number "n".
 	#. Every time you want to connect to the VNC session, start PuTTY again with the following options:
 
