@@ -401,6 +401,9 @@ where **n** is the VNC session number. Disconnect from the host machine by typin
 Troubleshooting Information
 ---------------------------
 
+Local port already taken
+________________________
+
 There have been times when a local port is taken by another user or another VNC session. In these rare cases, the recommended port forwarding won't work. To determine if a port is used, the terminal command,
 
 .. code-block:: bash
@@ -409,6 +412,10 @@ There have been times when a local port is taken by another user or another VNC 
 
 This will list all used ports (there may be a delay of a few seconds before this list appears). In these cases, the tunnel has to be changed to :code:`590m:stargate.gb.nrao.edu:590n` where 590m is some unused port numbered somewhere above 5900. And wherever :code:`localhost:n` occurs in the above instructions, substitute with :code:`localhost:m`.
 
+
+Check if a vnc session is already running
+_________________________________________
+
 If you would like to check if you are already running a VNC session (really, there should only be one), use any terminal that is logged into an NRAO computer and type:
 
  
@@ -416,7 +423,10 @@ If you would like to check if you are already running a VNC session (really, the
 
     ls ~YOURLOGIN/.vnc | grep .pid
 
-On Mac OS X, if your n>9 (two digits), then the following command 
+``n`` has two digits
+____________________
+
+On Mac OS X, if your n is larger than 9, i.e. it has two digits, then the following command 
 
 
 .. code-block:: bash
@@ -430,6 +440,21 @@ becomes
     ssh -N -C -L 59nn:titania.gb.nrao.edu:59nn [username]@ssh.gb.nrao.edu
 
 A similar fix must be applied to the puTTY Tunnels tab as well, for Windows users.
+
+
+VNC screen remains black
+________________________
+
+You followed the quick instructions (:ref:`Quick VNC Reference above <Quick VNC Reference>`), you're asked for your VNC password, a new screen opens, but it is entirely black. If that's the case, check the content of the ``xstartup`` file in your .vnc folder. This folder is located in your home folder on the GBO network. 
+
+The file ideally contains these first lines:
+
+.. code-block:: bash
+
+    #!/bin/sh
+    dbus-launch xfce4-session
+
+If it doesn't, add these two lines at the top of the ``xstartup`` file, then after step 2 of the :ref:`Quick VNC Reference above <Quick VNC Reference>` kill your vnc server using ``vncserver -kill :n`` and then proceed with the remaining instructions as given in the :ref:`Quick VNC Reference above <Quick VNC Reference>`.
 
 
 
