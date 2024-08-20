@@ -57,12 +57,10 @@ While in a FastX session, there is a small drop-down menu in the top part of the
 .. image:: images/fastX_gb_session-controls.png
 
 From left to right: 
-
     1. **House** brings you back to the FastX dashboard.
     2. **Keyboard** allows you to set the keyboard.
     3. **People** controls the sharing of the session (more :ref:`here<Sharing a session>`).
-    4. **Folder** allows to open files to the clipboard. 
-    5. **Settings** allows you to change other settings such as the window size. Tinkering with these settings should not generally be required but on a very slow connection lowering refresh rates and picture quality may be helpful. 
+    4. **Settings** allows you to change other settings such as the window size. Tinkering with these settings should not generally be required but on a very slow connection lowering refresh rates and picture quality may be helpful. 
 
 
 Ending a FastX session
