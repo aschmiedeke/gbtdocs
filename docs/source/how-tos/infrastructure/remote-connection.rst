@@ -439,7 +439,7 @@ If you would like to check if you are already running a VNC session (really, the
 ``n`` has two digits
 ____________________
 
-On Mac OS X, if your n is larger than 9, i.e. it has two digits, then the following command 
+On Mac OS X, if your ``n`` is larger than 9, i.e. it has two digits, then the following command 
 
 
 .. code-block:: bash
