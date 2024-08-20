@@ -131,7 +131,7 @@ Quick VNC Reference
 .. tab:: Mac OS X
 
     #. (Once) Login to GBO ``ssh [username]@ssh.gb.nrao.edu``
-    #. (Once) ssh to either titania or ariel by e.g. ``ssh titania`` or ``ssh ariel``
+    #. (Once) ssh to either titania or ariel by e.g. ``ssh titania`` or ``ssh ariel`` if you're actively observing, otherwise use one of our data reduction machines ``fourier``, ``planck``, ``newton``, ``euclid``, ``thales``, or ``arcturus``. 
     #. (Once) Start vnc session with ``vncserver -geometry [horiz_len]x[vert_len]``, with the lengths given in pixels, e.g. ``-geometry 1800x1000``. This command starts the persistent VNC session and will give you your session number.
     #. Every time you want to connect to the VNC session, open a new terminal on your computer and type
 
@@ -139,13 +139,21 @@ Quick VNC Reference
 
             ssh -N -C -L 590n:titania.gb.nrao.edu:590n username@ssh.gb.nrao.edu	
             
-        where ``n`` is the number you were given in step 3. Please note, if ``n`` is a double-digit number replace the ``0`` in the ssh command. After entering your password, this terminal window will just keep the tunnel open, and there is no need to interact with it anymore.  
+        where ``n`` is the number you were given in step 3. 
+        
+        .. note::
+
+            * If ``n`` is a double-digit number replace the ``0`` in the ssh command.
+            * Replace ``titania`` with the name of the machine you ssh-ed into in step 2. 
+        
+        After entering your password, this terminal window will just keep the tunnel open, and there is no need to interact with it anymore.  
     #. You can e.g. use the MacOS native application "Screen Sharing" to view your session, with ``localhost:590n`` as the VNC session name. Alternative applications are `RealVNC <https://realvnc.com/en/connect/download/viewer/>`_ or `TigerVNC <https://tigervnc.org>`_.
+
 
 .. tab:: Linux
 	
 	#. (Once) Login to GBO ``ssh [username]@ssh.gb.nrao.edu``
-	#. (Once) ssh to either titania or ariel by e.g. ``ssh titania`` or ``ssh ariel``
+	#. (Once) ssh to either titania or ariel by e.g. ``ssh titania`` or ``ssh ariel`` if you're actively observing, otherwise use one of our data reduction machines ``fourier``, ``planck``, ``newton``, ``euclid``, ``thales``, or ``arcturus``.
 	#. (Once) Start vnc session with ``vncserver -geometry [horiz_len]x[vert_len]``, with the lengths given in pixels, e.g. ``-geometry 1800x1000``. This command starts the persistent VNC session and will give you your session number.
 	#. Every time you want to connect to the VNC session and view it, open a new terminal on your computer and type
 
@@ -153,21 +161,26 @@ Quick VNC Reference
     
         	    vncviewer -Shared -via [username]@ssh.gb.nrao.edu titania.gb.nrao.edu:n
     
-	    where `n` is the number you were given in step 3. Please note, if `n` is a double-digit number replace the `0` in the ssh command.  If your Linux version does not support the "-via" option, see the note in the detailed instructions.
+	    where `n` is the number you were given in step 3.
+
+        .. note::
+
+            * If `n` is a double-digit number replace the `0` in the ssh command.
+            * Replace ``titania`` with the name of the machine you ssh-ed into in step 2.
+            * If your Linux version does not support the "-via" option, see the note in the detailed instructions.
+
 
 
 .. tab:: Windows
 
-
-
 	#. (Once) Start PuTTY, Host Name is *ssh.gb.nrao.edu*, choose 'Open' to open terminal window, log in to Linux account.
-	#. (Once) ssh to either titiania or ariel by e.g. ``ssh titania`` or ``ssh ariel``
+	#. (Once) ssh to either titiania or ariel by e.g. ``ssh titania`` or ``ssh ariel`` if you're actively observing, otherwise use one of our data reduction machines ``fourier``, ``planck``, ``newton``, ``euclid``, ``thales``, or ``arcturus``.
 	#. (Once) ``vncserver -geometry [horiz_len]x[vert_len]``, with the lengths given in pixels, e.g. ``-geometry 1800x1000``. This command starts the persistent VNC session and will give you your session number "n".
 	#. Every time you want to connect to the VNC session, start PuTTY again with the following options:
 
 		* Host Name:*ssh.gb.nrao.edu*
 		* Connection > Data - Set Auto-login username to linux account user name
-		* Connection > SSH > Tunnels - Source port is ``590n``, destination is ``titania.gb.nrao.edu:590n``.
+		* Connection > SSH > Tunnels - Source port is ``590n``, destination is ``titania.gb.nrao.edu:590n``. Replace ``titania`` with the name of the machine you ssh-ed into in step 2.
 
 	#. Choose 'Add', then 'Open' to open the second terminal window, then enter your GBO Linux account password
 	#. Use your vnc viewer on your computer to view your session, with "localhost:n" as the VNC session name.
@@ -211,7 +224,7 @@ The example below uses the computer ``titania.gb.nrao.edu`` for the VNC server. 
 Log into the host machine
 ____________________________
 
-Log into your host machine of choice through the GBO gateway machine. The steps for Linux and Mac OS  are different from those for Windows users:
+Log into your host machine of choice through the GBO gateway machine. Please use ``titania`` and ``ariel`` for active observing only. For observing script preparation, data processing etc, please use one of our data reduction machines: ``fourier``, ``planck``, ``newton``, ``euclid``, ``thales``, or ``arcturus``. In all steps below replace ``titania`` with the machine you want to work on. The steps for Linux and Mac OS  are different from those for Windows users:
 
 .. tab:: Mac OS and Linux
 
