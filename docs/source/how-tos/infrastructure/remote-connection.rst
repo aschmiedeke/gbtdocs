@@ -130,17 +130,17 @@ Quick VNC Reference
 
 .. tab:: Mac OS X
 
-	#. (Once) Login to GBO ``ssh [username]@ssh.gb.nrao.edu``
-	#. (Once) ssh to either titania or ariel by e.g. ``ssh titania`` or ``ssh ariel``
-	#. (Once) Start vnc session with ``vncserver -geometry [horiz_len]x[vert_len]``, with the lengths given in pixels, e.g. ``-geometry 1800x1000``. This command starts the persistent VNC session and will give you your session number.
-	#. Every time you want to connect to the VNC session, open a new terminal on your computer and type
+    #. (Once) Login to GBO ``ssh [username]@ssh.gb.nrao.edu``
+    #. (Once) ssh to either titania or ariel by e.g. ``ssh titania`` or ``ssh ariel``
+    #. (Once) Start vnc session with ``vncserver -geometry [horiz_len]x[vert_len]``, with the lengths given in pixels, e.g. ``-geometry 1800x1000``. This command starts the persistent VNC session and will give you your session number.
+    #. Every time you want to connect to the VNC session, open a new terminal on your computer and type
 
-	.. code-block:: bash
+        .. code-block:: bash
 
-        	ssh -N -C -L 590n:titania.gb.nrao.edu:590n username@ssh.gb.nrao.edu
-	
-	where `n` is the number you were given in step 3. After entering your password, this terminal window will just keep the tunnel open, and there is no need to interact with it anymore.
-	#. Use the Screen Sharing application to view your session, with "localhost:n" as the VNC session name.
+            ssh -N -C -L 590n:titania.gb.nrao.edu:590n username@ssh.gb.nrao.edu	
+            
+        where ``n`` is the number you were given in step 3. Please note, if ``n`` is a double-digit number replace the ``0`` in the ssh command. After entering your password, this terminal window will just keep the tunnel open, and there is no need to interact with it anymore.  
+    #. You can e.g. use the MacOS native application "Screen Sharing" to view your session, with ``localhost:590n`` as the VNC session name. Alternative applications are `RealVNC <https://realvnc.com/en/connect/download/viewer/>`_ or `TigerVNC <https://tigervnc.org>`_.
 
 .. tab:: Linux
 	
@@ -149,11 +149,11 @@ Quick VNC Reference
 	#. (Once) Start vnc session with ``vncserver -geometry [horiz_len]x[vert_len]``, with the lengths given in pixels, e.g. ``-geometry 1800x1000``. This command starts the persistent VNC session and will give you your session number.
 	#. Every time you want to connect to the VNC session and view it, open a new terminal on your computer and type
 
-	.. code-block:: bash
+	    .. code-block:: bash
     
-        	vncviewer -Shared -via [username]@ssh.gb.nrao.edu titania.gb.nrao.edu:n
+        	    vncviewer -Shared -via [username]@ssh.gb.nrao.edu titania.gb.nrao.edu:n
     
-	where `n` is the number you were given in step 3. If your Linux version does not support the "-via" option, see the note in the detailed instructions.
+	    where `n` is the number you were given in step 3. Please note, if `n` is a double-digit number replace the `0` in the ssh command.  If your Linux version does not support the "-via" option, see the note in the detailed instructions.
 
 
 .. tab:: Windows
@@ -184,7 +184,7 @@ VNC comes with most Linux distributions and is easily set up, the same applies t
 
 .. tab:: Mac OS
 
-        Mac users can use the built-in VNC viewer, `RealVNC <https://realvnc.com/en/connect/download/viewer/>`_ or `TigerVNC <https://tigervnc.org>`_. Note: Chicken of the VNC is no longer supported.
+        Mac users can use the built-in VNC viewer (Screen sharing application), `RealVNC <https://realvnc.com/en/connect/download/viewer/>`_ or `TigerVNC <https://tigervnc.org>`_. Note: Chicken of the VNC is no longer supported. 
 
         Mac OS includes a SSH client. You can open a terminal by launching either Terminal or X11, both of which are in your Mac's Applications > Utilities folder.
 
@@ -308,8 +308,7 @@ You will need to establish a SSH tunnel and start a VNC viewer in order to view 
         .. image:: images/RemoteInstructions_Screenshot3.png
 
 
-        Select File > New Connection, type in ``localhost:n``, and type in your VNC password. The VNC Viewer window to titania will now appear. In this window you can start astrid and cleo, open xterm, etc.
-
+        Select File > New Connection, type in ``localhost:590n``, and type in your VNC password. The VNC Viewer window to titania will now appear. In this window you can start astrid and cleo, open xterm, etc. Alternatively you can open Finder, type Cmd+K or click `Go` in the top bar and select `Connect to Server...` at the very bottom of the drop-down menu. Enter `vnc:localhost:590n` in the new window and click "Connect".
 
 .. tab:: Linux
 
