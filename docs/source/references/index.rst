@@ -9,6 +9,26 @@ Nitty-gritty technical descriptions of how the GBT works. Most useful when you n
 
 -----------
 
+Observing Modes
+===============
+
+.. grid:: 1 2 2 2
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **Pulsar Observation** 
+
+        References for Pulsar Observing
+
+        .. button-link:: observing_modes/pulsar_reference.html
+            :color: primary
+            :tooltip: Reference materials for pulsar observing
+            :outline:
+            :click-parent:
+
+            Pulsars
 
 Hardware
 ========
