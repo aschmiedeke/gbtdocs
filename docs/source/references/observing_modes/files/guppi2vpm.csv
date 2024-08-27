@@ -1,0 +1,11 @@
+GUPPI Tool or Procedure,VEGAS Tool or Procedure,Notes
+``guppi_adc_hist``,VEGAS Data Monitor,Data monitor updates continuously; No need to pause a scheduling block to check ADC levels.
+``guppi_status``,``vpmStatus``,Must be run from the appropriate VEGAS HPC (e.g. ``vegas-hpc11``).
+``guppi_gpu_status``,``vpmHPCStatus``,Can be run from any computer.
+``guppi_monitor``,``vpmMonitor``,Web interface is preferred; Must be run from the appropriate VEGAS HPC (e.g. ``vegas-hpc11``)
+``guppi_offsets``,``vpmTimingOffsets.py``,Used to find mode-dependent timing offsets.
+`<www.gb.nrao.edu/guppi>`_,`<www.gb.nrao.edu/vpm>`_,Firefox is recommended (Google Chrome does not always update properly)
+`<www.gb.nrao.edu/guppi/guppi_monitor>`_,`<www.gb.nrao.edu/vpm/vpm_monitor>`_,Firefox is recommended (Google Chrome does not always update properly)
+"``/data1/<userName>/<projectID>/<date>``
+``/data2/<userName>/<projectID>/<date>``",``/lustre/gbtdata/<projectID>/VEGAS/<bankID>``,Output directory for incoherent dedispersion modes.
+``/data/gpu/partial/<gpuNum>/``,``/lustre/gbtdata/<projectID>/VEGAS_CODD/<bankID>``,Output directory for coherent dedispersion modes.
