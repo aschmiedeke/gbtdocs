@@ -7,5 +7,5 @@ GUPPI Tool or Procedure,VEGAS Tool or Procedure,Notes
 `<www.gb.nrao.edu/guppi>`_,`<www.gb.nrao.edu/vpm>`_,Firefox is recommended (Google Chrome does not always update properly)
 `<www.gb.nrao.edu/guppi/guppi_monitor>`_,`<www.gb.nrao.edu/vpm/vpm_monitor>`_,Firefox is recommended (Google Chrome does not always update properly)
 "``/data1/<userName>/<projectID>/<date>``
-``/data2/<userName>/<projectID>/<date>``",``/lustre/gbtdata/<projectID>/VEGAS/<bankID>``,Output directory for incoherent dedispersion modes.
-``/data/gpu/partial/<gpuNum>/``,``/lustre/gbtdata/<projectID>/VEGAS_CODD/<bankID>``,Output directory for coherent dedispersion modes.
+``/data2/<userName>/<projectID>/<date>``",``*/<projectID>/VEGAS/<bankID>``,Output directory for incoherent dedispersion modes.
+``/data/gpu/partial/<gpuNum>/``,``*/<projectID>/VEGAS_CODD/<bankID>``,Output directory for coherent dedispersion modes.

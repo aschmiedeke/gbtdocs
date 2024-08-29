@@ -30,6 +30,13 @@ Observing Modes
 
             Pulsars
 
+.. toctree::
+    :maxdepth: 3
+    :hidden:
+
+    observing_modes/pulsar_reference
+
+
 Hardware
 ========
 

@@ -64,10 +64,9 @@ All configurations are subject to a maximum data rate of 400 MB/s per bank. The 
 
 where n\ :sub:`pol` \ is the number of polarization products (4 for full Stokes parameters, 1 for total intensity), n\ :sub:`chan` \ is the number of spectral channels, and t\ :sub:`int` \ is the integration time (i.e. sampling time).
 
-The following tables list all currently supported VPM modes and the vegas.scale values for each. Observers should still use the `VPM monitor webpage <https://www.gb.nrao.edu/vpm/vpm_monitor/>`_ or vpmMonitor tool to double check the value of vegas.scale for their particular observing setup.
+The following tables list all currently supported VPM modes and the vegas.scale values for each. Observers should still use the :ref:`VPM Observing Tools` to check the value of vegas.scale for their particular observing setup.
 
-.. todo:: 
-    Add reference to vpmMonitor tool lower down this page
+
 
 .. csv-table:: Coherent Modes
     :file: files/coherent_VPM_modes.csv
@@ -114,11 +113,11 @@ VPM is configured using the standard Astrid keyword/value configuration block, w
 * **obstype** will always be **"Pulsar"**.
 * **backend** will always be **"VEGAS"**. GUPPI has been decommissioned and is no longer installed.
 * **bandwidth** will be either **100**, **200**, **800**, or **1500**.
-* **dopplertrackfreq** is not always required, but it is safe to include. It should be equal to the center of your observing band. If you are using one spectral window (i.e., one value of the restfreq keyword) then the value of dopplertrackfreq will be equal to the value of restfreq. If you are using multiple spectral windows (i.e. multiple values for the restfreq keyword), then dopplertrackfreq should be equal to the center of the overall observing band.
+* **dopplertrackfreq** is not always required, but it is safe to include (See :ref:`Use of the **dopplertrackfreq** Keyword` for more details). It should be equal to the center of your observing band. If you are using one spectral window (i.e., one value of the restfreq keyword) then the value of dopplertrackfreq will be equal to the value of restfreq. If you are using multiple spectral windows (i.e. multiple values for the restfreq keyword), then dopplertrackfreq should be equal to the center of the overall observing band.
 * **ifbw** will always be **0**
 * **tint** is the integration time. Under the hood, it is controlled by the hardware accumulation length, so that **tint = acclen x nchan/BW**. acclen can take on values from 4 to 1024 in powers of two. If you select an integration time that does not use a power of two acclen, acclen will be rounded down to the nearest power of two (resulting in a shorter integration time). Most observers will want to keep their integration times fast enough to resolve fast MSPs, while keeping the data rate < 400 MB/s.
 * **swmode** will either be **"tp"** for calibration scans or **"tp_nocal"** for pulsar scans.
-* **swper** will always be 0.04.
+* **swper** will always be **0.04**.
 * **noisecal** will be **"lo"** for calibration scans (this uses the low-power noise diodes) and **"off"** for pulsar scans.
 
 The following keywords are VPM specific.
@@ -294,13 +293,13 @@ In incoherent dedispersion modes data are written to
 
 File names follow the forms:
 
-``vegas_<MJD>_<secUTC>_<sourceName>_<scanNumber>_<fileNumber>.fits``(fold- and search-modes)
+``vegas_<MJD>_<secUTC>_<sourceName>_<scanNumber>_<fileNumber>.fits`` (fold- and search-modes)
 
 ``vegas_<MJD>_<secUTC>_<sourceName>_cal_<scanNumber>_<fileNumber>.fits`` (cal-mode)
 
 where ``<MJD>`` is the modified Julian date of the observation, ``<secUTC>`` is the number of seconds after midnight UTC at the start of the scan, ``<sourceName>`` is the source name as identified from the Antenna manager, ``<scanNumber>`` is the scan number within the current Astrid session, and ``<fileNumber>`` is the file number within the current scan (long scans are broken across multiple files to avoid any one file from being very large). ``<secUTC>`` is a zero-padded five-digit integer and and ``<fileNumber>`` are zero-padded four-digit integers. Example file names are
 
-``vegas_58150_05400_B1937+21_0001_ca_0001.fits``
+``vegas_58150_05400_B1937+21_0001_cal_0001.fits``
 
 ``vegas_58150_05490_B1937+21_0002_0001.fits``
 
@@ -383,7 +382,7 @@ Option 1:
 
 * ResetConfig()
 
-* That's it! Most projects will only have to do this once at the start of a session, however, if you are using multiple receivers and/or center observing frequencies with different values of the "dopplertrackfreq" keyword during a session, you should also run this ResetConfig () command before you submit a script with a different configuration.
+* That's it! Most projects will only have to do this once at the start of a session, however, if you are using multiple receivers and/or center observing frequencies with different values of the "dopplertrackfreq" keyword during a session, you should also run this ResetConfig() command before you submit a script with a different configuration.
 
 Option 2:
 
@@ -398,10 +397,10 @@ Transitioning From GUPPI to VPM
 
 Experienced pulsar observers will recognize that GUPPI and VPM observing are very similar, especially the parameters used in scheduling blocks. The following table summarizes the similarities and some differences between GUPPI and VPM.
 
-    **Astrid**: Most **"guppi."** parameters can be replaced with **"vegas."**. The exceptions are **guppi.datadisk**, which has no VPM equivalent.
-    **File names:** VPM output file names include a new element, the number of seconds after midnight UTC.
-    ``vegas_<MJD>_<secUTC>_<sourceName>_<scanNumber>_<fileNumber>.fits``
-    ``vegas_<MJD>_<secUTC>_<sourceName>_cal_<scanNumber>_<fileNumber>.fits``
+**Astrid**: Most **"guppi."** parameters can be replaced with **"vegas."**. The exceptions are **guppi.datadisk**, which has no VPM equivalent.
+**File names:** VPM output file names include a new element, the number of seconds after midnight UTC.
+``vegas_<MJD>_<secUTC>_<sourceName>_<scanNumber>_<fileNumber>.fits``
+``vegas_<MJD>_<secUTC>_<sourceName>_cal_<scanNumber>_<fileNumber>.fits``
 
 The table below can be used a cheat-sheet for navigating between some common GUPPI and VPM tasks. 
 
@@ -410,6 +409,10 @@ The table below can be used a cheat-sheet for navigating between some common GUP
     :header-rows: 1
     :class: longtable
     :widths: 1 1 1
+
+.. note::
+
+    The asterisk denotes a shortcut for ``/lustre/gbtdata``.
 
 
 
