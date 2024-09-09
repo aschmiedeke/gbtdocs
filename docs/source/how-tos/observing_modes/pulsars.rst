@@ -4,7 +4,7 @@
 Pulsar observing How-To Guides
 #####################################################
 
-Practical step-by-step guides to help you executing Pulsar observations.
+Practical step-by-step guides to help perform pulsar observations.
 
 
 .. grid:: 1 2 2 2
@@ -13,9 +13,9 @@ Practical step-by-step guides to help you executing Pulsar observations.
         :shadow: md
         :margin: 2 2 0 0 
 
-        **Time Observations** 
+        **Pulsar Timing Observations** 
 
-        Instructions and information on ...
+        Instructions for Timing Observations of known pulsars.
 
         .. button-link:: pulsars/pulsar_time_obs.html
             :color: primary
@@ -23,7 +23,7 @@ Practical step-by-step guides to help you executing Pulsar observations.
             :outline:
             :click-parent:
 
-            Time Observations
+            Timing Observations
 
     .. grid-item-card::
         :shadow: md
@@ -31,7 +31,7 @@ Practical step-by-step guides to help you executing Pulsar observations.
 
         **Flux calibration**
 
-        How to ... for pulsar observations.
+        How to make flux calibration observations for pulsar data reduction.
 
         .. button-link:: pulsars/pulsar_flux_cal.html
             :color: primary
@@ -47,22 +47,26 @@ Practical step-by-step guides to help you executing Pulsar observations.
 
         **Pulsar searching**
 
-        How to search for pulsars
+        How to search for pulsars.
 
-        (to be written)
 
-..        .. button-link:: pulsars/pulsar_search
+        .. button-link:: pulsars/pulsar_search.html
             :color: primary
-            :tooltip: How-to search for pulsars?
+            :tooltip: How to search for pulsars
             :outline:
             :click-parent:
 
-            Searching
+            Search Observations
 
 .. toctree::
     :hidden:
 
     pulsars/pulsar_time_obs
     pulsars/pulsar_flux_cal  
-..  pulsars/pulsar_search
+    pulsars/pulsar_search
+
+
+
+
+
 
