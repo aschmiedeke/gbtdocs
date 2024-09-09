@@ -225,7 +225,7 @@ for i, source in enumerate(catalog.keys()):
       Slew(source)
 
       # Configure for calibration observation
-      Configure(config_common + config_LBand +       vegas_config_cal)
+      Configure(config_common + config_LBand + vegas_config_cal)
 
       # Balance the IF system
       Balance()
@@ -235,7 +235,7 @@ for i, source in enumerate(catalog.keys()):
       Track(source, None, cal_scan_length)
 
       # Configure for pulsar observation
-      Configure(config_common + config_LBand +       vegas_config_fold%float(catalog[source]['dm']))
+      Configure(config_common + config_LBand + vegas_config_fold%float(catalog[source]['dm']))
 
       # Take pulsar data
       Track(source, None, pulsar_scan_length)

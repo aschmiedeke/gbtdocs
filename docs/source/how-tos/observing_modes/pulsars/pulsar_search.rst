@@ -128,9 +128,8 @@ Observing Multiple Sources
 
 This script will automatically observe multiple sources one after another. **Here, we include ONLY the parts of the script that differ from the one above.**
 
-.. literalinclude:: scripts/pulsar_search.py
+.. literalinclude:: scripts/pulsar_search_multiple_src.py
     :language: python
-    :lines: 150-194
 
 
 Advanced Use of Catalogs
@@ -141,16 +140,15 @@ Here we demonstrate an advanced use of catalogs in which we specify the DM for e
 
 First, we define an example catalog:
 
-.. literalinclude:: scripts/pulsar_search.py
-    :language: python
-    :lines: 199-204
+.. literalinclude:: scripts/pulsar_search_advCatalog.py
+    :lines: 1-6
 
 Now we define the observing script. The “dm” column from our catalog is read in for each source and substituted into the configuration string. The sources will be observed in the order they appear in the catalog.
 
 
-.. literalinclude:: scripts/pulsar_search.py
+.. literalinclude:: scripts/pulsar_search_advCatalog.py
     :language: python
-    :lines: 207-241
+    :lines: 10-44
 
 
 Multiple Bank Configuration
@@ -159,9 +157,8 @@ Multiple Bank Configuration
 For some receivers a wider bandwidth is available, these receivers allow for observations with a bandwidth greater than 1250 MHz. The following example outlines a C-Band configuration that covers the full bandwidth available from this receiver.
 
 
-.. literalinclude:: scripts/pulsar_search.py
+.. literalinclude:: scripts/pulsar_search_multiple_bank.py
     :language: python
-    :lines: 244-313
 
 
 
