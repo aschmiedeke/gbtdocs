@@ -141,6 +141,7 @@ Here we demonstrate an advanced use of catalogs in which we specify the DM for e
 First, we define an example catalog:
 
 .. literalinclude:: scripts/pulsar_search_advCatalog.py
+    :language: text
     :lines: 1-6
 
 Now we define the observing script. The “dm” column from our catalog is read in for each source and substituted into the configuration string. The sources will be observed in the order they appear in the catalog.
