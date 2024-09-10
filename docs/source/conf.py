@@ -40,6 +40,7 @@ extensions = ['sphinx.ext.todo',
               'sphinx_design',
               'sphinx_copybutton',
               'sphinx_inline_tabs',
+              'nbsphinx',
               'hoverxref.extension',
               #'sphinx_idl.domain', 
               #'sphinx_idl.auto'

@@ -11,6 +11,7 @@ idna==3.4
 imagesize==1.4.1
 importlib-metadata==6.0.0
 livereload==2.6.3
+nbsphinx==0.9.5
 numpydoc==1.5.0
 sphinx==7.2.2
 sphinx-autobuild==2021.3.14

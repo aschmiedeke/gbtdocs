@@ -74,6 +74,25 @@ Practical step-by-step guides to help you use MUSTANG-2.
 
             Data products
 
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0
+
+        :octicon:`graph;3em;green` **Sensitivity Calculation**
+
+        Information on cluster detection sensitivity calculations (testing)
+
+        .. button-link:: mustang2/mustang2_sensitivity.html
+            :color: primary
+            :tooltip: MUSTANG-2 sensitivity calculation example
+            :outline:
+            :click-parent:
+
+            Sensitivity Calculation
+
+
+
 .. toctree::
     :hidden:
 
@@ -81,4 +100,5 @@ Practical step-by-step guides to help you use MUSTANG-2.
     mustang2/mustang2_setup
     mustang2/mustang2_obs
     mustang2/mustang2_data
+    mustang2/mustang2_sensitivity
 
