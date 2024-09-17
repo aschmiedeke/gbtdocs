@@ -35,6 +35,7 @@ Before you start writing your scheduling block(s) it is helpful to prepare a sou
 Here is an example of a RA/Dec coordinate system catalog with velocity, showing the header lines of the catalog and then 5 sources. The full catalog is available at `/home/astro-util/HIsurvey/HI_survey.cat`.
 
 .. literalinclude:: material/HI_survey.cat
+    :language: text
     :lines: 1-4,68-72
   
 
