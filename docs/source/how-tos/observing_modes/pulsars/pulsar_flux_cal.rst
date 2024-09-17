@@ -29,7 +29,7 @@ The following configuration string is common to all pulsar modes.
 
 .. literalinclude:: scripts/pulsar_flux_cal.py
     :language: python
-    :lines: 16-27
+    :lines: 10-21
     :linenos:
 
 
@@ -42,7 +42,7 @@ The following configuration keywords are receiver-specific. In this example, we 
 
 .. literalinclude:: scripts/pulsar_flux_cal.py
     :language: python
-    :lines: 29-37
+    :lines: 23-31
     :linenos:
 
 
@@ -64,7 +64,7 @@ The following configuration string specifies keywords are common to both the pul
 
 .. literalinclude:: scripts/pulsar_flux_cal.py
     :language: python
-    :lines: 39-47
+    :lines: 33-41
     :linenos:
 
 
@@ -81,7 +81,7 @@ These keywords specify the setup for taking data that can be used for polarizati
 
 .. literalinclude:: scripts/pulsar_flux_cal.py
     :language: python
-    :lines: 49-53
+    :lines: 43-47
     :linenos:
 
 
