@@ -58,3 +58,9 @@ Scheduling Block Commands
    VaneCal()
    VaneCalTrack()
    Z17()
+
+.. other commands we may want to add:
+   ResetConfig()
+   Configure()
+   Catalog()
+
