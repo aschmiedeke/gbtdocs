@@ -24,6 +24,16 @@ Receiver-specific Tutorials
         Keys: *L-Band*, *psw*, *gbtidl* 
 
 
+    .. card:: NH\ :sub:`3` Mapping Observations using KFPA
+        :link: kfpa_nh3_mapping_tutorial
+        :link-type: ref
+
+        - Setup scheduling blocks.
+        - Calibrate the data.
+        - Grid the data.
+
+
+        Keys: *KFPA*
 
 
 
@@ -32,3 +42,4 @@ Receiver-specific Tutorials
    :hidden:
 
    hi_psw_tutorial
+   kfpa_nh3_mapping_tutorial
