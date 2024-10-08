@@ -138,7 +138,7 @@ Point and Focus Script
 
 Once this script is submitted, AstrID will reset all configuration parameters to their default values, configure for the provided configuration string and then search for an appropriate source near the target position. Once this is found, Astrid will perform four pointing scans, followed by a focus scan (assuming that there are no errors during this process). In the AstrID GUI the peak scans should resemble this
 
-.. image:: material/kfpa_tutorial/01_kfpa_tutorial_peak.png
+.. figure:: material/kfpa_tutorial/01_kfpa_tutorial_peak.png
 
 
 .. note::
@@ -148,10 +148,12 @@ Once this script is submitted, AstrID will reset all configuration parameters to
 
 The focus scan should look like this
 
-.. image:: material/kfpa_tutorial/02_kfpa_tutorial_focus.png
+.. figure:: material/kfpa_tutorial/02_kfpa_tutorial_focus.png
 
 
-Assuming that the pointing and focus observations complete satisfactorily, the derived corrections will be applied to the telescope and you may proceed. If there is a failure along the way, often the best course of action is to resubmit the script and try again. If there is a reason not to do this (e.g. there has been a more significant software or hardware failure) then the operator will advise you. If you are unable to complete the pointing/focus scans after two or three attempts then it is likely that there is a problem with your script, the GBT itself or another system. Some issues which have been encountered in the past include
+Assuming that the pointing and focus observations complete satisfactorily, the derived corrections will be applied to the telescope and you may proceed. If there is a failure along the way, often the best course of action is to resubmit the script and try again. If there is a reason not to do this (e.g. there has been a more significant software or hardware failure) then the operator will advise you. If you are unable to complete the pointing/focus scans after two or three attempts then it is likely that there is a problem with your script, the GBT itself or another system. 
+
+Some issues which have been encountered in the past include   
     * **Pointing source too weak:** Astrid will try to find a pointing source which is bright enough to provide a good pointing solution. However, in some cases, the source Astrid finds is simply not bright enough. If you suspect that this is the case, you can provide 'flux = 2.0' as an argument to the AutoPeakFocus() command to force Astrid to find a pointing source that is at least 2 Jy in flux. At K-Band, this should be more than adequate to complete a good set of pointing/focus scans.
     * **Trying to observe a source below the horizon:** While it should not be possible to be scheduled at a time when your source is not visible in the sky, it has occasionally happened and can produce warnings/errors that are not completely obvious that this is what has happened. Please check the LST you are observing at against your source coordinates and make sure that you expect to be able to see your source.
 
@@ -173,7 +175,7 @@ To start the GBTIDL software, go to a terminal window on a Green Bank Linux Mach
 
     gbtidl
 
-.. image:: material/kfpa_tutorial/03_kfpa_tutorial_gbtidl_welcome.png
+.. figure:: material/kfpa_tutorial/03_kfpa_tutorial_gbtidl_welcome.png
 
 
 
@@ -201,7 +203,7 @@ Once you have successfully connected to your dataset, you can look at some basic
 
 This will show you a collection of basic information about the scans you have taken.
 
-.. image:: material/kfpa_tutorial/04_kfpa_tutorial_gbtidl_session_summary.png
+.. figure:: material/kfpa_tutorial/04_kfpa_tutorial_gbtidl_session_summary.png
 
 
 .. note:: 
