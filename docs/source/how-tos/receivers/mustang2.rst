@@ -1,8 +1,8 @@
 .. _mustang2-howtos:
 
-#####################################################
+#######################
 MUSTANG-2 How-To Guides
-#####################################################
+#######################
 
 Practical step-by-step guides to help you use MUSTANG-2. 
 
@@ -25,6 +25,22 @@ Practical step-by-step guides to help you use MUSTANG-2.
             :click-parent:
 
             Proposal Information
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0
+
+        :octicon:`note;3em;green` **Create Observing Scripts**
+
+        How to create your MUSTANG-2 observing scripts.
+
+        .. button-link:: mustang2/mustang2_obs_scripts.html
+            :color: primary
+            :tooltip: How-to make M2 scripts?
+            :outline:
+            :click-parent:
+
+            Create Scripts
 
     .. grid-item-card::
         :shadow: md
@@ -78,6 +94,7 @@ Practical step-by-step guides to help you use MUSTANG-2.
     :hidden:
 
     mustang2/mustang2_proposal
+    mustang2/mustang2_obs_scripts
     mustang2/mustang2_setup
     mustang2/mustang2_obs
     mustang2/mustang2_data

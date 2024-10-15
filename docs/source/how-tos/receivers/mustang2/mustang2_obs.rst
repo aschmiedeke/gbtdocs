@@ -4,64 +4,14 @@
 How to observe with MUSTANG-2
 #############################
 
-
 1. Project Preparation
 ======================
 
-1.1 Calibrator and Source Preparation
--------------------------------------
+1.1 Prepare observing scripts
+-----------------------------
+Before you observe you need to have prepared your observing scripts and chosen your flux calibrators, your OOF sources, and pointing calibrators. For a guide on how to do all of these things see :ref:` this guide <How to Prepare MUSTANG-2 Observing Scripts>` for instructions on preparing your scripts.
 
-You are expected to have your pointing calibrators, flux calibrators, OOF sources, and science sources planned out **at least a few hours before** the time of your observation. You can use CLEO's Scheduler and Skyview to do this.
-
-- **Flux calibrators**:
-    - Find those that are closest to your source. You can use planets or any of the ALMA grid cals listed in the following catalog: ``/users/penarray/Public/Catalogs/alma_gridcal.cat``. You will need to observe at least one of these during your observing session to ensure flux calibration. Preferably 2-3, but if you are ok with a 10-20% error in your flux measurement 1 calibrator is ok.
-
-- **OOF sources**
-    - It is efficient to use the flux calibrators as your first OOF source of the night. For OOF sources, a general guide is that you want a bright source that is > 1 Jy and 25 < elevation < 60. Planets, if available, are often preferred as flux calibrators (especially Mars, Uranus, or Neptune), though potentially only Uranus is also a preferred OOF target. A more intricate way of thinking about an OOF source is to consider the elevation of your science target: if it will be "low" (average observing elevation is ~35 or less), or "high" (average observing elevation ~60 or higher) then one would prefer to OOF on a source with a similar elevation. If the science target is in between, then the OOF elevation will be less important.
-
-- **Pointing calibrators**
-    - You can find suitable calibrators using CLEO's Scheduler & Skyview
-        - Click ``Catalog...`` in the upper right-hand corner
-        - Click ``Add/Select/DeSelect Catalogs ...``
-        - Select ``mustang_pointing``
-        - Click ``Apply`` 
-        
-    - The goal is to find a calibrator that is 10-15 deg from your target and > 0.5 Jy (though if have good weather a better choice is something close that is 0.1 Jy). To find a source that is > 0.5 Jy fo the following in CLEO's Scheduler & SkyView:
-        - Go to the box in the right-hand corner that says ``Source Intensity Range`` and in the ``Min`` box put 0.5
-        - Hit enter
-        - Load your science source catalog
-        - Enter the time you will be observing in the ``UT Date and Time`` box
-        - Find a source that is showing and is 10-15 deg from your target.
-
-- **Science source catalog**
-    You will either need to make one or a M2 team member has already made one for you.
-
-
-1.2 Observing Scripts
----------------------
-
-You are expected to have your scripts ready **several hours before** the time of your observation. Ideally at the start of the observing semester.
-
-Template observing scripts are located in: ``/users/penarray/Public/m2_template_scripts/``
-
-Read the README for instructions on editing these scripts once you have them in your project directory.
-
-If you are creating the scripts for the first time for your project, you will want to copy 
-    #. Standard calibration scripts
-        - ``1_m2setup``
-        - ``2_m2oof``
-        - ``3_m2quickDaisyOOF``
-        - ``4_m2quickDaisyPC``
-
-    #. One of the science scripts labeled ``5_XXX``
-        .. note::
-
-            The radius of the daisy will depend on your science - reach out to the M2 instrument team for guidance.
-           
-The scripts m2quickDaisy and skydip are extra but can be of use.
-
-
-1.3 Observing Log
+1.2 Observing Log
 -------------------
 
 During observing, you are expected to edit the MUSTANG-2 observing run notes wiki and take notes of what's occurred throughout the night.
@@ -126,8 +76,25 @@ The following are suggested CLEO windows to have open during observing:
 - Launch → Observer Tools → **Scheduler & Skyview**
     - Click on ``Real-time mode``
     - Load in catalogs:
-        - mustang_pointing
         - your science target catalogs
+            - Click ``Catalog...`` in the upper right-hand corner
+            - Click ``Add/Select/DeSelect Catalogs ...``
+            - Select ``Add User Catalog``
+            - Select the path to your science catalog (consult your observing scripts). They may be in ``/users/penarray/Public/Catalogs/Science_catalogs/``
+            - Click ``Apply``
+        - ALMA grid calibrators (flux calibration and often OOF sources)
+            - Click ``Catalog...`` in the upper right-hand corner
+            - Click ``Add/Select/DeSelect Catalogs ...``
+            - Select ``Add User Catalog``
+            - Select the path ``/users/penarray/Public/Catalogs/alma_gridcal.cat``
+            - Click ``Apply``
+        - mustang_pointing
+            - Click ``Catalog...`` in the upper right-hand corner
+            - Click ``Add/Select/DeSelect Catalogs ...``
+            - Select ``mustang_pointing``
+            - Click ``Apply``
+            - It is suggested that you enter in a minimum of 0.5 Jy
+
 - Launch → Observer Tools → **Talk and Draw** 
 
 
