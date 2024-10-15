@@ -10,13 +10,19 @@ This sensitivity assumes an effective smoothing of 10.0" FWHM. If heavier smooth
 
 Historically, we have reported mapping speeds based on the RMS within a circle of radius 2 arcminutes. These values have now been extended to a range of scan sizes seen below.
 
-.. list-table:: Mapping speeds and corresponding sensitivities
+alskdjflkdsajf
+
+Mapping speeds and corresponding sensitivities
+----------------------------------------------
+Mapping speeds and corresponding sensitivities -> Historically, we have reported mapping speeds based on the RMS within a circle of radius 2'. These values have now been extended to a range of scan sizes. Listed below are the mapping speeds (which can be thought of the equivalent of a sensitivity) within the central 2' in various units.
+
+.. list-table:: 
 	:header-rows: 1
 	
 	* - Scan size (radius, arcminutes)
-	  - Mapping speed in central 2' (:math:`\mu` K hr :math:`^{1/2}`)
-	  - Sensitivity (:math:`\mu` Jy/beam)
-	  - Sensitivity (compton y)
+	  - Mapping speed in central 2' (:math:`\mu` K hr)
+	  - Sensitivity (:math:`\mu` Jy/beam hr)
+	  - Sensitivity (Compton-y hr)
 	* - 2.5
 	  - 73
 	  - 56.2
@@ -50,4 +56,4 @@ Notes on the above table:
 
 Mapping Memo
 ------------
-Here is a MUSTANG-2 :download:`mapping speeds memo </_static/mustang2_documents/MUSTANG_2_Mapping_Speeds_public.pdf>`.
+Here is a :download:`MUSTANG-2 mapping speeds memo </_static/mustang2_documents/MUSTANG_2_Mapping_Speeds_Public.pdf>`.

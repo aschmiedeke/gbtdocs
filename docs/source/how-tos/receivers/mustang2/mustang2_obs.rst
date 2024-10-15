@@ -14,12 +14,7 @@ How to observe with MUSTANG-2
 You are expected to have your pointing calibrators, flux calibrators, OOF sources, and science sources planned out **at least a few hours before** the time of your observation. You can use CLEO's Scheduler and Skyview to do this.
 
 - **Flux calibrators**:
-    - Find those that are closest to your source. You can use planets or any of the ALMA grid cals listed in the following catalog: 
-        .. code:: bash
-          
-            /users/penarray/Public/Catalogs/alma_gridcal.cat
-
-      You will need to observe at least one of these during your observing session to ensure flux calibration. Preferably 2-3, but if you are ok with a 10-20% error in your flux measurement 1 calibrator is ok.
+    - Find those that are closest to your source. You can use planets or any of the ALMA grid cals listed in the following catalog: ``/users/penarray/Public/Catalogs/alma_gridcal.cat``. You will need to observe at least one of these during your observing session to ensure flux calibration. Preferably 2-3, but if you are ok with a 10-20% error in your flux measurement 1 calibrator is ok.
 
 - **OOF sources**
     - It is efficient to use the flux calibrators as your first OOF source of the night. For OOF sources, a general guide is that you want a bright source that is > 1 Jy and 25 < elevation < 60. Planets, if available, are often preferred as flux calibrators (especially Mars, Uranus, or Neptune), though potentially only Uranus is also a preferred OOF target. A more intricate way of thinking about an OOF source is to consider the elevation of your science target: if it will be "low" (average observing elevation is ~35 or less), or "high" (average observing elevation ~60 or higher) then one would prefer to OOF on a source with a similar elevation. If the science target is in between, then the OOF elevation will be less important.
@@ -30,7 +25,7 @@ You are expected to have your pointing calibrators, flux calibrators, OOF source
         - Click ``Add/Select/DeSelect Catalogs ...``
         - Select ``mustang_pointing``
         - Click ``Apply`` 
-
+        
     - The goal is to find a calibrator that is 10-15 deg from your target and > 0.5 Jy (though if have good weather a better choice is something close that is 0.1 Jy). To find a source that is > 0.5 Jy fo the following in CLEO's Scheduler & SkyView:
         - Go to the box in the right-hand corner that says ``Source Intensity Range`` and in the ``Min`` box put 0.5
         - Hit enter
@@ -47,10 +42,7 @@ You are expected to have your pointing calibrators, flux calibrators, OOF source
 
 You are expected to have your scripts ready **several hours before** the time of your observation. Ideally at the start of the observing semester.
 
-Template observing scripts are located in: 
-.. code:: bash
-
-    /users/penarray/Public/m2_template_scripts/
+Template observing scripts are located in: ``/users/penarray/Public/m2_template_scripts/``
 
 Read the README for instructions on editing these scripts once you have them in your project directory.
 
