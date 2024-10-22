@@ -187,7 +187,7 @@ The VEGAS data monitor is used to check the input power levels for each bank and
 * From the VEGAS CLEO application, click on the **VEGAS Power Monitor** button (see Figure 1).
 * Type ``vegasdm`` from any command prompt.
 
-Figure 2 shows the data monitor. The top panel shows the input power level in chart recorder form for both polarization channels. *The target power level is -20 ± 1.5 dB*. The plot is auto-scaling, so if the power levels change (e.g., during balancing) the plot may change abruptly. Note that there are separate tabs at the top of the application for each bank, though only active banks will update. The ``All measpwr'' tab shows the chart recorder for each bank. The bottom two panels show a histogram of 8-bit values from each ADC, one for each polarization channel. *These should have zero mean and a FWHM of approximately 30 counts once the system is balanced.*
+Figure 2 shows the data monitor. The top panel shows the input power level in chart recorder form for both polarization channels. *The target power level is -20 ± 1.5 dB*. The plot is auto-scaling, so if the power levels change (e.g., during balancing) the plot may change abruptly. Note that there are separate tabs at the top of the application for each bank, though only active banks will update. The ``All measpwr`` tab shows the chart recorder for each bank. The bottom two panels show a histogram of 8-bit values from each ADC, one for each polarization channel. *These should have zero mean and a FWHM of approximately 30 counts once the system is balanced.*
 
 
 

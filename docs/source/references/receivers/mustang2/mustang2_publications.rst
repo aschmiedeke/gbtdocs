@@ -9,8 +9,9 @@ Peer Reviewed Publications
 
 Press Releases
 --------------
-* `Scientists Reveal Secrets to Burping Black Hole with the Green Bank Telescope <https://greenbankobservatory.org/front-page-news/burping-black-hole/>`_ (Dec 2022) - 
-* `New image captures galaxy cluster emerging from cosmic web <https://greenbankobservatory.org/news/galaxy-cluster/>`_ (June 2021)
+* `Scientists Reveal Secrets to Burping Black Hole with the Green Bank Telescope <https://greenbankobservatory.org/front-page-news/burping-black-hole/>`_ (Dec 2022)
 * More than Meets the Eye: `Complete Imaging of Cluster Collision <https://greenbankobservatory.org/news/imaging-of-cluster-collision/>`_ (Nov 2021)
-* `MUSTANG Penetrates the Central Molecular Zone <https://greenbankobservatory.org/science/mustang-penetrates-the-cmz/>`_ (March 2019)
+* `New image captures galaxy cluster emerging from cosmic web <https://greenbankobservatory.org/news/galaxy-cluster/>`_ (June 2021)
 * `The Green Bank Telescope Snaps New Hot Photos of the Moon <https://greenbankobservatory.org/press-release/gbt-snaps-hot-photos-of-the-moon/>`_ (Aug 2019)
+* `MUSTANG Penetrates the Central Molecular Zone <https://greenbankobservatory.org/science/mustang-penetrates-the-cmz/>`_ (March 2019)
+* `Orion Rocks Pebble size Particles May Kick Start Planet Formation <https://public.nrao.edu/news/dust-grains-orion/>`_ (August 2014)
