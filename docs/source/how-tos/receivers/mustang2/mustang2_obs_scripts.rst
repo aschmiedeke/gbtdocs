@@ -28,9 +28,7 @@ Read the README (``/users/penarray/Public/m2_template_scripts/README.txt``) for 
 
 2. Make your science target catalog
 ===================================
-The M2 instrument team is now requesting that all science target catalogs be put in ``/users/penarray/Public/Catalogs/Science_catalogs/Catalogs_YourObservingSemester/``. Please make your catalog either directly the appropriate folder in the penarray directory or make it in your home directory and copy it over. Once your catalog is in the penarray directory, you need to add the write permission for the ``observer`` group so that others on the M2 instrument team can edit the catalog if they need to. To do this you can either do this when you copy over your catalog with ``rsync -v /path/to/cats/* ~penarray/Public/Catalogs/Science_catalogs/yourCatalog.cat --chmod=g+w`` or just simply change the permissions ``chmod g+w yourCatalog.cat``.
-
-Once you have created your catalog you can update the filepath to the catalog in your science scripts (``5_XXX``) and load them into the Scheduler & Skyview.
+The M2 instrument team is now requesting that all science target catalogs be put in ``/users/penarray/Public/Catalogs/Science_catalogs/Catalogs_YourObservingSemester/``. If your semester does not yet exist please contact the M2 instrument team. You can either make your catalog either directly the appropriate folder in the penarray directory or make it in your home directory and copy it over. 
 
 Example catalogs can be found in any of the folders in ``/users/penarray/Public/Catalogs/Science_catalogs/``. But a basic catalog will look like the following:
 
@@ -44,17 +42,43 @@ Example catalogs can be found in any of the folders in ``/users/penarray/Public/
 
 For more information regarding catalogs, see the Catalogs section (section 5.3) of the `Observers guide <http://www.gb.nrao.edu/scienceDocs/GBTog.pdf>`_.
 
+2.1 Naming Conventions
+----------------------
+We request that you name your catalog in the following way: ``AGBTSemester_ProjectCode.cat``. For example for a catalog for project AGBT23B_005 the catalog would be ``/users/penarray/Public/Catalogs/Science_catalogs/Catalogs_23B/AGBT23B_005.cat``. Note that catalog files should have the ``.cat`` extension in order for CLEO to automatically pick them up.
+
+2.2 Catalog Permissions
+-----------------------
+At the end of the day, your catalog needs to have the following permissions: ``-rw-rw-r--``. By default it will have ``-rw-r--r--``. You need to add the write permission for the ``observer`` group so that others on the M2 instrument team can edit the catalog if they need to. To do this you can either do this when you copy over your catalog with 
+
+.. code:: bash
+
+	rsync -v /path/to/cats/* ~penarray/Public/Catalogs/Science_catalogs/yourCatalog.cat --chmod=g+w 
+
+or if you copied your catalog over to ``/users/penarray/Public/Catalogs/Science_catalogs/Catalogs_YourObservingSemester/`` just simply change the permissions of the catalog with
+
+.. code:: bash
+
+	chmod g+w yourCatalog.cat
+
+2.3 Update Path for Catalog in Scripts
+--------------------------------------
+Once you have created your catalog you can update the filepath to the catalog in your science scripts (``5_XXX``) and load them into the Scheduler & Skyview.
+
+
+
 3. Choose your calibrators
 ==========================
 You are expected to have your calibrator sources planned out **at least a few hours before** the time of your observation. You can use CLEO's Scheduler and Skyview to do this.
 
 3.1 Flux calibrators
 ====================
-Find those that are closest to your source. You can use planets or any of the ALMA grid cals listed in the following catalog: ``/users/penarray/Public/Catalogs/alma_gridcal.cat``. You will need to observe at least one of these during your observing session to ensure flux calibration. Preferably 2-3, but if you are ok with a 10-20% error in your flux measurement one calibrator is ok.
+Find those that are closest to your source. You can use any of the ALMA grid cals listed in the following catalog: ``/users/penarray/Public/Catalogs/alma_gridcal.cat``. Uranus and Neptune, especially Uranus, are also good flux calibrators. You will need to observe at least one of these during your observing session to ensure flux calibration. Preferably 2-3, but if you are ok with a 10-20% error in your flux measurement one calibrator is ok.
 
 3.2 OOF sources
 ===============
-It is efficient to use the flux calibrators as your first OOF source of the night. For OOF sources, a general guide is that you want a bright source that is > 1 Jy and 25 < elevation < 60. Planets, if available, are often preferred as flux calibrators (especially Mars, Uranus, or Neptune), though potentially only Uranus is also a preferred OOF target. A more intricate way of thinking about an OOF source is to consider the elevation of your science target: if it will be "low" (average observing elevation is ~35 or less), or "high" (average observing elevation ~60 or higher) then one would prefer to OOF on a source with a similar elevation. If the science target is in between, then the OOF elevation will be less important.
+It is efficient to use the flux calibrators as your first OOF source of the night. For OOF sources, a general guide is that you want a bright source that is > 1 Jy and 25 < elevation < 60. The main quality of a good OOF source is that you it to be a nice point source as seen by M2. Out of the planets Uranus and Neptune are the only planets that work well as an OOF source (especially Uranus). You want to avoid sources that have structure like Saturn or 3C273 (M87).
+
+A more intricate way of thinking about an OOF source is to consider the elevation of your science target: if it will be "low" (average observing elevation is ~35 or less), or "high" (average observing elevation ~60 or higher) then one would prefer to OOF on a source with a similar elevation. If the science target is in between, then the OOF elevation will be less important.
 
 Once you determine your OOF source, fill in the source name in the ``2_m2oof`` and ``3_m2quickDaisyOOF`` scripts.
 
