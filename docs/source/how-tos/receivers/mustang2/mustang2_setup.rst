@@ -168,32 +168,27 @@ Biasing
     Because we are only able to choose one setting for each roach, hence the attempt to simply maximize the effectiveness of all the channels, usually at the expense of certain channels in that roach.
 
 
-
-
 1. Run biasing
 --------------
 
 All previous steps (tuning) can take place in the 1-hour prep before your allotted observing time, i.e. before you are given control of the GBT. However, **biasing must be done on blank sky**, therefore **you must have control of the telescope** for this and all subsequent steps (else just seeing the subreflector/ground spill over). You must be on your own account, logged onto titania or ariel, and also have permission to be in the gateway from the operator.
 
-
-#. **Navigate to the proper directory to run biasing** 
+#. **Navigate to the proper directory where the biasing script lives** 
     .. code:: bash
 
-        cd /home/gbtlogs/Rcvr_MBA1_5tuning/detbias
-
-#. **Configure the appropriate bash profiles**
-    .. code:: bash
-
-        source /home/gbt/gbt.bash
-        source /home/gbt/sparrow/sparrow.bash 
+        cd /users/penarray/Public/
 
 #. **Run the bias script**
     .. code:: bash
    
-        python new_detbiasV3.py projectCode_sessionNumber
+        ./take_det_bias.bash projectCode_sessionNumber
 
     where ``projectCode_sessionNumber`` is e.g. ``AGBT18A_014_01``. 
     
+    .. note:: 
+
+        The bias curve plots and information is stored in ``/home/gbtlogs/Rcvr_MBA1_5tuning/detbias/``. However a symlink has been made in ``/users/penarray/Public``(``/users/penarray/Public/link2detbias``) for your convenience. 
+
 #. **Inspect the bias plots**
     They are typically referred to as det bias files, as det bias is a shortened way of referring to the determined bias. You will see the speed of data coming going quickly and ‘Det Bias’ (in Misc tab) changing. After waiting a while (5 min or more), you will get a set of graphs.
 
@@ -204,6 +199,11 @@ All previous steps (tuning) can take place in the 1-hour prep before your allott
     You will get 4 sets of graphs like this, one for each roach. This one is for roach D, or roach 4, as shown in the title. See https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/TuningResults for some examples of bad detbias plots.
 
     The solid black lines indicate the AI-decided detbias for each channel. It’s okay to see some of the lines reversed in direction (like in detectors 56 to 59 in this example) however something is wrong with that detector when it doesn’t have that general shape (such as in detector 20-23, or 60-63). Having a couple bad detectors isn’t unheard of, it’s more bothersome if a large percentage of detectors don’t look right.
+
+    .. note:: 
+
+        If you do a skydip and there aren't many detectors alive you should check the bias plots in ``/home/gbtlogs/Rcvr_MBA1_5tuning/detbias/`` to see if one or more roaches had an incorrect bias calculated (see https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/TuningResults#Incorrect_bias_curves).
+
 
 #. **Close plots**
     when you're done inspecting them
