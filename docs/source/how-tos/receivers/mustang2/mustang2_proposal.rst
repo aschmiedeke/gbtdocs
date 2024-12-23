@@ -22,7 +22,9 @@ Technical Justification
 -----------------------
 The technical justification on a proposal should reference publicly available mapping speeds (e.g. from the MUSTANG-2 mapping :ref:`webpage <MUSTANG-2 Mapping Information>` and/or the :download:`MUSTANG-2 mapping speeds memo </_static/mustang2_documents/MUSTANG_2_Mapping_Speeds_Public.pdf>`). The GBT sensitivity calculator does not currently incorporate MUSTANG-2 mapping speeds.
 
-If you are targeting a specific S/N for your proposal and you have an extended object, you must account for/explore the effect of filtering and include this in your technical justification. You can run simulations using `M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_, run your own simulations, or consult the instrument team.
+For instructions on calculating the time you will need to request using MUSTANG-2 to reach your science goals, see the :ref:`Guide <How to Calculate Observing Time Required for MUSTANG-2>` for calculating the required observing time.
+
+Note that if you are targeting a specific S/N for your proposal and you have an extended object, you must account for/explore the effect of filtering and include the results of your exploration in your technical justification. You can run simulations using `M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_, run your own simulations, or consult the instrument team.
 
 Overhead observing constraints
 -------------------------------
@@ -38,19 +40,15 @@ Proposal Tools
 --------------
 `M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_ is a Python library for simulating MUSTANG-2 observations. A specific application of this library is that a proposer can simulate the effect of filtering on the S/N acquired.
 
-Data and Observing
-------------------
-Though the entire MUSTANG-2 instrument team will be involved in the proposal process, conversely, the MUSTANG-2 team will reduce the data and provide appropriate data products (principally a calibrated map, transfer function, and beam characterization) to the proposal team (see :ref:`the list of possible data products<MUSTANG-2 Deliverables>`. End-to-end data reduction is currently fairly involved. We will work to provide documentation on data processing and hope to eventually allow proposers to process their own data. 
+Observing Responsibilities
+--------------------------
+The PI of a MUSTANG-2 proposal (if accepted) is responsible for the following things:
+	- creating the astrid observing scripts (i.e., “SBs”) at the beginning of the semester
+	- enabling their projects at the beginning of the semester only once their SBs have been written and an M2 team member has verified that the SBs are valid and ready to go
+	- observing when their project is scheduled and if they cannot observe, they are then responsible for finding someone to cover observing
+	- filling out their black out dates in the DSS
+The PI can request MUSTANG-2 instrument team observing support when scheduled but this is not guaranteed. Thus it is suggested that the PI become a GBT and MUSTANG-2 remote certified observer, and that the PI request others on the proposal co-author list become a GBT remote certified observer. The MUSTANG-2 team will however guarantee that a MUSTANG-2 member will get the instrument ready for observations. 
 
-MUSTANG-2 instrument team also asks that the PI and team get trained to observe with MUSTANG-2 and observe for their project whenever possible.
-
-Calculating sensitivities
--------------------------
-MUSTANG-2 is NOT included in the GBT sensitivity calculator thus sensitivities are typically calculated using simulations or previous observations.
-
-For galaxy clusters, one can run simulations or use the tables in this :download:`Observing Galaxy Clusters with M2 memo </_static/mustang2_documents/Observing_Galaxy_Clusters_With_M2.pdf>` to compute the expected compton Y or peak and corresponding required sensitivity. Then reference the table on the :ref:`mapping webpage <MUSTANG-2 Mapping Information>` and use the following relation to compute required integration time. 
-
-As a general rule one can use the relationship between integration time (t) and sensitivity (:math:`\sigma`) where t :math:`\propto` 1/:math:`\sigma ^2` and the values in the table above to calculate the required integration time or desired sensitivity. For example, if one would like to calculate the required integration time corresponding to a desired sensitivity:
-	* From the radiometer equation :math:`t \propto` 1/:math:`\sigma ^2`
-	* set up in a proportional relationship :math:`t_2`/:math:`t_1` :math:`\propto` (:math:`\sigma_1`/:math:`\sigma_2`) :math:`^2` where :math:`t_2` is the required integration time that you are solving for, :math:`t_1` is 1 hour, :math:`\sigma_1` is the sensitivity corresponding to the map size from the table on the mapping :ref:`webpage <MUSTANG-2 Mapping Information>`, and :math:`\sigma_2` is the desired sensitivity that you have calculated
-	* :math:`t_2` :math:`\propto` (:math:`\sigma_1`/:math:`\sigma_2`) :math:`^2` :math:`\times` :math:`t_1` and thus :math:`t_2` is your integration time
+Data
+----
+Though the entire MUSTANG-2 instrument team will be involved in the proposal process, conversely, the MUSTANG-2 team will reduce the data and provide appropriate data products (principally a calibrated map, transfer function, and beam characterization) to the proposal team (see :ref:`the list of possible data products<MUSTANG-2 Deliverables>`). End-to-end data reduction is currently fairly involved. We will work to provide documentation on data processing and hope to eventually allow proposers to process their own data. 
