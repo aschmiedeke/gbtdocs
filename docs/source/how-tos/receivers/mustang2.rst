@@ -111,6 +111,7 @@ Practical step-by-step guides to help you use MUSTANG-2.
     :hidden:
 
     mustang2/mustang2_proposal
+    mustang2/mustang2_calc_obs_time
     mustang2/mustang2_obs_scripts
     mustang2/mustang2_setup
     mustang2/mustang2_obs

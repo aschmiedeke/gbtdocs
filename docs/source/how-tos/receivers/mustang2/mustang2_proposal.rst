@@ -22,7 +22,9 @@ Technical Justification
 -----------------------
 The technical justification on a proposal should reference publicly available mapping speeds (e.g. from the MUSTANG-2 mapping :ref:`webpage <MUSTANG-2 Mapping Information>` and/or the :download:`MUSTANG-2 mapping speeds memo </_static/mustang2_documents/MUSTANG_2_Mapping_Speeds_Public.pdf>`). The GBT sensitivity calculator does not currently incorporate MUSTANG-2 mapping speeds.
 
-For instructions on calculating the time you will need to request using MUSTANG-2 to reach your science goals, see the :ref:`Guide <How to Calculate Observing Time Required for MUSTANG-2>` for calculating the required observing time.
+.. admonition:: Guides for Calculating MUSTANG-2 Integration Times
+
+    For instructions on calculating the time you will need to request using MUSTANG-2 to reach your science goals, see the resources provided in this :ref:`Guide <How to Calculate Observing Time Required for MUSTANG-2>`.
 
 Note that if you are targeting a specific S/N for your proposal and you have an extended object, you must account for/explore the effect of filtering and include the results of your exploration in your technical justification. You can run simulations using `M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_, run your own simulations, or consult the instrument team.
 

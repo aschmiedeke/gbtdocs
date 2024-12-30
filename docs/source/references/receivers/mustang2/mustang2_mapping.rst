@@ -12,7 +12,7 @@ Historically, we have reported mapping speeds based on the RMS within a circle o
 
 Mapping speeds and corresponding sensitivities
 ----------------------------------------------
-We define mapping speed (ms) as :math:`\sigma \times \sqrt{t}`. Historically, we have reported mapping speeds based on the RMS within a circle of radius 2’. These values have now been extended to a range of scan sizes. Listed below are the mapping speeds within the central 2’ in various units. Each mapping speed can be thought of as the corresponding sensitivity reached within one hour of observation so :math:`\mathrm{ms}=\sigma \times \sqrt{1}`.
+We define mapping speed (ms) as :math:`\sigma \times \sqrt{t}`. Historically, we have reported mapping speeds based on the RMS within a circle of radius 2’. These values have now been extended to a range of scan sizes. Listed below are the mapping speeds within the central 2’ in various units. Each mapping speed can be thought of as the corresponding sensitivity/RMS reached within one hour of observation which gives that :math:`\mathrm{ms}=\sigma \times \sqrt{1}` so the mapping speeds below can be thought of the sensitivity/RMS reached within one hour for a given daisy radius.
 
 .. list-table:: 
 	:header-rows: 1
@@ -51,6 +51,7 @@ Notes on the above table:
 	* The conversion from :math:`\mu \mathrm{K}` to :math:`\mu \mathrm{Jy/beam}` is roughly 0.77; i.e. multiply the :math:`\mu \mathrm{K}` noise by 0.77 to get a noise estimate in :math:`\mu \mathrm{Jy/beam}`.
 	* The conversion from :math:`\mu \mathrm{K}` to Compton-y is roughly 2.74E-7; i.e. multiple the :math:`\mu \mathrm{K}` noise by 2.74E-7 to get a noise estimate in Compton-y.
 	* Extended signal on scales up to 5' should be imaged with reasonable fidelity, but faint signal more extended than this may be difficult to detect. Bright emission (20 mJy/beam or more) can be reconstructed over scales of many arcminutes. The angular resolution of MUSTANG on the GBT is typcally 9" (FWHM) and the instantaneous field of view is a 4' diameter circle. Recovery of signal depends on data processing.
+
 
 Mapping Memo
 ------------
