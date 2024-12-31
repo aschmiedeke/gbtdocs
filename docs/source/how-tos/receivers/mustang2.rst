@@ -26,6 +26,23 @@ Practical step-by-step guides to help you use MUSTANG-2.
 
             Proposal Information
 
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        :octicon:`clock;3em;green` **Calculating Observing Time** 
+
+        Instructions and information for proposers on how to calculate the required observing time for a MUSTANG-2 project
+
+        .. button-link:: mustang2/mustang2_calc_obs_time.html
+            :color: primary
+            :tooltip: How-to calculate MUSTANG-2 observing time?
+            :outline:
+            :click-parent:
+
+            Calculate required observing time
+
     .. grid-item-card::
         :shadow: md
         :margin: 2 2 0 0
@@ -94,6 +111,7 @@ Practical step-by-step guides to help you use MUSTANG-2.
     :hidden:
 
     mustang2/mustang2_proposal
+    mustang2/mustang2_calc_obs_time
     mustang2/mustang2_obs_scripts
     mustang2/mustang2_setup
     mustang2/mustang2_obs
