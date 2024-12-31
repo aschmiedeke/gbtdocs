@@ -26,7 +26,15 @@ The technical justification on a proposal should reference publicly available ma
 
     For instructions on calculating the time you will need to request using MUSTANG-2 to reach your science goals, see the resources provided in this :ref:`Guide <How to Calculate Observing Time Required for MUSTANG-2>`.
 
-Note that if you are targeting a specific S/N for your proposal and you have an extended object, you must account for/explore the effect of filtering and include the results of your exploration in your technical justification. You can run simulations using `M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_, run your own simulations, or consult the instrument team.
+.. note:: 
+
+	If you are targeting a specific S/N for your proposal and you have an extended object, you must account for/explore the effect of filtering and include the results of your exploration in your technical justification. You can run simulations using `M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_, run your own simulations, or consult the instrument team.
+
+Requirements for MUSTANG-2 technical justification:
+	1. You must explain in detail how you arrived at the total observing time. If you used equations, please include those and the progression of how you used any equations in how you arrived at your final time request. 
+	2. You must consider the effect of filtering (this is used in MUSTANG-2 data reduction pipelines Minkasi or MIDAS) on your data. Please include discussion of these effects in your technical justification. If you run simulations using `M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_ then filtering is taken into account and you can simply say this.
+	3. You must account for overheads - see :ref:`Overhead observing constraints <Overhead observing constraints>` below.
+	4. You must have a MUSTANG-2 instrument team member read through the technical justification and sign off on it **before you submit your proposal** as this is the only technical review a MUSTANG-2 proposal will get. 
 
 Overhead observing constraints
 -------------------------------
@@ -49,6 +57,7 @@ The PI of a MUSTANG-2 proposal (if accepted) is responsible for the following th
 	- enabling their projects at the beginning of the semester only once their SBs have been written and an M2 team member has verified that the SBs are valid and ready to go
 	- observing when their project is scheduled and if they cannot observe, they are then responsible for finding someone to cover observing
 	- filling out their black out dates in the DSS
+	
 The PI can request MUSTANG-2 instrument team observing support when scheduled but this is not guaranteed. Thus it is suggested that the PI become a GBT and MUSTANG-2 remote certified observer, and that the PI request others on the proposal co-author list become a GBT remote certified observer. The MUSTANG-2 team will however guarantee that a MUSTANG-2 member will get the instrument ready for observations. 
 
 Data
