@@ -6,11 +6,14 @@ How to Calculate Observing Time Required for MUSTANG-2
 
 MUSTANG-2 is NOT included in the GBT sensitivity calculator thus sensitivities are typically calculated using simulations or previous observations. 
 
-Thus you will need to do one of the following to calculate the exposure time required for your observation: 
-	a) run simulations using `M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_, 
-	b) run your own simulations, 
-	c) you have previous data and/or target sensitivity that you can use in conjunction with the :ref:`radiometer equation <2. Using the Radiometer Equation>`, or 
-	d) some combination of the above or another option. 
+If your observations require recovery of extended signal, it is necessary to account for signal filtering (e.g. a transfer function). The technical justification must state some measure of filtered signal to be observed and a corresponding required sensitivity. 
+
+In order that those parameters may be validated, we suggest the following options, in order of preference:
+ a. run observing simulations using `M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_ (strongly preferred), 
+ b. use existing MUSTANG-2 data in conjunction with the :ref:`radiometer equation <2. Using the Radiometer Equation>`, or
+ c. reach out to the MUSTANG-2 team to find another option (e.g. running your own simulations).
+
+Note that previously MUSTANG-2 observations required stating an expected signal and required sensitivity. The observing time could be calculated from the :ref:`mapping speeds <MUSTANG-2 Mapping Information>` and required sensitivity. This approach should be considered deprecated for targets with extended signal, as M2_ProposalTools accounts for signal filtering and provides methods to create a map of the expected noise (as RMS). For singular point sources (< 1 mJy) this approach is still valid.
 
 Always feel free to contact the MUSTANG-2 instrument team with questions.
 
@@ -18,24 +21,26 @@ Below we list common scientific cases for MUSTANG-2 and how we recommend you cal
 
 1. Galaxy Clusters
 ==================
+Galaxy clusters are expected to be nearly self-similar and observations tend to support that they can be described by a universal pressure profile (UPP). Specifically, it's common practice to use an A10
+`A10 <https://ui.adsabs.harvard.edu/abs/2010A%26A...517A..92A/abstract>`_ , from Arnaud et al. (2010), pressure profile which is a function of solely mass and redshift. For many MUSTANG-2 observations of galaxy clusters, we find that it is sufficient to assume the parameters in A10 for the morphologically disturbed subset (see Table C.2 in Arnaud et al. (2010)).
 
 1.1 Running Simulations
 -----------------------
+All cases below require that you have installed `M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_ on your computer. Note that this tool adopts a default assumption of an Arnaud+ 2010 UPP profile for clusters (as a function of M,z) and has a keyword to assume the parameters for the pressure profile of the disturbed clusters used in A10.
 
 1.1.1 Cluster Core Detection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-In the case in which the proposer wants to detect the cluster of a given mass and redshift, they will have to install `M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_ and then they can use this :download:`Cluster Detection Notebook </_static/mustang2_documents/ipynb/sensitivity_calculations/M2_t_cluster_detection.ipynb>` which will a simulation that includes the effects of filtering. This notebook will run a simulation for a single cluster or a list of clusters and output the total time required to reach a given signal-to-noise ratio (including a factor of 2 for overheads).
+In the case in which the proposer wants to detect the cluster of a given mass and redshift, they can use this :download:`Cluster Detection Notebook </_static/mustang2_documents/ipynb/sensitivity_calculations/M2_t_cluster_detection.ipynb>` which will a simulation that includes the effects of filtering. This notebook will run a simulation for a single cluster or a list of clusters and output the total time required to reach a given signal-to-noise ratio (including a factor of 2 for overheads).
 
 1.1.2 Constraining pressure profiles out to X radius.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 For the case that a proposer would like to constrain a pressure profile of a cluster out to X radius (and very closely related, constraining the mass, especially if X is R_500), the general process will be to simulate the observations of a cluster given a certain integration time, mass, and redshift, then fit the pressure profile of the simulated data and determine if the product (pressure profile and/or mass) meets the scientific goals of the proposer.
 
 To do this calculation, the proposer will need to do the following steps:
-	1. Install `M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_
-	2. Determine the amount of assumed integration time (integration time not total telescope time which has overheads included) either by using the output from :ref:`1.1.1 <1.1.1 Cluster Core Detection>`, an estimation from previous observations, or a guess. 
-	3. Use a Jupyter Notebook to simulate the observation and produce FITS files that will be input for the next step. If you have an estimated integration time and cluster mass and redshift, you can use this :download:`Simulation Notebook </_static/mustang2_documents/ipynb/sensitivity_calculations/M2_SimObs_A10.ipynb>` to simulate your observations. If you have made your own input FITS file that contains the expected Compton-y map of your object, then use this :download:`User Input Simulation Notebook </_static/mustang2_documents/ipynb/sensitivity_calculations/M2_SimObs_A10_user_defined_fits.ipynb>` to simulate your observations.
-	4. Use the FITS file from step 3 as input into this :download:`Pressure Profile Simulation Notebook </_static/mustang2_documents/ipynb/sensitivity_calculations/M2_FitPressureProfile.ipynb>`, to simulate the product (pressure profile and/or estimated mass).
-	5. Iterate as needed. If the product does not meet the scientific goals of the proposer (for example say the error bars are too large), play around with the integration time in ``M2_SimObs_A10.ipynb`` until you achieve the desired resul. When you achieve a product that you are happy with, the total time contained in the ``times``  variable in the ``SimObs.ipynb`` will be your integration time request (don't forget to add a factor of two for overheads). 
+	1. Determine the amount of assumed integration time (integration time not total telescope time which has overheads included) either by using the output from :ref:`1.1.1 <1.1.1 Cluster Core Detection>`, an estimation from previous observations, or a guess. 
+	2. Use a Jupyter Notebook to simulate the observation and produce FITS files that will be input for the next step. If you have an estimated integration time and cluster mass and redshift, you can use this :download:`Simulation Notebook </_static/mustang2_documents/ipynb/sensitivity_calculations/M2_SimObs_A10.ipynb>` to simulate your observations. If you have made your own input FITS file that contains the expected Compton-y map of your object, then use this :download:`User Input Simulation Notebook </_static/mustang2_documents/ipynb/sensitivity_calculations/M2_SimObs_A10_user_defined_fits.ipynb>` to simulate your observations.
+	3. Use the FITS file from step 3 as input into this :download:`Pressure Profile Simulation Notebook </_static/mustang2_documents/ipynb/sensitivity_calculations/M2_FitPressureProfile.ipynb>`, to simulate the product (pressure profile and/or estimated mass).
+	4. Iterate as needed. If the product does not meet the scientific goals of the proposer (for example say the error bars are too large), play around with the integration time in ``M2_SimObs_A10.ipynb`` until you achieve the desired resul. When you achieve a product that you are happy with, the total time contained in the ``times``  variable in the ``SimObs.ipynb`` will be your integration time request (don't forget to add a factor of two for overheads). 
 
 Note, if the proposer is tyring to constrain the mass of a cluster, we suggest that the proposer try to think through what if the mass is the worst case scenario (e.g., mass - error bar). Can a paper still be written?
 
@@ -63,7 +68,9 @@ There are then various cases in which you have various values that you can use t
 
 2.1 You have an expected peak value
 -----------------------------------
-Let's say that you have an expected peak value of your source within the M2 beam of 9". Examples of this could be a point source that is smaller than the beam, the peak of a galaxy cluster SZ, or the emission expected within one M2 beam (all of these can be in any of the units listed on the :ref:`mapping webpage <MUSTANG-2 Mapping Information>`). Once you have your expected peak value, you then must decide on a desired SNR. Then you can use the following logic using the proportion of the radiometer equation from above. 
+Let's say that you have an expected peak value of your source within the M2 beam of 9". Examples of this could be a point source that is smaller than the beam, the peak of a galaxy cluster SZ, or the emission expected within one M2 beam (all of these can be in any of the units listed on the :ref:`mapping webpage <MUSTANG-2 Mapping Information>`). We note that your expected peak value **MUST** include some account of filtering which can be accounted for using `M2_ProposalTools`.
+_
+Once you have your expected peak value, you then must decide on a desired SNR. Then you can use the following logic using the proportion of the radiometer equation from above. 
 
 :math:`t_2 = (\sigma_1^2 \cdot t_1) / \sigma_2^2` where :math:`t_2` is the required integration time that you are solving for and :math:`\sigma_2` is your desired sensitivity.
 
@@ -73,11 +80,21 @@ The MUSTANG-2 team has defined mapping speed as :math:`ms = \sigma \cdot \sqrt{t
 
 Finally to calculate your :math:`t_2` is the required integration time that you are solving for, use the :ref:`mapping webpage <MUSTANG-2 Mapping Information>` to find the mapping speed that you plan to use :math:`(ms_1)` and plug in your desired sensitivity :math:`(\sigma_2)` where :math:`\sigma_2` = peak/SNR.
 
-2.2 You have an RMS from a previous observation
------------------------------------------------
-Let's say that you have a previous observation of the same source or a similar source. You will then have :math:`t_1` which is the number of hours the source was observed and the RMS achieved in that observation, :math:`\sigma_1`.
+2.2 You have existing MUSTANG-2 data
+------------------------------------
+Let's say that you have a previous observation of the same source or a similar source. You will have :math:`t_1` which is the number of hours the source was observed and the RMS achieved in that observation, :math:`\sigma_1`.
 
-You can then simply solve for :math:`t_2` using :math:`t_2 = (\sigma_1^2 \cdot t_1) / \sigma_2^2` where :math:`\sigma_2` is your desired sensitivity.
+2.2.1 Check mapping speed of existing data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+If you have existing MUSTANG-2 data, you will have been furnished with MIDAS maps of three kinds: data, noise realization, and an SNR map. Using the noise realization map (extension=0 of the fits file), you can smooth the image by a 9" FWHM Gaussian and calculate the RMS (:math:`\sigma_1`) within the central 2 arcminutes (radially). Here, it is sufficient to pick the center manually.
+
+In the fits header, a card `INTGTIME` reports the time used in the map, in seconds. Equate :math:`t_1` to this `INTGTIME`, converted to hours. The effective mapping speed is then your calculated RMS * :math:`\sqrt{t_1}`.
+
+Compare your effective mapping speed to the reported (average) `mapping speeds <https://gbtdocs.readthedocs.io/en/latest/references/receivers/mustang2/mustang2_mapping.html#mustang-2-mapping-information>`_ . If your mapping speed is faster (lower in value) than the reported average, you should not use this.
+
+2.2.2 Use equations
+^^^^^^^^^^^^^^^^^^^
+Now that you have :math:`t_1` and :math:`\sigma_1`, you can then simply solve for :math:`t_2` using :math:`t_2 = (\sigma_1^2 \cdot t_1) / \sigma_2^2` where :math:`\sigma_2` is your desired sensitivity.
 
 2.3 You require an SNR increase
 -------------------------------
