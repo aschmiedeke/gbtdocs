@@ -213,7 +213,7 @@ Data Reduction
 
         How-to calculate the opacity for your observations.
 
-        .. button-link:: data_reduction/gbtidl.html
+        .. button-link:: data_reduction/calculate_opacity.html
             :color: primary
             :tooltip: Shows practical steps on how to calculate the opacity for your observations.
             :outline:
