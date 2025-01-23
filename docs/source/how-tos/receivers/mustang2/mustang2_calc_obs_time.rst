@@ -19,14 +19,15 @@ Always feel free to contact the MUSTANG-2 instrument team with questions.
 
 Below we list common scientific cases for MUSTANG-2 and how we recommend you calculate the required exposure time for that scientific use case.
 
-1. Galaxy Clusters
-==================
-Galaxy clusters are expected to be nearly self-similar and observations tend to support that they can be described by a universal pressure profile (UPP). Specifically, it's common practice to use an A10
-`A10 <https://ui.adsabs.harvard.edu/abs/2010A%26A...517A..92A/abstract>`_ , from Arnaud et al. (2010), pressure profile which is a function of solely mass and redshift. For many MUSTANG-2 observations of galaxy clusters, we find that it is sufficient to assume the parameters in A10 for the morphologically disturbed subset (see Table C.2 in Arnaud et al. (2010)).
+1. Running Simulations using M2_ProposalTools
+=============================================
+All cases below require that you have installed `M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_ on your computer. 
 
-1.1 Running Simulations
------------------------
-All cases below require that you have installed `M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_ on your computer. Note that this tool adopts a default assumption of an Arnaud+ 2010 UPP profile for clusters (as a function of M,z) and has a keyword to assume the parameters for the pressure profile of the disturbed clusters used in A10.
+1.1 Galaxy Clusters
+-------------------
+We will use the common scientific case of galaxy clusters to demonstrate how to use ``M2_ProposalTools``. Galaxy clusters are expected to be nearly self-similar and observations tend to support that they can be described by a universal pressure profile (UPP). Specifically, it's common practice to use an A10 `A10 <https://ui.adsabs.harvard.edu/abs/2010A%26A...517A..92A/abstract>`_ , from Arnaud et al. (2010), pressure profile which is a function of solely mass and redshift. For many MUSTANG-2 observations of galaxy clusters, we find that it is sufficient to assume the parameters in A10 for the morphologically disturbed subset (see Table C.2 in Arnaud et al. (2010)).
+
+Note that ``M2_ProposalTools`` adopts a default assumption of an Arnaud+ 2010 UPP profile for clusters (as a function of M,z) and has a keyword to assume the parameters for the pressure profile of the disturbed clusters used in A10.
 
 1.1.1 Cluster Core Detection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -52,12 +53,6 @@ For the case in which a user wants to detect a shock in a cluster, we expect tha
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In the case that the proposer wants to detect a cluster bridge, the proposer should know that this is on the cutting edge of the science possible with MUSTANG-2 and is difficult to do, but is possible. In this case, we expect that the proposer will create a simulated compton-y image of the cluster(s) and bridge and convolve it with the M2 beam (10" gaussian). Then use this :download:`User Input Simulation Notebook </_static/mustang2_documents/ipynb/sensitivity_calculations/M2_SimObs_A10_user_defined_fits.ipynb>` to simulate your observations. Then iterate through and find an integration time that will produce the detection that the proposer desires. Additionally, the proposer could consider using the :download:`Pressure Profile Simulation Notebook </_static/mustang2_documents/ipynb/sensitivity_calculations/M2_FitPressureProfile.ipynb>`, to simulate the pressure profile and investigate this further.
 
-1.2 Calculate new time based on an estimate
--------------------------------------------
-If you have a :math:`t`, :math:`\sigma`, or SNR goal based on previous observations you can use variations of the :ref:`radiometer equation <2. Using the Radiometer Equation>` listed below.
-
-Besides using previous observations, one can use the tables in this :download:`Observing Galaxy Clusters with M2 memo </_static/mustang2_documents/Observing_Galaxy_Clusters_With_M2.pdf>` to estimate the expected compton Y or peak, or estimate the targeted peak or sensitivity given previous data (perhaps M2 data or ACT data). Then reference the table on the :ref:`mapping webpage <MUSTANG-2 Mapping Information>` to get the appropriate mapping speed and use radiometer equation below the following proportion to compute required integration time. 
-
 2. Using the Radiometer Equation
 ================================
 The radiometer equation provides a relationship between integration time (t) and sensitivity (:math:`\sigma`): t :math:`\propto` 1/:math:`\sigma ^2`. 
@@ -69,7 +64,7 @@ There are then various cases in which you have various values that you can use t
 2.1 You have an expected peak value
 -----------------------------------
 Let's say that you have an expected peak value of your source within the M2 beam of 9". Examples of this could be a point source that is smaller than the beam, the peak of a galaxy cluster SZ, or the emission expected within one M2 beam (all of these can be in any of the units listed on the :ref:`mapping webpage <MUSTANG-2 Mapping Information>`). We note that your expected peak value **MUST** include some account of filtering which can be accounted for using `M2_ProposalTools`.
-_
+
 Once you have your expected peak value, you then must decide on a desired SNR. Then you can use the following logic using the proportion of the radiometer equation from above. 
 
 :math:`t_2 = (\sigma_1^2 \cdot t_1) / \sigma_2^2` where :math:`t_2` is the required integration time that you are solving for and :math:`\sigma_2` is your desired sensitivity.
@@ -78,7 +73,11 @@ Rewrite this as :math:`t_2 = (\sigma_1 \cdot \sqrt{t_1})^2 / \sigma_2^2`
 
 The MUSTANG-2 team has defined mapping speed as :math:`ms = \sigma \cdot \sqrt{t}`, thus ms can be substituted above and get :math:`t_2 = (ms_1^2 / \sigma_2^2)` or :math:`t_2 = (ms_1 / \sigma_2)^2`
 
-Finally to calculate your :math:`t_2` is the required integration time that you are solving for, use the :ref:`mapping webpage <MUSTANG-2 Mapping Information>` to find the mapping speed that you plan to use :math:`(ms_1)` and plug in your desired sensitivity :math:`(\sigma_2)` where :math:`\sigma_2` = peak/SNR.
+Finally to calculate your :math:`t_2` is the required integration time that you are solving for, use the :ref:`mapping webpage <MUSTANG-2 Mapping Information>` to find the mapping speed that you plan to use :math:`(ms_1)` and plug in your desired sensitivity :math:`(\sigma_2)` where :math:`\sigma_2` = peak/SNR. 
+
+.. note:: 
+
+	For galaxy clusters specifically, you can use previous observations with the radiometer equation to calculate a new telescope time (see details below), however, one can also use the tables in this :download:`Observing Galaxy Clusters with M2 memo </_static/mustang2_documents/Observing_Galaxy_Clusters_With_M2.pdf>` to estimate the expected compton Y or peak, or estimate the targeted peak or sensitivity given previous data (perhaps M2 data or ACT data). Then one should reference the table on the :ref:`mapping webpage <MUSTANG-2 Mapping Information>` to get the appropriate mapping speed and use radiometer equation above to compute required integration time.
 
 2.2 You have existing MUSTANG-2 data
 ------------------------------------

@@ -184,18 +184,16 @@ These guides provide receiver specific information on how to achieve a specific 
 ----------------
 
 
-Software
-========
+Data Reduction
+==============
 
-
-
-.. grid:: 1 2 3 3
+.. grid:: 1 2 2 2
 
     .. grid-item-card::
         :shadow: md
         :margin: 2 2 0 0 
 
-        **GBTIDL** 
+        :octicon:`device-desktop;3em;green` **GBTIDL** 
 
         How-to process spectra using GBTIDL (examples)
 
@@ -207,10 +205,25 @@ Software
 
             GBTIDL
 
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
 
+        :octicon:`sun;3em;green` **Calcuate the Opacity** 
+
+        How-to calculate the opacity for your observations.
+
+        .. button-link:: data_reduction/gbtidl.html
+            :color: primary
+            :tooltip: Shows practical steps on how to calculate the opacity for your observations.
+            :outline:
+            :click-parent:
+
+            Calculate opacity
 .. toctree::
     :hidden:
     :maxdepth: 3
 
     data_reduction/gbtidl
+    data_reduction/calculate_opacity
 
