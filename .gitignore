@@ -4,6 +4,4 @@ docs/build
 docs/source/_assets/gbtdocs.pdf
 docs/*.sublime-workspace
 
-gbtidl/
-
 sparrow/__pycache__

@@ -33,7 +33,7 @@ Display a summary of its contents.
 
     summary
 
-.. image:: images/gbtidl_basic-onoff_00-summary.png
+.. image:: images/gbtidl/gbtidl_basic-onoff_00-summary.png
 
 We can see that this data set has two scans on the galaxy NGC 2415, with one slightly offset in position. The catalog used for this observation says the galaxy has a velocity of 3784 km/s, the rest frequency of the observed line in the first frequency window is 1420 MHz/1.420 GHz, there are 5 frequency windows, 151 integrations, 1 beam/feed, and lastly the azimuth/elevation values of the GBT at the time of the scan.
 
@@ -43,7 +43,7 @@ For a first look at the spectrum, we call the “getps” procedure, which calib
 
     getps, 152
 
-.. image:: images/gbtidl_basic-onoff_01-getps.png
+.. image:: images/gbtidl/gbtidl_basic-onoff_01-getps.png
 
 In order to see anything useful, we may have to smooth the data. This is usually done with the procedures “gsmooth” or “boxcar”, with the latter using a gaussian smoothing kernel and the latter using a flat kernel. The first input “N” is the size of the kernel in channels and the second option keeps only every N-th channel.
 
@@ -51,7 +51,7 @@ In order to see anything useful, we may have to smooth the data. This is usually
 
     gsmooth, 5, /decimate
 
-.. image:: images/gbtidl_basic-onoff_02-gsmooth.png
+.. image:: images/gbtidl/gbtidl_basic-onoff_02-gsmooth.png
 
 We can convert the data to the same velocity frame specified in the observing configuration with “setxunit”. By default this will apply a doppler correction. This can also be done by selecting “km/s” in the GUI - the fourth dropdown menu from the left.
 
@@ -65,7 +65,7 @@ We may learn that the TCAL value in the database is out of date, and the signals
 
     scale, 1.2
 
-.. image:: images/gbtidl_basic-onoff_03-scaled.png
+.. image:: images/gbtidl/gbtidl_basic-onoff_03-scaled.png
 
 Now we may want to save these results for posterity or further analysis. You can also use “write_csv” to make a csv file instead of an ascii-columned text file, or “write_ps” to output a “publication-quality” postscript image of the spectrum.
 
@@ -95,7 +95,7 @@ Note that the third and fourth spectral windows overlap significantly. We’re n
 
     setxy,1.64,1.66,-0.5,1
 
-.. image:: images/gbtidl_basic-onoff_04-loop.png
+.. image:: images/gbtidl/gbtidl_basic-onoff_04-loop.png
 
 And it doesn’t look like there is anything there.
 
@@ -123,7 +123,7 @@ In here, there is one frequency-switched scan (#64), and two nodding scans (#62 
 
     getfs,64,fdnum=0
 
-.. image:: images/gbtidl_basic-fsw_00-getfs.png
+.. image:: images/gbtidl/gbtidl_basic-fsw_00-getfs.png
 
 It looks like there is a small detection at around 23.698 GHz. We can smooth the spectrum to see a little more clearly.
 
@@ -151,7 +151,7 @@ Now we average the two spectra in the accumulation buffer together, which will a
 
     ave
 
-.. image:: images/gbtidl_basic-fsw_01-gsmooth.png
+.. image:: images/gbtidl/gbtidl_basic-fsw_01-gsmooth.png
 
 We can output this spectrum to an sdfits file with the “keep” procedure. We have to set a filename first.
 
@@ -195,7 +195,7 @@ Beam 3 was on source in scan 62 (the “signal” scan) and offset in scan 63 (t
     getsigref, 62, 63, fdnum=2
     gsmooth, 5, /decimate
 
-.. image:: images/gbtidl_basic-nod_00-gsmooth.png
+.. image:: images/gbtidl/gbtidl_basic-nod_00-gsmooth.png
 
 .. code:: idl
 
@@ -210,7 +210,7 @@ Beam 7 was also part of the nod, but was offset in the opposite way. So, scan 63
     accum
     ave
   
-.. image:: images/gbtidl_basic-nod_01-getsigref.png
+.. image:: images/gbtidl/gbtidl_basic-nod_01-getsigref.png
 
 The continuum is slightly offset from 0, so we can use the baseline feature to subtract that out. “setregion” sets the areas the fitting procedure uses, and this can be done either on the GUI with the left/right mouse buttons or by designating a series of start/stop points in channel number from the command line input. The regions in this case should be everything except for the rolloff at the edges of the band and around the signal itself.
 
@@ -218,7 +218,7 @@ The continuum is slightly offset from 0, so we can use the baseline feature to s
 
     setregion
 
-.. image:: images/gbtidl_basic-nod_02-setregion.png
+.. image:: images/gbtidl/gbtidl_basic-nod_02-setregion.png
 
 “baseline” by default uses a 0th order polynomial - a flat line - to fit. The continuum is already pretty flat, so this is all that’s needed.
 
@@ -232,7 +232,7 @@ Now the spectrum’s baseline should be centered about Ta = 0 Kelvin. Next, to c
 
     oshow,1
 
-.. image:: images/gbtidl_basic-nod_03-baseline.png
+.. image:: images/gbtidl/gbtidl_basic-nod_03-baseline.png
 
 
 Advanced On/Off
@@ -258,7 +258,7 @@ You can see there are two sets of position-switched L-band scans here. We will s
     getps,19
     zline
 
-.. image:: images/gbtidl_advanced-onoff_00-getps.png
+.. image:: images/gbtidl/gbtidl_advanced-onoff_00-getps.png
 
 “zline” will help with modelling the baseline later. We can see there is a huge GPS-L3 RFI signal flooding out the left side of the band. We can step through one integration at a time (there are 60 total plus one blanked integration) to see how bad/pervasive the GPS is.
 
@@ -282,7 +282,7 @@ From this, we can see there is only a portion in the latter half of the OFF scan
     getps,19, intnum=52
 
 
-.. image:: images/gbtidl_advanced-onoff_01-intnums.png
+.. image:: images/gbtidl/gbtidl_advanced-onoff_01-intnums.png
 
 So let’s accumulate all the clean integrations for both polarizations, and see if there’s any HI detection. Keep in mind the IDL for loops are inclusive on both ends.
 
@@ -295,7 +295,7 @@ So let’s accumulate all the clean integrations for both polarizations, and see
     for i=52,60 do begin & getps, 19, intnum=i, plnum=1 & accum & end
     ave
    
-.. image:: images/gbtidl_advanced-onoff_02-accum.png
+.. image:: images/gbtidl/gbtidl_advanced-onoff_02-accum.png
 
 Smooth is:
 
@@ -303,7 +303,7 @@ Smooth is:
 
     boxcar, 5, /decimate
 
-.. image:: images/gbtidl_advanced-onoff_03-boxcar.png
+.. image:: images/gbtidl/gbtidl_advanced-onoff_03-boxcar.png
 
 There may be a small detection at 1389.5 MHz. Let’s try to fit a baseline - we may have to fit either a 2nd or 3rd order polynomial. First, we will set a checkpoint here by copying the current spectrum to the second data container so we can go back to this step. Then, setregion to everything but the bandpass edges and the possible signal in the middle:
 
@@ -312,7 +312,7 @@ There may be a small detection at 1389.5 MHz. Let’s try to fit a baseline - we
     copy, 0, 1
     setregion
 
-.. image:: images/gbtidl_advanced-onoff_04-setregion.png
+.. image:: images/gbtidl/gbtidl_advanced-onoff_04-setregion.png
 
 We can trial baseline fits with the “bshape” procedure.
 
@@ -321,7 +321,7 @@ We can trial baseline fits with the “bshape” procedure.
     bshape, nfit=2
     bshape, nfit=3, color=!green
 
-.. image:: images/gbtidl_advanced-onoff_05-bshape.png
+.. image:: images/gbtidl/gbtidl_advanced-onoff_05-bshape.png
 
 The 3rd order fit (green) looks much better than the 2nd order fit (white). Next, the “bsubtract” procedure applies the last fit computed and subtracts it from the data - in this case, our 3rd order fit.
 
@@ -330,7 +330,7 @@ The 3rd order fit (green) looks much better than the 2nd order fit (white). Next
     bsubtract
     sety, -0.05, 0.08
    
-.. image:: images/gbtidl_advanced-onoff_06-bsubtract.png
+.. image:: images/gbtidl/gbtidl_advanced-onoff_06-bsubtract.png
 
 There may be a tiny detection, but the baseline fit is not the best, particularly noticeable in the 1384 - 1389 MHz range. We might go back and see if we can apply a more strict fit, setting the region to be closer in to our possible detection and avoiding more of the bandpass edge.
 
@@ -341,7 +341,7 @@ There may be a tiny detection, but the baseline fit is not the best, particularl
     bshape, nfit=3
     bshape, nfit=4, color=!green
  
-.. image:: images/gbtidl_advanced-onoff_07-setregion.png
+.. image:: images/gbtidl/gbtidl_advanced-onoff_07-setregion.png
 
 The fourth order fit looks to follow that hump at 1385 MHz a little better, so we might pick that despite the large divergence towards the edges of the band. 
 
@@ -350,7 +350,7 @@ The fourth order fit looks to follow that hump at 1385 MHz a little better, so w
     bsubtract
     setxy, 1382,1397,-0.05,0.08
    
-.. image:: images/gbtidl_advanced-onoff_08-bsubtract.png
+.. image:: images/gbtidl/gbtidl_advanced-onoff_08-bsubtract.png
 
 The possible signal looks slightly more significant, but maybe not quite enough to warrant a detection.
 
@@ -370,7 +370,7 @@ Now let’s turn our attention to scan 15. First, accumulate both polarizations 
     ave
     boxcar, 5, /decimate
 
-.. image:: images/gbtidl_advanced-onoff_09-spectralLine.png
+.. image:: images/gbtidl/gbtidl_advanced-onoff_09-spectralLine.png
 
 It does look like there is some GPS-L3 interference on the left side again, we can ignore that since it is far away. Let’s grab some info about the spectrum and switch to velocity units.
 
@@ -378,7 +378,7 @@ It does look like there is some GPS-L3 interference on the left side again, we c
 
     header
 
-.. image:: images/gbtidl_advanced-onoff_10-header.png
+.. image:: images/gbtidl/gbtidl_advanced-onoff_10-header.png
 
 The sky frequency, :math:`\nu_\text{sky}`, is 1395 MHz and the smoothed frequency resolution, :math:`d\nu`, is 28.61 kHz, which corresponds to a velocity resolution, :math:`dv`, of 6.15 km/s.
 
@@ -392,7 +392,7 @@ There seems to be a slight downward curve in the baseline, so I will fit a 2nd o
     setregion
     bshape, nfit=2
 
-.. image:: images/gbtidl_advanced-onoff_11-setregion.png
+.. image:: images/gbtidl/gbtidl_advanced-onoff_11-setregion.png
 
 .. code:: idl
 
@@ -408,13 +408,13 @@ Now we will fit two gaussians to this detection. Since this is a rotating HI gal
 
 The program will tell you what to do, but the process involves left clicking the boundaries of the signal, then giving it guesses to model with the middle mouse button. In the zoomed in image below, I left click at the white X marks on either side, then use the middle mouse button to click at the top of the signal, then the half-power point in the order shown:
    
-.. image:: images/gbtidl_advanced-onoff_12-fitgauss.png
+.. image:: images/gbtidl/gbtidl_advanced-onoff_12-fitgauss.png
 
 And finally, a right click tells GBTIDL to model the Gaussian:
 
-.. image:: images/gbtidl_advanced-onoff_13-fitgauss.png
+.. image:: images/gbtidl/gbtidl_advanced-onoff_13-fitgauss.png
    
-.. image:: images/gbtidl_advanced-onoff_14-fitgauss.png
+.. image:: images/gbtidl/gbtidl_advanced-onoff_14-fitgauss.png
 
 We’ll copy the original spectrum to data container 4, then subtract this gaussian out so we can model the other one.
 
@@ -425,7 +425,7 @@ We’ll copy the original spectrum to data container 4, then subtract this gauss
 
 So now the primary data container has the results of DC4 - DC2.
 
-.. image:: images/gbtidl_advanced-onoff_15-subtract.png
+.. image:: images/gbtidl/gbtidl_advanced-onoff_15-subtract.png
 
 Fit the other Gaussian:
 
@@ -433,8 +433,8 @@ Fit the other Gaussian:
 
     fitgauss, modelbuffer=3
 
-.. image:: images/gbtidl_advanced-onoff_16-fitgauss.png
-.. image:: images/gbtidl_advanced-onoff_17-fitgauss.png
+.. image:: images/gbtidl/gbtidl_advanced-onoff_16-fitgauss.png
+.. image:: images/gbtidl/gbtidl_advanced-onoff_17-fitgauss.png
  
 And then show the original spectrum with the two models overlaid:
 
@@ -444,5 +444,5 @@ And then show the original spectrum with the two models overlaid:
     add, 2, 3, 5
     oshow, 5
 
-.. image:: images/gbtidl_advanced-onoff_18-fitgaussResult.png
+.. image:: images/gbtidl/gbtidl_advanced-onoff_18-fitgaussResult.png
 
