@@ -17,17 +17,19 @@ Gateway Machines
 
 Please ensure that you use the correct gateway machine for connecting to the GBO network. The gateway machines host the tunnel between your local computer and the internally networked machine that hosts your computing session.
 
-.. tab:: Observing Only
-
-    When logging on to perform observations, use *stargate*. The FastX URL will be https://stargate.gb.nrao.edu:3443/ and the SSH address will be ``stargate.gb.nrao.edu``.
-
-    This machine is meant to only handle the observer(s) logging in to monitor and control observations. The operator on duty can and will end sessions that are left idling long after observations are done, or those that use excess computing resources. When logging in through FastX, only *ariel* and *titania* will be available as hosts.
 
 .. tab:: General Use
     
     When logging on to perform data reduction, write/check AstrID scripts, or for any other reason, use *ssh*. This machine is also known as *prospero*, and has been improved to handle many more simultaneous logins. The FastX URL will be https://ssh.gb.nrao.edu:3443/ and the SSH address will be ``ssh.gb.nrao.edu``.
 
     This machine is meant to handle general GBO login use on a day-to-day basis, and should be your tunnel for anything that isn't current GBT observations.
+
+
+.. tab:: Observing Only
+
+    When logging on to perform observations, use *stargate*. The FastX URL will be https://stargate.gb.nrao.edu:3443/ and the SSH address will be ``stargate.gb.nrao.edu``.
+
+    This machine is meant to only handle the observer(s) logging in to monitor and control observations. The operator on duty can and will end sessions that are left idling long after observations are done, or those that use excess computing resources. When logging in through FastX, only *ariel* and *titania* will be available as hosts.
 
 
 
