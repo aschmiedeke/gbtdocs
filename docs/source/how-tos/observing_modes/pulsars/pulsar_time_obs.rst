@@ -157,9 +157,8 @@ Here we demonstrate an advanced use of catalogs in which we specify the full pat
 First, we define an example catalog:
 
 .. literalinclude:: scripts/pulsar_catalog_parfile.cat
-    :language: ascii
+    :language: text
     :linenos:
-
 
 
 Now we define the observing script. The “parfile” column from our catalog is read in for each source and substituted into the configuration string. The sources will be observed in the order they appear in the catalog.
