@@ -12,6 +12,25 @@ There are multiple ways to connect remotely to the GBO network:
 
 .. Only those observers who have used the GBT before and have demonstrated that they are fully able to set up and observe on the GBT without staff assistance may observe remotely. All observers must come to Green Bank at least once before they can be approved for remote observing. Also, observers may be required to come to Green Bank to be re-qualified for remote observing if the observations are significantly different than previous observations or if the observer has not used the GBT recently.
 
+Gateway Machines
+================
+
+Please ensure that you use the correct gateway machine for connecting to the GBO network. The gateway machines host the tunnel between your local computer and the internally networked machine that hosts your computing session.
+
+.. tab:: Observing Only
+
+    When logging on to perform observations, use *stargate*. The FastX URL will be https://stargate.gb.nrao.edu:3443/ and the SSH address will be ``stargate.gb.nrao.edu``.
+
+    This machine is meant to only handle the observer(s) logging in to monitor and control observations. The operator on duty can and will end sessions that are left idling long after observations are done, or those that use excess computing resources. When logging in through FastX, only *ariel* and *titania* will be available as hosts.
+
+.. tab:: General Use
+    
+    When logging on to perform data reduction, write/check AstrID scripts, or for any other reason, use *ssh*. This machine is also known as *prospero*, and has been improved to handle many more simultaneous logins. The FastX URL will be https://ssh.gb.nrao.edu:3443/ and the SSH address will be ``ssh.gb.nrao.edu``.
+
+    This machine is meant to handle general GBO login use on a day-to-day basis, and should be your tunnel for anything that isn't current GBT observations.
+
+
+
 FastX connection
 ================
 
@@ -25,7 +44,7 @@ We recommend the FastX connection using your browser. FastX is a commercial prod
 Accessing the GBO network
 -------------------------
 
-Point your browser at https://ssh.gb.nrao.edu:3443/. You will be prompted for a username and password. This should be your NRAO/GBO username and your UNIX password.
+Point your browser at https://ssh.gb.nrao.edu:3443/ or https://stargate.gb.nrao.edu:3443/. See the :ref:`Gateway Machines` description at the top of this page for which option to choose. You will be prompted for a username and password. This should be your NRAO/GBO username and your UNIX password.
 
 .. image:: images/fastX_gb_login.png
 
@@ -112,16 +131,21 @@ You can copy the link and share with e.g. the staff member. **This must be done 
 
 VNC connection
 ==============
-.. What is a Virtual Network Connection (VNC)?
-.. -------------------------------------------
-.. 
-.. VNC allows remote connections from a client computer to a server, creating a virtual desktop (desktop image) of the server screen on the client computer screen. The user of the client computer can work almost as if he or she were sitting in front of the screen of the remote computer. VNC continuously compresses and transfers screen shots from the server to the client, which makes for a much faster experience than normal X-forwarding.
-.. 
-.. 
-.. Why is a VNC useful for GBT remote observing?
-.. ---------------------------------------------
-.. 
-.. VNC allows the remote GBT observer to connect to a computer in the GBT control room (*titania*, *ariel*) from the observer's home/work machine in order to observe. Once the VNC session is set up, the remote observer can open astrid, cleo, gbtidl, etc. and perform other functions, just as if they were actually in the GBT control room sitting in front of one of the GBT computers.
+
+What is a Virtual Network Connection (VNC)?
+-------------------------------------------
+ 
+VNC allows remote connections from a client computer to a server, creating a virtual desktop (desktop image) of the server screen on the client computer screen. The user of the client computer can work almost as if he or she were sitting in front of the screen of the remote computer. VNC continuously compresses and transfers screen shots from the server to the client, which makes for a much faster experience than normal X-forwarding.
+
+
+Why is a VNC useful for GBT remote observing?
+---------------------------------------------
+
+VNC allows the remote GBT observer to connect to a computer in the GBT control room (*titania*, *ariel*) from the observer's home/work machine in order to observe. Once the VNC session is set up, the remote observer can open astrid, cleo, gbtidl, etc. and perform other functions, just as if they were actually in the GBT control room sitting in front of one of the GBT computers.
+
+.. attention::
+
+    The VNC instructions below use *ssh*/*prospero* as the gateway machine. As described in the :ref:`Gateway Machines` section at the top of the page, **please use** ``stargate.gb.nrao.edu`` **when observing and** ``ssh.gb.nrao.edu`` **for everything else.**
 
 Quick VNC Reference
 -------------------
@@ -419,7 +443,7 @@ There have been times when a local port is taken by another user or another VNC 
     
     netstat -a | grep :59
 
-This will list all used ports (there may be a delay of a few seconds before this list appears). In these cases, the tunnel has to be changed to :code:`590m:stargate.gb.nrao.edu:590n` where 590m is some unused port numbered somewhere above 5900. And wherever :code:`localhost:n` occurs in the above instructions, substitute with :code:`localhost:m`.
+This will list all used ports (there may be a delay of a few seconds before this list appears). In these cases, the tunnel has to be changed to :code:`590m:ssh.gb.nrao.edu:590n` where 590m is some unused port numbered somewhere above 5900. And wherever :code:`localhost:n` occurs in the above instructions, substitute with :code:`localhost:m`.
 
 
 Check if a vnc session is already running
