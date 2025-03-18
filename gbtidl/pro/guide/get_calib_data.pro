@@ -1,3 +1,5 @@
+; docformat = 'rst'
+
 ;+
 ; Used by the calibration routines to actually fetch the necessary
 ; data.
@@ -9,52 +11,58 @@
 ; here are that the requested data (ifnum, plnum, fdnum, and intnum)
 ; are consistent with the given scan info.
 ;
-; <p>The returned values are the array of data containers found in the
+; The returned values are the array of data containers found in the
 ; current line data source that satisfy the request using the provided
 ; scan info structure to indentify the scan.
 ;
-; <p>If there is a problem, the returned value is -1 and count is 0.
+; If there is a problem, the returned value is -1 and count is 0.
 ;
-; @param info {in}{required}{type=structure} The scan_info
-; structure that describes the scan.  Use
-; <a href="find_scan_info.html">find_scan_info</a> to get this
-; scan_info.
-; @param ifnum {in}{required}{type=integer} The IF number to
-; fetch
-; @param plnum {in}{required}{type=integer} The polarization
-; number to fetch.
-; @param fdnum {in}{required}{type=integer} The feed number to
-; fetch.  Ignored when twofeeds is set.
-; @param sampler {in}{required}{type=string} The sampler name, an
-; alternative to ifnum, plnum and fdnum.  This is used (and the others
-; are ignored) when it is not empty.
-; @param count {out}{optional}{type=integer} The number of data
-; containers returned.  This is 0 when there is a problem.
-; @keyword intnum {in}{optional}{type=integer} The specific
-; integration to fetch.  If not supplied then fetch data from all
-; integrations that match the other parameters.
-; @keyword useflag {in}{optional}{type=boolean or string}{default=true}
-; Apply all or just some of the flag rules?
-; @keyword skipflag {in}{optional}{type=boolean or string} Do not apply
-; any or do not apply a few of the flag rules?
-; @keyword twofeeds {in}{optional}{type=boolean} When set (1), then
-; this data must contain 2 and only two feeds and all data from both
-; feeds is returned by this call.  In that case, fdnum is ignored.
-; @keyword sig_state {in}{optional}{type=integer} When -1, this
-; keyword is ignored, when 0 then the reference state is selected,
-; when 1 then the sig state is selected.
-; @keyword wcalpos {in}{optional}{type=string} When set, then only
-; data matching this wcalpos string is fetched.  Ignored when fetching
-; data from an individual integration.
-; @keyword subref {in}{optional}{type=integer} When set, then only
-; data matching this subref value is fetched.  Ignored when fetching
-; data from an individual integration.
-; @returns an array of spectral line data containers that satisfy this
-; request.  Returns -1 on error (count will also be 0 in that case).
+; :Params:
+;   info : in, required, type=structure
+;       The scan_info structure that describes the scan. Use 
+;       :idl:pro:`find_scan_info` to get this scan_info.
+;   ifnum : in, required, type=integer
+;       The IF number to fetch
+;   plnum : in, required, type=integer
+;       The polarization number to fetch.
+;   fdnum : in, required, type=integer
+;       The feed number to fetch.  Ignored when twofeeds is set.
+;   sampler : in, required, type=string
+;       The sampler name, an alternative to ifnum, plnum and fdnum.
+;       This is used (and the others are ignored) when it is not empty.
+;   count : out, optional, type=integer
+;       The number of data containers returned.  This is 0 when there 
+;       is a problem.
+; 
+; :Keywords:
+;   intnum : in, optional, type=integer
+;       The specific integration to fetch.  If not supplied then fetch 
+;       data from all integrations that match the other parameters.
+;   useflag : in, optional, type=boolean or string, default=true
+;       Apply all or just some of the flag rules?
+;   skipflag : in, optional, type=boolean or string
+;       Do not apply any or do not apply a few of the flag rules?
+;   twofeeds : in, optional, type=boolean
+;       When set (1), then this data must contain 2 and only two feeds 
+;       and all data from both feeds is returned by this call.  In that 
+;       case, fdnum is ignored.
+;   sig_state : in, optional, type=integer
+;       When -1, this keyword is ignored, when 0 then the reference state
+;       is selected, when 1 then the sig state is selected.
+;   wcalpos : in, optional, type=string
+;       When set, then only data matching this wcalpos string is fetched.
+;       Ignored when fetching data from an individual integration.
+;   subref : in, optional, type=integer
+;       When set, then only data matching this subref value is fetched.  
+;       Ignored when fetching data from an individual integration.
+; 
+;   
+; :Returns:
+;   returns an array of spectral line data containers that satisfy this
+;   request. Returns -1 on error (count will also be 0 in that case).
 ;
 ; @private_file
 ; 
-; @version $Id$
 ;-
 function get_calib_data,info, ifnum, plnum, fdnum, sampler, count, $
                         intnum=intnum, useflag=useflag, skipflag=skipflag, $

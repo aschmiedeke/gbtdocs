@@ -8,7 +8,7 @@
 ;
 ; nget fetchs data from the output file (keep file) unless infile is set.
 ; 
-; Flags (set via <a href="flag.html">flag</a>) can be selectively applied or ignored using 
+; Flags (set via :idl:pro:`flag`) can be selectively applied or ignored using 
 ; the useflag and skipflag keywords.  Only one of those two keywords
 ; can be used at a time (it is an error to use both at the same time).
 ; Both can be either a boolean (/useflag or /skipflag) or an array of
@@ -41,10 +41,7 @@
 ; :Returns:
 ;   ok : out, optional, type=boolean
 ;       status output
-;
-; :Uses: 
-;   <a href="set_data_container.html">set_data_container</a>
-;
+;;
 ; :Examples:
 ;
 ;   ; get some data    
@@ -55,6 +52,8 @@
 ;   ; back to previous state
 ;   nget,50
 ;
+; :Uses: 
+;   :idl:pro:`set_data_container`
 ;-
 pro nget,nsave,buffer=buffer,infile=infile,useflag=useflag,skipflag=skipflag,ok=ok
     compile_opt idl2
