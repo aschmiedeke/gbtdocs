@@ -1,31 +1,37 @@
+; docformat = 'rst'
+
 ;+
 ; Add entries to "the stack", which is a list of numbers
 ; that can be used in batch operations.  The list is stored in
 ; the variable !g.astack.  The new entries are appended on to
 ; the existing list.  Use <a href="astack.html">astack</a> to get values from the stack.
 ;
-; @param first {in}{required}{type=integer} The first value to be
-; added to the stack.
+; :Params:
+; 
+;   first : in, required, type=integer
+;       The first value to be added to the stack.
 ;
-; @param last {in}{optional}{type=integer} The last value to be
-; added to the stack.  If this is omitted, only a single entry
-; equal to first will be appended.
+;   last : in, optional, type=integer
+;       The last value to be added to the stack.  If this is omitted,
+;       only a single entry equal to first will be appended.
 ;
-; @param step {in}{optional}{type=integer} The increment between values.
-; If omitted, a step of 1 will be used.
+;   step : in, optional, type=integer
+;       The increment between values. If omitted, a step of 1 will be used.
 ;
-; @examples
+; :Examples:
+; 
 ;    add numbers 25, 30 through 39, and the odd indexes from 41
 ;    through 51 to the stack.
-; <pre>
-;    addstack, 25
-;    addstack, 30, 39
-;    addstack, 41, 51, 2
-; </pre>
+; 
+;   .. code-block:: IDL
+;    
+;       addstack, 25
+;       addstack, 30, 39
+;       addstack, 41, 51, 2
 ;
-; @uses <a href="appendstack.html">appendstack</a>
-;
-; @version $Id$
+; :Uses:
+; 
+;   :idl:pro:`appendstack`
 ;-
 PRO addstack, first, last, step
     compile_opt idl2

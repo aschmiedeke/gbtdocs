@@ -1,43 +1,52 @@
+; docformat='rst'
+
 ;+
 ; Average the records listed in the stack.
 ;
-; <p>The data retrieval is done using <a href="getchunk.html">getchunk</a>.  See the documentation 
+; The data retrieval is done using :idl:pro:`getchunk`. See the documentation 
 ; there for a longer discussion on the useflag and skipflag keywords
 ; also found here.
 ;
-; @keyword noclear {in}{optional}{type=boolean} If this is set, the
-; accum buffer is not cleared prior to averaging the records
-; @keyword useflag {in}{optional}{type=boolean or string}{default=true}
-; Apply all or just some of the flag rules?
-; @keyword skipflag {in}{optional}{type=boolean or string} Do not apply
-; any or do not apply a few of the flag rules?
-; @keyword keep {in}{optional}{type=boolean} If this is set, the
-; records are fetched from the keep file.
+; :Keywords:
+; 
+;   noclear : in, optional, type=boolean
+;       If this is set, the accum buffer is not cleared prior to averaging 
+;       the records
+;   
+;   useflag : in, optional, type=boolean or string, default=true
+;       Apply all or just some of the flag rules?
+;   
+;   skipflag : in, optional, type=boolean or string
+;       Do not apply any or do not apply a few of the flag rules?
+; 
+;   keep : in, optional, type=boolean
+;       If this is set, the records are fetched from the keep file.
 ;
-; @examples
-;  Add index number 25, 30 through 39, and the odd indexes from 41
-;  through 51 to the stack, and average them.
-; <pre>
-;    addstack, 25
-;    addstack, 30, 39
-;    addstack, 41, 51, 2
-;    avgstack
-; </pre>
-; <p>
-; An example showing the use of the /noclear keyword.
-; <pre>
-;    addstack, 25
-;    addstack, 30, 39
-;    avgstack, /noclear      ; see the result so far, do not clear it
-;    emptystack
-;    addstack, 50, 90, 2 
-;    avgstack                ; builds on the previous result
-;                            ; cleared after this use of avgstack
-; </pre>
+; :Examples:
+; 
+;   Add index number 25, 30 through 39, and the odd indexes from 41
+;   through 51 to the stack, and average them.
+; 
+;   .. code-block:: IDL
 ;
-; @version $Id$
+;       addstack, 25
+;       addstack, 30, 39
+;       addstack, 41, 51, 2
+;       avgstack
+; 
+;   An example showing the use of the /noclear keyword.
+; 
+;   .. code-block:: IDL
+;
+;       addstack, 25
+;       addstack, 30, 39
+;       avgstack, /noclear      ; see the result so far, do not clear it
+;       emptystack
+;       addstack, 50, 90, 2 
+;       avgstack                ; builds on the previous result
+;                               ; cleared after this use of avgstack
+; 
 ;-
-
 pro avgstack,noclear=noclear,useflag=useflag,skipflag=skipflag,keep=keep
     compile_opt idl2
     if not !g.line then begin

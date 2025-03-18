@@ -1,3 +1,5 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure adds the data from two data containers stored in the
 ; global buffers 0-15.  If no parameters are passed, then the data
@@ -8,34 +10,38 @@
 ; first two are global buffers that are added together and the third
 ; is the global buffer where the result should be stored.
 ;
-; <p> out = in1 + in2
+; out = in1 + in2
 ;
-; @param in1 {in}{optional}{type=integer} Input buffer number, first argument.
-; @param in2 {in}{optional}{type=integer} Input buffer number, second argument.
-; @param out {in}{optional}{type=integer} Output buffer number.
+; :Params:
 ;
-; @examples
-; <pre>
-;    getrec,1
-;    copy,0,1
-;    getrec,2
-;    add            ; The two records are added and the result is
-;                   ; stored in buffer 0
+;   in1 : in, optional, type=integer
+;       Input buffer number, first argument.
+;   in2 : in, optional, type=integer
+;       Input buffer number, second argument.
+;   out : in, optional, type=integer
+;       Output buffer number.
 ;
-;    getrec,1
-;    copy,0,10
-;    getrec,2
-;    copy,0,11
-;    add,10,11,12   ; The data from buffers 10 and 11 are added and 
-;                   ; the result is stored in buffer 12
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+;       
+;       getrec,1
+;       copy,0,1
+;       getrec,2
+;       add            ; The two records are added and the result is stored in buffer 0
 ;
-; @uses <a href="../toolbox/dcadd.html">dcadd</a>
-; @uses <a href="../toolbox/dcpaircheck.html">dcpaircheck</a>
+;       getrec,1
+;       copy,0,10
+;       getrec,2
+;       copy,0,11
+;       add,10,11,12   ; The data from buffers 10 and 11 are added and the result is stored in buffer 12
+; 
+; :Uses: 
+; 
+;   :idl:pro:`dcadd`
+;   :idl:pro:`dcpaircheck`
 ;
-; @version $Id$
 ;-
-
 pro add,in1,in2,out
     on_error, 2
 

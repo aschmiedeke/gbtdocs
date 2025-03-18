@@ -1,20 +1,25 @@
+; docformat = 'rst'
+
 ;+
 ; Append entries to the stack. 
 ;
-; <p>See also <a href="addstack.html">addstack</a>.
+; See also :idl:pro:`addstack.
 ;
-; @param index {in}{required}{type=long integer} Entries to add
+; :Params:
 ;
-; @examples
-; <pre>
-;   addstack,10,14,2
-;   appendstack,20
-;   appendstack,[25,28]
-;   tellstack
-;   ; The stack now contains [ 10,  12,  14,  20,  25, 28]
-; </pre>
+;   index : in, required, type=long integer
+;       Entries to add
 ;
-; @version $Id$
+; :Examples:
+;
+;   .. code-block:: IDL
+; 
+;       addstack,10,14,2
+;       appendstack,20
+;       appendstack,[25,28]
+;       tellstack
+;       ; The stack now contains [ 10,  12,  14,  20,  25, 28]
+;
 ;-
 PRO appendstack, index
     compile_opt idl2
