@@ -1,0 +1,54 @@
+dc = { data_container_struct, $  ; begin sdfits tags
+source:string(replicate(32B,32)), $
+projid:string(replicate(32B,32)), $
+backend:string(replicate(32B,32)), $
+observer:string(replicate(32B,32)), $
+bandwidth:0.0D, $
+exposure:0.0D, $
+duration:0.0D, $
+tsys:0.0, $ 
+tsysref: 0.0, $
+telescope:string(replicate(32B,16)), $ ; telescop in sdfits
+site_location:[0.0D, 0.0D, 0.0D], $ ; [sitelong, sitelat, siteelev] in sdfits
+data_ptr:ptr_new(/allocate_heap), $
+units:string(replicate(32B,6)), $ ; TUNIT7 in sdfits
+coordinate_mode:string(replicate(32B,16)), $  ; ctype2 & ctype3 in sdfits
+equinox:0.0D, $ 
+radesys:'', $
+target_longitude:0.0D, $ ; trgtlong in sdfits
+target_latitude:0.0D, $, trgtlat in sdfits
+polarization:string(replicate(32B,2)), $ ; crval4 in sdfits
+polarization_num:0L, $
+scan_number:0L, $ ; scan in sdfits
+procedure:string(replicate(32B,16)), $ ; obsmodes[0] in sdfits
+switch_state:string(replicate(32B,16)), $ ; obsmodes[1] in sdfits
+switch_sig:string(replicate(32B,16)), $ ; obsmodes[2] in sdfits
+obsid:string(replicate(32B,32)), $ 
+procscan:string(replicate(32B,32)), $
+proctype:string(replicate(32B,32)), $
+frontend:string(replicate(32B,16)), $
+feedxoff:0.0D, $
+feedeoff:0.0D, $
+mean_tcal:0.0D, $ ; tcal in sdfits
+caltype:'', $
+twarm:0.0D, $ Rcvr68_92 TWARM
+tcold:0.0D, $ Rcvr68_92 TCOLD
+calposition:string('Unknown'), $ Rcvr68_92 turntable position
+sampler_name:string(replicate(32B,16)), $ ; sampler in sdfits
+feed:0L, $ ; feed in sdfits
+srfeed:0L, $ ; srfeed in sdfits
+feed_num:0L, $ 
+sideband:string(' '), $ 
+procseqn:0L, $
+procsize:0L, $ 
+sig_state:0L, $ ; sig in sdfits
+cal_state:0L, $ ; cal in sdfits
+integration:0L, $ ; from index file
+observed_frequency:0.0D, $ ; obsfreq in sdfits
+timestamp:string(replicate(32B,22)), $
+if_number:0L, $ ;   from index file, $
+tambient:0.0, $ ; ambient temp in K
+pressure:0.0, $ ; pressure in Pa
+humidity:0.0, $ ; humidity fraction
+qd_method:'' $ ; QuadrantDetector offset method used one of A, B, C or blank.
+}

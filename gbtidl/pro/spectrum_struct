@@ -1,0 +1,34 @@
+s = { spectrum_struct, inherits data_container_struct, $
+date:string(replicate(32B,10)), $ ; date string from date-obs
+utc:0.0D, $ ; seconds on date from date-obs
+mjd:0.0D, $ ; modified julian date from date-obs
+frequency_type:string(replicate(32B,16)), $ ; ctype1 in sdfits
+reference_frequency:0.0D, $ ; crval1 in sdfits
+reference_channel:0.0D, $ ; crpix1 in sdfits
+frequency_interval:0.0D, $ ; cdelt1 in sdfits
+frequency_resolution:0.0D, $ 
+longitude_axis:0.0D,$ ; crval2 in sdfits
+latitude_axis:0.0D,$ ; crval3 in sdfits
+lst:0.0D, $ ; calc from date+utc (in UTC)
+azimuth:0.0D, $ 
+elevation:0.0D, $  
+subref_state:0L, $
+qd_el:!values.d_nan, $
+qd_xel:!values.d_nan, $
+qd_bad:-1L, $
+center_frequency:0.0D, $ 
+line_rest_frequency:0.0D, $ ; restfreq in sdfits
+doppler_frequency:0.0D, $ ; dopfreq in sdfits
+velocity_definition:string(replicate(32B,8)), $ ; veldef in sdfits
+frame_velocity:0.0D, $ ; vframe in sdfits
+;rvsys:0.0D, $ ; ?????
+source_velocity:0.0D, $ ; velocity in sdfits
+zero_channel:0.0, $ ; zerochan in sdfits
+adcsampf:0.0D, $
+vspdelt:0.0D, $
+vsprval:0.0D, $
+vsprpix:0.0D, $
+freq_switch_offset:0.0D, $ ; foffref1 in sdfits
+nsave:0L $
+}
+

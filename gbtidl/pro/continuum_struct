@@ -1,0 +1,14 @@
+c = { continuum_struct, inherits data_container_struct, $
+date:ptr_new(),  $ ; date string from date-obs
+utc:ptr_new(), $ ; seconds on date from date-obs
+mjd:ptr_new(),$ ; modified julian date from date-obs
+longitude_axis:ptr_new(),$ ; crval2 in sdfits
+latitude_axis:ptr_new(),$ ; crval3 in sdfits
+lst:ptr_new(), $ ; calc from date+utc (in UTC)
+azimuth:ptr_new(), $ 
+elevation:ptr_new(), $ 
+subref_state:ptr_new(), $
+qd_el:ptr_new(), $
+qd_xel:ptr_new(), $
+qd_bad:ptr_new() $
+}

@@ -1,0 +1,13 @@
+;+
+; Structure that represents the status of one type of online fits file.
+;-
+   osi = { online_status_info_strct, $
+           backend:'', $
+           project:'', $
+           scan:long(0), $
+           timestamp:'', $
+           timetag_jul:double(0.0), $
+           age:double(0.0), $
+           file:'', $
+           index:long(0) $
+         }

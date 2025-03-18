@@ -1,0 +1,18 @@
+; structure used in accumulate and avg_accum
+; the channel spacing is used as a check, but is not enforced.
+; It is set to the value of the first spectrum_struct into the accumulation.
+; template is a data container that is used by ave to form the
+; final result.  Typically it is the first data container used
+; in the accumulation.
+a = { accum_struct, $
+      data_ptr:ptr_new(), $; the weighted sum of data values so far
+      wt_ptr:ptr_new(), $  ; the sum of the weights at each channel
+      teff:0.0,  $         ; the sum of effective integration times (s)
+      tint:0.0,  $         ; the sum of the integration times (s)
+      tsys_sq:0.0, $       ; the weighted sum of the system temps squared (K*K)
+      tsys_wt:0.0, $       ; the sum of the weights used in tsys_sq sum
+      f_delt:0.0D, $       ; channel spacing (Hz)
+      f_res: 0.0D, $       ; frequency resolution (Hz)
+      n:0L, $               ; the total number of items accum'ed so far
+      template:{spectrum_struct} $; the template data container, typically first in
+} 

@@ -1,0 +1,10 @@
+print,'Making docs using idldoc'
+!PROMPT='GBTIDL - making docs -> '
+!EDIT_INPUT = 100
+idldoc, root='doc/devel', title='NRAO GBTIDL', overview='overview',n_warnings=devel_warnings
+idldoc, root='doc/user', title='NRAO GBTIDL', overview='overview', /user, n_warnings=user_warnings
+idldoc, root='doc/contrib', title='NRAO GBTIDL', overview='overview', /user, n_warnings=contrib_warnings
+print,'Development docs created with number of warnings: ', devel_warnings
+print,'User docs created with number of warnings: ', user_warnings
+print,'Contrib docs created with number of warnings: ', contrib_warnings
+exit

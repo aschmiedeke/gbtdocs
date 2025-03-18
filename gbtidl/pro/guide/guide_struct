@@ -1,0 +1,51 @@
+g = {guide_struct, $
+     version: '', $ 
+     s: replicate({spectrum_struct}, 16), $
+     c: replicate({continuum_struct}, 16), $
+     lineio: obj_new(), $
+     contio: obj_new(), $
+     lineoutio: obj_new(), $
+     line_filein_name: '', $
+     cont_filein_name: '', $
+     line_fileout_name: '', $
+     frozen: 0L, $
+     sprotect:0L, $
+     line: 0L, $
+     plotter_axis_type: 0L, $
+     has_display:0L, $
+     interactive:0L, $
+     background:0L, $
+     foreground:0L, $
+     showcolor:0L, $
+     oshowcolor:0L, $
+     crosshaircolor:0L, $
+     zlinecolor:0L, $
+     markercolor:0L, $
+     annotatecolor:0L, $
+     oplotcolor:0L, $ 
+     vlinecolor:0L, $
+     zoomcolor:0L, $
+     gshowcolor:0L, $
+     gausstextcolor:0L, $
+     highlightcolor:0L, $
+     colorpostscript:0L, $
+     astack: ptr_new(), $
+     acount: 0L, $
+     accumbuf: replicate({accum_struct}, 4), $
+     regions: lonarr(2,100), $
+     nregion: 0L, $
+     regionboxes: 0L, $
+     nfit: 0L, $
+     polyfit: dblarr(4,101), $
+     polyfitrms: dblarr(101), $
+     gauss: {gauss_struct}, $
+     printer: '', $
+     tau0: 0.0, $
+     ap_eff:1.0, $
+     nsave:0L, $
+     user_list_cols: '', $
+     find:{find_struct}, $
+     molecules: replicate({molecule_struct},80000), $
+     nmol:0L $
+     }
+

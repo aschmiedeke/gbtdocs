@@ -1,0 +1,3 @@
+print, 'Restarting GBTIDL ...'
+.FULL_RESET_SESSION
+@STARTUP.IDL

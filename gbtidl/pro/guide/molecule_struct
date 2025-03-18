@@ -1,0 +1,14 @@
+; Structure used to hold molecule spectral line information.
+; This is filled by moleculeread and stored in !g.molecules for use by molecule.
+; NULL values are turned into !values.d_nan (double precision not a number)
+molstruct = {molecule_struct, $
+             freq:0.D, $ rest frequency (Hz)
+	     freqErr:0.0D, $ rest frequency error (Hz)
+             formula: '', $ species formula
+	     name: '', $ species chemical name
+	     qnums: '', $ quantum numbers
+	     obsAstInt: 0.0D, $ NIST observed astronomical intensity (where applicable)
+	     upperStateE: 0.0D, $ upper state energy (K)
+	     obsIntRef: 0.0D, $ NIST observed intensity reference (where applicable)
+	     lineFreqRef: 0.0D $ NIST measured line frequency reference (where applicable)
+            }

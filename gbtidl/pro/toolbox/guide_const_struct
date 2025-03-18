@@ -1,0 +1,18 @@
+; physical constants and the gbtidl version number
+;
+; These are initialized in toolbox/init_guide_const_struct.
+;
+
+gc = {guide_const_struct, $
+     light_speed: 0.0D, $; speed of light in m/s
+     light_c: 0.0D, $   ; speed of light in km/sec
+     plank_h: 0.0D, $   ; Planck constant
+     newt_g:  0.0D, $   ; Newton gravitational constant dyne cm^2 gm^-2
+     boltz_k: 0.0D, $   ; Boltzman constant erg K-1
+     eV2erg:  0.0D, $   ; 1 eV to ergs
+     AU:      0.0D, $   ; AU in cm
+     m_H:     0.0D, $   ; hydrogen mass in gm
+     m_e:     0.0D, $   ; electron mass in gm
+     pc:      0.0D, $   ; pc in cm
+     rad_sig: 0.0D  $   ; radiation constant in erg cm-2 s-1 K-4
+}

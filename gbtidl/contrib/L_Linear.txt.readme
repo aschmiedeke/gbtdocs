@@ -1,0 +1,7 @@
+This directory holds Tcal data measured astronomically by Ron
+Maddalena and Chelen Johnson.  The data was processed and smoothed by
+Chelen using the glish scripts getscal_Tsys_blah.g.  The data was
+tested by Maddalena et.al. and will be deployed in early June.
+
+R. Norrod
+2Jun05

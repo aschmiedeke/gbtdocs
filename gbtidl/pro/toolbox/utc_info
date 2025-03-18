@@ -1,0 +1,10 @@
+;
+;       utcInfo struct used to hold from file.
+;   lets you go utc to ut1.
+;
+; Used in code obtained from Arecibo.
+;
+a={utc_info, $
+        julDatAtOff: 0.D ,$; julian date at offset
+        offset:      0.D ,$; millsec offset at julDatOff
+        rate  :      0.D } ; millisecs/day

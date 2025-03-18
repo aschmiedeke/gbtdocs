@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# This script sets up the  IDL_PATH and IDL_STARTUP so that
+# the documentation can be generated using idldoc.
+
+# It then invokes idl - whichever one the user has on their path.
+
+# Determine the absolute path of this script.  This information is
+# needed in the construction of IDL environment variables.
+exe=`which "$0"`
+if [ -L $exe ]
+then
+    true_path=$(ls -l $exe)
+    true_path=${true_path##*>}
+else
+    true_path=$exe
+fi
+GBT_IDL_DIR=`dirname $true_path`
+
+# clean up the doc tree so that the docs are built in a fresh
+# tree and nothing lasts after its been removed from the 
+# source tree
+develDir=$GBT_IDL_DIR/doc/devel
+userDir=$GBT_IDL_DIR/doc/user
+contribDir=$GBT_IDL_DIR/doc/contrib
+rm -rf $develDir/guide $develDir/plotter $develDir/toolbox
+rm -rf $userDir/guide $userDir/plotter $userDir/toolbox
+rm -rf $contribDir/contrib
+
+
+# copy source tree *.pro files over
+mkdir $userDir/guide $userDir/plotter $userDir/toolbox $userDir/toolbox/io
+mkdir $develDir/guide $develDir/plotter $develDir/toolbox $develDir/toolbox/io
+mkdir $contribDir/contrib
+cp $GBT_IDL_DIR/pro/guide/*.pro $userDir/guide
+cp $GBT_IDL_DIR/pro/plotter/*.pro $userDir/plotter
+cp $GBT_IDL_DIR/pro/toolbox/*.pro $userDir/toolbox
+cp $GBT_IDL_DIR/pro/toolbox/io/*.pro $userDir/toolbox/io
+cp $GBT_IDL_DIR/pro/guide/*.pro $develDir/guide
+cp $GBT_IDL_DIR/pro/plotter/*.pro $develDir/plotter
+cp $GBT_IDL_DIR/pro/toolbox/*.pro $develDir/toolbox
+cp $GBT_IDL_DIR/pro/toolbox/io/*.pro $develDir/toolbox/io
+cp $GBT_IDL_DIR/contrib/*.pro $contribDir/contrib
+
+# Construct the IDL path.
+# IDL always searches "." first, no need to add it in here.
+# the leading + means everything from there on down is included.
+# <IDL_DEFAULT> is expanded to what it would have been if IDL_PATH wasn't
+# set here.  That gets the default IDL code in the installation.
+# Don't include contrib in this path.  Not sure just yet how best
+# to handle that.
+export IDL_PATH="$GBT_IDL_DIR/lib/idldoc:<IDL_DEFAULT>"
+
+# Specify the file with which to begin execution.
+export IDL_STARTUP=$GBT_IDL_DIR/DOCSTARTUP.IDL
+
+# Start up IDL and execute DOCSTARTUP.IDL (either "idl" or "idlde" will work).
+# Should we test that there is an idl somewhere in the path?
+idl

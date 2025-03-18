@@ -1,0 +1,57 @@
+; Available selection fields to be used by FIND.
+; Not all fields are available for all types of data.
+; These are set by setfind, cleared by clearfind, and 
+; listed by listfind.
+; NOTE: find, setfind, listfind all assume that fields
+; through "NSAVE" are common to line and cont and that
+; the last 3 fields are cont only with the rest being
+; line only.  If those assumptions are no longer true,
+; be sure to change the relevent code.
+fnd = {find_struct, $ 
+       ; the first of these apply to all types of data
+       INDEX:'',       $ ; the index number (0-relative)
+       PROJECT:'',     $ ; the project name	
+       FILE:'',        $ ; the FITS file name
+       EXTENSION:'',   $ ; the FITS extension number
+       SOURCE:'',      $ ; the source name
+       PROCEDURE:'',   $ ; the name of the procedure used
+       OBSID:'',       $ ; the obsid string
+       E2ESCAN:'',     $ ; e2e scan number (future use)
+       PROCSEQN:'',    $ ; proc sequence number (1-relative)
+       SCAN:'',        $ ; scan number
+       POLARIZATION:'',$ ; polarization string
+       IFNUM:'',       $ ; IF number (0-relative)
+       TRGTLONG:'',    $ ; Target longitude (deg)
+       TRGTLAT:'',     $ ; Target latitude (deg)
+       SIG:'',         $ ; SIGREF state (1=SIG, 0=REF)
+       CAL:'',         $ ; CAL state (1=cal on)
+       NSAVE:'',       $ ; nsave number (-1=not set)
+       $ ; the next several are specific to line data
+       ROW:'',         $ ; the row number in the FITS extension
+       PLNUM:'',       $ ; the polarization number (0-relative)
+       FEED:'',        $ ; the feed name, as known at the telescope
+       FDNUM:'',       $ ; the feed number (0-relative)
+       INT:'',         $ ; integration number (0-relative)
+       NUMCHN:'',      $ ; number of channels
+       SAMPLER:'',     $ ; sampler name
+       AZIMUTH:'',     $ ; azimuth (deg) at start of integration
+       ELEVATION:'',   $ ; elevation (deg) at start of integration
+       LONGITUDE:'',   $ ; longitude-like coord (usually RA) at integration-midpoint
+       LATITUDE:'',    $ ; latitude-like coord (usually DEC) at integration-midpoint
+       LST:'',         $ ; LST of an integration
+       CENTFREQ:'',    $ ; frequency (Hz) at center channel
+       RESTFREQ:'',    $ ; rest frequency (Hz) of doppler-tracked line
+       VELOCITY:'',    $ ; source velocity (m/s) of doppler-tracked line
+       FREQINT:'',     $ ; channels spacing (Hz), always > 0
+       FREQRES:'',     $ ; spectral resolution (Hz)
+       DATEOBS:'',     $ ; DATE-OBS value
+       TIMESTAMP:'',   $ ; YYYY_MM_DD_HH:MM:SS - timestamp when data taken
+       BANDWIDTH:'',   $ ; total bandwidth (Hz)
+       EXPOSURE:'',    $ ; effective integration time (s)
+       TSYS:'',        $ ; system temperature (K), will be 1.0 for raw data
+       SUBREF:'',      $ ; antenna subreflector state (1,0,-1; 0 is moving)
+       ; there are 3 continuum-only fields available.
+       FIRSTROW:'',    $ ; the first row for the start of this data container
+       NUMROWS:'',     $ ; the number of rows in this data container
+       STRIDE:''       $ ; the stride between rows for this data container
+}

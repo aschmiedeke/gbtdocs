@@ -1,0 +1,42 @@
+; stucture used in 'mpcurvefit': in simplest case, only value is used as
+; inital guess to gaussian parameter.  Other tags are used for fixing values,
+; setting limits, etc.  For now, probably only .value and .fixed will be used, 
+; but why not add all functionality now?
+
+gp = {gauss_param_struct,value:0.D, $
+    fixed:0L, $
+    limited:[0,0], $
+    limits:[0.D,0], $
+    parname:replicate(32B,256), $
+    step:0.D, $
+    relstep:0.D, $
+    mpside:0L, $
+    mpmaxstep:0.D, $
+    tied:replicate(32B,256), $
+    mpprint:0L $
+    }
+
+
+; stucture used in global guide stucture !g for guassian fitting.
+; supports fitting multiple gaussians in multiple regions
+max_regions = 100 ; same as baseline
+p_per_g = 3
+max_gauss = 100 ; completely arbitrary
+
+g = {gauss_struct, $
+    regions: lonarr(2,max_regions), $ 
+    nregion: 0L, $ ; max == 100 regions
+    ngauss: 0L, $ ; max = 100 gausians
+    ; three for each gauss to be fit, in simplist form
+    ; the .value tag provides initial guesses to fit.
+    params: replicate({gauss_param_struct} , p_per_g, max_gauss), $ ; 100 max
+    ; each set of [height, center, width] represents the fit for a gauss
+    fit: dblarr(p_per_g,max_gauss), $ ; [[h,c,w],[h,c,w],...]
+    ; the 1-sigma error associated with each entry in tag .fit
+    fitrms: dblarr(p_per_g,max_gauss), $
+    fitcovar: dblarr(3,p_per_g,max_gauss), $
+    maxiter:0L $
+    }
+
+
+

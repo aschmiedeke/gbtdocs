@@ -1,0 +1,16 @@
+print,'Starting GBTIDL'
+!quiet=1  ; suppress the "Compiled" messages.
+!PROMPT='GBTIDL -> '
+idlver=fix(strsplit(!version.release,'.',/extract))
+; the use of !EDIT_INPUT changed in 6.2
+if idlver[0] lt 6 or (idlver[0] eq 6 and idlver[1] lt 2) then !EDIT_INPUT = 100
+@data_container_struct
+@continuum_struct
+@spectrum_struct
+@init_gbtidl
+@init_guide
+resolve_all, /CONTINUE_ON_ERROR, UNRESOLVED=unresolved, /quiet
+init_gbtplot_state
+!quiet=0
+@motd
+@~/.gbtidl

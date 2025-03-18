@@ -1,0 +1,16 @@
+; be sure to use .pro here so that user files
+; that don't end in pro but have the same name
+; otherwise are not picked up by IDL instead of
+; our files.
+;
+; zpectrometer io
+.compile io_sdfits_z__define.pro
+.compile z_index__define.pro
+.compile z_index_section__define.pro
+.compile z_sdfits__define.pro
+.compile z_sdfits_row_group__define.pro
+.compile zfits__define.pro
+; zpectrometer contrib
+.compile zdc_to_dc.pro
+.compile zoshow.pro
+.compile zshow.pro

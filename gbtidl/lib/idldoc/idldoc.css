@@ -1,0 +1,303 @@
+a:link { color: #660000 }
+a:active { color: #660000 }
+a:visited {color: #660000 }
+
+/* Default font for body text */
+BODY {
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: Arial;
+    BACKGROUND-COLOR: #FFFFF9
+}
+
+/* Default font for text in tables */
+TD {
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: Arial
+}
+
+/* Format for body of all files */
+BODY.standard {
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: Arial;
+    BACKGROUND-COLOR: #FFFFF9
+}
+
+TABLE.parameters {
+    BORDER-TOP: 1px solid #FFFFCC;
+    BORDER-BOTTOM: 1px solid #88AA66;
+    BORDER-LEFT: 1px solid #FFFFCC;
+    BORDER-RIGHT: 1px solid #88AA66;
+    WIDTH: 95%;
+    MARGIN-LEFT: 5%
+}
+
+TR.parameters {
+    BORDER-RIGHT-WIDTH: 0px;
+    BORDER-TOP-WIDTH: 1px;
+    BORDER-LEFT-WIDTH: 0px;
+    WIDTH: 100%;
+    BORDER-BOTTOM-WIDTH: 1px;
+    BORDER-STYLE: solid
+}
+
+TD.index_selection_header {
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 14pt;
+    FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+
+TABLE.minor_listing {
+    BORDER-TOP: 1px solid #EEEEFF;
+    BORDER-BOTTOM: 1px solid #6666AA;
+    BORDER-LEFT: 1px solid #EEEEFF;
+    BORDER-RIGHT: 1px solid #6666AA;
+    WIDTH: 100%
+}
+
+TABLE.listing {
+    BORDER-TOP: 1px solid #BBBBFF;
+    BORDER-BOTTOM: 1px solid #6666AA;
+    BORDER-LEFT: 1px solid #BBBBFF;
+    BORDER-RIGHT: 1px solid #6666AA;
+    WIDTH: 100%
+}
+
+TABLE.routine_listing {
+    BACKGROUND: #FFFFAA;
+    BORDER-TOP: 1px solid #FFEEAA;
+    BORDER-BOTTOM: 1px solid #AAAA66;
+    BORDER-LEFT: 1px solid #FFEEAA;
+    BORDER-RIGHT: 1px solid #AAAA66;
+    WIDTH: 100%
+}
+
+TD.title {
+    FONT-SIZE: 14pt;
+    BACKGROUND: #ccccff;
+    FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+
+TR.small_title {
+    FONT-WEIGHT: bold;
+    BACKGROUND: #eeeeff;
+    FONT-FAMILY: Helvetica, sans-serif
+}
+
+/* #F0FFBA */
+TR.parameter_title {
+    FONT-WEIGHT: bold;
+    FONT-FAMILY: Helvetica, sans-serif;
+    BACKGROUND: #F0FFE0
+}
+
+/***** Navbar stuff *****/
+
+TD.navbar_unselected A:hover {
+    BACKGROUND: #AAAAFF;
+    BORDER-TOP: 3px solid #AAAAFF;
+    BORDER-BOTTOM: 3px solid #AAAAFF
+}
+
+/* Formatting for the row with the labels */
+TR.navbar {
+    FONT-WEIGHT: bold;
+    BACKGROUND: #ddddff;
+    FONT-FAMILY: Helvetica, sans-serif
+}
+
+/* Formatting for the table cell that is currently selected */
+TD.navbar_selected {
+    BORDER-TOP: 3px solid #0000AA;
+    BORDER-BOTTOM: 3px solid #DDDDFF
+}
+
+TD.navbar_unselected {
+    BORDER-TOP: 3px solid #DDDDFF;
+    BORDER-BOTTOM: 3px solid #DDDDFF
+}
+
+/* Formatting for the text that allows cycling through files and finding details vs. summary */
+TD.navbar_small {
+    FONT-WEIGHT: lighter;
+    FONT-SIZE: 8pt;
+    TEXT-TRANSFORM: lowercase;
+    FONT-FAMILY: Helvetica, sans-serif
+}
+
+/* Formatting for Research System's logo */
+FONT.logo {
+    FONT-SIZE: 16pt;
+    TEXT-TRANSFORM: uppercase;
+    FONT-FAMILY: 'Times New Roman', serif
+}
+
+/* Formatting for IDL version and User/Developer Documentation tag */
+FONT.version {
+    FONT-SIZE: 8pt;
+    FONT-FAMILY: Helvetica, sans-serif
+}
+
+/* Formatting for directory name on a file page */
+FONT.directory {
+    FONT-SIZE: 8pt;
+    FONT-FAMILY: Helvetica, sans-serif;
+    COLOR: darkolivegreen
+}
+
+/* Formatting for a file name on a file page */
+FONT.file {
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 16pt;
+    FONT-FAMILY: Helvetica, sans-serif
+}
+
+/* Formatting for line at bottom of page indicating version of IDLdoc */
+FONT.tagline {
+    FONT-SIZE: 8pt;
+    FONT-STYLE: italic;
+    FONT-FAMILY: Helvetica, sans-serif
+}
+
+FONT.code {
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: 'Courier New', monospace
+}
+
+/* Format for the attributes to a parameter or keyword in the table of parameters and keywords in the routine details */
+.param_attrib {
+    FONT-WEIGHT: 200;
+    FONT-SIZE: 8pt;
+    FONT-FAMILY: Helvetica, sans-serif;
+    COLOR: darkolivegreen
+}
+
+/* Format for a parameter or keyword name in the table of parameters and keywords in the routine details */
+FONT.param_name {
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: Helvetica, sans-serif
+}
+
+TD.listing {
+    BORDER-RIGHT: 0px solid;
+    BORDER-TOP: 0px solid;
+    BORDER-LEFT: 0px solid;
+    BORDER-BOTTOM: 1px solid
+}
+
+.list {
+    FONT-SIZE: 9pt;
+    FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+
+.list_title {
+    FONT-SIZE: 9pt;
+    FONT-WEIGHT: bold;
+    FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+
+/* Font for the number of files or directories in the side frames */
+.list_tagline {
+    FONT-WEIGHT: lighter;
+    FONT-SIZE: 8pt;
+    FONT-FAMILY: Helvetica, sans-serif;
+    COLOR: darkolivegreen
+}
+
+.list_tagline_caution {
+    FONT-SIZE: 8pt;
+    FONT-FAMILY: Helvetica, sans-serif
+}
+
+.list_tagline_error {
+    FONT-SIZE: 8pt;
+    FONT-FAMILY: Helvetica, sans-serif;
+    COLOR: #FF1111
+}
+
+P.code_header {
+    FONT-SIZE: 10pt;
+    MARGIN-TOP: 0pt;
+    MARGIN-BOTTOM: 0pt;
+    MARGIN-LEFT: 30pt;
+    TEXT-INDENT: -30pt;
+    FONT-FAMILY: 'Courier New', monospace
+}
+
+P.first_line {
+    MARGIN-TOP: 3pt;
+    MARGIN-BOTTOM: 0pt;
+    MARGIN-LEFT: 15pt;
+    FONT-WEIGHT: lighter;
+    FONT-SIZE: 8pt;
+    FONT-FAMILY: Helvetica, sans-serif;
+}
+
+.routine {
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 12pt;
+    FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+
+/* Formatting for the attributes of a routine */
+DT.attribute {
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 9pt;
+    FONT-FAMILY: Helvetica, sans-serif
+}
+
+/* Formatting for the attributes of a routine */
+.attribute_item {
+    FONT-SIZE: 9pt;
+    FONT-FAMILY: Helvetica, sans-serif;
+    MARGIN-BOTTOM: 4px;
+    FONT-WEIGHT: lighter;
+    COLOR: darkolivegreen
+}
+
+/* Formatting for the attributes of a routine */
+DT.index_item {
+    FONT-SIZE: 9pt;
+    FONT-WEIGHT: lighter;
+    FONT-FAMILY: Helvetica, sans-serif
+
+}
+
+/* Formatting for the attributes of a routine */
+DD.index_description {
+    FONT-SIZE: 8pt;
+    FONT-FAMILY: Helvetica, sans-serif;
+    FONT-WEIGHT: lighter;
+    COLOR: darkolivegreen
+}
+
+HR.divider {
+    COLOR: lightslateblue;
+    BORDER-TOP-WIDTH: 1px;
+    BORDER-BOTTOM-WIDTH: 0px;
+    BORDER-LEFT-WIDTH: 0px;
+    BORDER-RIGHT-WIDTH: 0px;
+    HEIGHT: 1px
+}
+
+HR.table_divider {
+    COLOR: rgb(200, 200, 255);
+    BORDER-TOP-WIDTH: 1px;
+    BORDER-BOTTOM-WIDTH: 0px;
+    BORDER-LEFT-WIDTH: 0px;
+    BORDER-RIGHT-WIDTH: 0px;
+    BORDER-STYLE: dotted;
+    HEIGHT: 1px
+}
+
+TR.table_divider {
+    HEIGHT: 1px;
+    MARGIN: 0px;
+    PADDING: 0px
+}
+
+SPAN.index_selection {
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 12pt;
+    FONT-FAMILY: Helvetica, sans-serif
+}
