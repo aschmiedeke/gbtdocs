@@ -1,18 +1,20 @@
+; docformat = 'rst'
 ;+
 ; Compute the power spectrum for the indicated data container, which
-; is overwritten with the result.  Uses <a href="../toolbox/dcfft.html#_dcfft">dcfft</a> to do the fft.  This is simply
-; the sum of squares of the real and imaginary parts of the fft on the
-; data.
+; is overwritten with the result.  Uses :idl:pro:`dcfft` to do the fft.
+; This is simply the sum of squares of the real and imaginary parts of
+; the fft on the data.
 ;
-; <p>Use <a href="../toolbox/dcpowspec.html">dcpowspec</a> to get the power spectrum for a non-global 
+; Use :idl:pro:`dcpowspec` to get the power spectrum for a non-global 
 ; data container.
 ;
-; @param buffer {in}{out}{optional}{type=integer}{default=0} The
-; global buffer number to use for both input and output.
+; :Params:
+;   buffer : in, out, optional, type=integer, default=0
+;       The global buffer number to use for both input and output.
 ;
-; @uses <a href="../toolbox/dcfft.html#_dcfft">dcfft</a>
+; :Uses:
+;   :idl:pro:`dcfft`
 ;
-; @version $Id$
 ;-
 pro powspec,buffer
     compile_opt idl2

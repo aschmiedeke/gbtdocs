@@ -1,3 +1,5 @@
+; docformat = 'rst'
+
 ;+
 ; Save a data container to the current fileout with the indicate NSAVE
 ; value.  If the !g.sprotect flag is true and nsave already exists,
@@ -8,31 +10,33 @@
 ; recovered by specifying the nsave search parameter.  See the
 ; examples.
 ;
-; @param nsave {in}{required}{type=integer} The output nsave to use
-; when saving this data.
+; :Params:
+;   nsave : in, required, type=integer
+;       The output nsave to use when saving this data.
 ;
-; @keyword buffer {in}{optional}{type=integer}{default=0} The global
-; buffer number to use when saving to disk.
+; :Keywords: 
+;   buffer : in, optional, type=integer, default=0
+;       The global buffer number to use when saving to disk.
 ;
-; @keyword dc {in}{optional}{type=data container} A specific data
-; container to save.  If dc is set, buffer is ignored.
+;   dc : in, optional, type=data container
+;       A specific data container to save.  If dc is set, buffer is ignored.
 ;
-; @keyword ok {out}{optional}{type=integer} Optionally return the
-; exit status of this procedure.  This is 1 on success and 0 on
-; failure.  This is chiefly useful when used inside another procedure
-; or function.
+;   ok : out, optional, type=integer
+;       Optionally return the exit status of this procedure.  This is
+;       1 on success and 0 on failure.  This is chiefly useful when used 
+;       inside another procedure or function.
 ;
-; @examples
-; <pre>
-;   getps,10  ; get some data
-;   ; do stuff to it
-;   nsave,50  ; its now in nsave=50
-;   ; do more stuff to that data, oops, thats no good
-;   ; back to previous state
-;   kget,nsave=50
-; </pre>
-;
-; @version $Id$
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       getps,10  ; get some data
+;       ; do stuff to it
+;       nsave,50  ; its now in nsave=50
+;       ; do more stuff to that data, oops, thats no good
+;       ; back to previous state
+;       kget,nsave=50
+; 
 ;-
 pro nsave,nsave,buffer=buffer,dc=dc,ok=ok
     compile_opt idl2
