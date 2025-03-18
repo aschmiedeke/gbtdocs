@@ -1,0 +1,686 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>How to account for sky opacity in GBT Observations &#8212; GBT Docs 0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster.custom.css?v=7bc2f056" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster.bundle.min.css?v=37217874" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-shadow.min.css?v=6227e517" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-punk.min.css?v=94669e23" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-noir.min.css?v=21a39f42" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-light.min.css?v=a18b2449" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-borderless.min.css?v=dbff53e4" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/micromodal.css?v=d7bf34ee" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=04af0cc0" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=e1a75a79"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/tabs.js?v=3ee01567"></script>
+    <script src="../../_static/js/hoverxref.js?v=c9b52ebc"></script>
+    <script src="../../_static/js/tooltipster.bundle.min.js?v=18bf091b"></script>
+    <script src="../../_static/js/micromodal.min.js?v=04d6302d"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'how-tos/data_reduction/calculate_opacity';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Explanation Material" href="../../explanations/index.html" />
+    <link rel="prev" title="How to process spectra using GBTIDL (examples)" href="gbtidl.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/GBO-vertical-PGGradient.svg" class="logo__image only-light" alt="GBT Docs 0.1 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/GBO-vertical-PGGradient.svg" class="logo__image only-dark" alt="GBT Docs 0.1 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorials/index.html"><svg aria-hidden="true" class="sd-octicon sd-octicon-mortar-board orange" height="2.0em" version="1.1" viewbox="0 0 24 24" width="2.0em"><path d="M12.292 2.06a.75.75 0 00-.584 0L.458 6.81a.75.75 0 000 1.38L4.25 9.793v3.803a2.901 2.901 0 00-1.327.757c-.579.58-.923 1.41-.923 2.43v4.5c0 .248.128.486.335.624.06.04.117.073.22.124.124.062.297.138.52.213.448.149 1.09.288 1.925.288s1.477-.14 1.925-.288c.223-.075.396-.15.52-.213a2.11 2.11 0 00.21-.117A.762.762 0 008 21.28v-4.5c0-1.018-.344-1.85-.923-2.428a2.9 2.9 0 00-1.327-.758v-3.17l5.958 2.516a.75.75 0 00.584 0l5.208-2.2v4.003a2.552 2.552 0 01-.079.085 4.057 4.057 0 01-.849.65c-.826.488-2.255 1.021-4.572 1.021-.612 0-1.162-.037-1.654-.1a.75.75 0 00-.192 1.487c.56.072 1.173.113 1.846.113 2.558 0 4.254-.592 5.334-1.23.538-.316.914-.64 1.163-.896a2.84 2.84 0 00.392-.482h.001A.75.75 0 0019 15v-4.892l4.542-1.917a.75.75 0 000-1.382l-11.25-4.75zM5 15c-.377 0-.745.141-1.017.413-.265.265-.483.7-.483 1.368v4.022c.299.105.797.228 1.5.228s1.201-.123 1.5-.228V16.78c0-.669-.218-1.103-.483-1.368A1.431 1.431 0 005 15zm7-3.564L2.678 7.5 12 3.564 21.322 7.5 12 11.436z" fill-rule="evenodd"></path></svg> Tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/hi_psw_tutorial.html">HI Position Switched (psw) Spectrum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/kfpa_nh3_mapping_tutorial.html">NH<sub>3</sub> Mapping Observations with the K-Band Focal Plane Array (KFPA) on the GBT</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><svg aria-hidden="true" class="sd-octicon sd-octicon-terminal green" height="2.0em" version="1.1" viewbox="0 0 24 24" width="2.0em"><path d="M9.25 12a.75.75 0 01-.22.53l-2.75 2.75a.75.75 0 01-1.06-1.06L7.44 12 5.22 9.78a.75.75 0 111.06-1.06l2.75 2.75c.141.14.22.331.22.53zm2 2a.75.75 0 000 1.5h5a.75.75 0 000-1.5h-5z"></path><path d="M0 4.75C0 3.784.784 3 1.75 3h20.5c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0122.25 21H1.75A1.75 1.75 0 010 19.25V4.75zm1.75-.25a.25.25 0 00-.25.25v14.5c0 .138.112.25.25.25h20.5a.25.25 0 00.25-.25V4.75a.25.25 0 00-.25-.25H1.75z" fill-rule="evenodd"></path></svg> How-To Guides</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../infrastructure/remote-connection.html">How to connect remotely to the GBO network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general_guides/gbt_observing.html">GBT observations 101</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../observing_modes/C-band_Mueller_matrix.html">How to derive a Mueller matrix</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../observing_modes/pulsars.html">Pulsar observing How-To Guides</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../observing_modes/pulsars/pulsar_time_obs.html">Timing Observations of a Known Pulsar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../observing_modes/pulsars/pulsar_flux_cal.html">Pulsar-Mode Flux Calibration Observations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../observing_modes/pulsars/pulsar_search.html">Pulsar Search Observations</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../receivers/argus/argus_obs.html">How to observe using Argus</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../receivers/mustang2.html">MUSTANG-2 How-To Guides</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../receivers/mustang2/mustang2_proposal.html">How to Propose with MUSTANG-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../receivers/mustang2/mustang2_calc_obs_time.html">How to Calculate Observing Time Required for MUSTANG-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../receivers/mustang2/mustang2_obs_scripts.html">How to Prepare MUSTANG-2 Observing Scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../receivers/mustang2/mustang2_setup.html">How to setup MUSTANG-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../receivers/mustang2/mustang2_obs.html">How to observe with MUSTANG-2</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../receivers/mustang2/mustang2_data.html">MUSTANG-2 data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../receivers/mustang2/data/mustang2_deliverables.html">MUSTANG-2 Deliverables</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="gbtidl.html">How to process spectra using GBTIDL (examples)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">How to account for sky opacity in GBT Observations</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../explanations/index.html"><svg aria-hidden="true" class="sd-octicon sd-octicon-repo purple" height="2.0em" version="1.1" viewbox="0 0 24 24" width="2.0em"><path d="M3 2.75A2.75 2.75 0 015.75 0h14.5a.75.75 0 01.75.75v20.5a.75.75 0 01-.75.75h-6a.75.75 0 010-1.5h5.25v-4H6A1.5 1.5 0 004.5 18v.75c0 .716.43 1.334 1.05 1.605a.75.75 0 01-.6 1.374A3.25 3.25 0 013 18.75v-16zM19.5 1.5V15H6c-.546 0-1.059.146-1.5.401V2.75c0-.69.56-1.25 1.25-1.25H19.5z" fill-rule="evenodd"></path><path d="M7 18.25a.25.25 0 01.25-.25h5a.25.25 0 01.25.25v5.01a.25.25 0 01-.397.201l-2.206-1.604a.25.25 0 00-.294 0L7.397 23.46a.25.25 0 01-.397-.2v-5.01z"></path></svg> Explanation Material</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../references/index.html"><svg aria-hidden="true" class="sd-octicon sd-octicon-tools sd-text-primary" height="2.0em" version="1.1" viewbox="0 0 24 24" width="2.0em"><path d="M7.875 2.292a.125.125 0 00-.032.018A7.24 7.24 0 004.75 8.25a7.247 7.247 0 003.654 6.297c.57.327.982.955.941 1.682v.002l-.317 6.058a.75.75 0 11-1.498-.078l.317-6.062v-.004c.006-.09-.047-.215-.188-.296A8.747 8.747 0 013.25 8.25a8.74 8.74 0 013.732-7.169 1.547 1.547 0 011.709-.064c.484.292.809.835.809 1.46v4.714a.25.25 0 00.119.213l2.25 1.385c.08.05.182.05.262 0l2.25-1.385a.25.25 0 00.119-.213V2.478c0-.626.325-1.169.81-1.461a1.547 1.547 0 011.708.064 8.74 8.74 0 013.732 7.17 8.747 8.747 0 01-4.41 7.598c-.14.081-.193.206-.188.296v.004l.318 6.062a.75.75 0 11-1.498.078l-.317-6.058v-.002c-.041-.727.37-1.355.94-1.682A7.247 7.247 0 0019.25 8.25a7.24 7.24 0 00-3.093-5.94.125.125 0 00-.032-.018l-.01-.001c-.003 0-.014 0-.031.01-.036.022-.084.079-.084.177V7.19a1.75 1.75 0 01-.833 1.49l-2.25 1.385a1.75 1.75 0 01-1.834 0l-2.25-1.384A1.75 1.75 0 018 7.192V2.477c0-.098-.048-.155-.084-.176a.062.062 0 00-.031-.011l-.01.001z" fill-rule="evenodd"></path></svg> Reference Guides</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../references/observing_modes/pulsar_reference.html">Pulsar Observing Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../references/receivers/argus.html">Argus</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../references/receivers/mustang2.html">MUSTANG-2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../references/receivers/mustang2/mustang2_overview.html">MUSTANG-2 Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../references/receivers/mustang2/mustang2_instrument_team.html">MUSTANG-2 Instrument Team</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../references/receivers/mustang2/mustang2_bandpass.html">MUSTANG-2 Bandpass Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../references/receivers/mustang2/mustang2_filtering.html">MUSTANG-2 Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../references/receivers/mustang2/mustang2_mapping.html">MUSTANG-2 Mapping Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../references/receivers/mustang2/mustang2_publications.html">MUSTANG-2 Publications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../references/receivers/mustang2/mustang2_datasets.html">MUSTANG-2 Published Data Sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../references/receivers/mustang2/mustang2_dev.html">MUSTANG-2 Historical Development</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../references/software/scheduling-blocks.html">Scheduling Block Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../references/software/gbtidl.html">GBTIDL commands</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/aschmiedeke/gbtdocs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/aschmiedeke/gbtdocs/issues/new?title=Issue%20on%20page%20%2Fhow-tos/data_reduction/calculate_opacity.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/how-tos/data_reduction/calculate_opacity.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>How to account for sky opacity in GBT Observations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">1. Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sky-opacity-in-gbtidl">2. Sky Opacity in GBTIDL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-sky-opacity-quickly-by-eye">3. Calculate Sky Opacity: Quickly By Eye</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model">3.1 Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sites">3.2 Sites</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-which-sites-are-most-relevant-to-gbo-weather">3.2.1 Choosing Which Sites are Most Relevant to GBO Weather</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-parameters">3.3 Temporal Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-sky-opacity-retrieving-more-granular-values-of-zenith-opacity">4. Calculate Sky Opacity: Retrieving More Granular Values of Zenith Opacity</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="how-to-account-for-sky-opacity-in-gbt-observations">
+<h1>How to account for sky opacity in GBT Observations<a class="headerlink" href="#how-to-account-for-sky-opacity-in-gbt-observations" title="Link to this heading">#</a></h1>
+<p>This guide walks you through how to calculate the opacity for your observations after the fact to use as input into GBTIDL.</p>
+<section id="background">
+<h2>1. Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h2>
+<p>At frequencies above approximately 10 GHz it becomes important to account for the effects of sky opacity on the measured antenna temperature, particularly when using the <span class="incremental">corrected antenna temperature</span> scale, <span class="math notranslate nohighlight">\(T_A^*\)</span> (see Chapter 18 of the Observers’ <a class="reference external" href="https://www.gb.nrao.edu/scienceDocs/GBTog.pdf">Guide</a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Though it was stated that “At frequencies above approximately 10 GHz”, the exact frequency at which sky opacity becomes important and the magnitude of the effect on observations is highly variable and should be investigated for any individual given set of observations.</p>
+</div>
+<p>As a reminder, <span class="math notranslate nohighlight">\(T_A^* = T_A\frac{e^{A\tau_0}}{\eta_{eff}}\)</span>
+where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(T_A^*\)</span> is the measured antenna temperature,</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> is the airmass at the elevation of the specific observation (~1/sin(elevation) for elevations &gt; 20 deg),</p></li>
+<li><p><span class="math notranslate nohighlight">\(\tau_0\)</span> is the zenith sky opacity at the specified frequency,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\eta_{eff}\)</span> is the forward spillover efficiency of the antenna (~0.99 for the GBT).</p></li>
+</ul>
+<p>As seen from the equation above, in order to calculate the corrected antenna temperature (<span class="math notranslate nohighlight">\(T_A^*\)</span>) of observations made with the GBT’ it is necessary to know at least the elevation of the telescope at the time of observations as well as the zenith sky opacity at the frequency observed. Details on how zenith sky opacities for the site of the GBT are retrieved/calculated can be found in the Observers’ <a class="reference external" href="https://www.gb.nrao.edu/scienceDocs/GBTog.pdf">Guide</a>. A detailed description of some of the specific features of this process and how measurements might be impacted by the selection of local forecast sites can also be found in <a class="reference external" href="https://library.nrao.edu/public/memos/gbt/GBT_304.pdf">GBT Memo 304</a>.</p>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>Add references to chapters in Observer’s guide.</p>
+</div>
+</section>
+<section id="sky-opacity-in-gbtidl">
+<h2>2. Sky Opacity in GBTIDL<a class="headerlink" href="#sky-opacity-in-gbtidl" title="Link to this heading">#</a></h2>
+<p>A feature of reducing data in GBTIDL is that data may be presented on the <span class="math notranslate nohighlight">\(T_A^*\)</span> scale by supplying <code class="docutils literal notranslate"><span class="pre">units='Ta*'</span></code> as an option to a normal reduction command, e.g.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; getps, 20, units=&#39;Ta*&#39;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>‘20’ represents the scan number</p>
+</div>
+<p>When GBTIDL calculates <span class="math notranslate nohighlight">\(T_A^*\)</span>, it by default selects a representative value of zenith sky opacity (<span class="math notranslate nohighlight">\(\tau_0\)</span>) from a set of historical data, which is then used to perform. The problem with this ‘representative’ value is that it may be significantly different to the value that is actually relevant to the observations of interest.</p>
+<p>If you want to know what value of <span class="math notranslate nohighlight">\(\tau_0\)</span> that GBTIDL used in these circumstances, it is displayed at the command prompt when the reduction command is issued. Alternatively, the value of <span class="math notranslate nohighlight">\(\tau_0\)</span> assumed when data are reduced in this manner can be retrieved by issuing the following command to GBTIDL</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; a=get_tau(f)
+</pre></div>
+</div>
+<p>where <span class="incremental">f</span> is the relevant frequency in GHz (equivalent to <code class="docutils literal notranslate"><span class="pre">!g.s[0].line_rest_frequency/1.d9</span></code> when working with a spectrum in current memory).</p>
+<p>As stated, the value of <span class="math notranslate nohighlight">\(\tau_0\)</span> used in this scenario is ‘representative’ and should not be relied upon for accurate data reduction. In order to achieve the best possible calibration, an accurate value of <span class="math notranslate nohighlight">\(\tau_0\)</span> should be supplied to the GBTIDL reduction command via</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; getps, 20, units=&#39;Ta*&#39;, tau=tau_input
+</pre></div>
+</div>
+<p>where <span class="incremental">tau_input</span> is the true value of <span class="math notranslate nohighlight">\(\tau_0\)</span> calculated by the user. However, this relies upon the user being able to calculate an accurate value of <span class="math notranslate nohighlight">\(\tau_0\)</span> relevant to their observations. To calculate the true value of <span class="math notranslate nohighlight">\(\tau_0\)</span> for your observations see the instructions below.</p>
+</section>
+<section id="calculate-sky-opacity-quickly-by-eye">
+<h2>3. Calculate Sky Opacity: Quickly By Eye<a class="headerlink" href="#calculate-sky-opacity-quickly-by-eye" title="Link to this heading">#</a></h2>
+<p>There are multiple ways of retrieving zenith sky opacity measurements for a given time and frequency of observation, made using the GBT. The most basic or user-friendly is likely the <code class="docutils literal notranslate"><span class="pre">Weather</span> <span class="pre">Forecasts</span></code> feature of CLEO. This can be started by typing the following in the command line</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cleo<span class="w"> </span>forecast
+</pre></div>
+</div>
+<p>This command will bring up the GUI shown below.</p>
+<figure class="align-center" id="id4">
+<span id="fig-forecast-gui"></span><a class="reference internal image-reference" href="../../_images/cleo_forecast_gui.png"><img alt="../../_images/cleo_forecast_gui.png" src="../../_images/cleo_forecast_gui.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-text">Figure 1: Image of CLEO forecast GUI.</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This GUI/application has multiple features which are described below. However, please note the features described in this guide is not an exhaustive description of all of the capabilities of this GUI but will be restricted to capabilities related to calculating the opacity values only. You may notice that the GUI is also capable of returning predicted/calculated values of other parameters such as <code class="docutils literal notranslate"><span class="pre">Air</span> <span class="pre">Mass</span></code>, <code class="docutils literal notranslate"><span class="pre">Tsystem</span></code> and <code class="docutils literal notranslate"><span class="pre">Tatmosphere</span></code>, which the observer may find useful.</p>
+<p>We will now go through the features of this GUI that you should pay attention to quickly, by eye calculate the sky opacity for your observations. They are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Model</span></code> (see <a class="hxr-hoverxref hxr-tooltip reference internal" href="#model"><span class="std std-ref">3.1 Model</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Sites</span></code> (see <a class="hxr-hoverxref hxr-tooltip reference internal" href="#sites"><span class="std std-ref">3.2 Sites</span></a>)</p></li>
+<li><p>Temporal Parameters (see <a class="hxr-hoverxref hxr-tooltip reference internal" href="#temporal-parameters"><span class="std std-ref">3.3 Temporal Parameters</span></a>)</p></li>
+</ul>
+<section id="model">
+<h3>3.1 Model<a class="headerlink" href="#model" title="Link to this heading">#</a></h3>
+<p>Starting from the top of the GUI and working down, it can be seen that the user may select the <code class="docutils literal notranslate"><span class="pre">Model</span></code>. The <code class="docutils literal notranslate"><span class="pre">Model</span></code> selected represents the National Weather Service (NWS) weather forecast model from which data is taken in order to supply the requested parameter.</p>
+<p>The default (see above as <code class="docutils literal notranslate"><span class="pre">NAM</span></code>) is the 3.5 day ‘NAM’ forecast. More details on these models and their various features may be found elsewhere (such as <a class="reference external" href="https://library.nrao.edu/public/memos/gbt/GBT_304.pdf">GBT Memo 304</a>). But, for most purposes <code class="docutils literal notranslate"><span class="pre">NAM</span></code> will be the best option. It should be noted that the input model values used to derive the requested parameters may change, depending upon the date of the observation and when the user is making the request. As an example, the NAM model makes forecasts out to 3.5 days in the future and updates those forecasts with a six hour cadence, with an hourly timestep. Therefore, if the observer is requesting data that is within that 3.5 day window, those data may change. Thus even if the date is in the past, the forecast/assimilation/analysis cycle used in modern weather forecasting means that atmospheric parameters may still be updated.
+What this means is that, for <code class="docutils literal notranslate"><span class="pre">NAM</span></code>, once the 3.5 day window is past, retrieved values are the ‘last, best’ estimates and then remain fixed.</p>
+</section>
+<section id="sites">
+<h3>3.2 Sites<a class="headerlink" href="#sites" title="Link to this heading">#</a></h3>
+<p>Continuing from the top of the GUI down, the second selection the user is required to make is the site or sites used in the parameter derivation. This is again covered in much greater detail in GBT memo #304. The synopsis is that GBO uses three sites, approximately surrounding the location of the GBT, as proxies for some of the weather conditions at the site. By selecting all three of the <code class="docutils literal notranslate"><span class="pre">Elkins</span></code>, <code class="docutils literal notranslate"><span class="pre">HotSprings</span></code> and <code class="docutils literal notranslate"><span class="pre">Lewisburg</span></code> sites, as well as checking the <code class="docutils literal notranslate"><span class="pre">Averages</span></code> box, all three values and their average will be plotted and the user can visually determine their relevance to their data. It may be noted that there is an option to select a now defunct ‘Green Bank Radiometer’ option. This is no longer operational and should be ignored.</p>
+<section id="choosing-which-sites-are-most-relevant-to-gbo-weather">
+<h4>3.2.1 Choosing Which Sites are Most Relevant to GBO Weather<a class="headerlink" href="#choosing-which-sites-are-most-relevant-to-gbo-weather" title="Link to this heading">#</a></h4>
+<p>At a simplistic level, weather at the GBO site typically moves approximately from south-west to north-east. This means that, when forecasting weather for the GBO site, data from the Hot Springs and Lewisburg sites are far more relevant than the Elkins site. However, on shorter timescales, it may also mean that weather that is coming up from the south will affect the Hot Springs and Lewisburg sites before impacting the GBO location. With this in mind, it is possible that the Elkins site is actually the most relevant one to use when establishing the conditions for a set of observations.</p>
+<p>As an example, please see the figure below.</p>
+<figure class="align-center" id="id5">
+<span id="fig-radar-maps"></span><img alt="../../_images/radar_maps.png" src="../../_images/radar_maps.png" />
+<figcaption>
+<p><span class="caption-text">Figure 2: Radar maps showing the locations of Lewisburg, Hot Springs and Elkins, used for evaluating weather conditions at the GBO site, also shown. The upper map shows weather radar observations at 14:00 UT on the 7th of Feb, 2022. The bottom left and right images show radar observations at 15:00 and 16:00 UT, respectively.</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Fig. 2 shows a set of three radar maps at the beginning, middle and end of the observing session which was also used for the plot in Fig. 4. As can be seen, there appear to be clear skies above the GBO site at the beginning of the session, as well as the Elkins site. At this same time the Hot Springs and Lewisburg sites are also mostly clear but rain/cloud can be seen nearby. This corresponds to the first set of points in Fig. 4, in which all three sites have opacities in good agreement. By 15:00 - the second frame in Fig. 2, Lewisburg and Hot Springs are clearly experiencing cloudy skies and probable rain, while GBO and Elkins still have clear skies. At the end of the session (16:00 - final frame of Fig. 2) the GBO site will just be beginning to experience the weather that has been observed at the Lewisburg and Hot Springs sites for the prior two hours.</p>
+<p>These radar maps agree well with the opacities plotted in Fig. 4. wherein the opacity at Elkins stays low for the three hour period plotted, while the Hot Springs and Lewisburg sites start the same period with low opacities, which then show increased opacity over the following two hours. In this case, it can be clearly determined that the opacity measured at the Elkins site is the most appropriate value to use for observations made during this particular period. However, this would not necessarily be immediately obvious without investigation.</p>
+</section>
+</section>
+<section id="temporal-parameters">
+<h3>3.3 Temporal Parameters<a class="headerlink" href="#temporal-parameters" title="Link to this heading">#</a></h3>
+<p>Selecting the <code class="docutils literal notranslate"><span class="pre">Time</span> <span class="pre">Series</span> <span class="pre">Curves</span></code> or <code class="docutils literal notranslate"><span class="pre">Curves</span> <span class="pre">for</span> <span class="pre">a</span> <span class="pre">Specific</span> <span class="pre">UT</span> <span class="pre">Date</span> <span class="pre">&amp;</span> <span class="pre">Time</span></code> tabs allows the user to investigate how their parameter of interest (assumed to be opacity here) varies as a function of time, in the first case, or as a function of elevation and/or frequency in the second case. For the sake of this description, I will present the example of finding opacity as a function of time (<code class="docutils literal notranslate"><span class="pre">Time</span> <span class="pre">Series</span> <span class="pre">Curves</span></code>).</p>
+<p>Selecting <code class="docutils literal notranslate"><span class="pre">Opacity</span></code> under <code class="docutils literal notranslate"><span class="pre">Calculations</span></code> the user is then required to input the frequency, or frequencies, of interest - multiple frequencies can be selected by holding down ‘control’ and clicking multiple values. Note that available frequencies are in integer GHz values only.</p>
+<p>It can be seen that the inputs to the calculations used to produce opacity (and other) values can also be selected (e.g. ‘Hydrosols’). Unless there is a known reason to alter these, the user should leave these as the default values.</p>
+<p>Once all parameters are selected, the user can choose whether or not to <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">Results</span> <span class="pre">to</span> <span class="pre">Files</span></code>, which will prompt the user to select a location to output text files containing the relevant information. This done, the user should then click on <code class="docutils literal notranslate"><span class="pre">Process</span></code>. After some computation, a plot (or plots) of the selected parameter(s) will be presented. An example is shown below.</p>
+<figure class="align-center" id="id6">
+<span id="fig-zenith-opacity-week"></span><a class="reference internal image-reference" href="../../_images/zenith_opacity_23GHz_week.png"><img alt="../../_images/zenith_opacity_23GHz_week.png" src="../../_images/zenith_opacity_23GHz_week.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-text">Figure 3: Zenith Opacity variation at 23 GHz over a timescale of a week. The plot shows data points for the sites of Elkins (green crosses), Hot Springs (red triangles) and Lewisburg (blue squares) as well as the average of those three sites (solid line). The yellow bar is centered at the time at which the request was sent.</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This first example (Fig. 3) shows a fairly wide time range of an entire week, useful perhaps for looking at an observing schedule or getting an idea of the overall variation of opacity but, if one would like to gain a better picture of the <span class="math notranslate nohighlight">\(\tau_0\)</span> value associated with a specific observing session, then it is necessary to look at a shorter timescale.</p>
+<p>The image below shows an example of a much shorter timescale query, covering an observing period which lasted two hours.</p>
+<figure class="align-center" id="id7">
+<span id="fig-zenith-opacity-2hours"></span><a class="reference internal image-reference" href="../../_images/zenith_opacity_23GHz_2hours.png"><img alt="../../_images/zenith_opacity_23GHz_2hours.png" src="../../_images/zenith_opacity_23GHz_2hours.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-text">Figure 4: Zenith Opacity variation at 23 GHz over a period of two hours. The plot shows data points for the sites of Elkins (green crosses), Hot Springs (red triangles) and Lewisburg (blue squares) as well as the average of those three sites (solid line).</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>It should be noted that, at the beginning of this observing period, there is good agreement between the three different physical locations from which data is taken, with <span class="math notranslate nohighlight">\(\tau_0\)</span> values ranging from ~0.05 to ~0.062. However, by the midpoint of the period, there is a significant spread in <span class="math notranslate nohighlight">\(\tau_0\)</span> values between the three. At this time, the site of Elkins shows a <span class="math notranslate nohighlight">\(\tau_0\)</span> value of ~0.05, while the Hot Springs site shows a <span class="math notranslate nohighlight">\(\tau_0\)</span> value of ~0.167. As can be seen, the two sites of Lewisburg (which shows a <span class="math notranslate nohighlight">\(\tau_0\)</span> value of ~0.14) and Hot Springs are in reasonable agreement (&lt; 20% error on their mean value), while the Elkins value shows a significant deviation from either of these sites. The default assumption in many cases (and for many GBO operations in general) is to take the averaged value of <span class="math notranslate nohighlight">\(\tau_0\)</span> as the value supplied for data reduction. However, as can be seen in this particular case, that could lead to a potential over- or underestimate, depending on which site most closely resembles the conditions at the GBO site for the time of the observations. For this presented case, peak <span class="math notranslate nohighlight">\(T_A^*\)</span> and spectral RMS values could vary by as much as ~15%, simply from poor selection of which site is used to represent weather conditions at the GBO site. See (<a class="hxr-hoverxref hxr-tooltip reference internal" href="#choosing-which-sites-are-most-relevant-to-gbo-weather"><span class="std std-ref">3.2.1 Choosing Which Sites are Most Relevant to GBO Weather</span></a>) for more information.</p>
+</section>
+</section>
+<section id="calculate-sky-opacity-retrieving-more-granular-values-of-zenith-opacity">
+<h2>4. Calculate Sky Opacity: Retrieving More Granular Values of Zenith Opacity<a class="headerlink" href="#calculate-sky-opacity-retrieving-more-granular-values-of-zenith-opacity" title="Link to this heading">#</a></h2>
+<p>While the process described above for retrieving opacity values is clearly useful for a ‘quick-look’ determination of how variable the weather may have been locally for a given set of observations, it is also beneficial to obtain values of <span class="math notranslate nohighlight">\(\tau_0\)</span> which are calculated with more precision than by integer GHz frequency and on an hourly basis. Once it has been determined which of the three physical sites (or average thereof) is most pertinent to the observations in question, a user may retrieve a wide range of weather parameters using the command line tool which the CLEO GUI is the frontend for using the following command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">       </span>/home/cleoversions/Cleo6.2/mainscreens/forecastsCmdLine.tcl
+
+By<span class="w"> </span>supplying<span class="w"> </span>a<span class="w"> </span><span class="sb">``</span>-h<span class="sb">``</span><span class="w"> </span>flag<span class="w"> </span>to<span class="w"> </span>this<span class="w"> </span>tool<span class="w"> </span><span class="o">(</span>i.e.<span class="w"> </span><span class="sb">``</span>/home/cleoversions/Cleo6.2/mainscreens/forecastsCmdLine.tcl<span class="w"> </span>-h<span class="sb">``</span><span class="o">)</span><span class="w"> </span>a<span class="w"> </span>detailed<span class="w"> </span><span class="nb">set</span><span class="w"> </span>of<span class="w"> </span>instructions<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>retrieved.<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>very<span class="w"> </span>versatile<span class="w"> </span>tool,<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>wide<span class="w"> </span>range<span class="w"> </span>of<span class="w"> </span>capabilities<span class="w"> </span>and<span class="w"> </span>applications.<span class="w"> </span>This<span class="w"> </span>document<span class="w"> </span>only<span class="w"> </span>addresses<span class="w"> </span>the<span class="w"> </span>usefulness<span class="w"> </span>of<span class="w"> </span>this<span class="w"> </span>tool<span class="w"> </span>as<span class="w"> </span>it<span class="w"> </span>applies<span class="w"> </span>to<span class="w"> </span>retrieving<span class="w"> </span>:math:<span class="sb">`</span><span class="se">\t</span>au_0<span class="sb">`</span><span class="w"> </span>values<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>given<span class="w"> </span><span class="nb">set</span><span class="w"> </span>of<span class="w"> </span>observations.<span class="w"> </span>The<span class="w"> </span>reader<span class="w"> </span>is<span class="w"> </span>urged<span class="w"> </span>to<span class="w"> </span>explore<span class="w"> </span>the<span class="w"> </span>ways<span class="w"> </span><span class="k">in</span><span class="w"> </span>which<span class="w"> </span>the<span class="w"> </span>tool<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>used<span class="w"> </span>and<span class="w"> </span>the<span class="w"> </span>options<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>data<span class="w"> </span>that<span class="w"> </span>are<span class="w"> </span>returned.
+</pre></div>
+</div>
+<p>As a basic example of the use of this tool, the opacities for the observing period examined above may be retrieved via</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/home/cleoversions/Cleo6.2/mainscreens/forecastsCmdLine.tcl<span class="w"> </span>-model<span class="w"> </span>NAM<span class="w"> </span>-calculate<span class="w"> </span>OpacityTime<span class="w"> </span>-freqList<span class="w"> </span><span class="m">23</span>.1<span class="w"> </span><span class="m">23</span>.2<span class="w"> </span><span class="m">23</span>.3<span class="w"> </span>-startTime<span class="w"> </span><span class="s2">&quot;02/07/2022 14:00:00&quot;</span><span class="w"> </span>-stopTime<span class="w"> </span><span class="s2">&quot;02/07/2022 16:00:00&quot;</span><span class="w"> </span>-incrTime<span class="w"> </span><span class="m">1</span>
+</pre></div>
+</div>
+<p>This will create a directory in the location in which the user is working and return a set of files to that directory in which the requested data are recorded. In this case, opacities at the frequencies 23.1, 23.2 and 23.3 GHz have been requested on an hourly timescale. It is not currently possible to retrieve opacities at a finer time resolution than one hour. However, it is possible to retrieve opacities at much finer frequency resolution than through using the GUI tool. Unless specified otherwise, this command will return values for each of the Lewisburg, Hot Springs and Elkins sites, as well as the average of all three.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="gbtidl.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">How to process spectra using GBTIDL (examples)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../explanations/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-repo purple" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M3 2.75A2.75 2.75 0 015.75 0h14.5a.75.75 0 01.75.75v20.5a.75.75 0 01-.75.75h-6a.75.75 0 010-1.5h5.25v-4H6A1.5 1.5 0 004.5 18v.75c0 .716.43 1.334 1.05 1.605a.75.75 0 01-.6 1.374A3.25 3.25 0 013 18.75v-16zM19.5 1.5V15H6c-.546 0-1.059.146-1.5.401V2.75c0-.69.56-1.25 1.25-1.25H19.5z"></path><path d="M7 18.25a.25.25 0 01.25-.25h5a.25.25 0 01.25.25v5.01a.25.25 0 01-.397.201l-2.206-1.604a.25.25 0 00-.294 0L7.397 23.46a.25.25 0 01-.397-.2v-5.01z"></path></svg> Explanation Material</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">1. Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sky-opacity-in-gbtidl">2. Sky Opacity in GBTIDL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-sky-opacity-quickly-by-eye">3. Calculate Sky Opacity: Quickly By Eye</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model">3.1 Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sites">3.2 Sites</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-which-sites-are-most-relevant-to-gbo-weather">3.2.1 Choosing Which Sites are Most Relevant to GBO Weather</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-parameters">3.3 Temporal Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-sky-opacity-retrieving-more-granular-values-of-zenith-opacity">4. Calculate Sky Opacity: Retrieving More Granular Values of Zenith Opacity</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Green Bank Observatory
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023-24, Green Bank Observatory, A. Schmiedeke.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

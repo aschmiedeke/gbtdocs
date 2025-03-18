@@ -1,0 +1,659 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>How to Prepare MUSTANG-2 Observing Scripts &#8212; GBT Docs 0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/tooltipster.custom.css?v=7bc2f056" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/tooltipster.bundle.min.css?v=37217874" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/tooltipster-sideTip-shadow.min.css?v=6227e517" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/tooltipster-sideTip-punk.min.css?v=94669e23" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/tooltipster-sideTip-noir.min.css?v=21a39f42" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/tooltipster-sideTip-light.min.css?v=a18b2449" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/tooltipster-sideTip-borderless.min.css?v=dbff53e4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/micromodal.css?v=d7bf34ee" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=04af0cc0" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=e1a75a79"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    <script src="../../../_static/js/hoverxref.js?v=c9b52ebc"></script>
+    <script src="../../../_static/js/tooltipster.bundle.min.js?v=18bf091b"></script>
+    <script src="../../../_static/js/micromodal.min.js?v=04d6302d"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'how-tos/receivers/mustang2/mustang2_obs_scripts';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="How to setup MUSTANG-2" href="mustang2_setup.html" />
+    <link rel="prev" title="How to Calculate Observing Time Required for MUSTANG-2" href="mustang2_calc_obs_time.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/GBO-vertical-PGGradient.svg" class="logo__image only-light" alt="GBT Docs 0.1 documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/GBO-vertical-PGGradient.svg" class="logo__image only-dark" alt="GBT Docs 0.1 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../tutorials/index.html"><svg aria-hidden="true" class="sd-octicon sd-octicon-mortar-board orange" height="2.0em" version="1.1" viewbox="0 0 24 24" width="2.0em"><path d="M12.292 2.06a.75.75 0 00-.584 0L.458 6.81a.75.75 0 000 1.38L4.25 9.793v3.803a2.901 2.901 0 00-1.327.757c-.579.58-.923 1.41-.923 2.43v4.5c0 .248.128.486.335.624.06.04.117.073.22.124.124.062.297.138.52.213.448.149 1.09.288 1.925.288s1.477-.14 1.925-.288c.223-.075.396-.15.52-.213a2.11 2.11 0 00.21-.117A.762.762 0 008 21.28v-4.5c0-1.018-.344-1.85-.923-2.428a2.9 2.9 0 00-1.327-.758v-3.17l5.958 2.516a.75.75 0 00.584 0l5.208-2.2v4.003a2.552 2.552 0 01-.079.085 4.057 4.057 0 01-.849.65c-.826.488-2.255 1.021-4.572 1.021-.612 0-1.162-.037-1.654-.1a.75.75 0 00-.192 1.487c.56.072 1.173.113 1.846.113 2.558 0 4.254-.592 5.334-1.23.538-.316.914-.64 1.163-.896a2.84 2.84 0 00.392-.482h.001A.75.75 0 0019 15v-4.892l4.542-1.917a.75.75 0 000-1.382l-11.25-4.75zM5 15c-.377 0-.745.141-1.017.413-.265.265-.483.7-.483 1.368v4.022c.299.105.797.228 1.5.228s1.201-.123 1.5-.228V16.78c0-.669-.218-1.103-.483-1.368A1.431 1.431 0 005 15zm7-3.564L2.678 7.5 12 3.564 21.322 7.5 12 11.436z" fill-rule="evenodd"></path></svg> Tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/hi_psw_tutorial.html">HI Position Switched (psw) Spectrum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/kfpa_nh3_mapping_tutorial.html">NH<sub>3</sub> Mapping Observations with the K-Band Focal Plane Array (KFPA) on the GBT</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html"><svg aria-hidden="true" class="sd-octicon sd-octicon-terminal green" height="2.0em" version="1.1" viewbox="0 0 24 24" width="2.0em"><path d="M9.25 12a.75.75 0 01-.22.53l-2.75 2.75a.75.75 0 01-1.06-1.06L7.44 12 5.22 9.78a.75.75 0 111.06-1.06l2.75 2.75c.141.14.22.331.22.53zm2 2a.75.75 0 000 1.5h5a.75.75 0 000-1.5h-5z"></path><path d="M0 4.75C0 3.784.784 3 1.75 3h20.5c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0122.25 21H1.75A1.75 1.75 0 010 19.25V4.75zm1.75-.25a.25.25 0 00-.25.25v14.5c0 .138.112.25.25.25h20.5a.25.25 0 00.25-.25V4.75a.25.25 0 00-.25-.25H1.75z" fill-rule="evenodd"></path></svg> How-To Guides</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../infrastructure/remote-connection.html">How to connect remotely to the GBO network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../general_guides/gbt_observing.html">GBT observations 101</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../observing_modes/C-band_Mueller_matrix.html">How to derive a Mueller matrix</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../observing_modes/pulsars.html">Pulsar observing How-To Guides</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../observing_modes/pulsars/pulsar_time_obs.html">Timing Observations of a Known Pulsar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../observing_modes/pulsars/pulsar_flux_cal.html">Pulsar-Mode Flux Calibration Observations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../observing_modes/pulsars/pulsar_search.html">Pulsar Search Observations</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../argus/argus_obs.html">How to observe using Argus</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../mustang2.html">MUSTANG-2 How-To Guides</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="mustang2_proposal.html">How to Propose with MUSTANG-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mustang2_calc_obs_time.html">How to Calculate Observing Time Required for MUSTANG-2</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">How to Prepare MUSTANG-2 Observing Scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mustang2_setup.html">How to setup MUSTANG-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mustang2_obs.html">How to observe with MUSTANG-2</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="mustang2_data.html">MUSTANG-2 data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="data/mustang2_deliverables.html">MUSTANG-2 Deliverables</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data_reduction/gbtidl.html">How to process spectra using GBTIDL (examples)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data_reduction/calculate_opacity.html">How to account for sky opacity in GBT Observations</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../explanations/index.html"><svg aria-hidden="true" class="sd-octicon sd-octicon-repo purple" height="2.0em" version="1.1" viewbox="0 0 24 24" width="2.0em"><path d="M3 2.75A2.75 2.75 0 015.75 0h14.5a.75.75 0 01.75.75v20.5a.75.75 0 01-.75.75h-6a.75.75 0 010-1.5h5.25v-4H6A1.5 1.5 0 004.5 18v.75c0 .716.43 1.334 1.05 1.605a.75.75 0 01-.6 1.374A3.25 3.25 0 013 18.75v-16zM19.5 1.5V15H6c-.546 0-1.059.146-1.5.401V2.75c0-.69.56-1.25 1.25-1.25H19.5z" fill-rule="evenodd"></path><path d="M7 18.25a.25.25 0 01.25-.25h5a.25.25 0 01.25.25v5.01a.25.25 0 01-.397.201l-2.206-1.604a.25.25 0 00-.294 0L7.397 23.46a.25.25 0 01-.397-.2v-5.01z"></path></svg> Explanation Material</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../references/index.html"><svg aria-hidden="true" class="sd-octicon sd-octicon-tools sd-text-primary" height="2.0em" version="1.1" viewbox="0 0 24 24" width="2.0em"><path d="M7.875 2.292a.125.125 0 00-.032.018A7.24 7.24 0 004.75 8.25a7.247 7.247 0 003.654 6.297c.57.327.982.955.941 1.682v.002l-.317 6.058a.75.75 0 11-1.498-.078l.317-6.062v-.004c.006-.09-.047-.215-.188-.296A8.747 8.747 0 013.25 8.25a8.74 8.74 0 013.732-7.169 1.547 1.547 0 011.709-.064c.484.292.809.835.809 1.46v4.714a.25.25 0 00.119.213l2.25 1.385c.08.05.182.05.262 0l2.25-1.385a.25.25 0 00.119-.213V2.478c0-.626.325-1.169.81-1.461a1.547 1.547 0 011.708.064 8.74 8.74 0 013.732 7.17 8.747 8.747 0 01-4.41 7.598c-.14.081-.193.206-.188.296v.004l.318 6.062a.75.75 0 11-1.498.078l-.317-6.058v-.002c-.041-.727.37-1.355.94-1.682A7.247 7.247 0 0019.25 8.25a7.24 7.24 0 00-3.093-5.94.125.125 0 00-.032-.018l-.01-.001c-.003 0-.014 0-.031.01-.036.022-.084.079-.084.177V7.19a1.75 1.75 0 01-.833 1.49l-2.25 1.385a1.75 1.75 0 01-1.834 0l-2.25-1.384A1.75 1.75 0 018 7.192V2.477c0-.098-.048-.155-.084-.176a.062.062 0 00-.031-.011l-.01.001z" fill-rule="evenodd"></path></svg> Reference Guides</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../references/observing_modes/pulsar_reference.html">Pulsar Observing Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../references/receivers/argus.html">Argus</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../references/receivers/mustang2.html">MUSTANG-2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../references/receivers/mustang2/mustang2_overview.html">MUSTANG-2 Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../references/receivers/mustang2/mustang2_instrument_team.html">MUSTANG-2 Instrument Team</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../references/receivers/mustang2/mustang2_bandpass.html">MUSTANG-2 Bandpass Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../references/receivers/mustang2/mustang2_filtering.html">MUSTANG-2 Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../references/receivers/mustang2/mustang2_mapping.html">MUSTANG-2 Mapping Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../references/receivers/mustang2/mustang2_publications.html">MUSTANG-2 Publications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../references/receivers/mustang2/mustang2_datasets.html">MUSTANG-2 Published Data Sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../references/receivers/mustang2/mustang2_dev.html">MUSTANG-2 Historical Development</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../references/software/scheduling-blocks.html">Scheduling Block Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../references/software/gbtidl.html">GBTIDL commands</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/aschmiedeke/gbtdocs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/aschmiedeke/gbtdocs/issues/new?title=Issue%20on%20page%20%2Fhow-tos/receivers/mustang2/mustang2_obs_scripts.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/how-tos/receivers/mustang2/mustang2_obs_scripts.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>How to Prepare MUSTANG-2 Observing Scripts</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-script-templates-into-astrid">1. Copy script templates into Astrid</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-your-science-target-catalog">2. Make your science target catalog</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-conventions">2.1 Naming Conventions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#catalog-permissions">2.2 Catalog Permissions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-path-for-catalog-in-scripts">2.3 Update Path for Catalog in Scripts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-your-calibrators">3. Choose your calibrators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flux-calibrators">3.1 Flux calibrators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oof-sources">3.2 OOF sources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pointing-calibrators">3.3 Pointing calibrators</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="how-to-prepare-mustang-2-observing-scripts">
+<span id="mustang2-obs-scripts"></span><h1>How to Prepare MUSTANG-2 Observing Scripts<a class="headerlink" href="#how-to-prepare-mustang-2-observing-scripts" title="Link to this heading">#</a></h1>
+<p>You are expected to have your scripts ready <strong>several hours before</strong> the time of your observation. Ideally at the start of the observing semester. You will likely receive an email from your project friend spurring you to do this.</p>
+<section id="copy-script-templates-into-astrid">
+<h2>1. Copy script templates into Astrid<a class="headerlink" href="#copy-script-templates-into-astrid" title="Link to this heading">#</a></h2>
+<p>The M2 instrument team has created template observing scripts which are located in: <code class="docutils literal notranslate"><span class="pre">/users/penarray/Public/m2_template_scripts/</span></code>.</p>
+<dl>
+<dt>If you are creating the scripts for the first time for your project, you will want to copy the following templates into your project directory:</dt><dd><ol class="arabic">
+<li><dl class="simple">
+<dt>Standard calibration scripts</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">1_m2setup</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2_m2oof</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3_m2quickDaisyOOF</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">4_m2quickDaisyPC</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Science script. If your science requires a typical observing strategy of a daisy of a certain radius, copy one of the science scripts labeled <code class="docutils literal notranslate"><span class="pre">5_XXX</span></code> with the radius listed in the file name (e.g. r3 is a daisy with a radius of 3’).</dt><dd><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The radius of the daisy will depend on your science - reach out to the M2 instrument team for guidance.</p>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+<p>The scripts <code class="docutils literal notranslate"><span class="pre">m2quickDaisy</span></code> and <code class="docutils literal notranslate"><span class="pre">skydip</span></code> are extra but can be of use.</p>
+<p>To copy these scripts into your project directory in Astrid, first open Astrid and navigate to your project (first go to the observing semester then to your full project code). Then click <code class="docutils literal notranslate"><span class="pre">File</span></code> → <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">from</span> <span class="pre">file...</span></code>  → <code class="docutils literal notranslate"><span class="pre">/users/penarray/Public/m2_template_scripts/</span></code> → <code class="docutils literal notranslate"><span class="pre">Open</span></code> at which point the script will appear in the Astrid window. Save this script to your project directory by <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">to</span> <span class="pre">Database</span></code> and enter the name of the script and hit <code class="docutils literal notranslate"><span class="pre">Save</span></code>. You will have to open each template script this way and save each one.</p>
+<p>Read the README (<code class="docutils literal notranslate"><span class="pre">/users/penarray/Public/m2_template_scripts/README.txt</span></code>) for instructions on editing these scripts once you have them in your project directory.</p>
+</section>
+<section id="make-your-science-target-catalog">
+<h2>2. Make your science target catalog<a class="headerlink" href="#make-your-science-target-catalog" title="Link to this heading">#</a></h2>
+<p>The M2 instrument team is now requesting that all science target catalogs be put in <code class="docutils literal notranslate"><span class="pre">/users/penarray/Public/Catalogs/Science_catalogs/Catalogs_YourObservingSemester/</span></code>. If your semester does not yet exist please contact the M2 instrument team. You can either make your catalog either directly the appropriate folder in the penarray directory or make it in your home directory and copy it over.</p>
+<p>Example catalogs can be found in any of the folders in <code class="docutils literal notranslate"><span class="pre">/users/penarray/Public/Catalogs/Science_catalogs/</span></code>. But a basic catalog will look like the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="o">=</span><span class="n">spherical</span>
+<span class="n">coordmode</span><span class="o">=</span><span class="n">j2000</span>
+<span class="n">head</span><span class="o">=</span> <span class="n">name</span> <span class="n">ra</span> <span class="n">dec</span>
+<span class="n">objectName1</span> <span class="mi">13</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mf">56.3</span> <span class="o">-</span><span class="mi">02</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">15</span>
+<span class="n">objectname2</span> <span class="mi">22</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mf">11.6</span> <span class="o">+</span><span class="mi">07</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mi">23</span>
+</pre></div>
+</div>
+<p>For more information regarding catalogs, see the Catalogs section (section 5.3) of the <a class="reference external" href="http://www.gb.nrao.edu/scienceDocs/GBTog.pdf">Observers guide</a>.</p>
+<section id="naming-conventions">
+<h3>2.1 Naming Conventions<a class="headerlink" href="#naming-conventions" title="Link to this heading">#</a></h3>
+<p>We request that you name your catalog in the following way: <code class="docutils literal notranslate"><span class="pre">AGBTSemester_ProjectCode.cat</span></code>. For example for a catalog for project AGBT23B_005 the catalog would be <code class="docutils literal notranslate"><span class="pre">/users/penarray/Public/Catalogs/Science_catalogs/Catalogs_23B/AGBT23B_005.cat</span></code>. Note that catalog files should have the <code class="docutils literal notranslate"><span class="pre">.cat</span></code> extension in order for CLEO to automatically pick them up.</p>
+</section>
+<section id="catalog-permissions">
+<h3>2.2 Catalog Permissions<a class="headerlink" href="#catalog-permissions" title="Link to this heading">#</a></h3>
+<p>At the end of the day, your catalog needs to have the following permissions: <code class="docutils literal notranslate"><span class="pre">-rw-rw-r--</span></code>. By default it will have <code class="docutils literal notranslate"><span class="pre">-rw-r--r--</span></code>. You need to add the write permission for the <code class="docutils literal notranslate"><span class="pre">observer</span></code> group so that others on the M2 instrument team can edit the catalog if they need to. To do this you can either do this when you copy over your catalog with</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync<span class="w"> </span>-v<span class="w"> </span>/path/to/cats/*<span class="w"> </span>~penarray/Public/Catalogs/Science_catalogs/yourCatalog.cat<span class="w"> </span>--chmod<span class="o">=</span>g+w
+</pre></div>
+</div>
+<p>or if you copied your catalog over to <code class="docutils literal notranslate"><span class="pre">/users/penarray/Public/Catalogs/Science_catalogs/Catalogs_YourObservingSemester/</span></code> just simply change the permissions of the catalog with</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span>g+w<span class="w"> </span>yourCatalog.cat
+</pre></div>
+</div>
+</section>
+<section id="update-path-for-catalog-in-scripts">
+<h3>2.3 Update Path for Catalog in Scripts<a class="headerlink" href="#update-path-for-catalog-in-scripts" title="Link to this heading">#</a></h3>
+<p>Once you have created your catalog you can update the filepath to the catalog in your science scripts (<code class="docutils literal notranslate"><span class="pre">5_XXX</span></code>) and load them into the Scheduler &amp; Skyview.</p>
+</section>
+</section>
+<section id="choose-your-calibrators">
+<h2>3. Choose your calibrators<a class="headerlink" href="#choose-your-calibrators" title="Link to this heading">#</a></h2>
+<p>You are expected to have your calibrator sources planned out <strong>at least a few hours before</strong> the time of your observation. You can use CLEO’s Scheduler and Skyview to do this.</p>
+</section>
+<section id="flux-calibrators">
+<h2>3.1 Flux calibrators<a class="headerlink" href="#flux-calibrators" title="Link to this heading">#</a></h2>
+<p>Find those that are closest to your source. You can use any of the ALMA grid cals listed in the following catalog: <code class="docutils literal notranslate"><span class="pre">/users/penarray/Public/Catalogs/alma_gridcal.cat</span></code>. Uranus and Neptune, especially Uranus, are also good flux calibrators. You will need to observe at least one of these during your observing session to ensure flux calibration. Preferably 2-3, but if you are ok with a 10-20% error in your flux measurement one calibrator is ok.</p>
+</section>
+<section id="oof-sources">
+<h2>3.2 OOF sources<a class="headerlink" href="#oof-sources" title="Link to this heading">#</a></h2>
+<p>It is efficient to use the flux calibrators as your first OOF source of the night. For OOF sources, a general guide is that you want a bright source that is &gt; 1 Jy and 25 &lt; elevation &lt; 60. The main quality of a good OOF source is that you it to be a nice point source as seen by M2. Out of the planets Uranus and Neptune are the only planets that work well as an OOF source (especially Uranus). You want to avoid sources that have structure like Saturn or 3C273 (M87).</p>
+<p>A more intricate way of thinking about an OOF source is to consider the elevation of your science target: if it will be “low” (average observing elevation is ~35 or less), or “high” (average observing elevation ~60 or higher) then one would prefer to OOF on a source with a similar elevation. If the science target is in between, then the OOF elevation will be less important.</p>
+<p>Once you determine your OOF source, fill in the source name in the <code class="docutils literal notranslate"><span class="pre">2_m2oof</span></code> and <code class="docutils literal notranslate"><span class="pre">3_m2quickDaisyOOF</span></code> scripts.</p>
+</section>
+<section id="pointing-calibrators">
+<h2>3.3 Pointing calibrators<a class="headerlink" href="#pointing-calibrators" title="Link to this heading">#</a></h2>
+<p>For each science target you will need to determine a pointing calibrator that you will go to roughly every 30 minutes.</p>
+<dl class="simple">
+<dt>You can find suitable calibrators using CLEO’s Scheduler &amp; Skyview</dt><dd><ul class="simple">
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">Catalog...</span></code> in the upper right-hand corner</p></li>
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">Add/Select/DeSelect</span> <span class="pre">Catalogs</span> <span class="pre">...</span></code></p></li>
+<li><p>Select <code class="docutils literal notranslate"><span class="pre">mustang_pointing</span></code></p></li>
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">Apply</span></code></p></li>
+</ul>
+</dd>
+<dt>The goal is to find a calibrator that is 10-15 deg from your target and &gt; 0.5 Jy (though if have good weather a better choice is something close that is 0.1 Jy). To find a source that is &gt; 0.5 Jy fo the following in CLEO’s Scheduler &amp; SkyView:</dt><dd><ul class="simple">
+<li><p>Go to the box in the right-hand corner that says <code class="docutils literal notranslate"><span class="pre">Source</span> <span class="pre">Intensity</span> <span class="pre">Range</span></code> and in the <code class="docutils literal notranslate"><span class="pre">Min</span></code> box put 0.5</p></li>
+<li><p>Hit enter</p></li>
+<li><p>Load your science source catalog</p></li>
+<li><p>Enter the time you will be observing in the <code class="docutils literal notranslate"><span class="pre">UT</span> <span class="pre">Date</span> <span class="pre">and</span> <span class="pre">Time</span></code> box</p></li>
+<li><p>Find a source that is showing and is 10-15 deg from your target.</p></li>
+</ul>
+</dd>
+</dl>
+<p>It is suggested that you find a few options for each science target. Once you determine your pointing calibrator(s), fill in the source name(s) with the strength in a comment in the <code class="docutils literal notranslate"><span class="pre">4_m2quickDaisyPC</span></code> script. It is suggested that you leave the best one uncommented and comment out the other options.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="mustang2_calc_obs_time.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">How to Calculate Observing Time Required for MUSTANG-2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="mustang2_setup.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">How to setup MUSTANG-2</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-script-templates-into-astrid">1. Copy script templates into Astrid</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-your-science-target-catalog">2. Make your science target catalog</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-conventions">2.1 Naming Conventions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#catalog-permissions">2.2 Catalog Permissions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-path-for-catalog-in-scripts">2.3 Update Path for Catalog in Scripts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-your-calibrators">3. Choose your calibrators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flux-calibrators">3.1 Flux calibrators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oof-sources">3.2 OOF sources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pointing-calibrators">3.3 Pointing calibrators</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Green Bank Observatory
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023-24, Green Bank Observatory, A. Schmiedeke.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

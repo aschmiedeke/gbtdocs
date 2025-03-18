@@ -1,0 +1,1522 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>HI Position Switched (psw) Spectrum &#8212; GBT Docs 0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/tooltipster.custom.css?v=7bc2f056" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/tooltipster.bundle.min.css?v=37217874" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/tooltipster-sideTip-shadow.min.css?v=6227e517" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/tooltipster-sideTip-punk.min.css?v=94669e23" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/tooltipster-sideTip-noir.min.css?v=21a39f42" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/tooltipster-sideTip-light.min.css?v=a18b2449" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/tooltipster-sideTip-borderless.min.css?v=dbff53e4" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/micromodal.css?v=d7bf34ee" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=04af0cc0" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=e1a75a79"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/tabs.js?v=3ee01567"></script>
+    <script src="../_static/js/hoverxref.js?v=c9b52ebc"></script>
+    <script src="../_static/js/tooltipster.bundle.min.js?v=18bf091b"></script>
+    <script src="../_static/js/micromodal.min.js?v=04d6302d"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/hi_psw_tutorial';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="NH3 Mapping Observations with the K-Band Focal Plane Array (KFPA) on the GBT" href="kfpa_nh3_mapping_tutorial.html" />
+    <link rel="prev" title="Tutorials" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/GBO-vertical-PGGradient.svg" class="logo__image only-light" alt="GBT Docs 0.1 documentation - Home"/>
+    <script>document.write(`<img src="../_static/GBO-vertical-PGGradient.svg" class="logo__image only-dark" alt="GBT Docs 0.1 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html"><svg aria-hidden="true" class="sd-octicon sd-octicon-mortar-board orange" height="2.0em" version="1.1" viewbox="0 0 24 24" width="2.0em"><path d="M12.292 2.06a.75.75 0 00-.584 0L.458 6.81a.75.75 0 000 1.38L4.25 9.793v3.803a2.901 2.901 0 00-1.327.757c-.579.58-.923 1.41-.923 2.43v4.5c0 .248.128.486.335.624.06.04.117.073.22.124.124.062.297.138.52.213.448.149 1.09.288 1.925.288s1.477-.14 1.925-.288c.223-.075.396-.15.52-.213a2.11 2.11 0 00.21-.117A.762.762 0 008 21.28v-4.5c0-1.018-.344-1.85-.923-2.428a2.9 2.9 0 00-1.327-.758v-3.17l5.958 2.516a.75.75 0 00.584 0l5.208-2.2v4.003a2.552 2.552 0 01-.079.085 4.057 4.057 0 01-.849.65c-.826.488-2.255 1.021-4.572 1.021-.612 0-1.162-.037-1.654-.1a.75.75 0 00-.192 1.487c.56.072 1.173.113 1.846.113 2.558 0 4.254-.592 5.334-1.23.538-.316.914-.64 1.163-.896a2.84 2.84 0 00.392-.482h.001A.75.75 0 0019 15v-4.892l4.542-1.917a.75.75 0 000-1.382l-11.25-4.75zM5 15c-.377 0-.745.141-1.017.413-.265.265-.483.7-.483 1.368v4.022c.299.105.797.228 1.5.228s1.201-.123 1.5-.228V16.78c0-.669-.218-1.103-.483-1.368A1.431 1.431 0 005 15zm7-3.564L2.678 7.5 12 3.564 21.322 7.5 12 11.436z" fill-rule="evenodd"></path></svg> Tutorials</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">HI Position Switched (psw) Spectrum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kfpa_nh3_mapping_tutorial.html">NH<sub>3</sub> Mapping Observations with the K-Band Focal Plane Array (KFPA) on the GBT</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../how-tos/index.html"><svg aria-hidden="true" class="sd-octicon sd-octicon-terminal green" height="2.0em" version="1.1" viewbox="0 0 24 24" width="2.0em"><path d="M9.25 12a.75.75 0 01-.22.53l-2.75 2.75a.75.75 0 01-1.06-1.06L7.44 12 5.22 9.78a.75.75 0 111.06-1.06l2.75 2.75c.141.14.22.331.22.53zm2 2a.75.75 0 000 1.5h5a.75.75 0 000-1.5h-5z"></path><path d="M0 4.75C0 3.784.784 3 1.75 3h20.5c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0122.25 21H1.75A1.75 1.75 0 010 19.25V4.75zm1.75-.25a.25.25 0 00-.25.25v14.5c0 .138.112.25.25.25h20.5a.25.25 0 00.25-.25V4.75a.25.25 0 00-.25-.25H1.75z" fill-rule="evenodd"></path></svg> How-To Guides</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../how-tos/infrastructure/remote-connection.html">How to connect remotely to the GBO network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-tos/general_guides/gbt_observing.html">GBT observations 101</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-tos/observing_modes/C-band_Mueller_matrix.html">How to derive a Mueller matrix</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../how-tos/observing_modes/pulsars.html">Pulsar observing How-To Guides</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../how-tos/observing_modes/pulsars/pulsar_time_obs.html">Timing Observations of a Known Pulsar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../how-tos/observing_modes/pulsars/pulsar_flux_cal.html">Pulsar-Mode Flux Calibration Observations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../how-tos/observing_modes/pulsars/pulsar_search.html">Pulsar Search Observations</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-tos/receivers/argus/argus_obs.html">How to observe using Argus</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../how-tos/receivers/mustang2.html">MUSTANG-2 How-To Guides</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../how-tos/receivers/mustang2/mustang2_proposal.html">How to Propose with MUSTANG-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../how-tos/receivers/mustang2/mustang2_calc_obs_time.html">How to Calculate Observing Time Required for MUSTANG-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../how-tos/receivers/mustang2/mustang2_obs_scripts.html">How to Prepare MUSTANG-2 Observing Scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../how-tos/receivers/mustang2/mustang2_setup.html">How to setup MUSTANG-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../how-tos/receivers/mustang2/mustang2_obs.html">How to observe with MUSTANG-2</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../how-tos/receivers/mustang2/mustang2_data.html">MUSTANG-2 data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../how-tos/receivers/mustang2/data/mustang2_deliverables.html">MUSTANG-2 Deliverables</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-tos/data_reduction/gbtidl.html">How to process spectra using GBTIDL (examples)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-tos/data_reduction/calculate_opacity.html">How to account for sky opacity in GBT Observations</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../explanations/index.html"><svg aria-hidden="true" class="sd-octicon sd-octicon-repo purple" height="2.0em" version="1.1" viewbox="0 0 24 24" width="2.0em"><path d="M3 2.75A2.75 2.75 0 015.75 0h14.5a.75.75 0 01.75.75v20.5a.75.75 0 01-.75.75h-6a.75.75 0 010-1.5h5.25v-4H6A1.5 1.5 0 004.5 18v.75c0 .716.43 1.334 1.05 1.605a.75.75 0 01-.6 1.374A3.25 3.25 0 013 18.75v-16zM19.5 1.5V15H6c-.546 0-1.059.146-1.5.401V2.75c0-.69.56-1.25 1.25-1.25H19.5z" fill-rule="evenodd"></path><path d="M7 18.25a.25.25 0 01.25-.25h5a.25.25 0 01.25.25v5.01a.25.25 0 01-.397.201l-2.206-1.604a.25.25 0 00-.294 0L7.397 23.46a.25.25 0 01-.397-.2v-5.01z"></path></svg> Explanation Material</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../references/index.html"><svg aria-hidden="true" class="sd-octicon sd-octicon-tools sd-text-primary" height="2.0em" version="1.1" viewbox="0 0 24 24" width="2.0em"><path d="M7.875 2.292a.125.125 0 00-.032.018A7.24 7.24 0 004.75 8.25a7.247 7.247 0 003.654 6.297c.57.327.982.955.941 1.682v.002l-.317 6.058a.75.75 0 11-1.498-.078l.317-6.062v-.004c.006-.09-.047-.215-.188-.296A8.747 8.747 0 013.25 8.25a8.74 8.74 0 013.732-7.169 1.547 1.547 0 011.709-.064c.484.292.809.835.809 1.46v4.714a.25.25 0 00.119.213l2.25 1.385c.08.05.182.05.262 0l2.25-1.385a.25.25 0 00.119-.213V2.478c0-.626.325-1.169.81-1.461a1.547 1.547 0 011.708.064 8.74 8.74 0 013.732 7.17 8.747 8.747 0 01-4.41 7.598c-.14.081-.193.206-.188.296v.004l.318 6.062a.75.75 0 11-1.498.078l-.317-6.058v-.002c-.041-.727.37-1.355.94-1.682A7.247 7.247 0 0019.25 8.25a7.24 7.24 0 00-3.093-5.94.125.125 0 00-.032-.018l-.01-.001c-.003 0-.014 0-.031.01-.036.022-.084.079-.084.177V7.19a1.75 1.75 0 01-.833 1.49l-2.25 1.385a1.75 1.75 0 01-1.834 0l-2.25-1.384A1.75 1.75 0 018 7.192V2.477c0-.098-.048-.155-.084-.176a.062.062 0 00-.031-.011l-.01.001z" fill-rule="evenodd"></path></svg> Reference Guides</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../references/observing_modes/pulsar_reference.html">Pulsar Observing Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../references/receivers/argus.html">Argus</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../references/receivers/mustang2.html">MUSTANG-2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../references/receivers/mustang2/mustang2_overview.html">MUSTANG-2 Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../references/receivers/mustang2/mustang2_instrument_team.html">MUSTANG-2 Instrument Team</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../references/receivers/mustang2/mustang2_bandpass.html">MUSTANG-2 Bandpass Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../references/receivers/mustang2/mustang2_filtering.html">MUSTANG-2 Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../references/receivers/mustang2/mustang2_mapping.html">MUSTANG-2 Mapping Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../references/receivers/mustang2/mustang2_publications.html">MUSTANG-2 Publications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../references/receivers/mustang2/mustang2_datasets.html">MUSTANG-2 Published Data Sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../references/receivers/mustang2/mustang2_dev.html">MUSTANG-2 Historical Development</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../references/software/scheduling-blocks.html">Scheduling Block Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../references/software/gbtidl.html">GBTIDL commands</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/aschmiedeke/gbtdocs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/aschmiedeke/gbtdocs/issues/new?title=Issue%20on%20page%20%2Ftutorials/hi_psw_tutorial.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/tutorials/hi_psw_tutorial.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>HI Position Switched (psw) Spectrum</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-preparation">1 Observation Preparation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#catalog">1.1 Catalog</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-and-observing-scripts">1.2 Configuration and Observing Scripts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observations">2. Observations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autopeakfocus-observations">2.1 AutoPeakFocus observations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-observations">2.2 Source observations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-reduction">3. Data Reduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-example">3.1 Simple Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#start-gbtidl">3.1.1 Start gbtidl</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#load-files-of-interest">3.1.2 Load files of interest</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#look-at-file-content">3.1.3 Look at file content</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#empty-the-buffer-memory">3.1.4 Empty the buffer memory</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#process-single-on-off-pair">3.1.5 Process single on+off pair</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#process-first-polarization">3.1.5.1 Process first polarization</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#adjust-x-axis">3.1.5.2 Adjust x-axis</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#accumulate-results">3.1.5.3 Accumulate results</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#process-second-polarization">3.1.5.4 Process second polarization</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.1.5.5 Accumulate results</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#average-polarizations">3.1.5.4 Average polarizations</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#smooth-the-result">3.1.6 Smooth the result</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-the-baseline">3.1.7 Fit the baseline</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-region">3.1.7.1 Choose region</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#set-order-of-baseline-fit">3.1.7.2 Set order of baseline fit</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#show-the-fitted-baseline">3.1.7.3 Show the fitted baseline</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#subtract-the-fitted-baseline">3.1.7.4 Subtract the fitted baseline</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#switch-the-x-axis">3.1.8 Switch the x-axis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-statistics">3.1.9 Determine statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#rms">3.1.9.1 RMS</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#line-properties">3.1.9.2 Line properties</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-with-online-database">3.1.10 Compare with online database</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-complicated-example">3.2 More Complicated Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.2.1 Start gbtidl</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.2.2 Load files of interest</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.2.3 Look at file content</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#double-check-the-scans">3.2.4 Double-check the scans</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-t-sys">3.2.5 Determine <span class="math notranslate nohighlight">\(T_{sys}\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.2.6 Empty the buffer memory</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#process-on-off-pairs">3.2.7 Process on+off pairs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3.2.8 Adjust x-axis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#smooth-the-spectrum">3.2.9 Smooth the spectrum</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-baseline">3.2.10 Remove baseline</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">3.2.11 Determine statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#rms-noise">3.2.11.1 RMS noise</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.2.11.2 Line properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-reduction-scripted">4. Data Reduction - scripted</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="hi-position-switched-psw-spectrum">
+<span id="hi-psw-tutorial"></span><h1>HI Position Switched (psw) Spectrum<a class="headerlink" href="#hi-position-switched-psw-spectrum" title="Link to this heading">#</a></h1>
+<p>This tutorial will run you through the steps required to setup your scheduling blocks to execute an HI observation using position switching and how to calibrate the data.</p>
+<div class="note admonition">
+<p class="admonition-title">What you should already know</p>
+<p>In order to complete this tutorial, you need a GBO computing account. You should be relatively familiar with using the command line, and starting AstrID.</p>
+</div>
+<div class="admonition-data admonition">
+<p class="admonition-title">Data</p>
+<p>This example is from the HI survey dataset <a class="reference external" href="http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml">http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml</a></p>
+</div>
+<section id="observation-preparation">
+<h2>1 Observation Preparation<a class="headerlink" href="#observation-preparation" title="Link to this heading">#</a></h2>
+<p>The instructions below will run you through the steps required to setup your scheduling blocks to execute an HI pointed observation (using position-switching) and how to calibrate the data.</p>
+<section id="catalog">
+<h3>1.1 Catalog<a class="headerlink" href="#catalog" title="Link to this heading">#</a></h3>
+<p>Before you start writing your scheduling block(s) it is helpful to prepare a source catalog in a separate file. This is especially advised if you have a long list of sources. For a short catalog it is also possible to add the sources directly in your scheduling block (not described here).</p>
+<p>Here is an example of a RA/Dec coordinate system catalog with velocity, showing the header lines of the catalog and then 5 sources. The full catalog is available at <span class="incremental">/home/astro-util/HIsurvey/HI_survey.cat</span>.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># My source list with radial velocities
+format=spherical
+coordmode = J2000
+HEAD= Name RA  Dec VEL
+U8249	13:10:26.5	24:55:15.0	2541
+U8503	13:30:44.9	32:45:38.0	4676
+U8516	13:31:52.5	20:00:01.0	1020
+U8896	13:58:38.5	07:12:58.0	4401
+U8904	13:58:51.0	26:06:24.0	9773
+</pre></div>
+</div>
+<p>Here <span class="incremental">Name</span> is the name of the source (choose a name that uniquely identifies the source in your catalog), <span class="incremental">RA</span> is the right ascension, <span class="incremental">Dec</span> is the declination, and <span class="incremental">VEL</span> is the source velocity in units of km/s.</p>
+<p>We advise to save this catalog as a <span class="incremental">.cat</span> file, in a known location. We will call it later from our scheduling block(s).</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Add link to reference material for catalogs.</p>
+</div>
+</section>
+<section id="configuration-and-observing-scripts">
+<h3>1.2 Configuration and Observing Scripts<a class="headerlink" href="#configuration-and-observing-scripts" title="Link to this heading">#</a></h3>
+<p>At the GBT we use <span class="incremental">AstrID</span> to prepare and execute scheduling blocks. <span class="incremental">AstrID</span> is an application that you can use to edit and submit custom python-based scheduling blocks for GBT observations. <span class="incremental">AstrID</span> is python-based and can incorporate custom user scripts. Here we show the full <span class="incremental">AstrID</span> script, including reference to the HI catalog and the configurations. The script is available at <span class="incremental">/home/astro-util/HIsurvey/HI_survey.py</span></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reset configuration from prior observations.</span>
+<span class="n">ResetConfig</span><span class="p">()</span>
+
+<span class="c1"># Import catalog of flux calibrators and user defined sources.</span>
+<span class="n">Catalog</span><span class="p">(</span><span class="n">fluxcal</span><span class="p">)</span> <span class="c1">#A catalog of standard flux calibrators known by astrid</span>
+<span class="n">Catalog</span><span class="p">(</span><span class="s1">&#39;/home/astro-util/HIsurvey/HI_survey.cat&#39;</span><span class="p">)</span>
+
+<span class="c1"># Config for spectral line observations of HI using position switching.</span>
+<span class="n">psw_HI_config</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">receiver        = &#39;Rcvr1_2&#39;      # L-Band receiver for HI</span>
+<span class="s2">obstype         = &#39;Spectroscopy&#39; # Spectral line observations</span>
+<span class="s2">backend         = &#39;VEGAS&#39;        # Spectral line backend</span>
+<span class="s2">restfreq        = 1420.4058      # Rest frequency for HI (MHz)</span>
+<span class="s2">deltafreq       = 0.0            # Offsets for each spectral window (MHz)</span>
+<span class="s2">bandwidth       = 23.44          # Defined by chosen VEGAS mode (MHz)</span>
+<span class="s2">nchan           = 32768          # Number of channels in spectral window</span>
+<span class="s2">vegas.subband   = 1              # Single/multiple spectral windows (1 or 8)</span>
+<span class="s2">swmode          = &#39;tp&#39;           # Switching mode: total power with noise diode</span>
+<span class="s2">swtype          = None           # Type of switching, no switching</span>
+<span class="s2">swper           = 1.0            # Length of full switching cycle (seconds)</span>
+<span class="s2">swfreq          = 0, 0           # Frequency offset (MHz)</span>
+<span class="s2">tint            = 6.0            # Integration time (s; int. mult. of swper)</span>
+<span class="s2">vframe          = &#39;lsrk&#39;         # Velocity reference frame</span>
+<span class="s2">vdef            = &#39;Optical&#39;      # Doppler-shifted velocity frame</span>
+<span class="s2">noisecal        = &#39;lo&#39;           # Level of the noise diode, &#39;lo&#39; or &#39;hi&#39;</span>
+<span class="s2">pol             = &#39;Linear&#39;       # &#39;Linear&#39; or &#39;Circular&#39; polarization</span>
+<span class="s2">notchfilter     = &#39;In&#39;           # &#39;In&#39; to block 1200-1310 MHz RFI signal</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1">#First, lets go to a calibrator source, to check the telescope calibration</span>
+<span class="c1">#If you are using a prime focus receiver, just use “AutoPeak</span>
+<span class="n">AutoPeakFocus</span><span class="p">(</span><span class="s1">&#39;3C286&#39;</span><span class="p">)</span>
+
+<span class="c1"># Break, to make sure the AutoPeakFocus looks good;  If not, hit No and restart the script</span>
+<span class="n">Break</span><span class="p">(</span><span class="s1">&#39;Everything ok?&#39;</span><span class="p">)</span>
+
+<span class="c1">#Slew to your source of interest</span>
+<span class="n">Slew</span><span class="p">(</span><span class="s1">&#39;U8503&#39;</span><span class="p">)</span>
+
+<span class="c1"># If your flux calibrator was far from your source, then</span>
+<span class="c1"># Perform position and focus correction on nearby calibrator</span>
+<span class="c1"># Note that this step is often not necessary at low frequencies </span>
+<span class="n">AutoPeak</span><span class="p">()</span>
+
+<span class="c1"># Break, to make sure the AutoPeakFocus looks good;  If not, hit No and restart the script</span>
+<span class="n">Break</span><span class="p">(</span><span class="s1">&#39;Everything ok?&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Reconfigure after calibrator corrections.</span>
+<span class="n">Configure</span><span class="p">(</span><span class="n">psw_HI_config</span><span class="p">)</span>
+
+<span class="c1">#Slew back to your source of interest</span>
+<span class="n">Slew</span><span class="p">(</span><span class="s1">&#39;U8503&#39;</span><span class="p">)</span>
+
+<span class="c1"># Balance the hardware.</span>
+<span class="n">Balance</span><span class="p">()</span>
+
+<span class="c1"># Take an ON + OFF scan of the object</span>
+<span class="c1"># The OFF scan follows the same sky area (Az, El) as the ON</span>
+<span class="n">OnOff</span><span class="p">(</span><span class="s1">&#39;U8503&#39;</span><span class="p">,</span> <span class="n">Offset</span><span class="p">(</span><span class="s1">&#39;J2000&#39;</span><span class="p">,</span> <span class="s1">&#39;00:05:00&#39;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">cosv</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="observations">
+<h2>2. Observations<a class="headerlink" href="#observations" title="Link to this heading">#</a></h2>
+<p>To learn how to execute your observing scripts, please follow the <a class="hxr-hoverxref hxr-tooltip reference internal" href="../how-tos/general_guides/gbt_observing.html#gbt-observations-101"><span class="std std-ref">GBT observations 101</span></a> guide.</p>
+<section id="autopeakfocus-observations">
+<h3>2.1 AutoPeakFocus observations<a class="headerlink" href="#autopeakfocus-observations" title="Link to this heading">#</a></h3>
+<p>Recall that after slewing near your source, the script looks for a nearby bright point source and runs a series of Peak (pointing) and Focus scans. When everything is working well, the scans look like this (switch to the DataDisplayTab in AstrID to see them).</p>
+<figure class="align-default" id="id10">
+<img alt="../_images/HI_observing_astrid_DataDisplay_peak.png" src="../_images/HI_observing_astrid_DataDisplay_peak.png" />
+<figcaption>
+<p><span class="caption-text">L-Band peak observations. Four scans are taken, two scanning in Azimuth, two scanning in Elevation.</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id11">
+<img alt="../_images/HI_observing_astrid_DataDisplay_focus.png" src="../_images/HI_observing_astrid_DataDisplay_focus.png" />
+<figcaption>
+<p><span class="caption-text">L-Band focus observation.</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Sometimes, though, the focus curve fails to fit properly. This is typically due to the chosen source not having enough power. When this happens, you can look at the results and decide if they are close enough to simply have the operator put the focus offset into the system. This will also be true as long as the peak appears to be at <span class="math notranslate nohighlight">\(-20\pm10\)</span> mm.</p>
+<p>A couple examples of this situation are shown below.</p>
+<img alt="../_images/HI_observing_astrid_DataDisplay_focus_poor_01.png" src="../_images/HI_observing_astrid_DataDisplay_focus_poor_01.png" />
+<img alt="../_images/HI_observing_astrid_DataDisplay_focus_poor_02.png" src="../_images/HI_observing_astrid_DataDisplay_focus_poor_02.png" />
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p><strong>When you’re online (observing), you should never click on any of the scan numbers.</strong> This will cause AstrID to re-process the data and can change your pointing and focus values.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can always look at your observations after your observing session has ended. Start AstrID in offline mode and then under the DataDisplay Tab, open the ScanLog.fits file in the directory of your observations of interest.</p>
+</div>
+</section>
+<section id="source-observations">
+<h3>2.2 Source observations<a class="headerlink" href="#source-observations" title="Link to this heading">#</a></h3>
+<p>Once the AutoPeakFocus routines are complete, the telescope should configure for your spectral line observations, go to your source and balance the power, and then observe! You can check the status of your observations using the GBTStatus tab in AstrID.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The DataDisplay - Spectral Line subtab is often not able to keep up with the incoming data, and so issues with not displaying data can be ignored.</p>
+</div>
+<p>Once your first set of data is written to disk (here when the first ON scan is complete, after 5 minutes),  you should go into gbtidl and look at the data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You cannot look at the fully processed spectrum (ON+OFF) in gbtidl until the ON+OFF pair is complete (after about 10.5 minutes). You can, however, look to see that the data looks ok, using gbtidl and the <code class="code docutils literal notranslate"><span class="pre">gettp,</span> <span class="pre">5</span></code> command (where 5 is the scan number of interest).</p>
+</div>
+<p>More information on data processing in the <a class="hxr-hoverxref hxr-tooltip reference internal" href="#data-reduction"><span class="std std-ref">next section</span></a>. Happy Observing!</p>
+</section>
+</section>
+<section id="data-reduction">
+<h2>3. Data Reduction<a class="headerlink" href="#data-reduction" title="Link to this heading">#</a></h2>
+<p>We will show two examples of how to process the obtained spectra:</p>
+<div class="admonition-example-1 admonition">
+<p class="admonition-title">Example 1</p>
+<p><a class="hxr-hoverxref hxr-tooltip reference internal" href="#simple-example"><span class="std std-ref">Simple example</span></a></p>
+<p>Data taken with standard ONOFF command with cals (noise diodes) firing.</p>
+</div>
+<div class="admonition-example-2 admonition">
+<p class="admonition-title">Example 2</p>
+<p><a class="hxr-hoverxref hxr-tooltip reference internal" href="#more-complicated-example"><span class="std std-ref">More complicated example</span></a></p>
+<p>Many observations were taken with the noise diodes turned off, followed by a short period where the noise diodes are firing. As a result you need to determine <span class="math notranslate nohighlight">\(T_{sys}\)</span> and then apply it to the on+off scans.</p>
+</div>
+<section id="simple-example">
+<h3>3.1 Simple Example<a class="headerlink" href="#simple-example" title="Link to this heading">#</a></h3>
+<p>This simple example is from the HI survey dataset (<a class="reference external" href="http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml">http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml</a>). It also matches the observation technique in Observing, example 1.</p>
+<section id="start-gbtidl">
+<h4>3.1.1 Start gbtidl<a class="headerlink" href="#start-gbtidl" title="Link to this heading">#</a></h4>
+<p>Open a terminal. At the prompt enter</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gbtidl
+</pre></div>
+</div>
+<p>You should see the following welcome screen:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IDL Version 7.1.1 (linux x86_64 m64). (c) 2009, ITT Visual Information Solutions
+Installation number: 15269-3.
+Licensed for use by: National Radio Astronomy Observatory
+
+Starting GBTIDL
+
+Display Device  : X
+Visual Class    : TrueColor
+Visual Depth    : 24-Bit
+Color Table Size: 256
+Number of Colors: 16777216
+Decomposed Color: 0
+
+--------------------------------------------------------------------
+                    Welcome to GBTIDL v2.10.1
+
+    For news, documentation, enhancement requests, bug tracking,
+               discussion, and contributions, visit:
+
+                   http://gbtidl.nrao.edu
+
+    For help with a GBTIDL routine from the command line, use
+             the procedure &#39;usage&#39;.  For example:
+
+   usage,&#39;show&#39;           ; gives the syntax of the procedure &#39;show&#39;
+   usage,&#39;show&#39;,/verbose  ; gives more information on &#39;show&#39;
+--------------------------------------------------------------------
+
+GBTIDL -&gt;
+</pre></div>
+</div>
+</section>
+<section id="load-files-of-interest">
+<h4>3.1.2 Load files of interest<a class="headerlink" href="#load-files-of-interest" title="Link to this heading">#</a></h4>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; dirin, &#39;/home/astro-util/HIsurvey/Session02&#39;
+</pre></div>
+</div>
+</section>
+<section id="look-at-file-content">
+<h4>3.1.3 Look at file content<a class="headerlink" href="#look-at-file-content" title="Link to this heading">#</a></h4>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; summary
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Scan           Source      Vel    Proc Seq    RestF nIF nInt nFd     Az    El
+-------------------------------------------------------------------------------
+   220            3C286      0.0   OffOn   1    1.400   1    6   1  184.6  82.0
+   221            3C286      0.0   OffOn   2    1.400   1    6   1  186.6  82.0
+   222            3C286      0.0   OffOn   1    1.400   1    6   1  193.2  81.9
+   223            3C286      0.0   OffOn   2    1.400   1    6   1  195.1  81.8
+   224            3C286      0.0   OffOn   1    1.400   1    6   1  195.0  80.3
+   225            3C286      0.0   OffOn   2    1.400   1    5   1  199.5  81.6
+   226            3C286      0.0   OffOn   1    1.400   1    6   1  200.3  80.1
+   227            3C286      0.0   OffOn   2    1.400   1    6   1  205.4  81.3
+   228        B1328+254      0.0   OffOn   1    1.400   1    6   1  207.2  74.0
+   229        B1328+254      0.0   OffOn   2    1.400   1    6   1  210.6  75.2
+   230        B1345+125      0.0   OffOn   1    1.400   1   18   1  192.5  62.1
+   231        B1345+125      0.0   OffOn   2    1.400   1   18   1  194.9  63.4
+   244        B1345+125      0.0   OffOn   1    1.400   1   18   1  200.3  61.0
+   245        B1345+125      0.0   OffOn   2    1.400   1   18   1  202.8  62.2
+   246        B1345+125      0.0   OffOn   1    1.400   1   18   1  203.7  60.5
+   247        B1345+125      0.0   OffOn   2    1.400   1   18   1  206.3  61.6
+   248        B1345+125      0.0   OffOn   1    1.370   1   18   1  207.4  59.8
+   249        B1345+125      0.0   OffOn   2    1.370   1   18   1  210.1  60.8
+   250        B1345+125      0.0   Track   1    1.370   1    3   1  215.2  59.6
+   251        B1345+125      0.0   Track   1    1.370   1    3   1  215.9  59.4
+   263            U8091    213.0   OffOn   1    1.420   1   30   1  240.5  51.1
+   264            U8091    213.0   OffOn   2    1.420   1   30   1  240.3  51.2
+   265            U8091    213.0   Track   1    1.420   1    3   1  243.4  49.4
+   266            U8249   2541.0   OffOn   1    1.420   1   10   1  241.5  50.4
+   267            U8249   2541.0   OffOn   1    1.420   1   30   1  242.1  50.1
+   268            U8249   2541.0   OffOn   2    1.420   1   30   1  241.9  50.2
+   269            U8249   2541.0   Track   1    1.420   1    3   1  244.9  48.1
+   270            U8503   4676.0   OffOn   1    1.420   1   30   1  269.8  60.7
+   271            U8503   4676.0   OffOn   2    1.420   1   30   1  269.6  61.0
+   272            U8091    213.0   OffOn   1    1.420   1   30   1  253.1  41.9
+   273            U8091    213.0   OffOn   2    1.420   1   30   1  253.0  42.0
+   274            U8091    213.0   Track   1    1.420   1    3   1  255.5  39.6
+   275            U8249   2541.0   OffOn   1    1.420   1   30   1  266.1  47.3
+   276            U8249   2541.0   OffOn   2    1.420   1   30   1  266.0  47.5
+   277            U8249   2541.0   Track   1    1.420   1    3   1  267.9  45.2
+   278            U9965   4524.0   OffOn   1    1.420   1   30   1  220.3  68.0
+   279            U9965   4524.0   OffOn   2    1.420   1   30   1  219.9  68.1
+   280            U9965   4524.0   Track   1    1.420   1    3   1  222.8  67.4
+   281           U10351    891.0   OffOn   1    1.420   1   30   1  219.3  77.8
+   282           U10351    891.0   OffOn   2    1.420   1   30   1  218.4  77.9
+   283           U10351    891.0   Track   1    1.420   1    3   1  227.8  76.3
+   284            U9007   4618.0   OffOn   1    1.420   1   30   1  248.1  38.8
+   285            U9007   4618.0   OffOn   2    1.420   1   30   1  248.0  38.9
+   286            U9007   4618.0   Track   1    1.420   1    3   1  250.5  36.7
+   287            U9007   5257.0   OffOn   1    1.420   1   30   1  233.6  48.4
+   288            U9007   5257.0   OffOn   2    1.420   1   30   1  233.5  48.5
+   289            U9803   5257.0   OffOn   1    1.420   1   30   1  264.5  58.5
+   290            U9803   5257.0   OffOn   2    1.420   1   30   1  264.3  58.7
+   291            U9803   5257.0   Track   1    1.420   1    3   1  266.5  56.3
+   292           U10351    891.0   OffOn   1    1.420   1   30   1  251.4  67.5
+   293           U10351    891.0   OffOn   2    1.420   1   30   1  251.1  67.8
+   294           U10351    891.0   Track   1    1.420   1    3   1  255.3  65.0
+   295           U10629   2980.0   OffOn   1    1.420   1   30   1  232.9  67.2
+   296           U10629   2980.0   OffOn   2    1.420   1   30   1  232.6  67.4
+   297           U10629   2980.0   OffOn   1    1.420   1   30   1  237.4  65.5
+   298           U10629   2980.0   OffOn   2    1.420   1   30   1  237.1  65.6
+   299           U10629   2980.0   Track   1    1.420   1    3   1  241.4  63.6
+   300           U11017   4644.0   OffOn   1    1.420   1   30   1  234.0  76.6
+   301           U11017   4644.0   OffOn   2    1.420   1   30   1  233.2  76.8
+   302           U11017   4644.0   OffOn   1    1.420   1   30   1  240.3  74.8
+   303           U11017   4644.0   OffOn   2    1.420   1   30   1  239.7  75.0
+   304           U11017   4644.0   Track   1    1.420   1    3   1  242.6  74.0
+   305           U11017   4644.0   Track   1    1.420   1    1   1  242.9  73.8
+   306           U11017   4644.0   Track   1    1.420   1    3   1  246.0  72.6
+   307           U11461   3122.0   OffOn   1    1.420   1   30   1  166.9  59.8
+   308           U11461   3122.0   OffOn   2    1.420   1   30   1  166.7  59.8
+   309           U11461   3122.0   OffOn   1    1.420   1   30   1  172.3  60.2
+   310           U11461   3122.0   OffOn   2    1.420   1   30   1  172.1  60.2
+   311           U11461   3122.0   Track   1    1.420   1    3   1  178.0  60.4
+   312           U11578   4601.0   OffOn   1    1.420   1   30   1  155.3  58.6
+   313           U11578   4601.0   OffOn   2    1.420   1   30   1  155.1  58.6
+   314           U11578   4601.0   Track   1    1.420   1    3   1  160.4  59.4
+   315           U11578   4601.0   Track   1    1.420   1    3   1  160.9  59.5
+   316           U11627   4864.0   OffOn   1    1.420   1   30   1  156.8  55.2
+   317           U11627   4864.0   OffOn   2    1.420   1   30   1  156.6  55.1
+   318           U11627   4864.0   OffOn   1    1.420   1   30   1  161.4  55.9
+   319           U11627   4864.0   OffOn   2    1.420   1   30   1  161.3  55.9
+   320           U11627   4864.0   Track   1    1.420   1    3   1  166.7  56.6
+   321           U11992   3592.0   Track   1    1.420   1    3   1  124.4  54.3
+   322           U11992   3592.0   OffOn   1    1.420   1   30   1  124.9  54.5
+   323           U11992   3592.0   OffOn   2    1.420   1   30   1  124.7  54.4
+</pre></div>
+</div>
+</section>
+<section id="empty-the-buffer-memory">
+<h4>3.1.4 Empty the buffer memory<a class="headerlink" href="#empty-the-buffer-memory" title="Link to this heading">#</a></h4>
+<p>Make sure the buffer memory is empty</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; sclear
+</pre></div>
+</div>
+</section>
+<section id="process-single-on-off-pair">
+<h4>3.1.5 Process single on+off pair<a class="headerlink" href="#process-single-on-off-pair" title="Link to this heading">#</a></h4>
+<section id="process-first-polarization">
+<h5>3.1.5.1 Process first polarization<a class="headerlink" href="#process-first-polarization" title="Link to this heading">#</a></h5>
+<p>Process the first polarization of the on+off pair (scan #270, 271), setting the intensity unit to Jansky.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL --&gt; getps, 270, plnum=0, units=&#39;Jy&#39;
+</pre></div>
+</div>
+<img alt="../_images/HI_survey_processing_01.png" src="../_images/HI_survey_processing_01.png" />
+</section>
+<section id="adjust-x-axis">
+<h5>3.1.5.2 Adjust x-axis<a class="headerlink" href="#adjust-x-axis" title="Link to this heading">#</a></h5>
+<p>Set the x-axis to an interesting frequency:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; setx, 1.396, 1.402
+</pre></div>
+</div>
+<img alt="../_images/HI_survey_processing_02.png" src="../_images/HI_survey_processing_02.png" />
+</section>
+<section id="accumulate-results">
+<h5>3.1.5.3 Accumulate results<a class="headerlink" href="#accumulate-results" title="Link to this heading">#</a></h5>
+<p>Accumulate the results from first polarization in the buffer.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; accum
+</pre></div>
+</div>
+</section>
+<section id="process-second-polarization">
+<h5>3.1.5.4 Process second polarization<a class="headerlink" href="#process-second-polarization" title="Link to this heading">#</a></h5>
+<p>Now process the second polarization of the same on+pff pair (scan #270, 271), again setting the intensity unit to Jansky.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; getps, 270, plnum=1, units=&#39;Jy&#39;
+</pre></div>
+</div>
+<img alt="../_images/HI_survey_processing_03.png" src="../_images/HI_survey_processing_03.png" />
+</section>
+<section id="id2">
+<h5>3.1.5.5 Accumulate results<a class="headerlink" href="#id2" title="Link to this heading">#</a></h5>
+<p>Accumulate the results from second polarization in the buffer.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; accum
+</pre></div>
+</div>
+</section>
+<section id="average-polarizations">
+<h5>3.1.5.4 Average polarizations<a class="headerlink" href="#average-polarizations" title="Link to this heading">#</a></h5>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; ave
+</pre></div>
+</div>
+<img alt="../_images/HI_survey_processing_04.png" src="../_images/HI_survey_processing_04.png" />
+</section>
+</section>
+<section id="smooth-the-result">
+<h4>3.1.6 Smooth the result<a class="headerlink" href="#smooth-the-result" title="Link to this heading">#</a></h4>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; gsmooth, 100, /decimate
+</pre></div>
+</div>
+<img alt="../_images/HI_survey_processing_05.png" src="../_images/HI_survey_processing_05.png" />
+</section>
+<section id="fit-the-baseline">
+<h4>3.1.7 Fit the baseline<a class="headerlink" href="#fit-the-baseline" title="Link to this heading">#</a></h4>
+<section id="choose-region">
+<h5>3.1.7.1 Choose region<a class="headerlink" href="#choose-region" title="Link to this heading">#</a></h5>
+<p>To choose the region for baseline fitting, mark the start and end of the baseline region on either side of the source interactively. Use the left button of your mouse to mark the region and the right button to exit.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; setregion
+</pre></div>
+</div>
+<p>This is what the plotter window will look like after marking the basline regions (white vertical lines) while still in interactive more (green crosshair cursor).</p>
+<img alt="../_images/HI_survey_processing_06.png" src="../_images/HI_survey_processing_06.png" />
+<p>This is what the plotter window will look like after exiting the interactive mode. The selected regions are now marked with the cyan rectangular boxes.</p>
+<img alt="../_images/HI_survey_processing_07.png" src="../_images/HI_survey_processing_07.png" />
+</section>
+<section id="set-order-of-baseline-fit">
+<h5>3.1.7.2 Set order of baseline fit<a class="headerlink" href="#set-order-of-baseline-fit" title="Link to this heading">#</a></h5>
+<p>We will use a polynomial baseline fit of order 3.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; nfit, 3
+</pre></div>
+</div>
+</section>
+<section id="show-the-fitted-baseline">
+<h5>3.1.7.3 Show the fitted baseline<a class="headerlink" href="#show-the-fitted-baseline" title="Link to this heading">#</a></h5>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; bshape
+</pre></div>
+</div>
+<img alt="../_images/HI_survey_processing_08.png" src="../_images/HI_survey_processing_08.png" />
+</section>
+<section id="subtract-the-fitted-baseline">
+<h5>3.1.7.4 Subtract the fitted baseline<a class="headerlink" href="#subtract-the-fitted-baseline" title="Link to this heading">#</a></h5>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; baseline
+</pre></div>
+</div>
+<img alt="../_images/HI_survey_processing_09.png" src="../_images/HI_survey_processing_09.png" />
+</section>
+</section>
+<section id="switch-the-x-axis">
+<h4>3.1.8 Switch the x-axis<a class="headerlink" href="#switch-the-x-axis" title="Link to this heading">#</a></h4>
+<p>Switch the x-axis from frequency to velocity</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; velo
+</pre></div>
+</div>
+<img alt="../_images/HI_survey_processing_10.png" src="../_images/HI_survey_processing_10.png" />
+</section>
+<section id="determine-statistics">
+<h4>3.1.9 Determine statistics<a class="headerlink" href="#determine-statistics" title="Link to this heading">#</a></h4>
+<section id="rms">
+<h5>3.1.9.1 RMS<a class="headerlink" href="#rms" title="Link to this heading">#</a></h5>
+<p>Determine the statistics in the velocity ranges surrounding the galaxy, i.e. 4000 km/s - 4400 km/s and 4800 km/s - 5200 km/s.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; stats, 4000, 4400
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>    Chans    bchan    echan        Xmin        Xmax        Ymin        Ymax
+       49      197      245      4003.4      4400.8  -0.0069890   0.0075569
+
+                       Mean      Median         RMS    Variance        Area
+                 1.9736E-06  0.00027831   0.0034322  1.1780E-05  0.00080165
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; stats, 4800, 5200
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>    Chans    bchan    echan        Xmin        Xmax        Ymin        Ymax
+       49      101      149      4799.2      5198.7  -0.0087689    0.011331
+
+                       Mean      Median         RMS    Variance        Area
+                -0.00011646 -0.00080158   0.0043761  1.9150E-05   -0.047555
+</pre></div>
+</div>
+</section>
+<section id="line-properties">
+<h5>3.1.9.2 Line properties<a class="headerlink" href="#line-properties" title="Link to this heading">#</a></h5>
+<p>Using the AWV (area, width, velocity) routine, determine the line’s properties, including the velocity width at 20% of the line’s peak velocity.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; gmeasure, 1, 0.2, brange=4610, erange=4735, rms=0.0039
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Area, Width, Velocity (followed by errors in same order) =    3.67   83.31 4677.81    0.22    0.00    0.00
+</pre></div>
+</div>
+</section>
+</section>
+<section id="compare-with-online-database">
+<h4>3.1.10 Compare with online database<a class="headerlink" href="#compare-with-online-database" title="Link to this heading">#</a></h4>
+<p>Check your results against the online database available here: <a class="reference external" href="http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml">http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml</a>.</p>
+</section>
+</section>
+<section id="more-complicated-example">
+<h3>3.2 More Complicated Example<a class="headerlink" href="#more-complicated-example" title="Link to this heading">#</a></h3>
+<p>This example is from the HI survey dataset (<a class="reference external" href="http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml">http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml</a>).</p>
+<p>It also matches the observation technique in Observing, example 1. Note, though, that not all the data in this
+dataset was taken using the standard ONOFF command with the cals (noise diodes) firing. Instead many of the
+observations were taken with the noise diodes turned off, followed by a short scan where the noise diodes are
+firing. As a result you need to determine the Tsys and then apply it to the on+off scans.</p>
+<section id="id3">
+<h4>3.2.1 Start gbtidl<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<p>Open a terminal. At the prompt enter</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gbtidl
+</pre></div>
+</div>
+<p>You should see the following welcome screen:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IDL Version 7.1.1 (linux x86_64 m64). (c) 2009, ITT Visual Information Solutions
+Installation number: 15269-3.
+Licensed for use by: National Radio Astronomy Observatory
+
+Starting GBTIDL
+
+Display Device  : X
+Visual Class    : TrueColor
+Visual Depth    : 24-Bit
+Color Table Size: 256
+Number of Colors: 16777216
+Decomposed Color: 0
+
+--------------------------------------------------------------------
+                    Welcome to GBTIDL v2.10.1
+
+    For news, documentation, enhancement requests, bug tracking,
+               discussion, and contributions, visit:
+
+                   http://gbtidl.nrao.edu
+
+    For help with a GBTIDL routine from the command line, use
+             the procedure &#39;usage&#39;.  For example:
+
+   usage,&#39;show&#39;           ; gives the syntax of the procedure &#39;show&#39;
+   usage,&#39;show&#39;,/verbose  ; gives more information on &#39;show&#39;
+--------------------------------------------------------------------
+
+GBTIDL -&gt;
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h4>3.2.2 Load files of interest<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; dirin, &#39;/home/astro-util/HIsurvey/Session02&#39;
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h4>3.2.3 Look at file content<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; summary
+</pre></div>
+</div>
+<p>Here we’re showing only the scans of interest for this example. We have two OffOn pairs (scans pairs 295+296, 297+298) and one track scan (scan 299).</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Scan           Source      Vel    Proc Seq    RestF nIF nInt nFd     Az    El
+   295           U10629   2980.0   OffOn   1    1.420   1   30   1  232.9  67.2
+   296           U10629   2980.0   OffOn   2    1.420   1   30   1  232.6  67.4
+   297           U10629   2980.0   OffOn   1    1.420   1   30   1  237.4  65.5
+   298           U10629   2980.0   OffOn   2    1.420   1   30   1  237.1  65.6
+   299           U10629   2980.0   Track   1    1.420   1    3   1  241.4  63.6
+</pre></div>
+</div>
+</section>
+<section id="double-check-the-scans">
+<h4>3.2.4 Double-check the scans<a class="headerlink" href="#double-check-the-scans" title="Link to this heading">#</a></h4>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; list, scan=295
+</pre></div>
+</div>
+<p>Here you can see that there is no noise diode (cal) firing during the on + off scans. We’re only showing the first few lines of the output, when you run the command, the output list will be a bit longer.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span> #INDEX           SOURCE       SCAN PROCEDURE POL IFNUM FDNUM        INT SIG CAL
+   2472           U10629        295     OffOn  XX     0     0          0   T   F
+   2473           U10629        295     OffOn  YY     0     0          0   T   F
+   2474           U10629        295     OffOn  XX     0     0          1   T   F
+   2475           U10629        295     OffOn  YY     0     0          1   T   F
+   2476           U10629        295     OffOn  XX     0     0          2   T   F
+   2477           U10629        295     OffOn  YY     0     0          2   T   F
+   2478           U10629        295     OffOn  XX     0     0          3   T   F
+   2479           U10629        295     OffOn  YY     0     0          3   T   F
+   2480           U10629        295     OffOn  XX     0     0          4   T   F
+   2481           U10629        295     OffOn  YY     0     0          4   T   F
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; list, scan=296
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span> #INDEX           SOURCE       SCAN PROCEDURE POL IFNUM FDNUM        INT SIG CAL
+   2532           U10629        296     OffOn  XX     0     0          0   T   F
+   2533           U10629        296     OffOn  YY     0     0          0   T   F
+   2534           U10629        296     OffOn  XX     0     0          1   T   F
+   2535           U10629        296     OffOn  YY     0     0          1   T   F
+   2536           U10629        296     OffOn  XX     0     0          2   T   F
+   2537           U10629        296     OffOn  YY     0     0          2   T   F
+   2538           U10629        296     OffOn  XX     0     0          3   T   F
+   2539           U10629        296     OffOn  YY     0     0          3   T   F
+   2540           U10629        296     OffOn  XX     0     0          4   T   F
+   2541           U10629        296     OffOn  YY     0     0          4   T   F
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; list, scan=299
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span> #INDEX           SOURCE       SCAN PROCEDURE POL IFNUM FDNUM        INT SIG CAL
+   2712           U10629        299     Track  XX     0     0          0   T   T
+   2713           U10629        299     Track  XX     0     0          0   T   F
+   2714           U10629        299     Track  YY     0     0          0   T   T
+   2715           U10629        299     Track  YY     0     0          0   T   F
+   2716           U10629        299     Track  XX     0     0          1   T   T
+   2717           U10629        299     Track  XX     0     0          1   T   F
+   2718           U10629        299     Track  YY     0     0          1   T   T
+   2719           U10629        299     Track  YY     0     0          1   T   F
+   2720           U10629        299     Track  XX     0     0          2   T   T
+   2721           U10629        299     Track  XX     0     0          2   T   F
+   2722           U10629        299     Track  YY     0     0          2   T   T
+   2723           U10629        299     Track  YY     0     0          2   T   F
+</pre></div>
+</div>
+</section>
+<section id="determine-t-sys">
+<h4>3.2.5 Determine <span class="math notranslate nohighlight">\(T_{sys}\)</span><a class="headerlink" href="#determine-t-sys" title="Link to this heading">#</a></h4>
+<p>We will use the track scan (scan 299) to determine the system temperature, <span class="math notranslate nohighlight">\(T_{sys}\)</span> for each polarization.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; gettp, 299, plnum=0
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Scan:   299 (IF:0 FD:0 PL:0)    Tsys:  27.98
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; gettp, 299, plnum=1
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Scan:   299 (IF:0 FD:0 PL:1)    Tsys:  27.40
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h4>3.2.6 Empty the buffer memory<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<p>Make sure the buffer memory is empty</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; sclear
+</pre></div>
+</div>
+</section>
+<section id="process-on-off-pairs">
+<h4>3.2.7 Process on+off pairs<a class="headerlink" href="#process-on-off-pairs" title="Link to this heading">#</a></h4>
+<p>Here you have to use the <span class="incremental">getsigref</span> command, and explicitly give the command the on and off scan numbers.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; getsigref, 296, 295, plnum=0, tsys=27.98, unit=&#39;Jy&#39;
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>SigScan:   296  RefScan:   295 (IF:0 FD:0 PL:0)   units: Jy  tau:0.008 ap_eff:0.710  Tsys:  27.98
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; accum
+GBTIDL -&gt; getsigref, 296, 295, plnum=1, tsys=27.40, unit=&#39;Jy&#39;
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Blanked spectra: ignored 2 integrations
+SigScan:   296  RefScan:   295 (IF:0 FD:0 PL:1)   units: Jy  tau:0.008 ap_eff:0.710  Tsys:  27.40
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; accum
+GBTIDL -&gt; getsigref, 298, 297, plnum=0, tsys=27.98, unit=&#39;Jy&#39;
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>SigScan:   298  RefScan:   297 (IF:0 FD:0 PL:0)   units: Jy  tau:0.008 ap_eff:0.710  Tsys:  27.98
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; accum
+GBTIDL -&gt; getsigref, 298, 297, plnum=0, tsys=27.40, unit=&#39;Jy&#39;
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>SigScan:   298  RefScan:   297 (IF:0 FD:0 PL:1)   units: Jy  tau:0.008 ap_eff:0.710  Tsys:  27.40
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; accum
+GBTIDL -&gt; ave
+</pre></div>
+</div>
+<img alt="../_images/HI_survey_processing_11.png" src="../_images/HI_survey_processing_11.png" />
+</section>
+<section id="id7">
+<h4>3.2.8 Adjust x-axis<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<p>Set the x-axis to avoid the edges.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; setx, 1.401, 1.412
+</pre></div>
+</div>
+<img alt="../_images/HI_survey_processing_12.png" src="../_images/HI_survey_processing_12.png" />
+</section>
+<section id="smooth-the-spectrum">
+<h4>3.2.9 Smooth the spectrum<a class="headerlink" href="#smooth-the-spectrum" title="Link to this heading">#</a></h4>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; gsmooth, 100, /decimate
+</pre></div>
+</div>
+<img alt="../_images/HI_survey_processing_13.png" src="../_images/HI_survey_processing_13.png" />
+</section>
+<section id="remove-baseline">
+<h4>3.2.10 Remove baseline<a class="headerlink" href="#remove-baseline" title="Link to this heading">#</a></h4>
+<p>Set regions avoiding the RFI spike.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; setregion
+</pre></div>
+</div>
+<img alt="../_images/HI_survey_processing_14.png" src="../_images/HI_survey_processing_14.png" />
+<p>Remove baseline (after inspection) using first order polynomial (i.e. a line).</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; nfit, 1
+GBTIDL -&gt; bshape
+GBTIDL -&gt; baseline
+</pre></div>
+</div>
+<img alt="../_images/HI_survey_processing_15.png" src="../_images/HI_survey_processing_15.png" />
+</section>
+<section id="id8">
+<h4>3.2.11 Determine statistics<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<section id="rms-noise">
+<h5>3.2.11.1 RMS noise<a class="headerlink" href="#rms-noise" title="Link to this heading">#</a></h5>
+<p>Determine the statistics in the velocity ranges surrounding the galaxy, i.e. 2000 km/s - 2500 km/s and 3500 km/s - 4000 km/s.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; stats, 2000, 2500
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>    Chans    bchan    echan        Xmin        Xmax        Ymin        Ymax
+       63      222      284      1996.4      2503.1  -0.0050648   0.0063588
+
+                       Mean      Median         RMS    Variance        Area
+                 0.00022812  0.00011783   0.0025809  6.6610E-06     0.11764
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; stats, 3500, 4000
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>    Chans    bchan    echan        Xmin        Xmax        Ymin        Ymax
+       62       40      101      3496.8      4000.3  -0.0062628   0.0065100
+
+                       Mean      Median         RMS    Variance        Area
+                -3.3634E-05 -0.00021309   0.0024638  6.0704E-06   -0.017239
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h5>3.2.11.2 Line properties<a class="headerlink" href="#id9" title="Link to this heading">#</a></h5>
+<p>Using the AWV (area, width, velocity) routine, we can determine the line’s properties, including the velocity width at 20% of the line’s peak velocity. Here we will use a few methods:</p>
+<ol class="arabic">
+<li><dl>
+<dt><strong>Fraction of mean</strong></dt><dd><p>As a fraction of the mean within the region of interest. The mean of data from brange through erange is calculated. The edges are then those locations where the data values are greater than fract*mean for 3 consecutive channels starting from the end points of the region of interest and searching towards the center (method #1), first using 50% of the peak intensity and then 20%</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; gmeasure, 1, 0.5, brange=2815, erange=3142, rms=0.00252
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Area, Width, Velocity (followed by errors in same order) =    9.45  252.76 2979.57    0.27    0.00    0.00
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; gmeasure, 1, 0.2, brange=2815, erange=3142, rms=0.00252
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Area, Width, Velocity (followed by errors in same order) =    9.45  277.50 2974.64    0.26    0.00    0.00
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><strong>Fraction of maximum value</strong></dt><dd><p>As a fraction of the maximum value within the region of interest. The peak of data from brange to erange is found. The edges are then those locations where the data values are greater than fract*(peak-rms) for 3 consecutive channels starting from the end points of the region of interest and searching towards the center (method #2) , first using 50% of the peak intensity and then 20%.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; gmeasure, 2, 0.5, brange=2815, erange=3142, rms=0.00252
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Area, Width, Velocity (followed by errors in same order) =    9.45  238.38 2980.15    0.26    0.00    0.00
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; gmeasure, 2, 0.2, brange=2815, erange=3142, rms=0.00252
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Area, Width, Velocity (followed by errors in same order) =    9.45  258.82 2979.04    0.25    0.00    0.00
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><strong>Fraction of each of two peaks – identified by user</strong></dt><dd><p>You use the cursor to mark two peaks in the region of interest or those peaks are identified through the lefthorn and righthorn parameters. The maximum value within 10 channels of each user-supplied peak location is found. The left edge is where the data value falls below fract*(peak-rms) for 3 consecutive channels searched from the location of the peak. The right-channel peak is similarly used to find the right edge (method #3) , first using 50% of the peak intensity and then 20%.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; gmeasure, 3, 0.5, brange=2815, erange=3142, rms=0.00252
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>click on the positions for the two peaks
+  Area, Width, Velocity (followed by errors in same order) =    9.49  239.90 2979.39    0.26    0.00    0.00
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; gmeasure, 3, 0.2, brange=2815, erange=3142, rms=0.00252
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>click on the positions for the two peaks
+  Area, Width, Velocity (followed by errors in same order) =    9.49  259.96 2978.47    0.25    0.00    0.00
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</section>
+</section>
+</section>
+</section>
+<section id="data-reduction-scripted">
+<h2>4. Data Reduction - scripted<a class="headerlink" href="#data-reduction-scripted" title="Link to this heading">#</a></h2>
+<p>This example is from the HI survey dataset (<a class="reference external" href="http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml">http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml</a>).</p>
+<ul class="simple">
+<li><p>You can download the example script shown below here: <a class="reference download internal" download="" href="../_downloads/e48bf591016635c1a7a8e27a308ceaea/HI_survey_process.pro"><code class="xref download docutils literal notranslate"><span class="pre">HI_survey_process.pro</span></code></a></p></li>
+</ul>
+<div class="highlight-idl notranslate"><div class="highlight"><pre><span></span><span class="c1">; Step 3.2.2</span>
+dirin,<span class="s1">&#39;/home/astro-util/HIsurvey/Session02&#39;</span>
+
+jnk<span class="o">=</span><span class="s1">&#39;jnk&#39;</span><span class="w">   </span>;<span class="w"> </span>this<span class="w"> </span>is<span class="w"> </span>used<span class="w"> </span>later,<span class="w"> </span>to<span class="w"> </span>pause<span class="w"> </span>the<span class="w"> </span>observations
+freeze<span class="w">      </span>;<span class="w"> </span>keep<span class="w"> </span>from<span class="w"> </span>plotting<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>screen,<span class="w"> </span>to<span class="w"> </span>speed<span class="w"> </span>up<span class="w"> </span>the<span class="w"> </span>processing
+
+<span class="c1">; skipping steps 3.2.3, and 3.2.4 since you are running a script you should already understand your dataset.</span>
+
+<span class="c1">; Steps 3.2.5  here we are running the commands quietly, and then </span>
+<span class="c1">; getting the tsys values from the !g structure.</span>
+
+gettp,<span class="mi">299</span>,plnum<span class="o">=</span><span class="mi">0</span>,<span class="w"> </span><span class="o">/</span>quiet
+tsys0<span class="o">=</span>!g.s.tsys
+
+gettp,<span class="mi">299</span>,plnum<span class="o">=</span><span class="mi">1</span>,<span class="w"> </span><span class="o">/</span>quiet
+tsys1<span class="o">=</span>!g.s.tsys
+
+<span class="c1">;Step 3.2.6 - clear the buffer</span>
+sclear
+
+<span class="c1">;Step 3.2.7; Here wer are going to loop over the scans of interest.</span>
+<span class="c1">;Because this is a text file, we are using the $&amp; at the end, to continue the lines</span>
+<span class="c1">;appropriately.  Again this is being run quietly</span>
+
+<span class="k">for</span><span class="w"> </span>i<span class="o">=</span><span class="mi">295</span>,<span class="mi">297</span>,<span class="mi">2</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="k">begin</span><span class="w"> </span>&amp;$<span class="w">  </span>;<span class="w"> </span>scan<span class="w"> </span>numbers
+<span class="w">  </span><span class="k">for</span><span class="w"> </span>p<span class="o">=</span><span class="mi">0</span>,<span class="mi">1</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="k">begin</span><span class="w"> </span>&amp;$<span class="w">      </span>;<span class="w"> </span>polarizzation<span class="w"> </span>numbers
+<span class="w">    </span><span class="k">if</span><span class="w"> </span>(p<span class="w"> </span><span class="k">eq</span><span class="w"> </span><span class="mi">0</span>)<span class="w"> </span><span class="k">then</span><span class="w"> </span>tsys<span class="o">=</span>tsys0[<span class="mi">0</span>]<span class="w"> </span><span class="k">else</span><span class="w"> </span>tsys<span class="o">=</span>tsys1[<span class="mi">0</span>]<span class="w"> </span>&amp;$
+<span class="w">    </span>getsigref,i<span class="o">+</span><span class="mi">1</span>,i,plnum<span class="o">=</span>p,tsys<span class="o">=</span>tsys,unit<span class="o">=</span><span class="s1">&#39;Jy&#39;</span>,<span class="w"> </span><span class="o">/</span>quiet<span class="w"> </span>&amp;$
+<span class="w">    </span>accum<span class="w"> </span>&amp;$
+<span class="w">  </span><span class="k">endfor</span><span class="w"> </span>&amp;$
+<span class="k">endfor</span>
+
+ave
+
+<span class="c1">; Step 3.2.8 - fix the x-axis</span>
+setxunit,<span class="s1">&#39;GHz&#39;</span><span class="w"> </span>;<span class="w"> </span>make<span class="w"> </span>sure<span class="w"> </span>we<span class="w"> </span>have<span class="w"> </span>the<span class="w"> </span>expected<span class="w"> </span>units<span class="w"> </span>in<span class="w"> </span>the<span class="w"> </span>x<span class="o">-</span><span class="nb">axis</span>.
+setx,<span class="mf">1.401</span>,<span class="mf">1.412</span>
+
+<span class="c1">; Step 3.2.9 - smooth the data to the desired resolution</span>
+gsmooth,<span class="mi">100</span>,<span class="o">/</span>decimate
+
+show
+unfreeze
+<span class="c1">; Step 3.2.10 - Remove baseline</span>
+<span class="c1">; set region - Here we are going to avoid clicking on the screen and set the regions for the</span>
+<span class="c1">; baseline fitting </span>
+region<span class="o">=</span>[<span class="mf">1.402</span>,<span class="w"> </span><span class="mf">1.4045</span>,<span class="w"> </span><span class="mf">1.40506</span>,<span class="w"> </span><span class="mf">1.4054</span>,<span class="w"> </span><span class="mf">1.4072</span>,<span class="w"> </span><span class="mf">1.4115</span>]
+reg1<span class="o">=</span>xtochan(region)
+Nregion,reg1
+nfit,<span class="mi">1</span>
+bshape
+
+<span class="c1">; this pauses the observations, to see the baseline shape</span>
+<span class="c1">; this is only needed if this script is being read into gbtidl as a whole.</span>
+<span class="nb">read</span>,jnk,prompt<span class="o">=</span><span class="s1">&#39;Push return to continue: &#39;</span><span class="w">  </span>
+
+<span class="c1">;remove the baseline</span>
+baseline<span class="w"> </span>;<span class="w"> </span>removes<span class="w"> </span>the<span class="w"> </span>baseline
+
+<span class="c1">; Step 3.2.11.1: determine (and print) the rms noise</span>
+velo
+stats,<span class="mi">2000</span>,<span class="mi">2500</span>,<span class="w"> </span>ret<span class="o">=</span>mystats
+rms1<span class="w"> </span><span class="o">=</span><span class="w"> </span>mystats.rms
+stats,<span class="mi">3500</span>,<span class="mi">4000</span>,<span class="w"> </span>ret<span class="o">=</span>mystats
+rms2<span class="w"> </span><span class="o">=</span><span class="w"> </span>mystats.rms
+
+rms<span class="w"> </span><span class="o">=</span><span class="w"> </span>(rms1<span class="w"> </span><span class="o">+</span><span class="w"> </span>rms2)<span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span>
+
+<span class="c1">; Step 3.2.11.2: determine the galaxy&#39;s mean intensity using method 1, and calculating the 20% and 50% velocity widths</span>
+gmeasure,<span class="mi">1</span>,<span class="w"> </span><span class="mf">0.5</span>,brange<span class="o">=</span><span class="mi">2815</span>,erange<span class="o">=</span><span class="mi">3142</span>,rms<span class="o">=</span>rms<span class="w">                       </span>
+gmeasure,<span class="mi">1</span>,<span class="w"> </span><span class="mf">0.2</span>,brange<span class="o">=</span><span class="mi">2815</span>,erange<span class="o">=</span><span class="mi">3142</span>,rms<span class="o">=</span>rms
+</pre></div>
+</div>
+<dl class="simple">
+<dt>Let’s say you have the script saved as HI_survey_process.pro. You can execute the script doing the following</dt><dd><p>in a regular terminal</p>
+</dd>
+</dl>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gbtidl
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GBTIDL -&gt; @HI_survey_process.pro
+</pre></div>
+</div>
+<p>Once done you should see this output from the code:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>% ACCUMAVE: Average of :           4 spectra
+Push return to continue:
+% Program caused arithmetic error: Floating divide by 0
+    Chans    bchan    echan        Xmin        Xmax        Ymin        Ymax
+       63      222      284      1996.4      2503.1  -0.0052186   0.0062189
+
+                       Mean      Median         RMS    Variance        Area
+                 8.7379E-05 -4.4913E-05   0.0025822  6.6675E-06    0.045062
+    Chans    bchan    echan        Xmin        Xmax        Ymin        Ymax
+       62       40      101      3496.8      4000.3  -0.0062437   0.0065244
+
+                       Mean      Median         RMS    Variance        Area
+                -1.8582E-06 -0.00018846   0.0024669  6.0857E-06 -0.00095242
+  Area, Width, Velocity (followed by errors in same order) =    9.43  252.71 2979.58    0.27    0.00    0.00
+  Area, Width, Velocity (followed by errors in same order) =    9.43  277.39 2974.65    0.26    0.00    0.00
+</pre></div>
+</div>
+<p>As well as this spectrum in the GBTIDL Plotter (separate window)</p>
+<img alt="../_images/HI_survey_processing_16.png" src="../_images/HI_survey_processing_16.png" />
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-mortar-board orange" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.292 2.06a.75.75 0 00-.584 0L.458 6.81a.75.75 0 000 1.38L4.25 9.793v3.803a2.901 2.901 0 00-1.327.757c-.579.58-.923 1.41-.923 2.43v4.5c0 .248.128.486.335.624.06.04.117.073.22.124.124.062.297.138.52.213.448.149 1.09.288 1.925.288s1.477-.14 1.925-.288c.223-.075.396-.15.52-.213a2.11 2.11 0 00.21-.117A.762.762 0 008 21.28v-4.5c0-1.018-.344-1.85-.923-2.428a2.9 2.9 0 00-1.327-.758v-3.17l5.958 2.516a.75.75 0 00.584 0l5.208-2.2v4.003a2.552 2.552 0 01-.079.085 4.057 4.057 0 01-.849.65c-.826.488-2.255 1.021-4.572 1.021-.612 0-1.162-.037-1.654-.1a.75.75 0 00-.192 1.487c.56.072 1.173.113 1.846.113 2.558 0 4.254-.592 5.334-1.23.538-.316.914-.64 1.163-.896a2.84 2.84 0 00.392-.482h.001A.75.75 0 0019 15v-4.892l4.542-1.917a.75.75 0 000-1.382l-11.25-4.75zM5 15c-.377 0-.745.141-1.017.413-.265.265-.483.7-.483 1.368v4.022c.299.105.797.228 1.5.228s1.201-.123 1.5-.228V16.78c0-.669-.218-1.103-.483-1.368A1.431 1.431 0 005 15zm7-3.564L2.678 7.5 12 3.564 21.322 7.5 12 11.436z"></path></svg> Tutorials</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="kfpa_nh3_mapping_tutorial.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">NH<sub>3</sub> Mapping Observations with the K-Band Focal Plane Array (KFPA) on the GBT</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-preparation">1 Observation Preparation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#catalog">1.1 Catalog</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-and-observing-scripts">1.2 Configuration and Observing Scripts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observations">2. Observations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autopeakfocus-observations">2.1 AutoPeakFocus observations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-observations">2.2 Source observations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-reduction">3. Data Reduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-example">3.1 Simple Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#start-gbtidl">3.1.1 Start gbtidl</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#load-files-of-interest">3.1.2 Load files of interest</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#look-at-file-content">3.1.3 Look at file content</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#empty-the-buffer-memory">3.1.4 Empty the buffer memory</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#process-single-on-off-pair">3.1.5 Process single on+off pair</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#process-first-polarization">3.1.5.1 Process first polarization</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#adjust-x-axis">3.1.5.2 Adjust x-axis</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#accumulate-results">3.1.5.3 Accumulate results</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#process-second-polarization">3.1.5.4 Process second polarization</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.1.5.5 Accumulate results</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#average-polarizations">3.1.5.4 Average polarizations</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#smooth-the-result">3.1.6 Smooth the result</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-the-baseline">3.1.7 Fit the baseline</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-region">3.1.7.1 Choose region</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#set-order-of-baseline-fit">3.1.7.2 Set order of baseline fit</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#show-the-fitted-baseline">3.1.7.3 Show the fitted baseline</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#subtract-the-fitted-baseline">3.1.7.4 Subtract the fitted baseline</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#switch-the-x-axis">3.1.8 Switch the x-axis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-statistics">3.1.9 Determine statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#rms">3.1.9.1 RMS</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#line-properties">3.1.9.2 Line properties</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-with-online-database">3.1.10 Compare with online database</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-complicated-example">3.2 More Complicated Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.2.1 Start gbtidl</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.2.2 Load files of interest</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.2.3 Look at file content</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#double-check-the-scans">3.2.4 Double-check the scans</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-t-sys">3.2.5 Determine <span class="math notranslate nohighlight">\(T_{sys}\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.2.6 Empty the buffer memory</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#process-on-off-pairs">3.2.7 Process on+off pairs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3.2.8 Adjust x-axis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#smooth-the-spectrum">3.2.9 Smooth the spectrum</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-baseline">3.2.10 Remove baseline</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">3.2.11 Determine statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#rms-noise">3.2.11.1 RMS noise</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.2.11.2 Line properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-reduction-scripted">4. Data Reduction - scripted</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Green Bank Observatory
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023-24, Green Bank Observatory, A. Schmiedeke.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
