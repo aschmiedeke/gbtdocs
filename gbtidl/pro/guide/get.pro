@@ -1,26 +1,27 @@
+; docformat = 'rst'
+
 ;+
 ; Get data from the input data file and put that into the primary data 
 ; container (buffer 0).  
-; <p>
+; 
 ; The data to be retrieved are specified by giving a number of selection
 ; parameters.  If more than one record satisfies the selection criteria given,
 ; only the first is returned.  If you need to retrieve one of the
 ; other records you must first refine the selection criteria.  A
-; better approach might be to use <a href="select.html">select</a> to get the list of records that 
-; satisfy that selection and then use  <a href="getrec.html">getrec</a> to get the individual records.
+; better approach might be to use :idl:pro:`select` to get the list of records that 
+; satisfy that selection and then use :idl:pro:`getrec` to get the individual records.
 ;
-; <p><em>Note :</em> All of the data satisfying the selection criteria
-; (or lack of criteria if none are given) are extracted from the file
-; before this routine copies the first one found and puts it into
-; buffer 0.  There is no protection against running out of memory by
-; grabbing too much data.
+; *Note:* All of the data satisfying the selection criteria (or lack of criteria
+; if none are given) are extracted from the file before this routine copies the 
+; first one found and puts it into buffer 0. There is no protection against running
+; out of memory by grabbing too much data.
 ;
-; <p>Run the procedure <a href="listcols.html">listcols</a> to see a complete list of selection parameters.
+; Run the procedure :idl:pro:`listcols` to see a complete list of selection parameters.
 ;
-; <p>See the discussion on "Select" in the <a href="http://wwwlocal.gb.nrao.edu/GBT/DA/gbtidl/users_guide/node50.html" TARGET="_top">User's Guide</a> 
+; See the discussion on "Select" in the :ref:`https://www.gb.nrao.edu/GBT/DA/gbtidl/users_guide.pdf#page=29` 
 ; for a summary of selection syntax.
-; <p>
-; Flags (set via <a href="flag.html">flag</a>) can be selectively applied or ignored using the 
+; 
+; Flags (set via :idl:pro:`flag`) can be selectively applied or ignored using the 
 ; useflag and skipflag keywords.  Only one of those two keywords can
 ; be used at a time (it is an error to use both at the same time).
 ; Both can be either a boolean (/useflag or /skipflag) or an array of
@@ -36,29 +37,35 @@
 ; string or array of strings, then all flag rules except those
 ; with the same idstring value are used to blank the data.
 ;
-; @keyword useflag {in}{optional}{type=boolean or string}{default=true}
-; Apply all or just some of the flag rules?
-; @keyword skipflag {in}{optional}{type=boolean or string} Do not apply
-; any or do not apply a few of the flag rules?
-; @keyword _EXTRA {in}{optional}{type=extra keywords} These are
-; selection parameters that determine which data to retrieve.
+; :Keywords:
+; 
+;   useflag : in, optional, type=boolean or string, default=true
+;       Apply all or just some of the flag rules?
+; 
+;   skipflag : in, optional, type=boolean or string
+;       Do not apply any or do not apply a few of the flag rules?
+; 
+;   _EXTRA : in, optional, type=extra keywords
+;       These are selection parameters that determine which data to retrieve.
 ;
-; @examples
-; <pre>
-;   filein,'my_raw_data.fits'
-;   listcols                  ; show the parameters that can be used
-;   get,index=0               ; retrieves the first record
-;   copy, 0, 10
-;   get, scan=6, plnum=0, ifnum=1, int=2
-;   oshow, 10
-;   get, scan=6, plnum=0, ifnum=1, int=2, /skipflag ; ignore all flags
-;   ; in this next example, only flags with idstring='wind' are ignored.
-;   get, scan=6, plnum=0, ifnum=1, int=2, skipflag='wind'
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       filein,'my_raw_data.fits'
+;       listcols                  ; show the parameters that can be used
+;       get,index=0               ; retrieves the first record
+;       copy, 0, 10
+;       get, scan=6, plnum=0, ifnum=1, int=2
+;       oshow, 10
+;       get, scan=6, plnum=0, ifnum=1, int=2, /skipflag ; ignore all flags
+;       ; in this next example, only flags with idstring='wind' are ignored.
+;       get, scan=6, plnum=0, ifnum=1, int=2, skipflag='wind'
+; 
+; :Uses:
 ;
-; @uses <a href="set_data_container.html">set_data_container</a>
+;   :idl:pro:`set_data_container`
 ;
-; @version $Id$
 ;-
 pro get, useflag=useflag, skipflag=skipflag, _EXTRA=ex
    compile_opt idl2
