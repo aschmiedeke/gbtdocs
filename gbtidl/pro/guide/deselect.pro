@@ -1,36 +1,44 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure is used to remove previously selected index numbers
 ; from the stack.  
 ;
-; <p>Data can be de-selected by using selection criteria in the same
-; way as in <a href="select.html">select</a>.
+; Data can be de-selected by using selection criteria in the same
+; way as in :idl:pro:`select`.
 ;
-; <p>Data can be de-selected based on entries in the index file, such
+; Data can be de-selected based on entries in the index file, such
 ; as source  name, polarization type, IF number, etc.  For a complete
-; list of eligible parameters use the procedure <a href="listcols.html">listcols</a>.
+; list of eligible parameters use the procedure :idl:pro:`listcols`.
 ;
-; <p>See the discussion on "Select" in the <a href="http://wwwlocal.gb.nrao.edu/GBT/DA/gbtidl/users_guide/node50.html" TARGET="_top">User's Guide</a> 
+; See the discussion on "Select" in the `GBTIDL manual <https://www.gb.nrao.edu/GBT/DA/gbtidl/users_guide.pdf#page=29>`_ 
 ; for a summary of selection syntax.
 ;
-; <p>The selection criteria are ultimately passed to the io class's
+; The selection criteria are ultimately passed to the io class's
 ; search_index via the _EXTRA parameter. 
 ;
-; @keyword keep {in}{optional}{type=boolean} If set, the selection comes from
-; the keep file.  If not set, the selection comes from the input file.
-; @keyword _EXTRA {in}{optional}{type=extra keywords} These are
-; the selection parameters.
+; :Keywords:
+; 
+;   keep : in, optional, type=boolean
+;       If set, the selection comes from the keep file.  If not set, 
+;       the selection comes from the input file.
+; 
+;   _EXTRA : in, optional, type=extra keywords
+;       These are the selection parameters.
 ;
-; @examples
-; <pre>
-;    select, source="ORION"    ; select all ORION data
-;    deselect, scan=15         ; remove scan 15, perhaps it's bad
-;    deselect, ifnum=1         ; remove the IFNUM=1 data
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       select, source="ORION"    ; select all ORION data
+;       deselect, scan=15         ; remove scan 15, perhaps it's bad
+;       deselect, ifnum=1         ; remove the IFNUM=1 data
 ;
-; @uses <a href="../toolbox/select_data.html">select_data</a>
-; @uses <a href="delete.html">delete</a>
+; :Uses:
+; 
+;   :idl:pro:`select_data`
+;   :idl:pro:`delete`
 ;
-; @version $Id$
 ;-
 PRO deselect, keep=keep, _EXTRA=ex
     compile_opt idl2

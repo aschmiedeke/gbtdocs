@@ -1,7 +1,9 @@
+; docformat = 'rst'
+
 ;+
 ; Set the line io object to look at the online file.
 ; 
-; <p>The online file is determined by finding the most recently 
+; The online file is determined by finding the most recently 
 ; updated spectral line file (ACS, VEGAS, or SP) in the online directory
 ; (/home/sdfits).  Once a file is connected to, this command must be
 ; used again to connect to a more recent spectral line sdfits file
@@ -11,22 +13,25 @@
 ; backend.  If both keywords are true, a message will be printed and
 ; this procedure will return without changing the attached file.
 ; 
-; <p>Note that any file previously attached using "filein" or
+; Note that any file previously attached using "filein" or
 ; "offline" will be closed as a result of using this procedure.  There
 ; can be only one input spectral line data file at a time.
 ;
-; <p>The online file may be a directory of FITS files if the vegas
+; The online file may be a directory of FITS files if the vegas
 ; backend is the most recently updated file or is chosen as an option
 ; here.
 ;
-; @keyword acs {in}{optional}{type=boolean} the most recent
-; spectrometer sdfits file will be connected to. 
-; @keyword sp {in}{optional}{type=boolean} the most recent spectral
-; processor sdfits file will be connected to.
-; @keyword vegas {in}{optional}{type=boolean} the most recent
-; vegas sdfits directory will be connected to.
+; :Keywords:
 ;
-; @version $Id$
+;   acs : in, optional, type=boolean
+;       the most recent spectrometer sdfits file will be connected to. 
+;
+;   sp: in, optional, type=boolean
+;       the most recent spectral processor sdfits file will be connected to.
+; 
+;   vegas: in, optional, type=boolean
+;       the most recent vegas sdfits directory will be connected to.
+;
 ;-
 pro online, acs=acs, sp=sp, vegas=vegas
     compile_opt idl2
