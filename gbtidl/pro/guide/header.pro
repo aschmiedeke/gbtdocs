@@ -1,23 +1,28 @@
+; docformat = 'rst'
+
 ;+
 ; Show header information for the primary data container or any other
 ; data container.
 ;
-; @param dc {in}{type=data container}{optional} The data container to
-; use.  Defaults to the primary data container. 
+; :Params:
+;   dc : in, type=data container, optional
+;       The data container to use.  Defaults to the primary data container. 
 ;
-; @examples
-; <pre>
-;   header
-;   ; or, this is the same thing
-;   header, !g.s[0]
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       header
+;       ; or, this is the same thing
+;       header, !g.s[0]
 ;
-; @uses <a href="../toolbox/scalevals.html">scalevals</a>
-; @uses <a href="../toolbox/eqtogal.html">eqtogal</a>
-; @uses <a href="../toolbox/getradec.html">getradec</a>
-; @uses <a href="../toolbox/getradec.html">getgal</a>
-; @uses <a href="../toolbox/ra2ha.html">ra2ha</a>
-; @uses <a href="http://idlastro.gsfc.nasa.gov/ftp/pro/astro/adstring.pro">adstring</a>
+; :Uses:
+;   :idl:pro:`scalevals`
+;   :idl:pro:`eqtogal`
+;   :idl:pro:`getradec`
+;   :idl:pro:`getgal`
+;   :idl:pro:`ra2ha`
+;   `adstring <http://idlastro.gsfc.nasa.gov/ftp/pro/astro/adstring.pro>`_
 ;
 ;-  
 pro header,dc

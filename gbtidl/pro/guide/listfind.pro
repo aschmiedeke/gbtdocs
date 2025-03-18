@@ -1,35 +1,36 @@
+; docformat = 'rst'
 ;+
 ; List a specified selection parameter or all selection parameter
-; values used by <a href="find.html">find</a>
+; values used by :idl:pro:`find`.
 ;
-; <p>This allows you to quickly tell the value of one or all of the
+; This allows you to quickly tell the value of one or all of the
 ; selection parameters used by FIND.  The set of parameters is the
-; column names as reported by <a href="listcols.html">listcols</a>.
+; column names as reported by :idl:pro:`listcols`.
 ;
-; <p><b>Note:</b> Only those parameters that have actually been set
+; *Note:* Only those parameters that have actually been set
 ; are listed unless a listing for specific parameters has been
 ; requested.
 ;
-; <p>Use <a href="setfind.html">setfind</a> to set selection parameters.
+; Use :idl:pro:`setfind` to set selection parameters.
 ;
-; <p>Use <a href="clearfind.html">clearfind</a> to clear selection parameters.
+; Use :idl:pro:`clearfind` to clear selection parameters.
 ;
-; @param param {in}{optional}{type=string} The selection parameter(s)
-; to list.  Minimum-matching is used to find the selection parameter
-; matching this value.  If param is not supplied or is an empty
-; string, all parameters are listed.  Only parameters appropriate for
-; the current mode (line or continuum) are shown unless a specific
-; parameter is requested.
+; :Params:
+;   param : in, optional, type=string
+;       The selection parameter(s) to list.  Minimum-matching is used 
+;       to find the selection parameter matching this value.  If param 
+;       is not supplied or is an empty string, all parameters are listed.
+;       Only parameters appropriate for the current mode (line or continuum)
+;       are shown unless a specific parameter is requested.
 ;
-; @examples
-; <pre>
-; listfind  ; show all set find parameters
-; listfind,'scan'  ; show the value of the SCAN selection parameter
-; listfind,['scan','int','plnum'] ; show the values of 3 selection
-; params
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       listfind  ; show all set find parameters
+;       listfind,'scan'  ; show the value of the SCAN selection parameter
+;       listfind,['scan','int','plnum'] ; show the values of 3 selection params
 ;
-; @version $Id$
 ;-
 pro listfind, param
     compile_opt idl2
