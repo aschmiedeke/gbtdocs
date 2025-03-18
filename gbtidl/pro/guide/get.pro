@@ -18,7 +18,7 @@
 ;
 ; Run the procedure :idl:pro:`listcols` to see a complete list of selection parameters.
 ;
-; See the discussion on "Select" in the :ref:`https://www.gb.nrao.edu/GBT/DA/gbtidl/users_guide.pdf#page=29` 
+; See the discussion on "Select" in the `GBTIDL manual <https://www.gb.nrao.edu/GBT/DA/gbtidl/users_guide.pdf#page=29>`_ 
 ; for a summary of selection syntax.
 ; 
 ; Flags (set via :idl:pro:`flag`) can be selectively applied or ignored using the 
