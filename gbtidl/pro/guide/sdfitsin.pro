@@ -1,3 +1,5 @@
+; docformat = 'rst'
+
 ;+
 ; Create a new io_sdfits object and associate the indicated filename
 ; with it.
@@ -6,32 +8,39 @@
 ; used and hence the contents of all sdfits files in that directory 
 ; will be accessible through this single io object.
 ;
-; @param filename {in}{optional}{type=string}. If the filename is not 
-; suppled, a graphical file chooser will be launched to allow the user 
-; to select one.
+; :Params: 
+; 
+;   filename : in, optional, type=string
+;       If the filename is not supplied, a graphical file chooser will
+;       be launched to allow the user to select one.
 ;
-; @keyword directory {in}{optional}{type=boolean}.  If this keyword
-; exists and filename was omitted, then the file chooser is launched
-; allowing the user to select a directory, otherwise a single, regular
-; file must be selected.
+; :Keywords:
+; 
+;   directory : in, optional, type=boolean
+;       If this keyword exists and filename was omitted, then the file
+;       chooser is launched allowing the user to select a directory, 
+;       otherwise a single, regular file must be selected.
 ;
-; @keyword continuum {in}{optional}{type=boolean}.  If this keyword 
-; exists then a continuum io_sdfits object will be returned.
-; Otherwise (the default), a line io_sdfits object will be returned.
+;   continuum : in, optional, type=boolean
+;       If this keyword exists then a continuum io_sdfits object will
+;       be returned. Otherwise (the default), a line io_sdfits object 
+;       will be returned.
 ;
-; @keyword new_index {in}{optional}{type=boolean} When set,, a new
-; index is generated, whether it needed to be or not.  By
-; default, the io code tries to re-use an existing index unless it is
-; seen to be out of date.  Regenerating the index file can take some
-; time, but no information should be lost in the process.  Usually,
-; the io code can trusted to regenerate the index file only when
-; necessary.
+;   new_index : in, optional, type=boolean
+;       When set,, a new index is generated, whether it needed to be
+;       or not. By default, the io code tries to re-use an existing 
+;       index unless it is seen to be out of date.  Regenerating the 
+;       index file can take some time, but no information should be 
+;       lost in the process. Usually, the io code can trusted to 
+;       regenerate the index file only when necessary.
 ;
-; @returns io_sdfits (line or cntm) object on success or -1 on failure
+; :Returns:
+; 
+;   io_sdfits : line or cntm
+;       object on success or -1 on failure
 ;
 ; @private_file
 ;
-; @version $Id$
 ;-
 FUNCTION SDFITSIN, filename, directory=directory, continuum=continuum, new_index=new_index
     compile_opt idl2

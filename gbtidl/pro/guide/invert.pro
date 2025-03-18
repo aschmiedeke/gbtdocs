@@ -1,36 +1,42 @@
+; docformat = 'rst'
+
 ;+
 ; Flip the data end-to-end in the indicated buffer in the global data
 ; containers.  
 ;
-; <p>For line data the value of frequency_increment and reference_channel
+; For line data the value of frequency_increment and reference_channel
 ; are also changed appropriately so that, as displayed, there will be
 ; no change in appearance.  This is useful if you need to combine
 ; (e.g. average) two data containers where the frequency increments
 ; have opposite signs.  
 ;
-; <p>For continuum data (where the need to invert is less obvious), all
+; For continuum data (where the need to invert is less obvious), all
 ; of the time-dependent arrays are also flipped (utc, mjd, etc).
 ;
-; <p>The invert is done in place. Use <a href="../toolbox/dcinvert.html">dcinvert</a> to flip a data
+; The invert is done in place. Use :idl:pro:`dcinvert` to flip a data
 ; container that is not one of the global data containers.
 ;
-; <p>Note that when displayed, this will only be noticable when the
+; Note that when displayed, this will only be noticable when the
 ; x-axis is channels.  The velocity and frequency axes always increases
 ; from left to right, independent of the actual channel increment from
 ; low channel number to high channel number.
 ;
-; @keyword buffer {in}{optional}{type=integer}{default=0} guide data
-; container to use.  Defaults to buffer 0.
+; :Keywords:
+; 
+;   buffer : in, optional, type=integer, default=0
+;       guide data container to use.  Defaults to buffer 0.
 ;
-; @uses <a href="../toolbox/dcinvert.html">dcinvert</a>
+; :Examples:
 ;
-; @examples
-; <pre>
-;   invert             ; invert buffer 0
-;   invert, buffer=10  ; invert buffer 10
-; </pre>
+;   .. code-block:: IDL
+; 
+;       invert             ; invert buffer 0
+;       invert, buffer=10  ; invert buffer 10
 ;
-; @version $Id$
+; :Uses:
+; 
+;   :idl:pro:`dcinvert`
+;
 ;-
 pro invert, buffer=buffer
     compile_opt idl2
