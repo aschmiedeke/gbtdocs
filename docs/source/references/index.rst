@@ -113,6 +113,24 @@ Software
             AstrID Scheduling Block Commands
 
 
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **GBTIDL commands** 
+
+        References for GBTIDL commands
+
+        .. button-link:: software/gbtidl.html
+            :color: primary
+            :tooltip: Reference for GBTIDL commands.
+            :outline:
+            :click-parent:
+
+            GBTIDL commands
+
+
+
 
 
 .. toctree::
@@ -120,6 +138,6 @@ Software
     :hidden:
 
     software/scheduling-blocks
-
+    software/gbtidl
 
 

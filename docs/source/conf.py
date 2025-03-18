@@ -45,7 +45,6 @@ extensions = ['sphinx.ext.todo',
               'sphinx_idl.auto'
 ]
 
-
 suppress_warnings = ['autosectionlabel.*']
 
 autosummary_generate = False
@@ -57,6 +56,8 @@ todo_include_todos = True
 intersphinx_mapping = {
         'dysh': ("https://dysh.readthedocs.io/en/latest", None)
 }
+
+pygments_style = 'sphinx'
 
 # We recommend adding the following config value.
 # Sphinx defaults to automatically resolve *unresolved* labels using all your Intersphinx mappings.
