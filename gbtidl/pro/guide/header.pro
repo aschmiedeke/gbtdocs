@@ -22,7 +22,7 @@
 ;   :idl:pro:`getradec`
 ;   :idl:pro:`getgal`
 ;   :idl:pro:`ra2ha`
-;   `adstring <http://idlastro.gsfc.nasa.gov/ftp/pro/astro/adstring.pro>`_
+;   `adstring <https://asd.gsfc.nasa.gov/archive/idlastro/ftp/pro/astro/adstring.pro>`_
 ;
 ;-  
 pro header,dc
