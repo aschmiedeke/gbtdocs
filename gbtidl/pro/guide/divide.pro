@@ -1,3 +1,5 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure divides the data from two data containers stored in
 ; the global buffers 0-15.  If no parameters are passed, then the data
@@ -7,31 +9,40 @@
 ; the result is stored in buffer 0.  If three parameters are supplied,
 ; the result is stored in the third (output) buffer number.
 ;
-; <p> out = in1 / in2
+; out = in1 / in2
 ;
-; @param in1 {in}{optional}{type=integer} First input data buffer number
-; @param in2 {in}{optional}{type=integer} Second input data buffer number
-; @param out {in}{optional}{type=integer} Output data buffer number
+; :Params:
+; 
+;   in1 : in, optional, type=integer
+;       First input data buffer number
+; 
+;   in2 : in, optional, type=integer
+;       Second input data buffer number
+; 
+;   out : in, optional, type=integer
+;       Output data buffer number
 ;
-; @examples
-; <pre>
-;    getrec,1
-;    copy,0,1
-;    getrec,2
-;    divide
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       getrec,1
+;       copy,0,1
+;       getrec,2
+;       divide
 ;
-;    getrec,1
-;    copy,0,10
-;    getrec,2
-;    copy,0,11
-;    divide,10,11,12     ; The data from buffer 10 is divided by buffer 11
-;                        ; and the result is stored in buffer 12
-; </pre>
+;       getrec,1
+;       copy,0,10
+;       getrec,2
+;       copy,0,11
+;       divide,10,11,12     ; The data from buffer 10 is divided by buffer 11
+;                           ; and the result is stored in buffer 12
 ;
-; @uses <a href="../toolbox/dcdivide.html">dcdivide</a>
-; @uses <a href="../toolbox/dcpaircheck.html">dcpaircheck</a>
+; :Uses:
 ;
-; @version $Id$
+;   :idl:pro:`dcdivide` 
+;   :idl:pro:`dcpaircheck`
+;
 ;-
 pro divide, in1, in2, out
 

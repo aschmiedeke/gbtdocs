@@ -1,34 +1,36 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure retrieves the "cal" signal from a cal-switched scan. 
 ;
-; <p>This code can be used as a template for the user who may wish to
+; This code can be used as a template for the user who may wish to
 ; develop more tailored calibration schemes.
 ;
-;<p><b>Summary</b>
-;  <ul><li>Data are selected using scan, ifnum, intnum, plnum, and
+; **Summary** 
+;   * Data are selected using scan, ifnum, intnum, plnum, and
 ;     fdnum or, alternatively, sampler and intnum if you know the
 ;     specific sampler name (e.g. "A10").
 ;  
-;  <li>Individual integrations are processed separately using
-;     <a href="../toolbox/docal.html">docal</a>.  This differences the two switching phases (with cal 
+;   * Individual integrations are processed separately using
+;     :idl:pro:`docal`.  This differences the two switching phases (with cal 
 ;     and without cal) and calculates a mean system temperature.
 ;
-;  <li>Averaging of individual integrations is done using 
-;      <a href="../toolbox/dcaccum.html">dcaccum</a>.  By default, integrations are weighted as described in 
-;      dcaccum.  If the eqweight keyword is set, then integrations are
-;      averaged with an equal weight.
+;   * Averaging of individual integrations is done using 
+;     :idl:pro:`dcaccum`.  By default, integrations are weighted as described in 
+;     dcaccum.  If the eqweight keyword is set, then integrations are
+;     averaged with an equal weight.
 ;
-;  <li>The final average is left in the primary data container (buffer
-;      0), and a summary line is printed.  The printing of the summary
-;      line can be suppressed by setting the quiet keyword.
+;   * The final average is left in the primary data container (buffer
+;     0), and a summary line is printed.  The printing of the summary
+;     line can be suppressed by setting the quiet keyword.
 ; 
-;  <li>This can be used on sig-switching data (frequency-switched
-;      data).  Use the sig_state keyword to select the signal
-;      state (1) or the reference state (0).  Otherwise all data are
-;      used.
-;  </ul>
-; <p><b>Parameters</b>
-; <p>
+;   * This can be used on sig-switching data (frequency-switched
+;     data).  Use the sig_state keyword to select the signal
+;     state (1) or the reference state (0).  Otherwise all data are
+;     used.
+;  
+; **Parameters**
+; 
 ; The scan number is required.  Arguments to identify the
 ; IF number, polarization number and feed number are optional.  The
 ; procedure calculates  Tsys based on the Tcal values and the data.
@@ -40,26 +42,26 @@
 ; <a href="../toolbox/docal.html">docal</a> procedure.
 ; See the documentation for that procedure for details of the Tsys
 ; calculation.
-; <p>
-; <p> If ifnum, fdnum, or plnum are not supplied then the lowest
+; 
+; If ifnum, fdnum, or plnum are not supplied then the lowest
 ; values for each of those where data exists (all combinations may not
 ; have data) will be used, using any user-supplied values.  The value
 ; of ifnum is determined first, followed by fdnum and finally plnum.  If a
-; combination with data can not be found then <a href="showiftab.html">showiftab</a>
+; combination with data can not be found then :idl:pro:`showiftab`
 ; is used to show the user what the set of valid combinations are.
 ; The summary line includes the ifnum, fdnum, and plnum used.
-; <p>
-; <b>Weighting of Integrations in Scan Average</b>
-; <p> 
+; 
+; **Weighting of Integrations in Scan Average**
+; 
 ; By default, the averaging of integrations is weighted using
 ; tsys, exposure, and frequency_resolution as described in the 
-; <a href="../toolbox/dcaccum.html">dcaccum</a> documentation.  To give all integrations equal 
+; :idl:pro:`dcaccum` documentation.  To give all integrations equal 
 ; weight instead of the default weighting based on Tsys, use the
 ; /eqweight keyword. 
-; <p>
-; <b>Using or Ignoring Flags</b>
-; <p>
-; Flags (set via <a href="flag.html">flag</a>) can be selectively
+; 
+; **Using or Ignoring Flags**
+; 
+; Flags (set via :idl:pro:`flag`) can be selectively
 ; applied or ignored using the useflag and skipflag keywords.  Only one of
 ; those two keywords can be used at a time (it is an error to use both
 ; at the same time).  Both can be either a boolean (/useflag or /skipflag)
@@ -74,17 +76,17 @@
 ; same idstring value are used to blank the data.  If skipflag is a
 ; string or array of strings, then all flag rules except those
 ; with the same idstring value are used to blank the data.
-; <p>
-; <b>Dealing With Duplicate Scan Numbers</b>
-; <p>
+; 
+; **Dealing With Duplicate Scan Numbers**
+; 
 ; There are 3 ways to attempt to resolve ambiguities when the
 ; same scan number appears in the data source.  The instance keyword
 ; refers to the element of the returned array of scan_info structures
-; that <a href="scan_info.html">scan_info</a> returns.  So, if scan 23
+; that :idl:pro:`scan_info` returns.  So, if scan 23
 ; appears 3 times then instance=1 refers to the second time that scan 23
 ; appears as returned by scan_info.  The file keyword is useful if a 
 ; scan is unique to a specific file and multiple files have been accessed
-; using <a href="dirin.html">dirin</a>.  If file is specified and instance
+; using :idl:pro:`dirin`.  If file is specified and instance
 ; is also specified, then instance refers to the instance of that scan
 ; just within that file (which may be different from its instance within
 ; all opened files when dirin is used).  The timestamp keyword is another
@@ -95,80 +97,102 @@
 ; are ignored.  If more than one match is found, an error is 
 ; printed and this procedure will not continue.  
 ;
-; @param scan {in}{required}{type=integer} M&C scan number
-; @keyword ifnum {in}{optional}{type=integer} IF number
-; (starting with 0). Defaults to the lowest value associated with data
-; taking into account any user-supplied values for fdnum, and plnum.
-; @keyword intnum {in}{optional}{type=integer} Integration
-; number (starting with 0), defaults to all integrations.
-; @keyword plnum {in}{optional}{type=integer} Polarization number
-; (starting with 0).  Defaults to the lowest value with data after
-; determining the values of ifnum and fdnum if not supplied by the
-; user.
-; @keyword fdnum {in}{optional}{type=integer} Feed number.  Defaults
-; to the lowest value with data after determining the value of ifnum
-; if not supplied by the user and using any value of plnum supplied by
-; the user.  
-; @keyword sampler {in}{optional}{type=string} sampler name, this is
-; an alternative way to specify ifnum,plnum, and fdnum.  When sampler
-; name is given, ifnum, plnum, and fdnum must not be given.
-; @keyword eqweight {in}{optional}{type=boolean} When set, all
-; integrations are averaged with equal weight (1.0).  Default is unset.
-; @keyword tcal {in}{optional}{type=float} Cal temperature (K) to use
-; in the Tsys calculation.  If not supplied, the mean_tcal value from
-; the header of the cal_off switching phase data in each integration
-; is used.  This must be a scalar, vector tcal is not yet supported.
-; The resulting data container will have it's mean_tcal header value
-; set to this keyword when it is set by the user.
-; @keyword sig_state {in}{optional}{type=integer} For use with
-; sig-switched data.  If sig_state is 1 then only the signal data are
-; used, if sig_state is 0 then only the reference data are used.
-; @keyword quiet {in}{optional}{type=boolean} When set, the normal
-; status message on successful completion is not printed.  This will
-; not affect error messages. Default is unset.
-; @keyword keepints {in}{optional}{type=boolean} When set, the
-; individual integrations are saved to the current output file
-; (fileout).  This keyword is ignored if a specific integration is requested
-; using the intnum keyword.  Default is unset.
-; @keyword useflag {in}{optional}{type=boolean or string}
-; Apply all or just some of the flag rules?  Default is set.
-; @keyword skipflag {in}{optional}{type=boolean or string}{default=unset} Do not apply
-; any or do not apply a few of the flag rules?  Default is unset.
-; @keyword instance {in}{optional}{type=integer} Which occurrence
-; of this scan should be used.  Default is 0.
-; @keyword file {in}{optional}{type=string} When specified, limit the search 
-; for this scan (and instance) to this specific file.  Default is to
-; search all files currently opened.
-; @keyword timestamp {in}{optional}{type=string} The M&C timestamp associated
-; with the desired scan. When supplied, scan and instance are
-; ignored.
-; @keyword status {out}{optional}{type=integer} An output parameter to indicate
-; whether the procedure finished as expected.  A value of 1 means there were
-; no problems, a value of -1 means there were problems with the
-; arguments before any data was processed, and a value of 0 means that
-; some of the individual integrations were processed (and possibly
-; saved to the output file if keepints was set) but there was a
-; problem with the final average and the contents of buffer 0 likely
-; contains just the result from the last integration processed. This
-; keyword is primarily of use when using gecal within another
-; procedure or function.
+; :Params:
+; 
+;   scan : in, required, type=integer
+;       M&C scan number
+; 
+; :Keywords:
+; 
+;   ifnum : in, optional, type=integer
+;       IF number starting with 0). Defaults to the lowest value associated
+;       with data taking into account any user-supplied values for fdnum, 
+;       and plnum.
 ;
-; @uses <a href="../toolbox/accumave.html">accumave</a>
-; @uses <a href="../toolbox/accumclear.html">accumclear</a>
-; @uses <a href="../../devel/guide/calsummary.html">calsummary</a>
-; @uses <a href="../../devel/guide/check_calib_args.html">check_calib_args</a>
-; @uses <a href="../toolbox/data_free.html">data_free</a>
-; @uses <a href="../toolbox/dcaccum.html">dcaccum</a>
-; @uses <a href="../toolbox/dcscale.html">dcscale</a>
-; @uses <a href="../toolbox/docal.html">docal</a>
-; @uses <a href="../../devel/guide/find_scan_info.html">find_scan_info</a>
-; @uses <a href="../../devel/guide/get_calib_data.html">get_calib_data</a>
-; @uses <a href="set_data_container.html">set_data_container</a>
-; @uses <a href="showiftab.html">showiftab</a>
+;   intnum : in, optional, type=integer
+;       Integration number (starting with 0), defaults to all integrations.
 ;
-; @version $Id$
+;   plnum : in, optional, type=integer
+;       Polarization number (starting with 0).  Defaults to the lowest value
+;       with data after determining the values of ifnum and fdnum if not 
+;       supplied by the user.
+;
+;   fdnum : in, optional, type=integer
+;       Feed number.  Defaults to the lowest value with data after determining
+;       the value of ifnum if not supplied by the user and using any value of
+;       plnum supplied by the user.  
+;
+;   sampler : in, optional, type=string
+;       sampler name, this is an alternative way to specify ifnum,plnum, and fdnum.
+;       When sampler name is given, ifnum, plnum, and fdnum must not be given.
+;   
+;   eqweight : in, optional, type=boolean
+;       When set, all integrations are averaged with equal weight (1.0).  
+;       Default is unset.
+; 
+;   tcal : in, optional, type=float
+;       Cal temperature (K) to use in the Tsys calculation.  If not supplied, the 
+;       mean_tcal value from the header of the cal_off switching phase data in each 
+;       integration is used.  This must be a scalar, vector tcal is not yet supported.
+;       The resulting data container will have it's mean_tcal header value set to this
+;       keyword when it is set by the user.
+; 
+;   sig_state : in, optional, type=integer
+;       For use with sig-switched data.  If sig_state is 1 then only the signal 
+;       data are used, if sig_state is 0 then only the reference data are used.
+; 
+;   quiet : in, optional, type=boolean
+;       When set, the normal status message on successful completion is not printed.
+;       This will not affect error messages. Default is unset.
+; 
+;   keepints : in, optional, type=boolean
+;       When set, the individual integrations are saved to the current output file
+;       (fileout).  This keyword is ignored if a specific integration is requested
+;       using the intnum keyword.  Default is unset.
+; 
+;   useflag : in, optional, type=boolean or string
+;       Apply all or just some of the flag rules?  Default is set.
+; 
+;   skipflag : in, optional, type=boolean or string, default=unset
+;       Do not apply any or do not apply a few of the flag rules?  Default is unset.
+; 
+;   instance : in, optional, type=integer
+;       Which occurrence of this scan should be used.  Default is 0.
+;   
+;   file : in, optional, type=string
+;       When specified, limit the search  for this scan (and instance) to this 
+;       specific file.  Default is to search all files currently opened.
+; 
+;   timestamp : in, optional, type=string
+;       The M&C timestamp associated with the desired scan. When supplied, scan and 
+;       instance are ignored.
+; 
+;   status : out, optional, type=integer
+;       An output parameter to indicate whether the procedure finished as expected.
+;       A value of 1 means there were no problems, a value of -1 means there were
+;       problems with the arguments before any data was processed, and a value of 0 
+;       means that some of the individual integrations were processed (and possibly
+;       saved to the output file if keepints was set) but there was a problem with 
+;       the final average and the contents of buffer 0 likely contains just the result 
+;       from the last integration processed. This keyword is primarily of use when 
+;       using gecal within another procedure or function.
+;
+; :Uses:
+; 
+; :idl:pro:`accumave`
+; :idl:pro:`accumclear`
+; :idl:pro:`calsummary`
+; :idl:pro:`check_calib_args`
+; :idl:pro:`data_free`
+; :idl:pro:`dcaccum`
+; :idl:pro:`dcscale`
+; :idl:pro:`docal`
+; :idl:pro:`find_scan_info`
+; :idl:pro:`get_calib_data`
+; :idl:pro:`set_data_container`
+; :idl:pro:`showiftab`
+;
 ;-
-
 pro getcal,scan,ifnum=ifnum,intnum=intnum,plnum=plnum,fdnum=fdnum,sampler=sampler,eqweight=eqweight, $
            tcal=tcal,sig_state=sig_state,quiet=quiet,keepints=keepints,useflag=useflag,$
            skipflag=skipflag,instance=instance,file=file,timestamp=timestamp,status=status

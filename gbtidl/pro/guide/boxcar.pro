@@ -1,46 +1,52 @@
+; docformat = 'rst'
+
 ;+
 ; Smooth the primary data container (the PDC, !g.s[0]) with a boxcar
 ; of a certain width, in channels.  
 ;
-; <p>Replaces the contents of the data being smoothed with the smoothed
+; Replaces the contents of the data being smoothed with the smoothed
 ; data.
 ;
-; <p>For odd width, this uses the built-in idl SMOOTH function.  For
-; even widths this uses <a href="../toolbox/doboxcar1d.html">doboxcar1d</a> and the reference channel is 
+; For odd width, this uses the built-in idl SMOOTH function.  For
+; even widths this uses :idl:pro:`doboxcar1d` and the reference channel is 
 ; moved left by 1/2 channel width.
 ;
-; <p>Other buffers (0 to 15) can be used instead of the PDC by
+; Other buffers (0 to 15) can be used instead of the PDC by
 ; supplying a value for the buffer keyword.
 ;
-; <p>For spectrum data containers, the frequency_resolution is set 
-; using <a href="estboxres.html">estboxres</a> 
+; For spectrum data containers, the frequency_resolution is set 
+; using :idl:pro:`estboxres` 
 ;
-; @param width {in}{required}{type=integer} Width of boxcar in
-; channels. 
+; :Params:
+; 
+;   width : in, required, type=integer
+;       Width of boxcar in channels. 
 ;
-; @keyword buffer {in}{optional}{type=integer}{default=0} global
-; buffer number to use (0-15).
+;   buffer : in, optional, type=integer, default=0
+;       global buffer number to use (0-15).
 ;
-; @keyword decimate {in}{optional}{type=boolean} If set, the data
-; container is reduced - taking every width channels starting at
-; channel 0.
+;   decimate : in, optional, type=boolean
+;       If set, the data container is reduced - taking every width 
+;       channels starting at channel 0.
 ;
-; @examples
-; <pre>
-;   getps, 25            ; get some data into the PDC
-;   copy,0,10            ; for use later in this example
-;   copy,0,11            ; also for use later
-;   boxcar, 3            ; 3 channel boxcar smooth
-;   boxcar, 5, buffer=10 ; 5 channel smooth on buffer 10
-;   show,10              ; show the smoothed result
-;   copy,11,0            ; unsmoothed copy back to the PDC
-;   boxcar, 5, /decimate ; with decimation
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       getps, 25            ; get some data into the PDC
+;       copy,0,10            ; for use later in this example
+;       copy,0,11            ; also for use later
+;       boxcar, 3            ; 3 channel boxcar smooth
+;       boxcar, 5, buffer=10 ; 5 channel smooth on buffer 10
+;       show,10              ; show the smoothed result
+;       copy,11,0            ; unsmoothed copy back to the PDC
+;       boxcar, 5, /decimate ; with decimation
+; 
+; :Uses:
 ;
-; @uses <a href="../toolbox/doboxcar1d.html">doboxcar1d</a>
-; @uses <a href="../toolbox/dcextract.html">dcextract</a>
+;   :idl:pro:`doboxcar1d`
+;   :idl:pro:`dcextract`
 ;
-; @version $Id$
 ;-
 pro boxcar, width, buffer=buffer, decimate=decimate
     compile_opt idl2

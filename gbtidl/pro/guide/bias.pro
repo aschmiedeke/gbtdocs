@@ -1,29 +1,37 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure adds a scalar bias to the data container's data.
 ;
-; <p>Equivalent to:
-; <pre>
-; !g.s[0].data_ptr = !g.s[0].data_ptr + factor
-; </pre>
+; Equivalent to:
+; 
+;   .. code-block:: IDL
+; 
+;       !g.s[0].data_ptr = !g.s[0].data_ptr + factor
+; 
+; :Params:
 ;
-; @param factor {in}{required}{type=float} scalar value to be added
-; @param buffer {in}{optional}{type=int} The global buffer number
-; containing the data to be adjusted.
+;   factor : in, required, type=float
+;       scalar value to be added
+; 
+;   buffer : in, optional, type=int
+;       The global buffer number containing the data to be adjusted.
 ;
-; @examples
-; <pre>
-;    getrec,1
-;    show
-;    bias,1.3  ; all values in the PDC are now larger by 1.3
-;    show
-;    copy,0,5
-;    bias,2.4,5 ; all values in buffer 5 now larger by 2.4
-;    show
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+;    
+;       getrec,1
+;       show
+;       bias,1.3  ; all values in the PDC are now larger by 1.3
+;       show
+;       copy,0,5
+;       bias,2.4,5 ; all values in buffer 5 now larger by 2.4
+;       show
 ;
-; @uses <a href="../toolbox/dcbias.html">dcbias</a>
+; :Uses:
 ;
-; @version $Id$
+;   :idl:pro:`dcbias
 ;
 ;-
 pro bias, factor, buffer

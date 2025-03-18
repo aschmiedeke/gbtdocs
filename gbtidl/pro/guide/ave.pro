@@ -7,7 +7,7 @@
 ; The contents of the accum buffer are cleared as a consequence of
 ; calling ave, unless the noclear keyword is set. 
 ;
-; *Note*: It is a good idea to use :idl:pro:`sclear to clear the accum buffer 
+; *Note*: It is a good idea to use :idl:pro:`sclear` to clear the accum buffer 
 ; before using it the first time so that you can be certain it is
 ; starting from a cleared (empty) state. 
 ;
