@@ -1,9 +1,11 @@
+; docformat = 'rst'
+
 ;+
 ; Fit a polynomial baseline to the contents of the primary data
 ; container (the PDC, buffer 0) and  optionally overplot that fit on
 ; to the current plot. 
 ;
-; <p>This fits a set of orthogonal polynomials with a maximum order
+; This fits a set of orthogonal polynomials with a maximum order
 ; given by the !g.nfit value to the data values in the primary data
 ; container.  The range of channels to use is given by !g.regions and
 ; !g.nregion. The parameters of the fit are placed in to !g.polyfit
@@ -12,41 +14,44 @@
 ; for that keyword for more details), which is otherwise  a copy of
 ; the header information in global buffer 0.
 ;
-; @keyword nfit {in}{optional}{type=integer} The order of polynomial
-; to fit.  Defaults to !g.nfit.  If set, then this also sets the value
-; of !g.nfit.  
+; :Keywords:
+;   nfit : in, optional, type=integer
+;       The order of polynomial to fit.  Defaults to !g.nfit.  If set,
+;       then this also sets the value of !g.nfit.  
 ;
-; @keyword noshow {in}{optional}{type=boolean} If set, the result is
-; not shown (overplotted).  If the plotter is frozen, then nothing is
-; overplotted even if this keyword is not set.
+;   noshow : in, optional, type=boolean
+;       If set, the result is not shown (overplotted).  If the plotter
+;       is frozen, then nothing is overplotted even if this keyword is 
+;       not set.
 ;
-; @keyword modelbuffer {in}{optional}{type=integer} The buffer number
-; to hold the fit evaluated at all channels (the model).  If not set  
-; then no global buffer will hold the model after this procedure is
-; used.
+;   modelbuffer : in, optional, type=integer
+;       The buffer number to hold the fit evaluated at all channels 
+;       (the model). If not set then no global buffer will hold the 
+;       model after this procedure is used.
 ;
-; @keyword ok {out}{optional}{type=boolean} This is set to 1 on
-; success and 0 on failure.  
+;   ok : out, optional, type=boolean
+;       This is set to 1 on success and 0 on failure.  
 ;
-; @keyword color {in}{optional}{type=color} The color to use when
-; overplotting the baseline fit.  This defaults to the same default
-; used by <a href="../plotter/gbtoplot.html">gbtoplot</a>
+;   color : in, optional, type=color
+;       The color to use when overplotting the baseline fit. This 
+;       defaults to the same default used by :idl:pro:`gbtoplot`
 ;
-; @examples
-; <pre>
-; ; fit, using the value of !g.nfit, set using nfit
-; nfit,3
-; bshape
-; ; Or specify an nfit here, keeping the fit in buffer 10
-; bshape,nfit=3, modelbuffer=10
-; </pre>
+; :Examples:
 ;
-; @uses <a href="../toolbox/dcbaseline.html">dcbaseline</a>
-; @uses <a href="getbasemodel.html">getbasemodel</a>
-; @uses <a href="../toolbox/data_valid.html">data_valid</a>
-; @uses <a href="bmodel.html">bmodel</a>
+;   .. code-block:: IDL
+; 
+;       ; fit, using the value of !g.nfit, set using nfit
+;       nfit,3
+;       bshape
+;       ; Or specify an nfit here, keeping the fit in buffer 10
+;       bshape,nfit=3, modelbuffer=10
 ;
-; @version $Id$
+; :Uses:
+;   :idl:pro:`dcbaseline`
+;   :idl:pro:`getbasemodel`
+;   :idl:pro:`data_valid`
+;   :idl:pro:`bmodel`
+;
 ;-
 pro bshape, nfit=nfit, noshow=noshow, modelbuffer=modelbuffer, ok=ok, color=color
    compile_opt idl2
