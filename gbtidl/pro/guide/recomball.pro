@@ -1,21 +1,27 @@
+; docformat = 'rst'
+
 ;+
 ; Plot the Hydrogen, alpha, beta gamma, helium alpha beta and carba alpha 
 ; recombination lines.
 ;
-; <p>Originally by Glen Langston, glangsto\@nrao.edu
+; Originally by Glen Langston, glangsto\@nrao.edu
 ;
-; @keyword doPrint {in}{optional}{type=boolean}{default=0} optionally print
-; the line frequencies.  The printed frequencies are the line
-; frequencies in the frame being displayed on the plotter.
+; :Keywords:
+;   doPrint : in, optional, type=boolean, default=0
+;       optionally print the line frequencies.  The printed frequencies
+;       are the line frequencies in the frame being displayed on the plotter.
 ;
-; @examples
-;   recomball,/doprint
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       recomball,/doprint
 ;
-; @uses <a href="recombh.html">recombh</a>
-; @uses <a href="recombhe.html">recombhe</a>
-; @uses <a href="recombc.html">recombc</a>
+; :Uses:
+;   :idl:pro:`recombh`
+;   :idl:pro:`recombhe`
+;   :idl:pro:`recombc`
 ;
-; @version $Id$
 ;-
 pro recomball,doPrint=doPrint
     compile_opt idl2

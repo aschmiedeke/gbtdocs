@@ -1,42 +1,57 @@
+; docformat = 'rst'
+
 ;+
 ; Plot the Hydrogen recombination lines for quantum jump of dN.
 ; Defaults to plotting the alpha lines (dN=1).
 ;
-; <p>Originally by Glen Langston, glangsto\@nrao.edu
+; Originally by Glen Langston, glangsto\@nrao.edu
 ;
-; <p>Molecular Formula from Tools of RadioAstronomy, Rolfs and Wilson,
+; Molecular Formula from Tools of RadioAstronomy, Rolfs and Wilson,
 ; 2000, pg 334
-; <pre>
-; v_ki = Z^2 R_M ( 1/i^2  - 1/k^2), where R_M = R_infinity/(1 + m/M)
-; v_ki = R_A     ( 1/i^2  - 1/k^2) (k > i)
-; <pre>
-; where for hydrogen values (MHz), R_a = 3.28805129E9
+; 
+; .. math::
+;       
+;   v_{ki} = Z^2 R_M \left(\frac{1}{i^2} - \frac{1}{k^2}\right),
+; 
+; where :math:`R_M = R_\infty/(1 + m/M)`
+; 
+; .. math::
+;       
+;   v_{ki} = R_A \left(\frac{1}{i^2}  - \frac{1}{k^2}\right) (k > i)
+; 
+; where for hydrogen values (MHz), :math:`R_a = 3.28805129\times 10^9`
 ;
-; @param dn {in}{optional}{type=integer}{default=1} The quantum jump
-; to calculate (1 is alpha, 2 is beta, etc).
-; @keyword doPrint {in}{optional}{type=boolean}{default=0} optionally print
-; the line frequencies.  The printed frequencies are the line
-; frequencies in the frame being displayed on the plotter.
+; :Params:
+;   dn : in, optional, type=integer, default=1
+;       The quantum jump to calculate (1 is alpha, 2 is beta, etc).
+; 
+; :Keywords:
+;   doPrint : in, optional, type=boolean, default=0
+;       optionally print the line frequencies.  The printed frequencies
+;       are the line frequencies in the frame being displayed on the plotter.
 ;
-; @examples
-;   recombh,2,/doprint
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       recombh,2,/doprint
 ;
-; @uses <a href="freq.html">freq</a>
-; @uses <a href="../toolbox/veltovel.html">veltovel</a>
-; @uses <a href="../toolbox/shiftvel.html">shiftvel</a>
-; @uses <a href="../toolbox/shiftfreq.html">shiftfreq</a>
-; @uses <a href="../toolbox/decode_veldef.html">decode_veldef</a>
-; @uses <a href="../plotter/show.html">show</a>
-; @uses <a href="../plotter/vline.html">vline</a>
-; @uses <a href="../plotter/getstate.html#_getxrange">getxrange</a>
-; @uses <a href="../plotter/getstate.html#_getyrange">getyrange</a>
-; @uses <a href="../plotter/getstate.html#_getxvoffset">getxvoffset</a>
-; @uses <a href="../plotter/getstate.html#_getxunits">getxunits</a>
-; @uses <a href="../plotter/getstate.html#_getxoffset">getxoffset</a>
-; @uses <a href="../plotter/getstate.html#_getplotterdc">getplotterdc</a>
-; @uses textoidl
+; :Uses:
+;   :idl:pro:`freq`
+;   :idl:pro:`veltovel`
+;   :idl:pro:`shiftvel`
+;   :idl:pro:`shiftfreq`
+;   :idl:pro:`decode_veldef`
+;   :idl:pro:`show`
+;   :idl:pro:`vline`
+;   :idl:pro:`getxrange`
+;   :idl:pro:`getyrange`
+;   :idl:pro:`getxvoffset`
+;   :idl:pro:`getxunits`
+;   :idl:pro:`getxoffset`
+;   :idl:pro:`getplotterdc`
+;   :idl:pro:`textoidl`
 ;
-; @version $Id$
 ;-
 pro recombh,dn,doPrint=doPrint
     compile_opt idl2
