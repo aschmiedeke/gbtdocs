@@ -6,14 +6,18 @@
 ;
 ; Originally by Glen Langston, glangsto\@nrao.edu
 ;
-; Molecular Formula from Tools of RadioAstronomy, Rolfs and Wilson,
+; Molecular Formula from Tools of Radio Astronomy, Rolfs and Wilson,
 ; 2000, pg 334
 ; 
-;   .. math::
+; .. math::
 ;       
-;       v_{ki} = Z^2 R_M ( 1/i^2  - 1/k^2), where R_M = R_\inf/(1 + m/M)
+;   v_{ki} = Z^2 R_M \left(\frac{1}{i^2} - \frac{1}{k^2}\right),
+; 
+; where :math:`R_M = R_\infty/(1 + m/M)`
+; 
+; .. math::
 ;       
-;       v_ki = R_A     ( 1/i^2  - 1/k^2) (k > i)
+;   v_{ki} = R_A \left(\frac{1}{i^2}  - \frac{1}{k^2}) (k > i)
 ; 
 ; where for helium values (MHz), R_a = 3.28939118E9
 ;
