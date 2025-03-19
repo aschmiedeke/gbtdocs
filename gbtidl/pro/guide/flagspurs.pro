@@ -7,7 +7,7 @@
 ; VEGAS produces spurs (spikes) at channels corresponding to
 ; integer multiples of the ADC sampler frequency divided by 64.  The
 ; normal behavior of sdfits is to flag these channels when the data
-; are filled (use <a href="listflags">listflags</a> to see the list of
+; are filled (use :idl:pro:`listflags` to see the list of
 ; flags for the currently opened input data set). This routine can be
 ; used to recreate those flags if the original flag file has been lost
 ; or corrupted.
