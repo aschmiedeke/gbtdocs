@@ -41,7 +41,7 @@
 ; :Returns:
 ;   ok : out, optional, type=boolean
 ;       status output
-;;
+;
 ; :Examples:
 ;
 ;   ; get some data    
