@@ -1,8 +1,10 @@
+; docformat = 'rst'
+
 ;+
 ; Set the flags for the VEGAS spurs in the currently opened input data
 ; source (either a single sdfits file or a directory). 
 ;
-; <p>VEGAS produces spurs (spikes) at channels corresponding to
+; VEGAS produces spurs (spikes) at channels corresponding to
 ; integer multiples of the ADC sampler frequency divided by 64.  The
 ; normal behavior of sdfits is to flag these channels when the data
 ; are filled (use <a href="listflags">listflags</a> to see the list of
@@ -10,7 +12,7 @@
 ; used to recreate those flags if the original flag file has been lost
 ; or corrupted.
 ;
-; <p>A spur is also produced at the center channel (NCHAN/2 when
+; A spur is also produced at the center channel (NCHAN/2 when
 ; counting from 0).  That spur does not arise in the ADC in VEGAS and
 ; so does not move as the spectral window is tuned across the ADC
 ; bandpass. This routine does not flag that spur.  Normal
@@ -19,27 +21,27 @@
 ; spur.  Since that spur does not move as the spectral window is tuned
 ; it can be flagged using the standard flag command if necessary.
 ;
-; <p>The routine first unflags all flags with the idstring
-; "VEGAS_SPUR"
+; The routine first unflags all flags with the idstring "VEGAS_SPUR"
 ;
-; <p>This routine expects to encounter uncalibrated VEGAS data filled
+; This routine expects to encounter uncalibrated VEGAS data filled
 ; by sdfits.  It checks that there is both an SDFITVER keyword and an
 ; INSTRUME keyword on the primary header of all SDFITS files.  The
 ; value of the INSTRUME keyword must be "VEGAS".
 ;
-; <p>This spur locations are determined using the VSPDELT, VSPRPIX,
+; This spur locations are determined using the VSPDELT, VSPRPIX,
 ; and VSPRVAL columns.  For data filled using older versions of
 ; sdfits, these values are not present in the SDFITS tables. Such
 ; older data should be refilled using the most recent version of
 ; sdfits to make use of this procedure.
 ; 
-; @keyword flagcenteradc {in}{optional}{type=boolean} When set, the
-; center ADC spur is also flagged.  Normally that spur is left
-; unflagged because sdfits usually replaces the value at that location
-; with an average of the two adjacent channels and so that spur does
-; not need to be flagged since it's been interpolated.
+; :Keywords:
+;   flagcenteradc : in, optional, type=boolean
+;       When set, the center ADC spur is also flagged.  Normally that 
+;       spur is left unflagged because sdfits usually replaces the value
+;       at that location with an average of the two adjacent channels
+;       and so that spur does not need to be flagged since it's been
+;       interpolated.
 ;
-; @version $Id$
 ;-
 pro flagspurs, flagcenteradc=flagcenteradc
   compile_opt idl2
