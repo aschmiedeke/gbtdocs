@@ -1,3 +1,5 @@
+; docformat = 'rst'
+
 ;+
 ; Returns the scan number of the most recently retrieved data
 ; container. 
