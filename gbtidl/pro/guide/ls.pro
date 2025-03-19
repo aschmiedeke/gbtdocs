@@ -1,27 +1,31 @@
+; docformat = 'rst'
+
 ;+
 ; List files (defaults to *.fits in the current directory).  This
 ; invokes the unix "ls" command using the pattern and optional
 ; arguments.  If pattern is not provide, it defaults to "*.fits".
 ;
-; @param pattern {in}{optional}{type=string}{default='*.fits'} The
-; pattern to list.
+; :Params:
+;   pattern : in, optional, type=string, default='*.fits'
+;       The pattern to list.
 ;
-; @keyword options {in}{optional}{type=string}{default=''} Any arguments to
-; the unix "ls" command.
+; :Keywords: 
+;   options : in, optional, type=string, default=''
+;       Any arguments to the unix "ls" command.
 ;
-; @examples
-; <pre>
-; ; show all the fits files in the current directory
-; ls
-; ; show all the files in the current directory
-; ls,''
-; ; show all the fits files in a directory relative to this one
-; ls,'../mydata'
-; ; do a long listing
-; ls,options='-l'
-; </pre>
+; :Examples:
 ; 
-; @version $Id$
+;   .. code-block:: IDL
+; 
+;       ; show all the fits files in the current directory
+;       ls
+;       ; show all the files in the current directory
+;       ls,''
+;       ; show all the fits files in a directory relative to this one
+;       ls,'../mydata'
+;       ; do a long listing
+;       ls,options='-l'
+; 
 ;-
 pro ls, pattern, options=options
     compile_opt idl2
