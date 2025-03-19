@@ -17,9 +17,9 @@
 ; 
 ; .. math::
 ;       
-;   v_{ki} = R_A \left(\frac{1}{i^2}  - \frac{1}{k^2}) (k > i)
+;   v_{ki} = R_A \left(\frac{1}{i^2}  - \frac{1}{k^2}\right) (k > i)
 ; 
-; where for helium values (MHz), R_a = 3.28939118E9
+; where for helium values (MHz), :math:`R_a=3.28939118\times 10^9`
 ;
 ; :Params:
 ;   dn : in, optional, type=integer, default=1
