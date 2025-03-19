@@ -271,25 +271,25 @@
 ; 
 ; Typical use of getfs:
 ;
-;   .. code-block:: IDL
+; .. code-block:: IDL
 ;
-;       getfs,76
-;       accum
-;       getfs,77
-;       accum
-;       ave
-;       show
+;   getfs,76
+;   accum
+;   getfs,77
+;   accum
+;   ave
+;   show
 ;
 ; In the following example, the spectrum is not folded and the two components
 ; of the calibration are shown overlaid on the plotter.  Then the data are
 ; folded 'by hand'. This example also shows how /skipflag can be used to
 ; ignore all previously set flags.
 ;
-;   .. code-block:: IDL
+; .. code-block:: IDL
 ; 
-;       getfs,76,/nofold,/skipflag
-;       oshow,1
-;       fold
+;   getfs,76,/nofold,/skipflag
+;   oshow,1
+;   fold
 ; 
 ; :Uses:
 ;   :idl:pro:`accumave`

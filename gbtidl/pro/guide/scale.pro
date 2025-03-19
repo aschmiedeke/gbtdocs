@@ -1,28 +1,32 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure scales the data container's data by a scalar value.
 ;
-; <p>Equivalent to:
-; <pre>
-; *!g.s[0].data_ptr = *!g.s[0].data_ptr * factor
-; </pre>
+; Equivalent to:
 ; 
-; @param factor {in}{required}{type=float} scale factor
-; @param buffer {in}{optional}{type=int} The global buffer number
-; containing the data to be scaled
+; *!g.s[0].data_ptr = *!g.s[0].data_ptr * factor
+; 
+; 
+; :Params:
+;   factor : in, required, type=float
+;       scale factor
+;   buffer : in, optional, type=int
+;       The global buffer number containing the data to be scaled
 ;
-; @examples
-; <pre>
-;    get,index=1
-;    show
-;    scale,1.3
-;    show
-; </pre>
+; :Examples:
+; 
+; .. code-block:: IDL
 ;
-; @uses <a href="../toolbox/dcscale.html">dcscale</a>
+;   get,index=1
+;   show
+;   scale,1.3
+;   show
 ;
-; @version $Id$
+; :Uses:
+;   :idl:pro:`dcscale`
+;
 ;-
-
 pro scale,factor,buffer
     compile_opt idl2
     on_error,2

@@ -1,3 +1,5 @@
+; docformat = 'rst'
+
 ;+
 ; Move the data from the in location to the out location.  Anything in
 ; out is lost.  This uses the value of !g.line.  If it is set (1)
@@ -5,23 +7,25 @@
 ; continuum data (!g.c) is used.  The contents of in are
 ; emptied and lost.
 ;
-; @param in {in}{required}{type=integer} The buffer to move
-; values from.
+; :Params:
+;   in : in, required, type=integer
+;       The buffer to move values from.
+;   out : in, required, type=integer
+;       The buffer to move the values to.
 ;
-; @param out {in}{required}{type=integer} The buffer to move the
-; values to.
-;
-; @examples
+; :Examples:
+; 
 ; Move the contents of location 0 to location 10.  Then move the
 ; contents of 9 to location 0.
-; <pre>
-;    copy, 0, 10
-;    copy, 9, 0
-; </pre>
+; 
+; .. code-block:: IDL
+; 
+;   copy, 0, 10
+;   copy, 9, 0
 ;
-; @uses <a href="copy.html">copy</a>
+; :Uses:
+;   :idl:pro:`copy`
 ;
-; @version $Id$
 ;-
 PRO move, in, out
     compile_opt idl2
