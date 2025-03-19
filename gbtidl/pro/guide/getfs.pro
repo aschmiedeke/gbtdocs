@@ -164,11 +164,11 @@
 ; There are 3 ways to attempt to resolve ambiguities when the
 ; same scan number appears in the data source.  The instance keyword
 ; refers to the element of the returned array of scan_info structures
-; that <a href="scan_info.html">scan_info</a> returns.  So, if scan 23
+; that :idl:pro:`scan_info` returns.  So, if scan 23
 ; appears 3 times then instance=1 refers to the second time that scan 23
 ; appears as returned by scan_info.  The file keyword is useful if a 
 ; scan is unique to a specific file and multiple files have been accessed
-; using <a href="dirin.html">dirin</a>.  If file is specified and instance
+; using :idl:pro:`dirin`.  If file is specified and instance
 ; is also specified, then instance refers to the instance of that scan
 ; just within that file (which may be different from its instance within
 ; all opened files when dirin is used).  The timestamp keyword is another
