@@ -11,7 +11,7 @@
 ; 
 ;   .. math::
 ;       
-;       v_ki = Z^2 R_M ( 1/i^2  - 1/k^2), where R_M = R_infinity/(1 + m/M)
+;       v_{ki} = Z^2 R_M ( 1/i^2  - 1/k^2), where R_M = R_\inf/(1 + m/M)
 ;       
 ;       v_ki = R_A     ( 1/i^2  - 1/k^2) (k > i)
 ; 
