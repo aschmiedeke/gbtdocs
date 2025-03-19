@@ -1,12 +1,14 @@
+; docformat = 'rst'
+
 ;+
 ; Find the if, feed, and polarization numbers  which corresponds to the
 ; given sampler name in the scan.
 ;
-; <p>A three-element array is returned having the value
+; A three-element array is returned having the value
 ; (ifnum,plnum,fdnum) corresponding to the IF, feed, and polarization
 ; numbers associated with the given sampler name and scan.
 ;
-; <p>If the same scan appears more than once in the data file then the
+; If the same scan appears more than once in the data file then the
 ; value corresponding to instance will be returned.  If instance is
 ; omitted, the first instance (instance=0) will be returned.
 ; The instance and file keywords can be used to ensure that a single
@@ -14,34 +16,41 @@
 ; ensure that a single scan is used (scan and instance are ignored in
 ; that case). 
 ;
-; <p>If the requested sampler is not found in the scan, the all values
+; If the requested sampler is not found in the scan, the all values
 ; of the returned array will be -1.
 ;
-; <p>There is no check to make sure that there is just one
+; There is no check to make sure that there is just one
 ; (ifnum,plnum,fdnum) associated with the given sampler.  The values for
 ; the first matching sampler are returned.
 ;
-; @param scan {in}{required}{type=integer} scan number
-; @param sampler {in}{required}{type=string} sampler name
-; @keyword instance {in}{optional}{type=integer} Which occurence
-; of this scan should be used.  Default is 0.
-; @keyword file {in}{optional}{type=string} When specified, limit the search 
-; for this scan (and instance) to this specific file.  Default is all files.
-; @keyword timestamp {in}{optional}{type=string} The M&C timestamp associated
-; with the desired scan. When supplied, scan and instance are ignored.
-; @keyword quiet {in}{optional}{type=boolean} When set, suppress most
-; error messages.  Useful when being used within another procedure.
-; @keyword recs {out}{optional}{type=integer array} This contains the
-; records (index numbers) from this sampler in the indicated scan.
-; This is useful when you want to fetch that data immediately using
-; getchunk since that will not involve any further selection and hence
-; will be faster.  This is used by all of the get* calibration
-; routines (which use get_calib_data, where the work is actually
-; done).  If there is no matching data, this value will be -1.
-; @returns array of [ifnum,plnum,fdnum]
+; :Params: 
+;   scan {in}{required}{type=integer} scan number
+;   sampler {in}{required}{type=string} sampler name
+; 
+; :Keywords:
+;   instance : in, optional, type=integer
+;       Which occurence of this scan should be used. Default is 0.
+;   file : in, optional, type=string
+;       When specified, limit the search for this scan (and instance) to
+;       this specific file.  Default is all files.
+;   timestamp : in, optional, type=string
+;       The M&C timestamp associated with the desired scan. When supplied,
+;       scan and instance are ignored.
+;   quiet : in, optional, type=boolean
+;       When set, suppress most error messages.  Useful when being used
+;       within another procedure.
+;   recs : out, optional, type=integer array
+;       This contains the records (index numbers) from this sampler in 
+;       the indicated scan. This is useful when you want to fetch that 
+;       data immediately using getchunk since that will not involve any 
+;       further selection and hence will be faster.  This is used by all
+;       of the get* calibration routines (which use get_calib_data, where 
+;       the work is actually done).  If there is no matching data, this 
+;       value will be -1.
+; 
+; :Returns:
+;   array of [ifnum,plnum,fdnum]
 ;
-;
-; @version $Id$
 ;-
 function samplerinfo, scan, sampler, instance=instance, $
                       file=file,timestamp=timestamp,quiet=quiet, $

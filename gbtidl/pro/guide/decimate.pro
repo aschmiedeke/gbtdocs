@@ -43,7 +43,6 @@
 ;   :idl:pro:`show`
 ;
 ;-
-
 pro decimate, nchan, startat=startat, buffer=buffer, ok=ok
     compile_opt idl2
 

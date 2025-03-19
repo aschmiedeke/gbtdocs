@@ -61,7 +61,6 @@
 ;       print,a
 ;
 ;-
-
 function get_scan_numbers, count, keep=keep, unique=unique, _EXTRA=ex
    compile_opt idl2
 
