@@ -2,9 +2,9 @@
 ; Plot the Carbon recombination lines for quantum jump of dN.
 ; Defaults to plotting the alpha lines (dN=1).
 ;
-; <p>Originally by Glen Langston, glangsto\@nrao.edu
+; Originally by Glen Langston, glangsto\@nrao.edu
 ;
-; <p>Molecular Formula from Tools of RadioAstronomy, Rolfs and Wilson,
+; Molecular Formula from Tools of RadioAstronomy, Rolfs and Wilson,
 ; 2000, pg 334
 ;
 ; .. math::
