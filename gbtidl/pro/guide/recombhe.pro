@@ -10,7 +10,9 @@
 ; 2000, pg 334
 ; 
 ;   .. math::
+;       
 ;       v_ki = Z^2 R_M ( 1/i^2  - 1/k^2), where R_M = R_infinity/(1 + m/M)
+;       
 ;       v_ki = R_A     ( 1/i^2  - 1/k^2) (k > i)
 ; 
 ; where for helium values (MHz), R_a = 3.28939118E9
