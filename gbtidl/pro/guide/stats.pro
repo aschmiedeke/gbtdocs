@@ -1,40 +1,49 @@
+; docformat = 'rst'
+
 ;+
 ; Procedure to display some simple statistics.
 ;
-; <p>Statistics are done on the contents of buffer 0.  One
+; Statistics are done on the contents of buffer 0.  One
 ; can specify the range over which statistics will be computed in
 ; any of several ways.  To specify a begin and end x-value in the
 ; currently displayed x-axis units, use the parameters brange and erange.
 ; If no x-axis range is given, the user is prompted to specify the 
 ; region of interest using the mouse.
 ;
-; <p>If there is no plot displayed, then brange and erange are assumed to be 
+; If there is no plot displayed, then brange and erange are assumed to be 
 ; in units of channel number.  If either is not supplied and
 ; there is no plot displayed then the full range is used.
 ;
-; <p>Use /chan if brange and range are in channels instead of the
+; Use /chan if brange and range are in channels instead of the
 ; currently displayed x-axis units.
 ;
-; @param brange {in}{optional}{type=float} Starting value in x-axis units
-; @param erange {in}{optional}{type=float} Ending value in x-axis units
-; @keyword full {in}{optional}{type=boolean} Compute stats for full spectrum?
-; @keyword chan {in}{optional}{type=boolean} Range specified in channels?
-; @keyword quiet {in}{optional}{type=boolean} Suppress the printing of
-; the moments.
-; @keyword ret {out}{optional}{type=structure} Structure containing results
-; @examples
-; <pre>
-;    getrec,1
-;    show               ; Use the plotter to set the X-axis to channels
-;    stats,0,99         ; Gets stats for first 100 channels
-;    show               ; Use the plotter to set the X-axis to GHz
-;    stats,1.420,1.421  ; Gets stats
-;    stats              ; User clicks plot to determine stats region
-;    stats,ret=mystats  ; Return stats in a structure
-;    print,mystats.rms
-; </pre>
+; :Params:
+;   brange : in, optional, type=float
+;       Starting value in x-axis units
+;   erange : in, optional, type=float
+;       Ending value in x-axis units
+; 
+; :Keywords:
+;   full : in, optional, type=boolean
+;       Compute stats for full spectrum?
+;   chan : in, optional, type=boolean
+;       Range specified in channels?
+;   quiet : in, optional, type=boolean
+;       Suppress the printing of the moments.
+;   ret : out, optional, type=structure
+;       Structure containing results
+; 
+; :Examples:
+; 
+;   .. code-block:: IDL
+;       getrec,1
+;       show               ; Use the plotter to set the X-axis to channels
+;       stats,0,99         ; Gets stats for first 100 channels
+;       show               ; Use the plotter to set the X-axis to GHz
+;       stats,1.420,1.421  ; Gets stats
+;       stats              ; User clicks plot to determine stats region
+;       stats,ret=mystats  ; Return stats in a structure
 ;
-; @version $Id$
 ;-
 
 pro stats,brange,erange,full=full,chan=chan,ret=ret,quiet=quiet

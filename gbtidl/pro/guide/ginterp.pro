@@ -1,55 +1,58 @@
+; docformat = 'rst'
+
 ;+
 ; Interpolate across blanked channels in the primary data container
 ; (buffer 0) or one of the other buffers.
 ;
-; <p>This uses the IDL INTERPOL function to replace blanked values in
+; This uses the IDL INTERPOL function to replace blanked values in
 ; the buffer with unblanked values according to the interpolation
 ; method selected. 
 ;
-; <p>You can limit the range of channels to consider using bchan and
+; You can limit the range of channels to consider using bchan and
 ; echan.  When not supplied, all of the channels are used.
 ;
-; <p>The default interpolation method is linear. The other
+; The default interpolation method is linear. The other
 ; interpolations may not be particularly useful across large gaps.
 ;
-; <p>If all of the data in the requested range is good (unblanked)
+; If all of the data in the requested range is good (unblanked)
 ; then no interpolation is done and this routine silently returns
 ; without changing anything in dc.
 ;
-; <p>It is an error to request more than one interpolation method.
+; It is an error to request more than one interpolation method.
 ;
-; @param buffer {in}{optional}{type=integer}{default=0} The data
-; container to smooth to the new resolution.  This defaults to the
-; primary data container (buffer 0).
-; @keyword bchan {in}{optional}{type=integer} The starting channel
-; number.  If not specified, bchan=0.
-; @keyword echan {in}{optional}{type=integer} The last channel number.
-; If not specified use all channels from bchan to the end.
+; :Params:
+;   buffer : in, optional, type=integer, default=0
+;       The data container to smooth to the new resolution. This defaults
+;       to the primary data container (buffer 0).
+; 
+; :Keywords:
+;   bchan : in, optional, type=integer
+;       The starting channel number. If not specified, bchan=0.
+;   echan : in, optional, type=integer
+;       The last channel number. If not specified use all channels 
+;       from bchan to the end.
+;   linear : in, optional, type=boolean
+;       When set, use the linear interpolation provided by INTERPOL.
+;       This is the default interpolation when no other method is specified.
+;   quadratic : in, optional, type=boolean
+;       When set, use the quadratic interpolation provided by INTERPOL.
+;   lsquadratic : in, optional, type=boolean
+;       When set, use the lsquadratic (lest squares quadratic) interpolation
+;       provided by INTERPOL.
+;   spline : in, optional, type=boolean
+;       When set, use the spline interpolation provided by INTERPOL.
 ;
-; @keyword linear {in}{optional}{type=boolean} When set, use the
-; linear interpolation provided by INTERPOL.  This is the default
-; interpolation when no other method is specified.
-;
-; @keyword quadratic {in}{optional}{type=boolean} When set, use the
-; quadratic interpolation provided by INTERPOL.
-;
-; @keyword lsquadratic {in}{optional}{type=boolean} When set, use the
-; lsquadratic (lest squares quadratic) interpolation provided by
-; INTERPOL.
-;
-; @keyword spline {in}{optional}{type=boolean} When set, use the
-; spline interpolation provided by INTERPOL.
-;
-; @examples
-; <pre>
+; :Examples:
+; 
+; .. code-block:: IDL
+; 
 ;   clip, -100.0, 100.0, /blank    ; blank bad data
 ;   ginterp      ; linear interpolation across the blanked regions
-; </pre>
+; 
+; :Uses:
+;   :idl:pro:`dcinterp`
+;   :idl:pro:`show`
 ;
-; @uses <a href="../toolbox/dcinterp.html">dcinterp</a>
-; @uses <a href="../toolbox/show.html">show</a>
-;
-; @version $Id$
 ;-
 pro ginterp, buffer, bchan=bchan, echan=echan, linear=linear, $
              quadratic=quadratic, lsquadratic=lsquadratic, $
