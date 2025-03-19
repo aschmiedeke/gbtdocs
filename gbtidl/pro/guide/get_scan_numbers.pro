@@ -1,14 +1,16 @@
+; docformat = 'rst'
+
 ;+
 ; Function to return scan numbers for the input file.
 ;
-; <p>This returns the different scan numbers in the order they appear
+; This returns the different scan numbers in the order they appear
 ; in the input file.  Use the keep flag to get the scan numbers from
 ; the output file.  For example, if list shows these scan numbers: 99,
 ; 99, 99, 100, 99, 99, 100, 100, 101, 101, then get_scan_numbers will
 ; return this array [99, 100, 99, 100, 101].  If unique is set it will
 ; return this array [99, 100, 101].   
 ;
-; <p>The default behavior (without the unique flag set) is a useful
+; The default behavior (without the unique flag set) is a useful
 ; check to see if a scan number repeats itself in a raw data file.
 ; That may cause processing problems since the standard calibration
 ; routines rely on scan numbers not appearing again later in the same
@@ -17,43 +19,47 @@
 ; a problem (e.g. an output file containing processed data), use the
 ; unique flag. 
 ;
-; <p>Selection fields can be used here in the same way that they can
+; Selection fields can be used here in the same way that they can
 ; be used in other data selection procedures and functions. For a
 ; complete list of eligible parameters use the procedure 
-; <a href="listcols.html">listcols</a>
+; :idl:pro:`listcols`
 ;
-; <p>See the discussion on "Select" in the <a href="http://wwwlocal.gb.nrao.edu/GBT/DA/gbtidl/users_guide/node50.html" TARGET="_top">User's Guide</a> 
+; See the discussion on "Select" in the `GBTIDL manual <https://www.gb.nrao.edu/GBT/DA/gbtidl/users_guide.pdf#page=29>`_ 
 ; for a summary of selection syntax.
 ;
-; <p>The selection criteria are ultimately passed to the io class's
+; The selection criteria are ultimately passed to the io class's
 ; search_index via the _EXTRA parameter. 
 ;
-; @param count {out}{optional}{type=integer} The number of scan
-; numbers returned.  This is 0 when no scan numbers are in the file
-; (the returned value from this function will also be -1 in that case).
+; :Params:
+;   count : out, optional, type=integer
+;       The number of scan numbers returned.  This is 0 when no scan
+;       numbers are in the file (the returned value from this function 
+;       will also be -1 in that case).
 ;
-; @keyword keep {in}{optional}{type=boolean} If set, the scan numbers come
-; from the output file.
+; :Keywords:
+;   keep : in, optional, type=boolean
+;       If set, the scan numbers come from the output file.
 ;
-; @keyword unique {in}{optional}{type=boolean} If set, the unique scan
-; numbers are returned.  This is a sorted list and it is impossible to
-; tell if there are any duplicate scan numbers.
-; @keyword _EXTRA {in}{optional}{type=extra keywords} These are
-; the selection parameters.
+;   unique : in, optional, type=boolean
+;       If set, the unique scan numbers are returned.  This is a sorted 
+;       list and it is impossible to tell if there are any duplicate
+;       scan numbers.
+;   _EXTRA : in, optional, type=extra keywords
+;       These are the selection parameters.
 ;
-; @returns an array of scan numbers.  Returns -1 (an illegal scan
-; number) if the file is empty, or nothing matches the selection
-; criteria. 
+; :Returns:
+;   an array of scan numbers.  Returns -1 (an illegal scan number) if the 
+;   file is empty, or nothing matches the selection criteria. 
 ;
-; @examples
-; <pre>
-;    a = get_scan_numbers()
-;    print,a
-;    a = get_scan_numbers(source='3C*',/unique)
-;    print,a
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       a = get_scan_numbers()
+;       print,a
+;       a = get_scan_numbers(source='3C*',/unique)
+;       print,a
 ;
-; @version $Id$
 ;-
 
 function get_scan_numbers, count, keep=keep, unique=unique, _EXTRA=ex
