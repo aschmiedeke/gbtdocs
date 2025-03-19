@@ -1,65 +1,70 @@
+; docformat = 'rst'
+
 ;+
 ; Used by the calibration routines (getfs,getps,getnod,etc) to
 ; summarize things at the end, just before they return.
 ;
-; <p>End users should never use this directly although user's
+; End users should never use this directly although user's
 ; modifying the calibration routines may need to modify this routine
 ; or at least understand the arguments involved in this routine.
 ;
-; <p>There is no argument checking here for the required parameters.
+; There is no argument checking here for the required parameters.
 ;
-; @param scan {in}{required}{type=integer} The scan number (in the
-; case of a refScan keyword being supplied, this is the signal scan's
-; keyword - used by getsigref).
-; @param tsys {in}{required}{type=float} The system temperature (K) of
-; the result.
-; @param units {in}{required}{type=string} The units of the result.
-; Recognized units are "Ta","Ta*", and "Jy".  A summary line without
-; any units will be printed for any other value of this parameter.
-; @keyword tsysints {in}{optional}{type=float} An array of system
-; temperatures from each integration to be output at the end of the
-; other summary information.  The second dimension is the number of
-; independent Tsys's to be summarized.  So, if Tsys has dimensions of
-; [11,2] then 2 summary Tsys values will be printed and the Tsys
-; values will be averaged according to the eqweight keyword.  If this
-; is omitted, no extra Tsys information is printed.  This is typically
-; used to summarize the system temperature in the signal scan or in
-; each of the beam combinations (e.g. Nod).  Formatting is such that
-; for up to 4 Tsys values the result should be less than 80
-; characters.
-; @keyword tauInts {in}{optional}{type=float} The tau (opacity) used
-; in each integration when unit conversion was done, if any.  Only
-; used if units are 'Jy' or 'Ta*'. The printed value is a simple
-; average of this keyword.
-; @keyword apEffInts {in}{optional}{type=float} The aperture
-; efficiency used in each integration when unit conversion was done,
-; if any.  Only used if units are 'Jy'.  The printed value is a simple
-; average of this keyword.
-; @keyword missingInts {in}{optional}{type=integer} The number of missing
-; integrations to be reported (if missingRefInts is set then this is
-; assumed to be the missing integrations from the signal beam - used
-; by getbs only).
-; @keyword missingBeams {in}{optional}{type=integer} The number of
-; integrations that were processed with only one beam (used by getnod
-; and getbs).
-; @keyword missingRefInts {in}{optional}{type=integer} The number of
-; missing integrations from the reference beam to be reported (used by
-; getbs only).
-; @keyword eqweight {in}{optional}{type=boolean} When set, then the
-; tsysInts are averaged with equal weight, otherwise they are averaged
-; similarly to the way accum does it (assuming equal exposure) so that
-; the resulting tsys is as if the spectra having those tsys values had
-; been averaged - so that these values can be more directly compared
-; with the result's tsys value.
-; @keyword bswitch {in}{optional}{type=integer} Same meaning as in
-; getbs.  In the bswitch=0 case, then the tsysInts will have 8 as the
-; second dimension and the tsys values from each beam are first
-; averaged before the tsys values from integration are averaged.
-; @keyword refScan {in}{optional}{type=integer} The scan number of the
-; reference scan.  Used by getsigref.
+; :Params:
+;   scan : in, required, type=integer
+;       The scan number (in the case of a refScan keyword being supplied,
+;       this is the signal scan's keyword - used by getsigref).
+;   tsys : in, required, type=float
+;       The system temperature (K) of the result.
+;   units : in, required, type=string
+;       The units of the result. Recognized units are "Ta","Ta*", and "Jy".
+;       A summary line without any units will be printed for any other value 
+;       of this parameter.
+; 
+; :Keywords:
+;   tsysints : in, optional, type=float
+;       An array of system temperatures from each integration to be output 
+;       at the end of the other summary information.  The second dimension
+;       is the number of independent Tsys's to be summarized.  So, if Tsys 
+;       has dimensions of [11,2] then 2 summary Tsys values will be printed
+;       and the Tsys values will be averaged according to the eqweight keyword.
+;       If this is omitted, no extra Tsys information is printed.  This is 
+;       typically used to summarize the system temperature in the signal 
+;       scan or in each of the beam combinations (e.g. Nod). Formatting is
+;       such that for up to 4 Tsys values the result should be less than 80
+;       characters.
+;   tauInts : in, optional, type=float
+;       The tau (opacity) used in each integration when unit conversion was
+;       done, if any. Only used if units are 'Jy' or 'Ta*'. The printed value
+;       is a simple average of this keyword.
+;   apEffInts : in, optional, type=float
+;       The aperture efficiency used in each integration when unit conversion 
+;       was done, if any.  Only used if units are 'Jy'. The printed value is
+;       a simple average of this keyword.
+;   missingInts : in, optional, type=integer
+;       The number of missing integrations to be reported (if missingRefInts 
+;       is set then this is assumed to be the missing integrations from the
+;       signal beam - used by getbs only).
+;   missingBeams : in, optional, type=integer
+;       The number of integrations that were processed with only one beam 
+;       (used by getnod and getbs).
+;   missingRefInts : in, optional, type=integer
+;       The number of missing integrations from the reference beam to be 
+;       reported (used by getbs only).
+;   eqweight : in, optional, type=boolean
+;       When set, then the tsysInts are averaged with equal weight, otherwise
+;       they are averaged similarly to the way accum does it (assuming equal 
+;       exposure) so that the resulting tsys is as if the spectra having those 
+;       tsys values had been averaged - so that these values can be more directly
+;       compared with the result's tsys value.
+;   bswitch : in, optional, type=integer
+;       Same meaning as in getbs. In the bswitch=0 case, then the tsysInts will
+;       have 8 as the second dimension and the tsys values from each beam are 
+;       first averaged before the tsys values from integration are averaged.
+;   refScan : in, optional, type=integer
+;       The scan number of the reference scan. Used by getsigref.
 ;
 ; @private_file
-; @version $Id$
 ;-
 pro calsummary, scan, tsys, units, $
                 tsysInts=tsysInts, tauInts=tauInts, $
