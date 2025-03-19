@@ -1,63 +1,70 @@
+; docformat = 'rst'
+
 ;+ 
 ; Fits Gaussians to the data in the primary data container (!g.s[0])
-; based on initial values that can be set by procedures <a href="gregion.html">gregion</a>,
-; <a href="ngauss.html">ngauss</a>, <a href="gmaxiter.html">gmaxiter</a>, and <a href="gparamvalues.html">gparamvalues</a>.
+; based on initial values that can be set by procedures :idl:pro:`gregion`,
+; :idl:pro:`ngauss`, :idl:pro:`gmaxiter`, and :idl:pro:`gparamvalues`.
 ;
-; <p>Other data containers can be fit using the buffer keyword.
+; Other data containers can be fit using the buffer keyword.
 ; 
-; <p>Multiple gaussians in multiple regions can be fit at the same
-; time.
+; Multiple gaussians in multiple regions can be fit at the same time.
 ;
-; <p>The initial guesses and the most recent fit are available in the
+; The initial guesses and the most recent fit are available in the
 ; !g.gauss structure.
 ;
-; @keyword buffer {in}{optional}{type=long}{default=0} global buffer
-; number whose data is to be fit. Defaults to the primary data
-; container.
-; @keyword modelbuffer {in}{optional}{type=long}{default=-1} buffer
-; number to hold the resulting model.  If not set (the default) then
-; no global buffer is filled with the model.   
-; @param fit {out}{optional}{type=array} results of fit. identical to
-; !g.gauss.fit 
-; @param fitrms {out}{optional}{type=array} errors of fit. identical
-; to !g.gauss.fitrms 
-; @keyword ok {out}{optional}{type=long} result; 1 - good, 0 - bad 
-; @keyword quiet {in}{optional}{type=boolean}{default=F} When set, no
-; report of the fits and initial guesses is printed.
+; :Params:
+;   fit : out, optional, type=array
+;       results of fit. identical to !g.gauss.fit 
+;   fitrms : out, optional, type=array
+;       errors of fit. identical to !g.gauss.fitrms 
 ;
-; @examples
-; Typically, fitgauss will be used to set the initial guesses and do
-; the fit, using gauss.  Internally, fitgauss does these steps.
-; <pre>
-;    ; using the user-identified points, set the region(s)
-;    gregion,[4120,4400]   ; channels 4120 through 4400 inclusive
-;    ngauss,2              ; fit 2 gaussians
-;    ; for each gaussian, do this
-;    gparamvalues, 0, [2.4, 4359.0, 12.3]  ; [height, center, fwhm]
-;    gparamvalues, 1, [0.5, 4370.0, 9.2] 
-;    gauss
-;    gshow
-; </pre>
+; :Keywords:
+;   buffer in, optional, type=long, default=0
+;       global buffer number whose data is to be fit. Defaults to the
+;       primary data container.
+;   modelbuffer : in, optional, type=long, default=-1
+;       buffer number to hold the resulting model.  If not set (the default)
+;       then no global buffer is filled with the model.   
+;   ok : out, optional, type=long
+;       result; 1 - good, 0 - bad 
+;   quiet : in, optional, type=boolean, default=F
+;       When set, no report of the fits and initial guesses is printed.
 ;
-; <p>Continuum data containers can also be fit (must be in continuum mode).
-; <pre>
-;    cont                ; switch to cont mode
-;    filein,'peaks.fits'
-;    get,buffer=1        ; get some data
-;    ; setup the gauss fit
-;    gregion,[60,80]
-;    ngauss,1
-;    gmaxiter,500
-;    gparamvalues, 0, [400000.,70.,100.]
-;    ; find and show the fit
-;    gauss
-;    gshow
-; </pre>
+; :Examples:
+;   Typically, fitgauss will be used to set the initial guesses and do
+;   the fit, using gauss.  Internally, fitgauss does these steps.
+; 
+;   .. code-block:: IDL
+; 
+;       ; using the user-identified points, set the region(s)
+;       gregion,[4120,4400]   ; channels 4120 through 4400 inclusive
+;       ngauss,2              ; fit 2 gaussians
+;       ; for each gaussian, do this
+;       gparamvalues, 0, [2.4, 4359.0, 12.3]  ; [height, center, fwhm]
+;       gparamvalues, 1, [0.5, 4370.0, 9.2] 
+;       gauss
+;       gshow
 ;
-; @uses gauss_fits
-; @uses report_gauss
+;   Continuum data containers can also be fit (must be in continuum mode).
+; 
+;   .. code-block:: IDL
 ;
-; @version $Id$
+;       cont                ; switch to cont mode
+;       filein,'peaks.fits'
+;       get,buffer=1        ; get some data
+;       ; setup the gauss fit
+;       gregion,[60,80]
+;       ngauss,1
+;       gmaxiter,500
+;       gparamvalues, 0, [400000.,70.,100.]
+;       ; find and show the fit
+;       gauss
+;       gshow
+;
+; :Uses:
+;   :idl:pro:`gauss_fits`
+;   :idl:pro:`report_gauss`
+;
 ;-
 pro gauss, buffer=buffer, modelbuffer=modelbuffer, ok=ok, quiet=quiet, fit, fitrms
     compile_opt idl2
