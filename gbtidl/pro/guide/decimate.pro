@@ -1,40 +1,47 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure thins the spectrum at the primary data container (the
 ; PDC, buffer 0) by selecting out and keeping the data at every nth
 ; channel.  This can also operate on other buffers. 
 ;
-; <p>The frequency interval and reference channel are adjusted
+; The frequency interval and reference channel are adjusted
 ; appropriately so that the x-axis labels for the decimated data are
 ; still appropriate.
 ;
-; <p>This can not be used on continuum data containers.
+; This can not be used on continuum data containers.
 ;
-; @param nchan {in}{optional}{type=integer}{default=2} Thin the spectrum by
-; keeping the value at every nchan channels starting from the startat
-; channel   This defaults to 2.
-; @keyword startat {in}{optional}{type=integer}{default=0} The
-; starting channel. This defaults to 0.
-; @keyword buffer {in}{optional}{type=buffer}{default=0} The buffer to
-; decimate.  This defaults to buffer 0 (the PDC).
-; @keyword ok {out}{optional}{type=boolean} Returns 1 if everything
-; went ok, 0 if it did not (invalid or empty dc at buffer).
+; :Params:
+;   nchan : in, optional, type=integer, default=2
+;       Thin the spectrum by keeping the value at every nchan channels 
+;       starting from the startat channel. This defaults to 2.
+; 
+; :Keywords: 
+;   startat : in, optional, type=integer, default=0
+;       The starting channel. This defaults to 0.
+;   buffer : in, optional, type=buffer, default=0
+;       The buffer to decimate.  This defaults to buffer 0 (the PDC).
+;   ok : out, optional, type=boolean
+;       Returns 1 if everything went ok, 0 if it did not (invalid or
+;       empty dc at buffer).
 ;
-; @examples
-; <pre>
-;    getrec,1
-;    show
-;    decimate,2
-;    show
-;    decimate,3,startat=1
-;    show
-;    decimate,2,buffer=1
-;    show, 1
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       getrec,1
+;       show
+;       decimate,2
+;       show
+;       decimate,3,startat=1
+;       show
+;       decimate,2,buffer=1
+;       show, 1
 ;
-; @uses <a href="../toolbox/dcdecimate.html">dcdecimate</a>
-; @uses <a href="../plotter/show.html">show</a>
+; :Uses: 
+;   :idl:pro:`dcdecimate`
+;   :idl:pro:`show`
 ;
-; @version $Id$
 ;-
 
 pro decimate, nchan, startat=startat, buffer=buffer, ok=ok

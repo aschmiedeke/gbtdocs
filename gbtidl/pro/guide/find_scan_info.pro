@@ -1,10 +1,10 @@
 ;+
 ; Find a scan info from the current line filein matching the given scan,
 ; file, timestamp, and instance values.  The matching scan_info is
-; returned.  See <a href="scan_info.html">scan_info</a> for more
+; returned.  See :idl:pro:`scan_info` for more
 ; information on the returned structure.
 ;
-; <p>This is used by all of the standard calibration routines to get
+; This is used by all of the standard calibration routines to get
 ; the scan_info for the requested scan.  It is encapsulated here to
 ; make it easy to adapt and understand those calibration routines.
 ;
@@ -15,25 +15,30 @@
 ; error messages are displayed using the prefix appropriate to the
 ; calling routine.
 ;
-; @param scan {in}{required}{type=integer} Scan number to get
-; information on.  This must be provided unless timestamp is provided.
-; @keyword timestamp {in}{optional}{type=string} The M&C timestamp associated
-; with the desired scan. When supplied, scan and instance are ignored.
-; @keyword instance {in}{optional}{type=integer} Which occurence
-; of this scan should be used.  Default is 0.
-; @keyword file {in}{optional}{type=string} Limit the search for
-; matching scans to a specific file.  If omitted, scans are found in
-; all files currently opened through filein (a single file) or dirin
-; (possibly multiple files).
-; @returns A single scan_info structure.  Returns -1 if a match can
-; not be found.
+; :Params:
+;   scan : in, required, type=integer
+;       Scan number to get information on. This must be provided unless 
+;       timestamp is provided.
+; 
+; :Keywords:
+;   timestamp : in, optional, type=string
+;       The M&C timestamp associated with the desired scan. When supplied,
+;       scan and instance are ignored.
+;   instance : in, optional, type=integer
+;       Which occurence of this scan should be used.  Default is 0.
+;   file : in, optional, type=string
+;       Limit the search for matching scans to a specific file.  If omitted,
+;       scans are found in all files currently opened through filein (a 
+;       single file) or dirin (possibly multiple files).
+; 
+; :Returns: 
+;   A single scan_info structure.  Returns -1 if a match cannot be found.
 ;
-; @uses <a href="../toolbox/select_data.html">select_data</a>
-; @uses <a href="scan_info.html">scan_info</a>
+; :Uses:
+;   :idl:pro:`select_data`
+;   :idl:pro:`scan_info`
 ;
 ; @private_file
-;
-; @version $Id$
 ;-
 function find_scan_info, scan, timestamp=timestamp, $
   instance=instance, file=file
