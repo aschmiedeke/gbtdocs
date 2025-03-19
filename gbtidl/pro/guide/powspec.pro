@@ -1,4 +1,5 @@
 ; docformat = 'rst'
+
 ;+
 ; Compute the power spectrum for the indicated data container, which
 ; is overwritten with the result.  Uses :idl:pro:`dcfft` to do the fft.
