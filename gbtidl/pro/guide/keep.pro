@@ -1,34 +1,37 @@
+; docformat = 'rst'
+
 ;+
 ; Save a spectrum to the output file.
 ;
-; <p>The data in the primary data container (buffer 0) is saved to the
+; The data in the primary data container (buffer 0) is saved to the
 ; currently opened output file.  The user can optionally save another
 ; buffer (0 to 15) or a specific data container by supplying a value
-; for the dc parameter.  Use <a href="fileout.html">fileout</a> to open an output file.  Use <a href="kget.html">kget</a>
-; to retrieve data from the output file (<a href="nget.html">nget</a> can also be used, the file can 
-; also be opened using <a href="filein.html">filein</a> but only if some other file is already opened 
-; as the output file (the same file can not be opened by filein and
-; fileout at the same time).
+; for the dc parameter.  Use :idl:pro:`fileout` to open an output file.
+; Use :idl:pro:`kget` to retrieve data from the output file (:idl:pro:`nget`
+; can also be used, the file can also be opened using :idl:pro:`filein`
+; but only if some other file is already opened as the output file (the
+; same file can not be opened by filein and fileout at the same time).
 ;
 ; Only spectral line data can be saved to disk at this time.
 ;
-; @param dc {in}{optional}{type=data container or integer}{default=0} a data 
-; container, or an integer global buffer number.  Defaults to the primary data
-; container (buffer 0).
+; :Params:
+;   dc : in, optional, type=data container or integer, default=0
+;       a data container, or an integer global buffer number. Defaults
+;       to the primary data container (buffer 0).
 ;
-; @examples
-; <pre>
-;   getnod,30
-;   fileout,'mysave.fits'
-;   keep
-;   getnod,32
-;   keep
-;   getfs,48,/nofold
-;   keep  ; saves buffer 0 by default
-;   keep,1 ; saves buffer 1
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       getnod,30
+;       fileout,'mysave.fits'
+;       keep
+;       getnod,32
+;       keep
+;       getfs,48,/nofold
+;       keep                    ; saves buffer 0 by default
+;       keep,1                  ; saves buffer 1
 ;
-; @version $Id$
 ;-
 PRO keep,dc
     compile_opt idl2

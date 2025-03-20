@@ -1,30 +1,35 @@
+; docformat = 'rst'
+
 ;+
 ; List flags associated with the current input spectral line data file 
 ; or with the keep (output) data file.  Use the idstring parameter to
 ; limit the listing to a specific idstring.
 ;
-; <p>Continuum flagging is not supported.
+; Continuum flagging is not supported.
 ;
-; @param idstring {in}{optional}{type=string}{default=all} The string
-; to match.  All flags that match this string will be listed.
-; @keyword summary {in}{optional}{type=boolean} Produces a somewhat more
-; readable output at the cost of possibly not showing all of the
-; information.  Truncated information is indicated with "." in the
-; truncated field.  The default is to show all of the information -
-; which may have long lines and which will not necessarily be nicely
-; aligned by column.
-; @keyword keep {in}{optional}{type=boolean} List the flags in the keep
-; (output) file?
+; :Params:
+;   idstring : in, optional, type=string, default=all
+;       The string to match.  All flags that match this string will be listed.
+; 
+; :Keywords:
+;   summary : in, optional, type=boolean
+;       Produces a somewhat more readable output at the cost of possibly
+;       not showing all of the information. Truncated information is
+;       indicated with "." in the truncated field. The default is to show
+;       all of the information - which may have long lines and which will 
+;       not necessarily be nicely aligned by column.
+;   keep : in, optional, type=boolean
+;       List the flags in the keep (output) file?
 ;
-; @examples
-; <pre>
-;   ; list all flags, formatted nicely, possibly truncated
-;   listflags, /summary
-;   ; only list "RFI" tagged flags
-;   listflags, "RFI"
-;  </pre>
+; :Examples:
+; 
+;   ..code-block::
 ;
-; @version $Id$
+;       ; list all flags, formatted nicely, possibly truncated
+;       listflags, /summary
+;       ; only list "RFI" tagged flags
+;       listflags, "RFI"
+;  
 ;-
 pro listflags, idstring, summary=summary, keep=keep
     compile_opt idl2
