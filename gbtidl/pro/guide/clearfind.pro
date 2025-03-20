@@ -1,23 +1,25 @@
+; docformat = 'rst'
+
 ;+
 ; Clear a selection parameter or several selection parameters used by
-; <a href="find.html">find</a>
-; <p>
-; Use <a href="setfind.html">setfind</a> to set a selection parameter.
-; <p>
-; Use <a href="listfind.html">listfind</a> to list a selection parameter.
-;
-; @param param {in}{optional}{type=string} The selection parameter(s)
-; to clear.  Minimum-matching is used to find the selection parameters
-; matching this value.  If param is not supplied or is an empty
-; string, all parameters are cleared.  If all parameters are to be
-; cleared (param is not set or is an empty string) then only those
-; parameters appropriate for the given mode (line or continuum) are
-; cleared.
-;
-; @examples
-; See <a href="find.html">find</a>
+; :idl:pro:`find`
 ; 
-; @version $Id$
+; Use :idl:pro:`setfind` to set a selection parameter.
+; 
+; Use :idl:pro:`listfind` to list a selection parameter.
+;
+; :Params: 
+;   param : in, optional, type=string
+;       The selection parameter(s) to clear.  Minimum-matching is used
+;       to find the selection parameters matching this value.  If param
+;       is not supplied or is an empty string, all parameters are cleared.
+;       If all parameters are to be cleared (param is not set or is an
+;       empty string) then only those parameters appropriate for the
+;       given mode (line or continuum) are cleared.
+;
+; :Examples:
+;   :idl:pro:`find`
+; 
 ;-
 pro clearfind, param
     compile_opt idl2

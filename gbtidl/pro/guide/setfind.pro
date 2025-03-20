@@ -5,7 +5,7 @@
 ;
 ; This sets one of the fields in the structure used by FIND.  There
 ; is one field for each of the possible selection parameters (use
-; <a href="listcols.html">listcols</a> to see a list of the available search parameters).  
+; :idl:pro:`listcols` to see a list of the available search parameters).  
 ; A single value can be entered as can a range of values.  Or, a
 ; single string can be used here in which case that string is saved as
 ; is to be used by SELECT inside of FIND.  See the discussion on
