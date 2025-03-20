@@ -1,62 +1,68 @@
+; docformat = 'rst'
+
 ;+
 ; Generate flag table entries using QuadrantDetector columns in the
 ; associated SDFITS file (QD_XEL, QD_EL, and QD_BAD).
 ;
-; <p>A flag table entry is made for an integration within a scan as
+; A flag table entry is made for an integration within a scan as
 ; follows:
-; <ul><li> If QD_BAD is 0, flag the data based on the threshold value
-; <li> If QD_BAD is 1 or -1 (all possible values other than 0), flag
-; the data if the flag_qd_bad keyword is set otherwise (the default)
-; do not flag the data.
-; </ul>
+;   * If QD_BAD is 0, flag the data based on the threshold value
+;   * If QD_BAD is 1 or -1 (all possible values other than 0), flag
+;     the data if the flag_qd_bad keyword is set otherwise (the default)
+;     do not flag the data.
 ;
-; <p> Data which pass the QD_BAD test should be flagged for that
+; Data which pass the QD_BAD test should be flagged for that
 ; integration if 
-; <pre>
+; 
+; .. code-block:: IDL
+; 
 ;   (ABS(QD_XEL) / HPBW) > thresh
 ;   HPBW = 740 / (observed_frequency in GHz)
-; </pre>
+; 
 ; Where the units of QD_XEL and HPBW in the above are arcseconds and thresh
 ; defaults to 0.2 if not specified.
 ;
-; <p>The idstring value is used to tag all flag table entries written by
+; The idstring value is used to tag all flag table entries written by
 ; this routine.  If not supplied it defaults to QD_BADDATA.
 ;
-; <p>This procedure will not reflag any scan where any flag entries
+; This procedure will not reflag any scan where any flag entries
 ; already exist with the same idstring.  If you want to regenerate the
 ; flag table (e.g. using a different threshold or flag_qd_bad value)
 ; choose a different idstring or remove all existing flags with that
 ; idstring using the <a href="unflag.html">unflag</a> procedure.
 ;
-; <p>This uses the main data file unless the keep keyword is set, in
+; This uses the main data file unless the keep keyword is set, in
 ; which case it uses the keep file.
 ;
-; <p>This only works on spectral line data.
+; This only works on spectral line data.
 ;
-; <p>On completion, a table is printed giving the following statistics
+; On completion, a table is printed giving the following statistics
 ; for each unique source name encountered: the total time observed for
 ; that source (this is the duration, not the exposure), the total time
 ; flagged, the percent flagged, and the percent of data that had a
 ; non-zero QD_BAD value.
 ;
-; <p>For older SDFITS files that lack the QD columns, this routine
+; For older SDFITS files that lack the QD columns, this routine
 ; prints a warning message without flagging any data.
 ;
-; @param scans {in}{required}{type=integer} The scan number(s) to
-; flag.  If not supplied, use all scans.  This can be vector of scan
-; numbers
-; @keyword thresh {in}{optional}{type=float}{default=0.2} The threshold
-; to use when flagging using good QD_XEL values.  Defaults to 0.2.
-; @keyword idstring {in}{optional}{type=string}{default="QD_BADDATA"}
-; The tag to give each flag entry written by this routine.  Defaults
-; to "QD_BADDATA".
-; @keyword flag_qd_bad {in}{optional}{type=boolean} If set, flag all
-; data having non-zero values of QD_BAD, otherwise data with QD_BAD is
-; not flagged.
-; @keyword keep {in}{optional}{type=boolean} If set, flag using the 
-; keep file, otherwise use the default data file.
+; :Params:
+;   scans : in, required, type=integer
+;       The scan number(s) to flag.  If not supplied, use all scans.  
+;       This can be vector of scan numbers
+; 
+; :Keywords:
+;   thresh : in, optional, type=float, default=0.2
+;       The threshold to use when flagging using good QD_XEL values.  
+;       Defaults to 0.2.
+;   idstring : in, optional, type=string, default="QD_BADDATA"
+;       The tag to give each flag entry written by this routine. Defaults
+;       to "QD_BADDATA".
+;   flag_qd_bad : in, optional, type=boolean
+;       If set, flag all data having non-zero values of QD_BAD, otherwise 
+;       data with QD_BAD is not flagged.
+;   keep : in, optional, type=boolean
+;       If set, flag using the keep file, otherwise use the default data file.
 ;
-; @version $Id$
 ;-
 pro qdflag, scans, thresh=thresh, idstring=idstring, flag_qd_bad=flag_qd_bad, keep=keep
   compile_opt idl2

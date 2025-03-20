@@ -125,20 +125,22 @@ end
 ; directory found in directory.  If it does not exist, this returns
 ; an empty string.
 ;
-; @param directory {in}{required}{type=string} Directory to search
-; in.  Typically this is the the root directory where the online
-; sdfits files are written for each project.  Project directories are
-; assumed to be a subdirectory of directory.
-; @param project {in}{required}{type=string} The project name to
-; search for.  The directory <directory>/<project> must exist for this
-; function to return any non-empty string.
-; @param type {in}{required}{type=string} The backend short-hand to
-; use in constructing the filename to search for in the project
-; directory.  This searches for <project>.raw.<type>.fits or a
-; directory named <project>.raw.<type> that also contains at least one
-; *.fits file.
-; @returns The found file or directory name or an empty string if
-; nothing was found.
+; :Params:
+;   directory : in, required, type=string
+;       Directory to search in. Typically this is the the root directory
+;       where the online sdfits files are written for each project.
+;       Project directories are assumed to be a subdirectory of directory.
+;   project : in, required, type=string
+;       The project name to search for.  The directory <directory>/<project>
+;       must exist for this function to return any non-empty string.
+;   type : in, required, type=string
+;       The backend short-hand to use in constructing the filename to search
+;       for in the project directory.  This searches for <project>.raw.<type>.fits
+;       or a directory named <project>.raw.<type> that also contains at least one
+;       *.fits file.
+; 
+; :Returns:
+;   The found file or directory name or an empty string if nothing was found.
 ;
 ; @private
 ;-
