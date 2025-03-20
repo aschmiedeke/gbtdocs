@@ -1,48 +1,49 @@
+; docformat = 'rst'
 
 ;+
 ; This procedure lists a summary of the input dataset.  The listing
 ; can be sent to a file instead of directly to the current screen.
 ;
-; <p>This is designed to work with un-calibrated GBT data and is
+; This is designed to work with un-calibrated GBT data and is
 ; likely to give confusing results for other data.  For other data,
-; <a href="list.html">list</a> is usually more useful.
+; :idl:pro:`list` is usually more useful.
 ;
-; <p><b>Note:</b> The numbers (nIF, nInt, nFd) are the number of unique
+; *Note:* The numbers (nIF, nInt, nFd) are the number of unique
 ; values for each parameter (ifnum, intnum, fdnum) found for that
 ; scan.  All combinations of all possible values of ifnum, intnum,
 ; fdnum, and plnum may not be present in that scan.
 ;
-; @param file {in}{optional}{type=string}{default=/dev/tty} The file
-; to write to.  Defaults to the current screen, using "more" to page
-; the output.
+; :Params:
+;   file : in, optional, type=string, default=/dev/tty
+;       The file to write to. Defaults to the current screen, using 
+;       "more" to page the output.
 ;
-; @keyword bscan {in}{optional}{type=integer} The smallest scan number
-; to summarize.  Scan numbers less than bscan are ignored.  When
-; unspecified no scans are excluded by this keyword.
+; :Keywords:
+;   bscan : in, optional, type=integer
+;       The smallest scan number to summarize.  Scan numbers less
+;       than bscan are ignored. When unspecified no scans are excluded
+;       by this keyword.
+;   escan : in, optional, type=integer
+;       The largest scan number to summarize.  Scan numbers larger
+;       than escan are ignored.  When unspecified no scans are
+;       excluded by this keyword.
 ;
-; @keyword escan {in}{optional}{type=integer} The largest scan number
-; to summarize.  Scan numbers larger than escan are ignored.  When
-; unspecified no scans are excluded by this keyword.
-;
-;
-; @examples
-; <pre>
-;    filein,'myfile.fits'
-;    summary
-;       ; summarize the same output to a file instead of the screen
-;    summary,'myfile.summary'
-;       ; summarize starting from scan 14
-;    summary, bscan=14
-;       ; summarize through scan 24
-;    summary, escan=24
-;       ; summarize from scan 14 through scan 24
-;    summary, bscan=14, escan=24
-; </pre>
+; :Examples:
 ; 
+;   .. code-block:: IDL
+; 
+;       filein,'myfile.fits'
+;       summary
+;       ; summarize the same output to a file instead of the screen
+;       summary,'myfile.summary'
+;       ; summarize starting from scan 14
+;       summary, bscan=14
+;       ; summarize through scan 24
+;       summary, escan=24
+;       ; summarize from scan 14 through scan 24
+;       summary, bscan=14, escan=24
 ;
-; @version $Id$
 ;-
-
 pro summary, file, bscan=bscan, escan=escan
     compile_opt idl2
 
