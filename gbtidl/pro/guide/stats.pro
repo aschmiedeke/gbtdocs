@@ -45,7 +45,6 @@
 ;       stats,ret=mystats  ; Return stats in a structure
 ;
 ;-
-
 pro stats,brange,erange,full=full,chan=chan,ret=ret,quiet=quiet
 
     compile_opt idl2
