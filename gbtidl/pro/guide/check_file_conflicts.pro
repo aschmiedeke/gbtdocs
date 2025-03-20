@@ -1,15 +1,23 @@
+; docformat = 'rst'
+
 ;+
 ; Performs checking of the filenames in the 
 ; the guide structure, !g.  Called by filein, dirin, and fileout.
 ; 
 ; Files selected for input cannot be used as output, and vice versa.
 ;
-; @param files {in}{required}{type=array} array of file names
+; :Params:
+;   files : in, required, type=array
+;       array of file names
 ;
-; @keyword in {in}{optional}{type=boolean} the filenames are ment for input
-; @keyword out {in}{optional}{type=boolean} the filename is ment for output
+; :Keywords:
+;   in : in, optional, type=boolean
+;       the filenames are ment for input
+;   out : in, optional, type=boolean
+;       the filename is ment for output
 ;
-; @returns 0, 1
+; :Returns:
+;   0, 1
 ;
 ; @private_file
 ;-

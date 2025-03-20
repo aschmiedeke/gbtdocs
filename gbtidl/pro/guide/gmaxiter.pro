@@ -1,25 +1,29 @@
+; docformat = 'rst'
+
 ;+
 ; Sets the maximum iterations for fitting guassians: !g.gauss.maxiter
 ; 
-; @param maxiter {in}{required}{type=long} maximum iterations for fitting gaussians
+; :Params:
+;   maxiter : in, required, type=long
+;       maximum iterations for fitting gaussians
 ;
-; @examples
-; <pre>
-; ; get some continuum data
-; cont
-; filein,'peaks.fits'
-; get,index=1
-; ; setup the gauss fit
-; gregion,[60,80]
-; ngauss,[1]
-; gmaxiter,500
-; gparamvalues, 0, 0, [400000.,70.,100.]
-; ; find and show the fit
-; gauss
-; gshow
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
 ;
-; @version $Id$
+;       ; get some continuum data
+;       cont
+;       filein,'peaks.fits'
+;       get,index=1
+;       ; setup the gauss fit
+;       gregion,[60,80]
+;       ngauss,[1]
+;       gmaxiter,500
+;       gparamvalues, 0, 0, [400000.,70.,100.]
+;       ; find and show the fit
+;       gauss
+;       gshow
+;
 ;-
 pro gmaxiter, maxiter
     compile_opt idl2
