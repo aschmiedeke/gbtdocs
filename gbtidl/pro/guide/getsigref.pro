@@ -1,67 +1,69 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure retrieves a pair of total power scans and calibrates the 
 ; spectrum.  
 ;
-; <p>The signal and reference scans are identified separately and do 
+; The signal and reference scans are identified separately and do 
 ; not need to be associated in a single observing procedure.  This
 ; procedure can be used as a template for the user who may wish to
 ; develop more tailored calibration schemes.  The spectrum is
 ; calibrated in Ta (K) by default.  Other recognized units are Ta* and
 ; Jy. 
 ;
-; <p><b>Summary</b>
-;   <ul><li>Data are selected for the two scans using sigscan, refscan,
-;      ifnum, intnum, plnum and fdnum or, alternatively, sampler and
-;      intnum if you know the specific sampler name (e.g. "A10").
-;      The same sampler name is used for both sigscan and refscan.
+; **Summary**
+;   * Data are selected for the two scans using sigscan, refscan,
+;     ifnum, intnum, plnum and fdnum or, alternatively, sampler and
+;     intnum if you know the specific sampler name (e.g. "A10").
+;     The same sampler name is used for both sigscan and refscan.
 ;
-;   <li>If the avgref option is not set (the default) and both scans
+;   * If the avgref option is not set (the default) and both scans
 ;     have the same number of integrations, then individual integrations
 ;     are processed separately.  The same integration number in
 ;     sigscan and refscan are processed together. If the avgref option
 ;     is set or both scans do not have the same number of integrations
 ;     then the total power value from each integration in refscan is found
-;     using <a href="../toolbox/dototalpower.html">dototalpower</a>
+;     using :idl:pro:`dototalpower`
 ;     and the individual integrations are averaged together to produce
 ;     one reference spectrum that is used for each integration of sigscan.
-;     Each integration is processed using <a href="../toolbox/dofullsigref.html">dofullsigref</a>
+;     Each integration is processed using :idl:pro:`dofullsigref`
 ;     If there is no cal switching (TPnoCal) then there is no attempt
 ;     to determine TCal and the sig and ref values are used as is.
 ;
-;   <li>The integrations are calibrated in Ta (K) by default.  If
-;      units of Ta* or Jy are requested via the units keyword, then 
-;      <a href="../toolbox/dcsetunits.html">dcsetunits</a> is used to convert to the desired units.
+;   * The integrations are calibrated in Ta (K) by default.  If
+;     units of Ta* or Jy are requested via the units keyword, then 
+;     :idl:pro:`dcsetunits` is used to convert to the desired units.
 ;
-;   <li>Averaging of individual integrations is then done using 
-;      <a href="../toolbox/dcaccum.html">dcaccum</a>.  By default, integrations are weighted as described in dcaccum.
-;      If the eqweight keyword is set, then integrations are averaged
-;      with an equal weight.
+;   * Averaging of individual integrations is then done using 
+;     :idl:pro:`dcaccum`. By default, integrations are weighted as described
+;     in dcaccum. If the eqweight keyword is set, then integrations are averaged
+;     with an equal weight.
 ;
-;   <li>The final average is left in the primary data container
-;      (buffer 0), and a summary line is printed.  The printing of the
-;      summary line can be suppressed by setting the quiet keyword.
+;   * The final average is left in the primary data container
+;     (buffer 0), and a summary line is printed.  The printing of the
+;     summary line can be suppressed by setting the quiet keyword.
 ;
-;   <li>The individual integration results can be saved to the
-;      currently opened output file by setting the keepints keyword.
-;      The final average is still produced in that case.
-;   </ul>
-; <p><b>Parameters</b>
-; <p>
+;   * The individual integration results can be saved to the
+;     currently opened output file by setting the keepints keyword.
+;     The final average is still produced in that case.
+;   
+; **Parameters
+; 
 ; Arguments for sig and ref scan numbers are required.  Arguments to
 ; identify the IF number, polarization number, and feed number are
 ; optional.  The default feed number (0) is the lowest numbered FEED
 ; found in the data.  
-; <p>
-; <p> If ifnum, fdnum, or plnum are not supplied then the lowest
+; 
+; If ifnum, fdnum, or plnum are not supplied then the lowest
 ; values for each of those where data exists (all combinations may not
 ; have data) will be used, using any user-supplied values.  The value
 ; of ifnum is determined first, followed by fdnum and finally plnum.  If a
-; combination with data can not be found then <a href="showiftab.html">showiftab</a>
+; combination with data can not be found then :idl:pro:`showiftab`
 ; is used to show the user what the set of valid combinations are.
 ; The summary line includes the ifnum, fdnum, and plnum used.
-; <p>
-; <b>Tsys and Available Units</b>
-; <p>
+; 
+; **Tsys and Available Units**
+; 
 ; The procedure calculates Tsys based on the Tcal values and the data
 ; in the reference scan.  The user can override this calculation by
 ; entering a zenith system temperature.  The procedure will then
@@ -73,28 +75,28 @@
 ; they will be estimated if none are provided.  The user can also
 ; supply a mean tcal using the tcal keyword.  That will override the
 ; tcal found in the data. 
-; <p>
-; <b>Smoothing the Reference Spectra</b>
-; <p>
+; 
+; **Smoothing the Reference Spectra**
+; 
 ; A parameter called smthoff can be used to smooth the reference
 ; spectrum prior to calibration of each integration.  In certain cases
 ; this can improve the signal to noise ratio, but it may degrade
 ; baseline shapes and artificially emphasize spectrometer glitches.
 ; Use with care.   A value of smthoff=16 is often a good choice. 
-; <p> 
-; <b>Weighting of Integrations in Scan Average</b>
-; <p> 
+; 
+; **Weighting of Integrations in Scan Average**
+;  
 ; By default, the averaging of integrations is weighted using tsys,
-; exposure, and frequency_resolution as described in the <a href="../toolbox/dcaccum.html">dcaccum</a>
+; exposure, and frequency_resolution as described in the :idl:pro:`dcaccum`
 ; documentation.  To give all integrations equal weight instead of the
 ; default weighting based on Tsys, use the /eqweight keyword.  This
 ; same weighting is used when averaging the reference scans if the
 ; avgref option is on or there are different numbers of integrations
 ; in each scan.
-; <p>
-; <b>Using or Ignoring Flags</b>
-; <p>
-; Flags (set via <a href="flag.html">flag</a>) can be selectively
+; 
+; **Using or Ignoring Flags**
+; 
+; Flags (set via :idl:pro:`flag`) can be selectively
 ; applied or ignored using the useflag and skipflag keywords.  Only
 ; one of those two keywords can be used at a time (it is an error to
 ; use both at the same time).  Both can be either a boolean (/useflag
@@ -111,17 +113,16 @@
 ; then all flag rules except those with the same idstring value are
 ; used to blank the data. 
 ;
-; <p>
-; <b>Dealing With Duplicate Scan Numbers</b>
-; <p>
+; **Dealing With Duplicate Scan Numbers**
+;
 ; There are 3 ways to attempt to resolve ambiguities when the
 ; same scan number appears in the data source.  The instance keyword
 ; refers to the element of the returned array of scan_info structures
-; that <a href="scan_info.html">scan_info</a> returns.  So, if scan 23
+; that :idl:pro:`scan_info` returns.  So, if scan 23
 ; appears 3 times then instance=1 refers to the second time that scan
 ; 23 appears as returned by scan_info.  The file keyword is useful if
 ; a scan is unique to a specific file and multiple files have been
-; accessed using <a href="dirin.html">dirin</a>.  If file is specified and instance is also 
+; accessed using :idl:pro:`dirin`. If file is specified and instance is also 
 ; specified, then instance refers to the instance of that scan just
 ; within that file (which may be different from its instance within 
 ; all opened files when dirin is used).  The timestamp keyword is
@@ -131,129 +132,140 @@
 ; string is "YYYY_MM_DD_HH:MM:SS".  When timstamp is given, scan and
 ; instance are ignored.  If more than one match is found, an error is 
 ; printed and this procedure will not continue.  These are specified
-; independently for each of the two scans (sigscan and refscan).;
-; @param sigscan {in}{required}{type=integer} M&C scan number for the
-; signal scan
-; @param refscan {in}{required}{type=integer} M&C scan number for the
-; reference scan
-; @keyword ifnum {in}{optional}{type=integer} IF number
-; (starting with 0). Defaults to the lowest value associated with data
-; taking into account any user-supplied values for fdnum, and plnum.
-; @keyword intnum {in}{optional}{type=integer} integration number,
-; defaults to all integrations. 
-; @keyword plnum {in}{optional}{type=integer} Polarization number
-; (starting with 0).  Defaults to the lowest value with data after
-; determining the values of ifnum and fdnum if not supplied by the
-; user.
-; @keyword fdnum {in}{optional}{type=integer} Feed number.  Defaults
-; to the lowest value with data after determining the value of ifnum
-; if not supplied by the user and using any value of plnum supplied by
-; the user.  
-; @keyword sampler {in}{optional}{type=string} sampler name, this is
-; an alternative way to specify ifnum,plnum, and fdnum.  When sampler
-; name is given, ifnum, plnum, and fdnum must not be given.
-; @keyword tau {in}{optional}{type=float} tau at zenith, if not
-; supplied, it is estimated using <a href="../toolbox/get_tau.html">get_tau</a>
-; tau is only used when the requested units are other than the default
-; of Ta and when a user-supplied tsys value at zenith is to be used.
-; @keyword tsys {in}{optional}{type=float} tsys at zenith, this is
-; converted to a tsys at the observed elevation.  If not suppled, the
-; tsys for each integration is calculated as described elsewhere.
-; @keyword ap_eff {in}{optional}{type=float} aperture efficiency, if
-; not suppled, it is estimated using <a href="../toolbox/get_ap_eff.html">get_ap_eff<a>
-; ap_eff is only used when the requested units are Jy.
-; @keyword smthoff {in}{optional}{type=integer} smooth factor for
-; reference spectrum, default is no smoothing (1).
-; @keyword units {in}{optional}{type=string} takes the value 'Jy',
-; 'Ta', or 'Ta*', default is Ta.
-; @keyword eqweight {in}{optional}{type=boolean} When set, all
-; integrations are averaged with equal weight (1.0), default is unset.
-; @keyword tcal {in}{optional}{type=float} Cal temperature (K) to use
-; in the Tsys calculation.  If not supplied, the mean_tcal value from
-; the header of the cal_off switching phase data in each integration
-; is used.  This must be a scalar, vector tcal is not yet supported.
-; The resulting data container will have it's mean_tcal header value
-; set to this keyword when it is set by the user.
-; @keyword avgref {in}{optional}{type=boolean}{default=unset} When set, the total
-; power values for the individual integrations in refscan are averaged
-; together using the current weighting option (using Tsys or equal
-; weighting) to produce a single reference spectrum that is then used to
-; calibrate each integration of sigscan.  This option will
-; automatically be selected whenever the number of integrations in
-; refscan is not the same as in sigscan.
-; @keyword quiet {in}{optional}{type=boolean} When set, the normal
-; status message on successful completion is not printed.  This will
-; not affect error messages.  default is unset.
-; @keyword keepints {in}{optional}{type=boolean} When set, the
-; individual integrations are saved to the current output file
-; (fileout).  This is ignored if a specific integration is requested
-; using the intnum keyword.  Default is unset.
-; @keyword useflag {in}{optional}{type=boolean or string}
-; Apply all or just some of the flag rules?  Default is set.
-; @keyword skipflag {in}{optional}{type=boolean or string} Do not apply
-; any or do not apply a few of the flag rules?  Default is unset.
-; @keyword siginstance {in}{optional}{type=integer} Which occurrence
-; of sigscan should be used, default is 0.
-; @keyword sigfile {in}{optional}{type=string} When specified, limit the search 
-; for sigscan (and instance) to this specific file, default is all files.
-; @keyword sigtimestamp {in}{optional}{type=string} The M&C timestamp associated
-; with the desired signal scan. When supplied, sigscan and siginstance are ignored.
-; @keyword refinstance {in}{optional}{type=integer} Which occurrence
-; of refscan should be used, default is 0.
-; @keyword reffile {in}{optional}{type=string} When specified, limit the search 
-; for refscan (and instance) to this specific file, default is all files.
-; @keyword reftimestamp {in}{optional}{type=string} The M&C timestamp associated
-; with the desired reference scan. When supplied, refscan and refinstance are ignored.
-; @keyword status {out}{optional}{type=integer} An output parameter to indicate
-; whether the procedure finished as expected.  A value of 1 means there were
-; no problems, a value of -1 means there were problems with the
-; arguments before any data was processed, and a value of 0 means that
-; some of the individual integrations were processed (and possibly
-; saved to the output file if keepints was set) but there was a
-; problem with the final average and buffer 0 likely
-; contains just the result from the last integration processed. This
-; keyword is primarily of use when using getsigref with another
-; procedure or function.
+; independently for each of the two scans (sigscan and refscan).
 ;
-; @examples
-; Suppose scans 13 and 14 are a position switched pair and scans 21
-; and 22 are also a position switched pair.  There was a problem with
-; the off or reference scan in 13 and 14 (scan 13 in this example) so
-; you want to use the other reference scan (scan 21) in it's place.
-; Note that as this is currently written, for this to work scan 21
-; must have the same number of integrations and switching phases as
-; scan 13.  If that isn't the case, you may want to look at using the
-; underlying dosigref procedure to work with each integration or
-; an average of all integrations in each scan directly.
+; :Params:
+;   sigscan : in, required, type=integer
+;       M&C scan number for the signal scan
+;   refscan : in, required, type=integer
+;       M&C scan number for the reference scan
+; 
+; :Keywords: 
+;   ifnum : in, optional, type=integer
+;       IF number (starting with 0). Defaults to the lowest value associated
+;       with data taking into account any user-supplied values for fdnum, and plnum.
+;   intnum : in, optional, type=integer
+;       integration number, defaults to all integrations. 
+;   plnum : in, optional, type=integer
+;       Polarization number (starting with 0).  Defaults to the lowest
+;       value with data after determining the values of ifnum and fdnum 
+;       if not supplied by the user.
+;   fdnum : in, optional, type=integer
+;       Feed number. Defaults to the lowest value with data after determining
+;       the value of ifnum if not supplied by the user and using any value of 
+;       plnum supplied by the user.  
+;   sampler : in, optional, type=string
+;       sampler name, this is an alternative way to specify ifnum,plnum, and fdnum.
+;       When sampler name is given, ifnum, plnum, and fdnum must not be given.
+;   tau : in, optional, type=float
+;       tau at zenith, if not supplied, it is estimated using :idl:pro:`get_tau`
+;       tau is only used when the requested units are other than the default
+;        of Ta and when a user-supplied tsys value at zenith is to be used.
+;   tsys : in, optional, type=float
+;       tsys at zenith, this is converted to a tsys at the observed elevation.
+;       If not suppled, the tsys for each integration is calculated as described
+;       elsewhere.
+;   ap_eff : in, optional, type=float
+;       aperture efficiency, if not suppled, it is estimated using :idl:pro:`get_ap_eff`
+;       ap_eff is only used when the requested units are Jy.
+;   smthoff : in, optional, type=integer
+;       smooth factor for reference spectrum, default is no smoothing (1).
+;   units : in, optional, type=string
+;       takes the value 'Jy', 'Ta', or 'Ta*', default is Ta.
+;   eqweight : in, optional, type=boolean
+;       When set, all integrations are averaged with equal weight (1.0), 
+;       default is unset.
+;   tcal : in, optional, type=float
+;       Cal temperature (K) to use in the Tsys calculation.  If not supplied,
+;       the mean_tcal value from the header of the cal_off switching phase data
+;       in each integration is used.  This must be a scalar, vector tcal is not
+;       yet supported. The resulting data container will have it's mean_tcal 
+;       header value set to this keyword when it is set by the user.
+;   avgref : in, optional, type=boolean, default=unset
+;       When set, the total power values for the individual integrations in 
+;       refscan are averaged together using the current weighting option (using
+;       Tsys or equal weighting) to produce a single reference spectrum that is 
+;       then used to calibrate each integration of sigscan.  This option will
+;       automatically be selected whenever the number of integrations in refscan
+;       is not the same as in sigscan.
+;   quiet : in, optional, type=boolean
+;       When set, the normal status message on successful completion is not printed.
+;       This will not affect error messages.  default is unset.
+;   keepints : in, optional, type=boolean
+;       When set, the individual integrations are saved to the current output file
+;       (fileout).  This is ignored if a specific integration is requested
+;       using the intnum keyword.  Default is unset.
+;   useflag : in, optional, type=boolean or string
+;       Apply all or just some of the flag rules?  Default is set. 
+;   skipflag : in, optional, type=boolean or string
+;       Do not apply any or do not apply a few of the flag rules?  Default is unset.
+;   siginstance : in, optional, type=integer
+;       Which occurrence of sigscan should be used, default is 0.
+;   sigfile : in, optional, type=string
+;       When specified, limit the search for sigscan (and instance) to this specific
+;       file, default is all files.
+;   sigtimestamp : in, optional, type=string
+;       The M&C timestamp associated with the desired signal scan. When supplied, 
+;       sigscan and siginstance are ignored.
+;   refinstance : in, optional, type=integer
+;       Which occurrence of refscan should be used, default is 0.
+;   reffile : in, optional, type=string
+;       When specified, limit the search for refscan (and instance) to this specific
+;       file, default is all files.
+;   reftimestamp : in, optional, type=string
+;       The M&C timestamp associated with the desired reference scan. When supplied,
+;       refscan and refinstance are ignored.
+;   status : out, optional, type=integer
+;       An output parameter to indicate whether the procedure finished as expected. 
+;       A value of 1 means there were no problems, a value of -1 means there were
+;       problems with the arguments before any data was processed, and a value of 0 
+;       means that some of the individual integrations were processed (and possibly
+;       saved to the output file if keepints was set) but there was a problem with 
+;       the final average and buffer 0 likely contains just the result from the last 
+;       integration processed. This keyword is primarily of use when using getsigref
+;       with another procedure or function.
 ;
-; <pre>
-;   getsigref, 14, 21
-;   ;
-;   ; you could do this, uses dosigref directly
-;   ;
-;   gettp, 14        ; averages total power of all ints in scan 14
-;   copy, 0, 10      ; remember for later use
-;   gettp, 21        ; total power avg in scan 21
-;   copy, 0, 11
-;   dosigref, result, !g.s[10], !g.s[11]
-;   set_data_container, result ; put result into buffer 0
-;   data_free, result ; delete the pointer in result
-; </pre>
-; @uses <a href="../toolbox/accumave.html">accumave</a>
-; @uses <a href="../toolbox/accumclear.html">accumclear</a>
-; @uses <a href="../../devel/guide/calsummary.html">calsummary</a>
-; @uses <a href="../../devel/guide/check_calib_args.html">check_calib_args</a>
-; @uses <a href="../toolbox/data_free.html">data_free</a>
-; @uses <a href="../toolbox/dcaccum.html">dcaccum</a>
-; @uses <a href="../toolbox/dcscale.html">dcscale</a>
-; @uses <a href="../toolbox/dcsetunits.html">dcsetunits</a>
-; @uses <a href="../toolbox/dofullsigref.html">dofullsigref</a>
-; @uses <a href="../../devel/guide/find_scan_info.html">find_scan_info</a>
-; @uses <a href="../../devel/guide/get_calib_data.html">get_calib_data</a>
-; @uses <a href="set_data_container.html">set_data_container</a>
-; @uses <a href="showiftab.html">showiftab</a>
+; :Examples:
+; 
+;   Suppose scans 13 and 14 are a position switched pair and scans 21
+;   and 22 are also a position switched pair.  There was a problem with
+;   the off or reference scan in 13 and 14 (scan 13 in this example) so
+;   you want to use the other reference scan (scan 21) in it's place.
+;   Note that as this is currently written, for this to work scan 21
+;   must have the same number of integrations and switching phases as
+;   scan 13.  If that isn't the case, you may want to look at using the
+;   underlying dosigref procedure to work with each integration or
+;   an average of all integrations in each scan directly.
 ;
-; @version $Id$
+;   .. code-block:: IDL
+; 
+;       getsigref, 14, 21
+;       ;
+;       ; you could do this, uses dosigref directly
+;       ;
+;       gettp, 14        ; averages total power of all ints in scan 14
+;       copy, 0, 10      ; remember for later use
+;       gettp, 21        ; total power avg in scan 21
+;       copy, 0, 11
+;       dosigref, result, !g.s[10], !g.s[11]
+;       set_data_container, result ; put result into buffer 0
+;       data_free, result ; delete the pointer in result
+; 
+; :Uses:
+;   :idl:pro:`accumave`
+;   :idl:pro:`accumclear`
+;   :idl:pro:`calsummary`
+;   :idl:pro:`check_calib_args`
+;   :idl:pro:`data_free`
+;   :idl:pro:`dcaccum`
+;   :idl:pro:`dcscale`
+;   :idl:pro:`dcsetunits`
+;   :idl:pro:`dofullsigref`
+;   :idl:pro:`find_scan_info`
+;   :idl:pro:`get_calib_data`
+;   :idl:pro:`set_data_container`
+;   :idl:pro:`showiftab`
+;
 ;-
 
 pro getsigref,sigscan,refscan,ifnum=ifnum,intnum=intnum,plnum=plnum,fdnum=fdnum,sampler=sampler,tau=tau,$

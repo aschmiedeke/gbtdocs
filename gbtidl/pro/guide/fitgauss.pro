@@ -1,3 +1,5 @@
+; docformat = 'rst'
+
 ;+
 ; An interactive procedure that allows the user to fit gaussians.
 ;
@@ -11,32 +13,37 @@
 ; fit multiple components.  Finally click the right mouse button to
 ; actually do the fit and display the results. 
 ;
-; <p>Each guassian (middle mouse clicks) must be found in an already
+; Each guassian (middle mouse clicks) must be found in an already
 ; set region (left mouse button).  Use the right mouse button to exit
 ; at any time (will require 2 right clicks to quit the procedure in
 ; the middle of a step - marking a region or identifying a gaussian).
 ;
-; @param fit {out}{optional}{type=array} An output array giving the results 
-; of the fit. Also stored in !g.gauss.fit.
-; @param fitrms {out}{optional}{type=array} An output array giving the 
-; uncertainties of the fit.  Also stored in !g.gauss.fitrms.
-; @keyword modelbuffer {in}{optional}{type=long}{default=-1} The buffer
-; number to hold the resulting model.  If not set (the default) then the
-; model is not saved to a global buffer.
-; @keyword highlightcolor {in}{optional}{type=color}{default=!g.highlightcolor} 
-; The color to use after the region of interest has been selected to
-; highlight the data.
+; :Params:
+;   fit : out, optional, type=array
+;       An output array giving the results of the fit. Also stored in
+;       !g.gauss.fit.
+;   fitrms : out, optional, type=array
+;       An output array giving the uncertainties of the fit.  Also stored
+;       in !g.gauss.fitrms.
+; 
+; :Keywords:
+;   modelbuffer : in, optional, type=long, default=-1
+;       The buffer number to hold the resulting model. If not set 
+;       (the default) then the model is not saved to a global buffer.
+;   highlightcolor : in, optional, type=color, default=!g.highlightcolor
+;       The color to use after the region of interest has been selected
+;       to highlight the data.
 ;
-; @examples
-; <pre>
-;   fitgauss,modelbuffer=10   ; fit gaussian and store model in buffer 10
-;   show
-;   subtract,0,10,11          ; store residual in buffer 11
-;   oshow, 11                 ; overlay residual
-;   oshow, 10, color=!yellow  ; overlay gaussian model
-; </pre>
-;
-; @version $Id$
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       fitgauss,modelbuffer=10   ; fit gaussian and store model in buffer 10
+;       show
+;       subtract,0,10,11          ; store residual in buffer 11
+;       oshow, 11                 ; overlay residual
+;       oshow, 10, color=!yellow  ; overlay gaussian model
+; 
 ;-
 pro fitgauss, fit, fitrms, modelbuffer=modelbuffer, highlightcolor=highlightcolor
 
@@ -232,13 +239,15 @@ end
 ; Used internally in fitgauss, finds the region index number in
 ; regions where x can be found.
 ;
-; @param nregions {in}{required}{type=integer} The number of regions
-; that exist in regions.
-; @param regions {in}{required}{type=array} The regions to check.
-; @param x {in}{required}{type=scalar} The value to check to see what
-; region it falls in.
-; @param region {out}{required}{type=integer} The region number where
-; x is found.  Set to -1 if no region found.
+; :Params:
+;   nregions : in, required, type=integer
+;       The number of regions that exist in regions.
+;   regions : in, required, type=array
+;       The regions to check.
+;   x : in, required, type=scalar
+;       The value to check to see what region it falls in.
+;   region : out, required, type=integer
+;       The region number where x is found. Set to -1 if no region found.
 ;
 ; @private
 ;-
@@ -263,10 +272,15 @@ end
 ;+
 ; Check to see if two regions overlap.  Used internally only.
 ;
-; @param nregions {in}{required}{type=integer} The number of regions.
-; @param regions {in}{required}{type=array} The regions to check
-; @param checkpoint {in}{required}{type=scalar} The point to check.
-; @param status {out}{required}{type=integer} The status of the check.
+; :Params:
+;   nregions : in, required, type=integer
+;       The number of regions.
+;   regions : in, required, type=array
+;       The regions to check
+;   checkpoint : in, required, type=scalar
+;       The point to check.
+;   status : out, required, type=integer
+;       The status of the check.
 ;
 ; @private
 ;-
