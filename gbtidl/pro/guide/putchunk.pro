@@ -1,25 +1,27 @@
+; docformat = 'rst'
+
 ;+
 ; This saves several data containers into the output file
 ; (keep file).  These must be spectrum data containers.  This is most
 ; often used in conjuction with <a href="getchunk.html">getchunk</a>.
 ;
-; @param chunk {in}{required}{type=spectrum data container arry} The
-; array of spectrum data containers to save.
+; :Params:
+;   chunk : in, required, type=spectrum data container arry
+;       The array of spectrum data containers to save.
 ;
-; @examples
-; Copy the input file to the keep file (this is currently only
-; possible in line mode), one scan at a time (in a procedure or function).
+; :Examples:
+;   Copy the input file to the keep file (this is currently only
+;   possible in line mode), one scan at a time (in a procedure or function).
 ;
-; <pre>
-;    scans=get_scan_numbers(/unique)
-;    for i=0,(n_elements(scan)-1) do begin
-;       a = getchunk(scan=scans[i])
-;       putchunk, a
-;       data_free, a
-;    endfor
-; </pre>
+;   .. code-block:: IDL
+; 
+;       scans=get_scan_numbers(/unique)
+;       for i=0,(n_elements(scan)-1) do begin
+;           a = getchunk(scan=scans[i])
+;           putchunk, a
+;           data_free, a
+;       endfor
 ;
-; @version $Id$
 ;-
 pro putchunk, chunk
     compile_opt idl2

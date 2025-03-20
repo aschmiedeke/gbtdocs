@@ -1,3 +1,5 @@
+; docformat = 'rst'
+
 ;+
 ; Procedure for printing what the current regions and gaussians are in
 ; the guide structure, and the most recently reported fits for these
@@ -9,12 +11,12 @@
 ; set (the default) then both initial guesses and fits are reported
 ; for each Gaussian.
 ;
-; @keyword fits {in}{optional}{type=boolean} displays the fits for all
-; gaussians 
-; @keyword params {in}{optional}{type=boolean} displays the initial
-; parameters for all gaussians
+; :Keywords:
+;   fits : in, optional, type=boolean
+;       displays the fits for all gaussians 
+;   params : in, optional, type=boolean
+;       displays the initial parameters for all gaussians
 ; 
-; @version $Id
 ;-
 pro report_gauss, fits=fits, params=params
     compile_opt idl2

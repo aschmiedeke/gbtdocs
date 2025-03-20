@@ -1,86 +1,41 @@
-;+ Used internally in offline
-; If a data (fits) file or data directory containing at least one 
-; fits file exists in directory for the given project and type then
-; this routine returns the path to either the fits file or the data
-; directory found in directory.  If it does not exist, this returns
-; an empty string.
-;
-; @param directory {in}{required}{type=string} Directory to search
-; in.  Typically this is the the root directory where the online
-; sdfits files are written for each project.  Project directories are
-; assumed to be a subdirectory of directory.
-; @param project {in}{required}{type=string} The project name to
-; search for.  The directory <directory>/<project> must exist for this
-; function to return any non-empty string.
-; @param type {in}{required}{type=string} The backend short-hand to
-; use in constructing the filename to search for in the project
-; directory.  This searches for <project>.raw.<type>.fits or a
-; directory named <project>.raw.<type> that also contains at least one
-; *.fits file.
-; @returns The found file or directory name or an empty string if
-; nothing was found.
-;
-; @private
-;-
-function project_exists, directory, project, type
-    compile_opt idl2
-
-    result = ""
-    projectDir = directory + "/" + project
-    if file_test(projectDir,/directory) then begin
-        ; project directory exists
-        fitsName = projectDir + '/' + project + '.raw.' + type + '.fits'
-        if file_test(fitsName) eq 1 then begin
-            ; found
-            result = fitsName
-        endif else begin
-            ; try a directory instead
-            fitsDir = projectDir + '/' + project + '.raw.' + type
-            if file_test(fitsDir,/directory) then begin
-                ; and is there at least one fits file there
-                tmp = file_search(fitsDir,'*.fits',count=count)
-                if count gt 0 then begin
-                    ; found
-                    result = fitsDir
-                endif
-            endif
-        endelse
-    endif
-    return,result
-end
+; docformat = 'rst'
 
 ;+
 ; This is a convenient way to find the previously auto-filled data
 ; for the indicated project and backend in the standard online data
 ; location when used in Green Bank.
-; <p>
+; 
 ; Provide a project name and optionally the backend type (acs, vegas,
 ; or sp) to connect to file or directory in the online data directory
 ; (/home/sdfits) for that project and backend.
 ; Note that this file will not be treated as online, and will not be
 ; updated, just as filein does not do automatic updates.  Continuum is
 ; not supported. 
-; <p>In addition to being less typing, using offline ensures that
+; In addition to being less typing, using offline ensures that
 ; should the location of the automatically generated sdfits files move
 ; at any point, you don't have to know where they were moved to - the
 ; Green Bank installation of GBTIDL will always know where to find
 ; them. 
 ;
-; @param project {in}{required}{type=string} The project name to use
-; in constructing the filename'.
-; @keyword acs {in}{optional}{type=boolean} the most recent
-; spectrometer sdfits file will be connected. This is the default.
-; @keyword sp {in}{optional}{type=boolean} the most recent spectral
-; processor sdfits file will be connected to.
-; @keyword vegas {in}{optional}{type=boolean} the most recent vegas
-; sdfits directory will be connected.
+; :Params:
+;   project : in, required, type=string
+;       The project name to use in constructing the filename'.
+;   acs : in, optional, type=boolean
+;       the most recent spectrometer sdfits file will be connected. 
+;       This is the default.
+; 
+; :Keywords:
+;   sp : in, optional, type=boolean
+;       the most recent spectral processor sdfits file will be connected to.
+;   vegas : in, optional, type=boolean
+;       the most recent vegas sdfits directory will be connected.
 ;
-; @examples
-; <pre>
-;    offline,'AGBT02A_028_05'  ; opens ACS data for this project
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
 ;
-; @version $Id$
+;       offline,'AGBT02A_028_05'  ; opens ACS data for this project
+;
 ;-
 pro offline, project, acs=acs, sp=sp, vegas=vegas
     compile_opt idl2
@@ -162,3 +117,56 @@ pro offline, project, acs=acs, sp=sp, vegas=vegas
         filein, filename
     endif
 end
+
+;+ Used internally in offline
+; If a data (fits) file or data directory containing at least one 
+; fits file exists in directory for the given project and type then
+; this routine returns the path to either the fits file or the data
+; directory found in directory.  If it does not exist, this returns
+; an empty string.
+;
+; @param directory {in}{required}{type=string} Directory to search
+; in.  Typically this is the the root directory where the online
+; sdfits files are written for each project.  Project directories are
+; assumed to be a subdirectory of directory.
+; @param project {in}{required}{type=string} The project name to
+; search for.  The directory <directory>/<project> must exist for this
+; function to return any non-empty string.
+; @param type {in}{required}{type=string} The backend short-hand to
+; use in constructing the filename to search for in the project
+; directory.  This searches for <project>.raw.<type>.fits or a
+; directory named <project>.raw.<type> that also contains at least one
+; *.fits file.
+; @returns The found file or directory name or an empty string if
+; nothing was found.
+;
+; @private
+;-
+function project_exists, directory, project, type
+    compile_opt idl2
+
+    result = ""
+    projectDir = directory + "/" + project
+    if file_test(projectDir,/directory) then begin
+        ; project directory exists
+        fitsName = projectDir + '/' + project + '.raw.' + type + '.fits'
+        if file_test(fitsName) eq 1 then begin
+            ; found
+            result = fitsName
+        endif else begin
+            ; try a directory instead
+            fitsDir = projectDir + '/' + project + '.raw.' + type
+            if file_test(fitsDir,/directory) then begin
+                ; and is there at least one fits file there
+                tmp = file_search(fitsDir,'*.fits',count=count)
+                if count gt 0 then begin
+                    ; found
+                    result = fitsDir
+                endif
+            endif
+        endelse
+    endif
+    return,result
+end
+
+

@@ -1,84 +1,87 @@
+; docformat = 'rst'
+
 ;+
 ; Lists columns from the index of the input file (or
 ; optionally the keep file) for the indicated range of rows.
 ; Selection can also be done in the same call so that only those rows
 ; that match the selection criteria will be listed.
-; <p>
+; 
 ; The default columns that are listed are: INDEX, SOURCE, SCAN,
 ; PROCEDURE, POLARIZATION, IFNUM, FDNUM, INT, SIG, and CAL. Users can
-; list other columns by specifying the columns argument.  Users can
+; list other columns by specifying the columns argument. Users can
 ; alternatively set the list of columns to be show in
 ; !g.user_list_cols and then use the /user flag here.
-; <p>
-; columns can be specified as either an array of strings or as a comma
-; separated list.  The value of !g.user_list_cols is always a comma
+; 
+; Columns can be specified as either an array of strings or as a comma
+; separated list. The value of !g.user_list_cols is always a comma
 ; separated list.
-; <p> 
-; For a complete list of available column names, use <a href="listcols.html">listcols</a>.
-; <p>
+;  
+; For a complete list of available column names, use :idl:pro:`listcols`.
+; 
 ; Additional selection on the index can be done to limit the index
-; rows that are listed.  The syntax is the same as in select.
-; The "Select" section in the <a href="http://wwwlocal.gb.nrao.edu/GBT/DA/gbtidl/users_guide/node50.html" TARGET="_top">User's Guide</a> gives examples of the 
-; types of selections possible with list.
-; <p>
+; rows that are listed. The syntax is the same as in select.
+; The "Select" section in the `GBTIDL manual <https://www.gb.nrao.edu/GBT/DA/gbtidl/users_guide.pdf#page=29>`_ 
+; gives examples of the types of selections possible with list.
+; 
 ; The rows are usually listed in order of increasing index number
 ; (even if index is not listed).  This can be overridden by specifying
 ; another column name to sort on through the sortcol keyword (passed
 ; in through the _EXTRA keyword).
-; <p>
+; 
 ; Use the FILE keyword to send the listing to a file instead of to the
 ; current screen.
 ;
-; @param start {in}{optional}{type=long}{default=0} If set, the beginning of range to list
-; @param finish {in}{optional}{type=long}{default=last index} If set, the end of range to list
+; :Params: 
+;   start : in, optional, type=long, default=0
+;       If set, the beginning of range to list
+;   finish : in, optional, type=long, default=last index
+;       If set, the end of range to list
 ;
-; @keyword keep {in}{optional}{type=boolean} If set, the list comes from
-; the keep file and !g.line is irrelevant.
+; :Keywords:
+;   keep : in, optional, type=boolean
+;       If set, the list comes from the keep file and !g.line is irrelevant.
+;   columns : in, optional, type=string
+;       If present, only list the values from these columns instead of the
+;       default columns.  Can be either a comma-separated list in a single
+;       string or an array of strings. Columns trumps the user flag, if set.
+;   user : in, optional, type=boolean
+;       If set and columns is not used, then the columns to list come from 
+;       the !g.user_list_cols value.  If that value is empty then this the
+;       default list is used. !g.user_list_cols is a comma-separated list 
+;       of column names.
+;   file : in, optional, type=string, default=/dev/tty
+;       The file to write to. Defaults to the current screen, using "more" to page
+;       the output.
+;   _EXTRA : in, optional, type=keywords
+;       In addition to the selection keywords the <b>sortcol</b> keyword
+;       is also available here.  Set that equal to a column name and the 
+;       list order will be sorted in increasing values of that column.
 ;
-; @keyword columns {in}{optional}{type=string} If present, only list the
-; values from these columns instead of the default columns.  Can be
-; either a comma-separated list in a single string or an array of
-; strings.  columns trumps the user flag, if set.
-;
-; @keyword user {in}{optional}{type=boolean} If set and columns is not
-; used, then the columns to list come from the !g.user_list_cols
-; value.  If that value is empty then this the default list is used.
-; !g.user_list_cols is a comma-separated list of column names.
+; :Examples:
 ; 
-; @keyword file {in}{optional}{type=string}{default=/dev/tty} The file
-; to write to.  Defaults to the current screen, using "more" to page
-; the output.
+;   .. code-block:: IDL
+; 
+;       ; list first 11 records in the input file
+;       list,0,10
 ;
-; @keyword _EXTRA {in}{optional}{type=keywords} In addition to the
-; selection keywords the <b>sortcol</b> keyword is also available here.  Set
-; that equal to a column name and the list order will be sorted in
-; increasing values of that column.
+;       ; list source and polarization for first 11 entries
+;       list,0,10,columns=['source','polarization']
 ;
-; @examples
-; <pre>
-;    ; list first 11 records in the input file
-;    list,0,10
+;       ; Set the user preferences to index, source, longitude, latitude
+;       !g.user_list_cols = "source,longitude,latitude"
+;       ; and list using the user preferences
+;       list,0,10,/user
 ;
-;    ; list source and polarization for first 11 entries
-;    list,0,10,columns=['source','polarization']
+;       ; this illustrates additional selection
+;       ; list index, source and tsys for all data in ifnum=1
+;       list,ifnum=1,columns='index,source,polarization'
 ;
-;    ; Set the user preferences to index, source, longitude, latitude
-;    !g.user_list_cols = "source,longitude,latitude"
-;    ; and list using the user preferences
-;    list,0,10,/user
+;       ; list, sorting by increasing integration number
+;       list,sortcol='int'
 ;
-;    ; this illustrates additional selection
-;    ; list index, source and tsys for all data in ifnum=1
-;    list,ifnum=1,columns='index,source,polarization'
+;       ; Send the previous list to a file named mylisting
+;       list,sortcol='int',file='mylisting'
 ;
-;    ; list, sorting by increasing integration number
-;    list,sortcol='int'
-;
-;    ; Send the previous list to a file named mylisting
-;    list,sortcol='int',file='mylisting'
-; </pre>
-;
-; @version $Id$
 ;-
 pro list, start, finish, keep=keep, columns=columns, user=user, $
           file=file, _EXTRA=ex
