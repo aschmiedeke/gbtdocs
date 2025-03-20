@@ -1,3 +1,5 @@
+; docformat = 'rst'
+
 ;+
 ; Set the element of the appropriate GUIDE data structure array.
 ;
@@ -8,21 +10,22 @@
 ; the guide structure so that it can be used with guide procedures and
 ; functions (e.g. show).
 ;
-; @param data {in}{required} A data container (continuum or spectrum)
-; to put into the indicated location.
+; :Params:
+;   data : in, required
+;       A data container (continuum or spectrum) to put into the 
+;       indicated location.
 ;
-; @keyword buffer {in}{optional}{type=integer} The location to put the
-; data.  When not supplied the 0 location is used.
-; 
-; @keyword ignore_line {in}{optional}{type=boolean}  When set, the
-; value of !g.line is ignored and the choice of which data array to
-; use is determined by the contents of data.
+; :Keywords:
+;   buffer : in, optional, type=integer
+;       The location to put the data. When not supplied the 0 location
+;       is used.
+;   ignore_line : in, optional, type=boolean
+;       When set, the value of !g.line is ignored and the choice of
+;       which data array to use is determined by the contents of data.
+;   noshow : in, optional, type=boolean
+;       Normally, if buffer is 0 and !g.frozen is 0 then show is called
+;       at the end.  If this is set, that behavior is turned off.
 ;
-; @keyword noshow {in}{optional}{type=boolean} Normally, if buffer is 0
-; and !g.frozen is 0 then show is called at the end.  If this is set,
-; that behavior is turned off.
-;
-; @version $Id$
 ;-
 pro set_data_container, data, buffer=buffer, $
         ignore_line=ignore_line, noshow=noshow

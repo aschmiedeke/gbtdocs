@@ -1,13 +1,15 @@
+; docformat = 'rst'
+
 ;+
 ; List all of the idstring values in the flag file of the current
 ; spectral line data source or the keep (output) data source.
 ;
-; <p>Continuum flagging is not supported.
+; Continuum flagging is not supported.
 ;
-; @keyword keep {in}{optional}{type=boolean} List the idstring values
-; in the keep (output) file?
+; :Keywords:
+;   keep : in, optional, type=boolean
+;       List the idstring values in the keep (output) file?
 ;
-; @version $Id$
 ;-
 pro listids, keep=keep
     compile_opt idl2

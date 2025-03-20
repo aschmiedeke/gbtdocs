@@ -1,39 +1,47 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure subtracts the data from two data containers stored in
 ; the global buffers 0-15.  
 ;
-; <p>If no parameters are passed, then the data from buffer 1 is
+; If no parameters are passed, then the data from buffer 1 is
 ; subtracted from buffer 0 and the result is stored in buffer 0.  If
 ; two parameters are supplied, the second is subtracted from the first
 ; and the result is stored in buffer 0.  If three parameters are
 ; supplied, the second is subtracted from the first and the result is
 ; stored in the third. 
 ;
-; <p> out = in1 - in2
+; out = in1 - in2
 ;
-; @param in1 {in}{optional}{type=integer} Input data container #1
-; @param in2 {in}{optional}{type=integer} Input data container #2
-; @param out {in}{optional}{type=integer} Output data container
+; 
+; :Params:
+;   in1 : in, optional, type=integer
+;       Input data container #1
+;   in2 : in, optional, type=integer
+;       Input data container #2
+;   out : in, optional, type=integer
+;       Output data container
 ;
-; @examples
-; <pre>
-;    getrec,1
-;    copy,0,1
-;    getrec,2
-;    subtract
+; :Examples:
 ;
-;    getrec,1
-;    copy,0,10
-;    getrec,2
-;    copy,0,11
-;    subtract,10,11,12   ; The data from buffer 11 is subtracted from buffer 10
-;                        ; and the result is stored in buffer 12
-; </pre>
+;   .. code-block:: IDL
+; 
+;       getrec,1
+;       copy,0,1
+;       getrec,2
+;       subtract
 ;
-; @uses <a href="../toolbox/dcsubtract.html">dcsubtract</a>
-; @uses <a href="../toolbox/dcpaircheck.html">dcpaircheck</a>
+;       getrec,1
+;       copy,0,10
+;       getrec,2
+;       copy,0,11
+;       subtract,10,11,12   ; The data from buffer 11 is subtracted from buffer 10
+;                           ; and the result is stored in buffer 12
+; 
+; :Uses:
+;   :idl:pro:`dcsubtract`
+;   :idl:pro:`dcpaircheck`
 ;
-; @version $Id$
 ;-
 pro subtract, in1, in2, out
 
