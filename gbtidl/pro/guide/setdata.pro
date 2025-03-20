@@ -1,35 +1,41 @@
+; docformat = 'rst'
+
 ;+
 ; Convenience function for setting data array of a data container.
 ;
-; @param value {in}{required}{type=float} data values to be inserted into the
-; data container.  Either a single float value or an array of floats
-; are valid.
+; :Params:
+;   value : in, required, type=float
+;       data values to be inserted into the data container.  Either a single
+;       float value or an array of floats are valid.
+;   elements : in, optional, type=long, default=all
+;       The data array indices to be  changed.  Use one integer to set a single
+;       element in the data array. Use a two element array to specify a range
+;       to be set.
 ;
-; @param elements {in}{optional}{type=long}{default=all} The data array indices to be 
-; changed.  Use one integer to set a single element in the data array.  Use
-; a two element array to specify a range to be set.
+; :Keywords:
+;   buffer : in, optional, type=integer, default=0
+;       The data container buffer number from which the data values are retrieved.
 ;
-; @keyword buffer {in}{optional}{type=integer}{default=0} The data container
-; buffer number from which the data values are retrieved.
-;
-; @examples
-; Put the first spectra into !g.s[0], retrieve all its data, and then just the first element
-; <pre>
-;    filein,'file.fits'
-;    getrec,1
-;    help, *!g.s[0].data_ptr
-;    <PtrHeapVar257> FLOAT     = Array[2048]
-;    x = fltarr(1026)
-;    setdata, x
-;    help, *!g.s[0].data_ptr
-;    <PtrHeapVar257> FLOAT     = Array[1026]
-;    setdata, 2.5, 0
-;    help, (*!g.s[0].data_ptr)[0]
-;    <PtrHeapVar257> FLOAT     = 2.5
-; </pre>
-;
-; @uses <a href="../toolbox/data_valid.html">data_valid</a>
-; @uses <a href="../toolbox/setdcdata.html">setdcdata</a>
+; :Examples:
+;   Put the first spectra into !g.s[0], retrieve all its data, and then just the first element
+; 
+;   .. code-block:: IDL
+; 
+;       filein,'file.fits'
+;       getrec,1
+;       help, *!g.s[0].data_ptr
+;       <PtrHeapVar257> FLOAT     = Array[2048]
+;       x = fltarr(1026)
+;       setdata, x
+;       help, *!g.s[0].data_ptr
+;       <PtrHeapVar257> FLOAT     = Array[1026]
+;       setdata, 2.5, 0
+;       help, (*!g.s[0].data_ptr)[0]
+;       <PtrHeapVar257> FLOAT     = 2.5
+; 
+; :Uses:
+;   :idl:pro:`data_valid`
+;   :idl:pro:`setdcdata`
 ;
 ;-
 pro setdata, value, elements, buffer=buffer 

@@ -1,65 +1,68 @@
+; docformat = 'rst'
+
 ;+
 ; Put entries in to the stack based on the given selection criteria in
-; the global find structure.  This is an alternative to <a href="select.html">select</a>.
+; the global find structure.  This is an alternative to :idl:pro:`select`.
 ;
-; <p>Use <a href="setfind.html">setfind</a> to set specific selection criteria.  Once set, they 
-; remain set until cleared using <a href="clearfind.html">clearfind</a>.  FIND uses those selection 
-; criteria and <a href="select.html">select</a> to add entries to the stack corresponding to items 
+; Use :idl:pro:`setfind` to set specific selection criteria.  Once set, they 
+; remain set until cleared using :idl:pro:`clearfind`.  FIND uses those selection 
+; criteria and :idl:pro:`select` to add entries to the stack corresponding to items 
 ; in the data source that match the selection criteria.  The stack can
 ; then be iterated through to process just the most recently found
 ; data.
 ;
-; <p><b>Note:</b> unlike <a href="select.html">select</a>, find clears the stack unless the /append 
+; *Note:* unlike :idl:pro:`select`, find clears the stack unless the /append 
 ; keyword is used.  This has been done to make the behavior of FIND
 ; more like the CLASS version of FIND. 
 ;
-; @keyword append {in}{optional}{type=boolean} When set, the stack is
-; <b>not</b> first cleared before select is used to add values to the
-; stack.  Use this with some caution since this may cause the same
-; entries to appear more than once in the stack unless the selection
-; criteria used by FIND are changed carefully.
+; :Keywords:
+;   append : in, optional, type=boolean
+;       When set, the stack is **not** first cleared before select is used
+;       to add values to the stack.  Use this with some caution since this
+;       may cause the same entries to appear more than once in the stack 
+;       unless the selection criteria used by FIND are changed carefully.
+;   keep : in, optional, type=boolean
+;       Select entries from the currently attached output (keep) file.
 ;
-; @keyword keep {in}{optional}{type=boolean} Select entries from the
-; currently attached output (keep) file.
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       ; define the selection
+;       setfind,'scan',100,200          ; scans 100 through 200
+;       find
+;       ; refine it
+;       setfind,'polarization','LL'     ; only the LL polarization
+;       find
+;       ; refine it
+;       setfind,'int','2:3'             ; only integrations 2 and 3
+;       find
+;       ; refine it
+;       setfind,'int',4,/append         ; add integration 4 to the set
+;       find
+;       ; this is equivalent to the previous 2 setfind examples.
+;       ; note that any valid selection string can be used
+;       setfind,'int','2:3,4'
+;       setfind,'polarization','RR'     ; the other polarization
+;       find,/append                    ; the LL selection is still there due to /append
+;       clearfind,'int'                 ; clear the integration parameter
+;       find                            ; all integrations, RR polarization, scans 100 to 200.
 ;
-; @examples
-; <pre>
-;  ; define the selection
-;  setfind,'scan',100,200 ; scans 100 through 200
-;  find
-;  ; refine it
-;  setfind,'polarization','LL'  ; only the LL polarization
-;  find
-;  ; refine it
-;  setfind,'int','2:3'   ; only integrations 2 and 3
-;  find
-;  ; refine it
-;  setfind,'int',4,/append ; add integration 4 to the set
-;  find
-;  ; this is equivalent to the previous 2 setfind examples.
-;  ; note that any valid selection string can be used
-;  setfind,'int','2:3,4'
-;  setfind,'polarization','RR'   ; the other polarization
-;  find,/append   ; the LL selection is still there due to /append
-;  clearfind,'int'    ; clear the integration parameter
-;  find           ; all integrations, RR polarization, scans 100 to 200.
-; </pre>
+;   If you often set the same parameter, you can write a procedure, as in
+;   this example, to save yourself time.  You might add optional feedback
+;   to the user that the parameter was set and you might add additional
+;   parameter checks.
 ;
-; If you often set the same parameter, you can write a procedure, as in
-; this example, to save yourself time.  You might add optional feedback
-; to the user that the parameter was set and you might add additional
-; parameter checks.
+;   .. code-block:: IDL
+; 
+;       pro setsrc,src
+;           setfind,'source',src
+;       end
 ;
-; <pre>
-;   pro setsrc,src
-;      setfind,'source',src
-;   end
-; </pre>
+; :Uses:
+;   :idl:pro:`emptystack`
+;   :idl:pro:`select`
 ;
-; @uses <a href="emptystack.html">emptystack</a>
-; @uses <a href="select.html">select</a>
-;
-; @version $Id$
 ;-
 pro find, keep=keep, append=append
     compile_opt idl2
