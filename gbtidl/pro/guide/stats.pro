@@ -36,6 +36,7 @@
 ; :Examples:
 ; 
 ;   .. code-block:: IDL
+; 
 ;       getrec,1
 ;       show               ; Use the plotter to set the X-axis to channels
 ;       stats,0,99         ; Gets stats for first 100 channels
