@@ -1,3 +1,5 @@
+; docformat = 'rst'
+
 ;+
 ; Retrieve the number of records associated with an i/o object.
 ;
@@ -6,11 +8,13 @@
 ; If the value of !g.line is true, then the data comes from !g.lineio
 ; otherwise the data comes from !g.contio
 ;
-; @keyword keep {in}{optional}{type=bool} the data comes from
-; !g.lineoutio
-; @returns The number of records.
+; :Keywords:
+;   keep : in, optional, type=bool
+;       the data comes from !g.lineoutio
+; 
+; :Returns:
+;   The number of records.
 ;
-; @version $Id$
 ;-
 function nrecords, keep=keep
     compile_opt idl2

@@ -1,42 +1,47 @@
+; docformat = 'rst'
+
 ;+
 ; Set some regions for use by other GUIDE procedures and functions.
-; <p>
+; 
 ; This sets the !g.regions structure with the regions described by the
 ; regions argument.  Overlaps in regions are eliminated and the
 ; resulting contents of !g.regions is a set of unique, non-overlapping
 ; regions.  Regions are expressed as channel numbers.  This procedure
 ; always clears the contents of !g.regions before starting. 
 ;
-; <p><B>Note: there is a limit of 100 regions.</B>  If you need to use
+; *Note:* there is a limit of 100 regions. If you need to use
 ; more regions you will need to either use the fitting functions
 ; directly or make a local copy of the guide_struct file which defines
-; the !g structure and edit the sizes in there.
+; the !gstructure and edit the sizes in there.
 ;
-; @param regions {in}{required}{type=integer array} The regions to
-; set.  If this is a 1D array, then it is interpreted as a sequence of
-; beginning and ending channels which define n_elements/2 regions,
-; inclusive.  A warning is issued in that case if n_elements is not a
-; multiple of 2.  The trailing, unmatched value will be ignored.
-; Values after the first negative value encountered are also ignored.
-; If this is a 2D array, then the first dimension must be 2 and the
-; second dimension is the number of regions.  A warning is issued if
-; this argument gives more than 100 regions.  Only the first 100
-; regions are used in that case.  Overlaping regions are eliminated.
+; :Params:
+;   regions : in, required, type=integer array
+;       The regions to set.  If this is a 1D array, then it is interpreted 
+;       as a sequence of beginning and ending channels which define
+;       n_elements/2 regions, inclusive.  A warning is issued in that case
+;       if n_elements is not a multiple of 2. The trailing, unmatched value 
+;       will be ignored. Values after the first negative value encountered 
+;       are also ignored. If this is a 2D array, then the first dimension 
+;       must be 2 and the second dimension is the number of regions. A 
+;       warning is issued if this argument gives more than 100 regions.  
+;       Only the first 100 regions are used in that case.  Overlaping regions
+;       are eliminated.
 ;
-; @examples
-; All of these produce identical results
-; <pre>
-;    ; as 1-D array
-;    nregion, [125,180,215,300,320,475]
-;    ; as 2-D array
-;    nregion, [[125,180],[215,300],[320,475]]
-;    ; same regions, beginning and end channels swapped
-;    nregion, [180,125,300,215,320,475]
-;    ; overlapping regions
-;    nregion, [125,160,150,180,215,300,320,420,400,475]
-; </pre>
-;
-; @version $Id$
+; :Examples:
+; 
+;   All of these produce identical results
+; 
+;   .. code-block:: IDL
+; 
+;       ; as 1-D array
+;       nregion, [125,180,215,300,320,475]
+;       ; as 2-D array
+;       nregion, [[125,180],[215,300],[320,475]]
+;       ; same regions, beginning and end channels swapped
+;       nregion, [180,125,300,215,320,475]
+;       ; overlapping regions
+;       nregion, [125,160,150,180,215,300,320,420,400,475]
+; 
 ;-
 pro nregion, regions
     compile_opt idl2
