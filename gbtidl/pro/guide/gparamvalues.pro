@@ -1,20 +1,23 @@
+; docformat = 'rst' 
+
 ;+
 ; Procedure to put values into the !g.gauss.params container.
 ;
-; @param gauss_index {in}{required}{type=long} Which gaussian (0 to
-; ngauss-1) to set the parameters of.
-; @param values {in}{required}{type=double array} Array of values to
-; assign to the indicated gaussian (must have 3 elements).  Order is
-; height, center, and full width at half maximum.  The units are
-; always channels.
+; :Params:
+;   gauss_index : in, required, type=long
+;       Which gaussian (0 to ngauss-1) to set the parameters of.
+;   values : in, required, type=double array
+;       Array of values to assign to the indicated gaussian (must
+;       have 3 elements). Order is height, center, and full width
+;       at half maximum. The units are always channels.
 ;
-; @examples
-; <pre>
-;   ngauss, 2    ; set up for 2 gaussians
-;   gparamvalues, 0, [1020.0, 1.24, 12.4]
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       ngauss, 2    ; set up for 2 gaussians
+;       gparamvalues, 0, [1020.0, 1.24, 12.4]
 ;
-; @version $Id$
 ;-
 pro gparamvalues, gauss_index, values
 

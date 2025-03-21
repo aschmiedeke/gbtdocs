@@ -1,27 +1,31 @@
+; docformat = 'rst' 
+
 ;+
 ; Summarize the status of GBTIDL as found in the global structure used
 ; by GBTIDL (!g).
 ;
-; <p>This summarizes the parts of the !g structure that the user
+; This summarizes the parts of the !g structure that the user
 ; is most likely to care about.  help,!g,/struct is useful, but
 ; only if you know exactly what you are looking for.  Many fields
 ; in !g are not intended to be manipulated directly by the user
 ; and even those that are are sometimes difficult to interpret.
 ;
-; <p>Using /full adds plotter color settings to the output.
+; Using /full adds plotter color settings to the output.
 ;
-; <p>See also the description of the contents of the !g structure <a href="http://wwwlocal.gb.nrao.edu/GBT/DA/gbtidl/users_guide/node59.html" TARGET="_top">appendix A</a>
-; in appendix A of the <a href="http://wwwlocal.gb.nrao.edu/GBT/DA/gbtidl/users_guide" TARGET="_TOP">User's Guide.</a>
+; See also the description of the contents of the !g structure in the appendix A of the `GBTIDL manual <https://www.gb.nrao.edu/GBT/DA/gbtidl/users_guide.pdf#page=35>`_p">appendix A</a>
 ;
-; @keyword full {in}{optional}{type=boolean} If set, color settings
-; are also summarized.  The default is to omit that information.
 ;
-; @examples
-; <pre>
-;    gstatus
-; </pre>
+; :Keyword:
+;   full : in, optional, type=boolean
+;       If set, color settings are also summarized. 
+;       The default is to omit that information.
 ;
-; @version $Id$
+; :examples:
+; 
+;   .. code-block:: IDL
+; 
+;       gstatus
+; 
 ;-
 pro gstatus, full=full
     compile_opt idl2
