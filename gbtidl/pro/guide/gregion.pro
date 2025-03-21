@@ -32,7 +32,7 @@
 ; 
 ;   All of these produce identical results
 ; 
-;   ..code-block:: IDL
+;   .. code-block:: IDL
 ; 
 ;       ; as 1-D array
 ;       gregion, [125,180,215,300,320,475]
