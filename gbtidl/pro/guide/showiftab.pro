@@ -107,9 +107,12 @@ end
 ;
 ; No internal error checking on the validity of arr.
 ;
-; @param arr {in}{required}{type=integer array} Array to format.
-; Assumed to be already sorted, without duplicates.
-; @returns formatted string
+; :Params:
+;   arr : in, required, type=integer array
+;       Array to format. Assumed to be already sorted, without duplicates.
+; 
+; :Returns:
+;   formatted string
 ;
 ; @private
 ;-
@@ -181,15 +184,16 @@ end
 ; indexes structure is in use for that set of masks and 0 indicates it
 ; is not in use.
 ;
-; @param iftab {in}{required}{type=3D integer array} The iftable
-; array.  The 3 axes are, in order, ifnum, plnum, and fdnum.  Elements
-; are 1 when data exists with that combination and 0 if no data exists
-; for that combination.
-; @param idxstruct {out}{required}{type=structure} The structure set by
-; this routine.  Valid through the first idxcount elements of the
-; masks field.
-; @param idxcount {out}{required}{type=integer} The current size of
-; idxstruct already in use.
+; :Params:
+;   iftab : in, required, type=3D integer array
+;       The iftable array.  The 3 axes are, in order, ifnum, plnum, and
+;       fdnum.  Elements are 1 when data exists with that combination
+;       and 0 if no data exists for that combination.
+;   idxstruct : out, required, type=structure 
+;       The structure set by this routine.  Valid through the first
+;       idxcount elements of the masks field.
+;   idxcount : out, required, type=integer
+;       The current size of idxstruct already in use.
 ;
 ; @private
 ;-
@@ -348,9 +352,13 @@ end
 ;   if equal, compare based on fdnum values
 ;      if equal, compare based on plnum values.
 ;
-; @param a {in}{required}{type=structure}
-; @param b {in}{required}{type=structure}
-; @returns -1 if a<b, 0 if a==b, and 1 if a>b
+; :Params:
+;   a : in, required, type=structure
+;   b : in, required, type=structure
+; 
+; :Returns:
+;   -1 if a<b, 0 if a==b, and 1 if a>b
+; 
 ; @private
 ;-
 function compareIndexStructs, a, b
@@ -373,10 +381,14 @@ end
 ; this should be cheap and the extra effort to code something more
 ; efficient just isn't worth it.
 ;
-; @param a {in}{required}{type=structre} The index structure to sort,
-; as used by showiftab.
-; @returns the sorted indexes into a to be used to print the formatted
-; summaries in a sorted order.
+; :Params:
+;   a : in, required, type=structre
+;       The index structure to sort, as used by showiftab.
+; 
+; :Returns:
+;   The sorted indexes into a to be used to print the formatted
+;   summaries in a sorted order.
+; 
 ; @private
 ;-
 function sortIndexStruct, a
