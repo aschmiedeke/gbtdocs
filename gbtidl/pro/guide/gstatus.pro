@@ -88,8 +88,10 @@ end
 ; Translate color value into "!name" string.  Used by gstatus to
 ; format the colors in a human readable form.
 ;
-; @param cvalue {in}{required}{type=intetger} The color value to
-; translate.
+; :Params:
+; 
+;   cvalue : in, required, type=intetger
+;       The color value to translate.
 ;
 ; @private
 ;-

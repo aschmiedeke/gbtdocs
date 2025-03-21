@@ -1,37 +1,47 @@
+; docformat = 'rst' 
+
 ;+
 ; Summarize the valid ifnum, fdnum, plnum combinations for a scan.
 ;
-; @param scan {in}{required}{type=integer} Scan number of interest.
-; @keyword keep {in}{optional}{type=boolean} If set, the summary uses
-; information from the keep[ file.
+; :Params:
+;   scan : in, required, type=integer
+;       Scan number of interest.
+;   keep : in, optional, type=boolean
+;       If set, the summary uses information from the keep file.
 ;
-; @examples
-; A scan where all combinations of 2 IFs, 8 feeds, and 4 polarization
-; is present.
-; <pre>
-;
-; GBTIDL -> showiftab,35
+; :Examples:
+;   A scan where all combinations of 2 IFs, 8 feeds, and 4 polarization
+;   is present.
+; 
+;   .. code-block:: IDL
+; 
+;       showiftab,35
 ;  
-;      Scan : 35
-;      ifnum fdnum plnum
-;        0:1   0:7   0:4
+;   .. code-block:: text
+; 
+;       Scan : 35
+;       ifnum fdnum plnum
+;         0:1   0:7   0:4
 ;
-; </pre>
-; In this scan, feed 0 has just plnum 2 for both IFs, feed 1 has just plnum 1
-; for the same IFs, and feeds 2 through 7 have plnum 0 and 1 for the
-; second if.
-; <pre>
-; GBTIDL -> showiftab,33
+;   In this scan, feed 0 has just plnum 2 for both IFs, feed 1 has just plnum 1
+;   for the same IFs, and feeds 2 through 7 have plnum 0 and 1 for the
+;   second if.
+; 
+;   .. code-block:: IDL
+; 
+;       GBTIDL -> showiftab,33
 ;  
-;      Scan : 33
-;      ifnum fdnum plnum
-;        0:1     0     2
-;        0:1     1     1
-;          1   2:7   0:1
-; </pre>
-; @uses <a href="scan_info.html">scan_info</a>
+;   .. code-block:: text
+; 
+;       Scan : 33
+;       ifnum fdnum plnum
+;         0:1     0     2
+;         0:1     1     1
+;           1   2:7   0:1
 ;
-; @version $Id$
+; :Uses:
+;   :idl:pro:`scan_info` 
+;
 ;-
 pro showiftab, scan, keep=keep
   compile_opt idl2
