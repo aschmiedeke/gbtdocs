@@ -33,7 +33,7 @@
 ;
 ; Continuum flagging is not supported.
 ;
-; See Also the "Introduction to Flagging and Blanking Data" in the `GBTIDL manual <https://www.gb.nrao.edu/GBT/DA/gbtidl/users_guide.pdf#page=28>`_
+; See also the "Introduction to Flagging and Blanking Data" in the `GBTIDL manual <https://www.gb.nrao.edu/GBT/DA/gbtidl/users_guide.pdf#page=28>`_
 ;
 ; :Params:
 ;   scan : in, optional, type=integer
@@ -75,7 +75,7 @@
 ;
 ; :Examples:
 ; 
-;   ..code-block:: IDL
+;   .. code-block:: IDL
 ; 
 ;       ; flags all the channels in scan number one
 ;       flag, 1 
