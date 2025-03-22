@@ -1,111 +1,121 @@
+; docformat = 'rst' 
+
 ;+
 ; This function is used by the standard calibration routines to handle
 ; some argument checking and to assign default values to keywords
 ; when not provided by the user.
 ;
-; <p>Encapsulating these here should make it easier for users to
+; Encapsulating these here should make it easier for users to
 ; adapt a calibration routine to do what they want it to do.
 ;
-; <p>Since the calibration routines all only work for line data,
+; Since the calibration routines all only work for line data,
 ; GBTIDL must currently be in line mode when this routine is called.
 ; If it is in continuum mode, that is an error and this function will
 ; return -1.  In addition, there must already be line data opened
 ; using either filein or dirin.
 ;
-; <p>The argument descriptions here refer to what this routine checks
+; The argument descriptions here refer to what this routine checks
 ; for, not what the argument means.  For the meaning of a specific
 ; argument, see the calibration routine in question.  Type checking is
 ; only done for string keywords.
 ;
-; <p>Because this routine is designed to be called by another routine,
+; Because this routine is designed to be called by another routine,
 ; errors are reported such that the message prefix is the name of the
 ; calling routine.  Users are least likely to be confused by those
 ; messages.
 ; 
-; <p>A warning is printed if tau or ap_eff are specified and the units
+; A warning is printed if tau or ap_eff are specified and the units
 ; value (explicit or implied) means tau or ap_eff are not used
 ; (e.g. the default units 'Ta' do not need tau or ap_eff and so if
 ; they are provided, a warning to that effect is printd).  This not
 ; considered a severe problem and processing continues.  This can be
 ; turned off if the quiet keyword is set.
 ;
-; <p>If there was a severe problem, the return value is 0 (false) and
+; If there was a severe problem, the return value is 0 (false) and
 ; the calling routine should exit at that point.  If the arguments are
 ; all okay then the return value is 1 and any defaults are returned in
 ; a structure in the defaults keyword value.
 ;
-; <p>If sampler is supplied then all 3 of ifnum, plnum, and fdnum must
+; If sampler is supplied then all 3 of ifnum, plnum, and fdnum must
 ; not be supplied.  The returned values for these 3 are all -1,
 ; implying that sampler should be used.
 ;
-; <p>If ifnum, fdnum, or plnum are not supplied, the lowest valid
+; If ifnum, fdnum, or plnum are not supplied, the lowest valid
 ; value with data is chosen.  This value is picked by first setting,
 ; ifnum, then fdnum, and finally plnum (using any user-supplied values
 ; first).  If there is no valid data using the user-supplied values
-; then <a href="showiftab.html">showiftab</a> is used to display the set of valid values and the
+; then :idl:pro:`showiftab` is used to display the set of valid values and the
 ; return value is -1.
 ;
-; @param scan {in}{optional}{type=integer} If scan is not supplied,
+; :Params:
+;   scan : in, optional}{type=integer} If scan is not supplied,
 ; then a valid timestamp keyword must be supplied. No default supplied.
-; @param refscan {in}{optional}{type=integer} Ignored unless checkref
+;   refscan {in}{optional}{type=integer} Ignored unless checkref
 ; is true.  If refscan is not supplied, then a valid reftimestamp
 ; keyword must be supplied.  No default supplied.
-; @keyword intnum {in}{optional}{type=integer} Must be >= 0.
-; @keyword ifnum {in}{optional}{type=integer} Must be >= 0. Defaults
-; as described above.
-; @keyword plnum {in}{optional}{type=integer} Kust be >= 0. Defaults
-; as described above.
-; @keyword fdnum {in}{optional}{type=integer} Must be >= 0. Defaults
 ; 
-; @keyword sampler {in}{optional}{type=string} Must be non-empty.
-; Defaults to '' (empty, unspecified).  When set, the returned ifnum,
-; plnum, and fdnum values are all -1.
-; @keyword eqweight {in}{optional}{type=boolean}
-; @keyword units {in}{optional}{type=string} Must be one of
-; "Ta","Ta*", or "Jy".
-; @keyword bswitch {in}{optional}{type=integer} Must be 0, 1 or 2.
-; Defaults to 0.
-; @keyword quiet {in}{optional}{type=boolean}
-; @keyword keepints {in}{optional}{type=boolean}
-; @keyword useflag {in}{optional}{type=boolean} Only one of useflag
-; and skipflag can be set.
-; @keyword skipflag {in}{optional}{type=boolean} Only one of useflag
-; and skipflag can be set.
-; @keyword instance {in}{optional}{type=integer} Must be >=
-; 0. Defaults to 0.
-; @keyword file {in}{optional}{type=string}
-; @keyword timestamp {in}{optional}{type=string} If scan is not
-; supplied, then a valid timestamp keyword must be supplied.
-; @keyword refinstance {in}{optional}{type=integer} Ignored unless
-; checkref is true.  Must be >= 0.  Defaults to 0.
-; @keyword reffile {in}{optional}{type=string} Ignored unless checkref
-; is true.
-; @keyword reftimestamp {in}{optional}{type=string} Ignored unelss
-; checkref is true.  If refscan is not supplied, then a valid
-; reftimestamp keyword must be supplied.
-; @keyword checkref {in}{optional}{type=boolean} Check refscan and the
-; ref* keywords?
-; @keyword tau {in}{optional}{type=float} Warning if tau is set and
-; units is 'Ta' or unset.
-; @keyword ap_eff {in}{optional}{type=float} Warning if units is not
-; 'Jy'.
-; @keyword twofeeds {in}{optional}{type=boolean} When set, fdnum is
-; assumed to be a tracking feed number and it is not influenced by any
-; value that sampler might have.
-; @keyword sig_state {in}{optional}{type=integer} Used for sig_state
-; selection.  When set it must be 0 or 1.  Returned value is -1 if
-; unset or out of bounds.
-; @keyword ret {out}{required}{type=structure} The values to use for
-; ifnum, plnum, fdnum, instance, and bswitch taking into account the defaults
-; as described here.  This is done so that the values of the calling
-; arguments are not altered by this function.
-; @keyword info {out}{required}{type=structure} The scan info structure
-; associated with the scan, timestamp, instance and file arguments as
-; given.  This will not be a structure if there was a problem.
+; :Keywords:
+;   intnum : in, optional, type=integer
+;       Must be >= 0.
+;   ifnum: in, optional, type=integer
+;       Must be >= 0. Defaults as described above.
+;   plnum : in, optional, type=integer
+;       Kust be >= 0. Defaults as described above.
+;   fdnum : in, optional, type=integer
+;       Must be >= 0. Defaults
+;   sampler : in, optional, type=string
+;       Must be non-empty. Defaults to '' (empty, unspecified).
+;       When set, the returned ifnum, plnum, and fdnum values are all -1.
+;   eqweight : in, optional, type=boolean
+; 
+;   units : in, optional, type=string
+;       Must be one of "Ta","Ta*", or "Jy".
+;   bswitch : in, optional, type=integer
+;       Must be 0, 1 or 2. Defaults to 0.
+;   quiet : in, optional, type=boolean
+; 
+;   keepints : in, optional, type=boolean
+; 
+;   useflag : in, optional, type=boolean
+;       Only one of useflag and skipflag can be set.
+;   skipflag : in, optional, type=boolean
+;       Only one of useflag and skipflag can be set.
+;   instance : in, optional, type=integer
+;       Must be >=0. Defaults to 0.
+;   file : in, optional, type=string
+; 
+;   timestamp : in, optional, type=string
+;       If scan is not supplied, then a valid timestamp keyword must be supplied.
+;   refinstance : in, optional, type=integer
+;       Ignored unless checkref is true.  Must be >= 0.  Defaults to 0.
+;   reffile : in, optional, type=string
+;       Ignored unless checkref is true.
+;   reftimestamp : in, optional, type=string
+;       Ignored unelss checkref is true.  If refscan is not supplied, 
+;       then a valid reftimestamp keyword must be supplied.
+;   checkref : in, optional, type=boolean
+;       Check refscan and the ref* keywords?
+;   tau : in, optional, type=float, 
+;       Warning if tau is set and units is 'Ta' or unset.
+;   ap_eff : in, optional, type=float
+;       Warning if units is not 'Jy'.
+;   twofeeds : in, optional, type=boolean
+;       When set, fdnum is assumed to be a tracking feed number and it 
+;       is not influenced by any value that sampler might have.
+;   sig_state : in, optional, type=integer
+;       Used for sig_state selection.  When set it must be 0 or 1. 
+;       Returned value is -1 if unset or out of bounds.
+;   ret : out, required, type=structure
+;       The values to use for ifnum, plnum, fdnum, instance, and bswitch
+;       taking into account the defaults as described here. This is done 
+;       so that the values of the calling arguments are not altered by 
+;       this function.
+;   info : out, required, type=structure
+;       The scan info structure associated with the scan, timestamp, 
+;       instance and file arguments as given. This will not be a structure
+;       if there was a problem.
 ;
 ; @private_file
-;
-; @version $Id$
 ;-
 function check_calib_args, scan,refscan,intnum=intnum,ifnum=ifnum,plnum=plnum,$
   fdnum=fdnum,sampler=sampler,eqweight=eqweight,units=units,bswitch=bswitch,quiet=quiet,keepints=keepints,$
@@ -488,14 +498,18 @@ end
 ;
 ; IDL arrays are stored in fortran order.
 ;
-; @param loc {in}{required}{type=integer} Vector of locations into a
-; 3D array described by the other parmeters.
-; @param nif {in}{required}{type=integer} Length of first axis.
-; @param nfd {in}{required}{type=integer} Length of second axis.
+; :Params:
+;   loc : in, required, type=integer
+;       Vector of locations into a 3D array described by the other parmeters.
+;   nif : in, required, type=integer
+;       Length of first axis.
+;   nfd : in, required, type=integer
+;       Length of second axis.
 ;
-; @returns (3,n_elements(loc)) array, one 3-D vector giving the
-; coordinates into a 3D array described by nif, nfd, npl for each
-; element of loc.
+; :Returns:
+;   (3,n_elements(loc)) array, one 3-D vector giving the
+;   coordinates into a 3D array described by nif, nfd, npl for each
+;   element of loc.
 ; 
 ; @private
 ;-
