@@ -1,3 +1,5 @@
+; docformat = 'rst'
+
 ;+
 ; Replace spectral channels by interpolation, or with zero values or
 ; blanks.  If neither zero or blank are set, the data between bchan
@@ -5,35 +7,39 @@
 ; points.  If neither bchan or echan are given the user is prompted
 ; select the region to be replaced on the plotter.
 ;
-; @param bchan {in}{optional}{type=float} Starting channel.  If this is
-; a floating point value it is first rounded (using the IDL round function)
-; before being used.  
-; @param echan {in}{optional}{type=float} Ending channel.  If this is
-; a floating point value it is first rounded (using the IDL round function)
-; before being used.
-; @keyword zero {in}{optional}{type=boolean} If this keyword is set,
-; the data are replaced with zero values.  Otherwise, the replacement
-; data values are interpolated from the endpoints.
-; @keyword blank {in}{optional}{type=boolean} If this keyword is set,
-; the data are replaced by IEEE NaN (not a number).  Such values are
-; treated as missing data (not used in operations, not shown on the
-; plotter, etc).  If both blank and zero are set, zero takes
-; precedence and the data will not be blanked.
+; :Params:
+;   bchan : in, optional, type=float
+;       Starting channel.  If this is a floating point value it is first
+;       rounded (using the IDL round function) before being used.  
+;   echan : in, optional, type=float
+;       Ending channel.  If this is a floating point value it is first 
+;       rounded (using the IDL round function) before being used.
+; 
+; :Keywords:
+;   zero : in, optional, type=boolean
+;       If this keyword is set, the data are replaced with zero values. 
+;       Otherwise, the replacement data values are interpolated from the
+;       endpoints.
+;   blank : in, optional, type=boolean
+;       If this keyword is set, the data are replaced by IEEE NaN 
+;       (not a number).  Such values are treated as missing data (not
+;       used in operations, not shown on the plotter, etc).  If both 
+;       blank and zero are set, zero takes precedence and the data will
+;       not be blanked.
 ;
-; @examples
-; <pre>
-;    getrec,1
-;    chan               ; set the X-axis to channels
-;    replace,1023,1025  ; replace the channel range 1023-1025
-;    freq               ; set the X-axis to GHz
-;    replace            ; prompt user for ranges and replace the values
-;    replace,15,/zero   ; set the data value at channel 15 to 0.0
-;    replace,2014,/blank; set the data value at channel 2014 to NaN
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       getrec,1
+;       chan               ; set the X-axis to channels
+;       replace,1023,1025  ; replace the channel range 1023-1025
+;       freq               ; set the X-axis to GHz
+;       replace            ; prompt user for ranges and replace the values
+;       replace,15,/zero   ; set the data value at channel 15 to 0.0
+;       replace,2014,/blank; set the data value at channel 2014 to NaN
 ;
-; @version $Id$
 ;-
-
 pro replace,bchan,echan,zero=zero,blank=blank
 
     compile_opt idl2

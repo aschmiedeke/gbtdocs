@@ -1,13 +1,17 @@
+; docformat = 'rst'
+
 ;+
 ; Clears one of the global accum buffers (frees the pointer, zeros
 ; values).
 ;
-; @param accumnum {in}{optional}{type=integer}{default=0} the accum
-; buffer to clear, in the range of 0 through 3.  Defaults to 0.
+; :Params:
+;   accumnum : in, optional, type=integer, default=0
+;       the accum buffer to clear, in the range of 0 through 3. 
+;       Defaults to 0.
 ;
-; @uses <a href="../toolbox/accumclear.html">accumclear</a>
+; :Uses:
+;   :idl:pro:`accumclear`
 ;
-; @version $Id$
 ;-
 PRO sclear, accumnum
     compile_opt idl2
