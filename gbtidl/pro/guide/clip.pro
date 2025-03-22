@@ -1,27 +1,35 @@
+; docformat = 'rst' 
+
 ;+
 ; This procedure truncates, or clips, data values above and below
 ; specified limits.  Data value can alternatively be blanked using the
 ; /blank flag. In that case, data values outside the limits are
 ; replaced by blanks (NaN).
 ; 
-; @param datamin {in}{required}{type=float} min value to clip
-; @param datamax {in}{required}{type=float} max value to clip
-; @keyword buffer {in}{optional}{type=integer}{default=0} which global
-; buffer to use.
-; @keyword blank {in}{optional}{type=boolean} Replace clipped values
-; with NaN instead of the clipping limit.
+; :Params:
+;   datamin : in, required, type=float
+;       min value to clip
+;   datamax : in, required, type=float
+;       max value to clip
+; 
+; :Keywords:
+;   buffer : in, optional, type=integer, default=0
+;       which global buffer to use.
+;   blank : in, optional, type=boolean
+;       Replace clipped values with NaN instead of the clipping limit.
 ;
-; @examples
-; <pre>
-;    getps,101,plnum=1,ifnum=1
-;    show
-;    clip,-0.3,1.4,/blank
-;    show
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       getps,101,plnum=1,ifnum=1
+;       show
+;       clip,-0.3,1.4,/blank
+;       show
 ;
-; @uses <a href="../toolbox/dcclip.html">dcclip</a>
+; :Uses:
+;   :idl:pro:`dcclip`
 ;
-; @version $Id$
 ;-
 pro clip, datamin, datamax, buffer=buffer, blank=blank
     compile_opt idl2
