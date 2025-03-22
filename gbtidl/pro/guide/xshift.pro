@@ -1,3 +1,5 @@
+; docformat = 'rst' 
+
 ;+ 
 ; This function returns a value that, when given as the argument to
 ; gshift, will shift the primary data container such that it is aligned
@@ -8,40 +10,45 @@
 ; order to align in the current x-axis with the data in the
 ; accumulation buffer.
 ;
-; <p>You can use an alternate data container by setting buffer.  You
+; You can use an alternate data container by setting buffer.  You
 ; can use an alternate global accumulation buffer by setting accumnum.
 ;
-; @param accumnum {in}{type=integer}{default=0} accum buffer to use.
-; Defaults to the primary buffer, 0.  There are 4 buffers total so
-; this value must be between 0 and 3, inclusive.
+; :Params:
+;   accumnum : in, type=integer, default=0
+;       accum buffer to use. Defaults to the primary buffer, 0. There
+;       are 4 buffers total so this value must be between 0 and 3,
+;       inclusive.
 ;
-; @keyword buffer {in}{optional}{type=integer}{default=0} The data
-; container that will eventually be shifted.  Defaults to the primary
-; data container (0).
+; :Keywords:
+;   buffer : in, optional, type=integer, default=0
+;       The data container that will eventually be shifted. Defaults
+;       to the primary data container (0).
 ;
-; @returns shift, in channels, to be used as argument to shift.
-; Returns 0.0 on failure.
+; :Returns:
+;   shift, in channels, to be used as argument to shift. Returns 0.0 on failure.
 ;
-; @examples
-; Accumulate several PS scans
-; <pre>
-; sclear          ; clear the accumulation
-; getps, 31       ; get the first scan
-; freeze          ; turn off auto-update of the plotter
+; :Examples:
+; 
+;   Accumulate several PS scans
+; 
+;   .. code-block:: IDL
+; 
+;       sclear          ; clear the accumulation
+;       getps, 31       ; get the first scan
+;       freeze          ; turn off auto-update of the plotter
 ;
-; ; at this point, set the X-axis units using the plotter GUI
+;       ; at this point, set the X-axis units using the plotter GUI
 ;
-; accum           ; add the first spectrum to the accumulator
-; getps, 32       ; get the next scan, plotter is not auto-updated
-; gshift,xshift() ; shift to align the spectrum to the accum'ed spectrum
-; accum           ; and add it to the accum buffer
-; unfreeze
-; ave
-; </pre>
+;       accum           ; add the first spectrum to the accumulator
+;       getps, 32       ; get the next scan, plotter is not auto-updated
+;       gshift,xshift() ; shift to align the spectrum to the accum'ed spectrum
+;       accum           ; and add it to the accum buffer
+;       unfreeze
+;       ave
+; 
+; :Uses:
+;   :idl:pro:`dcxshift`
 ;
-; @uses <a href="../toolbox/dcxshift.html">dcvshift</a>
-;
-; @version $Id$
 ;-
 function xshift, accumnum, buffer=buffer
     compile_opt idl2

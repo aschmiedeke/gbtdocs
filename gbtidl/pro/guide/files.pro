@@ -1,31 +1,36 @@
+; docformat = 'rst' 
+
 ;+
 ; Prints the file names being used for I/O.
 ;
-; <p>NOTE: This relies on the information at !g.line_filein_name,
+; *NOTE:* This relies on the information at !g.line_filein_name,
 ; !g.cont_filein_name and !g.line_filout_name to be correct.
-; <a href="gstatus.html">gstatus</a> can also be used to show the files currently in 
+; :idl:pro:`gstatus` can also be used to show the files currently in 
 ; use (along with other GBTIDL information).
 ;
-; @keyword full {in}{optional}{type=boolean} When set, expand the file
-; names to their full paths using the IDL file_expand_path function.
+; :Keywords:
+;   full : in, optional, type=boolean
+;       When set, expand the file names to their full paths using
+;       the IDL file_expand_path function.
 ; 
-; @examples
-; <pre>
-; filein, '/home/line.fits'
-; cont
-; filein, '/home/continuum.fits'
-; files, /full ; print full path names
+; :Examples:
 ; 
-;  spectral line  in : /home/fsfold.fits
-;  spectral line out : /home/GBTIDL_KEEP.fits
+;   .. code-block:: IDL
 ; 
-;      continuum  in : /home/continuum.fits
-; </pre>
+;       filein, '/home/line.fits'
+;       cont
+;       filein, '/home/continuum.fits'
+;       files, /full ; print full path names
+; 
+;       spectral line  in : /home/fsfold.fits
+;       spectral line out : /home/GBTIDL_KEEP.fits
+; 
+;       continuum  in : /home/continuum.fits
+; 
 ;
-; <p>Note that GBTIDL_KEEP.fits, is the default output file and it is
+; Note that GBTIDL_KEEP.fits, is the default output file and it is
 ; opened automatically on startup.
 ;
-; @version $Id$
 ;-
 pro files, full=full
 
