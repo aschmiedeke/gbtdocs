@@ -1,43 +1,48 @@
+; docformat = 'rst' 
+
 ;+
 ; Extract some or all of the data array from one of the global buffers.
 ;
-; <p>Use of getdata frees the user from having to deal with pointers
+; Use of getdata frees the user from having to deal with pointers
 ; by providing a copy of some or all of the data array in one of the
 ; global buffers (data containers).
 ;
-; @param buffer {in}{optional}{type=integer}{default=0} The data
-; container buffer from which the data are retrieved (defaults to
-; buffer 0). 
+; :Params:
+;   buffer : in, optional, type=integer, default=0
+;       The data container buffer from which the data are retrieved 
+;       (defaults to buffer 0). 
+;   elements : in, optional, type=integer, default=all
+;       A subset of the full data array can be retrieved by specifying
+;       either a single data array index, or a two-element array to
+;       specify a range of data array indices. Defaults to all elements.
 ;
-; @param elements {in}{optional}{type=integer}{default=all} A subset
-; of the full data array can be retrieved by specifying either a
-; single data array index, or a two-element array to specify a range
-; of data array indices.  Defaults to all elements.
+; :Keywords:
+;   count : out, optional, type=integer
+;       The total number of elements returned.  On error, this will be
+;       0 and the returned value for this function will be -1.
 ;
-; @keyword count {out}{optional}{type=integer} The total number of
-; elements returned.  On error, this will be 0 and the returned value
-; for this function will be -1.
+; :Returns:
+;   The extracted data.
 ;
-; @returns The extracted data.
-;
-; @examples
+; :Examples:
 ; 
-; <pre>
-;    filein,'file.fits'
-;    getrec,0
-;    x = getdata()
-;    help, x
-;    X               FLOAT     = Array[1026]
-;    y = getdata(0,0)
-;    help, y
-;    Y               FLOAT     = 34.5000
-;    z = getdata(0,[0,2])
-;    help, z
-;    z               FLOAT     = Array[3]
-; </pre>
-;
-; @uses <a href="../toolbox/data_valid.html">data_valid</a>
-; @uses <a href="../toolbox/getdcdata.html">getdcdata</a>
+;   .. code-block:: 
+; 
+;       filein,'file.fits'
+;       getrec,0
+;       x = getdata()
+;       help, x
+;       X               FLOAT     = Array[1026]
+;       y = getdata(0,0)
+;       help, y
+;       Y               FLOAT     = 34.5000
+;       z = getdata(0,[0,2])
+;       help, z
+;       z               FLOAT     = Array[3]
+; 
+; :Uses:
+;   :idl:pro:`data_valid`
+;   :idl:pro:`getdcdata`
 ;
 ;-
 FUNCTION getdata, buffer, elements, count=count

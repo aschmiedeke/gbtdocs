@@ -1,32 +1,34 @@
+;docformat = 'rst' 
+
 ;+
 ; Show the most recently fit gaussians and annotate the plot with
 ; their peak, center, width values.
 ;
-; <p>The gaussians are plotted on top of the whatever is already
+; The gaussians are plotted on top of the whatever is already
 ; plotted.
 ;
-; @keyword modelbuffer {in}{optional}{type=integer} The data container
-; buffer containing the model of the most recent gaussian fit.  If this
-; is omitted, a value of -1 is assumed.  If this is -1 then a model is
-; constructed from the fit parameters in !g.gauss.  This is ignored if
-; parts is set.
+; :Keywords:
+;   modelbuffer : in, optional, type=integer
+;       The data container buffer containing the model of the most 
+;       recent gaussian fit.  If this is omitted, a value of -1 is 
+;       assumed.  If this is -1 then a model is constructed from 
+;       the fit parameters in !g.gauss.  This is ignored if parts
+;       is set.
+;   parts : in, optional, type=boolean
+;       When set, show the individual gaussians as separate plots. 
+;       This always constructs the gaussians from the parameters
+;       in !g.gauss.  modelbuffer is ignored when this keyword is set.
+;   color : in, optional, type=integer, default=!g.gshowcolor
+;       A color to use for the plots.
 ;
-; @keyword parts {in}{optional}{type=boolean} When set, show the
-; individual gaussians as separate plots.  This always constructs the
-; gaussians from the parameters in !g.gauss.  modelbuffer is ignored
-; when this keyword is set.
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       ; assumes initial guesses already set
+;       gauss
+;       gshow,/parts
 ;
-; @keyword color {in}{optional}{type=integer}{default=!g.gshowcolor} 
-; A color to use for the plots.
-;
-; @examples
-; <pre>
-;    ; assumes initial guesses already set
-;    gauss
-;    gshow,/parts
-; </pre>
-;
-; @version $Id$
 ;-
 pro gshow, modelbuffer=modelbuffer, parts=parts, color=color
 
