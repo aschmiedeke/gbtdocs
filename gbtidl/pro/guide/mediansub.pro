@@ -1,25 +1,32 @@
+; docformat = 'rst' 
+
 ;+
 ; Subtract the median filtered values of the given width, in channels,
 ; from the data.   The result replaces the original data values. 
 ;
-; <p>Uses the IDL MEDIAN function to get the median filtered array.
+; Uses the IDL MEDIAN function to get the median filtered array.
 ; 
-; @param width {in}{required}{type=integer} The desired number of
-; channels to use in performing the median filter.
-; @keyword buffer {in}{optional}{type=integer}{default=0} The data container to
-; use.  This defaults to the primary data container (0).
+; :Params:
+;   width : in, required, type=integer
+;       The desired number of channels to use in performing the 
+;       median filter.
 ; 
-; @examples
-; <pre>
-;    ; subtract a median filter of width 200 channels
-;    mediansub,200
-; </pre>
+; :Keywords:
+;   buffer : in, optional, type=integer, default=0
+;       The data container to use. This defaults to the primary data
+;       container (0).
+; 
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       ; subtract a median filter of width 200 channels
+;       mediansub,200
 ;
-; @uses <a href="../toolbox/dcmediansub.html">dcmediansub</a>
+; :Uses:
+;   :idl:pro:`dcmediansub`
 ;
-; @version $Id$
 ;-
-
 pro mediansub, width, buffer=buffer
     compile_opt idl2
 

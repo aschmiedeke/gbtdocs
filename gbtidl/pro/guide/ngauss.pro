@@ -1,17 +1,21 @@
+; docformat = 'rst' 
+
 ;+
 ; Sets the value of !g.gauss.ngauss.  Must set this before fitting
-; gaussians.  The <a href="fitgauss.html">fitgauss</a> procedure will set this for you as you mark 
+; gaussians.  The :idl:pro:`fitgauss` procedure will set this for you as you mark 
 ; off individual gaussians to be fit.
 ;
-; @param ng {in}{required}{type=integer} The total number of gauss to fit.
+; :Params:
+;   ng : in, required, type=integer
+;       The total number of gauss to fit.
 ;
-; @examples
-; <pre>
-; ; fit three gaussians
-; ngauss, 3
-; </pre>
-;
-; @version $Id$
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       ; fit three gaussians
+;       ngauss, 3
+; 
 ;-
 pro ngauss, ng
     compile_opt idl2
