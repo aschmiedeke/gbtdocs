@@ -1,21 +1,27 @@
+; docformat = 'rst' 
+
 ;+
 ; List the displayed data container or a global data container in
-; tabular form.  See the documentation for  <a href="../toolbox/dcascii.html#_dcascii">dcascii</a> for an explanation
-; of the output.  Use <a href="../plotter/write_ascii.html">write_ascii</a> to save this output to a file.
+; tabular form. See the documentation for :idl:pro:`dcascii` for
+; an explanation of the output. Use :idl:pro:`write_ascii` to save
+; this output to a file.
 ;
-; @param buffer {in}{optional}{type=integer} The global buffer number.
-; If not set, it uses the most recently displayed data as shown in 
-; the plotter.
+; :Params:
+;   buffer : in, optional, type=integer
+;       The global buffer number. If not set, it uses the most 
+;       recently displayed data as shown in the plotter.
 ;
-; @keyword brange {in}{optional}{type=float}{default=all} Beginning of
-; the range to use, in units of the current plotter X-axis
+; :Keywords:
+;   brange : in, optional, type=float, default=all
+;       Beginning of the range to use, in units of the current 
+;       plotter X-axis
+;   erange : in, optional, type=float, default=all
+;       End of the range to use, in units of the current plotter
+;       X-axis
 ;
-; @keyword erange {in}{optional}{type=float}{default=all} End of
-; the range to use, in units of the current plotter X-axis
+; :Uses:
+;   :idl:pro:`dcascii`
 ;
-; @uses <a href="../toolbox/dcascii.html#_dcascii">dcascii</a>
-;
-; @version $Id$
 ;-
 pro table,buffer,brange=brange,erange=erange
     if n_elements(buffer) eq 0 then begin

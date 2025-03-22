@@ -1,20 +1,24 @@
+; docformat = 'rst' 
+
 ;+
 ; Remove specific values from the stack.
 ;
-; @param index {in}{required}{type=integer} The values to be
-; removed. Any value in the stack that matches a value in this
-; parameter is removed from the stack.
+; :Params:
+;   index : in, required, type=integer
+;       The values to be removed. Any value in the stack that
+;       matches a value in this parameter is removed from the 
+;       stack.
 ;
-; @examples
-; <pre>
-;   addstack, 10,30,2
-;   delete, [16,18,20]
-;   tellstack
-;   ; result is ...
-;   ; [ 10, 12, 14, 22, 24, 26, 28, 30]
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       addstack, 10,30,2
+;       delete, [16,18,20]
+;       tellstack
+;       ; result is ...
+;       ; [ 10, 12, 14, 22, 24, 26, 28, 30]
 ;
-; @version $Id$
 ;-
 PRO delete, index
     compile_opt idl2

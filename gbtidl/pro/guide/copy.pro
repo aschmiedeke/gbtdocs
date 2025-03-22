@@ -1,31 +1,35 @@
+; docformat = 'rst' 
+
 ;+
 ; Copy the data from the in buffer to the out buffer.  Anything in
 ; out is lost. 
 ; 
-; <p>This uses the value of !g.line.  If it is set (1) then the array
+; This uses the value of !g.line.  If it is set (1) then the array
 ; of line data (!g.s) is used, otherwise the array of continuum data
 ; (!g.c) is used.  The contents of the in buffer remain unchanged by
 ; this operation. 
 ;
-; <p>There are 16 buffers total, numbered from 0 through 15.
+; There are 16 buffers total, numbered from 0 through 15.
 ;
-; @param in {in}{required}{type=integer} The buffer to copy values
-; from.
+; :Params:
+;   in : in, required, type=integer
+;       The buffer to copy values from.
+;   out : in, required, type=integer
+;       The buffer to copy the values to. 
 ;
-; @param out {in}{required}{type=integer} The buffer to copy the
-; values to. 
+; :Examples:
+; 
+;   Copy the contents of buffer 0 to buffer 10.  Then copy the
+;   contents of 9 to buffer 0.
+; 
+;   .. code-block:: IDL
+;       
+;       copy, 0, 10
+;       copy, 9, 0
+; 
+; :Uses:
+;   :idl:pro:`set_data_container`
 ;
-; @examples
-; Copy the contents of buffer 0 to buffer 10.  Then copy the
-; contents of 9 to buffer 0.
-; <pre>
-;    copy, 0, 10
-;    copy, 9, 0
-; </pre>
-;
-; @uses <a href="set_data_container.html">set_data_container</a>
-;
-; @version $Id$
 ;-
 PRO copy, in, out
     compile_opt idl2
