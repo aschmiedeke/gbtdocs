@@ -1,30 +1,36 @@
+; docformat = 'rst' 
+
 ;+
 ; This procedure smooths a spectrum with a hanning filter.
 ;
-; <p>Replaces the contents of the data being smoothed with the
+; Replaces the contents of the data being smoothed with the
 ; smoothed data.  Blanked data values are ignored.
 ;
-; <p>For spectrum data containers, the frequency_resolution is set 
-; using <a href="esthanres.html">esthanres</a> 
+; For spectrum data containers, the frequency_resolution is set 
+; using :idl:pro:`esthanres`. 
 ;
-; @keyword buffer {in}{optional}{type=integer}{default=0} global
-; buffer number to use (0-15).
-; @keyword decimate {in}{optional}{type=boolean} If set, decimates by 2.
-; @keyword ok {out}{optional}{type=boolean} Returns 1 if everything
-; went ok, 0 if it did not (invalid or empty buffer)
+; :Keywords:
+;   buffer : in, optional, type=integer, default=0
+;       global buffer number to use (0-15).
+;   decimate : in, optional, type=boolean
+;       If set, decimates by 2.
+;   ok : out, optional, type=boolean
+;       Returns 1 if everything went ok, 0 if it did not
+;       (invalid or empty buffer)
 ;
-; @examples
-; <pre>
-;    getrec,1
-;    show
-;    hanning
-;    show
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       getrec,1
+;       show
+;       hanning
+;       show
 ;
-; @uses <a href="gconvol.html">gconvol</a>
-; @uses <a href="decimate.html">decimate</a>
+; :Uses:
+;   :idl:pro:`gconvol`
+;   :idl:pro:`decimate`
 ;
-; @version $Id$
 ;-
 
 pro hanning, buffer=buffer, decimate=decimate, ok=ok
