@@ -1,10 +1,12 @@
+; docformat = 'rst' 
+
 ;+
 ; Find the sampler name which corresponds to the given if, feed, and
 ; polarization numbers in the scan.  This value is the same as the
 ; sampler_name in the data containers associated with that if, feed,
 ; and polarization numbers in the scan.
 ;
-; <p>A single value is always returned.  If the same scan
+; A single value is always returned.  If the same scan
 ; appears more than once in the data file then a value corresponding
 ; to instance will be returned.  If instance is not used then the
 ; value corresponding to the first instance (instances=0) will be
@@ -13,26 +15,36 @@
 ; can be used to ensure that a single scan is used (scan and instance
 ; are ignored in that case).
 ;
-; <p>If the requested combination of if, feed, and polarization
+; If the requested combination of if, feed, and polarization
 ; numbers is not found in the scan, the returned value is an empty
 ; string.
 ;
-; @param scan {in}{required}{type=integer} scan number
-; @param ifnum {in}{required}{type=integer} IF number
-; @param plnum {in}{required}{type=integer} polarization number
-; @param fdnum {in}{required}{type=integer} feed number
-; @keyword instance {in}{optional}{type=integer} Which occurence
-; of this scan should be used.  Default is 0.
-; @keyword file {in}{optional}{type=string} When specified, limit the search 
-; for this scan (and instance) to this specific file.  Default is all files.
-; @keyword timestamp {in}{optional}{type=string} The M&C timestamp associated
-; with the desired scan. When supplied, scan and instance are ignored.
-; @keyword quiet {in}{optional}{type=boolean} When set, suppress most
-; error messages.  Useful when being used within another procedure.
-; @returns sampler name
+; :Params:
+;   scan : in, required, type=integer
+;       scan number
+;   ifnum : in, required, type=integer
+;       IF number
+;   plnum : in, required, type=integer
+;       polarization number
+;   fdnum : in, required, type=integer
+;       feed number
+; 
+; :Keywords:
+;   instance : in, optional, type=integer
+;       Which occurence of this scan should be used. Default is 0.
+;   file : in, optional, type=string
+;       When specified, limit the search for this scan (and instance) 
+;       to this specific file.  Default is all files.
+;   timestamp : in, optional, type=string
+;       The M&C timestamp associated with the desired scan. When 
+;       supplied, scan and instance are ignored.
+;   quiet : in, optional, type=boolean
+;       When set, suppress most error messages.  Useful when being used 
+;       within another procedure.
+; 
+; :Returns:
+;   sampler name
 ;
-;
-; @version $Id$
 ;-
 function whichsampler, scan, ifnum, plnum, fdnum, instance=instance,$
                        file=file,timestamp=timestamp,quiet=quiet

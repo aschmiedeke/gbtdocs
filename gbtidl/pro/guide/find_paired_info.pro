@@ -1,10 +1,12 @@
+; docformat = 'rst' 
+
 ;+
 ; Find the scan_info associated with the paired scan implied by the
-; supplied scan_info structure.  See <a href="scan_info.html">scan_info</a> for a description of the
-; contents of the structure expected as the info argument as well as
-; the structure returned by this function.
+; supplied scan_info structure.  See :idl:pro:`scan_info` for a
+; description of the contents of the structure expected as the info
+; argument as well as the structure returned by this function.
 ;
-; <p>Scan's often come in pairs (OnOff,OffOn,Nod).  When the
+; Scan's often come in pairs (OnOff,OffOn,Nod).  When the
 ; possibility of repeated scan numbers at different times and in
 ; different files (in the case of the use of dirin to open more than
 ; one fits file at a time) is taken into account, it becomes
@@ -14,17 +16,17 @@
 ; location of that scan's pair.  This returns -1 if no suitable paired
 ; scan could be found.
 ;
-; <p>The paired scan must have the appropriate relative scan number as
+; The paired scan must have the appropriate relative scan number as
 ; implied by info.procseqn.  Since this works for scans taken as a pair
 ; by the same procedure then only procseqns of 1 or 2 are allowed.  If
 ; the procseqn in the info parameter (info.procseqn) is 1, then the
 ; paired scan must have a procseqn of 2.  Similarly, if info.procseqn is
 ; 2 then the paired scan must have a procseqn of 1.
 ;
-; <p>The paired scan must be found in the same file as given by
+; The paired scan must be found in the same file as given by
 ; info.file.
 ;
-; <p>When file and procseqn are not sufficient to resolve all
+; When file and procseqn are not sufficient to resolve all
 ; ambiguities, then the scan closest to the info.timestamp in the
 ; appropriate direction is used to identify the best guess at the
 ; paired scan.  Appropriate direction means that if info.procseqn
@@ -33,19 +35,22 @@
 ; paired scan must have come before the scan described by info, then
 ; it's timestamp must come before info.timestamp.
 ;
-; <p>This is primarily useful inside of the calibration routines
+; This is primarily useful inside of the calibration routines
 ; (e.g. getps) but it may also be useful to users writing their
 ; own processing routines.
 ;
-; @param info {in}{required}{type=structure} The scan_info structure
-; of the scan who's pair is desired.
-; @keyword keep {in}{optional}{type=boolean} When present, search the
-; output file.
+; :Params:
+;   info : in, required, type=structure
+;       The scan_info structure of the scan who's pair is desired.
+; 
+; :Keywords:
+;   keep : in, optional, type=boolean
+;       When present, search the output file.
 ;
-; @returns The paired scan's scan_info structure.  If no pair could be
-; found, returns -1
+; :Returns:
+;   The paired scan's scan_info structure.  If no pair could be
+;   found, returns -1
 ;
-; @version $Id$
 ;-
 function find_paired_info, info, keep=keep
     compile_opt idl2

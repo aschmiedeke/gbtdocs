@@ -1,34 +1,38 @@
+; docformat = 'rst' 
+
 ;+
 ; Specify the file to which data will be written.
 ;
-; <p>The filename is stored in the !g.line_fileout_name field.  At
+; The filename is stored in the !g.line_fileout_name field.  At
 ; startup, this is set to "GBTIDL_KEEP.fits" so that it is possible to
 ; save data without ever using this procedure.
 ;
-; <p>The output file name must use the ".fits" suffix.
+; The output file name must use the ".fits" suffix.
 ;
-; <p>Note that it is not currently possible to save continuum data.
+; Note that it is not currently possible to save continuum data.
 ;
-; @param file_name {in}{required}{type=string} The file to which
-; data will be written.  If the file does not exist, it will be
-; created when the first spectrum is saved to this file (e.g. using
-; <a href="keep.html">keep</a>).
+; :Params:
+;   file_name : in, required, type=string
+;       The file to which data will be written. If the file does not
+;       exist, it will be created when the first spectrum is saved to 
+;       this file (e.g. using :idl:pro:`keep`).
 ;
-; @keyword new {in}{optional}{type=boolean} When set a new output file
-; will be created.  If file_name already exists, it will first be
-; removed.  If there is a problem in removing that file this procedure
-; will return without opening the file_name.
+; :Keywords:
+;   new : in, optional, type=boolean
+;       When set a new output file will be created. If file_name already
+;       exists, it will first be removed. If there is a problem in
+;       removing that file this procedure will return without opening
+;       the file_name.
 ;
-; @examples
-; <pre>
-;    getrec,1
-;    show
-;    fileout,'savedfile.fits'
-;    keep
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       getrec,1
+;       show
+;       fileout,'savedfile.fits'
+;       keep
 ;
-;
-; @version $Id$
 ;-
 pro fileout, file_name, new=new
     compile_opt idl2
