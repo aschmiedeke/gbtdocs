@@ -1,7 +1,9 @@
+; docformat = 'rst' 
+
 ;+
 ; Clear the stack.  
 ;
-; <p>Normally this simply sets !g.acount to 0, and this is all that is
+; Normally this simply sets !g.acount to 0, and this is all that is
 ; needed for typical use of the stack.  Optionally, the procedure can
 ; also reset the stack array to zeros and it can shrink the size of
 ; the stack to it's initial size of 5120 elements.  That could be
@@ -10,23 +12,24 @@
 ; and appendstack are called.  Only the !g.acount elements are ever
 ; used.
 ;
-; @keyword reset {in}{optional}{type=boolean} When set, the values will be
-; reset to 0.  This is not required for typical use of the stack.
+; :Keywords:
+;   reset : in, optional, type=boolean
+;       When set, the values will be reset to 0. This is not required
+;       for typical use of the stack.
+;   shrink : in, optional, type=boolean
+;       When set, the size of the array will be reset to its initial 
+;       size of 5120 elements. This is to reverse any automatic 
+;       expansion that may have occurred during previous stack operations.
 ;
-; @keyword shrink {in}{optional}{type=boolean} When set, the size of the
-; array will be reset to its initial size of 5120 elements.  This is to
-; reverse any automatic expansion that may have occurred during previous
-; stack operations.
-;
-; @examples
-; <pre>
-;    addstack,1,100
-;    emptystack
-;    addstack,1,100000
-;    emptystack,/shrink   ; reduce it to 5120 elements
-; </pre>
-;
-; @version $Id$
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       addstack,1,100
+;       emptystack
+;       addstack,1,100000
+;       emptystack,/shrink   ; reduce it to 5120 elements
+; 
 ;-
 PRO emptystack, reset=reset, shrink=shrink
     compile_opt idl2
