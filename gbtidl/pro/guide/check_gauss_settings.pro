@@ -1,12 +1,13 @@
+; docformat = 'rst' 
+
 ;+
 ; Performs basic checking of the values in the gaussian fitting section of
 ; the guide structure, !g.  Called by several gaussian fitting procedures.
 ; 
-; @returns 0, 1
+; :Returns:
+;   0, 1
 ;
 ; @private_file
-;
-; @version $Id$
 ;-
 function check_gauss_settings
     compile_opt idl2
