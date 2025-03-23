@@ -1,84 +1,80 @@
+; docformat = 'rst' 
+
 ;+
 ; Procedure to shift data in a GUIDE data buffer by a given 
 ; number of channels.
 ;
-; <p>This uses <a href="../toolbox/dcshift.html">dcshift</a>.  Please read the documentation for that toolbox 
-; function for all the details about how shifting of data containers
-; is implemented.  This documentation is very thin and is primarily
-; useful as a syntax reminder for the usage procedure.
+; This uses :idl:pro:`dcshift`. Please read the documentation for that 
+; toolbox function for all the details about how shifting of data
+; containers is implemented.  This documentation is very thin and is
+; primarily useful as a syntax reminder for the usage procedure.
 ;
-; <p>See <a href="fshift.html">fshift</a> or <a href="vshift.html">vshift</a> for examples showing how this is used to 
-; align spectra prior to averaging.
+; See :idl:pro:`fshift` or :idl:pro:`vshift` for examples showing how
+; this is used to align spectra prior to averaging.
 ;
-; @param offset {in}{required}{type=floating point} The number of
-; channels to shift the data (positive shifts things towards higher
-; channels, negative shifts things towards lower channels).
+; :Params:
+;   offset : in, required, type=floating point
+;       The number of channels to shift the data (positive shifts things
+;       towards higher channels, negative shifts things towards lower 
+;       channels).
 ;
-; @keyword buffer {in}{optional}{type=integer} The GUIDE data buffer to
-; shift.  All shifting is done in place and so the data in this buffer
-; is modified by this procedure.
+; :Keywords:
+;   buffer : in, optional, type=integer
+;       The GUIDE data buffer to shift. All shifting is done in place
+;       and so the data in this buffer is modified by this procedure.
+;   wrap : in, optional, type=boolean
+;       Data shifted off one end of the array appears on the other end
+;       of the array (it wraps around as a result of the shift) when 
+;       this is set.  Otherwise, as data is shifted it is blanked 
+;       (replaced by NaNs) and data shifted off the end is lost.
+;   ftol : in, optional, type=floating point, default=0.01
+;       Fractional shifts (the non-integer portion of offset) are only
+;       done when they are larger than ftol.  Set this value to >= 1.0
+;       to turn off all fractional shifts.
+;   linear : in, optional, type=boolean
+;       When set, use the linear interpolation provided by INTERPOL for 
+;       any fractional shift larger than ftol.
+;   quadratic : in, optional, type=boolean
+;       When set, use the quadratic interpolation provided by INTERPOL
+;       for any fractional shift larger than ftol.
+;   lsquadratic : in, optional, type=boolean
+;       When set, use the lsquadratic (lest squares quadratic) interpolation
+;       provided by INTERPOL for any fractional shift larger than ftol.
+;   spline : in, optional, type=boolean
+;       When set, use the spline interpolation provided by INTERPOL for
+;       any fractional shift larger than ftol.
+;   cubic : in, optional, type=boolean
+;       When set, use the cubic interpolation provided by INTERPOLATE for any
+;       fractional shift larger than ftol.  The value of the CUBIC keyword in
+;       the INTERPOLATE call is set to -0.5.
+;   nowelsh : in, optional, type=boolean
+;       When set, the shifted data is NOT windowed using the Welsh function. 
+;       This is ignored when a non-FFT-based fraction shift is done
+;   nopad : in, optional, type=boolean
+;       When set, the data is NOT padded with 0s to the next higher power of
+;       2 prior to the FFT and shift.  The data are never padded for the
+;       non-FFT-based fractional shifts.
+;   ok : out, optional, type=boolean
+;       This is set to 1 on success or 0 on failure (e.g. bad arguments).
 ;
-; @keyword wrap {in}{optional}{type=boolean} Data shifted off one end
-; of the array appears on the other end of the array (it wraps around
-; as a result of the shift) when this is set.  Otherwise, as data is
-; shifted it is blanked (replaced by NaNs) and data shifted off the 
-; end is lost.
+; :Examples:
 ; 
-; @keyword ftol {in}{optional}{type=floating point}{default=0.01}
-; Fractional shifts (the non-integer portion of offset) are only done
-; when they are larger than ftol.  Set this value to >= 1.0 to turn
-; off all fractional shifts.
-;
-; @keyword linear {in}{optional}{type=boolean} When set, use the
-; linear interpolation provided by INTERPOL for any fractional shift
-; larger than ftol.
-;
-; @keyword quadratic {in}{optional}{type=boolean} When set, use the
-; quadratic interpolation provided by INTERPOL for any fractional
-; shift larger than ftol.
-;
-; @keyword lsquadratic {in}{optional}{type=boolean} When set, use the
-; lsquadratic (lest squares quadratic) interpolation provided by
-; INTERPOL for any fractional shift larger than ftol.
-;
-; @keyword spline {in}{optional}{type=boolean} When set, use the
-; spline interpolation provided by INTERPOL for any fractional shift
-; larger than ftol.
-;
-; @keyword cubic {in}{optional}{type=boolean} When set, use the cubic
-; interpolation provided by INTERPOLATE for any fractional shift
-; larger than ftol.  The value of the CUBIC keyword in the INTERPOLATE
-; call is set to -0.5.
+;   .. code-block:: IDL
 ; 
-; @keyword nowelsh {in}{optional}{type=boolean} When set, the shifted
-; data is NOT windowed using the Welsh function.  This is ignored when
-; a non-FFT-based fraction shift is done
+;       getps, 30
+;       accum           ; first in, no alignment needed yet
+;       getps, 31
+;       fs = fshift()   ; shift to align in frequency
+;       gshift, fs      ; actually do the shift
+;       accum           ; now it can be added to the accumulation
+;       ave
 ;
-; @keyword nopad {in}{optional}{type=boolean} When set, the data is
-; NOT padded with 0s to the next higher power of 2 prior to the FFT
-; and shift.  The data are never padded for the non-FFT-based
-; fractional shifts.
+; :Uses:
+;   :idl:pro:`dcshift`
+;   :idl:pro:`data_copy`
+;   :idl:pro:`set_data_container`
+;   :idl:pro:`data_free`
 ;
-; @keyword ok {out}{optional}{type=boolean} This is set to 1 on
-; success or 0 on failure (e.g. bad arguments).
-;
-; @examples
-; <pre>
-;   getps, 30
-;   accum           ; first in, no alignment needed yet
-;   getps, 31
-;   fs = fshift()   ; shift to align in frequency
-;   gshift, fs      ; actually do the shift
-;   accum           ; now it can be added to the accumulation
-;   ave
-; </pre>
-;
-; @uses <a href="../toolbox/dcshift.html">dcshift</a>
-; @uses <a href="../toolbox/data_copy.html">data_copy</a>
-; @uses <a href="set_data_container.html">set_data_container</a>
-; @uses <a href="../toolbox/data_free.html">data_free</a>
-;
-; @version $Id$
 ;-
 pro gshift, offset, buffer=buffer, wrap=wrap, ftol=ftol, linear=linear, $
             quadratic=quadratic, lsquadratic=lsquadratic, spline=spline, $

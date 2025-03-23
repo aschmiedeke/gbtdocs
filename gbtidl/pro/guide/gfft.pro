@@ -1,9 +1,11 @@
+; docformat = 'rst' 
+
 ;+ 
 ; Do an FFT or an inverse FFT on the data container(s) indicated by
 ; the arguments.  This always overwrites the data array in those data
 ; containers with the result.  
 ;
-; <p>In the case of the forward FFT (the default), if a buffer number
+; In the case of the forward FFT (the default), if a buffer number
 ; for the imaginary part is omitted, it is assumed that the input
 ; array is a pure real array (the imaginary part is all 0 and any
 ; data at the imag_buffer location is ignored on input (and
@@ -12,52 +14,50 @@
 ; <p>The units of the x-axis and the data are not changed here.  The
 ; user needs to keep track of the state of their data containers.  If
 ; a non-zero bdrop or edrop are used, the resulting data containers
-; will be shortened by that many elements using <a href="../toolbox/dcextract.html">dcextract</a>. 
+; will be shortened by that many elements using :idl:pro:`dcextract`. 
 ; Consequently, it may not be appropriate to use the same bdrop and
 ; edrop on an inverse FFT as it was when the FFT was first done.
 ;
-; <p>See the discussion in <a href="../toolbox/dcfft.html">dcfft</a> on how inverse is used for spectral-line 
-; data vs continuum data.  For spectral-line data, an FFT is a
-; transformation from frequency to time and an inverse FFT is a
-; transformation in the other direction.  For continuum data, an FFT
-; is a transformation from time to frequency and an inverse FFT is a
-; transformation in the other direction. 
+; See the discussion in `idl:pro:`dcfft` on how inverse is used for
+; spectral-line data vs continuum data.  For spectral-line data, an 
+; FFT is a transformation from frequency to time and an inverse FFT
+; is a transformation in the other direction.  For continuum data, 
+; an FFT is a transformation from time to frequency and an inverse 
+; FFT is a transformation in the other direction. 
 ;
-; @param real_buffer {in}{out}{optional}{type=integer}{default=0} The
-; global buffer number from which the real values going in to the 
-; FFT are obtained.  The real values from the result are overwritten 
-; to this location.  Defaults to buffer 0.
+; :Params:
+;   real_buffer : in, out, optional, type=integer, default=0
+;       The global buffer number from which the real values going in
+;       to the FFT are obtained.  The real values from the result are
+;       overwritten to this location.  Defaults to buffer 0.
+;   imag_buffer : in, out, optional, type=integer, default=1
+;       The global buffer number from which the imaginary values going
+;       in to the FFT are obtained.  The imaginary values from the result
+;       are overwritten to this location.  If this parameter is omitted 
+;       on the forward transformation (inverse is not set) then the input
+;       values are assumed to be all real (the imaginary part is all 0) 
+;       and any data at this location is ignored and overwritten on 
+;       output. Defaults to buffer 1.
+;   inverse : in, optional, type=boolean
+;       When set, the inverse FFT is performed as described above.
+;   bdrop : in, optional, type=integer, default=0
+;       The number of channels to exclude from the FFT at the beginning.
+;   edrop : in, optional, type=integer, default=0
+;       The number of channels to exclude from the FFT at the end.
 ;
-; @param imag_buffer {in}{out}{optional}{type=integer}{default=1} The
-; global buffer number from which the imaginary values going in to the
-; FFT are obtained.  The imaginary values from the result are
-; overwritten to this location.  If this parameter is omitted on the 
-; forward transformation (inverse is not set) then the input values 
-; are assumed to be all real (the imaginary part is all 0) and any
-; data at this location is ignored and overwritten on output. Defaults
-; to buffer 1.
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       getps, 34    ; get some data
+;       gfft         ; uses buffer 0, result in 0 (real) and 1 (imag)
+;       oshow, 1
+;       gfft, 0, 1, /inverse  ; the other direction
 ;
-; @keyword inverse {in}{optional}{type=boolean} When set, the inverse
-; FFT is performed as described above.
+; :Uses:
+;   :idl:pro:`dcfft`
+;   :idl:pro:`dcextract`
 ;
-; @keyword bdrop {in}{optional}{type=integer}{default=0} The number of
-; channels to exclude from the FFT at the beginning.
-;
-; @keyword edrop {in}{optional}{type=integer}{default=0} The number of
-; channels to exclude from the FFT at the end.
-;
-; @examples
-; <pre>
-;   getps, 34    ; get some data
-;   gfft         ; uses buffer 0, result in 0 (real) and 1 (imag)
-;   oshow, 1
-;   gfft, 0, 1, /inverse  ; the other direction
-; </pre>
-;
-; @uses <a href="../toolbox/dcfft.html">dcfft</a>
-; @uses <a href="../toolbox/dcextract.html">dcextract</a>
-;
-; @version $Id$
 ;-
 pro gfft,real_buffer,imag_buffer,inverse=inverse,bdrop=bdrop,edrop=edrop
     compile_opt idl2
