@@ -1,7 +1,9 @@
+; docformat = 'rst' 
+
 ;+
 ; This procedure allows the user to specify baseline regions using
 ; the mouse. 
-; <p>
+; 
 ; Use the left mouse button to mark the regions to be fit.  Vertical
 ; lines will be drawn at each click.  Use the right mouse button to
 ; exit (the right-click does NOT register a mark for the baseline
@@ -9,11 +11,10 @@
 ; where the upper and lower bounds of the box are mean + sigma and
 ; mean - sigma.
 ;
-; <p><a href="../plotter/showregion.html">showregion</a> can be used to show the current region boxes at 
+; :idl:pro:`showregion` can be used to show the current region boxes at 
 ; any time.  The boxes can be made permanently visible on the plotter
 ; by setting the !g.regionboxes value to 1.
 ;
-; @version $Id$
 ;-
 pro setregion
     compile_opt idl2

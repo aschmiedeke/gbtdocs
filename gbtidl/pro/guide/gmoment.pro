@@ -1,12 +1,16 @@
+; docformat = 'rst'
+
 ;+
 ; Find the first 3 moments of a region of the data in buffer 0.
 ;
-; <p>The three moments are:
-; <pre>
-;  m[0] = sum(data(i) * delta_x(i))
-;  m[1] = sum(data(i)*x(i))/m[0]
-;  m[2] = sqrt(sum(data(i)*(x(i)-m[1])^2)/m[0])
-; </pre>
+; The three moments are:
+; 
+; .. code-block:: IDL
+; 
+;   m[0] = sum(data(i) * delta_x(i))
+;   m[1] = sum(data(i)*x(i))/m[0]
+;   m[2] = sqrt(sum(data(i)*(x(i)-m[1])^2)/m[0])
+; 
 ; where the sums are over the region of interest, the x and delta_x
 ; values are the channel centers and spacings in the currently
 ; displayed x-axis units.  delta_x is calculated independently for
@@ -14,44 +18,48 @@
 ; out and returned through the ret keyword. The display of the results
 ; can be turned off through the use of the /quiet flag.
 ;
-; <p>The region is given in the currently displayed x-axis units and
+; The region is given in the currently displayed x-axis units and
 ; the sum starts from the channel number nearest bmoment and ends at the
 ; channel number nearest emoment.  If the /chan keyword is used, then
 ; bmoment and emoment are given in channels.  If a region is not
 ; specified the user is prompted to use the cursor on the plotter to
 ; mark the region. /full can be used to force gmoment to use all channels.
 ;
-; <p>Blanked values are ignored.
+; Blanked values are ignored.
 ;
-; <p>The structure returned through the ret keyword has these fields.
-;   <ul><li><b>bchan</b> The first channel used.
-;   <li><b>echan</b> The last channel used.
-;   <li><b>nchan</b> The total number of channels used.
-;   <li><b>xmin</b> The minimum x-axis value (bchan or echan)
-;   <li><b>xmax</b> The maximum x-axis value (bchan or echan)
-;   <li><b>moments</b> A 3-element array giving the moments, in the
-;           order described above.
-;   <li><b>moment_unts</b> A 3-element string array giving the units
-;               for each moment.
-;   </ul>
+; The structure returned through the ret keyword has these fields.
+;   * **bchan** The first channel used.
+;   * **echan** The last channel used.
+;   * **nchan** The total number of channels used.
+;   * **xmin** The minimum x-axis value (bchan or echan)
+;   * **xmax** The maximum x-axis value (bchan or echan)
+;   * **moments** A 3-element array giving the moments, in the order described above.
+;   * **moment_unts** A 3-element string array giving the units for each moment.
 ;
-; <p>gmoment was chosen because IDL already has a moment function.
+; gmoment was chosen because IDL already has a moment function.
 ;
-; @param bmoment {in}{optional}{type=float} Start of region in x-axis units.
-; @param emoment {in}{optional}{type=float} End of region in x-axis units.
-; @keyword chan {in}{optional}{type=boolean} Range specified in channels?
-; @keyword full {in}{optional}{type=boolean} Compute moments for full spectrum?
-; @keyword quiet {in}{optional}{type=boolean} Suppress the printing of
-; the moments.
-; @keyword ret {out}{optional}{type=structure} Structure containing
-; the results.
+; :Params:
+;   bmoment : in, optional, type=float
+;       Start of region in x-axis units.
+;   emoment : in, optional, type=float
+;       End of region in x-axis units.
+; 
+; :Keywords:
+;   chan : in, optional, type=boolean
+;       Range specified in channels?
+;   full : in, optional, type=boolean
+;       Compute moments for full spectrum?
+;   quiet : in, optional, type=boolean
+;       Suppress the printing of the moments.
+;   ret : out, optional, type=structure
+;       Structure containing the results.
 ;
-; @examples
-; <pre>
-;   gmoment, 1000, 1520, ret=ret
-; </pre>
-;
-; @version $Id$
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       gmoment, 1000, 1520, ret=ret
+; 
 ;-
 pro gmoment, bmoment, emoment, chan=chan, full=full, quiet=quiet, ret=ret
     compile_opt idl2

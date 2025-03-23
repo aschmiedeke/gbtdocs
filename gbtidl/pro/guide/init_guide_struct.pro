@@ -1,28 +1,28 @@
+; docformat = 'rst' 
+
 ;+
 ; Initialize the GUIDE global structure.
 ;
-; <p>This is called by the startup script and probably should not be
+; This is called by the startup script and probably should not be
 ; called by the user. 
 ;
-; <p>The data containers are initialized using <a href="../toolbox/data_new.html">data_new</a>.
-; <p>
+; The data containers are initialized using :idl:pro:`data_new`.
+; 
 ; The input io objects are simply initialized with the default
 ; constructors.
-; <p>
+; 
 ; The lineoutio object is initialized with "GBTIDL_KEEP.fits".
-; <p>
+; 
 ; The astack has a size of 5120 elements.
-; <p>
+; 
 ; Line mode is the default mode.
-; <p>
+; 
 ; The printer is set to the PRINTER environment variable or 'lp' if
 ; PRINTER is not set.
 ;
 ; @private_file
 ;
-; @version $Id$
 ;-
-
 PRO init_guide_struct
     compile_opt idl2, hidden
    

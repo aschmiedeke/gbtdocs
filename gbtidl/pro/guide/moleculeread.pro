@@ -1,3 +1,5 @@
+; docformat = 'rst' 
+
 ;+
 ; Read in the list of all previously detected molecular lines, storing
 ; them into an array of structures at !g.molecules.  The total number
@@ -5,30 +7,27 @@
 ; then this procedure returns immediately without modifying
 ; !g.molecules.  
 ;
-; <p>The molecule_struct has the following fields:
-;   <ul><li> <b>freq</b> Rest Frequency (MHz)
-;   <li> <b>freqErr</b> Rest Frequency Error (MHz)
-;   <li> <b>formula</b> Species Formula
-;   <li> <b>name</b> Species Chemical Name
-;   <li> <b>qnums</b> Quantum Numbers
-;   <li> <b>obsAstInt</b> NIST Observed Astronomical Intensity (where applicable)
-;   <li> <b>upperStateE</b> Upper State Energy (K)
-;   <li> <b>obsIntRef</b> NIST Observed Intensity Reference (where applicable)
-;   <li> <b>lineFreqRef</b> NIST Measured Line Frequency Reference (where applicable)
-;   </ul>
+; The molecule_struct has the following fields:
+;   * **freq** Rest Frequency (MHz)
+;   * **freqErr** Rest Frequency Error (MHz)
+;   * **formula** Species Formula
+;   * **name** Species Chemical Name
+;   * **qnums** Quantum Numbers
+;   * **obsAstInt** NIST Observed Astronomical Intensity (where applicable)
+;   * **upperStateE** Upper State Energy (K)
+;   * **obsIntRef** NIST Observed Intensity Reference (where applicable)
+;   * **lineFreqRef** NIST Measured Line Frequency Reference (where applicable)
 ;
-; <p>Unavailable values are represented in this structure by not-a-number
+; Unavailable values are represented in this structure by not-a-number
 ; (NaN).
 ; 
-; <p><b>Note:</b> IDL variables are case-insensitive.  The case used in
-; the structure field names above is done to improve readability.  The
+; *Note:* IDL variables are case-insensitive. The case used in
+; the structure field names above is done to improve readability. The
 ; IDL interpreter ignores case.
 ;
-; <p>See <a href="molecule.html">molecule</a> for
-; the code that is intended to use this information and for notes on
-; the source of the line information.
+; See :idl:pro:`molecule` for the code that is intended to use this 
+; information and for notes on the source of the line information.
 ;
-; @version $Id$
 ;-
 pro moleculeread
     compile_opt idl2

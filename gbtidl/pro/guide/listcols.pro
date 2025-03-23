@@ -1,10 +1,11 @@
+; docformat = 'rst' 
+
 ;+
 ; Lists the columns in the index file (either spectral line or
 ; continuum, depending on value of !g.line).
 ;
-; <p>These column names also serve as search keywords.
+; These column names also serve as search keywords.
 ;
-; @version $Id$
 ;-
 pro listcols
     compile_opt idl2

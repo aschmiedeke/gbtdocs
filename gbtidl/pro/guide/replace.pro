@@ -94,12 +94,20 @@ end
 ;+
 ; Used internally in replace
 ;
-; @param bchan {in}{required}{type=integer} Beginning channel number.  Value is rounded (using IDL round function) to accomodate floating point values.
-; @param echan {in}{required}{type=integer} End channel number.  Value is rounded (using IDL round function) to accomodate floating point values.
-; @keyword zero {in}{optional}{type=boolean} When set, set the data to
-; 0 in the channel range.
-; @keyword blank {in}{optional}{type=boolean} When set, set the data to
-; NaN in the channel range.  Has no effect if zero is also set.
+; :Params:
+;   bchan : in, required, type=integer
+;       Beginning channel number.  Value is rounded (using IDL round function)
+;       to accomodate floating point values.
+;   echan : in, required, type=integer
+;       End channel number.  Value is rounded (using IDL round function) to
+;       accomodate floating point values.
+; 
+; :Keywords:
+;   zero : in, optional, type=boolean
+;       When set, set the data to 0 in the channel range.
+;   blank : in, optional, type=boolean
+;       When set, set the data to NaN in the channel range. Has no effect if
+;       zero is also set.
 ;
 ; @private
 ;-
