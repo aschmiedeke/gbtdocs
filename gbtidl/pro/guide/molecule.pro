@@ -1,38 +1,40 @@
+; docformat = 'rst' 
+
 ;+
 ; Plot the molecular line frequencies for previously detected
 ; molecular lines stored in !g.molecules on the currently displayed
 ; plot at the appropriate location given the current x-axis.
 ;
-; <p><b>Note:</b> The display is changed to show frequency as the x-axis
+; *>Note:* The display is changed to show frequency as the x-axis
 ; if it is not already doing so.  
 ;
-; <p><b>Note:</b> It is assumed that you want them shown
+; *Note:* It is assumed that you want them shown
 ; at their rest frequency in the frequency reference frame current in
 ; use on the plotter adjusted for any source velocity.  If the source
 ; velocity has already been used to adjust the x-axis display then
 ; this routine will plot the molecule lines at their rest frequencies
-; without any offset.  Use the <i>/novsource</i> keyword to turn off
+; without any offset.  Use the */novsource* keyword to turn off
 ; any consideration of the source velocity - lines are simply plotted
 ; at their rest frequencies no matter what the source velocity is or 
 ; what the displayed x-axis is.
 ;
-; <p>The set of lines to be search can be narrowed by supplying a formula
+; The set of lines to be search can be narrowed by supplying a formula
 ; or name.  Wildcards are allowed and arrays of formula and names can
 ; be supplied.
 ;
-; <p>Only lines with an upper state energy less than or equal to the
-; <i>elimit</i> value (in K) are shown.  The default value for this keyword is 50 K.
+; Only lines with an upper state energy less than or equal to the
+; *elimit* value (in K) are shown.  The default value for this keyword is 50 K.
 ;
-; <p>To show fewer lines use a lower <i>elimit</i> value or select specific
-; lines using the <i>formula</i> or <i>name</i> keywords.
+; To show fewer lines use a lower *elimit* value or select specific
+; lines using the *formula* or *name* keywords.
 ;
-; <p>The <i>indices</i> keyword can be used to return the set of indices in the
+; The *indices* keyword can be used to return the set of indices in the
 ; !g.molecules array of molecule_struct structures.  This can be used
-; to get access to full information if desired.  See <a href="moleculeread.html">moleculeread</a> 
+; to get access to full information if desired.  See :idl:pro:`moleculeread` 
 ; for a description of the contents of the molecule_struct structure. 
 ;
-; <P>The line information was extracted from the Database for
-; Astronomical Spectroscopy - Splatalogue available at <a href="http://www.splatalogue.net" TARGET="_top">www.splatalogue.net</a> 
+; The line information was extracted from the Database for
+; Astronomical Spectroscopy - `Splatalogue <https://www.splatalogue.net>`_ 
 ; specifically tailored for the available spectral line coverage of
 ; the GBT. Splatalogue is a fully rationalized and extended
 ; compilation of existing spectroscopic resources for use by the
@@ -40,80 +42,77 @@
 ; CDMS, Lovas/NIST, Frank Lovas' own Spectral Line Atlas of
 ; Interstellar Molecules (SLAIM) catalogs. 
 ;
-; <p>Splatalogue is maintained at the North American ALMA Science Center
+; Splatalogue is maintained at the North American ALMA Science Center
 ; with cooperation from the East Asian and European ALMA Regional
-; Centers.  The Splatalogue Subsystem Scientist is Anthony Remijan. 
+; Centers. The Splatalogue Subsystem Scientist is Anthony Remijan. 
 ;
-; <p>For questions, comments, suggestions or concerns about Splatalogue
-; please submit a Helpdesk ticket through the ALMA Science Portal at
-; <a href="http://help.almascience.org" TARGET="_top">help.almascience.org</a>.
+; For questions, comments, suggestions or concerns about Splatalogue
+; please submit a Helpdesk ticket through the 
+; `ALMA Science Portal <http://help.almascience.org>`_.
 ;
-; <p>The text file containing the line information is found at
+; The text file containing the line information is found at
 ; $GBT_IDL_DIR/pro/guide/GBTIDL_RFF.csv  
 ;
-; @keyword formula {in}{optional}{type=string(s)}{default=''} optionally
-; filter the list of molecules to those whose formula matches this
-; string. Wildcards are allowed following the rules of the IDL
-; STRMATCH function.  If formula is array of strings, each element is
-; used separately and the final list is the set of all lines with
-; a formula matching any of the strings on that list.  If not supplied,
-; the entire list is used.  The filter is case insensitive.
-; @keyword name {in}{optional}{type=string(s)}{default=''} optionally
-; filter the list of molecules to those whose name matches this
-; string. Wildcards are allowed following the rules of the IDL
-; STRMATCH function.  If name is array of strings, each element is
-; used separately and the final list is the set of all lines with
-; a name matching any of the strings on that list.  If not supplied,
-; the entire list is used.  The filter is case-insensitive.
-; @keyword doprint {in}{optional}{type=boolean}{default=0} optionally print
-; the line frequencies.  The printed frequencies are the line
-; frequencies in the frame being displayed on the plotter.
-; @keyword elimit {in}{optional}{type=double}{default=50.0} Only lines
-; with an upper state energy less than or equal to this limit will be
-; plotted.  The units are Kelvin.  Lowering this limit reduces the
-; number of lines plotted. 
-; @keyword indices {out}{optional}{type=integer} The list of indices
-; in !g.molecules of the lines that were plotted.  This can be used to
-; get the original information (e.g. rest frequency) of the lines
-; marked on the plot.  This has a value of -1 when no lines were
-; plotted.
-; @keyword novsource {in}{optional}{type=boolean} Optionally set this
-; to turn off any consideration of the source velocity when marking
-; the locations of any molecule lines.
+; :Keywords:
+;   formula : in, optional, type=string(s), default=''
+;       optionally filter the list of molecules to those whose formula
+;       matches this string. Wildcards are allowed following the rules
+;       of the IDL STRMATCH function.  If formula is array of strings, 
+;       each element is used separately and the final list is the set 
+;       of all lines with a formula matching any of the strings on that
+;       list.  If not supplied, the entire list is used.  The filter is
+;       case insensitive.
+;   name : in, optional, type=string(s), default=''
+;       optionally filter the list of molecules to those whose name matches
+;       this string. Wildcards are allowed following the rules of the IDL
+;       STRMATCH function.  If name is array of strings, each element is
+;       used separately and the final list is the set of all lines with
+;       a name matching any of the strings on that list.  If not supplied,
+;       the entire list is used.  The filter is case-insensitive.
+;   doprint : in, optional, type=boolean, default=0
+;       optionally print the line frequencies.  The printed frequencies
+;       are the line frequencies in the frame being displayed on the plotter.
+;   elimit : in, optional, type=double, default=50.0
+;       Only lines with an upper state energy less than or equal to this
+;       limit will be plotted. The units are Kelvin. Lowering this limit 
+;       reduces the number of lines plotted. 
+;   indices : out, optional, type=integer
+;       The list of indices in !g.molecules of the lines that were plotted.
+;       This can be used to get the original information (e.g. rest frequency)
+;       of the lines marked on the plot.  This has a value of -1 when no lines
+;       were plotted.
+;   novsource : in, optional, type=boolean
+;       Optionally set this to turn off any consideration of the source
+;       velocity when marking the locations of any molecule lines.
 ;
-; @examples
-; <pre>
-;  ;    All instances of ammonia
-;  molecule,formula='NH3*'
-;  ;    Two formulas to match
-;  molecule,formula=['NH3*','HCCCHO*']
-;  ;    Alternatively
-;  molecule,name=['ammonia','2-propynal']
-;  ; lower the upper state energy cutoff to 20 K
-;  molecule,elimit=20
-;  ; get the indices of the species plotted
-;  molecule,indices=indices
-;  ; print out their names
-;  print,!g.molecules[indices].name
-; </pre>
+; :Examples:
 ;
-; @uses <a href="moleculeread.html">moleculeread</a>
-; @uses <a href="freq.html">freq</a>
-; @uses <a href="../toolbox/veltovel.html">veltovel</a>
-; @uses <a href="../toolbox/shiftvel.html">shiftvel</a>
-; @uses <a href="../toolbox/shiftfreq.html">shiftfreq</a>
-; @uses <a href="../toolbox/decode_veldef.html">decode_veldef</a>
-; @uses <a href="../plotter/show.html">show</a>
-; @uses <a href="../plotter/vline.html">vline</a>
-; @uses <a href="../plotter/getstate.html#_getxrange">getxrange</a>
-; @uses <a href="../plotter/getstate.html#_getyrange">getyrange</a>
-; @uses <a href="../plotter/getstate.html#_getxvoffset">getxvoffset</a>
-; @uses <a href="../plotter/getstate.html#_getxunits">getxunits</a>
-; @uses <a href="../plotter/getstate.html#_getxoffset">getxoffset</a>
-; @uses <a href="../plotter/getstate.html#_getplotterdc">getplotterdc</a>
-; @uses textoidl
+;   .. code-block:: IDL
 ; 
-; @version $Id$
+;       molecule,formula='NH3*'                 ; All instances of ammonia
+;       molecule,formula=['NH3*','HCCCHO*']     ; Two formulas to match
+;       molecule,name=['ammonia','2-propynal']  ; Alternative
+;       molecule,elimit=20                      ; lower the upper state energy cutoff to 20 K
+;       molecule,indices=indices                ; get the indices of the species plotted
+;       print,!g.molecules[indices].name        ; print out their names
+; 
+; :Uses:
+;   :idl:pro:`moleculeread`
+;   :idl:pro:`freq`
+;   :idl:pro:`veltovel`
+;   :idl:pro:`shiftvel`
+;   :idl:pro:`shiftfreq`
+;   :idl:pro:`decode_veldef`
+;   :idl:pro:`show`
+;   :idl:pro:`vline`
+;   :idl:pro:`getxrange`
+;   :idl:pro:`getyrange`
+;   :idl:pro:`getxvoffset`
+;   :idl:pro:`getxunits`
+;   :idl:pro:`getxoffset`
+;   :idl:pro:`getplotterdc`
+;   :idl:pro:`textoidl` 
+; 
 ;-
 pro molecule, formula=formula, name=name, doprint=doprint, elimit=elimit, indices=indices, novsource=novsource
     compile_opt idl2
