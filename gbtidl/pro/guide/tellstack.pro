@@ -1,12 +1,15 @@
+; docformat = 'rst'
+
 ;+
 ; Lists the values contained in the stack.
 ;
-; @examples
-; <pre>
-;    addstack,30,50,2
-;    tellstack
-; </pre>
-; @version $Id$
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       addstack,30,50,2
+;       tellstack
+; 
 ;-
 pro tellstack
     compile_opt idl2
