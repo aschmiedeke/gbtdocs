@@ -38,7 +38,7 @@
 ;   all : in, optional, type=boolean
 ;       Unflag all IDs (ignoring id) when set.
 ;
-; @examples:
+; :Examples:
 ; 
 ;   You use list flags and see that there are 5 flags, numbered from 0
 ;   to 4.  For this example, assume that you did not specify an idstring 
