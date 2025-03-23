@@ -1,20 +1,32 @@
+; docformat = 'rst' 
+
 ;+
 ; Used by stats and moments to convert a region that might be in the
 ; x-axis units into a region in channels.  Both procedures work on the
 ; same rules and so this function encapsulates them in one place.
 ; This is not intended to be used by GUIDE users directly.
 ;
-; @param name {in}{required}{type=string} String inserted into prompt
-; @param nels {in}{required}{type=integer} Total number of data elements
-; @param brange {in}{optional}{type=float} Starting value in x-axis units
-; @param erange {in}{optional}{type=float} Ending value in x-axis units
-; @keyword full {in}{optional}{type=boolean} Compute stats for full spectrum?
-; @keyword chan {in}{optional}{type=boolean} Ranges are in channels?
-; @returns 2-element array with [bchan,echan] giving region in
-; channels. Returns -1 on error (bchan and echan both out of range).
+; :Params:
+;   name : in, required, type=string
+;       String inserted into prompt
+;   nels : in, required, type=integer
+;       Total number of data elements
+;   brange : in, optional, type=float
+;       Starting value in x-axis units
+;   erange : in, optional, type=float
+;       Ending value in x-axis units
 ; 
-; @private_file
-; @version $Id$
+; :Keywords:
+;   full : in, optional, type=boolean
+;       Compute stats for full spectrum?
+;   chan in, optional, type=boolean
+;       Ranges are in channels?
+; 
+; :Returns:
+;   2-element array with [bchan,echan] giving region in channels. 
+;   Returns -1 on error (bchan and echan both out of range).
+; 
+; @private_file 
 ;-
 function getstatsrange, name, nels, brange, erange, full=full, chan=chan
     compile_opt idl2

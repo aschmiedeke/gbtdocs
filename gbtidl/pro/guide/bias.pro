@@ -5,9 +5,9 @@
 ;
 ; Equivalent to:
 ; 
-;   .. code-block:: IDL
+; .. code-block:: IDL
 ; 
-;       !g.s[0].data_ptr = !g.s[0].data_ptr + factor
+;   !g.s[0].data_ptr = !g.s[0].data_ptr + factor
 ; 
 ; :Params:
 ;

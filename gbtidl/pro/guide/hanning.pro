@@ -32,7 +32,6 @@
 ;   :idl:pro:`decimate`
 ;
 ;-
-
 pro hanning, buffer=buffer, decimate=decimate, ok=ok
     compile_opt idl2
 
