@@ -1,33 +1,35 @@
+; docformat = 'rst' 
+
 ;+
 ; Retrieves data from the output data file and places it in the
 ; primary data container (buffer 0).  
 ;
-; <p>Use the selection parameters to specify which data to 
+; Use the selection parameters to specify which data to 
 ; retrieve.  If the selection returns more than one data container, 
 ; only the first data container is used. If you need to retrieve one
 ; of the other records you must first refine the selection criteria.
-; A better approach might be to use <a href="select.html">select</a> to get the list of 
-; records that satisfy that selection and then use <a href="kgetrec.html">kgetrec</a> to get the 
+; A better approach might be to use :idl:pro:`select` to get the list of 
+; records that satisfy that selection and then use :idl:pro:`kgetrec` to get the 
 ; individual records.
 ;
-; <p>Only spectral line data can currently be fetched from a keep file.
+; Only spectral line data can currently be fetched from a keep file.
 ;
-; <p><em>Note :</em> all of the data satisfying the selection criteria
+; *Note:* all of the data satisfying the selection criteria
 ; (or lack of criteria if none is given) are extracted from the file
 ; before this routine copies the first one found and puts it into
 ; buffer 0.  There is no protection against running out of memory by
 ; grabbing too much data.
 ;
-; <p>See the output of <a href="listcols.html">listcols</a> for a complete list of columns 
+; See the output of :idl:pro:`listcols` for a complete list of columns 
 ; that can be selected.
 ;
-; <p>See the discussion on "Select" in the <a href="http://wwwlocal.gb.nrao.edu/GBT/DA/gbtidl/users_guide/node50.html" TARGET="_top">User's Guide</a> 
+; See the discussion on "Select" in the `GBTIDL manual <https://www.gb.nrao.edu/GBT/DA/gbtidl/users_guide.pdf#page=29>`_ 
 ; for a summary of selection syntax.
 ;
-; <p>The selection criteria are passed directly to the io class's
+; The selection criteria are passed directly to the io class's
 ; get_spectra or get_continua function via the _EXTRA parameter. 
-; <p>
-; Flags (set via <a href="flag.html">flag</a>) can be selectively applied or ignored 
+; 
+; Flags (set via :idl:pro:`flag`) can be selectively applied or ignored 
 ; using the useflag and skipflag keywords.  Only one of those two
 ; keywords can be used at a time (it is an error to use both at the
 ; same time).  Both can be either a boolean (/useflag or /skipflag) 
@@ -43,28 +45,31 @@
 ; skipflag is a string or array of strings, then all flag rules except
 ; those with the same idstring value are used to blank the data.
 ;
-; @keyword useflag {in}{optional}{type=boolean or string}{default=true}
-; Apply all or just some of the flag rules?
-; @keyword skipflag {in}{optional}{type=boolean or string} Do not apply
-; any or do not apply a few of the flag rules?
-; @keyword _EXTRA {in}{optional}{type=extra keywords} These are
-; selection parameters passed to the data source to limit the amount
-; of data returned. 
+; :Keywords:
+;   useflag : in, optional, type=boolean or string, default=true
+;       Apply all or just some of the flag rules?
+;   skipflag : in, optional, type=boolean or string
+;       Do not apply any or do not apply a few of the flag rules?
+;   _EXTRA : in, optional, type=extra keywords
+;       These are selection parameters passed to the data source
+;       to limit the amount of data returned. 
 ;
-; @uses <a href="set_data_container.html">set_data_container</a>
-; @examples
-; <pre>
-;   getnod,30
-;   fileout,'mysave.fits'
-;   keep
-;   getnod, 32
-;   keep
-;   kget,index=0   ; retrieves the first record in the keep file
-;   kget,index=0,/skipflag ; same record, ignore all flags
-;   kget.index=0,useflag='wind' ; same record, apply just the 'wind' flag.
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
 ;
-; @version $Id$
+;       getnod,30
+;       fileout,'mysave.fits'
+;       keep
+;       getnod, 32
+;       keep
+;       kget,index=0   ; retrieves the first record in the keep file
+;       kget,index=0,/skipflag ; same record, ignore all flags
+;       kget.index=0,useflag='wind' ; same record, apply just the 'wind' flag.
+;
+; :Uses:
+;   :idl:pro:`set_data_container.html`
+;
 ;-
 pro kget, useflag=useflag, skipflag=skipflag, _EXTRA=ex
    compile_opt idl2

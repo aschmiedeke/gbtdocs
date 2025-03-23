@@ -5,7 +5,7 @@
 ; molecular lines stored in !g.molecules on the currently displayed
 ; plot at the appropriate location given the current x-axis.
 ;
-; *>Note:* The display is changed to show frequency as the x-axis
+; *Note:* The display is changed to show frequency as the x-axis
 ; if it is not already doing so.  
 ;
 ; *Note:* It is assumed that you want them shown
