@@ -57,7 +57,7 @@
 ;   example, suppose you just want to unflag one of those "unspecified"
 ;   ID rules.  This example does that for ID number 2.
 ;
-;   ..code-block:: IDL
+;   .. code-block:: IDL
 ; 
 ;       unflag, 2
 ;
