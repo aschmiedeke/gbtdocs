@@ -12,8 +12,8 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../sparrow'))
-sys.path.insert(0, os.path.abspath('../../gbtidl'))
+sys.path.insert(0, os.path.abspath('../sparrow'))
+sys.path.insert(0, os.path.abspath('../gbtidl'))
 # -- Project information -----------------------------------------------------
 
 project = 'GBT Docs'
