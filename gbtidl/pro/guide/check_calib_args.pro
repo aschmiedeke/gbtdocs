@@ -511,7 +511,7 @@ end
 ;   coordinates into a 3D array described by nif, nfd, npl for each
 ;   element of loc.
 ; 
-; @private
+; :meta private:
 ;-
 function getIftabIndices, loc, nif, nfd, npl
   compile_opt idl2
