@@ -1,10 +1,12 @@
+; docformat = 'rst' 
+
 ;+
 ; Clear the given accum_struct, free's the pointer, zeros' values.
 ;
-; @param accumbuf {in}{out}{required}{type=accum_struct structure} the
-; structure to clear. 
+; :Params:
+;   accumbuf : in, out, required, type=accum_struct structure
+;       the structure to clear. 
 ;
-; @version $Id$
 ;-
 PRO accumclear, accumbuf
     compile_opt idl2

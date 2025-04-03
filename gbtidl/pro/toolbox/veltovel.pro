@@ -1,18 +1,24 @@
+; docformat = 'rst' 
+
 ;+
 ; Convert a velocity in one velocity definition to an equivalent
 ; velocity in another definition.
 ;
-; @param vel {in}{required}{type=double} The velocity, in m/s, to convert.
+; :Params:
+;   vel : in, required, type=double
+;       The velocity, in m/s, to convert.
 ;
-; @param toveldef {in}{required}{type=string} The desired velocity 
-; definition.  Must be one of 'TRUE', 'OPTICAL' and 'RADIO'.
+;   toveldef : in, required, type=string
+;       The desired velocity definition. Must be one of 'TRUE',
+;       'OPTICAL' and 'RADIO'.
 ;
-; @param fromveldef {in}{required}{type=string} The input velocity 
-; definition.  Must be one of 'TRUE', 'OPTICAL' and 'RADIO'
+;   fromveldef : in, required, type=string
+;       The input velocity definition. Must be one of 'TRUE',
+;       'OPTICAL' and 'RADIO'
 ;
-; @returns the converted velocity in m/s.
+; :Returns:
+;   the converted velocity in m/s.
 ;
-; @version $Id$
 ;-
 function veltovel, vel, toveldef, fromveldef
     compile_opt idl2

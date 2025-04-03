@@ -1,31 +1,36 @@
+; docformat ='rst' 
+
 ;+
 ; Convert from Julian day to local mean sidereal time.  By default the
 ; longitude of the GBT is used.
 ;
-; <p>If you need local apparent sidereal time, then add the equation of
+; If you need local apparent sidereal time, then add the equation of
 ; the equinox to these values (see nutation_m()).
 ;
-; <p>This code came from 
-; <a href="http://www.naic.edu/~phil/">Phil Perillat</a> at Arecibo.
+; This code came from 
+; `Phil Perillat <https://www.naic.edu/~phil/>`_ at Arecibo.
+; 
 ; Local changes:
-; <UL>
-; <LI> use the position of the GBT as the default position.
-; <LI> modify this documentation for use by idldoc.
-; <LI> modify to make use of the obslong keyword, which is now east
-; longitude in degrees to match contents of gbtidl data container.
-; </UL>
-;  
-; @param juldat {in}{required}{type=double} Array of julian days to
-; convert.
+;   * use the position of the GBT as the default position.
+;   * modify this documentation for use by idldoc.
+;   * modify to make use of the obslong keyword, which is now east
+;     longitude in degrees to match contents of gbtidl data container.
 ;
-; @keyword obslong {in}{optional}{type=double}{default=GBT} East longitude of observatory in degrees.
+; :Params:  
+;   juldat : in, required, type=double
+;       Array of julian days to convert.
 ;
-; @returns lmst[n]: double local mean sidereal time in radians
+; :Keywords:
+;   obslong : in, optional, type=double, default=GBT
+;       East longitude of observatory in degrees.
 ;
-; @uses <a href="utcinfoinp.html">utcinfoinp</a>
-; @uses <a href="utctout1.html">utcToUt1</a>
+; :Returns:
+;   lmst[n]: double local mean sidereal time in radians
 ;
-; @version $Id$
+; :Uses:
+;   :idl:pro:`utcinfoinp`
+;   :idl:pro:`utcToUt1`
+;
 ;-
 function juldaytolmst,juldat,obslong=obslong
 

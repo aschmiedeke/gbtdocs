@@ -1,23 +1,26 @@
+; docformat = 'rst' 
+
 ;+
 ; Convert a Right Ascension (RA) in degrees to an hour angle (HA) in
 ; degrees using the given LST in seconds. 
 ; 
-; <p>The returned value (HA) is always between -180.0 and +180.0.  
+; The returned value (HA) is always between -180.0 and +180.0.  
 ; This works for vectors (lst must either be a single scalar or
 ; a vector of the same length as the RA argument).
 ;
-; @param ra {in}{required}{type=floating point} The right ascensions(s) to
-; convert (in degrees).
+; :Params:
+;   ra : in, required, type=floating point
+;       The right ascensions(s) to convert (in degrees).
 ;
-; @param lst {in}{required}{type=floating point} The LST (in seconds)
-; to use in the conversion.  If this is a vector, it must have the
-; same number of elements as ra.
+;   lst : in, required, type=floating point
+;       The LST (in seconds) to use in the conversion. If this is a
+;       vector, it must have the same number of elements as ra.
 ;
-; @returns HA (hour angle) in degrees.  The returned value is
-; always between -180. and 180.0.  Returns NaN on error (missing
-; arguments or bad number of elements in lst).
+; :Returns:
+;   HA (hour angle) in degrees. The returned value is always between
+;   -180. and 180.0.  Returns NaN on error (missing arguments or bad 
+;   number of elements in lst).
 ;
-; @version $Id$
 ;-
 function ra2ha, ra, lst
    compile_opt idl2

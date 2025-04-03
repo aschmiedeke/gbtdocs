@@ -1,27 +1,32 @@
+; docformat = 'rst' 
+
 ;+
 ; Get the Azimuth and Elevation from a data container's longitude_axis
 ; and latitude_axis header words.
 ;
-; <p>This returns the Azimuth and Elevation as a 2-element
+; This returns the Azimuth and Elevation as a 2-element
 ; vector (for spectral line data) or array (with dimension of [2,
 ; number of integrations] for continuum data) appropriate for the given
 ; data container.  The values in the longitude_axis and latitude_axis
 ; are used as is the coordinate_mode.  If the coordinate_mode is AZEL
 ; then those values are returned as is.
 ;
-; <p>If the data container's coordinate_mode field is OTHER then
+; If the data container's coordinate_mode field is OTHER then
 ; the values are returned as is and a warning message is emited.
 ; That warning message can be suppressed if /quiet is set.
 ;
-; @param dc {in}{required}{type=data container} The data container to
-; get the coordinate values from.
-; @keyword quiet {in}{optional}{type=boolean} When set, warning
-; messages are suppressed.
+; :Params:
+;   dc : in, required, type=data container
+;       The data container to get the coordinate values from.
+; 
+; :Keywords:
+;   quiet : in, optional, type=boolean
+;       When set, warning messages are suppressed.
 ;
-; @returns vector (spectral line) or array (continuum) holding
-; Azimuth and Elevation in degrees.
+; :Returns:
+;   vector (spectral line) or array (continuum) holding
+;   Azimuth and Elevation in degrees.
 ;
-; @version $Id$
 ;-
 function getazel, dc, quiet=quiet
     compile_opt idl2

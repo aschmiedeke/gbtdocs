@@ -1,8 +1,10 @@
+; docformat = 'rst' 
+
 ;+
 ; Procedure to shift data in a data container by a given number of
 ; channels.
 ;
-; <p>Shift the data in the data container by the given number of channels 
+; Shift the data in the data container by the given number of channels 
 ; (which may be a floating point number containing fractional
 ; channels) such that data in channel i before the shift is found in 
 ; channel i+offset after the shift.  The data's reference channel is
@@ -14,22 +16,22 @@
 ; result is shifted by the remaining fractional channel if that
 ; fraction channel is more than ftol.  
 ;
-; <p>Currently, the default fractional shifting is
+; Currently, the default fractional shifting is
 ; done using an FFT windowed using a Welch function to reduce ringing
 ; as a result of the FFT.  Set ftol to a number >= 1 to turn off all
 ; fractional shifting.  See below for alternative methods.  FFT is the
 ; default because that is the method that UniPOPS used in its 
 ; SHIFT verb.
 ;
-; <p> Use one of xshift, vshift, or fshift to calculate the offset to
+; Use one of xshift, vshift, or fshift to calculate the offset to
 ; align this data with data in an ongoing accumulation.
 ;
-; <p> Windowing using the Welsh function reduces ringing at the
+; Windowing using the Welsh function reduces ringing at the
 ; expense of the high-order terms in the FFT.  This very slightly
 ; broadens features.  This can be turned off using the /nowelsh
 ; keyword.
 ;
-; <p> The data are padded with 0s to the next higher power of two as
+; The data are padded with 0s to the next higher power of two as
 ; an intermediate step (the final result will have the original size
 ; of the data).  This is done to reduce ringing due to any
 ; discontinuities between the two ends of the data.  This can be
@@ -37,7 +39,7 @@
 ; points, they are interpolated using a linear interpolation prior to
 ; the FFT and then reblanked after the FFT.
 ;
-; <p> linear, quadratic, least squares quadratic, spline, and cubic
+; Linear, quadratic, least squares quadratic, spline, and cubic
 ; interpolation are all available as alternatives to the default FFT
 ; based interpolation for the fractional part of the shift.  The first
 ; 4 of these methods use the INTERPOL function and the cubic method
@@ -45,7 +47,7 @@
 ; functions for more information about them.  The cubic function is a
 ; close approximation to a sinc function.
 ;
-; <p> In some limited testing with GBT data, all of these
+; In some limited testing with GBT data, all of these
 ; interpolation methods agree reasonably well with each other. The
 ; linear interpolation is, not surprisingly, the fastest since it only
 ; uses 2 data points for each interpolated point.  The quadratic and
@@ -57,77 +59,83 @@
 ; Spline takes about 20 times longer and lsquadratic takes about 100
 ; times as long as the linear interpolation.
 ;
-; <p>If none of /linear, /spline, /quadratic, /lsquadratic, or /cubic
+; If none of /linear, /spline, /quadratic, /lsquadratic, or /cubic
 ; are specified then an FFT is used for the fractional shift.  It is
 ; an error to use more than one of these flags in the same call.
 ;
-; @param dc {in}{out}{required}{type=spectrum} The data container to
-; shift.  The shift is done in place.
+; :Params:
+;   dc : in, out, required, type=spectrum
+;       The data container to shift.  The shift is done in place.
 ;
-; @param offset {in}{required}{type=floating point} The number of
-; channels to shift the data (positive shifts things towards higher
-; channels, negative shifts things towards lower channels).
+;   offset : in, required, type=floating point
+;       The number of channels to shift the data (positive shifts 
+;       things towards higher channels, negative shifts things towards
+;       lower channels).
 ;
-; @keyword wrap {in}{optional}{type=boolean} Data shifted off one end
-; of the array appears on the other end of the array (it wraps around
-; as a result of the shift) when this is set.  Otherwise, as data is
-; shifted it is blanked (replaced by NaNs) and data shifted off the 
-; end is lost.
+; :Keywords:
+;   wrap : in, optional, type=boolean
+;       Data shifted off one end of the array appears on the other end 
+;       of the array (it wraps around as a result of the shift) when 
+;       this is set.  Otherwise, as data is shifted it is blanked 
+;       (replaced by NaNs) and data shifted off the end is lost.
 ; 
-; @keyword ftol {in}{optional}{type=floating point}{default=0.01}
-; Fractional shifts (the non-integer portion of offset) are only done
-; when they are larger than ftol.  Set this value to >= 1.0 to turn
-; off all fractional shifts.
+;   ftol : in, optional, type=floating point, default=0.01
+;       Fractional shifts (the non-integer portion of offset) are only
+;       done when they are larger than ftol.  Set this value to >= 1.0
+;       to turn off all fractional shifts.
 ;
-; @keyword linear {in}{optional}{type=boolean} When set, use the
-; linear interpolation provided by INTERPOL for any fractional shift
-; larger than ftol.
+;   linear : in, optional, type=boolean
+;       When set, use the linear interpolation provided by INTERPOL for
+;       any fractional shift larger than ftol.
 ;
-; @keyword quadratic {in}{optional}{type=boolean} When set, use the
-; quadratic interpolation provided by INTERPOL for any fractional
-; shift larger than ftol.
+;   quadratic : in, optional, type=boolean
+;       When set, use the quadratic interpolation provided by INTERPOL 
+;       for any fractional shift larger than ftol.
 ;
-; @keyword lsquadratic {in}{optional}{type=boolean} When set, use the
-; lsquadratic (lest squares quadratic) interpolation provided by
-; INTERPOL for any fractional shift larger than ftol.
+;   lsquadratic : in, optional, type=boolean
+;       When set, use the lsquadratic (lest squares quadratic) 
+;       interpolation provided by INTERPOL for any fractional shift 
+;       larger than ftol.
 ;
-; @keyword spline {in}{optional}{type=boolean} When set, use the
-; spline interpolation provided by INTERPOL for any fractional shift
-; larger than ftol.
+;   spline : in, optional, type=boolean
+;       When set, use the spline interpolation provided by INTERPOL for
+;       any fractional shift larger than ftol.
 ;
-; @keyword cubic {in}{optional}{type=boolean} When set, use the cubic
-; interpolation provided by INTERPOLATE for any fractional shift
-; larger than ftol.  The value of the CUBIC keyword in the INTERPOLATE
-; call is set to -0.5.
+;   cubic : in, optional, type=boolean
+;       When set, use the cubic interpolation provided by INTERPOLATE 
+;       for any fractional shift larger than ftol. The value of the 
+;       CUBIC keyword in the INTERPOLATE call is set to -0.5.
 ; 
-; @keyword nowelsh {in}{optional}{type=boolean} When set, the shifted
-; data is NOT windowed using the Welsh function.  This is ignored when
-; a non-FFT-based fraction shift is done
+;   nowelsh : in, optional, type=boolean
+;       When set, the shifted data is NOT windowed using the Welsh 
+;       function.  This is ignored when a non-FFT-based fraction shift
+;       is done
 ;
-; @keyword nopad {in}{optional}{type=boolean} When set, the data is
-; NOT padded with 0s to the next higher power of 2 prior to the FFT
-; and shift.  The data are never padded for the non-FFT-based
-; fractional shifts.
+;   nopad : in, optional, type=boolean
+;       When set, the data is NOT padded with 0s to the next higher
+;       power of 2 prior to the FFT and shift. The data are never padded
+;       for the non-FFT-based fractional shifts.
 ;
-; @keyword blanks {out}{optional}{type=integer array} The shifted
-; channel locations of all non-finite (blanks) channel values in the
-; original, unshift data container.  If there were no blank channels,
-; this value is -1.  If a blank channel is shifted out of the spectrum
-; it is not included in this list (that may also result in a return
-; value of -1).  If there was a fractional shift and the resulting
-; blank channel is now an extra channel wide then that is also
-; reflected in this keyword.  This array does not include the new
-; blank values added during the shift to replace the shifted values.
-; If the returned value is not -1 then all of the values in blanks are
-; valid channel numbers and are blanked (not a number) in the shifted
-; spectrum.  This is primarily used by the <a href="dcfold.html">dcfold</a> procedure.
+;   blanks : out, optional, type=integer array
+;       The shifted channel locations of all non-finite (blanks) channel 
+;       values in the original, unshift data container. If there were no
+;       blank channels, this value is -1. If a blank channel is shifted
+;       out of the spectrum it is not included in this list (that may also
+;       result in a return value of -1). If there was a fractional shift 
+;       and the resulting blank channel is now an extra channel wide then
+;       that is also reflected in this keyword. This array does not include
+;       the new blank values added during the shift to replace the shifted
+;       values. If the returned value is not -1 then all of the values in
+;       blanks are valid channel numbers and are blanked (not a number) in
+;       the shifted spectrum. This is primarily used by the :idl:pro:`dcfold`
+;       procedure.
 ;
-; @keyword ok {out}{optional}{type=boolean} This is set to 1 on
-; success or 0 on failure (e.g. bad arguments).
+;   ok : out, optional, type=boolean
+;       This is set to 1 on success or 0 on failure (e.g. bad arguments).
 ;
-; @uses <a href="data_valid.html">data_valid</a>
+; :Uses:
+;   :idl:pro:`data_valid`
 ;
-; @version $Id$
 ;-
 pro dcshift, dc, offset, wrap=wrap, ftol=ftol, linear=linear, $
              quadratic=quadratic, lsquadratic=lsquadratic, spline=spline, $

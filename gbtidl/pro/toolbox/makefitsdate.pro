@@ -1,18 +1,24 @@
+; docformat = 'rst' 
+
 ;+
 ; Make a FITS date string from a modified Julian Date.
 ;
-; @param mjd {in}{required}{type=double} Modified Julian Date, in
-; days.
+; :Params:
+;   mjd : in, required, type=double
+;       Modified Julian Date, in days.
 ;
-; @keyword precision {in}{optional}{type=integer} Number of digits
-; after the decimal point in the seconds field of the output FITS
-; date.  If precision is 0 (the default) no decimal point is used.
+; :Keywords:
+;   precision : in, optional, type=integer
+;       Number of digits after the decimal point in the seconds
+;       field of the output FITS date. If precision is 0 (the 
+;       default) no decimal point is used.
 ;
-; @returns a FITS date of the form YYYY-MM-DDThh:mm:ss[.sss].
+; :Returns:
+;   a FITS date of the form YYYY-MM-DDThh:mm:ss[.sss].
 ;
-; @uses <a href="paddedstring.html">paddedstring</a>
+; :Uses:
+;   :idl:pro:`paddedstring`
 ; 
-; @version $Id$
 ;-
 function makefitsdate,mjd,precision=precision
     compile_opt idl2
