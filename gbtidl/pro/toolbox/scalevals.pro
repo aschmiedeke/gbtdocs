@@ -1,3 +1,5 @@
+; docformat = 'rst'
+
 ;+
 ; Scale a value and determine the appropriate prefix for the scaled
 ; result.
@@ -7,12 +9,14 @@
 ; only the first value is examined and all values are scaled by the
 ; same factor.
 ;
-; @param thevalues {in}{required}{type=float} The values to be scaled.
-; @param scaledvalues {out}{required}{type=float} The scaled values.
-; @param prefix {out}{required}{type=string} One of "G", "M" or "k"
-; for scalings by 1e9, 1e6, or 1e3 respectively.
+; :Params:
+;   thevalues : in, required, type=float
+;       The values to be scaled.
+;   scaledvalues : out, required, type=float
+;       The scaled values.
+;   prefix : out, required, type=string
+;       One of "G", "M" or "k" for scalings by 1e9, 1e6, or 1e3 respectively.
 ;
-; @version $Id$
 ;-
 pro scalevals, thevalues, scaledvalues, prefix
     compile_opt idl2

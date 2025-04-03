@@ -1,30 +1,38 @@
+; docformat = 'rst' 
+
 ;+
 ; Take an integer array, sort it, and convert it to a comma separated
 ; string where consecutive values of integers are 'compressed' into a
 ; range, using the syntax 'begining:end'. 
 ;
-; <p>The returned string is collection of individual integers and
+; The returned string is collection of individual integers and
 ; ranges separated by commas.
 ; 
-; <p>Two consecutive values are left as individual integers, only
+; Two consecutive values are left as individual integers, only
 ; sequences longer than 3 integers are compressed to a range (there's
 ; no savings in space for 2 consecutive integers. 
 ;
-; <p>Optional upper and lower limits to the integer values can be
+; Optional upper and lower limits to the integer values can be
 ; specified.  Values less than the lower limit are set to that limit
 ; and values greater than the upper limit are set to that limit.
 ;
-; <p>Duplicate values are removed before the array is compressed to
+; Duplicate values are removed before the array is compressed to
 ; the string.
 ;
-; @param ints {in}{required}{type=long} Integer array to convert
-; @keyword llimit {in}{optional}{type=long} Optional lower limit to
-; use.
-; @keyword ulimit {in}{optional}{type=long} Optional upper limit to
-; use.
-; @returns a string represent all of the unique values in the array
-; passed in, optionally truncated to fall withing llimit to ulimit,
-; inclusive.
+; :Params:
+;   ints : in, required, type=long
+;       Integer array to convert
+; 
+; :Keywords:
+;   llimit : in, optional, type=long
+;       Optional lower limit to use.
+;   ulimit : in, optional, type=long
+;       Optional upper limit to use.
+;
+; :Returns:
+;   a string represent all of the unique values in the array
+;   passed in, optionally truncated to fall withing llimit to ulimit,
+;   inclusive.
 ;-
 function compress_ints, ints, llimit=llimit, ulimit=ulimit
     compile_opt idl2

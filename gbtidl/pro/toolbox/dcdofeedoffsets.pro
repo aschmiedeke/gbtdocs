@@ -1,7 +1,9 @@
+; docformat = 'rst' 
+
 ;+
 ; Apply or remove the feed offsets in the supplied data container.
 ;
-; <p><b>Note:</b>The feed offsets need only be applied for old
+; *Note:* The feed offsets need only be applied for old
 ; (fitsver earlier than 1.7) data written by gbtidl.  Data produced by
 ; sdfits from fitsver 1.7 on has had the feed offsets applied by
 ; sdfits.  In addition, GBTIDL applies all feed offsets by default
@@ -12,34 +14,36 @@
 ; positions and so GBTIDL does not automatically apply the feed
 ; offsets when reading that data.
 ;
-; <p> This applies (default) or removes (when the /remove keyword is
+; This applies (default) or removes (when the /remove keyword is
 ; set) any non-zero feed offset values (feedxoff and feedeoff) found
 ; in the supplied data container.  If /reportonly is used then
 ; information is printed about what the new coordinate values would
 ; have been but the data container remains unchanged.
 ;
-; <p> Feed offsets can only be applied if the longitude and latitude
+; Feed offsets can only be applied if the longitude and latitude
 ; coordinates can be converted to and from Azimuth and Elevation.
 ; Recognized coordinate systems are "RADEC","HADEC","GALACTIC",and
 ; "AZEL".  If the offsets can not be applied (or removed) the status
 ; value will be set to 0.  When successfull, the status value is 1.
 ;
-; <p> This works with spectral line and continuum data containers.
+; This works with spectral line and continuum data containers.
 ;
-; @param dc {in}{required}{type=data container} The data container to
-; be used.  The longitude, latitude, azimuth, and elevation values are
-; changed by this procedure unless /reportonly is set.
-; @keyword remove {in}{optional}{type=boolean}{default=0} When set,
-; remove the feed offsets from the positions. The default is to apply
-; the feed offsets.
-; @keyword reportonly {in}{optional}{type=boolean}{default=0} When
-; set, generate a report only.  No values in dc are changed when that
-; is set.  For continuum data containers, the report is generated for
-; a position near the middle integration.
-; @keyword status {out}{optional}{type=integer} On success, this
-; is set to 1.  On failure it is set to 0.
+; :Params:
+;   dc : in, required, type=data container
+;       The data container to be used. The longitude, latitude, azimuth,
+;       and elevation values are changed by this procedure unless /reportonly
+;       is set.
+; :Keywords:
+;   remove : in, optional, type=boolean, default=0
+;       When set, remove the feed offsets from the positions. The default
+;       is to apply the feed offsets.
+;   reportonly : in, optional, type=boolean, default=0
+;       When set, generate a report only. No values in dc are changed when that
+;       is set.  For continuum data containers, the report is generated for
+;       a position near the middle integration.
+;   status : out, optional, type=integer
+;   On success, this is set to 1.  On failure it is set to 0.
 ;
-; @version $Id$
 ;-
 pro dcdofeedoffsets, dc, remove=remove, reportonly=reportonly, status=status
   compile_opt idl2
