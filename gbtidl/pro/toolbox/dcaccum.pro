@@ -1,42 +1,41 @@
+; docformat = 'rst'
+
 ;+
 ; Add a data container into an ongoing accumulation in a given
 ; accum_struct structure.
 ;
-; <p>If this is the first item to be "accum"ed, it will also be used as a template,
-; stored in accumbuf.template, to be used by
-; <a href="accumave.html">accumave</a>.
+; If this is the first item to be "accum"ed, it will also be used as a template,
+; stored in accumbuf.template, to be used by :idl:pro:`accumave`.
 ;
-; <p>If the polarization of any items being accumed does not match
+; If the polarization of any items being accumed does not match
 ; that of template, the polarization of the template is changed to 'I'.
 ;
-; <p>This combines the UniPOPS functionality of ACCUM and SUM.  The SUM
+; This combines the UniPOPS functionality of ACCUM and SUM.  The SUM
 ; name is already in use in IDL.
 ;
-; <p>This is primarily for use inside procedures and functions where
+; This is primarily for use inside procedures and functions where
 ; it is useful to average several data containers without disturbing
 ; the public data containers in the guide structure.  Most users will
-; find using <a href="../guide/accum.html">accum</a> preferable to
-; using dcaccum.
+; find using :idl:pro:`accum` preferable to using dcaccum.
 ;
-; <ul><li>The data are  : sum(weight*data)
-; <li>The times are : sum(duration), sum(exposure)
-; <li>The weight is : sum(weight) one weight sum per channel.
-; <li>The tsys is   : sqrt(sum(max(weight)*Tsys^2))
-; <li>The frequency resolution is the maximum of all f_res values used
-; during the accumulation.
-; </ul>
+;   * The data are  : sum(weight*data)
+;   * The times are : sum(duration), sum(exposure)
+;   * The weight is : sum(weight) one weight sum per channel.
+;   * The tsys is   : sqrt(sum(max(weight)*Tsys^2))
+;   * The frequency resolution is the maximum of all f_res values used
+;     during the accumulation.
 ;
-; <p>A warning message is shown if either the frequency_resolution or
+; A warning message is shown if either the frequency_resolution or
 ; the frequency_interval do not match that in an already on-going
 ; accumulation.  If the quiet flag is on, then this message is
 ; suppressed.  In either case, the accumulation proceeds.
 ;
-; <p>If a weight is not supplied, it will be exposure*frequency_resolution/tsys^2
+; If a weight is not supplied, it will be exposure*frequency_resolution/tsys^2
 ;
 ; <p>weight can either be a scalar or it can be a vector having the same
 ; number of elements as the data in dc.
 ;
-; <p>If all of data is blanked (not a number) then it is completely
+; If all of data is blanked (not a number) then it is completely
 ; ignored and the accumulated weight, times, and system temperatures
 ; are unchanged.  If individual regions are blanked then the weight at
 ; those channels is 0.  When an average is requested (accumave) this
@@ -45,58 +44,63 @@
 ; used as input in a future average, the averaging can continue from
 ; the same point as before.
 ;
-; <p>If all of the weight values (supplied or the default value as
+; If all of the weight values (supplied or the default value as
 ; described above) are not finite (not a number) this routine behaves
 ; as if the data are blanked and the data are ignored and the
 ; accumulated values are unchanged.
 ;
-; <p>If the Tsys value is not finite (not a number) but the
+; If the Tsys value is not finite (not a number) but the
 ; weights and data are at least partially finite, then the Tsys value
 ; is ignored in the ongoing weighted Tsys^2 accumulation.  The
 ; weights used in the Tsys^2 accumulation are kept separate from the
 ; data weights.
 ;
-; @param accumbuf {in}{out}{required}{type=accum_struct}  The
-; structure containing the accumulation that you want to add to.
+; :Params:
+;   accumbuf : in, out, required, type=accum_struct
+;       The structure containing the accumulation that you want to add to.
 ;
-; @param dc {in}{required}{type=spectrum} The data container to
-; accum.
+;   dc : in, required, type=spectrum
+;       The data container to accum.
 ;
-; @keyword quiet {in}{optional}{type=boolean} If set, suppress warning
-; messages about frequency resolution and interval not matching values
-; in accumbuf.
+; :Keywords:
+;   quiet : in, optional, type=boolean
+;       If set, suppress warning messages about frequency resolution and 
+;       interval not matching values in accumbuf.
 ;
-; @keyword weight {in}{optional}{type=float} The weight to use for this
-; data.  If this is not set, a weight of exposure*frequency_resolution/tsys^2 
-; will be used.  Weight can either be a scalar (uniform weight across
-; at all channels) or it can be an array having the same number of
-; elements as the data in dc.
+;   weight : in, optional, type=float
+;       The weight to use for this data.  If this is not set, a weight of
+;       exposure*frequency_resolution/tsys^2 will be used.  Weight can 
+;       either be a scalar (uniform weight across at all channels) or it 
+;       can be an array having the same number of elements as the data in dc.
 ;
-; @examples
-;    average some data
-; <pre>
-;   a = {accum_struct}
-;   accumclear,a  ; not necessary here, but a good habit to follow
-;   ; get several records at once
-;   s = !g.lineoutio->get_spectra(index=0)
-;   dcaccum,a,s
-;   data_free,s ; be sure to clean up, else leaks memory
-;   s = !g.lineoutio->get_spectra(index=1)
-;   dv = dcvshift, a, s ; align in velocity
-;   dcshift, a, dv ; actually do the shift to align
-;   dcaccum,a,s
-;   data_free, s
-;   accumave,a,s
-;   show, s
-;   data_free, s  
-; </pre>
-; See <a href="ave.html">ave</a> for additional examples.
+; :Examples:
+; 
+; average some data
+; 
+;   .. code-block:: IDL
+; 
+;       a = {accum_struct}
+;       accumclear,a  ; not necessary here, but a good habit to follow
+;       ; get several records at once
+;       s = !g.lineoutio->get_spectra(index=0)
+;       dcaccum,a,s
+;       data_free,s ; be sure to clean up, else leaks memory
+;       s = !g.lineoutio->get_spectra(index=1)
+;       dv = dcvshift, a, s ; align in velocity
+;       dcshift, a, dv ; actually do the shift to align
+;       dcaccum,a,s
+;       data_free, s
+;       accumave,a,s
+;       show, s
+;       data_free, s  
 ;
-; @uses <a href="../../devel/toolbox/accumulate.html">accumulate</a>
-; @uses <a href="data_valid.html">data_valid</a>
-; @uses <a href="data_free.html">data_free</a>
+; See :idl:pro:`ave` for additional examples.
 ;
-; @version $Id$
+; :Uses:
+;   :idl:pro:`accumulate`
+;   :idl:pro:`data_valid`
+;   :idl:pro:`data_free`
+;
 ;-
 pro dcaccum, accumbuf, dc, weight=weight, quiet=quiet
     compile_opt idl2

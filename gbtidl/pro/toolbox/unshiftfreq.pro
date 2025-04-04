@@ -1,20 +1,25 @@
+; docformat = 'rst'
+
 ;+
 ; Undo the effects of shiftfreq using the same voffset (do not use its
 ; negative here).  See the comments in shiftfreq.  This is intended to
 ; only be used on a quantity that is the result from shiftfreq.
 ;
-; @param freq {in}{required}{type=double} The frequencies, in Hz, to
-; unshift.
+; :Params:
+;   freq : in, required, type=double
+;       The frequencies, in Hz, to unshift.
 ;
-; @param voffset {in}{required}{type=double} The velocity offset (m/s) to
-; remove.  This should be the same value used in a previous call to shiftfreq.
+;   voffset : in, required, type=double
+;       The velocity offset (m/s) to remove.  This should be the same 
+;       value used in a previous call to shiftfreq.
 ;
-; @keyword veldef {in}{optional}{type=string}{default='RADIO'} The
-; velocity definition from one of RADIO, OPTICAL or TRUE.
+; :Keywords:
+;   veldef : in, optional, type=string, default='RADIO'
+;       The velocity definition from one of RADIO, OPTICAL or TRUE.
 ;
-; @returns the unshifted frequencies in Hz.
+; :Returns:
+;   the unshifted frequencies in Hz.
 ;
-; @version $Id$
 ;-
 function unshiftfreq, freq, voffset, veldef=veldef
     compile_opt idl2
