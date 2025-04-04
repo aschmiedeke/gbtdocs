@@ -1,25 +1,27 @@
+; docformat = 'rst' 
+
 ;+
 ; Flip the data end-to-end in the supplied data container.
 ; 
-; <p>For line data the value of frequency_increment and reference_channel
+; For line data the value of frequency_increment and reference_channel
 ; are also changed appropriately so that, as displayed, there will be
 ; no change in appearance.  This is useful if you need to combine
 ; (e.g. average) two data containers where the frequency increments
 ; have opposite signs.  
 ;
-; <p>For continuum data (where the need to invert is less obvious), all
+; For continuum data (where the need to invert is less obvious), all
 ; of the time-dependent arrays are also flipped (utc, mjd, etc).
 ;
-; <p> The invert is done in place. 
+; The invert is done in place. 
 ;
-; <p>This procedure
-; can not be used on the global guide data containers because they are passed
-; by value.
+; This procedure can not be used on the global guide data containers 
+; because they are passed by value.
 ;
-; @param dc {in}{required}{type=data container} The data container to
-; be smoothed.  The data values are modified by this procedure.
+; :Params:
+;   dc : in, required, type=data container
+;       The data container to be smoothed. The data values are modified 
+;       by this procedure.
 ; 
-; @version $Id$
 ;-
 pro dcinvert, dc
     compile_opt idl2

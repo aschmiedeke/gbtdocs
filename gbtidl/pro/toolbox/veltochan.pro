@@ -1,32 +1,36 @@
+; docformat = 'rst' 
+
 ;+
 ; Convert velocity (m/s) to channel number using
 ; the supplied data container.  The velocity's frame and definition can also be supplied.
 ;
-; @param data {in}{required}{type=spectrum} The spectrum data
-; container to use to get the necessary header information.
+; :Params:
+;   data : in, required, type=spectrum
+;       The spectrum data container to use to get the necessary header information.
 ;
-; @param vels {in}{required} The velocities (m/s) to convert, may be
-; an array of values.
+;   vels : in, required
+;       The velocities (m/s) to convert, may be an array of values.
 ;
-; @keyword frame {in}{optional}{type=string} The rest frame that the
-; velocities are in.  Known rest frames are listed in
-; <a href="frame_velocity.html">frame_velocity</a>.  Defaults to the frame
-; given in data.velocity_definition.
+; :Keywords:
+;   frame : in, optional, type=string
+;       The rest frame that the velocities are in. Known rest frames are listed in
+;       :idl:pro:`frame_velocity`. Defaults to the frame given in data.velocity_definition.
 ;
-; @keyword veldef {in}{optional}{type=string} The velocity definition
-; in use from RADIO, OPTICAL, or TRUE.  Defaults to the value found in
-; data.velocity_definition. 
+;   veldef : in, optional, type=string
+;       The velocity definition in use from RADIO, OPTICAL, or TRUE. Defaults to the value
+;       found in data.velocity_definition. 
 ;
-; @returns channel number.
+; :Returns:
+;   channel number.
 ;
-; @uses <a href="data_valid.html">data_valid</a>
-; @uses <a href="decode_veldef.html">decode_veldef</a>
-; @uses <a href="chantofreq.html">chantofreq</a>
-; @uses <a href="freqtovel.html">freqtovel</a>
-; @uses <a href="veltofreq.html">veltofreq</a>
-; @uses <a href="freqtochan.html">freqtochan</a>
+; :Uses:
+;   :idl:pro:`data_valid`
+;   :idl:pro:`decode_veldef`
+;   :idl:pro:`chantofreq`
+;   :idl:pro:`freqtovel`
+;   :idl:pro:`veltofreq`
+;   :idl:pro:`freqtochan`
 ; 
-; @version $Id$
 ;-
 function veltochan, data, vels, frame=frame, veldef=veldef
     compile_opt idl2
