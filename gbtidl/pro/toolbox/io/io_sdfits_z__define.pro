@@ -24,12 +24,6 @@
 ;
 ; @version $Id$
 ;-
-
-;+
-; Called upon instantiation of this class.
-; @uses IO_SDFITS::init
-; @private
-;-
 FUNCTION IO_SDFITS_Z::init,index_file=index_file  
     compile_opt idl2, hidden
     
@@ -54,42 +48,6 @@ PRO IO_SDFITS_Z::cleanup
     
 END    
 
-;+
-; Groups a collection of rows from the index file by file and extension.
-; This method is needed since we will want to access each files extension only once
-; to read the pertinent rows (for efficiany reasons).
-; @param row_info {in}{type=array} array of structs, where each struct represents a row of the index file
-; @returns array of group_row_info structures: rows that share a file and extension 
-; @private
-;-
-FUNCTION IO_SDFITS_Z::group_row_info, row_info
-    compile_opt idl2 
-   
-    ; get all files
-    files = row_info.file
-    unique_files = files[uniq(files[sort(files)])]
-    
-    group = {z_sdfits_row_group}
-
-    for i = 0, (n_elements(unique_files)-1) do begin
-        file_locals = row_info[ where(row_info.file eq unique_files[i]) ]
-        exts = file_locals.extension
-        unique_exts = exts[uniq(exts[sort(exts)])]
-        for j = 0, (n_elements(unique_exts)-1) do begin
-            file_ext_locals = file_locals[ where(file_locals.extension eq unique_exts[j]) ]
-            ; collapse the array into one struct
-            group.file = file_ext_locals[0].file
-            group.extension = file_ext_locals[0].extension
-            group.rows = ptr_new(file_ext_locals.row_num)
-            group.index = ptr_new(file_ext_locals.index)
-            if (i eq 0) and (j eq 0) then groups = [group] else groups = [groups,group]
-        endfor
-    endfor
-    
-    return, groups
-
-END
-
 
 ;+
 ; Temporary function to use as interface until we can think of a better name
@@ -102,29 +60,6 @@ FUNCTION IO_SDFITS_Z::get_rows, _EXTRA=ex
     
 END
 
-;+
-;  Function to convert rows into data containers.
-;  This is used internally in get_spectra.
-;  group, missing, apply_offsets are not used here but are needed by the signature
-;  of this function.
-;  @private
-;-
-FUNCTION IO_SDFITS_Z::rows_to_dc, rows, group, missing, virtuals, apply_offsets
-    compile_opt idl2, hidden
-
-    ; append the virtuals 
-    result = self->append_virtuals(rows, virtuals)
-
-    ; strip off the white space from all string fields in rows
-    for i=0, (n_tags(result)-1) do begin
-        if size(result.(i),/type) eq 7 then begin
-            result.(i) = strtrim(result.(i))
-        endif 
-    endfor
-
-    return, result
-
-END
 
 ;+
 ; Given an array of data containers and a structure representing virtual 
@@ -155,13 +90,4 @@ FUNCTION IO_SDFITS_Z::append_virtuals, spectra, virtuals
 
 END
 
-;+
-; defines class structure
-; @private
-;-
-PRO io_sdfits_z__define
-    compile_opt idl2, hidden
 
-    io = { io_sdfits_z, inherits io_sdfits_line}
-    
-END

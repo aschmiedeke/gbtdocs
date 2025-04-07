@@ -34,55 +34,7 @@ PRO flag_file_flags_section__define
 
 END
 
-;+
-; Class Constructor
-; @private
-;-
-FUNCTION FLAG_FILE_FLAGS_SECTION::init, filename
-    compile_opt idl2, hidden
 
-
-    if n_elements(filename) ne 0 then begin
-        r = self->INDEX_FILE_SECTION::init("flags", filename)
-    endif else begin    
-        r = self->INDEX_FILE_SECTION::init("flags")
-    endelse
-  
-    if r eq 1 then begin
-        self.rows = ptr_new(/allocate_heap)
-        self.index_value_rows = ptr_new(/allocate_heap)
-        self.frmt = ptr_new(/allocate_heap)
-        self.param_types = ptr_new(/allocate_heap)
-    endif
-
-    ;self.header = "#RECNUM,SCAN,INTNUM,PLNUM,FDNUM,IFNUM,BCHAN,ECHAN,IDSTRING"
-    self.section_marker = 'flags'
-
-    ; rows section are the last sections in the file
-    self.allow_append = 1
-
-    ; set printing to be in the 'more' format
-    self.more_format = 1
- 
-    return, r
-
-END
-
-;+
-; Class Destructor
-; @private
-;-
-PRO FLAG_FILE_FLAGS_SECTION::cleanup
-    compile_opt idl2, hidden
-    
-    self->INDEX_FILE_SECTION::cleanup
-
-    if ptr_valid(self.rows) then ptr_free, self.rows
-    if ptr_valid(self.index_value_rows) then ptr_free, self.index_value_rows
-    if ptr_valid(self.frmt) then ptr_free, self.frmt
-    if ptr_valid(self.param_types) then ptr_free, self.param_types
-    
-END    
 
 ;+
 ; Takes the format array and creates the variables needed for listing

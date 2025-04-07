@@ -63,19 +63,6 @@ FUNCTION FLAG_FILE::init, file_name=file_name, file_path=file_path, debug=debug
 END
 
 ;+
-; Class Destructor
-; @private
-;-
-PRO FLAG_FILE::cleanup
-    compile_opt idl2, hidden
-
-    if obj_valid(self.header) then obj_destroy, self.header
-    if obj_valid(self.rows) then obj_destroy, self.rows
-    if ptr_valid(self.old_versions) then ptr_free, self.old_versions
-    
-END
-
-;+
 ; Retrieves the array that specifies the types allowable for each column of 
 ; the flag file
 ; @returns a string array of column names and types
@@ -90,17 +77,6 @@ FUNCTION FLAG_FILE::get_param_types
 
 END
 
-;+
-; For test purposes only; determines what format version is used.
-; @private
-;-
-PRO FLAG_FILE::set_flag_file_version, version_number, version_class
-    compile_opt idl2, hidden
-
-    self.version = version_number
-    self.flags_section_class = version_class
-
-END
 
 ;+
 ; Sets file name of index file
@@ -251,35 +227,6 @@ FUNCTION FLAG_FILE::create_header
     
 END
 
-;+
-; If this object is using the file path, returns full path name of index file
-; @private
-;-
-FUNCTION FLAG_FILE::get_full_file_name, file_name
-    compile_opt idl2
-
-    if (keyword_set(file_name) eq 0) then file_name = self.file_name
-    ; if the file_name already has a path attatched to it, don't add to it
-    if strpos(file_name,'/') eq -1 then begin
-        if self.file_path eq "" then begin
-            full_name = file_name
-        endif else begin
-            ; look for / at end of file_path
-            last_char = strmid(self.file_path,strlen(self.file_path)-1,1)
-            if last_char eq '/' then begin
-                file_path = strmid(self.file_path,0,strlen(self.file_path)-1)
-            endif else begin
-                file_path = self.file_path
-            endelse    
-            full_name = file_path +'/'+ file_name
-        endelse
-    endif else begin
-        full_name = file_name
-    endelse
-
-    return, full_name
-
-END    
 
 ;+
 ; Along with set_flag_rec, sets a line in the flag file representing a flagging
