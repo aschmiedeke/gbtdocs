@@ -84,37 +84,4 @@ pro gstatus, full=full
     if out ne -1 then free_lun, out
 end
 
-;+
-; Translate color value into "!name" string.  Used by gstatus to
-; format the colors in a human readable form.
-;
-; :Params:
-; 
-;   cvalue : in, required, type=intetger
-;       The color value to translate.
-;
-; @private
-;-
-function getbangcolor, cvalue
-    cnames = ['!black','!red','!orange','!green','!forest',$
-              '!yellow','!cyan','!blue','!magenta','!purple',$
-              '!gray','!white']
-    ; this assumes the colors are in order and go from !black
-    ; up to !white only test is that !black and !white exist
-    ; and are 11 values offset, if the test fails, cvalue
-    ; is returned as is
 
-    defsysv,'!black', exists=blackExists
-    defsysv,'!white', exists=whiteExists
-
-    if not blackExists or not whiteExists then return, cvalue
-
-    if (!white-!black) ne 11 then return, cvalue
-
-    ival = cvalue - !black
-
-    if ival lt 0 or ival gt 11 then return, cvalue
-
-    return, cnames[ival]
-end
-    
