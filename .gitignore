@@ -1,6 +1,6 @@
 doc/backupFiles
 
-docs/build
+docs/_build
 docs/source/_assets/gbtdocs.pdf
 docs/*.sublime-workspace
 
