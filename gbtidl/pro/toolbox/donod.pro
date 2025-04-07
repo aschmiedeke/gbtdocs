@@ -1,7 +1,9 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure calibrates a single integration from a Nod scan pair.
 ;
-; <p>An integration in each scan in a standard Nod scan pair contains
+; An integration in each scan in a standard Nod scan pair contains
 ; data from two beams (b1 and b2 here).  And the data from each beam
 ; contains one spectrum with the cal on and one with no cal.  There
 ; are then 8 spectra to be combined here.  This assumes that data
@@ -9,22 +11,21 @@
 ; the reference data in beam 2.  Then in scan 2 (s2) the reference
 ; data is beam 1 and the signal data is in beam 2.
 ;
-; <ul><li>Each cal on, cal off pair for a specific beam and scan are
-; combined using <a href="dototalpower.html">dototalpower</a> to
-; produce 4 spectra.  Each spectra also has a tsys associated with it.
-; <li>The signal from scan 2 (the beam 2 data) is combined with the
-; reference from scan 1 (the beam 1 data) using 
-; <a href="dosigref.html">dosigref</a>
-; <li>The signal from scan 1(the beam 1 data) is combined with the
-; reference from scan 2 (the beam 2 data) also using dosigref.
-; <li>These two calibrated spectra are combined using 
-; <a href="dcaccum.html">dcaccum</a> to produce the final calibrated
-; result.
-; </ul>
+; * Each cal on, cal off pair for a specific beam and scan are
+;   combined using :idl:pro:`dototalpower` to
+;   produce 4 spectra.  Each spectra also has a tsys associated with it.
+; * The signal from scan 2 (the beam 2 data) is combined with the
+;   reference from scan 1 (the beam 1 data) using :idl:pro:`dosigref`
+; * The signal from scan 1(the beam 1 data) is combined with the
+;   reference from scan 2 (the beam 2 data) also using dosigref.
+; * These two calibrated spectra are combined using 
+;   :idl:pro:`dcaccum` to produce the final calibrated
+;   result.
+; 
 ;
-; <p> See dototalpower and dosigref for details about each step.
+; See dototalpower and dosigref for details about each step.
 ;
-; <p>The returned tsys (ret_tsys) are the 4 system temperatures
+; The returned tsys (ret_tsys) are the 4 system temperatures
 ; calculed in the first step (from dototalpower).  They are, in order,
 ; the system temperatures from scan 1 and beam 1 (signal in scan 1),
 ; scan 1 and beam 2 (reference in scan 1), scan 2 and beam 1
@@ -32,15 +33,14 @@
 ; The system temperature in the result is a weighted combination of
 ; the two reference system temperatures as described in dcaccum.
 ;
-; <p>The user can optionally over-ride the system
+; The user can optionally over-ride the system
 ; temperatures calculated in dototalpower and used in dosigref by
 ; supplying a value for the tsys and tau keywords here.  tsys is the
 ; system temperate at tau=0.  If the user supplies this keyword, tsys
-; is first adjusted to the elevation of the reference spectrum : 
-; <pre>
-; tsys_used = tsys*exp(tau/sin(elevation).  
-; </pre>
-; If tau is not supplied, then the <a href="get_tau.html">get_tau</a>
+; is first adjusted to the elevation of the reference spectrum 
+; :math:`tsys_used = tsys*exp(tau/sin(elevation)`.  
+; 
+; If tau is not supplied, then the :idl:pro:`get_tau`
 ; function is used, using the reference observed_frequency to arrive
 ; at a very rough guess as to the zenith opacity, tau.  Users are
 ; encouraged to supply tau when they also supply tsys to improve the
@@ -49,69 +49,82 @@
 ; the returned tsys values are the corrected, user-supplied tsys
 ; values using the elevation from the appropriate scan.
 ;
-; <p>The units of result is "Ta".  Use 
-; <a href="dcsetunits.html">dcsetunits</a> to change these units to
-; something else.
+; The units of result is "Ta".  Use :idl:pro:`dcsetunits` to change
+; these units to something else.
 ;
-; <p>This is used primarily by <a href="../guide/getnod.html">getnod</a>
-; and this code does almost no argument checks or sanity checks.  The
-; calling routine is expected to check that the 8 input spectra are
-; compatible (all are valid data containers and all have the same
-; number of data points).
+; This is used primarily by :idl:pro:`getnod` and this code does almost
+; no argument checks or sanity checks.  The calling routine is expected
+; to check that the 8 input spectra are compatible (all are valid data 
+; containers and all have the same number of data points).
 ;
-; <p>It is the responsibility of the caller to ensure that result
-; is freed using <a href="data_free.html">data_free</a>
-; when it is no longer needed (i.e. at the end of all anticipated calls
-; to this function before returning to the calling level).  Failure to
-; do that will result in memory leaks.  It is not necessary to free
-; these data containers between consecutive calls to this function at
-; the same IDL level (e.g. inside the same procedure).
+; It is the responsibility of the caller to ensure that result is freed
+; using :idl:pro:`data_free`when it is no longer needed (i.e. at the end
+; of all anticipated calls to this function before returning to the
+; calling level).  Failure to do that will result in memory leaks. It 
+; is not necessary to free these data containers between consecutive 
+; calls to this function at the same IDL level (e.g. inside the same
+; procedure).
 ;
-; @param result {out}{required}{type=data container} 
-; This is the resulting data container.  
-; @param s1_b1_off {in}{required}{type=spectrum} An uncalibrated
-; spectrum from feed 0 (source/tracking feed) in scan 1 with the cal off.
-; @param s1_b1_on {in}{required}{type=spectrum} An uncalibrated
-; spectrum from feed 0 (source/tracking feed) in scan 1 with the cal on.
-; @param s2_b1_off {in}{required}{type=spectrum} An uncalibrated
-; spectrum from feed 0 (reference/non-tracking feed) in scan 2 with the cal off.
-; @param s2_b1_on {in}{required}{type=spectrum} An uncalibrated
-; spectrum from feed 0 (reference/non-tracking feed) in scan 2 with the cal on.
-; @param s1_b2_off {in}{required}{type=spectrum} An uncalibrated
-; spectrum from feed 1 (reference/non-tracking feed) in scan 1 with the cal off.
-; @param s1_b2_on {in}{required}{type=spectrum} An uncalibrated
-; spectrum from feed 1 (reference/non-tracking feed) in scan 1 with the cal on.
-; @param s2_b2_off {in}{required}{type=spectrum} An uncalibrated
-; spectrum from feed 1 (source/tracking feed) in scan 2 with the cal off.
-; @param s2_b2_on {in}{required}{type=spectrum} An uncalibrated
-; spectrum from feed 1 (source/tracking feed) in scan 2 with the cal on.
-; @param smoothref {in}{optional}{type=integer} Boxcar smooth width
-; for reference spectrum.  No smoothing if not supplied or if value is
-; less than or equal to 1.
-; @keyword avgref {in}{optional}{type=boolean} If set, then the
-; off-signal terms (reference) are assumed to be already averaged and
-; no total power processing of that data is done here.  These terms
-; are s1_b2_off, s1_b2_on, s2_b1_off, and s2_b1_on.  Of these 4 terms,
-; only s1_b2_off and s2_b1_off are actually used when this keyword is
-; set.   
-; @keyword tsys {in}{optional}{type=float} tsys at zenith, this is
-; converted to a tsys at the observed elevation.  If not suppled, the
-; tsys for each integration is calculated as described elsewhere.
-; @keyword tau {in}{optional}{type=float} tau at zenith, if not
-; supplied, it is estimated using <a href="../toolbox/get_tau.html">get_tau</a>
-; tau is only used when the requested units are other than the default
-; of Ta and when a user-supplied tsys value at zenith is to be used.
-; @keyword tcal {in}{optional}{type=float} Cal temperature (K) to use
-; in the Tsys calculation.  If not supplied, the mean_tcal value from
-; the header of the cal_off switching phase data in each integration
-; is used.  This must be a scalar, vector tcal is not yet supported.
-; @param ret_tsys {out}{optional}{type=float} internal use
-; @keyword eqweight {in}{optional}{type=boolean} When set, average the
-; two beams with equal weight, else use default weighting.
-; @keyword single_beam {out}{optional}{type=boolean} When set, one of
-; the two beams was blanked.  Useful for reporting back to the user.
+; :Params:
+;   result : out, required, type=data container
+;       This is the resulting data container.  
+;   s1_b1_off: in, required, type=spectrum
+;       An uncalibrated spectrum from feed 0 (source/tracking feed)
+;       in scan 1 with the cal off.
+;   s1_b1_on: in, required, type=spectrum
+;       An uncalibrated spectrum from feed 0 (source/tracking feed) 
+;       in scan 1 with the cal on.
+;   s2_b1_off: in, required, type=spectrum 
+;       An uncalibrated spectrum from feed 0 (reference/non-tracking feed)
+;       in scan 2 with the cal off. 
+;   s2_b1_on: in, required, type=spectrum
+;       An uncalibrated spectrum from feed 0 (reference/non-tracking feed)
+;       in scan 2 with the cal on.
+;   s1_b2_off : in, required, type=spectrum
+;       An uncalibrated spectrum from feed 1 (reference/non-tracking feed) 
+;       in scan 1 with the cal off.
+;   s1_b2_on : in, required, type=spectrum
+;       An uncalibrated spectrum from feed 1 (reference/non-tracking feed) 
+;       in scan 1 with the cal on.
+;   s2_b2_off : in, required, type=spectrum 
+;       An uncalibrated spectrum from feed 1 (source/tracking feed) in 
+;       scan 2 with the cal off.
+;   s2_b2_on : in, required, type=spectrum
+;       An uncalibrated spectrum from feed 1 (source/tracking feed) in
+;       scan 2 with the cal on.
+;   smoothref : in, optional, type=integer 
+;       Boxcar smooth width for reference spectrum. No smoothing if not 
+;       supplied or if value is less than or equal to 1.
+;   ret_tsys : out, optional, type=float
+;       internal use
+; 
+; :Keywords:
+;   avgref: in, optional, type=boolean
+;       If set, then the off-signal terms (reference) are assumed to be 
+;       already averaged and no total power processing of that data is 
+;       done here.  These terms are s1_b2_off, s1_b2_on, s2_b1_off, and
+;       s2_b1_on.  Of these 4 terms, only s1_b2_off and s2_b1_off are 
+;       actually used when this keyword is set.   
+;   tsys : in, optional, type=float
+;       tsys at zenith, this is converted to a tsys at the observed elevation.
+;       If not suppled, the tsys for each integration is calculated as described
+;       elsewhere.
+;   tau : in, optional, type=float
+;       tau at zenith, if not supplied, it is estimated using :idl:pro:`get_tau`
+;       tau is only used when the requested units are other than the default
+;       of Ta and when a user-supplied tsys value at zenith is to be used.
+;   tcal : in, optional, type=float
+;       Cal temperature (K) to use in the Tsys calculation.  If not supplied,
+;       the mean_tcal value from the header of the cal_off switching phase data
+;       in each integration is used.  This must be a scalar, vector tcal is not 
+;       yet supported.
+;   eqweight : in, optional, type=boolean 
+;       When set, average the two beams with equal weight, else use default 
+;       weighting.
+;   single_beam : out, optional, type=boolean
+;       When set, one of the two beams was blanked. Useful for reporting back
+;       to the user.
 ;
-; @version $Id$
 ;-
 pro donod,result,s1_b1_off,s1_b1_on,s2_b1_off,s2_b1_on,s1_b2_off,s1_b2_on,s2_b2_off,s2_b2_on,smoothref,$
           ret_tsys,avgref=avgref,tsys=tsys,tau=tau,tcal=tcal,eqweight=eqweight,single_beam=single_beam
