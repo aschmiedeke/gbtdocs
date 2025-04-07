@@ -1,34 +1,4 @@
 ;+
-; Used internally in dcascii to center a string in a given output
-; length.
-;
-; @param str {in}{required}{type=string} The string to center.
-; @param len {in}{required}{type=integer} The maximum length of the
-; string.
-;
-; @returns the centered string.
-;
-; @private
-;-
-function centerpad,str,len
-    compile_opt idl2
-
-    extra = len - strlen(str)
-    if (extra le 0) then begin
-        result = strmid(str,0,len)
-    endif else begin
-        front = extra/2
-        back = extra-front
-        result = ''
-        if front gt 0 then result = strjoin(make_array(front,/string,value=' '))
-        result = result + str
-        if back gt 0 then result = result + strjoin(make_array(back,/string,value=' '))
-    endelse
-
-    return, result
-end
-
-;+
 ; Output a data container as ascii showing the x-axis value and the
 ; corresponding y-axis value over the given range of X values.
 ;
