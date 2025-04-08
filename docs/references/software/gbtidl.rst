@@ -2,6 +2,15 @@ GBTIDL commands
 ---------------
 
 
+GBTIDL is an interactive package for reduction and analysis of spectral line data taken with the GBT.
+The package consists of a set of straightforward yet flexible calibration, averaging, and analysis
+procedures (the "GUIDE" layer) modeled after the UniPOPS and CLASS data reduction philosophies,
+a customized plotter with many built-in visualization features, and Data I/O and toolbox functionality 
+that can be used for more advanced tasks. GBTIDL makes use of data structures which can also be used
+to store intermediate results. 
+
+
+
 .. 
    (Temporary?) grid structure since multiple calls to autopath doesn't work
 
