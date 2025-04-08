@@ -41,6 +41,7 @@ extensions = ['sphinx.ext.todo',
               'sphinx_copybutton',
               'sphinx_inline_tabs',
               'hoverxref.extension',
+              'sphinxcontrib.bibtex',
               #'sphinx_idl.domain', 
               #'sphinx_idl.auto'
 ]

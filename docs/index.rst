@@ -115,6 +115,23 @@ The hub follows the `diataxis <https://diataxis.fr/>`_ approach, where documenta
             Glossary
 
 
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        :octicon:`stack;3em;sd-color-muted` **Bibliography**
+
+        List of all sources.
+   
+        .. button-link:: glossary.html
+            :color: primary
+            :outline:
+            :click-parent:
+
+            Bibliography
+            
+
+
 .. toctree::
    :maxdepth: 4
    :hidden:
@@ -124,4 +141,5 @@ The hub follows the `diataxis <https://diataxis.fr/>`_ approach, where documenta
    explanations/index
    references/index
    glossary
+   bibliography
 
