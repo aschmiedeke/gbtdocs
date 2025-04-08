@@ -123,7 +123,7 @@ The hub follows the `diataxis <https://diataxis.fr/>`_ approach, where documenta
 
         List of all sources.
    
-        .. button-link:: glossary.html
+        .. button-link:: bibliography.html
             :color: primary
             :outline:
             :click-parent:

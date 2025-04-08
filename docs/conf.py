@@ -58,6 +58,13 @@ intersphinx_mapping = {
         'dysh': ("https://dysh.readthedocs.io/en/latest", None)
 }
 
+
+# for sphinxcontrib-bibtex
+bibtex_bibfiles = ['bibliography.bib']
+bibtex_reference_style = 'author_year'
+bibtex_tooltips = True
+
+
 # We recommend adding the following config value.
 # Sphinx defaults to automatically resolve *unresolved* labels using all your Intersphinx mappings.
 # This behavior has unintended side-effects, namely that documentations local references can
