@@ -22,7 +22,7 @@ sphinx-design==0.5.0
 sphinx-hoverxref==1.4.2
 sphinx-idl==0.1
 sphinx-inline-tabs==2023.4.21
-sphinxcontrib-applehelp==1.0.2
+sphinxcontrib-applehelp==1.0.7
 sphinxcontrib-devhelp==1.0.2
 sphinxcontrib-htmlhelp==2.0.0
 sphinxcontrib-jsmath==1.0.1
