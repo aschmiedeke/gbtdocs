@@ -1,3 +1,5 @@
+; docformat = 'rst'
+
 ;+
 ; Copy the data container from in to out.
 ;
@@ -7,28 +9,31 @@
 ; To copy a data container stored as a local variable into a global
 ; data container, use the procedure set_data_container.
 ; 
-; @param in {in}{required}{type=data_container_struct} The data container
-; copied.  This can be identified by a local valiable or it can be
-; a global data container, such as !g.s[0]
+; :Params:
+;   in ; in, required, type=data_container_struct
+;       The data container copied.  This can be identified by a local
+;       valiable or it can be a global data container, such as !g.s[0]
 ;
-; @param out {out}{required}{type=data_container_struct} The data container to receive
-; the copy.  This can be a local variable, but NOT a global data container.
+;   out : out, required, type=data_container_struct
+;       The data container to receive the copy.  This can be a local 
+;       variable, but NOT a global data container.
 ;
-; @examples
-; <pre>
-; get, mc_scan=22, cal='F', sig='T', pol='XX', if_num=1, int=1 ; sig
-; data_copy,!g.s[0],spec
-; a = getdcdata(spec)
-; a = a * 2.0
-; setdcdata,spec,a
-; show,spec
-; data_free, spec  ; clean up memory
-; </pre>
+; :Examples:
 ;
-; @uses <a href="data_valid.html">data_valid</a>
-; @uses <a href="data_free.html">data_free</a>
+;   .. code-block:: IDL
+; 
+;       get, mc_scan=22, cal='F', sig='T', pol='XX', if_num=1, int=1 ; sig
+;       data_copy,!g.s[0],spec
+;       a = getdcdata(spec)
+;       a = a * 2.0
+;       setdcdata,spec,a
+;       show,spec
+;       data_free, spec  ; clean up memory
 ;
-; @version $Id$
+; :Uses:
+;   :idl:pro:`data_valid`
+;   :idl:pro:`data_free`
+;
 ;-
 PRO DATA_COPY, in, out
     compile_opt idl2
