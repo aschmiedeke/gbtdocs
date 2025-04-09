@@ -288,10 +288,6 @@
         two orthogonal linear polarizations or the two circular polarizations. This switching 
         method is  used almost exclusively for Zeeman measurements. 
 
-        .. todo:: 
-            
-            Check if that still applies to X-Band.
-
     position switching
         A calibration method that involves observing an object of interest for a period of time, 
         and then moving the telescope to a blank sky region to obtain the blank sky observations 
