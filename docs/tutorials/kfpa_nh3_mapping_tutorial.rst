@@ -1,9 +1,9 @@
 .. _kfpa_nh3_mapping_tutorial:
 
 
-#####################################################################################
-NH\ :sub:`3` Mapping Observations with the K-Band Focal Plane Array (KFPA) on the GBT
-#####################################################################################
+###############################################
+NH\ :sub:`3` Mapping Observations with the KFPA
+###############################################
 
 .. todo::
 	Want to link to the KFPA beam diagram (Fig 7.1 in the Observers Guide, once that is on RTD), this would be at the Pointing Script section.
@@ -18,7 +18,7 @@ This tutorial assumes your scientific proposal has been accepted. It will then w
 
     You need a GBO computing account. You should be relatively familiar with using the command line, and starting AstrID. 
 
-    General instructions for using AstrID, as well as starting CLEO, contacting the operator, etc. are addressed at https://gbtdocs.readthedocs.io/en/latest/how-tos/general_guides/gbt_observing.html.
+    You can find general instructions for using AstrID, as well as starting CLEO, contacting the operator, etc. :ref:`here <GBT observations 101>`.
 
 
 
