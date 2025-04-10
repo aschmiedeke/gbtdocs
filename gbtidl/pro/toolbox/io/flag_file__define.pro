@@ -1,19 +1,34 @@
+; docformat = 'rst'
+
 ;+
 ; FLAG_FILE is the class for managing a single flag file.  Its main components
 ; are objects for managing the files header and flags sections.
-; See <a href="../../../IDL_IO_classes.jpg">UML</a> fro all IO Classes.
+; See image below for all IO Classes.
+; 
+; .. image:: ../../material/IDL_IO_classes.jpg
+;       :width: 400
+;       :alt: IDL IO classes
 ;
-; @field file_name basename of the flag file
-; @field file_loaded boolean flag for determining if the file has been read
-; @field file_path the full path to this files location
-; @field header object responsible for reading/writing to the header section
-; @field rows object responsible for managing the flags section of the file
-; @field flags_section_class name of class that rows is an instantiation of
-; @field version version of format used by the flag file
-; @field old_versions previous format versions - used for conversions.
-; @field num_old_versions number of string referred to by the old_versions pointer
+; :Fields:
+;   file_name 
+;       basename of the flag file
+;   file_loaded 
+;       boolean flag for determining if the file has been read
+;   file_path 
+;       the full path to this files location
+;   header 
+;       object responsible for reading/writing to the header section
+;   rows 
+;       object responsible for managing the flags section of the file
+;   flags_section_class 
+;       name of class that rows is an instantiation of
+;   version 
+;       version of format used by the flag file
+;   old_versions 
+;       previous format versions - used for conversions.
+;   num_old_versions
+;       number of string referred to by the old_versions pointer
 ;-
-
 PRO flag_file__define
 
     b1 = { FLAG_FILE,  $
