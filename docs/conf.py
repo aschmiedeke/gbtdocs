@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.abspath('../sparrow'))
 # -- Project information -----------------------------------------------------
 
 project = 'GBT Docs'
-copyright = '2023-24, Green Bank Observatory, A. Schmiedeke'
+copyright = '2023-25, Green Bank Observatory, A. Schmiedeke'
 author = 'Green Bank Observatory'
 
 # The full version, including alpha/beta/rc tags
