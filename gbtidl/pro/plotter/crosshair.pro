@@ -1,20 +1,26 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure toggles a flag to draw a crosshair cursor.  Use the
 ; /on or /off keywords to ensure that the crosshair is on or off
 ; (otherwise it simply toggles the state).
 ;
-; <p>If both /on and /off are used at the same time, an error message
+; If both /on and /off are used at the same time, an error message
 ; is printed and the state of the zero line is not changed.
 ;
-; @examples
-;   crosshair
+; :Keywords:
+;   on : in, optional, type=boolean
+;       Turn the crosshair on.
+;   off : in, optional, type=boolean
+;       Turn the corrhair off.
 ;
-; @keyword on {in}{optional}{type=boolean} Turn the crosshair on.
-; @keyword off {in}{optional}{type=boolean} Turn the corrhair off.
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       crosshair
 ;
-; @version $Id$
 ;-
-
 pro crosshair, on=on, off=off
     compile_opt idl2
     common gbtplot_common,mystate,xarray

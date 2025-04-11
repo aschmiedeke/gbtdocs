@@ -1,46 +1,55 @@
+; docformat = 'rst'
+
 ;+
 ; Convert the given channels numbers to the x values appropriate for
 ; the currently displayed data container and x-axis settings.
 ;
-; @param chans {in}{required}{type=array} The channel numbers to
-; convert.
+; :Params:
+;   chans : in, required, type=array
+;       The channel numbers to convert.
 ;
-; @keyword type {in}{optional}{type=integer} The axis array type
-; (0=channels, 1=frequency, 2=velocity).  If not supplied, it will use
-; the current x-axis type.  When type is <em>not</em> the currently
-; displayed x-axis type, the scaling is to standard SI units (m/s, Hz,
-; and channels).
+; :Keywords:
+;   type : in, optional, type=integer
+;       The axis array type (0=channels, 1=frequency, 2=velocity). 
+;       If not supplied, it will use the current x-axis type. When 
+;       type is **not** the currently displayed x-axis type, the 
+;       scaling is to standard SI units (m/s, Hz, and channels).
 ;
-; @keyword dc {in}{optional}{type=data container} A data container
-; to use.  If not supplied, the most recently plotted (via show) data
-; container is used.
+;   dc : in, optional, type=data container
+;       A data container to use.  If not supplied, the most recently 
+;       plotted (via show) data container is used.
 ;
-; @returns The converted channel numbers in the x-axis units currently
-; displayed.  If there is a problem (invalid arguments, no data found,
-; etc.) then the returned value is the chans argument.
+; :Returns:
+;   The converted channel numbers in the x-axis units currently
+;   displayed.  If there is a problem (invalid arguments, no data found,
+;   etc.) then the returned value is the chans argument.
 ;
-; @examples
+; :Examples:
 ;   Get the x-axis value at channel 100 for the current plot
-; <pre>
-;       a=chantox(100)
-; </pre>
+; 
+;       .. code-block:: IDL
+; 
+;           a=chantox(100)
+;
 ;
 ;   Get the frequency at channel 100 for the current plot
-;   <em>Note</em> that the units of a depend on what the current x-axis is.
+;   *Note* that the units of a depend on what the current x-axis is.
 ;   If x-axis is frequency, the units (MHz, GHz, Hz) will be the 
 ;   same as that in the current display.  If the x-axis is something
 ;   else, then the units of a will be Hz.
-; <pre>
-;       a = chantox(100,type=1)
-; </pre>
+; 
+;       .. code-block:: IDL
+; 
+;           a = chantox(100,type=1)
+;
 ;
 ;   Get the velocity at channel 100 for a data container at
 ;   buffer 7.
-; <pre>
-;       a = chantox(100,type=2,dc=!g.s[7])
-; </pre>
-;   
-; @version $Id$
+; 
+;       .. code-block:: IDL
+; 
+;           a = chantox(100,type=2,dc=!g.s[7])
+; 
 ;-
 function chantox, chans, type=type, dc=dc
     compile_opt idl2

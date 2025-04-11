@@ -1,69 +1,73 @@
+; docformat = 'rst'
+
 ;+
 ; Get cursor position when the user presses a mouse button.  Positions
 ; are translated to include channels, frequency, and velocity in the
 ; requested reference frame and velocity definition.
 ;
-; The return value is a named structure (<B>cvfstruct</B>) containing the
+; The return value is a named structure (**cvfstruct**) containing the
 ; following fields:
-; <UL>
-; <LI> <B>x</B>       The x value in the data coordinates.
-; <LI> <B>y</B>       The y value in the data coordinates.
-; <LI> <B>xdevice</B> The x value in device coordinates.
-; <LI> <B>ydevice</B> The y value in device coordinates.
-; <LI> <B>button</B>  The button pressed (1=left,2=middle,4=right).
-; <LI> <B>chan</B>    The channel number corresponding to <B>x</B>.
-;          <B>frame</B> with the <B>voffset</B>.
-; <LI> <B>velo</B>    The velocity (m/s) corresponding to <B>x</B> in 
-;          <B>frame</B> using <B>veldef</B> and <B>voffset</B>.
-; <LI> <B>frame</B>   The supplied frame argument, defaults to the current
-;          frame in the plotter.
-; <LI> <B>veldef</B>  The veldef argument (velocity definition),
-;          defaults to the current velocity definition in the plotter.
-; <LI> <B>voffset</B> The velocity offset (in <B>frame</B> and <B>veldef</B>) 
-;          as found in the plotter.
-; <LI> <B>ok</B>      If everything went fine, this is 1, otherwise it's 0.
-; </UL>
+; 
+;   * **x**       The x value in the data coordinates.
+;   * **y**       The y value in the data coordinates.
+;   * **xdevice** The x value in device coordinates.
+;   * **ydevice** The y value in device coordinates.
+;   * **button**  The button pressed (1=left,2=middle,4=right).
+;   * **chan**    The channel number corresponding to **x**.
+;                 **frame** with the **voffset**.
+;   * **velo**    The velocity (m/s) corresponding to <B>x</B> in 
+;                 **frame** using **veldef** and **voffset**.
+;   * **frame**   The supplied frame argument, defaults to the current
+;                 frame in the plotter.
+;   * **veldef**  The veldef argument (velocity definition),
+;                 defaults to the current velocity definition in the plotter.
+;   * **voffset** The velocity offset (in **frame** and **veldef**) 
+;                 as found in the plotter.
+;   * **ok**      If everything went fine, this is 1, otherwise it's 0.
+; 
+; :Keywords:
+;   frame : in, optional, type=string
+;       The desired reference frame for the velocity and frequency values.
+;       The list of possible choices can be found in the documentation for
+;       :idl:pro:`frame_velocity`. This defaults to the frame currently in
+;       use in the plotter.
 ;
-; @keyword frame {in}{optional}{type=string} The desired reference
-; frame for the velocity and frequency values.  The list of possible
-; choices can be found in the documentation for <a
-; href="../toolbox/frame_velocity.html">frame_velocity</a>.  This
-; defaults to the frame currently in use in the plotter.
+;   veldef : in, optional, type=string
+;       The velocity definition to use in converting the cursor x position.
+;       This must be one of OPTICAL, RADIO or TRUE. This defaults to the 
+;       veldef currently in use in the plotter.
 ;
-; @keyword veldef {in}{optional}{type=string} The velocity definition
-; to use in converting the cursor x position.  This must be one of
-; OPTICAL, RADIO or TRUE.  This defaults to the veldef currently in
-; use in the plotter.
+;   nocrosshair : in, optional, type=boolean
+;       When set, this function will ensure that the plotter's crosshair is
+;       on until the click is received. At that point, the plotter's 
+;       crosshair will be returned to its state before click was invoked.
+;       If not set, the plotters crosshair state will not be changed.
 ;
-; @keyword nocrosshair {in}{optional}{type=boolean} When set, this
-; function will ensure that the plotter's crosshair is on until the
-; click is received.  At that point, the plotter's crosshair will be
-; returned to its state before click was invoked.  If not set, the
-; plotters crosshair state will not be changed.
+;   noshow : in, optional, type=boolean
+;       If set, then the plotter will not be brought to the foreground (shown).
 ;
-; @keyword noshow {in}{optional}{type=boolean} If set, then the plotter
-; will not be brought to the foreground (shown).
+;   label : in, optional, type=string
+;       A label to use in the "Left Click:" field of the plotter. Defaults 
+;       to "Click a Mouse Button".
 ;
-; @keyword label {in}{optional}{type=string} A label to use in the
-; "Left Click:" field of the plotter.  Defaults to "Click a Mouse
-; Button".
+; :Returns:
+;   cfvstruct structure as described above.
 ;
-; @returns cfvstruct structure as described above.
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       print,click()
+;       ; or
+;       c = click()
+;       v = c.velo ; velocity at frame and velocity definition in header
+; 
+; :Uses:
+;   :idl:pro:`chantofreq`
+;   :idl:pro:`chantovel`
+;   :idl:pro:`freqtochan`
+;   :idl:pro:`gbtcursor`
 ;
-; @examples
-; <pre>
-; print,click()
-; ; or
-; c = click()
-; v = c.velo ; velocity at frame and velocity definition in header
-; </pre>
-;
-; @uses <a href="../toolbox/chantofreq.html">chantofreq</a>
-; @uses <a href="../toolbox/chantovel.html">chantovel</a>
-; @uses <a href="../toolbox/freqtochan.html">freqtochan</a>
-; @uses <a href="../../devel/plotter/gbtcursor.html">gbtcursor</a>
-;
-; @version $Id$
 ;-
 function click, frame=frame, veldef=veldef, nocrosshair=nocrosshair, $
                 noshow=noshow, label=label

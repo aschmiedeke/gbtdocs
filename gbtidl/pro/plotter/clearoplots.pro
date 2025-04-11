@@ -1,28 +1,31 @@
+; docformat = 'rst'
+
 ;+
 ; Clear any over plots.  This removes them from the plotters state and
 ; does a reshow. 
 ;
-; <p>Under normal use, this will not clear region box overlays if 
+; Under normal use, this will not clear region box overlays if 
 ; the value of !g.regionboxes is true (1).  That behavior can be
 ; overridden by specifying the idstring of the region boxes (see
 ; showregion), but that is intended for internal use only and is not
 ; recommended for general users.  Instead, use showregion,/off or
 ; set !g.regionboxes to false (0) before calling clearoplots.
-;         
-; @keyword index {in}{optional}{type=integer} The index numbers to
-; clear.  This is the index number set by gbtoplot.  Note that once an
-; index has been cleared, subsequent index numbers are renumbered
-; appropriately so that index numbers are always 0:(n_indexes-1).
+; 
+; :Keywords:
+;   index : in, optional, type=integer
+;       The index numbers to clear.  This is the index number set by 
+;       gbtoplot.  Note that once an index has been cleared, subsequent
+;       index numbers are renumbered appropriately so that index numbers
+;       are always 0:(n_indexes-1).
 ;
-; @keyword idstring {in}{optional}{type=string} A string that can be
-; used to identify which oplots should be cleared.  This is a string
-; that is set by the user when gbtoplot was called.  Withing GBTIDL, 
-; all internal id strings begin with two underscores so that they 
-; are less likely to conflict with user-defined idstrings.  When
-; not specified (the default) no checks on idstring are done prior
-; to clearing it from the list.
+;   idstring : in, optional, type=string
+;       A string that can be used to identify which oplots should be 
+;       cleared.  This is a string that is set by the user when gbtoplot
+;       was called.  Withing GBTIDL, all internal id strings begin with
+;       two underscores so that they are less likely to conflict with
+;       user-defined idstrings. When not specified (the default) no 
+;       checks on idstring are done prior to clearing it from the list.
 ;
-; @version $Id$
 ;-
 pro clearoplots, index=index, idstring=idstring
     compile_opt idl2

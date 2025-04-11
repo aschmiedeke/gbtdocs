@@ -1,25 +1,32 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure places a text string on the plot
 ;
-; @param x {in}{required}{type=float} X position of the string
-; @param y {in}{required}{type=float} Y position of the string
-; @param text {in}{required}{type=string} The text to write
-; @keyword color {in}{optional}{type=integer}{default=!g.annotatecolor}
-; Text color index
-; @keyword charsize {in}{optional}{type=float} character size
-; @keyword normal {in}{optional}{type=boolean} positions are
-; normalized coordinates.
-; @keyword noshow {in}{optional}{type=boolean} Don't immediately show
-; the new annotation.  This is useful if you are stringing several
-; annotations together.  It keeps the plotter from updating after each
-; call.
+; :Params:
+;   x {in}{required}{type=float} X position of the string
+;   y {in}{required}{type=float} Y position of the string
+;   text {in}{required}{type=string} The text to write
+; 
+; :Keywords:
+;   color : in, optional, type=integer, default=!g.annotatecolor
+;       Text color index
+;   charsize : in, optional, type=float
+;       character size
+;   normal : in, optional, type=boolean
+;       positions are normalized coordinates.
+;   noshow : in, optional, type=boolean
+;       Don't immediately show the new annotation. This is useful
+;       if you are stringing several annotations together. It keeps 
+;       the plotter from updating after each call.
 ;
-; @examples
-;    annotate,10.5,1.5,'Hello',color=!blue,charsize=2.0
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       annotate,10.5,1.5,'Hello',color=!blue,charsize=2.0
 ;
-; @version $Id$
 ;-
-
 pro annotate,x,y,text,color=color,charsize=charsize,normal=normal,noshow=noshow
     common gbtplot_common,mystate,xarray
     if n_params() ne 3 then begin

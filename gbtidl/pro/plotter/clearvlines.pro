@@ -1,17 +1,19 @@
+; docformat = 'rst'
+
 ;+
 ; Clear all vertical lines and associated text from the plotter.
 ;
-; @keyword noshow {in}{optional}{type=boolean} Don't immediately
-; update the plotter..  This is useful if you are stringing several
-; plotter calls together.  It keeps the plotter from updating after each
-; call.
+; :Keywords:
+;   noshow : in, optional, type=boolean
+;       Don't immediately update the plotter. This is useful if 
+;       you are stringing several plotter calls together. It keeps
+;       the plotter from updating after each call.
 ;
-; @keyword idstring {in}{optional}{type=string} Only clear those
-; vertical lines that match idstring.  Default is to clear all
-; vertical lines.  An empty string matches all vlines and is
-; equivalent to omitting this idstring keyword.
+;   idstring : in, optional, type=string
+;       Only clear those vertical lines that match idstring. Default
+;       is to clear all vertical lines. An empty string matches all
+;       vlines and is equivalent to omitting this idstring keyword.
 ;
-; @version $Id$
 ;-
 pro clearvlines, noshow=noshow, idstring=idstring
     common gbtplot_common,mystate,xarray

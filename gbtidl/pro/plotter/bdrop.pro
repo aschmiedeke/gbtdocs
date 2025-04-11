@@ -1,3 +1,5 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure is used to specify how many channels at the beginning of
 ; the spectrum should be ignored, when plotting.  You then avoid the
@@ -8,19 +10,18 @@
 ; plot is shown in channels, frequency, or velocity, a bdrop value may
 ; affect the left or right side of the plotted spectrum.
 ;
-; @param nchan {in}{required}{type=int} number of channels to drop from the
-;  beginning of the plot
+; :Params:
+;   nchan : in, required, type=int
+;       number of channels to drop from the beginning of the plot
 ;
-; @examples
-; <pre>
-;   show       ; show some spectrum with bad channels 
-;   bdrop,10   ; the spectrum is replotted with better scaling
-;   bdrop,0    ; unset the bdrop value
-; </pre>
-;
-; @version $Id$
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       show       ; show some spectrum with bad channels 
+;       bdrop,10   ; the spectrum is replotted with better scaling
+;       bdrop,0    ; unset the bdrop value
 ;-
-
 pro bdrop,nchan
 	compile_opt idl2
 	common gbtplot_common,mystate,xarray

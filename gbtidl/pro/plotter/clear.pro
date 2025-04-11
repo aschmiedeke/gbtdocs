@@ -1,15 +1,18 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure clears all data in the plotter and erases the plotter
 ; screen.
 ;
-; @examples
-;   getps,10
-;   show
-;   clear
+; :Examples:
+;   
+;   ..code-block:: IDL
+; 
+;       getps,10
+;       show
+;       clear
 ;
-; @version $Id$
 ;-
-
 pro clear
    common gbtplot_common,mystate,xarray
    clearoplotslist
