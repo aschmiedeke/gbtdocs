@@ -71,24 +71,6 @@ to store intermediate results.
             Toolbox
 
 
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **Toolbox/IO** 
-
-        Functions and procedures from the toolbox/io folder
-
-        .. button-link:: gbtidl_toolbox_io.html
-            :color: primary
-            :tooltip: Toolbox IO
-            :outline:
-            :click-parent:
-
-            Toolbox IO
-
-
-
 .. toctree::
     :maxdepth: 3
     :hidden:
@@ -96,4 +78,3 @@ to store intermediate results.
     gbtidl_guide
     gbtidl_plotter
     gbtidl_toolbox
-    gbtidl_toolbox_io
