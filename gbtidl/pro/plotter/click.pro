@@ -66,7 +66,6 @@
 ;   :idl:pro:`chantofreq`
 ;   :idl:pro:`chantovel`
 ;   :idl:pro:`freqtochan`
-;   :idl:pro:`gbtcursor`
 ;
 ;-
 function click, frame=frame, veldef=veldef, nocrosshair=nocrosshair, $

@@ -1,8 +1,9 @@
+; docformat = 'rst'
+
 ;+
 ; Free the x and y axes to autoscale.  All zoom information 
 ; is reset to its initial values.
 ;
-; @version $Id$
 ;-
 pro freexy
      common gbtplot_common,mystate,xarray

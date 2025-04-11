@@ -1,8 +1,9 @@
+; docformat = 'rst'
+
 ;+
 ; Free the y-axis to autoscale.  If the x-axis is also autoscaling,
 ; then all zoom information is reset to its initial values.
 ;
-; @version $Id$
 ;-
 pro freey
      common gbtplot_common,mystate,xarray
