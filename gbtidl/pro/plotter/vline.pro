@@ -1,33 +1,41 @@
+; docformat = 'rst'
+
 ;+
 ; Mark a verticle line at the given x-location.  Optionally include a
 ; label at the same x and the given y-location.
 ;
-; @param x {in}{required}{type=float} The x-location to draw the
-; vertical line.  In the current x-axis units.
+; :Params:
+;   x : in, required, type=float
+;       The x-location to draw the vertical line. In the current
+;       x-axis units.
 ;
-; @keyword ylabel {in}{optional}{type=float} The y-location to put the
-; optional label text.  ylabel is required if label is specified.
+; :Keywords:
+;   ylabel : in, optional, type=float
+;       The y-location to put the optional label text. ylabel is 
+;       required if label is specified.
 ;
-; @keyword label {in}{optional}{type=string} The label to associate
-; with this vertical line.
+;   label : in, optional, type=string
+;       The label to associate with this vertical line.
 ;
-; @keyword noshow {in}{optional}{type=boolean} Don't immediately show
-; the new vline.  This is useful if you are stringing several
-; vline calls together.  It keeps the plotter from updating after each
-; call and make the whole operation run faster.  Simply call
-; "reshow" when you are ready to show the final result.
+;   noshow : in, optional, type=boolean
+;       Don't immediately show the new vline. This is useful if you 
+;       are stringing several vline calls together.  It keeps the 
+;       plotter from updating after each call and make the whole 
+;       operation run faster.  Simply call "reshow" when you are 
+;       ready to show the final result.
 ;
-; @keyword ynorm {in}{optional}{type=boolean} The y-position for the
-; label is in normalized coordinates when this keyword is set.  That
-; means that the label maintains its position relative to the entire
-; y-axis no matter what changes in y-range (zoom) and x-axis.
+;   ynorm : in, optional, type=boolean
+;       The y-position for the label is in normalized coordinates 
+;       when this keyword is set. That means that the label maintains
+;       its position relative to the entire y-axis no matter what 
+;       changes in y-range (zoom) and x-axis.
 ;
-; @keyword idstring {in}{optional}{type=string} An string to use to
-; identify this particular vline.  This can be used in clearvlines to
-; clear a particular vline or group of vlines having the same
-; idstring.  The default is an empty string.
+;   idstring : in, optional, type=string
+;       An string to use to identify this particular vline. This can
+;       be used in clearvlines to clear a particular vline or group 
+;       of vlines having the same idstring. The default is an empty
+;       string.
 ;
-; @version $Id$
 ;-
 pro vline, x, label=label, ylabel=ylabel, noshow=noshow, ynorm=ynorm, $
            idstring=idstring

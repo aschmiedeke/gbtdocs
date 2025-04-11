@@ -1,14 +1,19 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure unzooms to the full X- and Y-axis ranges
 ;
-; @keyword onestep {in}{optional}{type=boolean} When set, just unzoom by
-; one level.  This is equivalent to pressing the "Unzoom" button on
-; the plotter.
+; :Keywords:
+;   onestep : in, optional, type=boolean
+;       When set, just unzoom by one level. This is equivalent to pressing
+;       the "Unzoom" button on the plotter.
 ;
-; @examples
-;   unzoom
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       unzoom
 ;
-; @version $Id$
 ;-
 
 pro unzoom, onestep=onestep

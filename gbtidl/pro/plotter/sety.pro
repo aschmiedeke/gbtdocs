@@ -1,20 +1,23 @@
+; docformat = 'rst'
+
 ;+
 ; Set the y-axis range either directly or with the cursor.  If
 ; interacting via the cursor, mouse button 3 aborts out of this
 ; function without changing the y-axis range.
 ;
-; @param y1 {in}{optional}{type=double} Desired minimum y-axis value
-; in the current y-axis units.  If not supplied, the cursor will be
-; used to set this.
+; :Params:
+;   y1 : in, optional, type=double
+;       Desired minimum y-axis value in the current y-axis units.
+;       If not supplied, the cursor will be used to set this.
 ;
-; @param y2 {in}{optional}{type=double} Desired maxiumum y-axis
-; value in the current y-axis units.  This must be supplied if y1
-; has also been supplied.
+;   y2 : in, optional, type=double
+;       Desired maxiumum y-axis value in the current y-axis units.
+;       This must be supplied if y1 has also been supplied.
 ;
-; If y2 is less than y1, this procedure will reverse them
-; internally before they are used.
-; 
-; @version $Id$ 
+; :Note:
+;   If y2 is less than y1, this procedure will reverse them
+;   internally before they are used.
+;  
 ;-
 pro sety,y1,y2
     common gbtplot_common,mystate,xarray

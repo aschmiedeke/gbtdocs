@@ -1,21 +1,27 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure toggles a flag to draw a horizontal line on the plot
 ; at the zero level.  Use the /on or /off keywords to ensure that
 ; the zero line plot is on or off (otherwise it simply toggles the
 ; state).
 ;
-; <p>If both /on and /off are used at the same time, an error message
+; If both /on and /off are used at the same time, an error message
 ; is printed and the state of the zero line is not changed.
 ;
-; @examples
-;   zline
+; :Keywords:
+;   on : in, optional, type=boolean
+;       Turn the zero line on.
+;   off : in, optional, type=boolean
+;       Turn the zero line off.
 ;
-; @keyword on {in}{optional}{type=boolean} Turn the zero line on.
-; @keyword off {in}{optional}{type=boolean} Turn the zero line off.
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       zline
 ;
-; @version $Id$
 ;-
-
 pro zline, on=on, off=off
     compile_opt idl2
     common gbtplot_common,mystate,xarray

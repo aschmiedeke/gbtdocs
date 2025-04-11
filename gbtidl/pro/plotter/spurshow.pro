@@ -1,28 +1,30 @@
+; docformat = 'rst'
+
 ;+
 ; Using the current displayed data container, mark any VEGAS ADC spurs
 ; associated with it using vertical lines (vline).
 ;
-; <p>If the vegas spur header parameters are invalid or there are no
+; If the vegas spur header parameters are invalid or there are no
 ; spurs found within the number of channels present in the data then
 ; no vertical lines will be drawn.
 ;
-; <p>All of these vertical lines will have the idstring 'vegas_spur'.
+; All of these vertical lines will have the idstring 'vegas_spur'.
 ; They can all be cleared by using clearvlines for that idstring.
 ;
-; <p><b>Note:</b> Vertical lines are persistent in the GBTIDL
-; plotter.  They remain as different data containers are displayed.
-; clearvlines or clear must be used to erase these lines.
+; *Note*: Vertical lines are persistent in the GBTIDL plotter. They
+; remain as different data containers are displayed. clearvlines or
+; clear must be used to erase these lines.
 ;
-; <p>This routine always clears all 'vegas_spur' vertical lines before
+; This routine always clears all 'vegas_spur' vertical lines before
 ; it tries to redraw any at the spur locations.
 ;
-; @keyword showcenteradc {in}{optional}{type=boolean} When set, the
-; marked spurs will include the center ADC spur.  Normally this is
-; unset and the center ADC spur is not marked.  The usual sdfits
-; behavior is to replace the data value at the center ADC spur
-; with the average of the two adjacent channels.
+; :Keywords:
+;   showcenteradc : in, optional, type=boolean
+;       When set, the marked spurs will include the center ADC spur.  
+;       Normally this is unset and the center ADC spur is not marked. 
+;       The usual sdfits behavior is to replace the data value at the 
+;       center ADC spur with the average of the two adjacent channels.
 ;
-; @version $Id$
 ;-
 pro spurshow, showcenteradc=showcenteradc
   compile_opt idl2

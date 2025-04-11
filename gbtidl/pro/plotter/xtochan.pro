@@ -1,18 +1,22 @@
+; docformat = 'rst'
+
 ;+
 ; Convert the given x-axis value to channels assuming that the x-axis
 ; values are in the same units and settings of the currently displayed
 ; x-axis.
 ;
-; @param xvalues {in}{required}{type=array} The x-axis values to
-; convert.
+; :Params:
+;   xvalues : in, required, type=array
+;       The x-axis values to convert.
 ;
-; @keyword dc {in}{optional}{type=data container} An alternative data
-; container to use. If not supplied, the most recently plotted (via
-; show) data container is used.
+; :Keywords:
+;   dc : in, optional, type=data container
+;       An alternative data container to use. If not supplied, the most
+;       recently plotted (via show) data container is used.
 ;
-; @returns The converted channel numbers.
+; :Returns:
+;   The converted channel numbers.
 ;
-; @version $Id$
 ;-
 function xtochan, xvalues, dc=dc
     compile_opt idl2
