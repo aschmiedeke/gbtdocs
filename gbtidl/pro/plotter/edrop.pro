@@ -1,3 +1,5 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure is used to specify how many channels at the end of
 ; the spectrum should be ignored, when plotting.  You then avoid
@@ -8,20 +10,20 @@
 ; the plot is shown in channels, frequency, or velocity, an edrop value may
 ; affect the left or right side of the plotted spectrum
 ;
-; @param nchan {in}{required}{type=int} number of channels to drop from the
-;  end of the plot
+; :Params:
+;   nchan : in, required, type=int
+;       number of channels to drop from the end of the plot
 ;
-; @examples
-; <pre>
-;   show       ; show some spectrum with bad channels 
-;   bdrop,10   ;
-;   edrop,10   ; the spectrum is replotted with better scaling
-;   edrop,0    ; unset the edrop value.  bdrop is still in effect.
-; </pre>
-;
-; @version $Id$
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       show       ; show some spectrum with bad channels 
+;       bdrop,10   ;
+;       edrop,10   ; the spectrum is replotted with better scaling
+;       edrop,0    ; unset the edrop value.  bdrop is still in effect.
+; 
 ;-
-
 pro edrop,nchan
 	compile_opt idl2
 	common gbtplot_common,mystate,xarray
