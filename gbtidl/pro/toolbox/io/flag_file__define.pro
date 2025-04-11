@@ -49,9 +49,14 @@ END
 
 ;+
 ; Class Constructor - flags and constants set here.
-; @keyword file_name {in}{optional}{type=string} file name of index file
-; @keyword file_path {in}{optional}{type=string} directory where file is located
-; @keyword debug {in}{optional}{type=bool} object is verbose or quiet
+; 
+; :Keywords:
+;   file_name : in, optional, type=string
+;       file name of index file
+;   file_path : in, optional, type=string
+;       directory where file is located
+;   debug : in, optional, type=bool
+;       object is verbose or quiet
 ;-
 FUNCTION FLAG_FILE::init, file_name=file_name, file_path=file_path, debug=debug
     compile_opt idl2, hidden
@@ -80,7 +85,9 @@ END
 ;+
 ; Retrieves the array that specifies the types allowable for each column of 
 ; the flag file
-; @returns a string array of column names and types
+; 
+; :Returns:
+;   a string array of column names and types
 ;-
 FUNCTION FLAG_FILE::get_param_types
     compile_opt idl2, hidden
@@ -95,7 +102,10 @@ END
 
 ;+
 ; Sets file name of index file
-; @param file_name {in}{type=string} name of index file
+; 
+; :Params:
+;   file_name in, type=string
+;       name of index file
 ;-
 PRO FLAG_FILE::set_file_name, file_name
     compile_opt idl2
@@ -131,7 +141,10 @@ END
 
 ;+
 ; Sets path to index file
-; @param file_path {in}{type=string} path to index file
+; 
+; :Params:
+;   file_path in, type=string
+;       path to index file
 ;-
 PRO FLAG_FILE::set_file_path, file_path
     compile_opt idl2
