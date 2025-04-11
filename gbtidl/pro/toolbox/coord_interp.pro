@@ -1,20 +1,25 @@
+; docformat = 'rst'
+
 ;+
 ; Find the value of the coordinate at the given location, watching for
 ; large discontinuities due to a coordinate wrap (e.g. time at 24/0 or
 ; degrees at 360/0).
 ;
-; @param coords {in}{required}{type=2-element array} The values to use
-; in the interpolation.  Only the first two values are used.
+; :Params:
+;   coords : in, required, type=2-element array
+;       The values to use in the interpolation. Only the first two
+;       values are used.
 ;
-; @param loc {in}{required} The location to find the interpolated
-; value at.  Should be between 0 and 1.
+;   loc : in, required
+;       The location to find the interpolated value at. Should be 
+;       between 0 and 1.
 ;
-; @param wrapsat {in}{required} The value that coords wraps back to
-; zero at.
+;   wrapsat : in, required
+;       The value that coords wraps back to zero at.
 ;
-; @returns The interpolated coordinate value.
+; :Returns:
+;   The interpolated coordinate value.
 ;
-; @version $Id$
 ;-
 FUNCTION coord_interp, coords, loc, wrapsat
     compile_opt idl2

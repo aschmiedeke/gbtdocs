@@ -1,3 +1,5 @@
+; docformat = 'rst'
+
 ;+
 ; Create a new data_struct of the requested data type (spectrum or
 ; continuum) and containing the given array, if supplied.  For
@@ -5,23 +7,28 @@
 ; pointers (date, utc, mjd, etc) are set to double precision vectors
 ; of 0s having the same number of elements as arr.
 ; 
-; @param arr {in}{optional}{type=integer}{default=u1ndefined} The data
-; pointer that this data_struct will hold.  If arr is not provided,
-; then the data pointer will point to an undefined variable.
+; :Params:
+;   arr : in, optional, type=integer, default=undefined
+;       The data pointer that this data_struct will hold.  If arr is
+;       not provided, then the data pointer will point to an undefined
+;       variable.
 ;
-; @keyword spectrum {in}{optional}{default=set} When this is set, a spectrum
-; structure will be returned.  That is the default behavior.
+; :Keywords:
+;   spectrum : in, optional, default=set
+;       When this is set, a spectrum structure will be returned. That
+;       is the default behavior.
 ;
-; @keyword continuum {in}{optional}{default=unset} When this is set, a
-; continuum structure will be returned.  spectrum and continuum are mutually
-; exclusive.
+;   continuum : in, optional, default=unset
+;       When this is set, a continuum structure will be returned. 
+;       spectrum and continuum are mutually exclusive.
 ;
-; @keyword nocheck {in}{optional}{default=unset} When this is set,
-; the input parameter checking is turned off.  Usefull for speed.
+;   nocheck : in, optional, default=unset
+;       When this is set, the input parameter checking is turned off.
+;       Usefull for speed.
 ;
-; @returns requested data structure of given size or -1 on failure.
+; :Returns:
+;   requested data structure of given size or -1 on failure.
 ;
-; @version $Id$
 ;-
 FUNCTION DATA_NEW, arr, spectrum=spectrum, continuum=continuum, nocheck=nocheck
     compile_opt idl2

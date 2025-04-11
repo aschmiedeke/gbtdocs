@@ -1,12 +1,14 @@
+; docformat = 'rst'
+
 ;+
 ; Free the data pointer in a data structure.  This should only be
 ; used when the data structure is no longer necessary since it leaves
 ; the data pointer in an invalid state.
 ; 
-; @param data_struct {in}{out}{required}{type=data_container_struct} The
-; struct to free.
+; :Params:
+;   data_struct : in, out, required, type=data_container_struct
+;       The struct to free.
 ;
-; @version $Id$
 ;-
 PRO DATA_FREE, data_struct
     compile_opt idl2
