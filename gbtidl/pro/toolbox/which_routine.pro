@@ -1,42 +1,23 @@
-;+
-; Support function used in which_routine.
-;
-; LOOKS FOR A MATCH BETWEEN ROUTINE INFORMATION AND
-; AN IDL MODULE NAME...
-; CLEVERLY, COMPILATION OF WHICH_ROUTINE GUARANTEES THAT THERE WILL ALWAYS
-; BE AT LEAST ONE PROCEDURE (WHICH_ROUTINE) AND FUNCTION
-; (WHICH_FIND_ROUTINE)...
-;
-; @param proname {in}{required}{type=string} The routine to look for.
-; @keyword _REF_EXTRA {in}{optional}{type=extra keywords} Passed to
-; IDL routine_info.
-;
-; @hidden
-;-
-function which_find_routine, proname, _REF_EXTRA=_extra
-compile_opt idl2, hidden
-return, strmatch(routine_info(_EXTRA=_extra), proname, /FOLD_CASE)
-end; which_find_routine
+; docformat = 'rst'
 
 ;+
 ; Search for any file in the IDL !path that contains the
 ; user-supplied IDL routine (procedure or function) name. 
 ;
-; <p> If the returned string has non-zero length, the routine has 
+; If the returned string has non-zero length, the routine has 
 ; been compiled (resolved in IDL lingo) otherwise, it has not.  
 ; Any unresolved files that contain this routine are also returned 
 ; in the unresolved keyword value.  If both the returned string and
 ; the resolved keyword values have zero length, then the routine could
 ; not be found in the !path.
 ;
-; <p> This is the code behind <a href="which.html">which</a>.  It was
+; This is the code behind <a href="which.html">which</a>.  It was
 ; originally all in which but was split so that other code could make
 ; use of this functionality (e.g. driving a browser to the appropriate
 ; reference manual location, finding and summarizing the help
 ; information for a routine).
 ;
-; <p>
-; <b>Restrictions:</b>
+; **Restrictions:**
 ; The IDL !path is searched for file names that are simply the
 ; module (in IDL documentation, "module" and "routine" are used
 ; interchangeably) name with a ".pro" suffix appended to them.
@@ -46,21 +27,21 @@ end; which_find_routine
 ; E.g., if the module "pro test_proc" lives in a file named
 ; "dumb_name.pro", then it will not be found:
 ;
-; <pre>
-; IDL> a=which_routine('test_proc',unresolved=unresolved)
-; IDL> print, strlen(a), strlen(unresolved)
-;          0           0
-; </pre>
+; .. code-block:: IDL
+; 
+;   IDL> a=which_routine('test_proc',unresolved=unresolved)
+;   IDL> print, strlen(a), strlen(unresolved)
+;             0           0
 ;
 ; unless it happens to be resolved:
 ;
-; <pre>
-; IDL> .run dumb_name
-; % Compiled module: TEST_PROC.
-; IDL> print,which_routine('test_proc')
-; /hvc/robishaw/dumb_name.pro
-; </pre>
-;
+; .. code-block:: IDL
+; 
+;   IDL> .run dumb_name
+;   % Compiled module: TEST_PROC.
+;   IDL> print,which_routine('test_proc')
+;   /hvc/robishaw/dumb_name.pro
+; 
 ; However, this is terrible programming style and sooner or
 ; later, if you hide generically-named modules in
 ; inappropriately-named files, bad things will (deservedly)
@@ -71,63 +52,62 @@ end; which_find_routine
 ; then you are a bad programmer and should seek professional
 ; counseling.
 ;
-; <p>
-; <b>Notes:</b>
+; **Notes:**
 ; First, all currently-compiled procedures and functions are searched.
 ; Then the remainder of the IDL !path is searched.
 ;
-; <p>
-; <b>MODIFICATION HISTORY:</b>
-; <ul>
-; <li>30 May 2003  Written by Tim Robishaw, Berkeley
-; <li>17 Feb 2004  Fixed oddity where user tries to call a function as
-;                  if it were a procedure, thus listing the module in both
-;                  the Compiled Functions and Compiled Procedures
-;                  list.
-; <li>14 Jun 2005  Split code into which_routine function for use
-;                  elsewhere in GBTIDL and which.  Reformatted
-;                  comments for use with idldoc.
-; </ul>
+; **MODIFICATION HISTORY:**
+; 
+; * 30 May 2003  Written by Tim Robishaw, Berkeley
+; * 17 Feb 2004  Fixed oddity where user tries to call a function as
+;                if it were a procedure, thus listing the module in both
+;                the Compiled Functions and Compiled Procedures list.
+; * 14 Jun 2005  Split code into which_routine function for use
+;                elsewhere in GBTIDL and which.  Reformatted
+;                comments for use with idldoc.
 ;
-; @param name {in}{required}{type=string} The procedure or function
-; name to search for.
+; :Params: 
+;   name : in, required, type=string
+;       The procedure or function name to search for.
 ;
-; @keyword unresolved {out}{type=string} The paths to files that
-; likely contain this name but are not the currently compiled
-; version containing name.
+; :Keywords:
+;   unresolved : out, type=string
+;       The paths to files that likely contain this name but are not the 
+;       currently compiled version containing name.
 ;
-; @examples
-; You haven't yet resolved (compiled) the routine (module)
-; DEFROI.  Let's look for it anyway:
+; :Examples:
+; 
+;   You haven't yet resolved (compiled) the routine (module)
+;   DEFROI.  Let's look for it anyway:
 ;
-; <pre>
-; IDL> a=which_routine('defroi',unresolved=unresolved)
-; IDL> print,strlen(a)
-;        0
-; IDL> print, unresolved
-; /usr/local/rsi/idl/lib/defroi.pro
-; </pre>
+;   .. code-block:: IDL
+; 
+;       IDL> a=which_routine('defroi',unresolved=unresolved)
+;       IDL> print,strlen(a)
+;             0
+;       IDL> print, unresolved
+;       /usr/local/rsi/idl/lib/defroi.pro
 ;
-; For some reason you have two modules with the same name.
-; (This can occur in libraries of IDL routines such as the
-; Goddard IDL Astronomy User's Library; an updated version of a
-; routine is stored in a special directory while the old version
-; is stored in its original directory.) Let's see which version
-; of the module ADSTRING we are currently using:
+;   For some reason you have two modules with the same name.
+;   (This can occur in libraries of IDL routines such as the
+;   Goddard IDL Astronomy User's Library; an updated version of a
+;   routine is stored in a special directory while the old version
+;   is stored in its original directory.) Let's see which version
+;   of the module ADSTRING we are currently using:
 ;
-; <pre>
-; IDL> a=which_routine('adstring.pro',unresolved=unresolved)
-; IDL> print,a
-; /hvc/robishaw/idl/goddard/pro/v5.4+/adstring.pro
-; IDL> print,unresolved
-; /hvc/robishaw/idl/goddard/pro/astro/adstring.pro
-; </pre>
+;   .. code-block:: IDL
+; 
+;       IDL> a=which_routine('adstring.pro',unresolved=unresolved)
+;       IDL> print,a
+;       /hvc/robishaw/idl/goddard/pro/v5.4+/adstring.pro
+;       IDL> print,unresolved
+;       /hvc/robishaw/idl/goddard/pro/astro/adstring.pro
+; 
+; :Returns:
+;   String containing the file name from which the resolved
+;   (compiled) version of name was found.  This is a zero-length
+;   string if name has not been resolved (compiled) yet.
 ;
-; @returns String containing the file name from which the resolved
-; (compiled) version of name was found.  This is a zero-length
-; string if name has not been resolved (compiled) yet.
-;
-; @version $Id$
 ;-
 function which_routine, name, unresolved=unresolved
     on_error, 2

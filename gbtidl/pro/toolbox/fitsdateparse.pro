@@ -1,14 +1,18 @@
+; docformat = 'rst'
+
 ;+
 ; Convert a FITS date string into its component parts.
 ; 
-; @param dateobs {in}{required}{type=string} A FITS date string following
-; the pattern: YYYY-MM-DD[Thh:mm:ss[.sss...]] or DD/MM/YY.
+; :Params:
+;   dateobs : in, required, type=string
+;       A FITS date string following the pattern: 
+;       YYYY-MM-DD[Thh:mm:ss[.sss...]] or DD/MM/YY.
 ;
-; @returns double precision vector containing
-; [year,month,day,hour,minute,second].  If the time fields are not
-; present, 0s are returned.  If the string is invalid, -1 is returned.
+; :Returns:
+;   double precision vector containing [year,month,day,hour,minute,second].
+;   If the time fields are not present, 0s are returned.  If the string is
+;   invalid, -1 is returned.
 ;
-; @version $Id$
 ;-
 function fitsdateparse,dateobs
     compile_opt idl2

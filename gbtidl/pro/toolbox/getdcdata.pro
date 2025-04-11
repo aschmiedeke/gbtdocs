@@ -1,24 +1,33 @@
+; docformat = 'rst'
+
 ;+ 
-; Convenience function for retrieving data from a data container.  Can retrieve
-; the entire data array, just a range, or a single element of the data.
+; Convenience function for retrieving data from a data container. 
+; Can retrieve the entire data array, just a range, or a single 
+; element of the data.
 ;
-; @param dc {in}{required}{type=struct} data container (spectrum or continuum)
-; @param elements {in}{optional}{type=long array} elements of data to return, one integer, or two element array specifiying range
-; @returns either the entire data array of data container, or part of
-; it
+; :Params:
+;   dc : in, required, type=struct
+;       data container (spectrum or continuum)
+;   elements : in, optional, type=long array
+;       elements of data to return, one integer, or two element 
+;       array specifiying range
+; 
+; :Returns:
+;   either the entire data array of data container, or part of it
 ;
-; @examples
-; <pre>
-;    ; dc already exists
-;    ; all of it
-;    thedata = getdcdata(dc)
-;    ; some of it
-;    somedata = getdcdata(dc,[100:400])
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       ; dc already exists
+;       ; all of it
+;       thedata = getdcdata(dc)
+;       ; some of it
+;       somedata = getdcdata(dc,[100:400])
 ;
-; @uses <a href="data_valid.html">data_valid</a>
+; :Uses:
+;   :idl:pro:`data_valid`
 ;
-; @version $Id$
 ;-
 FUNCTION GETDCDATA, dc, elements
     compile_opt idl2

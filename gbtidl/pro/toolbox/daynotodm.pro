@@ -4,11 +4,11 @@
 ; Convert daynumber and year to day of month (1..31) and  month
 ; of year (1.l12).
 ;
-; This code came from `Phil Perillat <https://www.naic.edu/~phil/>`_ at Arecibo.
+; This code came from `Phil Perillat <http://www.naic.edu/~phil/>`_ at Arecibo.
 ; 
 ; Local changes:
 ; 
-;   * modify this documentation for use by idldoc.
+; * modify this documentation for use by idldoc.
 ;
 ; :Params:
 ;   dayno : in, required, type=long integer

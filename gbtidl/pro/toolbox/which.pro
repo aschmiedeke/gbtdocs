@@ -1,11 +1,12 @@
+; docformat = 'rst'
+
 ;+
 ; Search for any file in the IDL !path that contains the
 ; user-supplied IDL routine (procedure or function) name.  Also
 ; indicates compilation status of each routine (in IDL lingo,
 ; whether or not the routine is "resolved".)
 ;
-; <p>
-; <b>Restrictions:</b>
+; **Restrictions:**
 ; The IDL !path is searched for file names that are simply the
 ; module (in IDL documentation, "module" and "routine" are used
 ; interchangeably) name with a ".pro" suffix appended to them.
@@ -15,21 +16,21 @@
 ; E.g., if the module "pro test_proc" lives in a file named
 ; "dumb_name.pro", then it will not be found:
 ;
-; <pre>
-; IDL> which, 'test_proc'
-; Module TEST_PROC Not Compiled.
-; % WHICH: test_proc.pro not found on IDL !path.
-; </pre>
-;
+; .. code-block:: IDL
+; 
+;   IDL> which, 'test_proc'
+;   Module TEST_PROC Not Compiled.
+;   % WHICH: test_proc.pro not found on IDL !path.
+; 
 ; unless it happens to be resolved:
 ;
-; <pre>
-; IDL> .run dumb_name
-; % Compiled module: TEST_PROC.
-; IDL> which, 'test_proc'
-; Currently-Compiled Module TEST_PROC in File:
-; /home/robishaw/dumb_name.pro
-; </pre>
+; .. code-block:: IDL
+; 
+;   IDL> .run dumb_name
+;   % Compiled module: TEST_PROC.
+;   IDL> which, 'test_proc'
+;   Currently-Compiled Module TEST_PROC in File:
+;   /home/robishaw/dumb_name.pro
 ;
 ; However, this is terrible programming style and sooner or
 ; later, if you hide generically-named modules in
@@ -46,26 +47,25 @@
 ; both be available to the user, therefore both are listed.  This
 ; situation should probably be avoided.
 ;
-; <p>
-; <b>Notes:</b>
+; **Notes:**
 ; First, all currently-compiled procedures and functions are searched.
 ; Then the remainder of the IDL !path is searched.  The current
 ; directory is searched before the IDL !path, whether or not the
 ; current directory is in the IDL !path, because this is the behavior
 ; of .run, .compile, .rnew, DOC_LIBRARY, etc.
 ;
-; <p>
-; <b>MODIFICATION HISTORY:</b>
-; <ul>
-; <li>30 May 2003  Written by Tim Robishaw, Berkeley
-; <li>17 Feb 2004  Fixed oddity where user tries to call a function as
+; 
+; **MODIFICATION HISTORY:**
+; 
+; * 30 May 2003  Written by Tim Robishaw, Berkeley
+; * 17 Feb 2004  Fixed oddity where user tries to call a function as
 ;                  if it were a procedure, thus listing the module in both
 ;                  the Compiled Functions and Compiled Procedures
 ;                  list.
-; <li>14 Jun 2005  Split code into which_routine function for use
+; * 14 Jun 2005  Split code into which_routine function for use
 ;                  elsewhere in GBTIDL and which.  Reformatted
 ;                  comments for use with idldoc.
-; <li>11 May 2006  Incorporate T. Robishaw changes found in original
+; * 11 May 2006  Incorporate T. Robishaw changes found in original
 ;                  version of which into this version.
 ;                  Fixed scenario where two modules with the same
 ;                  name are compiled, one as a procedure, the
@@ -76,42 +76,44 @@
 ;                  Fixed up warning and documentation for the strange
 ;                  case of having both a procedure and function of the
 ;                  same name compiled.
-; </ul>
 ;
-; @param name {in}{required}{type=string} The procedure or function
-; name to search for.
+; :Params:
+;   name : in, required, type=string
+;       The procedure or function name to search for.
 ;
-; @uses <a href="which_routine.html">which_routine</a>
 ;
-; @examples
-; You haven't yet resolved (compiled) the routine (module)
-; DEFROI.  Let's look for it anyway:
+; :Examples:
+; 
+;   You haven't yet resolved (compiled) the routine (module) DEFROI.
+;   Let's look for it anyway:
 ;
-; <pre>
-; IDL> which, 'defroi
-; Module DEFROI Not Compiled.
+;   .. code-block:: IDL
+; 
+;       IDL> which, 'defroi
+;       Module DEFROI Not Compiled.
 ;
-; Other Files Containing Module DEFROI in IDL !path:
-; /usr/local/rsi/idl/lib/defroi.pro
-; </pre>
+;       Other Files Containing Module DEFROI in IDL !path:
+;       /usr/local/rsi/idl/lib/defroi.pro
 ;
-; For some reason you have two modules with the same name.
-; (This can occur in libraries of IDL routines such as the
-; Goddard IDL Astronomy User's Library; an updated version of a
-; routine is stored in a special directory while the old version
-; is stored in its original directory.) Let's see which version
-; of the module ADSTRING we are currently using:
+;   For some reason you have two modules with the same name.
+;   (This can occur in libraries of IDL routines such as the
+;   Goddard IDL Astronomy User's Library; an updated version of a
+;   routine is stored in a special directory while the old version
+;   is stored in its original directory.) Let's see which version
+;   of the module ADSTRING we are currently using:
 ;
-; <pre>
-; IDL> which, 'adstring.pro'
-; Currently-Compiled Module ADSTRING in File:
-; /home/robishaw/idl/goddard/pro/v5.4+/adstring.pro
+;   .. code-block:: IDL
+;   
+;       IDL> which, 'adstring.pro'
+;       Currently-Compiled Module ADSTRING in File:
+;       /home/robishaw/idl/goddard/pro/v5.4+/adstring.pro
 ;
-; Other Files Containing Module ADSTRING in IDL !path:
-; /home/robishaw/idl/goddard/pro/astro/adstring.pro
-; </pre>
+;       Other Files Containing Module ADSTRING in IDL !path:
+;       /home/robishaw/idl/goddard/pro/astro/adstring.pro
 ;
-; @version $Id$
+; :Uses:
+;   :idl:pro:`which_routine`
+;
 ;-
 pro which, name
 
