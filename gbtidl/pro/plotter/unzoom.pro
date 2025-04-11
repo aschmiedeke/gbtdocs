@@ -15,7 +15,6 @@
 ;       unzoom
 ;
 ;-
-
 pro unzoom, onestep=onestep
     compile_opt idl2
     common gbtplot_common,mystate,xarray
