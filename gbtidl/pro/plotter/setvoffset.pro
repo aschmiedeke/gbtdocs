@@ -1,16 +1,18 @@
+; docformat = 'rst'
+
 ;+
 ; Procedure to set the velocity offset in the plotter, in the current frame.
 ;
-; @param voffset {in}{optional}{type=double} The new velocity offset
-; in km/s.  If not supplied it uses the source velocity of the
-; spectrum in the plotter.  In that case, the veldef also comes from
-; the spectrum in the plotter and the veldef keyword here is not used.
-; If there is no spectrum in the plotter, it does nothing.
-; @keyword veldef {in}{optional}{type=string} The velocity definition
-; to use.  If not set, the current definition in use in the plotter
-; will be used.
+; :Params:
+;   voffset : in, optional, type=double
+;       The new velocity offset in km/s. If not supplied it uses the source
+;       velocity of the spectrum in the plotter. In that case, the veldef also 
+;       comes from the spectrum in the plotter and the veldef keyword here is
+;       not used. If there is no spectrum in the plotter, it does nothing.
+;   veldef : in, optional, type=string
+;       The velocity definition to use. If not set, the current definition in 
+;       use in the plotter will be used.
 ;
-; @version $Id$
 ;-
 pro setvoffset, voffset, veldef=veldef
     compile_opt idl2

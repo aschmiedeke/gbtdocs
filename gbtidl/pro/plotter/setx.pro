@@ -1,20 +1,23 @@
+; docformat = 'rst'
+
 ;+
 ; Set the x-axis range either directly or with the cursor.  If
 ; interacting via the cursor, mouse button 3 aborts out of this
 ; function without changing the x-axis range.
 ;
-; @param x1 {in}{optional}{type=double} Desired minimum x-axis value
-; in the current x-axis units.  If not supplied, the cursor will be
-; used to set this.
+; :Params:
+;   x1 : in, optional, type=double
+;       Desired minimum x-axis value in the current x-axis units.
+;       If not supplied, the cursor will be used to set this.
 ;
-; @param x2 {in}{optional}{type=double} Desired maxiumum x-axis
-; value in the current x-axis units.  This must be supplied if x1
-; has also been supplied.
+;   x2 : in, optional, type=double
+;       Desired maxiumum x-axis value in the current x-axis units.
+;       This must be supplied if x1 has also been supplied.
 ;
-; If x2 is less than x1, this procedure will reverse them
-; internally before they are used.
+; :Note:
+;   If x2 is less than x1, this procedure will reverse them
+;   internally before they are used.
 ; 
-; @version $Id$ 
 ;-
 pro setx,x1,x2
     common gbtplot_common,mystate,xarray

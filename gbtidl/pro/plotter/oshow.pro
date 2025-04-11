@@ -1,3 +1,5 @@
+; docformat = 'rst'
+
 ;+
 ; Plot a data container on top of (over) the current plot.
 ; The x-axis will be automatically constructed to match that of the
@@ -6,24 +8,26 @@
 ; data. If overlays are turned off, calling this automatically turns
 ; it on. 
 ;
-; @param dc {in}{optional}{type=data container or integer}{default=0} The data container
-; to over plot.  If an integer is entered here, it is the global
-; buffer number to over plot.  If not specified, the primary (0) data
-; container is used.
+; :Params:
+;   dc : in, optional, type=data container or integer, default=0
+;       The data container to over plot. If an integer is entered here,
+;       it is the global buffer number to over plot. If not specified,
+;       the primary (0) data container is used.
 ;
-; @keyword color {in}{optional}{type=color}{default=!g.oshowcolor} A color to use when
-; drawing the line.
+; :Keywords:
+;   color : in, optional, type=color, default=!g.oshowcolor
+;       A color to use when drawing the line.
 ;
-; @examples
-; <pre>
-;    getrec,1   ; retrieve record 1 into !g.s[0]
-;    copy,0,1   ; copy the data container !g.s[0] to !g.s[1]
-;    getrec,2   ; retrieve record 2 into !g.s[0]
-;    show,0     ; show record 2
-;    oshow,1    ; overlay record 1
-; </pre>
-;
-; @version $Id$
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       getrec,1   ; retrieve record 1 into !g.s[0]
+;       copy,0,1   ; copy the data container !g.s[0] to !g.s[1]
+;       getrec,2   ; retrieve record 2 into !g.s[0]
+;       show,0     ; show record 2
+;       oshow,1    ; overlay record 1
+; 
 ;-
 pro oshow, dc, color=color
     compile_opt idl2

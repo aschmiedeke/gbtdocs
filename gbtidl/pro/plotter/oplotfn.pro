@@ -1,3 +1,5 @@
+; docformat = 'rst'
+
 ;+
 ; Overplots a function using oplot on to the GBTIDL plotter's surface.  
 ; It also remembers the function and parameters so that they can be 
@@ -5,13 +7,15 @@
 ; x-axis changes).  Overplots, if toggled off, are automatically
 ; toggled on by a call to oplotfn.  Overplots include both
 ; function calls (set using this function) and simple x,y overplots
-; set using <a href="gbtoplot.html">gbtoplot</a>.
+; set using :idl:pro:`gbtoplot`.
 ;
-; <p>The syntax of the function call using the fnname parameter 
+; The syntax of the function call using the fnname parameter 
 ; is:  
-; <pre>
-;     arr = fnname(params, minchan, maxchan, chanperpix,count=count)
-; </pre>
+; 
+;   .. code-block:: IDL
+; 
+;       arr = fnname(params, minchan, maxchan, chanperpix,count=count)
+; 
 ; where params are exactly as supplied to oplotfn, minchan and
 ; maxchan are the current x-axis limits, in channels, and 
 ; chanperpix is the current number of channels per pixel (that
@@ -22,48 +26,54 @@
 ; The returned value is a 2-D array where arr[0,*] is the set of 
 ; x-axis values, in channels, and arr[1,*] is the set of y-axis 
 ; value corresponding to those x-axis values.  Typically, the 
-; x-axis values would be generated using <a href="../toolbox/seq.html">seq</a> as:
-; <pre>
-;     x = seq(minchan, maxchan, chanPerPix)
-; </pre>
+; x-axis values would be generated using :idl:pro:`seq` as:
+; 
+;   .. code-block:: IDL
+; 
+;       x = seq(minchan, maxchan, chanPerPix)
+; 
 ; and then y is generated from x using params and the array
 ; of [x,y] is then returned.  The returned value (arr) is not
 ; examined if count is 0.
 ;
-; @examples
-; See the source code for <a href="../toolbox/gauss_plot_fn.html">gauss_plot_fn</a> for an
-; example function suitable for use by oplotfn.
+; :Params:
+;   fnname : in, required, type=string
+;       The name of the function to be invoked to generate the values 
+;       to be plotted (see above).
 ;
-; @param fnname {in}{required}{type=string} The name of the function
-; to be invoked to generate the values to be plotted (see above).
+;   params : in, required, type=any
+;       The parameters passed to fnname. 
 ;
-; @param params {in}{required}{type=any}. The parameters passed to
-; fnname. 
+; :Keywords:
+;   color : in, optional, type=long integer, default=!g.oplotcolor
+;       The color of the line to be plotted.
 ;
-; @keyword color {in}{optional}{type=long integer}{default=!g.oplotcolor}
-; The color of the line to be plotted.
+;   index : out, optional, type=integer
+;       Returns the index associated with this oplot. This index can be 
+;       used to clear this over plot using clearoplots.  Note that once 
+;       an index is cleared, subsequent indexes are renumbered - i.e. 
+;       there are never any gaps in index number.
 ;
-; @keyword index {out}{optional}{type=integer} Returns the index
-; associated with this oplot.  This index can be used to clear this
-; over plot using clearoplots.  Note that once an index is cleared,
-; subsequent indexes are renumbered - i.e. there are never any gaps in
-; in index number.
+;   idstring : in, optional, type=string, default="."
+;       A string that can be used to identify this oplot and thereby group 
+;       oplots together. This is most useful with clearoplots to remove 
+;       just those oplots with the same idstring.  Withing GBTIDL, all 
+;       internal id strings begin with two underscores so that they are 
+;       less likely to conflict with user-defined idstrings. The default
+;       is ''.
 ;
-; @keyword idstring {in}{optional}{type=string}{default="."}  A string that can be
-; used to identify this oplot and thereby group oplots together.  This
-; is most useful with clearoplots to remove just those oplots with the
-; same idstring.  Withing GBTIDL, all internal id strings begin with
-; two underscores so that they are less likely to conflict with 
-; user-defined idstrings.  The default is ''.
+;   noshow : in, optional, type=boolean, default=unset
+;       When this is set, the function is not immediately displayed. This
+;       is useful when you have several graphical commands to issue and you 
+;       don't want the plotter to have to replot everything each time. 
+;       Instead, remember to do a :idl:pro:`reshow` at the end to show
+;       everything that has been added. The default behavior is to show the
+;       plots immediately.
 ;
-; @keyword noshow {in}{optional}{type=boolean}{default=unset} When this is set, the
-; function is not immediately displayed.  This is useful when you have
-; several graphical commands to issue and you don't want the plotter
-; to have to replot everything each time.  Instead, remember to do a
-; <a href="reshow.html">reshow</a> at the end to show everything that has been added. The
-; default behavior is to show the plots immediately.
+; :Examples:
+;   See the source code for :idl:pro:`gauss_plot_fn` for an example function 
+;   suitable for use by oplotfn.
 ;
-; @version $Id$
 ;-
 pro oplotfn, fnname, params, color=color, index=index, idstring=idstring, noshow=noshow
     compile_opt idl2

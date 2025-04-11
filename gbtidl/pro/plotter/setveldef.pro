@@ -1,13 +1,15 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure sets the velocity definition to be used in
 ; constructing the x-axis prior to displaying the data.
 ;
-; @param veldef {in}{required}{type=string} The velocity definition to
-; use.  Recognized velocity definitions are 'Radio', 'Optical', and 'True'.
+; :Params:
+;   veldef : in, required, type=string
+;       The velocity definition to use. Recognized velocity
+;       definitions are 'Radio', 'Optical', and 'True'.
 ;
-; @version $Id$
 ;-
-
 pro setveldef, veldef
     common gbtplot_common,mystate,xarray
 

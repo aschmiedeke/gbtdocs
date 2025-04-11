@@ -1,14 +1,16 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure sets the reference frame to be used in
 ; constructing the x-axis prior to displaying the data.
 ;
-; @param frame {in}{required}{type=string} The reference frame to
-; use.  Recognized velocity definitions are the same ones found in the
-; frames menu in the plotter.
+; :Params:
+;   frame : in, required, type=string
+;       The reference frame to use. Recognized velocity
+;       definitions are the same ones found in the frames
+;       menu in the plotter.
 ;
-; @version $Id$
 ;-
-
 pro setframe, frame
     common gbtplot_common,mystate,xarray
     if (n_elements(frame) eq 0) then begin

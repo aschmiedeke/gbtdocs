@@ -1,20 +1,26 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure toggles a flag to draw the plot in histogram
 ; mode. Use the /on or /off keywords to ensure that the histogram
 ; plotting is on or off (otherwise it simply toggles the state). 
 ;
-; <p>If both /on and /off are used at the same time, an error message
+; If both /on and /off are used at the same time, an error message
 ; is printed and the state of the zero line is not changed.
 ;
-; @examples
-;   histogram
+; :Keywords:
+;   on : in, optional, type=boolean
+;       Turn histogram mode on.
+;   off : in, optional, type=boolean
+;       Turn histogram mode off.
 ;
-; @keyword on {in}{optional}{type=boolean} Turn histogram mode on.
-; @keyword off {in}{optional}{type=boolean} Turn histogram mode off.
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       histogram
 ;
-; @version $Id$
 ;-
-
 pro histogram, on=on, off=off
     compile_opt idl2
     

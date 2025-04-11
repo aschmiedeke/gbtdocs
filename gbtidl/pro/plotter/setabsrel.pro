@@ -1,14 +1,15 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure sets the flag that indicates whether the xaxis is in
 ; absolute units or relative to the value at the reference channel.
 ;
-; @param absrel {in}{required}{type=string} The string that determines
-; the setting of the flag.  Recognized values are 'Abs' and 'Rel'.
-; This is case-insensitive.
+; :Params:
+;   absrel : in, required, type=string
+;       The string that determines the setting of the flag. Recognized
+;       values are 'Abs' and 'Rel'. This is case-insensitive.
 ;
-; @version $Id$
 ;-
-
 pro setabsrel, absrel
     common gbtplot_common,mystate,xarray
     if n_elements(absrel) eq 0 then begin

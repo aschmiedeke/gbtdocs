@@ -1,23 +1,29 @@
+; docformat = 'rst'
+
 ;+
 ; Use a box cursor to set the x-axis and y-axis scaling or provide
 ; those values directly.
 ;
-; <p> If there are no arguments, then gbtbox_cursor is used to set the
+; If there are no arguments, then gbtbox_cursor is used to set the
 ; region of interest. 
-; <UL>
-; <LI> Click Left button to set box bottom right corner.
-; <LI> Drag Left button to move box.
-; <LI> Drag Middle button near a corner to resize box.
-; <LI> Right button when done.
-; </UL>
+; 
+;   * Click Left button to set box bottom right corner.
+;   * Drag Left button to move box.
+;   * Drag Middle button near a corner to resize box.
+;   * Right button when done.
+; 
 ; If any one argument is present, they must all be present.
 ;
-; @param xmin {in}{optional}{type=double} The desired new minimum x value.
-; @param xmax {in}{optional}{type=double} The desired new maximum x value.
-; @param ymin {in}{optional}{type=double} The desired new minimum y value.
-; @param ymax {in}{optional}{type=double} The desired new maximum y value.
+; :Params:
+;   xmin : in, optional, type=double
+;       The desired new minimum x value.
+;   xmax : in, optional, type=double
+;       The desired new maximum x value.
+;   ymin : in, optional, type=double 
+;       The desired new minimum y value.
+;   ymax : in, optional, type=double 
+;       The desired new maximum y value.
 ;
-; @version $Id$
 ;-
 pro setxy,xmin,xmax,ymin,ymax
     common gbtplot_common,mystate,xarray

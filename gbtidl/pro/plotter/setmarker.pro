@@ -1,17 +1,26 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure sets a marker on the plot at the given location.
 ;
-; @param x {in}{required}{type=float} X position in current plotter units
-; @param y {in}{required}{type=float} Y position in current plotter units
-; @keyword text {in}{optional}{type=string} text to be associated with the marker.
-;          If omitted, the text will represent the x and y positions.
+; :Params:
+;   x : in, required, type=float
+;       X position in current plotter units
+;   y : in, required, type=float
+;       Y position in current plotter units
+; 
+; :Keywords:
+;   text : in, optional, type=string
+;       text to be associated with the marker. If omitted, the text
+;       will represent the x and y positions.
 ;
-; @examples
-;   setmarker,1420.405,1.3
+; :Examples:
+; 
+;   .. code-block:: IDL
+;   
+;       setmarker,1420.405,1.3
 ;
-; @version $Id$
 ;-
-
 pro setmarker,x,y,text=text
 	common gbtplot_common,mystate,xarray
 

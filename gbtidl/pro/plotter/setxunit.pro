@@ -1,24 +1,29 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure sets the units on the X-axis of the plot
 ; Valid units are 'Channels','Hz'.'kHz','MHz', 'GHz', 'm/s', and 'km/s'
 ;
-; @param unit {in}{required}{type=string} unit
-; @keyword noreshow {in}{optional}{type=boolean} If set, the plotter
-; is not updated with the new units.  This is useful if this is
-; embedded in a procedure and you want to delay updating the plotter
-; until several changes have been made.  This features is used
-; internally in show_support.
+; :Params:
+;   unit : in, required, type=string
+;       unit
+; 
+; :Keywords:
+;   noreshow : in, optional, type=boolean
+;       If set, the plotter is not updated with the new units. This is
+;       useful if this is embedded in a procedure and you want to delay
+;       updating the plotter until several changes have been made. This
+;       features is used internally in show_support.
 ;
-; @examples
-; <pre>
-;    get,index=1
-;    show
-;    setxunit,'MHz'
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       get,index=1
+;       show
+;       setxunit,'MHz'
 ;
-; @version $Id$
 ;-
-
 pro setxunit, unit, noreshow=noreshow
     common gbtplot_common,mystate,xarray
     if n_elements(unit) eq 0 then begin
