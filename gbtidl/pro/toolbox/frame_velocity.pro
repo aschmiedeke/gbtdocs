@@ -1,45 +1,52 @@
+; docformat = 'rst'
+
 ;+
 ; Toolbox front-end to chdoppler.  Get the velocity of a given frame
 ; relative to another frame.
 ;
-; <p>Recognized frames:
-; <UL>
-; <LI> TOPO - topocentric.  The observed (sky) frame.
-; <LI> GEO - geocentric.
-; <LI> HEL - heliocentric.
-; <LI> BAR - barycentric.
-; <LI> LSR - Local standard of rest (kinematic).
-; <LI> LSD - Dynamic LSR.
-; <LI> GAL - galactocentric.
-; </UL>
+; Recognized frames:
+; 
+;   * TOPO - topocentric. The observed (sky) frame.
+;   * GEO  - geocentric.
+;   * HEL  - heliocentric.
+;   * BAR  - barycentric.
+;   * LSR  - Local standard of rest (kinematic).
+;   * LSD  - Dynamic LSR.
+;   * GAL  - galactocentric.
+; 
+; :Params:
+;   data : in, required, type=spectrum
+;       Data container to get pointing direction, time, and telescope 
+;       location from.
 ;
-; @param data {in}{required}{type=spectrum} Data container to get
-; pointing direction, time, and telescope location from.
+;   toframe : in, required, type=string
+;       The desired frame.
 ;
-; @param toframe {in}{required}{type=string} The desired frame.
+;   fromframe : in, optional, type=string
+;       The originating frame. Defaults to "TOPO".
 ;
-; @param fromframe {in}{optional}{type=string} The originating frame.
-; Defaults to "TOPO".
+; :Keywords:
+;   bootstrap : in, optional, type=boolean
+;       If set, the data.frame_velocity will be used to get to the frame 
+;       given in data.velocity_definition. The other data header information
+;       will only be used to get to other frames.  Bootstraping is desirable
+;       because the sdfits tool may not be getting the correct times and
+;       positions for each integration - early versions didn't.  However,
+;       the frame_velocity is correct and can be relied on.
 ;
-; @keyword bootstrap {in}{optional}{type=boolean} If set, the
-; data.frame_velocity will be used to get to the frame given in
-; data.velocity_definition.  The other data header information will
-; only be used to get to other frames.  Bootstraping is desirable
-; because the sdfits tool may not be getting the correct times and
-; positions for each integration - early versions didn't.  However,
-; the frame_velocity is correct and can be relied on.
+;   status : out, optional, type=integer
+;       This is 1 if there were no problems and is 0 if anything unexpected
+;       happened (invalid data container type, velocity definition, or
+;       unrecognized data frames).
 ;
-; @keyword status {out}{optional}{type=integer} This is 1 if there
-; were no problems and is 0 if anything unexpected happened (invalid
-; data container type, velocity definition, or unrecognized data frames).
+; :Returns:
+;   Velocity difference between fromframe and toframe along the line of sight 
+;   implied by the data header.
 ;
-; @returns Velocity difference between fromframe and toframe along the
-; line of sight implied by the data header.
+; :Uses:
+;   :idl:pro:`chdoppler`
+;   :idl:pro:`decode_veldef`
 ;
-; @uses <a href="chdoppler.html">chdoppler</a>
-; @uses <a href="decode_veldef.html">decode_veldef</a>
-;
-; @version $Id$
 ;-
 function frame_velocity, data, toframe, fromframe, bootstrap=bootstrap, status=status
     compile_opt idl2
