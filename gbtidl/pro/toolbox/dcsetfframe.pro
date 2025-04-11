@@ -1,3 +1,5 @@
+; docformat = 'rst
+
 ;+
 ; Procedure to reset the frequency reference frame of the supplied data
 ; container(s) to the indicated frame.
@@ -13,30 +15,32 @@
 ;
 ; This routine will not change the displayed frequency axis.
 ;
-; <p> If the frame is not set, the one implied by the data header
+; If the frame is not set, the one implied by the data header
 ; velocity_definition is used. 
 ;
-; <p> This routine adjusts the following header values:
+; This routine adjusts the following header values:
 ; reference_frequency, frequency_interval, frequency_type and
 ; center_frequency.  When written to an SDFITS table, the first three
 ; of these four values correspond to CRVAL1, CDELT1, and CTYPE1, in that
 ; order.
 ;
-; <p> Nothing is changed if the frame is already set to the desired
+; Nothing is changed if the frame is already set to the desired
 ; frame.
 ;
-; <p> Nothing is changed if the frame is unrecognized.
+; Nothing is changed if the frame is unrecognized.
 ;
-; @param dc {in}{required}{type=spectrum} The data container(s) to be adjusted.
+; :Params:
+;   dc : in, required, type=spectrum
+;       The data container(s) to be adjusted.
 ;
-; @keyword toframe {in}{optional}{type=string}  The reference frame to
-; use.  If not supplied, the value implied by the last 4 characters of
-; the velocity_definition the data container.   See <a href="frame_velocity.html">frame_velocity</a> for a 
-; full list of supported reference frames.
+; :Keywords:
+;   toframe : in, optional, type=string
+;       The reference frame to use. If not supplied, the value implied
+;       by the last 4 characters of the velocity_definition the data 
+;       container. See :idl:pro:`frame_velocity` for a full list of 
+;       supported reference frames.
 ;
-; @version $Id$
 ;-
-
 pro dcsetfframe, dc, toframe=toframe
   compile_opt idl2
 

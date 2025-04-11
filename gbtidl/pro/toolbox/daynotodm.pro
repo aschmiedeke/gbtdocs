@@ -1,21 +1,24 @@
+; docformat = 'rst'
+
 ;+
-;   convert daynumber and year to day of month (1..31) and 
-;month of year (1.l12).
+; Convert daynumber and year to day of month (1..31) and  month
+; of year (1.l12).
 ;
-; This code came from 
-; <a href="http://www.naic.edu/~phil/">Phil Perillat</a> at Arecibo.
+; This code came from `Phil Perillat <https://www.naic.edu/~phil/>`_ at Arecibo.
+; 
 ; Local changes:
-; <UL>
-; <LI> modify this documentation for use by idldoc.
-; </UL>
+; 
+;   * modify this documentation for use by idldoc.
 ;
-; @param dayno {in}{required}{type=long integer} daynumber of year
-; 1..365 or 366
-; @param year {in}{required}{type=long integer}  4 digit year
+; :Params:
+;   dayno : in, required, type=long integer
+;       daynumber of year 1..365 or 366
+;   year : in, required, type=long integer
+;       4 digit year
 ;
-; @returns [day,month] as a vector. 
+; :Returns:
+;   [day,month] as a vector. 
 ;
-; @version $Id$
 ;-
 function daynotodm,dayno,year
     dayNoDat=[[0,31,59,90,120,151,181,212,243,273,304,334,365],$
