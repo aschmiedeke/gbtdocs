@@ -1,31 +1,37 @@
+; docformat = 'rst'
+
 ;+
 ; Convert channel number to frequency (Hz) using
 ; the supplied data container.  Optionally return the frequency in
 ; another reference frame from that given in the data.
 ;
-; @param data {in}{required}{type=spectrum} The spectrum data
-; container to use to get the necessary header information.
+; "Params:
+;   data : in, required, type=spectrum
+;       The spectrum data container to use to get the necessary header 
+;       information.
 ;
-; @param chans {in}{required} The channel numbers to convert, may be
-; an array of values.
+;   chans : in, required
+;       The channel numbers to convert, may be an array of values.
 ;
-; @keyword frame {in}{optional}{type=string} The rest frame to convert
-; to.  Known rest frames are listed in
-; <a href="frame_velocity.html">frame_velocity.html</a>.  Defaults to the frame given in
-; the data.frequency_type.
+; :Keywords:
+;   frame : in, optional, type=string
+;       The rest frame to convert to. Known rest frames are listed in
+;       :idl:pro:`frame_velocity`.  Defaults to the frame given in
+;       the data.frequency_type.
 ;
-; @keyword true_frame {out}{optional}{type=string} The actual rest frame used in
-; constructing the frequencies.  The only way this will not equal
-; the frame argument is if that argument was invalid.  In that
-; case, this keyword will be the same as the frame in
-; data.frequency_type.
+;   true_frame : out, optional, type=string
+;       The actual rest frame used in constructing the frequencies.  
+;       The only way this will not equal the frame argument is if 
+;       that argument was invalid. In that case, this keyword will
+;       be the same as the frame in data.frequency_type.
 ;
-; @returns frequencies (Hz)
+; :Returns:
+;   frequencies (Hz)
 ;
-; @uses <a href="data_valid.html">data_valid</a>
-; @uses <a href="frame_velocity.html">frame_velocity</a>
+; :Uses:
+;   :idl:pro:`data_valid`
+;   :idl:pro:`frame_velocity`
 ; 
-; @version $Id$
 ;-
 function chantofreq, data, chans, frame=frame, true_frame=true_frame
     compile_opt idl2

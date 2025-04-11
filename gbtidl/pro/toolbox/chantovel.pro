@@ -1,41 +1,49 @@
+; docformat = 'rst'
+
 ;+
 ; Convert channel number to velcity (m/s) using
 ; the supplied data container.  Optionally return the velocity in
 ; another reference frame.
 ;
-; @param data {in}{required}{type=spectrum} The spectrum data
-; container to use to get the necessary header information.
+; "Params:
+;   data : in, required, type=spectrum
+;       The spectrum data container to use to get the necessary header
+;       information.
 ;
-; @param chans {in}{required} The channel numbers to convert, may be
-; an array of values.
+;   chans : in, required
+;       The channel numbers to convert, may be an array of values.
 ;
-; @keyword frame {in}{optional}{type=string} The rest frame to convert
-; to.  Known rest frames are listed in
-; <a href="frame_velocity.html">frame_velocity</a>.  Defaults to the frame
-; given in data.velocity_definition.
+; :Keywords:
+;   frame : in, optional, type=string
+;       The rest frame to convert to.  Known rest frames are listed in
+;       :idl:pro:`frame_velocity`. Defaults to the frame given in 
+;       data.velocity_definition.
 ;
-; @keyword veldef {in}{optional}{type=string} The velocity definition
-; to use from RADIO, OPTICAL, or TRUE.  Defaults to value found in
-; data.velocity_definition. 
+;   veldef : in, optional, type=string
+;       The velocity definition to use from RADIO, OPTICAL, or TRUE. 
+;       Defaults to value found in data.velocity_definition. 
 ;
-; @keyword true_frame {out}{optional}{type=string} The actual rest frame used in
-; constructing the velocity axis.  The only way this will not equal
-; the frame argument is if that argument was invalid.  In that
-; case, this keyword will be the same as the frame in data.velocity_definition.
+;   true_frame : out, optional, type=string
+;       The actual rest frame used in constructing the velocity axis.  
+;       The only way this will not equal the frame argument is if that 
+;       argument was invalid. In that case, this keyword will be the 
+;       same as the frame in data.velocity_definition.
 ;
-; @keyword true_veldef {out}{optional}{type=string} The actual velocity frame used
-; in constructing the velocity axis.  The only way this will not equal
-; the frame argument is if that argument was invalid.  In that
-; case, this keyword will be the same as data.velocity_definition.
+;   true_veldef : out, optional, type=string
+;       The actual velocity frame used in constructing the velocity axis.
+;       The only way this will not equal the frame argument is if that 
+;       argument was invalid. In that case, this keyword will be the same
+;       as data.velocity_definition.
 ;
-; @returns velocity (m/s)
+; :Returns:
+;   velocity (m/s)
 ;
-; @uses <a href="data_valid.html">data_valid</a>
-; @uses <a href="decode_veldef.html">decode_veldef</a>
-; @uses <a href="chantofreq.html">chantofreq</a>
-; @uses <a href="freqtovel.html">freqtovel</a>
+; :Uses:
+;   :idl:pro:`data_valid`
+;   :idl:pro:`decode_veldef`
+;   :idl:pro:`chantofreq
+;   :idl:pro:`freqtovel
 ; 
-; @version $Id$
 ;-
 function chantovel, data, chans, frame=frame, veldef=veldef, $
             true_frame=true_frame, true_veldef=true_veldef

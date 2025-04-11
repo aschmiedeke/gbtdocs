@@ -1,114 +1,113 @@
+; docformat = 'rst'
+
 ;+
 ; Function to find the area, width, and velocity of a galaxy profile.
 ;
-; <p>There are four ways in which the left and right (low channel number
-; and high channel number) edges of the galaxy profile can be determined.  The
+; There are four ways in which the left and right (low channel number and 
+; high channel number) edges of the galaxy profile can be determined. The
 ; mode parameter selects one of these methods:
-; <ul>
-; <li> 1 - As a fraction of the mean within the region of interest.
-;          The mean of data from brange through erange is calculated.  The
-;          edges are then those locations where the data values are
-;          greater than fract*mean for 3 consecutive channels starting
-;          from the end points of the region of interest and searching
-;          towards the center.
-; <li> 2 - As a fraction of the maximum value within the region of
-;          interest.  The peak of data from brange to erange is found.
-;          The edges are then those locations where the data values
-;          are greater than fract*(peak-rms) for 3 consecutive channels
-;          starting from the end points of the region of interest and
-;          searching towards the center.
-; <li> 3 - As a fraction of each of two peaks - identified by the
-;          user.  The user uses the cursor to mark two peaks in the
-;          region of interest or those peaks are identified through
-;          the lefthorn and righthorn parameters.  The maximum value 
-;          within 10 channels of each user-supplied peak location is
-;          found.  The left edge is where the data value falls below 
-;          fract*(peak-rms) for 3 consecutive channels searched
-;          from the location of the peak.  The right-channel peak is
-;          similarly used to find the right edge.
-; <li> 4 - A polynomial is fit to either side of the profile between 
-; 	   15-85% of (peak-rms) (where the peak is from the relevent side of
-; 	   the profile - the two peaks are identified by the user). The velocity
-;	   of the polynomical fit at fract*(peak-rms) is then found for both sides 
-;          of the profile. The difference between the two is the width, the mean is
+; 
+;   1. As a fraction of the mean within the region of interest. The mean
+;      of data from brange through erange is calculated. The edges are 
+;      then those locations where the data values are greater than fract*mean
+;      for 3 consecutive channels starting from the end points of the 
+;      region of interest and searching towards the center.
+;   2. As a fraction of the maximum value within the region of interest. 
+;      The peak of data from brange to erange is found. The edges are 
+;      then those locations where the data values are greater than 
+;      fract*(peak-rms) for 3 consecutive channels starting from the end
+;      points of the region of interest and searching towards the center.
+;   3. As a fraction of each of two peaks - identified by the user. The
+;      user uses the cursor to mark two peaks in the region of interest 
+;      or those peaks are identified through the lefthorn and righthorn 
+;      parameters.  The maximum value within 10 channels of each user-supplied
+;      peak location is found.  The left edge is where the data value 
+;      falls below fract*(peak-rms) for 3 consecutive channels searched
+;      from the location of the peak.  The right-channel peak is similarly
+;      used to find the right edge.
+;   4. A polynomial is fit to either side of the profile between 15-85% of
+;      (peak-rms) (where the peak is from the relevent side of the profile - 
+;      the two peaks are identified by the user). The velocity of the 
+;      polynomical fit at fract*(peak-rms) is then found for both sides of 
+;      the profile. The difference between the two is the width, the mean is
 ;	   the central velocity. The order of the polynomial is chosen by the user
 ;	   (linear fits are usually sufficient). This scheme (further described in 
 ;	   Springob etal 2006) has the advatange of averaging out noise effects from 
 ;	   either side of the profile.
-; 	     
-; 	   
-; </ul>
 ;
-; <p>In the first 3 modes, the final left and right edge are linear
+; In the first 3 modes, the final left and right edge are linear
 ; interpolations to get the fractional channel where data value crossed
 ; the threshold given by fract for that particular mode.
 ;
-; <p>If an edge is not found, a warning is issued and the appropiate
+; If an edge is not found, a warning is issued and the appropiate
 ; end-point of the region of interest is used.  Only the data values
 ; within the region of interest are used here.
 ;
-; <p> The returned value is a 6-element array with these values, in
+; The returned value is a 6-element array with these values, in
 ; this order.
-; <ul>
-; <li> Area.  The sum of data[i]*abs(vel[i+1]-vel[i-1])/2.0 for all i
-; from brange to erange (modes 1 and 2) or between the channels where
-; the data values first become negative moving out from the two peaks
-; found in mode 3 (not including that transition channel).
-; <li> Width.  The absolute value of the difference between the left
-; and right edges as determined for that mode.
-; <li> Velocity.  The mean of the left and right edges as determiend
-; for that mode.
-; <li> The 3 error estimates on the above values, in the same order.
-; The error on Area is only set for the fract=0.5 and fract=0.2 cases.
-; The Width and Velocity errors are only set by mode 4.  For mode 4,
-; the Width error is always set at 2x the Velocity error.  Unset error
-; estimates have a value of 0.0
-; </ul>
+; 
+;   * **Area**      The sum of data[i]*abs(vel[i+1]-vel[i-1])/2.0 for all i
+;                   from brange to erange (modes 1 and 2) or between the channels where
+;                   the data values first become negative moving out from the two peaks
+;                   found in mode 3 (not including that transition channel).
+;   * **Width**     The absolute value of the difference between the left and right edges
+;                   as determined for that mode.
+;   * **Velocity**  The mean of the left and right edges as determined for that mode.
+;   * The 3 error estimates on the above values, in the same order. The error on Area
+;     is only set for the fract=0.5 and fract=0.2 cases. The Width and Velocity errors
+;     are only set by mode 4.  For mode 4, the Width error is always set at 2x the 
+;     Velocity error.  Unset error estimates have a value of 0.0
 ;
-; <p>Blanked data is ignored by this routine.  Since the velocities
+; Blanked data is ignored by this routine.  Since the velocities
 ; used to calculate widths and centers come from the centers of the
 ; valid channels, ignoring the blanked data is equivalent to replacing
 ; the blanked data by it's nearest non-blanked neighbor in the
 ; direction of the edge searches.  If the data is all blanked in the
 ; region of interest, the returned values are all 0.
 ;
-; <p>
 ; This code adapted from code in use at Arecibo.  This particular
-; version was originally from Karen O'Neil.
-; <p>Option 4 added by Karen Masters as part of work for GBT06A-027,
-; GBT06B-021, GBT06C-049, 
-; GBT08B-003: "Mapping Mass in the Nearby Universe with 2MASS".
+; version was originally from Karen O'Neil. Option 4 added by Karen Masters
+; as part of work for GBT06A-027, GBT06B-021, GBT06C-049, GBT08B-003: 
+; "Mapping Mass in the Nearby Universe with 2MASS".
 ;
-; <p><B>Contributed By: Karen O'Neil, Bob Garwood, and Karen Masters.</B>
+; Contributed By: Karen O'Neil, Bob Garwood, and Karen Masters.
 ;
-; @param data {in}{required}{type=float array} The data values.
-; @param vel {in}{required}{type=float array} The velocities at each
-; data point, in km/s.
-; @param brange {in}{required}{type=integer} The first channel to use.
-; @param erange {in}{required}{type=integer} The last channel to use.
-; @param mode {in}{required}{type=integer} The method to use in
-; finding the returned values.
-; @param fract {in}{required}{type=float} Used in locating the edges of
-; the galaxy profile.  See the documentation for more details.
-; @keyword lefthorn {in}{optional}{type=float} The location (in
-; channels) of the left (low channel number) peak in the profile.
-; Used only in mode 3.  If this or righthorn are not provided, the
-; user is asked to use the cursor to mark these locations.
-; @keyword righthorn {in}{optional}{type=float} The location (in
-; channels) of the right (high channel number) peak in the profile.
-; Used only in mode 3.  If this or lefthorn are not provided, the user
-; is asked to use the cursor to mark these locations.
-; @keyword rms {in}{optional}{type=float} Used in modes 2 and 3 as
-; described above.  If this is not supplied, defaults to the stddev of
-; data within the region of interest.
-; @keyword quiet {in}{optional}{type=boolean} When set, the results
-; are not printed to the terminal (they are still returned).
+; :Params:
+;   data : in, required, type=float array
+;       The data values.
+;   vel : in, required, type=float array
+;       The velocities at each data point, in km/s.
+;   brange : in, required, type=integer
+;       The first channel to use.
+;   erange : in, required, type=integer
+;       The last channel to use.
+;   mode : in, required, type=integer
+;       The method to use in finding the returned values.
+;   fract : in, required, type=float
+;       Used in locating the edges of the galaxy profile. 
+;       See the documentation for more details.
+; 
+; :Keywords:
+;   lefthorn : in, optional, type=float
+;       The location (in channels) of the left (low channel number) peak
+;       in the profile. Used only in mode 3.  If this or righthorn are
+;       not provided, the user is asked to use the cursor to mark these 
+;       locations.
+;   righthorn : in, optional, type=float
+;       The location (in channels) of the right (high channel number) peak 
+;       in the profile. Used only in mode 3.  If this or lefthorn are not 
+;       provided, the user is asked to use the cursor to mark these locations.
+;   rms : in, optional, type=float
+;       Used in modes 2 and 3 as described above. If this is not supplied,
+;       defaults to the stddev of data within the region of interest.
+;   quiet : in, optional, type=boolean
+;       When set, the results are not printed to the terminal (they are 
+;       still returned).
 ;
-; @returns the values in a 3 element array: [0] is the area, [1] is
-; the width and [2] is the velocity.  Returns 0.0 for all 3 values on
-; error.
+; :Returns:
+;   the values in a 3 element array: [0] is the area, [1] is the width
+;   and [2] is the velocity.  Returns 0.0 for all 3 values on error.
 ;
-; @version $Id$
 ;-
 function awv, data,vel,brange,erange,mode,fract,lefthorn=lefthorn,$
               righthorn=righthorn,rms=rms,quiet=quiet

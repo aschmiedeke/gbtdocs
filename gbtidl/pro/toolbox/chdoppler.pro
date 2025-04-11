@@ -1,5 +1,7 @@
+; docformat = 'rst'
+
 ;+
-; computes the projected velocity of the telescope wrt
+; Computes the projected velocity of the telescope wrt
 ; six coordinate systems: geo, helio, bary, lsrk, lsrd, gal
 ; negative velocities mean approach
 ;
@@ -8,54 +10,54 @@
 ;
 ; Fully vectorized.  All three arguments must have the same dimensions.
 ;
-; <p>
 ; This code came via e-mail from Carl Heiles via Tom Bania on 11/04/2004.
 ; Updated using code found via google from same source on 11/30/2009.
 ; Local changes:
-; <UL>
-; <LI> modify this documentation for use by idldoc.
-; <LI> removed path argument and related code, replaced by obspos
-; argument.
-; <LI> default position is the GBT.
-; <LI> Observatory longitude was not being passed to juldaytolmst.
-; <LI> LSRD added 
-; <LI> Galactocentric added
-; <LI> Checked against aips++ Measures.  Differences were less then 20 m/s in
-; one test case (less then 10m/s for geo, bary, and lsrk).
-; <LI> Double precision throughout.
-; <LI> Relativistic addition of velocities.
-; </UL>
+; 
+;   * modify this documentation for use by idldoc.
+;   * removed path argument and related code, replaced by obspos argument.
+;   * default position is the GBT.
+;   * Observatory longitude was not being passed to juldaytolmst.
+;   * LSRD added 
+;   * Galactocentric added
+;   * Checked against aips++ Measures.  Differences were less then 20 m/s in
+;     one test case (less then 10m/s for geo, bary, and lsrk).
+;   * Double precision throughout.
+;   * Relativistic addition of velocities.
+; 
 ;
 ; Previous revision history: carlh 29oct04
-; <UL>
-; <LI> from idpppler_chl; changed calculation epoch to 2000.
-; <LI> 19nov04: correct bad earth spin calculation
-; <LI> 7 jun 2005: vectorize to make faster for quantity calculations
-; <LI> 20 Mar 2007: CH updated documentation
-; <LI> 08 Feb 2015: CH fixed doppler additions for array inputs. See
-;       annotated statements at end of program.
-; </UL>
-;
-; @param ra {in}{required} The source ra in decimal hours, equinox 2000
-; @param dec {in}{required} The source dec in decimal hours, equinox 2000
-; @param julday {in}{required} The julian day
-;
-; @keyword obspos {in}{optional}{type=double [2]} observatory position
-; [East longitude, latitude] in degrees.  
-; Uses the GBT position if not specified.
 ; 
-; @keyword light {in}{optional}{type=boolean} When set, returns the
-; velocity as a fraction of c
+;   * from idpppler_chl; changed calculation epoch to 2000.
+;   * 19nov04: correct bad earth spin calculation
+;   * 07 Jun 2005: vectorize to make faster for quantity calculations
+;   * 20 Mar 2007: CH updated documentation
+;   * 08 Feb 2015: CH fixed doppler additions for array inputs. See
+;                  annotated statements at end of program.
 ;
-; @returns The velocity in km/s, or as a faction of c if
-; the keyword /light is specified. the result is a 6-element
-; vector whose elements are [geo, helio, bary, lsrk, lsrd, gal].
+; :Params:
+;   ra {in}{required} The source ra in decimal hours, equinox 2000
+;   dec {in}{required} The source dec in decimal hours, equinox 2000
+;   julday {in}{required} The julian day
 ;
-; @uses <a href="http://idlastro.gsfc.nasa.gov/ftp/pro/astro/baryvel.pro">baryvel</a>
-; @uses <a href="http://idlastro.gsfc.nasa.gov/ftp/pro/astro/precess.pro">precess</a>
-; @uses <a href="juldaytolmst.html">juldaytolmst</a>
+; :Keywords:
+;   obspos {in}{optional}{type=double [2]} 
+;       observatory position [East longitude, latitude] in degrees.  
+;       Uses the GBT position if not specified.
+; 
+;   light : in, optional, type=boolean
+;       When set, returns the velocity as a fraction of c
 ;
-; @version $Id: chdoppler.pro,v 1.7 2009/12/01 17:33:37 bgarwood Exp $
+; :Returns:
+;   The velocity in km/s, or as a faction of c if the keyword /light is specified.
+;   the result is a 6-element vector whose elements are [geo, helio, bary, lsrk, 
+;   lsrd, gal].
+;
+; :Uses:
+;   `baryvel <https://idlastro.gsfc.nasa.gov/ftp/pro/astro/baryvel.pro>_`
+;   `precess <https://idlastro.gsfc.nasa.gov/ftp/pro/astro/precess.pro>_`
+;   :idl:pro:`juldaytolmst`
+;
 ;-
 function chdoppler, ra, dec, julday, $
         obspos=obspos, light=light
