@@ -1,16 +1,18 @@
+; docformat = 'rst' 
+
 ;+
 ; Compute the power spectrum for the supplied data container, which
-; is overwritten with the result.  Uses 
-; <a href="../toolbox/dcfft.html#_dcfft">dcfft</a> to do the fft.  This is simply
-; the sum of squares of the real and imaginary parts of the fft on the
-; data.
+; is overwritten with the result.  Uses :idl:pro:`dcfft` to do the fft. 
+; This is simply the sum of squares of the real and imaginary parts of 
+; the fft on the data.
 ;
-; @param dc {in}{out}{required}{type=data container} The data
-; container to use for both input and output.
+; :Params:
+;   dc : in, out, required, type=data container
+;       The data container to use for both input and output.
 ;
-; @uses <a href="../toolbox/dcfft.html#_dcfft">dcfft</a>
+; :Uses:
+;   :idl:pro:`dcfft`
 ;
-; @version $Id$
 ;-
 pro dcpowspec,dc
     compile_opt idl2
