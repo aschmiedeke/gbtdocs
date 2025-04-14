@@ -1,27 +1,27 @@
+; docformat = 'rst' 
+
 ;+
 ; Average two parts of in-band frequency switching (signal and
 ; reference phases, with the cal-switching phases already calibrated).
-; Typically this happens after getfs.  It does not matter which data container
-; containers which part since their relative distance in frequency
-; is used to determine how one is shifted to align with the other.
-; The returned result is a new data container that the user must
-; eventually free using <a href="data_free.html">data_free</a> in order
-; to avoid any memory leaks.  sig and ref must have the same number of
-; channels and the same spacing between channels.  If sig and ref are
-; already aligned, then this is a simple average (a warning message
-; will be printed).  If the shift necessary to align ref with sig is
-; more than the total number of channels, there is no overlap and this
-; procedure will print an error message and return without altering
-; sig and ref.
+; Typically this happens after getfs.  It does not matter which data
+; container containers which part since their relative distance in 
+; frequency is used to determine how one is shifted to align with the
+; other. The returned result is a new data container that the user must
+; eventually free using :idl:pro:`data_free` in order to avoid any memory 
+; leaks.  sig and ref must have the same number of channels and the same 
+; spacing between channels.  If sig and ref are already aligned, then 
+; this is a simple average (a warning message will be printed).  If the 
+; shift necessary to align ref with sig is more than the total number of 
+; channels, there is no overlap and this procedure will print an error 
+; message and return without altering sig and ref.
 ;
-; <p> The "ref" data container is shifted to align in sky
-; frequency with the "sig" data container using 
-; <a href="dcshift.html">dcshift</a> and the two data containers are averaged
-; - weighting each by the inverse of square of their system temperatures.  The
-; system temperature in the result is the weighted average of the two system
-; temperatures.
+; The "ref" data container is shifted to align in sky frequency with the 
+; "sig" data container using :idl:pro:`dcshift` and the two data containers 
+; are averaged - weighting each by the inverse of square of their system 
+; temperatures.  The system temperature in the result is the weighted 
+; average of the two system temperatures.
 ;
-; <p>If there are any blanked channels in either "sig" or "ref" then
+; If there are any blanked channels in either "sig" or "ref" then
 ; the corresponding channels in the other spectrum, after "ref" has
 ; been shifted to align in sky frequency with "sig", are also blanked
 ; so that the average at those channels is blanked.  This is done to
@@ -34,45 +34,48 @@
 ; non-blanked channels (a simple average in the case of single,
 ; isolated, blanked channels) using the blankinterp keyword.
 ;
-; @param sig {in}{out}{required}{type=spectrum} The data
-; container to use as the signal part in the average.
+; :Params:
+;   sig : in, out, required, type=spectrum
+;       The data container to use as the signal part in the average.
 ;
-; @param ref {in}{out}{required}{type=spectrum} The data container to 
-; use as the reference part in the average.
-; This data is shifted using <a href="dcshift.html">dcshift</a> to align with
-; "sig" before averaging. 
+;   ref : in, out, required, type=spectrum
+;       The data container to use as the reference part in the average.
+;       This data is shifted using :idl:pro:`dcshift` to align with
+;       "sig" before averaging. 
 ;
-; @keyword ftol {in}{optional}{type=double}{default=0.005} The fractional
-; channel shift tolerance.  If the fractional part of the channel
-; shift necessary to align the two parts is less than this value, no
-; fractional shift as described in the documentatio for 
-; <a href="dcshift.html">dcshift</a> will be done.  It might be useful to
-; turn off the fractional shift because it can cause aliases and
-; ringing in the case of very strong lines or other sharp features.
-; If ftol > 0.5 no fractional shifts will be done.
+; :Keywords:
+;   ftol : in, optional, type=double, default=0.005
+;       The fractional channel shift tolerance.  If the fractional part of
+;       the channel shift necessary to align the two parts is less than 
+;       this value, no fractional shift as described in the documentation
+;       for :idl:pro:`dcshift` will be done.  It might be useful to turn 
+;       off the fractional shift because it can cause aliases and ringing
+;       in the case of very strong lines or other sharp features. If ftol 
+;       > 0.5 no fractional shifts will be done.
 ;
-; @keyword blankinterp {in}{optional}{type=boolean} When set, blanks
-; are replaced before shifting and averaging by a linear interpolation
-; using the finite values found in the two spectra.  The <a
-; href="dcinterp.html">dcinterp</a> procedure is used.  For single blanked
-; channels, the replacement value is the average of the two adjacent
-; channel values.
+;   blankinterp : in, optional, type=boolean
+;       When set, blanks are replaced before shifting and averaging by a 
+;       linear interpolation using the finite values found in the two spectra.
+;       The :idl:pro:`dcinterp` procedure is used.  For single blanked
+;       channels, the replacement value is the average of the two adjacent
+;       channel values.
 ;
-; @keyword nomask {in}{optional}{type=boolean} When set, turn off the
-; masking of blank channels from each spectrum on to the other, after
-; the shift.  This may result in spikes at the location of blanked
-; channels. This was the original behavior of this routine.  This
-; keyword has no effect if blankinterp is set.
+;   nomask : in, optional, type=boolean
+;       When set, turn off the masking of blank channels from each spectrum 
+;       on to the other, after the shift.  This may result in spikes at the 
+;       location of blanked channels. This was the original behavior of this 
+;       routine.  This keyword has no effect if blankinterp is set.
 ;
-; @returns data container.  The user is responsible for freeing this.
-; returns -1 on error.
+; :Returns:
+;   data container.  The user is responsible for freeing this.
+;   returns -1 on error.
 ;
-; @uses <a href="dcshift.html">dcshift</a>
-; @uses <a href="dcinterp.html">dcinterp</a>
-; @uses <a href="data_free.html">data_free</a>
-; @uses <a href="data_valid.html">data_valid</a>
+; :Uses:
+;   :idl:pro:`dcshift`
+;   :idl:pro:`dcinterp`
+;   :idl:pro:`data_free`
+;   :idl:pro:`data_valid`
 ;
-; @version $Id$
 ;-
 function dcfold, sig, ref, ftol=ftol, blankinterp=blankinterp, nomask=nomask
     compile_opt idl2

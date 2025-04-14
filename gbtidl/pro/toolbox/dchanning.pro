@@ -1,34 +1,41 @@
+; docformat = 'rst' 
+
 ;+
 ; This procedure smooths a spectrum with a hanning filter.
 ;
-; <p>Replaces the contents of the data being smoothed with the
+; Replaces the contents of the data being smoothed with the
 ; smoothed data.  Blanked data values are ignored.
 ;
-; <p>For spectrum data containers, the frequency_resolution is set 
-; using <a href="esthanres.html">esthanres</a> 
+; For spectrum data containers, the frequency_resolution is set 
+; using :idl:pro:`esthanres`. 
 ;
-; @param dc {in}{required}{type=data container} data container (spectrum or continuum)
-; @keyword decimate {in}{optional}{type=keyword} decimate the
-; spectrum?
-; @keyword ok {out}{optional}{type=boolean} Returns 1 if everything
-; went ok, 0 if it did not (missing dc parameter, invalid or empty dc)
+; :Params:
+;   dc : in, required, type=data container
+;       data container (spectrum or continuum)
+; 
+; :Keywords:
+;   decimate : in, optional, type=keyword
+;       decimate the spectrum?
+;   ok : out, optional, type=boolean
+;       Returns 1 if everything went ok, 0 if it did not (missing 
+;       dc parameter, invalid or empty dc)
 ;
-; @examples
-; <pre>
-;    get,index=1
-;    a = data_new()
-;    data_copy,!g.s[0],a
-;    show
-;    dchanning,a,/decimate
-;    show,a
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+;       
+;       get,index=1
+;       a = data_new()
+;       data_copy,!g.s[0],a
+;       show
+;       dchanning,a,/decimate
+;       show,a
+; 
+; :Uses:
+;   :idl:pro:`dcconvol`
+;   :idl:pro:`dcdecimate`
 ;
-; @uses <a href="dcconvol.html">dcconvol</a>
-; @uses <a href="dcdecimate.html">dcdecimate</a>
-;
-; @version $Id$
 ;-
-
 pro dchanning,dc,decimate=decimate,ok=ok
     compile_opt idl2
 

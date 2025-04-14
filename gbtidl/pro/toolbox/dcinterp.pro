@@ -1,55 +1,64 @@
+; docformat = 'rst' 
+
 ;+
 ; Interpolate across blanked channels in a data container.
 ;
-; <p>This uses the IDL INTERPOL function to replace
-; blanked values in the data container with unblanked values according
-; to the interpolation method selected.
+; This uses the IDL INTERPOL function to replace blanked values in 
+; the data container with unblanked values according to the 
+; interpolation method selected.
 ;
-; <p>You can limit the range of channels to consider using bchan and
+; You can limit the range of channels to consider using bchan and
 ; echan.  When not supplied, all of the channels are used.
 ;
-; <p>The default interpolation method is linear. The other
+; The default interpolation method is linear. The other
 ; interpolations may not be particularly useful across large gaps.
 ;
-; <p>If all of the data in the requested range is good (unblanked)
+; If all of the data in the requested range is good (unblanked)
 ; then no interpolation is done and this routine silently returns
 ; without changing anything in dc.
 ;
-; <p>It is an error to request more than one interpolation method.
+; It is an error to request more than one interpolation method.
 ;
-; @param dc {in}{required}{type=data container} The data container to
-; use.
-; @keyword bchan {in}{optional}{type=integer} The starting channel
-; number.  If not specified, bchan=0.
-; @keyword echan {in}{optional}{type=integer} The last channel number.
-; If not specified use all channels from bchan to the end.
-;
-; @keyword linear {in}{optional}{type=boolean} When set, use the
-; linear interpolation provided by INTERPOL.  This is the default
-; interpolation when no other method is specified.
-;
-; @keyword quadratic {in}{optional}{type=boolean} When set, use the
-; quadratic interpolation provided by INTERPOL.
-;
-; @keyword lsquadratic {in}{optional}{type=boolean} When set, use the
-; lsquadratic (lest squares quadratic) interpolation provided by
-; INTERPOL.
-;
-; @keyword spline {in}{optional}{type=boolean} When set, use the
-; spline interpolation provided by INTERPOL.
+; :Params:
+;   dc : in, required, type=data container
+;       The data container to use.
 ; 
-; @keyword quiet {in}{optional}{type=boolean} When set, do not print
-; out informational messages.  Useful primarily for supressing the
-; message that happens when an attempt is made to interpolate across a
-; spectrum of all blanked values.  This does not supress errors due
-; to argument errors.
+; :Keywords:
+;   bchan : in, optional, type=integer
+;       The starting channel number.  If not specified, bchan=0.
+; 
+;   echan : in, optional, type=integer
+;       The last channel number. If not specified use all channels
+;       from bchan to the end.
 ;
-; @keyword ok {out}{optional}{type=boolean} This is set to 1 on
-; success or 0 on failure (e.g. bad arguments).
+;   linear : in, optional, type=boolean
+;       When set, use the linear interpolation provided by INTERPOL.
+;       This is the default interpolation when no other method is 
+;       specified.
 ;
-; @uses <a href="data_valid.html">data_valid</a>
+;   quadratic : in, optional, type=boolean
+;       When set, use the quadratic interpolation provided by INTERPOL.
 ;
-; @version $Id$
+;   lsquadratic : in, optional, type=boolean
+;       When set, use the lsquadratic (lest squares quadratic) 
+;       interpolation provided by INTERPOL.
+;
+;   spline : in, optional, type=boolean
+;       When set, use the spline interpolation provided by INTERPOL.
+; 
+;   quiet : in, optional, type=boolean
+;       When set, do not print out informational messages.  Useful 
+;       primarily for supressing the message that happens when an 
+;       attempt is made to interpolate across a spectrum of all 
+;       blanked values.  This does not supress errors due to argument 
+;       errors.
+;
+;   ok : out, optional, type=boolean
+;       This is set to 1 on success or 0 on failure (e.g. bad arguments).
+;
+; :Uses:
+;   :idl:pro:`data_valid`
+;
 ;-
 pro dcinterp, dc, bchan=bchan, echan=echan, linear=linear, quadratic=quadratic, $
               lsquadratic=lsquadratic, spline=spline, quiet=quiet, ok=ok

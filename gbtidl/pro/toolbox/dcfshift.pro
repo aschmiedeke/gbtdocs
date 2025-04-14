@@ -1,47 +1,52 @@
+; docformat = 'rst' 
+
 ;+
 ; Function to calculate the shift, in channels, necessary to align in 
-; frequency a data container with the data container
-; template in an ongoing accumulation.  
+; frequency a data container with the data container template in an 
+; ongoing accumulation.  
 ;
-; <p> If the frame is not set, the one implied by the data header is 
-; used.  Use <a href="dcxshift.html">dcxshift</a> to align using the
-; current settings of the plotter's x-axis.
+; If the frame is not set, the one implied by the data header is used. 
+; Use :idl:pro:`dcxshift` to align using the current settings of the 
+; plotter's x-axis.
 ;
-; @param accumbuf {in}{required}{type=accum_struct} The ongoing
-; accumulation buffer.
+; :Params:
+;   accumbuf : in, required, type=accum_struct
+;       The ongoing accumulation buffer.
 ;
-; @param dc {in}{required}{type=spectrum} The data container that
-; needs to be shifted to align with the data container template in
-; accumbuf.
+;   dc : in, required, type=spectrum
+;       The data container that needs to be shifted to align with the 
+;       data container template in accumbuf.
 ;
-; @keyword frame {in}{optional}{type=string}  The reference frame to
-; use.  If not supplied, the value implied by the last 4 characters of
-; the velocity_definition in the ongoing accumulation will be
-; used.  See <a href="frame_velocity.html">frame_velocity</a> for a
-; full list of supported reference frames.
+; :Keywords:
+;   frame : in, optional, type=string
+;       The reference frame to use.  If not supplied, the value implied
+;       by the last 4 characters of the velocity_definition in the ongoing
+;       accumulation will be used.  See :idl:pro:`frame_velocity` for a
+;       full list of supported reference frames.
 ;
-; @returns shift, in channels, to be used as argument to
-; dcshift. Returns 0.0 on error.
+; :Returns:
+;   shift, in channels, to be used as argument to dcshift. Returns 0.0 
+;   on error.
 ;
-; @examples
-; <pre>
-; a={accum_struct}
-; getps,30
-; dcaccum, a, !g.s[0]  ; start an accum, no alignment needed yet
-; getps,31
-; fs = dcfshift(a,!g.s[0]) ; what is the shift to align 31 with 30?
-; ; get a copy of data at !g.s[0]
-; data_copy,!g.s[0], d
-; dcshift, d, fs  ; actually shift the data
-; dcaccum, a, d ; and add it in
-; getps, 32
-; data_copy,!g.s[0], d
-; dcshift, d, dcfshift(a, d)  ; all in one line, shift 32 to align with 30
-; dcaccum, a, d
-; accumave, a, d ; result is in d now
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       a={accum_struct}
+;       getps,30
+;       dcaccum, a, !g.s[0]  ; start an accum, no alignment needed yet
+;       getps,31
+;       fs = dcfshift(a,!g.s[0]) ; what is the shift to align 31 with 30?
+;       ; get a copy of data at !g.s[0]
+;       data_copy,!g.s[0], d
+;       dcshift, d, fs  ; actually shift the data
+;       dcaccum, a, d ; and add it in
+;       getps, 32
+;       data_copy,!g.s[0], d
+;       dcshift, d, dcfshift(a, d)  ; all in one line, shift 32 to align with 30
+;       dcaccum, a, d
+;       accumave, a, d ; result is in d now
 ;
-; @version $Id$
 ;-
 function dcfshift, accumbuf, dc, frame=frame
     compile_opt idl2
