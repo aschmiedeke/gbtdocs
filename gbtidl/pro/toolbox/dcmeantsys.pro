@@ -1,35 +1,38 @@
+; docformat = 'rst' 
+
 ;+
 ; Calculate the mean Tsys using the data from two spectral line data
 ; containters, one with the CAL on and one with CAL off.
 ;
-; <pre>
-;  mean_tsys = tcal * mean(nocal) / (mean(withcal-nocal)) + tcal/2.0
-; </pre>
+; .. math::
+; 
+;   mean_tsys = tcal * mean(nocal) / (mean(withcal-nocal)) + tcal/2.0
+; 
 ; where nocal and withcal are the data values from dc_nocal and
 ; dc_withcal and tcal is as described below.
 ;
-; <ul>
-; <li>The outer 10% of all channels in both data containers are
-; ignored.
-; <li>Blanked data values are ignored.
-; <li>The tcal value used here comes from the dc_nocal data container
-; unless the user supplies a value in the tcal keyword.
-; <li>The tcal value actually used is returned in used_tcal.
-; </ul>
+; * The outer 10% of all channels in both data containers are ignored.
+; * Blanked data values are ignored.
+; * The tcal value used here comes from the dc_nocal data container
+;   unless the user supplies a value in the tcal keyword.
+; * The tcal value actually used is returned in used_tcal.
+; 
+; This is used by the GUIDE calibration routines and is encapsulated 
+; here to ensure consistency.  
 ;
-; <p>This is used by the GUIDE calibration routines and is
-; encapsulated here to ensure consistency.  
+; :Params:
+;   dc_nocal : in, required, type=spectrum data container
+;       The data with no cal signal.
+;   dc_withcal : in, required, type=spectrum data container
+;       The data with a cal signal.
+; 
+; :Keywords:
+;   tcal : in, optional, type=float
+;       A scalar value for the cal temperature (K).  If not supplied. 
+;       dc_nocal.mean_tcal will be used.
+;   used_tcal : out, optional, type=float
+;       The tcal value actually used.
 ;
-; @param dc_nocal {in}{required}{type=spectrum data container} The
-; data with no cal signal.
-; @param dc_withcal {in}{required}{type=spectrum data container} The
-; data with a cal signal.
-; @keyword tcal {in}{optional}{type=float} A scalar value for the cal
-; temperature (K).  If not supplied. dc_nocal.mean_tcal will be used.
-; @keyword used_tcal {out}{optional}{type=float} The tcal value
-; actually used.
-;
-; @version $Id$
 ;-
 function dcmeantsys, dc_nocal, dc_withcal, tcal=tcal,used_tcal=used_tcal
     compile_opt idl2

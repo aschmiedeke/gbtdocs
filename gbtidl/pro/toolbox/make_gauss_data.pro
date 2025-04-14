@@ -1,24 +1,33 @@
+; docformat = 'rst' 
+
 ;+
 ; Returns a gaussian, given coefficients and an x axis.  Noise and offset can be added.
 ; Used in guide layer and in tests.
 ;
-; @param x {in}{required}{type=array} x-axis
-; @param a {in}{required}{type=array} coefficents for gaussian: [height, center, width] 
-; @param noise {in}{required}{type=double} noise to inject
-; @param offset {in}{optional}{type=double} offset to add to gaussian
-; @returns the gaussian evaluated at x with noise added
+; :Params:
+;   x : in, required, type=array
+;       x-axis
+;   a : n, required, type=array
+;       coefficents for gaussian: [height, center, width] 
+;   noise : in, required, type=double
+;       noise to inject
+;   offset : in, optional, type=double
+;       offset to add to gaussian
+; 
+; :Returns:
+;   the gaussian evaluated at x with noise added
 ;
-; @examples
-; <pre>
-; ; create two gaussians
-;   a = [400000.,75.,15.]
-;   a = [a,[200000,35,5.]]
-;   x = lindgen(150)
-;   y = make_gauss_data, x, a, 100.
-;   plot, x, y
-; </pre>
-;
-; @version $Id$
+; :Examples:
+; 
+;   .. code-blocks:: IDL
+; 
+;       ; create two gaussians
+;       a = [400000.,75.,15.]
+;       a = [a,[200000,35,5.]]
+;       x = lindgen(150)
+;       y = make_gauss_data, x, a, 100.
+;       plot, x, y
+; 
 ;-
 function make_gauss_data, x, a, noise, offset
 
