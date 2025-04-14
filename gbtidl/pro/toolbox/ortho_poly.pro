@@ -1,51 +1,55 @@
+; docformat = 'rst' 
+
 ;+
 ; function returns the sum of the set of orthogonal polynomials
 ; described by the polyfit argument evaluated at x.;
 ;
-; <p>This code came from Tom Bania's GBT_IDL work.  Local
+; This code came from Tom Bania's GBT_IDL work.  Local
 ; modifications include:
-; <UL>
-; <LI> Documentation modified for use by idldoc
-; <LI> Array syntax changed to [] and compile_opt idl2 used.
-; <LI> Indententation used to improve readability.
-; <LI> Unnecessary code removed.
-; <LI> Some argument checks added.
-; <LI> Changed name of cfit argument to polyfit to avoid confusion
-; with cfit argument of ortho_fit, which is NOT the same thing.
-; </UL>
+; 
+; * Documentation modified for use by idldoc
+; * Array syntax changed to [] and compile_opt idl2 used.
+; * Indententation used to improve readability.
+; * Unnecessary code removed.
+; * Some argument checks added.
+; * Changed name of cfit argument to polyfit to avoid confusion
+;   with cfit argument of ortho_fit, which is NOT the same thing.
+; 
+; :Params:
+;   x : in, required
+;       The x-values to use in evaluating the polynomials.
+;   polyfit : in, required, type=2D array
+;       The array describing the polynomials.  Typically this will be 
+;       the return value from :idl:pro:`ortho_fit`. The dimensionality
+;       is [4,(nfit+1)]
+;       * polyfit(3,m) gives the weighting coefficient for the m-th orthogonal polynomial
+;       * polyfit(0:2,m) for m=2 are the recursion coefficients for 
+; 
+;           .. math:: 
+; 
+;               p^(m) = x*p^(m-1)*polyfit(2,m) + p^(m-1)*polyfit(1,m) + p^(m-2)*polyfit(0,m) 
+; 
+;       * polyfit(0,0) is the value of the constant term
+; 
+;           .. math:: 
+; 
+;               p^(1) = polyfit(1,1)*x + polyfit(0,1)
+; 
+; :Returns:
+;   Array giving the evaluated polyfit at x.
 ;
-; @param x {in}{required} The x-values to use in evaluating the polynomials.
-; @param polyfit {in}{required}{type=2D array} The array describing
-; the polynomials.  Typically this will be the return value from <a
-; href="ortho_fit.html">ortho_fit</a>.  The
-; dimensionality is [4,(nfit+1)]
-; <UL>
-; <LI> polyfit(3,m) gives the weighting coefficient for the m-th orthogonal polynomial
-; <LI> polyfit(0:2,m) for m=2 are the recursion coefficients for 
-; <pre> 
-; p^(m) = x*p^(m-1)*polyfit(2,m) + p^(m-1)*polyfit(1,m) + p^(m-2)*polyfit(0,m) 
-; </pre>
-; <LI> polyfit(0,0) is the value of the constant term
-; <pre>
-; p^(1) = polyfit(1,1)*x + polyfit(0,1)
-; </pre>
-; </UL>
-;
-; @returns Array giving the evaluated polyfit at x.
-;
-; @examples
+; :Examples:
 ;   Fit a 7-th order polynomial to the data in !g.s[0] and subtract
 ; the result of the fit from that data, replacing the data in !g.s[0].
-; <pre>
-;    yy = *(!g.s[0].data_ptr)
-;    xx = dindgen(n_elements(yy))
-;    poly = ortho_fit(xx, yy, 7, cfit, rms)
-;    thefit = ortho_poly(xx,poly)
-;    *(!g.s[0].data_ptr) = *(!g.s[0].data_ptr) - thefit
-; </pre>
 ; 
+;   .. code-block:: IDL
+;       
+;       yy = *(!g.s[0].data_ptr)
+;       xx = dindgen(n_elements(yy))
+;       poly = ortho_fit(xx, yy, 7, cfit, rms)
+;       thefit = ortho_poly(xx,poly)
+;       *(!g.s[0].data_ptr) = *(!g.s[0].data_ptr) - thefit
 ;
-; @version $Id$
 ;-
 function ortho_poly,x,polyfit
     compile_opt idl2

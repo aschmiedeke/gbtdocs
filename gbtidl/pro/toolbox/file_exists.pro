@@ -21,15 +21,6 @@
 ; 
 ; * modify this documentation for use by idldoc.
 ; 
-; :Examples:
-; 
-;   .. code-block:: IDL
-; 
-;       istat=file_exists('/share/olcor/corfile.13aug02.x101.1',fullname)
-;
-;       dir=['/share/olcor/','/proj/x101cor/']
-;       istat=file_exists('corfile.13aug02.x101.1',fullname,dir=dir)
-;
 ; :Params:
 ;   filename : in, required, type=string
 ;       filename to search for
@@ -46,6 +37,15 @@
 ;
 ; :Returns:
 ;   1 file found, 0 not found
+;
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       istat=file_exists('/share/olcor/corfile.13aug02.x101.1',fullname)
+;
+;       dir=['/share/olcor/','/proj/x101cor/']
+;       istat=file_exists('corfile.13aug02.x101.1',fullname,dir=dir)
 ;
 ;-
 function file_exists,filename,fullname,dir=dir,size=size
