@@ -1,7 +1,9 @@
+; docformat = 'rst' 
+
 ;+
 ; Get the RA and DEC at the requested equinox from a data container.
 ;
-; <p>This returns the Right Ascension and Declination as a 2-element
+; This returns the Right Ascension and Declination as a 2-element
 ; vector (for spectral line data) or array (with dimension of [2,the
 ; number of integrations] for continuum data) appropriate for the given
 ; data container given the requested equinox.  If equinox is not
@@ -12,21 +14,24 @@
 ; and the equinox argument is not supplied or it matches the equinox
 ; in the data container, then those values are returned as is.
 ;
-; <p>If the data container's coordinate_mode field is OTHER then
+; If the data container's coordinate_mode field is OTHER then
 ; the values are returned as is and a warning message is emited.
 ; That warning message can be suppressed if /quiet is set.
 ;
-; @param dc {in}{required}{type=data container} The data container to
-; get the coordinate values from.
-; @param equinox {in}{optional}{type=double} The equinox to use
-; (decimal years).  Defaults to the value of dc.equinox.
-; @keyword quiet {in}{optional}{type=boolean} When set, warning
-; messages are suppressed.
+; :Params:
+;   dc : in, required, type=data container
+;       The data container to get the coordinate values from.
+;   equinox : in, optional, type=double
+;       The equinox to use (decimal years).  Defaults to the value of
+;       dc.equinox.
 ;
-; @returns vector (spectral line) or array (continuum) holding
-; RA and DEC in degrees.
+; :Keywords:
+;   quiet : in, optional, type=boolean
+;       When set, warning messages are suppressed.
 ;
-; @version $Id$
+; :Returns:
+;   vector (spectral line) or array (continuum) holding RA and DEC in degrees.
+;
 ;-
 function getradec, dc, equinox, quiet=quiet
     compile_opt idl2

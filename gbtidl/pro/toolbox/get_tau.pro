@@ -1,3 +1,5 @@
+; docformat = 'rst' 
+
 ;+
 ; Function to return a default zenith opacity, given an
 ; observing frequency.  Used in the calibration routines.
@@ -5,18 +7,22 @@
 ; These values are simply best guesses.  The user should replace
 ; this routine as required for the program at hand.
 ;
-; @param freq {in}{required}{type=float} Observing frequency in GHz
-; @returns the zenith opacity
-; @examples
-; <pre>
-;    apeff = get_ap_eff(18.5)
-;    tau = get_tau(18.5)
-;    print, apeff, tau
-; </pre>
+; :Params:
+;   freq : in, required, type=float
+;       Observing frequency in GHz
+; 
+; :Returns:
+;   the zenith opacity
+; 
+; :Examples:
 ;
-; @version $Id$
+;   .. code-block:: IDL
+; 
+;       apeff = get_ap_eff(18.5)
+;       tau = get_tau(18.5)
+;       print, apeff, tau
+; 
 ;-
-
 function get_tau,freq
 
    compile_opt idl2

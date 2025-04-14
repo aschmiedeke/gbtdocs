@@ -1,15 +1,21 @@
+; docformat = 'rst' 
+
 ;+
 ; This procedure multiplies two data container's data arrays, returning the product 
 ;
-; @param dc1 {in}{required}{type=data container} data container (spectrum or continuum)
-; @param dc2 {in}{required}{type=data container} data container (spectrum or continuum)
+; :Params:
+;   dc1 : in, required, type=data container
+;       data container (spectrum or continuum)
+;   dc2 : in, required, type=data container
+;       data container (spectrum or continuum)
 ;
-; @returns float array - product of dc1 and dc2's data arrays
+; :Returns:
+;   float array - product of dc1 and dc2's data arrays
 ;
-; @uses <a href="../toolbox/dcpaircheck.html">dcpaircheck</a>
+; :Examples:
 ; 
-; @examples
-; <pre>
+; .. code-block:: IDL
+; 
 ;    get,index=1
 ;    a = data_new()
 ;    data_copy,!g.s[0],a
@@ -20,11 +26,11 @@
 ;    show,b
 ;    product = dcmultiply(a,b)
 ;    plot, product
-; </pre>
+; 
+; :Uses:
+;   :idl:pro:`dcpaircheck`
 ;
-; @version $Id$
 ;-
-
 function dcmultiply,dc1,dc2
 
     ; make sure that the two data containers can be added

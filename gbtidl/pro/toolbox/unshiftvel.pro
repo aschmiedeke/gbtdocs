@@ -1,20 +1,25 @@
+; docformat = 'rst' 
+
 ;+
 ; Undo the effects of shiftvel using the same voffset (do not use its
-; negative here).  See the comments in shiftvel.  This is intended to
+; negative here). See the comments in shiftvel. This is intended to
 ; only be used on a quantity that is the result from shiftvel.
 ;
-; @param vel {in}{required}{type=double} The velocities, in m/s, to
-; unshift.
+; :Params:
+;   vel : in, required, type=double
+;       The velocities, in m/s, to unshift.
 ;
-; @param voffset {in}{required}{type=double} The velocity offset (m/s) to
-; remove.  This should be the same value used in a previous call to shiftvel.
+;   voffset : in, required, type=double
+;       The velocity offset (m/s) to remove. This should be the same
+;       value used in a previous call to shiftvel.
 ;
-; @keyword veldef {in}{optional}{type=string}{default='RADIO'} The
-; velocity definition from one of RADIO, OPTICAL or TRUE.
+; :Keywords:
+;   veldef : in, optional, type=string, default='RADIO'
+;       The velocity definition from one of RADIO, OPTICAL or TRUE.
 ;
-; @returns the unshifted velocities in m/s.
+; :Returns:
+;   the unshifted velocities in m/s.
 ;
-; @version $Id$
 ;-
 function unshiftvel, vel, voffset, veldef=veldef
     compile_opt idl2

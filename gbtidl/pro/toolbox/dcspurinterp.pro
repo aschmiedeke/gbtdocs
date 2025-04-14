@@ -1,9 +1,11 @@
+; docformat = 'rst' 
+
 ;+
 ; Replace data values in the given data containers at the known
 ; locations of VEGAS spurs with the average of the two adjacent
 ; channel values. 
 ;
-; <p>VEGAS produces spurs (spikes) at channels corresponding to
+; VEGAS produces spurs (spikes) at channels corresponding to
 ; integer multiples of the ADC sampler frequency divided by 64.  The
 ; normal behavior of sdfits is to flag these channels when the data
 ; are filled.  When flagged data is retrieved by
@@ -12,14 +14,14 @@
 ; retrieve the data then flagging is not applied and the original data
 ; values will appear at all channels.  
 ;
-; <p>It is sometimes useful to replace the spur data values (either
+; It is sometimes useful to replace the spur data values (either
 ; NaNs if the flags have been used or the original data values if the
 ; flags are ignored) with interpolated values.  This routine replaces
 ; those values with the average of the two channels on either side of
 ; the spur (or the adjacent channel if the spur is at the end of the
 ; spectrum).
 ; 
-; <p>This spur locations are determined using the VSPDELT, VSPRPIX,
+; This spur locations are determined using the VSPDELT, VSPRPIX,
 ; and VSPRVAL header values.  For data filled using older versions of
 ; sdfits, these values are not present in the SDFITS table and will
 ; appear as NaN in GBTIDL.  In that case, no spur interpolation is
@@ -27,15 +29,15 @@
 ; refilled by the most recent version of sdfits to make use of this
 ; procedure.
 ;
-; @param dc {in}{out}{required}{type=spectrum data container(s)} The
-; data container(s) to alter.  May be an array of data containers.
+; :Params:
+;   dc : in, out, required, type=spectrum data container(s)
+;       The data container(s) to alter.  May be an array of data 
+;       containers.
 ;
-; @uses <a href="dcspurchans.html">dcspurchans</a>
+; :Uses:
+;   :idl:pro:`dcspurchans`
 ; 
-; @version $Id$
 ;-
-
-
 pro dcspurinterp, dc
   ; since the only changes this makes in dc, or any element
   ; in dc if dc is a vector, is in through the data pointer
