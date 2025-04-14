@@ -1,28 +1,35 @@
+; docformat = 'rst' 
+
 ;+
 ; This procedure subtracts the second data container's data array from the first, returning the results.
 ;
-; @param dc1 {in}{required}{type=data container} data container (spectrum or continuum)
-; @param dc2 {in}{required}{type=data container} data container (spectrum or continuum)
+; :Params:
+;   dc1 : in, required, type=data container 
+;       data container (spectrum or continuum)
+;   dc2 : in, required, type=data container 
+;       data container (spectrum or continuum)
 ;
-; @returns float array: dc2 data subtracted from dc1 data
+; :Returns:
+;   float array: dc2 data subtracted from dc1 data
 ;
-; @uses <a href="../toolbox/dcpaircheck.html">dcpaircheck</a>
+; :Examples:
+; 
+;   .. code-block:: IDL
 ;
-; @examples
-; <pre>
-;    get,index=1
-;    a = data_new()
-;    data_copy,!g.s[0],a
-;    show,a
-;    get, index=2
-;    b = data_new()
-;    data_copy,!g.s[0],b
-;    show,b
-;    diff = dcsubtract(a,b)
-;    plot,a
-; </pre>
+;       get,index=1
+;       a = data_new()
+;       data_copy,!g.s[0],a
+;       show,a
+;       get, index=2
+;       b = data_new()
+;       data_copy,!g.s[0],b
+;       show,b
+;       diff = dcsubtract(a,b)
+;       plot,a
 ;
-; @version $Id$
+; :Uses:
+;   :idl:pro:`dcpaircheck`
+;
 ;-
 
 function dcsubtract,dc1,dc2

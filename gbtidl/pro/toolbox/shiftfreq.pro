@@ -1,3 +1,5 @@
+; docformat = 'rst' 
+
 ;+
 ; Shift a frequency using a velocity offset.  Note that because of the
 ; nature of the non-true velocity definitions, this is not a simply
@@ -7,20 +9,22 @@
 ; veldef='TRUE'.  If you want to undo a frequency shift using the same
 ; voffset, use unshiftfreq.
 ;
-; @param freq {in}{required}{type=double} The frequencies, in Hz, to
-; shift.
+; :Params:
+;   freq : in, required, type=double
+;       The frequencies, in Hz, to shift.
 ;
-; @param voffset {in}{required}{type=double} The velocity offset (m/s) to
-; add to the frequencies (resulting frequencies are then appropriate
-; for a frame moving at voffset relative to the original frame of
-; freq).
+;   voffset : in, required, type=double
+;       The velocity offset (m/s) to add to the frequencies (resulting 
+;       frequencies are then appropriate for a frame moving at voffset 
+;       relative to the original frame of freq).
 ;
-; @keyword veldef {in}{optional}{type=string}{default='RADIO'} The
-; velocity definition from one of RADIO, OPTICAL or TRUE.
+; :Keywords:
+;   veldef : in, optional, type=string, default='RADIO'
+;       The velocity definition from one of RADIO, OPTICAL or TRUE.
 ;
-; @returns the shifted frequencies in Hz.
+; :Returns:
+;   the shifted frequencies in Hz.
 ;
-; @version $Id$
 ;-
 function shiftfreq, freq, voffset, veldef=veldef
     compile_opt idl2

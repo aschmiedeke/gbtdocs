@@ -1,21 +1,27 @@
+; docformat = 'rst' 
+
 ;+
 ; Convert from day of month, month, and year to daynumber of year.
 ; It also works with arrays. 
 ;
-; This code came from 
-; <a href="http://www.naic.edu/~phil/">Phil Perillat</a> at Arecibo.
-; Local changes:
-; <UL>
-; <LI> modify this documentation for use by idldoc.
-; </UL>
+; This code came from `Phil Perillat <http://www.naic.edu/~phil/>`_
+; at Arecibo.
 ; 
-;  @param day {in}{required}{type=long integer} day of month
-;  @param mon {in}{required}{type=long integer} month of year 1..12
-;  @param year {in}{required}{type=long integer} 4 digit year
+; Local changes:
+; 
+; * modify this documentation for use by idldoc.
+; 
+; :Params:
+;   day : in, required, type=long integer
+;       day of month
+;   mon : in, required, type=long integer
+;       month of year 1..12
+;   year : in, required, type=long integer
+;       4 digit year
 ;
-; @returns daynum, int/long  daynumber of year. First day of year is 1.
+; :Returns:
+;   daynum, int/long  daynumber of year. First day of year is 1.
 ;
-; @version $Id$
 ;-
 function dmtodayno,day,mon,year
     dayNoDat=[0,0,31,59,90,120,151,181,212,243,273,304,334,$

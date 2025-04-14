@@ -1,8 +1,10 @@
+; docformat = 'rst' 
+
 ;+
 ; Estimate the new frequency_resolution after hanning smoothing
 ; something with a known old frequency_resolution.
 ;
-; <p>This estimates the new frequency_resolution by assuming that the
+; This estimates the new frequency_resolution by assuming that the
 ; frequeny_resolution is the FWHM of a gaussian response function and
 ; that the ratio of the widths is equal to the inverse ratio of
 ; the heights of the response functions before and after the
@@ -12,27 +14,29 @@
 ; as tests involving noise from real GBT data indicate that this
 ; estimate is accurate to within a few percent.
 ;
-; <p>The hanning procedure uses this function to adjust the
+; The hanning procedure uses this function to adjust the
 ; frequency_resolution of the data container.
 ;
-; @param oldres {in}{required}{type=float} The frequency_resolution
-; in channels before hanning smoothing.
+; :Params:
+;   oldres : in, required, type=float
+;       The frequency_resolution in channels before hanning smoothing.
 ;
-; @returns the frequency resolution in channels after hanning
-; smoothing.
+; :Returns:
+;   the frequency resolution in channels after hanning smoothing.
 ;
-; @examples
-; <pre>
-;   ; what would the new resolution be of the PDC after hanning
-;   ; smoothing
-;   print,
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       ; what would the new resolution be of the PDC after hanning
+;       ; smoothing
+;       print,
 ;
-;   esthanres(!g.s[0].frequency_resolution/abs(!g.s[0].frequency_interval))
-; </pre>
+;       esthanres(!g.s[0].frequency_resolution/abs(!g.s[0].frequency_interval))
 ;
-; @uses <a href="gaussrespfn.html">gaussrespfn</a>
+; :Uses:
+;   :idl:pro:`gaussrespfn`
 ;
-; @version $Id$
 ;-
 function esthanres, oldres
     compile_opt idl2

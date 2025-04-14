@@ -1,3 +1,5 @@
+; docformat = 'rst' 
+
 ;+ 
 ; This function returns a value that, when given as the argument to
 ; shift, will shift the given data container such that it is aligned
@@ -8,36 +10,38 @@
 ; order to align in the current x-axis with the data in the
 ; accumulation buffer.
 ;
-; @param accumbuf {in}{required}{type=accum_struct} The ongoing
-; accumulation buffer.
+; :Params:
+;   accumbuf : in, required, type=accum_struct
+;       The ongoing accumulation buffer.
 ;
-; @param dc {in}{required}{type=spectrum} The data container that
-; needs to be shifted to align with the data container template in
-; accumbuf.
+;   dc : in, required, type=spectrum
+;       The data container that needs to be shifted to align with the
+;       data container template in accumbuf.
 ;
-; @returns shift, in channels, to be used as argument to
-; dcshift. Returns 0.0 on failure.
+; :Returns:
+;   shift, in channels, to be used as argument to dcshift. Returns 
+;   0.0 on failure.
 ;
-; @examples
-; Accumulate several PS scans
-; <pre>
-; a={accum_struct}
-; getps,30
-; dcaccum, a, !g.s[0]  ; start an accum, no alignment needed yet
-; getps,31
-; xs = dcxshift(a,!g.s[0]) ; what is the shift to align 31 with 30?
-; ; get a copy of data at !g.s[0]
-; data_copy,!g.s[0], d
-; dcshift, d, xs  ; actually shift the data
-; dcaccum, a, d ; and add it in
-; getps, 32
-; data_copy,!g.s[0], d
-; dcshift, d, dcxshift(a, d)  ; all in one line, shift 32 to align with 30
-; dcaccum, a, d
-; accumave, a, d ; result is in d now
-; </pre>
+; :Examples:
+;   Accumulate several PS scans
 ;
-; @version $Id$
+;   .. code-block:: IDL
+; 
+;       a={accum_struct}
+;       getps,30
+;       dcaccum, a, !g.s[0]  ; start an accum, no alignment needed yet
+;       getps,31
+;       xs = dcxshift(a,!g.s[0]) ; what is the shift to align 31 with 30?
+;       ; get a copy of data at !g.s[0]
+;       data_copy,!g.s[0], d
+;       dcshift, d, xs  ; actually shift the data
+;       dcaccum, a, d ; and add it in
+;       getps, 32
+;       data_copy,!g.s[0], d
+;       dcshift, d, dcxshift(a, d)  ; all in one line, shift 32 to align with 30
+;       dcaccum, a, d
+;       accumave, a, d ; result is in d now
+;
 ;-
 function dcxshift, accumbuf, dc
     compile_opt idl2
