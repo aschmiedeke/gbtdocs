@@ -1,3 +1,5 @@
+; docformat = 'rst' 
+
 ;+
 ; Return a vector of channel numbers appropriate for the given data container.
 ; 
@@ -5,33 +7,35 @@
 ; and is not zero then regions must be provided.  Ignores any regions or
 ; parts of region that extend beyond the end of the data container.
 ;
-; @param dc {in}{required}{type=data container} The data container to
-; use.
-; @param nregion {in}{optional}{type=integer} The number of regions to
-; use.  If not set, then all channels are returned.
-; @param regions {in}{optional}{type=2D array} Limit the channel
-; numbers returned to only those channels that fall in these regions.
-; This assumes the regions follows the same rules as used in
-; !g.nregions.  That the regions don't overlap and are properly sorted
-; with the first channel of each region at regions[0,*] and the last
-; channel of each region at regions[1,*].  The nregion argument
-; determines how many regions are used here.  If nregion is supplied
-; and is > 0 then regions is required.
+; :Params:
+;   dc : in, required, type=data container
+;       The data container to use.
+;   nregion : in, optional, type=integer
+;       The number of regions to use. If not set, then all channels are returned.
+;   regions : in, optional, type=2D array
+;       Limit the channel numbers returned to only those channels that fall in 
+;       these regions. This assumes the regions follows the same rules as used
+;       in !g.nregions.  That the regions don't overlap and are properly sorted
+;       with the first channel of each region at regions[0,*] and the last
+;       channel of each region at regions[1,*].  The nregion argument
+;       determines how many regions are used here.  If nregion is supplied
+;       and is > 0 then regions is required.
 ;
-; @examples
-; <pre>
-;    ; equivalent to dindgen(n_elements(*dc.data_ptr))
-;    c = get_chans(dc)
-;    ; get the chans corresponding to recently set global regions
-;    c = get_chans(dc, !g.nregions, !g.regions)
-;  </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       ; equivalent to dindgen(n_elements(*dc.data_ptr))
+;       c = get_chans(dc)
+;       ; get the chans corresponding to recently set global regions
+;       c = get_chans(dc, !g.nregions, !g.regions)
+; 
+; :Returns:
+;   Array of channel numbers.  Returns -1 if there was a problem.
 ;
-; @returns Array of channel numbers.  Returns -1 if there was a
-; problem.
+; :Uses:
+;   :idl:pro:`data_valid`
 ;
-; @uses <a href="data_valid.html">data_valid</a>
-;
-; @version $Id$
 ;-
 function get_chans, dc, nregion, regions
     compile_opt idl2

@@ -1,52 +1,56 @@
+; docformat = 'rst' 
+
 ;+ 
 ; Input parameters to convert utc to ut1
 ;
-; <p>Read the utc to ut1 information from the utcToUt1.dat file.
+; Read the utc to ut1 information from the utcToUt1.dat file.
 ; The UTC_INFO structure will return the information needed to go from utc to
 ; UT1. the routine utcToUt1 converts from utc to ut1 using the information
 ; read in here into the UTC_INFO structure. The conversion algorithm
 ; is:
-; <pre>
+; 
+; .. math:: 
+; 
 ;   utcToUt1= ( offset + ((julDay - julDayAtOffset))*rate
-; </pre>
-;
+; 
 ; The offset, rate, data are input from the utcToUt1.dat file.
 ; 
-; <p>The user passes in the julian date and the
+; The user passes in the julian date and the
 ; utcToUt1.dat file will be searched for the greatest julian date that is 
 ; less than or equal to the date passed in. If all of the values are after the
 ; requested juliandate,  the earliest value in the file will be used and
 ; and error will be returned. 
 ;
-; <p><B>Note: \@utc_info must be done before this function is called.</B>
+; **>Note: \@utc_info must be done before this function is called.**
 ;
-; <p>This code came from
-;<a href="http://www.naic.edu/~phil/">Phil Perillat</a> at Arecibo.
+; This code came from `Phil Perillat <http://www.naic.edu/~phil/>`_ at Arecibo.
 ; Local changes:
-; <UL>
-; <LI> modify to find the local copy of utcToUt1.dat file.
-; <LI> modify this documentation for use by idldoc.
-; </UL>
+; 
+; * modify to find the local copy of utcToUt1.dat file.
+; * modify this documentation for use by idldoc.
+; 
 ;
-; <p>NOTE: The file is updated whenever a leap second occurs or whenever the
+; NOTE: The file is updated whenever a leap second occurs or whenever the
 ;       drift rate changes (usually every 6 months or a year). If you have 
 ;       downloaded this file from ao, then you need to redownload the
 ;       newer versions occasionally. Check the file
 ;       aodefdir()/data/pnt/lastUpdateTmStamp for when your file was 
 ;      last updated.
 ;
-; @param juliandate {in}{required}{type=double} Julian date
-; @param utcInfo {out}{required}{type=utcInfo structure} utcInfo
-; structure
-; @returns status; 0=problem, 1=ok
+; :Params:
+;   juliandate : in, required, type=double
+;       Julian date
+;   utcInfo : out, required, type=utcInfo structure; 
+;       utcInfo structure
+; 
+; :Returns:
+;   status; 0=problem, 1=ok
 ;
-; @uses <a href="file_exists.html">file_exists</a>
-; @uses <a href="dmtodayno.html">dmtodayno</a>
-; @uses <a href="daynotodm.html">daynotodm</a>
+; :Uses:
+;   :idl:pro:`file_exists`
+;   :idl:pro:`dmtodayno`
+;   :idl:pro:`daynotodm`
 ;
-; @returns {utcInfo}
-;
-;DESCRIPTION
 ;-
 function  utcinfoinp,juliandate,utcInfo
 

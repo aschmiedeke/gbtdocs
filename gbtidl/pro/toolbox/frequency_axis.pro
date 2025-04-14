@@ -1,29 +1,34 @@
+; docformat = 'rst' 
+
 ;+
 ; Construct a frequency axis from a data structure.
 ;
-; @param data {in}{required}{type=spectrum} The data structure to
-; use in constructing a frequency axis.
+; :Params:
+;   data : in, required, type=spectrum
+;       The data structure to use in constructing a frequency axis.
 ;
-; @keyword frame {in}{optional}{type=string}  The reference frame to
-; use.  If not supplied, the data.frequency_type value will be
-; used.  See <a href="frame_velocity.html">frame_velocity</a> for a
-; full list of supported reference frames.
+; 
+; :Keywords:
+;   frame : in, optional, type=string
+;       The reference frame to use. If not supplied, the data.frequency_type
+;       value will be used. See :idl:pro:`frame_velocity` for a full list of 
+;       supported reference frames.
 ;
-; @keyword true_frame {out}{optional}{type=string} The actual rest frame used in
-; constructing the frequency axis.  The only way this will not equal
-; the frame argument is if that argument was invalid.  In that
-; case, this keyword will be the same as the frame in
-; data.frequency_type.
+;   true_frame : out, optional, type=string
+;       The actual rest frame used in constructing the frequency axis. The
+;       only way this will not equal the frame argument is if that argument
+;       was invalid. In that case, this keyword will be the same as the 
+;       frame in data.frequency_type.
 ;
-; @returns A vector of frequencies (Hz).  May also set the
-; keywords. Returns -1 on a severe error.  If the ref_frame
-; is invalid this will use the values found in the data structure
-; and the values of the true_frame keyword will be
-; set.
+; :Returns:
+;   A vector of frequencies (Hz).  May also set the keywords. Returns -1 on 
+;   a severe error.  If the ref_frame is invalid this will use the values 
+;   found in the data structure and the values of the true_frame keyword will 
+;   be set.
 ;
-; @uses <a href="chantofreq.html">chantovel</a>
+; :Uses:
+;   :idl:pro:`chantofreq`
 ;
-; @version $Id$
 ;-
 FUNCTION FREQUENCY_AXIS, data, frame=frame, true_frame=true_frame
     compile_opt idl2

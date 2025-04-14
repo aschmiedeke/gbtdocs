@@ -1,45 +1,52 @@
+; docformat = 'rst' 
+
 ;+
 ; Set the units and convert the data to those units using the model
 ; described here.  
 ;
-; <p>This assumes that the units in the data container are in Ta,
+; This assumes that the units in the data container are in Ta,
 ; which is what they are immediately after the initial standard
-; calibration (e.g. <a href="dofreqswitch.html">dofreqswitch</a>).
+; calibration (e.g. :idl:pro:`dofreqswitch`).
 ; There is no attempt to look at the units field in the data container
 ; to see if this is appropriate or to undo any previous unit
 ; conversion prior to applying this conversion.
 ;
-; <p>The recognized units and their associated scale factors are:
-; <ul><li>Ta - data are unchanged
-; <li> Ta* - scale = exp(tau/sin(elevation))/0.99
-; <li> Jy - scale = exp(tau/sin(elevation))/0.99 / (2.85*ap_eff)
-; </ul>
+; The recognized units and their associated scale factors are:
+; 
+; * Ta - data are unchanged
+; * Ta* - scale = exp(tau/sin(elevation))/0.99
+; * Jy - scale = exp(tau/sin(elevation))/0.99 / (2.85*ap_eff)
+;
 ; The elevation is taken directly from the data container.  Tau, the
 ; zenith opacity, may be supplied by the user. If not supplied, then
-; the <a href="get_tau.html">get_tau</a> function is used, using the
-; observed_frequency value from the data container.  The aperture
-; efficiency (ap_eff) can also be supplied by the user.  If not
-; supplied then the <a href="get_ap_eff.html">get_ap_eff</a> function
-; is used, using the observed_frequency from the data container.
+; the :idl:pro:`get_tau` function is used, using the observed_frequency
+; value from the data container. The aperture efficiency (ap_eff) can 
+; also be supplied by the user. If not supplied then the :idl:pro:`get_ap_eff`
+; function is used, using the observed_frequency from the data container.
 ;
-; <p>Users are strongly encouraged to supply values for these keywords
+; Users are strongly encouraged to supply values for these keywords
 ; since the defaults are not very accurate.
 ; 
-; @param dc {in}{required}{type=data container} The data container to
-; use.
-; @param units {in}{optional}{type=string}{default='Ta'} The units to
-; set, chosen from 'Ta','Ta*',and 'Jy'.
-; @keyword tau {in}{optional}{type=float} tau at zenith
-; @keyword ap_eff {in}{optional}{type=float} aperture efficiency
-; @keyword ret_tau {out}{optional}{type=float} The tau actually used
-; here.
-; @keyword ret_ap_eff {out}{optional}{type=float} The ap_eff actually
-; used here.
-; @keyword ok {out}{optional}{type=boolean} This is 0 (false) if the
-; units were unrecognized or tau and ap_eff were not between 0 and 1.
-; In that case, the data are unchanged.  Otherwise this is 1 (true).
+; :Params:
+;   dc : in, required, type=data container
+;       The data container to use.
+;   units : in, optional, type=string, default='Ta'
+;       The units to set, chosen from 'Ta','Ta*',and 'Jy'.
+; 
+; :Keywords:
+;   tau : in, optional, type=float
+;       tau at zenith
+;   ap_eff : in, optional, type=float
+;       aperture efficiency
+;   ret_tau : out, optional, type=float
+;       The tau actually used here.
+;   ret_ap_eff : out, optional, type=float
+;       The ap_eff actually used here.
+;   ok : out, optional, type=boolean
+;       This is 0 (false) if the units were unrecognized or tau and 
+;       ap_eff were not between 0 and 1. In that case, the data are 
+;       unchanged.  Otherwise this is 1 (true).
 ;
-; @version $Id$
 ;-
 pro dcsetunits,dc,units,tau=tau,ap_eff=ap_eff,$
                ret_tau=ret_tau,ret_ap_eff=ret_ap_eff,ok=ok

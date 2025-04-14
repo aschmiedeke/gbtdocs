@@ -1,17 +1,23 @@
+; docformat = 'rst' 
+
 ;+
 ; Translate galactic coordinates to equatorial coordiantes.
 ;
-; @param glon {in}{required}{type=double} Galactic longitude, in degrees.
-; @param glat {in}{required}{type=double} Galactic latitude, in degrees.
-; @param equinox {in}{required}{type=double} The coordinate system
-; EQUINOX in years.
+; :Params:
+;   glon : in, required, type=double
+;       Galactic longitude, in degrees.
+;   glat : in, required, type=double
+;       Galactic latitude, in degrees.
+;   equinox : in, required, type=double
+;       The coordinate system EQUINOX in years.
 ;
-; @returns double precision [ra,dec] in degrees.
+; :Returns:
+;   double precision [ra,dec] in degrees.
 ;
-; @uses <a href="http://idlastro.gsfc.nasa.gov/ftp/pro/astro/glactc.pro">glactc</a>
-; @uses <a href="http://idlastro.gsfc.nasa.gov/ftp/pro/astro/precess.pro">precess</a>
+; :Uses:
+;   `glactc <https://asd.gsfc.nasa.gov/archive/idlastro/ftp/pro/astro/glactc.pro>`_
+;   `precess <https://asd.gsfc.nasa.gov/archive/idlastro/ftp/pro/astro/precess.pro>`_
 ;
-; @version $Id$
 ;-
 function galtoeq, glon, glat, equinox
     compile_opt idl2
