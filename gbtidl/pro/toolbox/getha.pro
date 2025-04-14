@@ -1,17 +1,20 @@
+; docformat = 'rst' 
+
 ;+
 ; Return the hour angle (HA) in decimal hours using the given
 ; data container.  Note that this returns the value in hours, not
 ; decimal degrees as getradec does.
 ;
-; <p> For continuum data, a vector of hour angles (one at each
+; For continuum data, a vector of hour angles (one at each
 ; integration) is returned.
 ;
-; @param dc {in}{required}{type=data_container_struct} The data container to
-; use.
+; :Params:
+;   dc : in, required, type=data_container_struct
+;       The data container to use.
 ;
-; @returns HA in hours.
+; :Returns:
+;   HA in hours.
 ;
-; @version $Id$
 ;-
 function getha, dc
    hadec = gethadec(dc,/quiet)

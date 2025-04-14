@@ -1,46 +1,49 @@
+; docformat = 'rst' 
+
 ;+
 ; Function uses general orthogonal polynomial to do least squares
 ; fitting.
 ;
-; <p>This code came from Tom Bania's GBT_IDL work.  Local
+; This code came from Tom Bania's GBT_IDL work.  Local
 ; modifications include:
-; <UL>
-; <LI> Documentation modified for use by idldoc
-; <LI> Array syntax changed to [] and compile_opt idl2 used.
-; <LI> Indententation used to improve readability.
-; <LI> Unnecessary code removed.
-; <LI> Some argument checks added.
-; </UL>
+; 
+; * Documentation modified for use by idldoc
+; * Array syntax changed to [] and compile_opt idl2 used.
+; * Indententation used to improve readability.
+; * Unnecessary code removed.
+; * Some argument checks added.
+; 
+; :Params:
+;   xx : in, required
+;       The x-values to use in the fit.
+;   yy : in, required 
+;       The data to be fit at xx.
+;   nfit : in, required, type=integer
+;       The order of the polynomial to fit.
+;   cfit : out, required
+;       On return, cfit has coefficients of the polynomial 
+;       :math:`fit = sum(m) a_m x^m`  because of round-off using this
+;       form gives unreliable results above about order 15 even for 
+;       double precision. See :idl:pro:`ortho_poly` for a better 
+;       discussion on the contents of cfit.
+;   rms : out, required
+;       The rms error for each polynomial up to order nfit.
 ;
-; @param xx {in}{required} The x-values to use in the fit.
-; @param yy {in}{required} The data to be fit at xx.
-; @param nfit {in}{required}{type=integer} The order of the polynomial to fit.
-; @param cfit {out}{required} On return, cfit has coefficients of 
-; the polynomial 
-; <pre>
-; fit = sum(m) a_m x^m 
-; </pre> 
-; because of round-off using this form gives unreliable results 
-; above about order 15 even for double precision.  See <a
-; href="ortho_poly.html">ortho_poly</a> for a better discussion on the
-; contents of cfit.
-; @param rms {out}{required} The rms error for each polynomial up to
-; order nfit.
-;
-; @returns polyfit array: contains information for fitting to arbitrary
+; :Returns:
+;   polyfit array: contains information for fitting to arbitrary
 ; points using the recursion relations
 ;
-; @examples
-; fit a 3rd order polynomial to the data in !g.s[0]
-; <pre>
-;    yy = *(!g.s[0].data_ptr)
-;    xx = dindgen(n_elements(yy))
-;    f = ortho_fit(xx, yy, 3, cfit, rms)
-; </pre>
+; :Examples:
+; 
+;   fit a 3rd order polynomial to the data in !g.s[0]
+; 
+;   .. code-block:: IDL
+;   
+;       yy = *(!g.s[0].data_ptr)
+;       xx = dindgen(n_elements(yy))
+;       f = ortho_fit(xx, yy, 3, cfit, rms)
 ;
-; @version $Id$
 ;-
-
 function ortho_fit,xx,yy,nfit,cfit,rms
     compile_opt idl2
 
