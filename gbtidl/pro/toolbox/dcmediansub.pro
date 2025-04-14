@@ -1,28 +1,35 @@
+; docformat = 'rst' 
+
 ;+
 ; Subtract the median filtered values of the given width, in channels,
 ; from the data.  The result replaces the original data values. 
 ;
-; <p>Uses the IDL MEDIAN function to get the median filtered array.
+; Uses the IDL MEDIAN function to get the median filtered array.
 ; 
-; @param dc {in}{required}{type=data container} The data container to
-; smooth.
-; @param width {in}{required}{type=integer} The desired number of
-; channels to use in performing the median filter.
-; @keyword ok {out}{optional}{type=boolean} Returns 1 if everything went
-; ok, 0 if it did not (missing parameter, empty or invalid dc, bad width).
+; :Params:
+;   dc : in, required, type=data container
+;       The data container to smooth.
+;   width : in, required, type=integer
+;       The desired number of channels to use in performing the median 
+;       filter.
 ; 
-; @examples
-; <pre>
-;    ; dc already exists and is a valid data container
-;    ; subtract a median filter of width 200
-;    dcmediansub,dc,200
-; </pre>
+; :Keywords:
+;   ok : out, optional, type=boolean
+;       Returns 1 if everything went ok, 0 if it did not (missing 
+;       parameter, empty or invalid dc, bad width).
+; 
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       ; dc already exists and is a valid data container
+;       ; subtract a median filter of width 200
+;       dcmediansub,dc,200
 ;
-; @uses <a href="data_valid.html">data_valid</a>
+; :Uses"
+;   :idl:pro:`data_valid`
 ;
-; @version $Id$
 ;-
-
 pro dcmediansub, dc, width, ok=ok
     compile_opt idl2
 
