@@ -1,19 +1,26 @@
+; docformat = 'rst' 
+
 ;+
 ; Convert frequency to velocity (m/s) using the given rest
 ; frequency and velocity definition.  The units (Hz, MHz, GHz, etc)
 ; of the frequencies to convert must match that of the rest frequency 
 ; argument.
 ;
-; @param freq {in}{required} Frequency. Units must be the same as 
-; the units of restfreq.
-; @param restfreq {in}{required} Rest frequency.  Units must be the
-; same as those of freq.
-; @keyword veldef {in}{optional}{type=string} The velocity definition
-; which must be one of OPTICAL, RADIO, or TRUE.  Defaults to RADIO.
+; :Params:
+;   freq : in, required
+;       Frequency. Units must be the same as the units of restfreq.
+; 
+;   restfreq : in, required
+;       Rest frequency. Units must be the same as those of freq.
+; 
+; :Keywords:
+;   veldef : in, optional, type=string
+;       The velocity definition which must be one of OPTICAL, RADIO,
+;       or TRUE.  Defaults to RADIO.
 ;
-; @returns velocity in m/s
+; :Returns:
+;   velocity in m/s
 ;
-; @version $Id$
 ;-
 function freqtovel, freq, restfreq, veldef=veldef
     compile_opt idl2

@@ -1,3 +1,5 @@
+; docformat = 'rst' 
+
 ;+
 ; Shift a velocity using a velocity offset.  Note that because of the
 ; nature of the non-true velocity definitions, this is not a simply
@@ -7,20 +9,22 @@
 ; veldef='TRUE'.  If you want to undo a velocity shift using the same
 ; voffset, use unshiftvel.
 ;
-; @param vel {in}{required}{type=double} The velocities, in m/s, to
-; shift.
+; :Params:
+;   vel : in, required, type=double
+;       The velocities, in m/s, to shift.
 ;
-; @param voffset {in}{required}{type=double} The velocity offset (m/s) to
-; add to the velocities (resulting velocities are then appropriate
-; for a frame moving at voffset relative to the original frame of
-; vel).
+;   voffset : in, required, type=double
+;       The velocity offset (m/s) to add to the velocities (resulting 
+;       velocities are then appropriate for a frame moving at voffset
+;       relative to the original frame of vel).
 ;
-; @keyword veldef {in}{optional}{type=string}{default='RADIO'} The
-; velocity definition from one of RADIO, OPTICAL or TRUE.
+; :Keywords:
+;   veldef : in, optional, type=string, default='RADIO'
+;       The velocity definition from one of RADIO, OPTICAL or TRUE.
 ;
-; @returns the shifted velocities in m/s.
+; :Returns:
+;   the shifted velocities in m/s.
 ;
-; @version $Id$
 ;-
 function shiftvel, vel, voffset, veldef=veldef
     compile_opt idl2

@@ -1,46 +1,57 @@
+; docformat = 'rst' 
+
 ;+
 ; Smooth the data with a GAUSSIAN such that the spectrum in the given
 ; data container with an original resolution of frequency_resolution
 ; now has a resolution of NEWRES, where NEWRES is expressed in channels.  
 ; 
-; <p>Optionally also decimate the spectrum by keeping only every 
+; Optionally also decimate the spectrum by keeping only every 
 ; NEWRES channels.
 ;
-; <p>The frequency_resolution field is set to newres *
+; The frequency_resolution field is set to newres *
 ; abs(frequency_interval) after this procedure is used.
 ;
-; <p>The width of the smoothing Gaussian is sqrt(newres2-oldres^2).
+; The width of the smoothing Gaussian is sqrt(newres2-oldres^2).
 ;
-; @param dc {in}{required}{type=data container} The data container to
-; smooth.
-; @param newres {in}{required}{type=real} The desired new resolution
-; in units of channels.  This must be >= the frequency_resoltuion also
-; expressed in channels.  If it is equal to the oldres value this
-; procedure does not change the data.
-; @keyword decimate {in}{optional}{type=boolean} When set, only every
-; NEWRES channels are kept, starting from the original 0 channel.  If
-; NEWRES is not an integer, this may not be a wise thing to do (the
-; decimation rounds to the nearest integer).
-; @keyword ok {out}{optional}{type=boolean} Returns 1 if everything went
-; ok, 0 if it did not (missing parameter, empty or invalid dc, bad kernel).
+; :Params:
+;   dc : in, required, type=data container
+;       The data container to smooth.
+;   
+;   newres : in, required, type=real
+;       The desired new resolution in units of channels. This must be
+;       >= the frequency_resoltuion also expressed in channels. If it
+;       is equal to the oldres value this procedure does not change the
+;       data.
 ; 
-; @examples
-; <pre>
-;    ; dc already exists and is a valid data container
-;    ; smooth to 2 channels
-;    dcsmooth,dc,2
-;    ; do it again, now to 4 channels, decimate this time
-;    dcsmooth,dc,4,/decimate
-; </pre>
+; 
+; :Keywords:
+;   decimate : in, optional, type=boolean
+;       When set, only every NEWRES channels are kept, starting from 
+;       the original 0 channel. If NEWRES is not an integer, this may
+;       not be a wise thing to do (the decimation rounds to the nearest 
+;       integer).
+; 
+;   ok : out, optional, type=boolean
+;       Returns 1 if everything went ok, 0 if it did not (missing parameter,
+;       empty or invalid dc, bad kernel).
+; 
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       ; dc already exists and is a valid data container
+;       ; smooth to 2 channels
+;       dcsmooth,dc,2
+;       ; do it again, now to 4 channels, decimate this time
+;       dcsmooth,dc,4,/decimate
 ;
-; @uses <a href="data_valid.html">data_valid</a>
-; @uses <a href="dcconvol.html">dcconvol</a>
-; @uses <a href="dcdecimate.html">dcdecimate</a>
-; @uses <a href="make_gauss_data.html">make_gauss_data</a>
+; :Uses:
+;   :idl:pro:`data_valid`
+;   :idl:pro:`dcconvol`
+;   :idl:pro:`dcdecimate`
+;   :idl:pro:`make_gauss_data`
 ;
-; @version $Id$
 ;-
-
 pro dcsmooth, dc, newres, decimate=decimate, ok=ok
     compile_opt idl2
 

@@ -1,16 +1,22 @@
+; docformat = 'rst' 
+
 ;+
-;
 ; The Gaussian function required by curvefit, and used by gauss_fits.
 ; Used to fit the sum of a number of Gaussians.
 ; Taken from ASTROLIB.
 ;
-; @param x {in}{required}{type=float array} The x-location to evaluate the
-; gaussians at.
-; @param a {in}{required}{type=float array} The gaussians are described by
-; a.
-; @param f {out}{required}{type=float array} The evaluated value.
-; @param pder {out}{required}{type=float array} The derivatives with
-; respect to each parameter.
+; :Params:
+;   x : in, required, type=float array
+;       The x-location to evaluate the gaussians at.
+; 
+;   a : in, required, type=float array
+;       The gaussians are described by a.
+; 
+;   f : out, required, type=float array
+;       The evaluated value.
+; 
+;   pder : out, required, type=float array
+;       The derivatives with respect to each parameter.
 ;
 ;-
 pro gauss_fx,x,a,f,pder

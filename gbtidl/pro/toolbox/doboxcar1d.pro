@@ -1,22 +1,30 @@
+; docformat = 'rst' 
+
 ;+
 ; Do a boxcar smooth on a 1D array.
 ;
-; <p>This uses the IDL smooth for odd smoothing widths but even widths
+; This uses the IDL smooth for odd smoothing widths but even widths
 ; are handled here since smooth rounds even widths to the next higher
 ; integer.  Only 1-d arrays are handled here.
 ;
-; @param array {in}{required}{type=1d array} The array to be smoothed.
-; @param width {in}{required}{type=integer} The width of the boxcar.
-; @keyword edge_truncate {in}{optional}{type=boolean} Same meaning as
-; for smooth.
-; @keyword nan {in}{optional}{type=boolean} Same meaning as for
-; smooth.
-; @keyword missing {in}{optional}{type=same type as array}{default=NaN} 
-; Same meaning as for smooth.
+; :Params:
+;   array : in, required, type=1d array
+;       The array to be smoothed.
+;   width : in, required, type=integer
+;       The width of the boxcar.
+; 
+; 
+; :Keywords:
+;   edge_truncate : in, optional, type=boolean
+;       Same meaning as for smooth.
+;   nan : in, optional, type=boolean
+;       Same meaning as for smooth.
+;   missing : in, optional, type=same type as array, default=NaN
+;       Same meaning as for smooth.
 ;
-; @returns the smoothed result.
+; :Returns:
+;   the smoothed result.
 ;
-; @version $Id$
 ;-
 function doboxcar1d, array, width, edge_truncate=edge_truncate, nan=nan, missing=missing
     compile_opt idl2

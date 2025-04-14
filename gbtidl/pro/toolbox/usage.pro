@@ -1,32 +1,36 @@
+; docformat = 'rst' 
+
 ;+
 ; Print out the usage for a given procedure or function.
 ;
-; <p>
 ; If the procedure or function is found in the gbtidl pro tree then 
-; <a href="get_usage.html">get_usage</a> is used to produce the
-; output, otherwise the argument is passed to doc_library.
+; :idl:pro:`get_usage` is used to produce the output, otherwise the
+; argument is passed to doc_library.
 ;
-; <p>
-; GBTIDL uses idldoc to create our reference manual.  The format used
+; GBTIDL uses idldoc to create our reference manual. The format used
 ; there does not lead to very useful output from doc_library (which
 ; simply shows the comment block in the file).  get_usage knows what
 ; idldoc tags to look for and it formats things accordingly.  It can
 ; also generate just a single "Usage:" line to remind the user what
 ; the syntax of a particular procedure or function is.
 ;
-; @param proname {in}{required}{type=string} 
-; The name of the procedure or function.  
-; @keyword verbose {in}{optional}{type=boolean}{default=0} When set,
-; a verbose usage is printed.
-; @keyword source {in}{optional}{type=boolean}{default=0} When set, the
-; entire contents of the relevent .pro file is sent to the terminal
-; through "more".  This keyword trumps verbose and no usage
-; information is printed.
+; :Params:
+;   proname : in, required, type=string
+;       The name of the procedure or function.  
+; 
+; :Keywords:
+;   verbose : in, optional, type=boolean, default=0
+;       When set, a verbose usage is printed.
+; 
+;   source : in, optional, type=boolean, default=0
+;       When set, the entire contents of the relevent .pro file is
+;       sent to the terminal through "more". This keyword trumps
+;       verbose and no usage information is printed.
 ;
-; @uses <a href="get_usage.html">get_usage</a>
-; @uses <a href="which_routine.html">which_routine</a>
+; :Uses:
+;   :idl:pro:`get_usage`
+;   :idl:pro:`which_routine`
 ;
-; @version $Id$
 ;-
 pro usage, proname, verbose=verbose, source=source
     compile_opt idl2
