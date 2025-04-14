@@ -31,7 +31,6 @@
 ;   :idl:pro:`dcpaircheck`
 ;
 ;-
-
 function dcsubtract,dc1,dc2
 
     ; check that the two containers can add their data
