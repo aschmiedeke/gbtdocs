@@ -1,9 +1,16 @@
+; docformat = 'rst' 
+
 ;+ 
 ; Convenience function for setting data array of a data container.
 ;
-; @param dc {in}{required}{type=struct} data container (spectrum or continuum)
-; @param value {in}{required}{type=float} single float or array float  
-; @param elements {in}{optional}{type=long} elements of data to set, one integer, or two element array specifiying range
+; :Params:
+;   dc : in, required, type=struct
+;       data container (spectrum or continuum)
+;   value : in, required, type=float
+;       single float or array float  
+;   elements : in, optional, type=long
+;       elements of data to set, one integer, or two element array
+;       specifiying range
 ;
 ;-
 pro setdcdata, dc, value, elements
