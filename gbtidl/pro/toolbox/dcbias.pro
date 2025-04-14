@@ -1,22 +1,26 @@
+; docformat = 'rst' 
+
 ;+
 ; This procedure adds a bias factor to a data container's data
 ;
-; @param dc {in}{required}{type=data container} data container (spectrum or continuum)
-; @param factor {in}{required}{type=float} bias factor
+; :Params:
+;   dc : in, required, type=data container
+;       data container (spectrum or continuum)
+;   factor : in, required, type=float
+;       bias factor
 ;
-; @examples
-; <pre>
-;    get,index=1
-;    a = data_new()
-;    data_copy,!g.s[0],a
-;    show
-;    dcbias,a,25
-;    show,a
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       get,index=1
+;       a = data_new()
+;       data_copy,!g.s[0],a
+;       show
+;       dcbias,a,25
+;       show,a
 ;
-; @version $Id$
 ;-
-
 pro dcbias,dc,factor
 
     compile_opt idl2

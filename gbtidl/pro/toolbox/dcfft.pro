@@ -1,3 +1,5 @@
+; docformat = 'rst' 
+
 ;+
 ; Do an FFT (forward or inverse) of a data container.  For a
 ; real-to-complex FFT, only one data container is given in the
@@ -9,39 +11,44 @@
 ; what to do with this result (e.g. further calculations, store the
 ; real part in one data container and the imaginary part in another, etc).
 ;
-; <p> This uses the builtin IDL FFT function.
-; <p> For spectral-line data, when inverse is not set (the default)
-; the builtin IDL inverse flag <em>is</em> used.  This means that when
+; This uses the builtin IDL FFT function.
+; 
+; For spectral-line data, when inverse is not set (the default)
+; the builtin IDL inverse flag **is** used.  This means that when
 ; dcfft is called with its default arguments and the input data
 ; container is a spectrum, the IDL FFT will convert properly from the
 ; frequency domain to the time domain (which is actually an inverse
 ; FFT).  When inverse is set, the builtin IDL inverse flag is
-; <em>not</em> set.  This may be confusing to IDL users, but it will
+; **not** set.  This may be confusing to IDL users, but it will
 ; be familiar to former UniPOPS users.  
-; <p> For continuum data, the inverse flag here is exactly the same as
+; 
+; For continuum data, the inverse flag here is exactly the same as
 ; the inverse flag in the builtin IDL function.
 ;
-; @param real {in}{required}{type=data container} The real part of the
-; data to be FFTed.
-; @param imag {in}{optional}{type=data container} The imaginary part
-; of the data to be FFTed.  When not supplied, it is assumed that the
-; data are pure real (imaginary part is all zero).
-; @keyword inverse {in}{optional}{type=boolean} When set, the inverse
-; of the regular FFT is done.  For spectral-line data, an inverse FFT
-; is done when this is <em>not</em> set and a direct FFT is done when
-; this is set so that the non-inverse transformation as seen by the
-; dcfft user is frequency to time and the inverse transformation is
-; time to frequency.
-; @keyword bdrop {in}{optional}{type=integer}{default=0} The number of
-; channels to exclude from the FFT at the beginning.
-; @keyword edrop {in}{optional}{type=integer}{default=0} The number of
-; channels to exclude from the FFT at the end.
+; :Params:
+;   real : in, required, type=data container
+;       The real part of the data to be FFTed.
+;   imag : in, optional, type=data container
+;       The imaginary part of the data to be FFTed.  When not supplied,
+;       it is assumed that the data are pure real (imaginary part is all 
+;       zero).
+; 
+; :Keywords:
+;   inverse : in, optional, type=boolean
+;       When set, the inverse of the regular FFT is done.  For 
+;       spectral-line data, an inverse FFT is done when this is **not**
+;       set and a direct FFT is done when this is set so that the 
+;       non-inverse transformation as seen by the dcfft user is frequency 
+;       to time and the inverse transformation is time to frequency.
+;   bdrop : in, optional, type=integer, default=0
+;       The number of channels to exclude from the FFT at the beginning.
+;   edrop : in, optional, type=integer, default=0
+;       The number of channels to exclude from the FFT at the end.
 ;
+; :Returns:
+;   A complex array containing the result of the FFT. Returns
+;   -1 if no data was found in the real argument.
 ;
-; @returns A complex array containing the result of the FFT.  Returns
-; -1 if no data was found in the real argument.
-;
-; @version $Id$
 ;-
 function dcfft, real, imag, inverse=inverse, bdrop=bdrop, edrop=edrop
     compile_opt idl2

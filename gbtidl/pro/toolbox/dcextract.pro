@@ -1,28 +1,32 @@
+; docformat = 'rst' 
+
 ;+
 ; Extract a region from a data container, producing a new data
 ; container with fewer elements in it. The caller is responsible for
 ; eventually freeing the pointer(s) contained in the returned data
-; container using <a href="data_free.html">data_free</a>.  The only
-; header words modified are the reference_channel and
-; frequency_interval for spectral line data.  If only the dc is
-; supplied, this function is equivalent to data_copy.
+; container using :idl:pro:`data_free`. The only header words modified
+; are the reference_channel and frequency_interval for spectral line data.
+; If only the dc is supplied, this function is equivalent to data_copy.
 ;
-; @param dc {in}{required}{type=data container} The data container to
-; extract the region from.
+; :Params:
+;   dc : in, required, type=data container
+;       The data container to extract the region from.
 ;
-; @param startat {in}{optional}{type=integer}{default=0} The first element to
-; include in the extracted region.
-; @param endat {in}{optional}{type=integer} The last element to include
-; in the extracted region.  If not supplied, the last element is
-; used.  endat must be greater than or equal to startat.
-; @param stride {in}{optional}{type=integer}{default=1} The increment
-; in elements to extract, starting with startat.  stride must be greater
-; than 0.
+;   startat : in, optional, type=integer, default=0
+;       The first element to include in the extracted region.
+; 
+;   endat : in, optional, type=integer
+;       The last element to include in the extracted region.  If not 
+;       supplied, the last element is used.  endat must be greater than 
+;       or equal to startat.
+;   stride : in, optional, type=integer, default=1
+;       The increment in elements to extract, starting with startat. 
+;       stride must be greater than 0.
 ;
-; @returns The extracted data container.  The user is responsible for
-; eventually freeing this using data_free.  Returns -1 on error.
+; :Returns:
+;   The extracted data container.  The user is responsible for eventually 
+;   freeing this using data_free.  Returns -1 on error.
 ;
-; @version $Id$
 ;-
 function dcextract, dc, startat, endat, stride
     compile_opt idl2

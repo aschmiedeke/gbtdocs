@@ -1,41 +1,46 @@
+; docformat = 'rst'
+
 ;+
 ; Fit a baseline to the contents of the dc argument with various options.
 ;
-; <p> This fits a set of orthogonal polynomials with a maximum order given by 
-; the nfit argument to the data values in dc.  The range of
-; channels to use is given by the regions and
-; nregion arguments. The parameters of the fit are
-; placed in the value of the polyfit argument and the rms values of the fits are
-; placed in the polyrms argument.  If there is a problem, the return
+; This fits a set of orthogonal polynomials with a maximum order given by 
+; the nfit argument to the data values in dc.  The range of channels to use
+; is given by the regions and nregion arguments. The parameters of the fit
+; are placed in the value of the polyfit argument and the rms values of the
+; fits are placed in the polyrms argument.  If there is a problem, the return
 ; value is 0, otherwise the return value is 1.
 ;
-; @param dc {in}{required}{type=data container} The data container to
-; use.  The values to fit come from *dc.data_ptr.
-; @param nfit {in}{required}{type=integer} The order of polynomial
-; to fit.
-; @param regions {in}{required}{type=2D array} Array describing the
-; regions to use in the fit, along with nregion.  This has the same
-; properties as the !g.region field in the guide structure.
-; @param nregion {in}{required}{type=integer} The number of regions in
-; regions to actually use.
-; @param polyfit {out}{type=double array} Parameters describing the
-; polynomials.  Array with (nfit+1) elements.  See <a
-; href="ortho_fit.html">ortho_fit<a> for more details.
-; @param polyrms {out}{type=double array} RMS values, one for each
-; polynomial (nfit+1).
+; :Params:
+;   dc : in, required, type=data container
+;       The data container to use.  The values to fit come from *dc.data_ptr.
+;   nfit : in, required, type=integer
+;       The order of polynomial to fit.
+;   regions : in, required, type=2D array
+;       Array describing the regions to use in the fit, along with nregion. 
+;       This has the same properties as the !g.region field in the guide 
+;       structure.
+;   nregion : in, required, type=integer
+;       The number of regions in regions to actually use.
+;   polyfit : out, type=double array
+;       Parameters describing the polynomials.  Array with (nfit+1) elements.
+;       See :idl:pro:`ortho_fit` for more details.
+;   polyrms : out, type=double array
+;       RMS values, one for each polynomial (nfit+1).
 ;
-; @returns 1 on success, 0 on failure.
+; :Returns:
+;   1 on success, 0 on failure.
 ;
-; @examples
-; <pre>
-;   ok = dcbaseline(!g.s[0], 2, !g.regions, !g.nregion, polyfit, polyrms)
-; </pre>
+; :Examples:
 ;
-; @uses <a href="data_valid.html">data_valid</a>
-; @uses <a href="get_chans.html">get_chans</a>
-; @uses <a href="ortho_fit.html">ortho_fit</a>
-;
-; @version $Id$
+;   .. code-block:: IDL
+; 
+;       ok = dcbaseline(!g.s[0], 2, !g.regions, !g.nregion, polyfit, polyrms)
+; 
+; :Uses:
+;   :idl:pro:`data_valid`
+;   :idl:pro:`get_chans`
+;   :idl:pro:`ortho_fit`
+; 
 ;-
 function dcbaseline, dc, nfit, regions, nregion, polyfit, polyrms
    compile_opt idl2

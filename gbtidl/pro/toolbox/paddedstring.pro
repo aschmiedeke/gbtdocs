@@ -1,3 +1,5 @@
+; docformat = 'rst'
+
 ;+
 ; Format a number as a string, ensuring that it is padded with a
 ; leading zero so that there are always 2 digits before the optional
@@ -6,14 +8,18 @@
 ; This could be generalized for use with numbers larger than 2 digits
 ; before the decimal point, but that is all I needed for now.
 ;
-; @param number {in}{required}{type=numeric} The number to convert.
-; @keyword precision {in}{optional}{type=integer} The number of
-; characters after the decimal point.  If precision is 0 (the
-; default), no decimal point appears in the returned value.
+; :Params:
+;   number : in, required, type=numeric
+;       The number to convert.
+; 
+; :Keywords:
+;   precision : in, optional, type=integer, default=0
+;       The number of characters after the decimal point. If precision
+;       is 0, no decimal point appears in the returned value.
 ;
-; @returns string representation of number at given precision.
+; :Returns:
+;   string representation of number at given precision.
 ;
-; @version $Id$
 ;-
 function paddedstring, number, precision=precision
     compile_opt idl2

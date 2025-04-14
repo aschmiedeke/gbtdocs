@@ -1,28 +1,35 @@
+; docformat = 'rst'
+
 ;+
 ; This procedure truncates (clips) data above and below given
 ; intensity limits.  Data value can alternatively be blanked using the
 ; /blank flag. In that case, data values outside the limits are
 ; replaced by blanks (NaN).
 ;
-; @param dc {in}{required}{type=data container} data container (spectrum or continuum)
-; @param datamin {in}{required}{type=float} min data value
-; @param datamax {in}{required}{type=float} max data value
-; @keyword blank {in}{optional}{type=boolean} Replace clipped values
-; with NaN instead of the clipping limit.
+; :Params:
+;   dc : in, required, type=data container
+;       data container (spectrum or continuum)
+;   datamin : in, required, type=float
+;       min data value
+;   datamax : in, required, type=float
+;       max data value
+; 
+; :Keywords:
+;   blank : in, optional, type=boolean
+;       Replace clipped values with NaN instead of the clipping limit.
 ;
-; @examples
-; <pre>
-;    getrec,1
-;    a = data_new()
-;    data_copy,!g.s[0],a
-;    show
-;    dcclip,a,-1.0,2.0
-;    show,a
-; </pre>
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       getrec,1
+;       a = data_new()
+;       data_copy,!g.s[0],a
+;       show
+;       dcclip,a,-1.0,2.0
+;       show,a
 ;
-; @version $Id$
 ;-
-
 pro dcclip,dc,datamin,datamax,blank=blank
 
     compile_opt idl2

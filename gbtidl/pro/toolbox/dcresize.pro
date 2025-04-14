@@ -1,39 +1,45 @@
+;docformat = 'rst' 
+
 ;+
 ; Change the size of an existing data container.
 ;
-; <p>If new channels are added to the end of an existing data
+; If new channels are added to the end of an existing data
 ; container, they are filled with the blanked value (not a number,
 ; NAN) unless the /zero flag is set (in which case they are replaced
 ; with zeros).  If /beginning is set then the extra channels are added
 ; to the beginning of the data and reference_channel value is adjust
 ; accordingly.
 ;
-; <p>This only works for spectrum data containers where the x-axis is
+; This only works for spectrum data containers where the x-axis is
 ; linear in frequency and so the x-axis values are always
 ; well-determined when extending a spectrum data container.
 ;
-; @param dc {in}{out}{required}{type=data container} The data
-; container to resize.
-; @param newsize {in}{required}{type=integer} The new number of
-; channels.  This must be > 0.
-; @keyword zero {in}{optional}{type=boolean} If set, any new channels
-; are filled with zero instead of NAN.
+; :Params:
+;   dc : in, out, required, type=data container
+;       The data container to resize.
+;   newsize : in, required, type=integer
+;       The new number of channels.  This must be > 0.
 ;
-; @examples
-; <pre>
-;    ; double the size of dc, new channels are filled with NAN
-;    nels = data_valid(dc)
-;    dcresize,dc,nels*2
-;    ; back to its original size
-;    dcresize,dc,nels
-;    ; add 100 channels, fill with 0.0
-;    dcresize,dc,(nels+100),/zero
-;    ; to use this, or any toolbox function, on a DC in the !g
-;    ; structure, do this
-;    dc = !g.s[0]
-;    nels = data_valid(dc)
-;    dcresizse,dc,nels+200
-; @version $Id$
+; :Keywords:
+;   zero : in, optional, type=boolean
+;       If set, any new channels are filled with zero instead of NAN.
+;
+; :Examples:
+;
+;   .. code-block:: IDL
+;
+;       ; double the size of dc, new channels are filled with NAN
+;       nels = data_valid(dc)
+;       dcresize,dc,nels*2
+;       ; back to its original size
+;       dcresize,dc,nels
+;       ; add 100 channels, fill with 0.0
+;       dcresize,dc,(nels+100),/zero
+;       ; to use this, or any toolbox function, on a DC in the !g
+;       ; structure, do this
+;       dc = !g.s[0]
+;       nels = data_valid(dc)
+;       dcresizse,dc,nels+200
 ;-
 pro dcresize,dc,newsize,zero=zero,beginning=beginning
     compile_opt idl2

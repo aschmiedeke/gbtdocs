@@ -1,31 +1,35 @@
+; docformat = 'rst' 
+
 ;+
 ; Smooth a data container with a boxcar smoothing of a certain
 ; width, in channels. For odd width, this uses the built-in idl
-; SMOOTH function.  For even widths this uses
-; <a href="../toolbox/doboxcar1d.html">doboxcar1d</a> and the
-; reference channel is moved left by 1/2 channel width.
+; SMOOTH function.  For even widths this uses :idl:pro:`doboxcar1d` 
+; and the reference channel is moved left by 1/2 channel width.
 ;
 ; Replaces the contents of the data being smoothed with the smoothed
 ; data.  Use the GUIDE procedure, BOXCAR, to smoothing data containers
 ; in the !g structure.
 ;
-; <p>For spectrum data containers, the frequency_resolution is set 
-; using <a href="estboxres.html">estboxres</a> 
+; For spectrum data containers, the frequency_resolution is set 
+; using :idl:pro:`estboxres`. 
 ;
-; @param dc {in}{required}{type=data container} The data container to
-; be smoothed.  The data values are modified by this procedure.
+; :Params:
+;   dc : in, required, type=data container
+;       The data container to be smoothed. The data values are
+;       modified by this procedure.
 ; 
-; @param width {in}{required}{type=integer} Width of boxcar in
-; channels. 
+;   width : in, required, type=integer
+;       Width of boxcar in channels. 
 ;
-; @keyword decimate {in}{optional}{type=boolean} If set, the data
-; container is reduced - taking every width channels starting at
-; channel 0.
+; :Keywords:
+;   decimate : in, optional, type=boolean
+;       If set, the data container is reduced - taking every width 
+;       channels starting at channel 0.
 ;
-; @uses <a href="doboxcar1d.html">doboxcar1d</a>
-; @uses <a href="doextract.html">dcextract</a>
+; :Uses:
+;   :idl:pro:`doboxcar1d`
+;   :idl:pro:`doextract`
 ;
-; @version $Id$
 ;-
 pro dcboxcar, dc, width, decimate=decimate
     compile_opt idl2
