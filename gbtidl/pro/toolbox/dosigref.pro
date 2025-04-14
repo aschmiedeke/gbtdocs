@@ -8,14 +8,14 @@
 ; and reference data containers, respectively.
 ; The tsys in the result, dcresult.tsys, is equal to dcref.tsys.  
 ; 
-; The exposure time of the result is :math:`t_res = t_sig * t_ref * smoothref / (t_sig+t_ref*smoothref)`,
-; where :math:`t_sig` and :math:`t_ref` are the exposures of
+; The exposure time of the result is :math:`t_{res} = t_{sig} * t_{ref} * smoothref / (t_{sig}+t_{ref} * smoothref)`,
+; where :math:`t_{sig}` and :math:`t_{ref}` are the exposures of
 ; the signal and reference data container and where smoothref=1 in
 ; when smoothref has not been supplied.  That is the effective integration
 ; time appropriate for use in the radiometer equation.  Note that in
 ; the two limits of smoothref (1=no smoothing and large smoothing), if
-; :math:`t_sig = t_ref` then :math:`exposure = 1/2 * t_si`g or 
-; :math:`exposure = t_sig`.  With no smothing, the noise increases due 
+; :math:`t_{sig} = t_{ref}` then :math:`exposure = 1/2 * t_{sig}` or 
+; :math:`exposure = t_{sig}`.  With no smothing, the noise increases due 
 ; to the subtraction of an equally noisy reference spectrum.  With 
 ; smoothing, the noise is as it would be for just the signal spectrum.
 ; Smoothing should be done with caution, though, because it can emphasize
