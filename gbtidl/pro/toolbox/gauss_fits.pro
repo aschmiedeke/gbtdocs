@@ -14,20 +14,30 @@
 ; Extra parameters are passed to mpcurvefit.
 ;
 ; :Params:
-;   xx {in}{required}{type=array} The x-values to use in the fit.
-;   yy {in}{required}{type=array} The data to be fit at xx.
-;   nregions {in}{required}{type=long} The number of regions in which to fit gaussians
-;   regions {in}{required}{type=2-D array} 2-D array marking ends of each region.
-;   inits {in}{required}{type=2-D array} 2-D array of the form [[h,c,w],[h,c,w],[h,c,w],...], 
-; where h = height, c = center, w = full width half maximum.  Each [h,c,w] corresponds to a gaussian to fit.
-;   ngauss {in}{required}{type=integer} The total number of
-; gaussians to fit.
-;   max_iters {in}{required}{type=long} max interations
-;   coefficients {out}{required}{type=2-D array} 2-D array of the form [[h,c,w],[h,c,w],[h,c,w],...],
-; where h, c, w are the results for the fit of the height, center, and width.  If one of these was specified 
-; as fixed, it will return identical to its value in the inits param.
-;   errors {out}{required}{type=2-D array} 2-D array of the form [[h,c,w],[h,c,w],[h,c,w],...],
-; where h, c, w are the 1-sigma errors for the results returned in the coefficients parameter
+;   xx : in, required, type=array
+;       The x-values to use in the fit.
+;   yy : in, required, type=array
+;       The data to be fit at xx.
+;   nregions : in, required, type=long
+;       The number of regions in which to fit gaussians
+;   regions : in, required, type=2-D array
+;       2-D array marking ends of each region.
+;   inits : in, required, type=2-D array
+;       2-D array of the form [[h,c,w],[h,c,w],[h,c,w],...], where h = height,
+;       c = center, w = full width half maximum.  Each [h,c,w] corresponds to
+;       a gaussian to fit.
+;   ngauss : in, required, type=integer
+;       The total number of gaussians to fit.
+;   max_iters : in, required, type=long
+;       max interations 
+;   coefficients : out, required, type=2-D array
+;       2-D array of the form [[h,c,w],[h,c,w],[h,c,w],...], where h, c, w are
+;       the results for the fit of the height, center, and width.  If one of
+;       these was specified as fixed, it will return identical to its value in
+;       the inits param.
+;   errors : out, required, type=2-D array
+;       2-D array of the form [[h,c,w],[h,c,w],[h,c,w],...], where h, c, w are 
+;       the 1-sigma errors for the results returned in the coefficients parameter
 ; 
 ; :Keywords:
 ;   parinfo : in, optional, type=array
