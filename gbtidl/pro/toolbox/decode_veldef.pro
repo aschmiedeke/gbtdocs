@@ -1,32 +1,36 @@
+; docformat = 'rst' 
+
 ;+
 ; Parse the SDFITS VELDEF value into its two components, the velocity
 ; definition and velocity reference frame.  
 ;
-; <p>This value must contain 8
-; characters where the first 4 characters describe the velocity
-; definition and the last 4 characters describe the reference frame.
-; If the first 4 characters are recognized, they are expanded to be
-; used in other toolbox functions (e.g. <a href="velocity_axis.html">velocity_axis</a>).  Recognized
-; velocity definitions and their expanded form are: RADI (RADIO), OPTI
-; (OPTICAL), and RELA (TRUE).  Any leading dash is removed from the
-; last 4 characters before that value is set.  In addition, OBS is
-; translated to TOPO for topocentric.  The return value is
-; 0 if there were problems (non-standard velocity definition, wrong
-; number of characters, etc) and 1 if everything appears to be okay.
+; This value must contain 8 characters where the first 4 characters 
+; describe the velocity definition and the last 4 characters describe 
+; the reference frame. If the first 4 characters are recognized, they
+; are expanded to be used in other toolbox functions 
+; (e.g. :idl:pro:`velocity_axis`).  Recognized velocity definitions 
+; and their expanded form are: RADI (RADIO), OPTI (OPTICAL), and RELA 
+; (TRUE).  Any leading dash is removed from the last 4 characters 
+; before that value is set.  In addition, OBS is translated to TOPO
+; for topocentric.  The return value is 0 if there were problems
+; (non-standard velocity definition, wrong number of characters, etc)
+; and 1 if everything appears to be okay.
 ;
-; @param veldef {in}{required}{type=string} The value to decode.
+; :Params:
+;   veldef : in, required, type=string
+;       The value to decode.
 ;
-; @param velocity_definition {out}{required}{type=string}.  This will
-; be one of the standard types, RADIO, OPTICAL, or TRUE, or a copy of
-; the first 4 characters (if the latter, the return value will be 0).
+;   velocity_definition : out, required, type=string
+;       This will be one of the standard types, RADIO, OPTICAL, or TRUE,
+;       or a copy of the first 4 characters (if the latter, the return 
+;       value will be 0).
 ;
-; @param reference_frame {out}{required}{type=string}.  This will be
-; the last 4 characters minus any leading dash.
+;   reference_frame : out, required, type=string
+;       This will be the last 4 characters minus any leading dash.
 ;
-; @returns 1 on success and 0 on failure.
+; :Returns:
+;   1 on success and 0 on failure.
 ;
-; @copyright NRAO
-; @version $Id$
 ;-
 function DECODE_VELDEF, veldef, velocity_definition, reference_frame
     compile_opt idl2

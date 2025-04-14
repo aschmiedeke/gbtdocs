@@ -1,3 +1,5 @@
+; docformat = 'rst' 
+
 ;+
 ; Function to return a default aperture efficiency, given an
 ; observing frequency.  Used in the calibration routines.
@@ -8,19 +10,23 @@
 ; is especially important for the observer to bypass the default value
 ;  returned by this routine.
 ;
-; @param freq {in}{required}{type=float} Observing frequency in GHz
-; @param elev {in}{optional}{type=float} Observing elevation in
-; degrees; currently not used.
-; @returns the aperture efficiency
-; @examples
-; <pre>
-;    apeff = get_ap_eff(18.5)
-;    print,apeff
-; </pre>
+; :Params:
+;   freq : in, required, type=float
+;       Observing frequency in GHz
+;   elev : in, optional, type=float
+;       Observing elevation in degrees; currently not used.
+; 
+; :Returns:
+;   the aperture efficiency
+; 
+; :Examples:
+; 
+;   .. code-block:: IDL
+; 
+;       apeff = get_ap_eff(18.5)
+;       print,apeff
 ;
-; @version $Id$
 ;-
-
 function get_ap_eff,freq,elev
 
    compile_opt idl2

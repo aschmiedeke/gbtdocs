@@ -5,7 +5,7 @@
 ; the supplied data container.  Optionally return the frequency in
 ; another reference frame from that given in the data.
 ;
-; "Params:
+; :Params:
 ;   data : in, required, type=spectrum
 ;       The spectrum data container to use to get the necessary header 
 ;       information.

@@ -1,14 +1,25 @@
+; docformat = 'rst' 
+
 ;+
 ; Given a string containing a comma separated list with optional range
 ; strings, turn that into two strings giving the start and end points
 ; that would be used to turn that string into integers.
 ;
-; <p>Examples: extract_edges(["1,2,4:8"]) returns ["1,2,4","1,2,8"]
+; :Params:
+;   strlist : in, required, type=string
+;       Comma separated list
+; 
+; :Returns:
+;   2-element string array
 ;
-; @param strlist {in}{required}{type=string} Comma separated list
-; @returns 2-element string array
+; :Examples: 
+; 
+;   .. code-block:: IDL
+; 
+;       extract_edges(["1,2,4:8"]) returns ["1,2,4","1,2,8"]
+;
 ;-
-    function extract_edges, strlist
+function extract_edges, strlist
     compile_opt idl2, hidden
 
     ; first, split up the comma separated values
