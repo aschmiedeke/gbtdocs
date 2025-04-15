@@ -1478,7 +1478,7 @@ def PointMap(location, hLength, vLength, hDelta, vDelta,
         An Offset object. It specifies the vertical distance between points in the map. vDelta values 
         must be positive.
 
-    scanDuratio: float
+    scanDuration: float
         It specifies the length of each scan in seconds.
 
     beamName: str
@@ -1556,7 +1556,7 @@ def PointMapWithReference(location, hLength, vLength, hDelta, vDelta,
         referenceInterval=4 will periodically perform one scan on the reference source followed by
         4 pointed scans.
 
-    scanDuratio: float
+    scanDuration: float
         It specifies the length of each scan in seconds.
 
     beamName: str
