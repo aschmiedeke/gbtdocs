@@ -18,7 +18,7 @@ Show a :hoverxref:`tooltip <How to connect remotely to the GBO network:how-to-co
 
 
 
-.. - :func:`average() <dysh:dysh.spectra.core.average>` 
+:func:`average() <dysh:dysh.spectra.core.average>` 
 
 
 .. - :ref:`dysh:core functions`
