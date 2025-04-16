@@ -71,24 +71,6 @@ to store intermediate results.
             Toolbox
 
 
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **Guide** 
-
-        TESTING Functions and procedures from the guide folder
-
-        .. button-link:: gbtidl_guide_testing.html
-            :color: primary
-            :tooltip: Guide TESTING
-            :outline:
-            :click-parent:
-
-            Testing
-
-
-
 
 .. toctree::
     :maxdepth: 3
@@ -97,4 +79,3 @@ to store intermediate results.
     gbtidl_guide
     gbtidl_plotter
     gbtidl_toolbox
-    gbtidl_guide_testing
