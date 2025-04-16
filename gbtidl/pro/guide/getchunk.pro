@@ -83,6 +83,7 @@
 ;   because the loop is contained on a single line.
 ;
 ;   .. code-block:: IDL
+; 
 ;       sclear
 ;       a = getchunk(scan=6000,count=count,skipflag='wind')
 ;       accum,dc=a[0]

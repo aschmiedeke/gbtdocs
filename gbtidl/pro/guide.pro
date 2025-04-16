@@ -203,3 +203,27 @@ end
 ;-
 pro addstack, first, last, step
 end
+
+;+
+; Append entries to the stack. 
+;
+; See also :idl:pro:`addstack.
+;
+; :Params:
+;
+;   index : in, required, type=long integer
+;       Entries to add
+;
+; :Examples:
+;
+;   .. code-block:: IDL
+; 
+;       addstack,10,14,2
+;       appendstack,20
+;       appendstack,[25,28]
+;       tellstack
+;       ; The stack now contains [ 10,  12,  14,  20,  25, 28]
+;
+;-
+pro appendstack, index
+end

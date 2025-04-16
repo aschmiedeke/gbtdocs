@@ -19,7 +19,7 @@
 ;
 ; :Examples:
 ; 
-;   .. code-blocks:: IDL
+;   .. code-block:: IDL
 ; 
 ;       ; create two gaussians
 ;       a = [400000.,75.,15.]

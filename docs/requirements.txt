@@ -20,7 +20,8 @@ sphinx-book-theme
 sphinx-copybutton
 sphinx-design
 sphinx-hoverxref
-sphinx-idl
+#sphinx-idl
+git+https://github.com/aschmiedeke/sphinx-idl.git@main
 sphinx-inline-tabs
 sphinxcontrib-applehelp
 sphinxcontrib-devhelp
