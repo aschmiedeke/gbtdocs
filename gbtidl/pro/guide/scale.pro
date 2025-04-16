@@ -3,9 +3,7 @@
 ;+
 ; This procedure scales the data container's data by a scalar value.
 ;
-; Equivalent to:
-; 
-; *!g.s[0].data_ptr = *!g.s[0].data_ptr * factor
+; Equivalent to: `*!g.s[0].data_ptr = *!g.s[0].data_ptr * factor` 
 ; 
 ; 
 ; :Params:
