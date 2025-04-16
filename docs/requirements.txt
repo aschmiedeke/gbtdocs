@@ -21,6 +21,7 @@ sphinx-copybutton
 sphinx-design
 sphinx-hoverxref
 #sphinx-idl
+sphinx-domains
 git+https://github.com/aschmiedeke/sphinx-idl.git@mods
 sphinx-inline-tabs
 sphinxcontrib-applehelp
