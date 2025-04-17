@@ -3,6 +3,6 @@ GBTIDL toolbox commands
 
 
 
-.. .. idl:autopath:: ../gbtidl/pro/toolbox/
+.. idl:autopath:: ../gbtidl/pro/toolbox/
     :summary:
 

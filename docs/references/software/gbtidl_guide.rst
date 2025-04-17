@@ -3,6 +3,6 @@ GBTIDL guide commands
 
 
 
-.. .. idl:autopath:: ../gbtidl/pro/guide/
+.. idl:autopath:: ../gbtidl/pro/guide/
     :summary:
 
