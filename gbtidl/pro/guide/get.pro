@@ -22,12 +22,12 @@
 ; for a summary of selection syntax.
 ; 
 ; Flags (set via :idl:pro:`flag`) can be selectively applied or ignored using the 
-; useflag and skipflag keywords.  Only one of those two keywords can
+; ``useflag`` and ``skipflag`` keywords.  Only one of those two keywords can
 ; be used at a time (it is an error to use both at the same time).
-; Both can be either a boolean (/useflag or /skipflag) or an array of
-; strings.  The default is /useflag, meaning that all flag rules that
+; Both can be either a boolean (``/useflag`` or ``/skipflag``) or an array of
+; strings.  The default is ``/useflag``, meaning that all flag rules that
 ; have been previously set are applied when the data is fetched from
-; disk, blanking any data as described by each rule.  If /skipflag is
+; disk, blanking any data as described by each rule.  If ``/skipflag`` is
 ; set, then all of the flag rules associated with this data are
 ; ignored and no data will be blanked when fetched from disk (it may
 ; still contain blanked values if the actual values in the disk file

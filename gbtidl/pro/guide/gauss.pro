@@ -1,22 +1,22 @@
 ; docformat = 'rst'
 
 ;+ 
-; Fits Gaussians to the data in the primary data container (!g.s[0])
+; Fits Gaussians to the data in the primary data container (``!g.s[0]``)
 ; based on initial values that can be set by procedures :idl:pro:`gregion`,
 ; :idl:pro:`ngauss`, :idl:pro:`gmaxiter`, and :idl:pro:`gparamvalues`.
 ;
-; Other data containers can be fit using the buffer keyword.
+; Other data containers can be fit using the ``buffer`` keyword.
 ; 
 ; Multiple gaussians in multiple regions can be fit at the same time.
 ;
 ; The initial guesses and the most recent fit are available in the
-; !g.gauss structure.
+; ``!g.gauss`` structure.
 ;
 ; :Params:
 ;   fit : out, optional, type=array
-;       results of fit. identical to !g.gauss.fit 
+;       results of fit. identical to ``!g.gauss.fit``
 ;   fitrms : out, optional, type=array
-;       errors of fit. identical to !g.gauss.fitrms 
+;       errors of fit. identical to ``!g.gauss.fitrms``
 ;
 ; :Keywords:
 ;   buffer in, optional, type=long, default=0

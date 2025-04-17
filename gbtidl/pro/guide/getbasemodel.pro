@@ -20,15 +20,15 @@
 ;
 ; :Keywords:
 ;   nfit : in, optional, type=integer
-;       Only use at most nfit parameters. If !g.nfit is less then nfit,
-;       then only !g.nfit parameters will be used and a warning will be
+;       Only use at most nfit parameters. If ``!g.nfit`` is less then nfit,
+;       then only ``!g.nfit`` parameters will be used and a warning will be
 ;       issued.
 ;
 ;   ok : out, optional, type=boolean
 ;       1 on success, 0 on failure.
 ;
 ; :Returns:
-;   Array corresponding to the polynomial at !g,polyfit through nfit
+;   Array corresponding to the polynomial at ``!g,polyfit`` through nfit
 ;   evaluated at all of the channels in the primary data container. 
 ;   Returns -1 on failure (ok will be 0).
 ;
@@ -45,7 +45,7 @@
 ;    
 ; :Uses:
 ;   :idl:pro:`ortho_poly`
-;   :idl:pro:`data_valid`
+;   :idl:pro:`DATA_VALID`
 ;
 ;-
 function getbasemodel, nfit=nfit, ok=ok

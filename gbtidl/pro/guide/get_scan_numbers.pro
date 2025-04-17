@@ -6,7 +6,7 @@
 ; This returns the different scan numbers in the order they appear
 ; in the input file.  Use the keep flag to get the scan numbers from
 ; the output file.  For example, if list shows these scan numbers: 99,
-; 99, 99, 100, 99, 99, 100, 100, 101, 101, then get_scan_numbers will
+; 99, 99, 100, 99, 99, 100, 100, 101, 101, then ``get_scan_numbers`` will
 ; return this array [99, 100, 99, 100, 101].  If unique is set it will
 ; return this array [99, 100, 101].   
 ;
@@ -28,7 +28,7 @@
 ; for a summary of selection syntax.
 ;
 ; The selection criteria are ultimately passed to the io class's
-; search_index via the _EXTRA parameter. 
+; search_index via the ``_EXTR``A parameter. 
 ;
 ; :Params:
 ;   count : out, optional, type=integer
