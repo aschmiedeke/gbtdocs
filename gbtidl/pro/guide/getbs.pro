@@ -4,16 +4,16 @@
 ; Procedure getbs retrieves and calibrates a beam switched Nod scan pair.  
 ; 
 ; Beam switched modes are not recommended on the GBT.  Total power Nod
-; should be used instead.  To process total power nod data use getnod
-; instead of this routine.  This procedure is provided only to
+; should be used instead. To process total power nod data use :idl:pro:`getnod`
+; instead of this routine. This procedure is provided only to
 ; accommodate old data.
 ; 
 ; The getbs routine produces a spectrum calibrated in Ta (K).  Other
 ; recognized unit are Ta* and Jy.
 ;
 ; **Summary**
-;   * Data are selected using scan, ifnum, intnum and plnum or,
-;     alternatively, sampler and intnum if you know the specific
+;   * Data are selected using ``scan``, ``ifnum``, ``intnum`` and ``plnum`` or,
+;     alternatively, ``sampler`` and ``intnum`` if you know the specific
 ;     sampler name (e.g. "A10").  The other scan in the scan pair is 
 ;     found using scan (see comments below).  
 ;
@@ -44,12 +44,12 @@
 ;
 ;   * Averaging of individual integrations is then done using 
 ;     :idl:pro:`dcaccum`  By default, integrations are weighted as described in 
-;     dcaccum.  If the eqweight keyword is set, then integrations are
+;     dcaccum.  If the ``eqweight`` keyword is set, then integrations are
 ;     averaged with an equal weight.
 ;
 ;   * The final average is left in the primary data container
 ;     (buffer 0), and a summary line is printed.  The printing of the
-;     summary line can be suppressed by setting the quiet keyword.
+;     summary line can be suppressed by setting the ``quiet`` keyword.
 ;     The first Tys displayed is that of the result.  The other 4
 ;     Tsys values displayed are weighted averages of the Tsys values
 ;     from each of the 4 spectra that make up each integration (see
@@ -59,7 +59,7 @@
 ;     make up the final result. 
 ;
 ;   * The individual integration results can be saved to the
-;     currently opened output file by setting the keepints keyword.
+;     currently opened output file by setting the ``keepints`` keyword.
 ;     The final average is still produced in that case.  In the case
 ;     of bswitch=0, all 8 spectra comprising each integration are kept.
 ;   
@@ -68,7 +68,7 @@
 ; The scan number is required.  Either scan in the "Nod"
 ; scan pair can be given.  Arguments to identify the IF number,
 ; polarization number, and feed number are optional.  The default
-; tracking feed number, trackfdnum, (0) is the lowest numbered FEED
+; tracking feed number, ``trackfdnum``, (0) is the lowest numbered FEED
 ; found in the data.  This feed number is interpreted as the tracking
 ; (source) feed for the first scan in the signal phase.  Specify
 ; trackfdnum=1 to identify the second FEED as the tracking
@@ -76,14 +76,14 @@
 ; in that beam during the source phase of the first scan of the two
 ; "Nod" scans. 
 ; 
-; If ifnum, trackfdnum, or plnum are not supplied then the lowest
+; If ``ifnum``, ``trackfdnum``, or ``plnum`` are not supplied then the lowest
 ; values for each of those where data exists (all combinations may not
 ; have data) will be used, after using any user-supplied values.  The
-; value of ifnum is determined first, followed by trackfdnum and
-; finally plnum.  If a combination with data can not be found then
+; value of ``ifnum`` is determined first, followed by ``trackfdnum`` and
+; finally ``plnum``.  If a combination with data cannot be found then
 ; :idl:pro:`showiftab` is used to show the user what
-; the set of valid combinations are.  The summary line includes the
-; ifnum, trackfdnum, and plnum used. 
+; the set of valid combinations are. The summary line includes the
+; ``ifnum``, ``trackfdnum``, and ``plnum`` used. 
 ; 
 ; **Tsys and Available Units**
 ; 
@@ -100,16 +100,16 @@
 ; 
 ; **Smoothing the Reference Spectra**
 ; 
-; A parameter called smthoff can be used to smooth the reference
+; A parameter called ``smthoff`` can be used to smooth the reference
 ; spectra prior to calibration.  In certain cases this can improve
 ; the signal to noise ratio, but it may degrade baseline shapes and
 ; artificially emphasize spectrometer glitches.  Use with care.  A
-; value of smthoff=16 is often a good choice. 
+; value of ``smthoff=16`` is often a good choice. 
 ; 
 ; **The Special "bswitch" Keyword**
 ; 
-; A parameter called bswitch allows the user to select between using
-; all of the data (the detault, bswitch=0) or using only data when the
+; A parameter called ``bswitch`` allows the user to select between using
+; all of the data (the detault, ``bswitch=0``) or using only data when the
 ; beam switch is in the "cross" (reference) or "thru" (signal)
 ; position.  Data taken in beam switched mode should be examined
 ; carefully in both cross and thru positions. 
@@ -120,7 +120,7 @@
 ; tsys, exposure and frequency_resolution as described in the
 ; :idl:pro:`dcaccum` documentation.
 ; To give all integrations equal weight instead of the default
-; weighting based on Tsys, use the /eqweight keyword.
+; weighting based on Tsys, use the ``/eqweight`` keyword.
 ; 
 ; **Summary Information**
 ; 
@@ -140,42 +140,42 @@
 ; Flags (set via :idl:pro:`flag`) can be selectively
 ; applied or ignored using the useflag and skipflag keywords.  Only
 ; one of  those two keywords can be used at a time (it is an error to
-; use both at the same time).  Both can be either a boolean (/useflag
-; or /skipflag) or an array of strings.  The default is /useflag,
+; use both at the same time).  Both can be either a boolean (``/useflag``
+; or ``/skipflag``) or an array of strings.  The default is ``/useflag``,
 ; meaning that all flag rules that have been previously set are
 ; applied when the data is fetched from disk, blanking any data as
-; described by each rule.  If /skipflag is set, then all of the flag
+; described by each rule.  If ``/skipflag`` is set, then all of the flag
 ; rules associated with this data are ignored and no data will be
 ; blanked when fetched from disk (it may still contain blanked values
 ; if the actual values in the disk file have already been blanked by
-; some other process).  If useflag is a string or array of strings,
+; some other process).  If ``useflag`` is a string or array of strings,
 ; then only those flag rules having the same idstring value are used
-; to blank the data.  If skipflag is a string or array of strings,
+; to blank the data.  If ``skipflag`` is a string or array of strings,
 ; then all flag rules except those with the same idstring value are
 ; used to blank the data. 
 ; 
 ; **Dealing With Duplicate Scan Numbers**
 ; 
 ; There are 3 ways to attempt to resolve ambiguities when the
-; same scan number appears in the data source.  The instance keyword 
+; same scan number appears in the data source.  The ``instance`` keyword 
 ; refers to the element of the returned array of scan_info structures 
 ; that :idl:pro:`scan_info` returns.  So, if scan 23
 ; appears 3 times then instance=1 refers to the second time that scan
-; 23 appears as returned by scan_info.  The file keyword is useful if
+; 23 appears as returned by scan_info.  The ``file`` keyword is useful if
 ; a scan is unique to a specific file and multiple files have been
-; accessed using :idl:pro:`dirin`.  If file is specified and instance is also 
-; specified, then instance refers to the instance of that scan just
+; accessed using :idl:pro:`dirin`.  If ``file`` is specified and ``instance`` is also 
+; specified, then ``instance`` refers to the instance of that scan just
 ; within that file (which may be different from its instance within
-; all opened files when dirin is used).  The timestamp keyword is
-; another way to resolve ambiguous scan numbers.  The timestamp here
+; all opened files when dirin is used).  The ``timestamp`` keyword is
+; another way to resolve ambiguous scan numbers.  The ``timestamp`` here
 ; is a string used essentially as a label by the monitor and control
 ; system and is unique to each scan.  The format of the timestamp
-; string is "YYYY_MM_DD_HH:MM:SS".  When timstamp is given, scan and
-; instance are ignored.  If more than one match is found, an error is
+; string is "YYYY_MM_DD_HH:MM:SS".  When ``timstamp`` is given, ``scan`` and
+; ``instance`` are ignored.  If more than one match is found, an error is
 ; printed and this procedure will not continue.  
 ;
-; Once a unique match is found to the desired scan (using instance,
-; file, or timestamp) then the scan paired with that scan necessary to
+; Once a unique match is found to the desired scan (using ``instance``,
+; ``file``, or ``timestamp``) then the scan paired with that scan necessary to
 ; finish this procedure is found.  The match must be found within the
 ; same file as the desired scan.  It must have the appropriate matching
 ; scan number (scan-1 if scan is the second scan in the procedure or
@@ -186,7 +186,7 @@
 ; Finally, the matched pair must have the appropriate procseqn given the
 ; procseqn that scan is.
 ;
-; *Note:* If you see the message "No data found, can not continue" the
+; *Note:* If you see the message "No data found, cannot continue" the
 ; most likely explanation is that the IF numbers are confused,
 ; probably due to a bad configuration (e.g. both feeds do not have
 ; data from the same IF and polarization).  Consequently, this calibration
@@ -201,7 +201,7 @@
 ;   ifnum : in, optional, type=integer
 ;       IF number (starting with 0). Defaults to the lowest value
 ;       associated with data taking into account any user-supplied 
-;       values for trackfdnum, and plnum.
+;       values for ``trackfdnum``, and ``plnum``.
 ;   intnum : in, optional, type=integer
 ;       Integration number, defaults to all integrations.
 ;   plnum : in, optional, type=integer
@@ -209,8 +209,8 @@
 ;       value with data after determining the values of ifnum and
 ;       trackfdnum if not supplied by the user.
 ;   sampler : in, optional, type=string
-;       sampler name, this is an alternative way to specify ifnum and
-;       plnum.  When sampler name is given, ifnum and plnum must not 
+;       sampler name, this is an alternative way to specify ``ifnum`` and
+;       ``plnum``.  When sampler name is given, ``ifnum`` and ``plnum`` must not 
 ;       be given.   Note that data from the associated switched sampler
 ;       will also be used.
 ;   trackfdnum : in, optional, type=integer
@@ -292,16 +292,12 @@
 ; :Uses:
 ;   :idl:pro:`accumave`
 ;   :idl:pro:`accumclear`
-;   :idl:pro:`calsummary`
-;   :idl:pro:`check_calib_args`
-;   :idl:pro:`data_free`
+;   :idl:pro:`DATA_FREE`
 ;   :idl:pro:`dcaccum`
 ;   :idl:pro:`dcscale`
 ;   :idl:pro:`dcsetunits`
 ;   :idl:pro:`donod`
 ;   :idl:pro:`find_paired_info`
-;   :idl:pro:`find_scan_info`
-;   :idl:pro:`get_calib_data`
 ;   :idl:pro:`set_data_container`
 ;   :idl:pro:`showiftab`
 ;
