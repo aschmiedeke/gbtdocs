@@ -1,8 +1,8 @@
 ; docformat = 'rst'
 
 ;+
-; Overplot a baseline using the stored coefficients in !g.polyfit and
-; !g.nfit and the data in the primary data container (number of
+; Overplot a baseline using the stored coefficients in `!g.polyfit` and
+; `!g.nfit` and the data in the primary data container (number of
 ; channels only).
 ;
 ; Note that bshow does not itself do any fitting.  This only show
@@ -12,8 +12,8 @@
 ;
 ; :Keywords:
 ;   nfit : in, optional, type=integer
-;       Only use at most nfit parameters.  If !g.nfit is less then nfit,
-;       then only !g.nfit parameters will be used and a warning will be
+;       Only use at most nfit parameters.  If `!g.nfit` is less then nfit,
+;       then only `!g.nfit` parameters will be used and a warning will be
 ;       issued.
 ;   ok : out, optional, type=boolean
 ;       This is set to 1 on success and 0 on failure.  

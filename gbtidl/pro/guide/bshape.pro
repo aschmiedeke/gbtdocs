@@ -49,7 +49,7 @@
 ; :Uses:
 ;   :idl:pro:`dcbaseline`
 ;   :idl:pro:`getbasemodel`
-;   :idl:pro:`data_valid`
+;   :idl:pro:`DATA_VALID`
 ;   :idl:pro:`bmodel`
 ;
 ;-

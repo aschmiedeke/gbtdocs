@@ -30,11 +30,6 @@
 ;   ok : out, optional, type=boolean
 ;       1 on success, 0 on failure.
 ;
-; :Uses:
-; 
-;   :idl:pro:`data_valid`
-;   :idl:pro:`getbasemodel`
-;
 ; :Examples:
 ; 
 ;   .. code-block:: IDL
@@ -47,6 +42,11 @@
 ;       ; put the model with nfit=2 into buffer 11
 ;       bmodel modelbuffer=11, nfit=2
 ; 
+; :Uses:
+; 
+;   :idl:pro:`DATA_VALID`
+;   :idl:pro:`getbasemodel`
+;
 ;-
 pro bmodel, modelbuffer=modelbuffer, nfit=nfit, ok=ok
     compile_opt idl2

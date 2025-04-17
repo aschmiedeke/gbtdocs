@@ -27,7 +27,7 @@
 ;
 ; :Uses:
 ;
-;   :idl:pro:`dcbias
+;   :idl:pro:`dcbias`
 ;
 ;-
 pro bias, factor, buffer
