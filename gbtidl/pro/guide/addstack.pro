@@ -1,10 +1,10 @@
 ; docformat = 'rst'
 
 ;+
-; Add entries to "the stack", which is a list of numbers
-; that can be used in batch operations.  The list is stored in
-; the variable !g.astack.  The new entries are appended on to
-; the existing list.  Use <a href="astack.html">astack</a> to get values from the stack.
+; Add entries to "the stack", which is a list of numbers that can 
+; be used in batch operations.  The list is stored in the variable
+; !g.astack.  The new entries are appended on to the existing list.
+; Use :idl:pro:`astack` to get values from the stack.
 ;
 ; :Params:
 ; 
@@ -16,7 +16,8 @@
 ;       only a single entry equal to first will be appended.
 ;
 ;   step : in, optional, type=integer
-;       The increment between values. If omitted, a step of 1 will be used.
+;       The increment between values. If omitted, a step of 1 will be 
+;       used.
 ;
 ; :Examples:
 ; 
