@@ -6,25 +6,25 @@
 ;
 ; A record number or array of record numbers must be supplied.
 ; This routine will flag the indicated channels (or all channels, if
-; bchan and echan are not used) in those record numbers.  This is
+; ``bchan`` and ``echan`` are not used) in those record numbers.  This is
 ; appropriate if you know exactly which specific records need to be
-; flagged.  It is usually easier to use :idl:pro:`flag` and let flag work out which 
+; flagged.  It is usually easier to use :idl:pro:`flag` and let it work out which 
 ; records should be flagged.  A record number is simply the index
 ; number for that spectrum in the input data set.
 ;
 ; Flags are applied when the data is actually read into a data
-; container (e.g. get, getrec, getps, getnod, etc).  At that point,
-; any flagged data is replaced with the blanked value (not a number,
-; NaN).  GBTIDL ignores blanked data.  If that data is saved back to a
-; data file, it will be saved as blanked values and no further
-; flagging is necessary.  Flags are associated with the data in the
-; file, not with the data in a data container.  Once the data is in
-; GBTIDL in a data container, it can be blanked (e.g.
+; container (e.g. :idl:pro:`get`, :idl:pro:`getrec`, :idl:pro:`getps`,
+; :idl:pro:`getnod`, etc).  At that point, any flagged data is replaced 
+; with the blanked value (not a number, NaN).  GBTIDL ignores blanked data.
+; If that data is saved back to a data file, it will be saved as blanked 
+; values and no further flagging is necessary.  Flags are associated with 
+; the data in the file, not with the data in a data container. Once the
+; data is in GBTIDL in a data container, it can be blanked (e.g.
 ; :idl:pro:`replace`) but not flagged.
 ;
 ; Continuum flagging is not supported.
 ;
-; See also the "Introduction to Flagging and Blanking Data" in the `GBTIDL manual <https://www.gb.nrao.edu/GBT/DA/gbtidl/users_guide.pdf#page=28>`_
+; See also the "Introduction to Flagging and Blanking Data" in the `GBTIDL manual <https://www.gb.nrao.edu/GBT/DA/gbtidl/users_guide.pdf#page=28>`_.
 ;
 ; :Params:
 ;   record : in, required, type=integer
@@ -36,9 +36,9 @@
 ;   echan : in, optional, type=integer
 ;       Ending channel number (default=last channel)
 ;   chans : in, optional, type=integer
-;       Channels to flag. Mutually exclusive to bchan and echan keywords.
+;       Channels to flag. Mutually exclusive to ``bchan`` and ``echan`` keywords.
 ;   chanwidth : in, optional, type=integer
-;       Buffer of channels surrounding the channels specified in chans
+;       Buffer of channels surrounding the channels specified in ``chans``
 ;       keyword. (default=1)
 ;   idstring : in, optional, type=string, default="unspecified"
 ;       A short string describing the flag.

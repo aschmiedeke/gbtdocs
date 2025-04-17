@@ -21,10 +21,10 @@
 ; :Params:
 ;   fit : out, optional, type=array
 ;       An output array giving the results of the fit. Also stored in
-;       !g.gauss.fit.
+;       ``!g.gauss.fit``.
 ;   fitrms : out, optional, type=array
 ;       An output array giving the uncertainties of the fit.  Also stored
-;       in !g.gauss.fitrms.
+;       in ``!g.gauss.fitrms``.
 ; 
 ; :Keywords:
 ;   modelbuffer : in, optional, type=long, default=-1

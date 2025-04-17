@@ -5,7 +5,7 @@
 ; output (keep) data file.
 ;
 ; A scan number or array of scan numbers is required and can be
-; entered either in the parameter "scan" or the parameter "scanrange".
+; entered either in the parameter ``scan`` or the parameter ``scanrange``.
 ; The other keywords allow for additional refinements in the scope of
 ; the flag. When a keyword is not supplied, it defaults to all values
 ; of that keyword in the data for the given scans.  In some cases,
@@ -33,7 +33,7 @@
 ;
 ; Continuum flagging is not supported.
 ;
-; See also the "Introduction to Flagging and Blanking Data" in the `GBTIDL manual <https://www.gb.nrao.edu/GBT/DA/gbtidl/users_guide.pdf#page=28>`_
+; See also the "Introduction to Flagging and Blanking Data" in the `GBTIDL manual <https://www.gb.nrao.edu/GBT/DA/gbtidl/users_guide.pdf#page=28>`_.
 ;
 ; :Params:
 ;   scan : in, optional, type=integer
@@ -49,26 +49,26 @@
 ;   fdnum : in, optional, type=integer
 ;       Feed number (default=all)
 ;   sampler : in, optional, type=string
-;       Sampler name, used only as a short-hand for a specific plnum, 
-;       ifnum, fdnum combination. When sampler is supplied it is an 
-;       error to also supply ifnum, plnum, or fdnum.  Sampler must be 
+;       Sampler name, used only as a short-hand for a specific ``plnum``, 
+;       ``ifnum``, ``fdnum`` combination. When sampler is supplied it is an 
+;       error to also supply ``ifnum``, ``plnum``, or ``fdnum``.  Sampler must be 
 ;       single-valued (no arrays).
 ;   bchan : in, optional, type=integer
 ;       Starting channel number(s) (default=0)
 ;   echan : in, optional, type=integer
 ;       Ending channel number(s) (default=last channel)
 ;   chans : in, optional, type=integer
-;       Channel to flag. Mutually exclusive to bchan and echan keywords.
+;       Channel to flag. Mutually exclusive to ``bchan`` and ``echan`` keywords.
 ;   chanwidth : in, optional, type=integer
 ;       Buffer of channels surrounding the channels specified in 
-;       chans keyword. (default=1)
+;       ``chans`` keyword. (default=1)
 ;   idstring : in, optional, type=string, default="unspecified"
 ;       A short string describing the flag.
 ;   scanrange : in, optional, type=integer array
 ;       A 2-element array giving the first and last scan numbers that 
 ;       describe the range of scans to flag.  This is ignored if the 
-;       scan parameter is used. If only one integer is supplied then 
-;       this is equivalent to giving that integer as the "scan" 
+;       ``scan`` parameter is used. If only one integer is supplied then 
+;       this is equivalent to giving that integer as the ``scan``
 ;       parameter argument.
 ;   keep : in, optional, type=boolean
 ;       Flag the keep (output) data source.

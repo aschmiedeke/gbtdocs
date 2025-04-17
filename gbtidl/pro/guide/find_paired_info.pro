@@ -17,38 +17,38 @@
 ; scan could be found.
 ;
 ; The paired scan must have the appropriate relative scan number as
-; implied by info.procseqn.  Since this works for scans taken as a pair
+; implied by ``info.procseqn``. Since this works for scans taken as a pair
 ; by the same procedure then only procseqns of 1 or 2 are allowed.  If
-; the procseqn in the info parameter (info.procseqn) is 1, then the
-; paired scan must have a procseqn of 2.  Similarly, if info.procseqn is
+; the procseqn in the info parameter (``info.procseqn``) is 1, then the
+; paired scan must have a procseqn of 2.  Similarly, if ``info.procseqn`` is
 ; 2 then the paired scan must have a procseqn of 1.
 ;
 ; The paired scan must be found in the same file as given by
 ; info.file.
 ;
 ; When file and procseqn are not sufficient to resolve all
-; ambiguities, then the scan closest to the info.timestamp in the
+; ambiguities, then the scan closest to the ``info.timestamp`` in the
 ; appropriate direction is used to identify the best guess at the
-; paired scan.  Appropriate direction means that if info.procseqn
+; paired scan.  Appropriate direction means that if ``info.procseqn``
 ; implies that the paired scan came after the scan described by info,
-; then it's timestamp must be after info.timestamp.  Similarly, if the
+; then it's timestamp must be after ``info.timestamp``.  Similarly, if the
 ; paired scan must have come before the scan described by info, then
-; it's timestamp must come before info.timestamp.
+; it's timestamp must come before ``info.timestamp``.
 ;
 ; This is primarily useful inside of the calibration routines
-; (e.g. getps) but it may also be useful to users writing their
+; (e.g. :idl:pro:`getps`) but it may also be useful to users writing their
 ; own processing routines.
 ;
 ; :Params:
 ;   info : in, required, type=structure
-;       The scan_info structure of the scan who's pair is desired.
+;       The ``scan_info`` structure of the scan who's pair is desired.
 ; 
 ; :Keywords:
 ;   keep : in, optional, type=boolean
 ;       When present, search the output file.
 ;
 ; :Returns:
-;   The paired scan's scan_info structure.  If no pair could be
+;   The paired scan's ``scan_info`` structure.  If no pair could be
 ;   found, returns -1
 ;
 ;-

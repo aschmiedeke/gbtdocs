@@ -3,7 +3,7 @@
 ;+
 ; Prints the file names being used for I/O.
 ;
-; *NOTE:* This relies on the information at ``!g.line_filein_name``,
+; *Note:* This relies on the information at ``!g.line_filein_name``,
 ; ``!g.cont_filein_name`` and ``!g.line_filout_name`` to be correct.
 ; :idl:pro:`gstatus` can also be used to show the files currently in 
 ; use (along with other GBTIDL information).

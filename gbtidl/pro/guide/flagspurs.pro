@@ -24,12 +24,12 @@
 ; The routine first unflags all flags with the idstring "VEGAS_SPUR"
 ;
 ; This routine expects to encounter uncalibrated VEGAS data filled
-; by sdfits.  It checks that there is both an SDFITVER keyword and an
-; INSTRUME keyword on the primary header of all SDFITS files.  The
-; value of the INSTRUME keyword must be "VEGAS".
+; by sdfits.  It checks that there is both an ``SDFITVER`` keyword and an
+; ``INSTRUME`` keyword on the primary header of all SDFITS files.  The
+; value of the ``INSTRUME`` keyword must be "VEGAS".
 ;
-; This spur locations are determined using the VSPDELT, VSPRPIX,
-; and VSPRVAL columns.  For data filled using older versions of
+; This spur locations are determined using the ``VSPDELT``, ``VSPRPIX``,
+; and ``VSPRVAL`` columns.  For data filled using older versions of
 ; sdfits, these values are not present in the SDFITS tables. Such
 ; older data should be refilled using the most recent version of
 ; sdfits to make use of this procedure.

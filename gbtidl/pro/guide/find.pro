@@ -11,7 +11,7 @@
 ; then be iterated through to process just the most recently found
 ; data.
 ;
-; *Note:* unlike :idl:pro:`select`, find clears the stack unless the /append 
+; *Note:* unlike :idl:pro:`select`, find clears the stack unless the ``/append`` 
 ; keyword is used.  This has been done to make the behavior of FIND
 ; more like the CLASS version of FIND. 
 ;
