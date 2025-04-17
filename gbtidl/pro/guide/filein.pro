@@ -13,8 +13,8 @@
 ; before opening a new one. 
 ;
 ; The opened input file or directory name is stored in
-; !g.line_filein_name (line mode) or !g.cont_filein_name (continuum
-; mode).
+; ``!g.line_filein_name`` (line mode) or ``!g.cont_filein_name``
+; (continuum mode).
 ;
 ; :Params:
 ;   file_name : in, optional, type=string

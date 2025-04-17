@@ -5,8 +5,8 @@
 ; out is lost. 
 ; 
 ; This uses the value of !g.line.  If it is set (1) then the array
-; of line data (!g.s) is used, otherwise the array of continuum data
-; (!g.c) is used.  The contents of the in buffer remain unchanged by
+; of line data (``!g.s``) is used, otherwise the array of continuum data
+; (``!g.c``) is used.  The contents of the in buffer remain unchanged by
 ; this operation. 
 ;
 ; There are 16 buffers total, numbered from 0 through 15.

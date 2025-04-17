@@ -3,13 +3,12 @@
 ;+
 ; Specify the file to which data will be written.
 ;
-; The filename is stored in the !g.line_fileout_name field.  At
+; The filename is stored in the ``!g.line_fileout_name`` field.  At
 ; startup, this is set to "GBTIDL_KEEP.fits" so that it is possible to
-; save data without ever using this procedure.
+; save data without ever using this procedure. The output file name must
+; use the ".fits" suffix.
 ;
-; The output file name must use the ".fits" suffix.
-;
-; Note that it is not currently possible to save continuum data.
+; *Note:* It is currently not possible to save continuum data.
 ;
 ; :Params:
 ;   file_name : in, required, type=string

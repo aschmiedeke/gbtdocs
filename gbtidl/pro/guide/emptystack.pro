@@ -3,13 +3,13 @@
 ;+
 ; Clear the stack.  
 ;
-; Normally this simply sets !g.acount to 0, and this is all that is
+; Normally this simply sets ``!g.acount`` to 0, and this is all that is
 ; needed for typical use of the stack.  Optionally, the procedure can
 ; also reset the stack array to zeros and it can shrink the size of
 ; the stack to it's initial size of 5120 elements.  That could be
 ; useful if the stack grew to an unexpectedly large size and you want
 ; to release the memory.  The stack will grow as needed when addstack
-; and appendstack are called.  Only the !g.acount elements are ever
+; and appendstack are called.  Only the ``!g.acount`` elements are ever
 ; used.
 ;
 ; :Keywords:

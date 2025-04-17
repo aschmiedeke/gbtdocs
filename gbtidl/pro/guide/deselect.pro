@@ -15,7 +15,7 @@
 ; for a summary of selection syntax.
 ;
 ; The selection criteria are ultimately passed to the io class's
-; search_index via the _EXTRA parameter. 
+; search_index via the ``_EXTRA`` parameter. 
 ;
 ; :Keywords:
 ; 
