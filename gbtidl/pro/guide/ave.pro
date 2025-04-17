@@ -92,7 +92,7 @@
 ;   :idl:pro:`accumave`
 ;   :idl:pro:`accumclear`
 ;   :idl:pro:`set_data_container`
-;   :idl:pro:`data_free`
+;   :idl:pro:`DATA_FREE`
 ;
 ;-
 pro ave, accumnum, noclear=noclear, quiet=quiet, wtarray=wtarray, count=count

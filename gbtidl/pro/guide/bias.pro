@@ -3,11 +3,7 @@
 ;+
 ; This procedure adds a scalar bias to the data container's data.
 ;
-; Equivalent to:
-; 
-; .. code-block:: IDL
-; 
-;   !g.s[0].data_ptr = !g.s[0].data_ptr + factor
+; Equivalent to: `!g.s[0].data_ptr = !g.s[0].data_ptr + factor`
 ; 
 ; :Params:
 ;

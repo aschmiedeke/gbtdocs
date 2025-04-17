@@ -21,7 +21,7 @@
 ;
 ; Use :idl:pro:`bshow` to overplot a baseline model.
 ;
-; Use :idl:pro:`subtract to subtract the data of one buffer (which might contain 
+; Use :idl:pro:`subtract` to subtract the data of one buffer (which might contain 
 ; a baseline model) from another.
 ;
 ; :Keywords:

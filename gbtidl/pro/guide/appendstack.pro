@@ -1,9 +1,7 @@
 ; docformat = 'rst'
 
 ;+
-; Append entries to the stack. 
-;
-; See also :idl:pro:`addstack.
+; Append entries to the stack. See also :idl:pro:`addstack`.
 ;
 ; :Params:
 ;
