@@ -1,18 +1,18 @@
 ; docformat = 'rst' 
 
 ;+
-; Subtract a baseline using the stored coefficients in `!g.polyfit`
-; and `!g.nfit` from the data in the primary data container.
+; Subtract a baseline using the stored coefficients in ``!g.polyfit``
+; and ``!g.nfit`` from the data in the primary data container.
 ;
 ; Note that bsubtract does not itself do any fitting. This only
 ; subtracts the result of the most recent fit.  Since the fitted
-; polynomials are orthogonal, using up to `!g.nfit` of them is itself a
+; polynomials are orthogonal, using up to ``!g.nfit`` of them is itself a
 ; valid fit at the lower order.
 ;
 ; :Keywords:
 ;   nfit : in, optional, type=integer
-;       Only use at most nfit parameters. If `!g.nfit` is less then nfit,
-;       then only `!g.nfit` parameters will be used and a warning will be
+;       Only use at most nfit parameters. If ``!g.nfit`` is less then nfit,
+;       then only ``!g.nfit`` parameters will be used and a warning will be
 ;       issued.
 ;   ok : out, optional, type=boolean
 ;       1 on success, 0 on failure.

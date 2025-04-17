@@ -16,8 +16,8 @@
 ;
 ; :Keywords:
 ;   nfit : in, optional, type=integer
-;       The order of polynomial to fit.  Defaults to !g.nfit.  If set,
-;       then this also sets the value of !g.nfit.  
+;       The order of polynomial to fit. Defaults to ``!g.nfit``. If set,
+;       then this also sets the value of ``!g.nfit``.  
 ;
 ;   noshow : in, optional, type=boolean
 ;       If set, the result is not shown (overplotted).  If the plotter

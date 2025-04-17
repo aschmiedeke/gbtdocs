@@ -3,7 +3,7 @@
 ;+
 ; This procedure truncates, or clips, data values above and below
 ; specified limits.  Data value can alternatively be blanked using the
-; /blank flag. In that case, data values outside the limits are
+; `/blank` flag. In that case, data values outside the limits are
 ; replaced by blanks (NaN).
 ; 
 ; :Params:
