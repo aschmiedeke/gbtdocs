@@ -9,50 +9,50 @@
 ; calibrated in Ta (K) by default.  Other recognized units are Ta* and
 ; Jy.
 ;
-; **Summary**>
-;   * Data are selected using scan, ifnum, intnum, plnum and
-;     fdnum or, alternatively, sampler and intnum if you know the
+; **Summary**
+;   * Data are selected using ``scan``, ``ifnum``, ``intnum``, ``plnum`` and
+;     ``fdnum`` or, alternatively, ``sampler`` and ``intnum`` if you know the
 ;     specific sampler name (e.g. "A10").
 ;
 ;   * Individual integrations are processed separately.
 ;     Each integration is processed using :idl:pro:`dofreqswitch`
 ;
 ;   * The integrations are calibrated in Ta (K) by default.  If
-;     units of Ta* or Jy are requested via the units keyword, then 
+;     units of Ta* or Jy are requested via the ``units`` keyword, then 
 ;     :idl:pro:`dcsetunits` is used to convert to the desired units. 
 ;     This produces two spectra, one where the "sig" phase of the
 ;     integration was used as the "signal" and one where the "ref"
 ;     phase of the integration was used as the "signal".
 ;
 ;   * The two resulting data containers are combined using 
-;     :idl:pro:`dcfold` unless the nofold keyword is set. This step is also 
+;     :idl:pro:`dcfold` unless the ``nofold`` keyword is set. This step is also 
 ;     skipped if the there is no frequency overlap between the two
 ;     spectra (the frequency switching distance is more than the
 ;     total number of channels).  In that case (out-of-band
-;     frequency switching), the data can not be "fold"ed and this
+;     frequency switching), the data cannot be "fold"ed and this
 ;     step is skipped. 
 ;
 ;   * Averaging of individual integrations is then done using 
 ;     :idl:pro:`dcaccum`. By default, integrations are weighted as 
-;     described in dcaccum. If the eqweight keyword is set, then 
-;     integrations are averaged with an equal weight. If the nofold 
+;     described in :idl:pro:`dcaccum`. If the ``eqweight`` keyword is set, then 
+;     integrations are averaged with an equal weight. If the ``nofold`` 
 ;     keyword is set or the data is out-of-band frequency-switched then
 ;     the two results are averaged separately for each integration.   
 ;
 ;   * The final average is left in the primary data container
-;     (buffer 0), and a summary line is printed. If the nofold keyword
+;     (buffer 0), and a summary line is printed. If the ``nofold`` keyword
 ;     is set then the other result is left in buffer 1.  These results
 ;     can be combined later by the user using :idl:pro:`fold`. The printing of the
-;     summary line can be suppressed by setting the quiet keyword. 
+;     summary line can be suppressed by setting the ``quiet`` keyword. 
 ;
 ;   * The individual integration results can be saved to the
-;     currently opened output file by setting the keepints keyword.  The
-;     final average is still produced in that case.  If the nofold
+;     currently opened output file by setting the ``keepints`` keyword.  The
+;     final average is still produced in that case.  If the ``nofold``
 ;     keyword is set, the "signal" result is kept first followed by the
 ;     "reference" result for each integration, otherwise only the
 ;     folded result is saved for each integration.  In the case of
 ;     out-of-band frequency-switched data only the "signal" result is
-;     saved unless the nofold keyword is explicitly set.
+;     saved unless the ``nofold`` keyword is explicitly set.
 ;   
 ; **Parameters**
 ; 
@@ -60,13 +60,13 @@
 ; identify the IF number, polarization number, and feed number are
 ; optional. 
 ; 
-; If ifnum, fdnum, or plnum are not supplied then the lowest
+; If ``ifnum``, ``fdnum``, or ``plnum`` are not supplied then the lowest
 ; values for each of those where data exists (all combinations may not
 ; have data) will be used, using any user-supplied values.  The value
-; of ifnum is determined first, followed by fdnum and finally plnum.  If a
-; combination with data can not be found then :idl:pro:`showiftab`
+; of ``ifnum`` is determined first, followed by ``fdnum` and finally ``plnum``.  If a
+; combination with data cannot be found then :idl:pro:`showiftab`
 ; is used to show the user what the set of valid combinations are.
-; The summary line includes the ifnum, fdnum, and plnum used.
+; The summary line includes the ``ifnum``, ``fdnum``, and ``plnum`` used.
 ; 
 ; **Tsys and Available Units**
 ; 
@@ -78,42 +78,42 @@
 ; opacity (tau) may be specified, and an aperture efficiency may be
 ; specified.  The user is strongly encouraged to enter values for
 ; these calibration parameters, but they will be estimated if none are
-; provided.  The user can also supply a mean tcal using the tcal
+; provided.  The user can also supply a mean tcal using the ``tcal``
 ; keyword.  That will override the tcal found in the data.
 ; 
 ; **Smoothing the Reference Spectra**
 ; 
-; A parameter called smthoff can be used to smooth the reference
+; A parameter called ``smthoff`` can be used to smooth the reference
 ; spectrum in dofreqswitch.  In certain cases this can improve the
 ; signal to noise ratio, but it may degrade baseline shapes and
-; artificially emphasize spectrometer glitches.  Use with care.  A
-; value of smthoff=16 is often a good choice. 
+; artificially emphasize spectrometer glitches. Use with care.  A
+; value of ``smthoff=16`` is often a good choice. 
 ;  
 ; **Weighting of Integrations in Scan Average**
 ;  
 ; By default, the averaging of integrations is weighted using tsys,
 ; exposure, and frequency_resolution as described in the :idl:pro:`dcaccum` 
 ; documentation. To give all integrations equal weight instead of the
-; default weighting based on Tsys, use the /eqweight keyword.
+; default weighting based on Tsys, use the ``/eqweight`` keyword.
 ; 
 ; If the data were taken with out-of-band frequency switching then no folding 
-; will be done and the nofold argument is ignored.
+; will be done and the ``nofold`` argument is ignored.
 ; 
 ; **Using or Ignoring Flags**
 ; 
 ; Flags (set via :idl:pro:`flag`) can be selectively
-; applied or ignored using the useflag and skipflag keywords.  Only one of
+; applied or ignored using the ``useflag`` and ``skipflag`` keywords.  Only one of
 ; those two keywords can be used at a time (it is an error to use both
-; at the same time).  Both can be either a boolean (/useflag or /skipflag)
-; or an array of strings.  The default is /useflag, meaning that all flag
+; at the same time).  Both can be either a boolean (``/useflag`` or ``/skipflag``)
+; or an array of strings.  The default is ``/useflag``, meaning that all flag
 ; rules that have been previously set are applied when the data is
 ; fetched from disk, blanking data as described by each rule.  If
-; /skipflag is set, then all of the flag rules associated with this data
+; ``/skipflag`` is set, then all of the flag rules associated with this data
 ; are ignored and no data will be blanked when fetched from disk (it
 ; may still contain blanked values if the actual values in the disk
-; file have already been blanked by some other process).  If useflag is a
+; file have already been blanked by some other process).  If ``useflag`` is a
 ; string or array of strings, then only those flag rules having the
-; same idstring value are used to blank the data.  If skipflag is a
+; same idstring value are used to blank the data.  If ``skipflag`` is a
 ; string or array of strings, then all flag rules except those
 ; with the same idstring value are used to blank the data.
 ; 
@@ -124,7 +124,7 @@
 ; channels are replaced with Not a Number when the data is read from
 ; disk.  That presents a challenge when processing frequency switched
 ; data to avoid a spike appearing at the flagged channel locations
-; after the fold step done by this procedure (unless nofold is
+; after the fold step done by this procedure (unless ``nofold`` is
 ; selected).  When the data are combined at the fold step, each
 ; channel data average is the weighted average (using Tsys) of two
 ; data values, each from the same sky frequency but from different
@@ -144,7 +144,7 @@
 ; after one of them has been shifted to align in frequency, is also
 ; flagged so that the final average has no finite values for that
 ; channel (i.e. it appears as a flagged channel).  Alternatively, the
-; blankinterp keyword can be used to tell the fold procedure to
+; ``blankinterp`` keyword can be used to tell the fold procedure to
 ; interpolate across all blanked values before doing any shifting and
 ; averaging.  In the case of individually flagged channels, the
 ; blanked channel is replaced by the average of the two adjacent
@@ -152,7 +152,7 @@
 ; unknown (flagged) channel but it can make downstream data processing
 ; simpler by not having to worry that some of the channels contain
 ; non-finite values.  That may be important if the data are exported
-; out of GBTIDL.  Finally, the nomask keyword can be used to turn
+; out of GBTIDL.  Finally, the ``nomask`` keyword can be used to turn
 ; off this special handling (masking) of flagged channels before the
 ; average (where spikes may result).  If blankinterp is used then
 ; nomask has no effect because the data are interpolated before the
@@ -162,16 +162,16 @@
 ; **Dealing With Duplicate Scan Numbers**
 ; 
 ; There are 3 ways to attempt to resolve ambiguities when the
-; same scan number appears in the data source.  The instance keyword
+; same scan number appears in the data source.  The ``instance`` keyword
 ; refers to the element of the returned array of scan_info structures
 ; that :idl:pro:`scan_info` returns.  So, if scan 23
 ; appears 3 times then instance=1 refers to the second time that scan 23
-; appears as returned by scan_info.  The file keyword is useful if a 
+; appears as returned by scan_info.  The ``file`` keyword is useful if a 
 ; scan is unique to a specific file and multiple files have been accessed
 ; using :idl:pro:`dirin`.  If file is specified and instance
 ; is also specified, then instance refers to the instance of that scan
 ; just within that file (which may be different from its instance within
-; all opened files when dirin is used).  The timestamp keyword is another
+; all opened files when dirin is used).  The ``timestamp`` keyword is another
 ; way to resolve ambiguous scan numbers.  The timestamp here is a string
 ; used essentially as a label by the monitor and control system and is
 ; unique to each scan.  The format of the timestamp string is
@@ -245,7 +245,7 @@
 ;       keyword will not affect error messages.  Default is unset.
 ;   keepints : in, optional, type=boolean
 ;       When set, the individual integrations are saved to the current output file (as set
-;       by fileout). This keyword is ignored if an integration is specified using the intnum
+;       by fileout). This keyword is ignored if an integration is specified using the ``intnu`` 
 ;       keyword.  Default is unset.
 ;   useflag : in, optional, type=boolean or string
 ;       Apply all or just some of the flag rules?  Default is set.

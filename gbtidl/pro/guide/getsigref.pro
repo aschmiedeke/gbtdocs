@@ -12,15 +12,15 @@
 ; Jy. 
 ;
 ; **Summary**
-;   * Data are selected for the two scans using sigscan, refscan,
-;     ifnum, intnum, plnum and fdnum or, alternatively, sampler and
-;     intnum if you know the specific sampler name (e.g. "A10").
-;     The same sampler name is used for both sigscan and refscan.
+;   * Data are selected for the two scans using ``sigscan``, ``refscan``,
+;     ``ifnum``, ``intnum``, ``plnum`` and ``fdnum`` or, alternatively, ``sampler`` and
+;     ``intnum`` if you know the specific ``sampler`` name (e.g. "A10").
+;     The same sampler name is used for both ``sigscan`` and ``refscan``.
 ;
-;   * If the avgref option is not set (the default) and both scans
+;   * If the ``avgref`` option is not set (the default) and both scans
 ;     have the same number of integrations, then individual integrations
-;     are processed separately.  The same integration number in
-;     sigscan and refscan are processed together. If the avgref option
+;     are processed separately. The same integration number in
+;     ``sigscan`` and ``refscan`` are processed together. If the ``avgref`` option
 ;     is set or both scans do not have the same number of integrations
 ;     then the total power value from each integration in refscan is found
 ;     using :idl:pro:`dototalpower`
@@ -31,20 +31,20 @@
 ;     to determine TCal and the sig and ref values are used as is.
 ;
 ;   * The integrations are calibrated in Ta (K) by default.  If
-;     units of Ta* or Jy are requested via the units keyword, then 
+;     units of Ta* or Jy are requested via the ``units`` keyword, then 
 ;     :idl:pro:`dcsetunits` is used to convert to the desired units.
 ;
 ;   * Averaging of individual integrations is then done using 
 ;     :idl:pro:`dcaccum`. By default, integrations are weighted as described
-;     in dcaccum. If the eqweight keyword is set, then integrations are averaged
+;     in dcaccum. If the ``eqweight`` keyword is set, then integrations are averaged
 ;     with an equal weight.
 ;
 ;   * The final average is left in the primary data container
 ;     (buffer 0), and a summary line is printed.  The printing of the
-;     summary line can be suppressed by setting the quiet keyword.
+;     summary line can be suppressed by setting the ``quiet`` keyword.
 ;
 ;   * The individual integration results can be saved to the
-;     currently opened output file by setting the keepints keyword.
+;     currently opened output file by setting the ``keepints`` keyword.
 ;     The final average is still produced in that case.
 ;   
 ; **Parameters
@@ -73,7 +73,7 @@
 ; aperture efficiency may be specified.  The user is strongly
 ; encouraged to enter values for these calibration parameters, but
 ; they will be estimated if none are provided.  The user can also
-; supply a mean tcal using the tcal keyword.  That will override the
+; supply a mean tcal using the ``tcal`` keyword.  That will override the
 ; tcal found in the data. 
 ; 
 ; **Smoothing the Reference Spectra**
@@ -89,7 +89,7 @@
 ; By default, the averaging of integrations is weighted using tsys,
 ; exposure, and frequency_resolution as described in the :idl:pro:`dcaccum`
 ; documentation.  To give all integrations equal weight instead of the
-; default weighting based on Tsys, use the /eqweight keyword.  This
+; default weighting based on Tsys, use the ``/eqweight`` keyword.  This
 ; same weighting is used when averaging the reference scans if the
 ; avgref option is on or there are different numbers of integrations
 ; in each scan.
@@ -97,35 +97,35 @@
 ; **Using or Ignoring Flags**
 ; 
 ; Flags (set via :idl:pro:`flag`) can be selectively
-; applied or ignored using the useflag and skipflag keywords.  Only
+; applied or ignored using the ``useflag`` and ``skipflag`` keywords.  Only
 ; one of those two keywords can be used at a time (it is an error to
-; use both at the same time).  Both can be either a boolean (/useflag
-; or /skipflag) or an array of strings.  The default is /useflag,
+; use both at the same time).  Both can be either a boolean (``/useflag``
+; or ``/skipflag``) or an array of strings.  The default is ``/useflag``,
 ; meaning that all flag rules that have been previously set are
 ; applied when the data is fetched from disk, blanking data as
-; described by each rule.  If /skipflag is set, then all of the flag
+; described by each rule.  If ``/skipflag`` is set, then all of the flag
 ; rules associated with this data are ignored and no data will be
 ; blanked when fetched from disk (it may still contain blanked values
 ; if the actual values in the disk file have already been blanked by
-; some other process).  If useflag is a string or array of strings,
+; some other process).  If ``useflag`` is a string or array of strings,
 ; then only those flag rules having the same idstring value are used
-; to blank the data.  If skipflag is a string or array of strings,
+; to blank the data.  If ``skipflag`` is a string or array of strings,
 ; then all flag rules except those with the same idstring value are
 ; used to blank the data. 
 ;
 ; **Dealing With Duplicate Scan Numbers**
 ;
 ; There are 3 ways to attempt to resolve ambiguities when the
-; same scan number appears in the data source.  The instance keyword
+; same scan number appears in the data source.  The ``instance`` keyword
 ; refers to the element of the returned array of scan_info structures
 ; that :idl:pro:`scan_info` returns.  So, if scan 23
 ; appears 3 times then instance=1 refers to the second time that scan
-; 23 appears as returned by scan_info.  The file keyword is useful if
+; 23 appears as returned by scan_info.  The ``file`` keyword is useful if
 ; a scan is unique to a specific file and multiple files have been
 ; accessed using :idl:pro:`dirin`. If file is specified and instance is also 
 ; specified, then instance refers to the instance of that scan just
 ; within that file (which may be different from its instance within 
-; all opened files when dirin is used).  The timestamp keyword is
+; all opened files when dirin is used).  The ``timestamp`` keyword is
 ; another way to resolve ambiguous scan numbers.  The timestamp here
 ; is a string used essentially as a label by the monitor and control
 ; system and is unique to each scan.  The format of the timestamp
@@ -194,7 +194,7 @@
 ;   keepints : in, optional, type=boolean
 ;       When set, the individual integrations are saved to the current output file
 ;       (fileout).  This is ignored if a specific integration is requested
-;       using the intnum keyword.  Default is unset.
+;       using the ``intnum`` keyword.  Default is unset.
 ;   useflag : in, optional, type=boolean or string
 ;       Apply all or just some of the flag rules?  Default is set. 
 ;   skipflag : in, optional, type=boolean or string
@@ -267,7 +267,6 @@
 ;   :idl:pro:`showiftab`
 ;
 ;-
-
 pro getsigref,sigscan,refscan,ifnum=ifnum,intnum=intnum,plnum=plnum,fdnum=fdnum,sampler=sampler,tau=tau,$
               tsys=tsys,ap_eff=ap_eff,smthoff=smthoff,units=units,eqweight=eqweight, $
               tcal=tcal,quiet=quiet,avgref=avgref,keepints=keepints,useflag=useflag,skipflag=skipflag,$

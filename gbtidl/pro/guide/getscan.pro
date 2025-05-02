@@ -1,7 +1,7 @@
 ; docformat = 'rst' 
 
 ;+
-; Gets the data associated with a given scan number.  In general this
+; Gets the data associated with a given scan number. In general this
 ; procedure is used on data that have already been calibrated and
 ; written o a new data file.
 ;
@@ -9,11 +9,11 @@
 ; program on the GBT, use getfs, gettp, getnod, or one of the other
 ; procedures that does both retrieval and calibration.
 ;
-; This is shorthand for get,scan=scan with optional use of
-; useflag or skipflag.  See the documentation for :idl:pro:`get` for more 
-; information.  If there is more than one record that has the
+; This is shorthand for ``get,scan=scan`` with optional use of
+; ``useflag`` or ``skipflag``. See the documentation for :idl:pro:`get`
+; for more  information. If there is more than one record that has the
 ; requested scan number, only the first is saved to the primary data
-; container.  This is discussed in more detail in the documentation
+; container. This is discussed in more detail in the documentation
 ; for get. 
 ;
 ; :Params:

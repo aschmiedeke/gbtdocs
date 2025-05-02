@@ -7,8 +7,8 @@
 ; develop more tailored calibration schemes.
 ;
 ; **Summary** 
-;   * Data are selected using scan, ifnum, intnum, plnum, and
-;     fdnum or, alternatively, sampler and intnum if you know the
+;   * Data are selected using ``scan``, ``ifnum``, ``intnum``, ``plnum``, and
+;     ``fdnum`` or, alternatively, ``sampler`` and ``intnum`` if you know the
 ;     specific sampler name (e.g. "A10").
 ;  
 ;   * Individual integrations are processed separately using
@@ -25,23 +25,20 @@
 ;     line can be suppressed by setting the quiet keyword.
 ; 
 ;   * This can be used on sig-switching data (frequency-switched
-;     data).  Use the sig_state keyword to select the signal
-;     state (1) or the reference state (0).  Otherwise all data are
-;     used.
+;     data). Use the sig_state keyword to select the signal state (1) or the
+;     reference state (0).  Otherwise all data are used.
 ;  
 ; **Parameters**
 ; 
-; The scan number is required.  Arguments to identify the
-; IF number, polarization number and feed number are optional.  The
-; procedure calculates  Tsys based on the Tcal values and the data.
-; The Tcal value comes from the mean_tcal value in cal_off phase data
-; container unless the user supplies a value using the tcal keyword.
-; In that case, one tcal value is supplied and that value is used for
-; all integrations processed here.  The two switching phases are
-; differenced and a system temperature (Tsys) is calculated in the 
-; <a href="../toolbox/docal.html">docal</a> procedure.
-; See the documentation for that procedure for details of the Tsys
-; calculation.
+; The scan number is required.  Arguments to identify the IF number, 
+; polarization number and feed number are optional.  The procedure 
+; calculates  Tsys based on the Tcal values and the data. The Tcal value
+; comes from the mean_tcal value in cal_off phase data container unless 
+; the user supplies a value using the tcal keyword. In that case, one tcal
+; value is supplied and that value is used for all integrations processed
+; here.  The two switching phases are differenced and a system temperature
+; (Tsys) is calculated in the :idl:pro:`docal` procedure. See the documentation
+; for that procedure for details of the Tsys calculation.
 ; 
 ; If ifnum, fdnum, or plnum are not supplied then the lowest
 ; values for each of those where data exists (all combinations may not
@@ -57,23 +54,23 @@
 ; tsys, exposure, and frequency_resolution as described in the 
 ; :idl:pro:`dcaccum` documentation.  To give all integrations equal 
 ; weight instead of the default weighting based on Tsys, use the
-; /eqweight keyword. 
+; ``/eqweight`` keyword. 
 ; 
 ; **Using or Ignoring Flags**
 ; 
 ; Flags (set via :idl:pro:`flag`) can be selectively
 ; applied or ignored using the useflag and skipflag keywords.  Only one of
 ; those two keywords can be used at a time (it is an error to use both
-; at the same time).  Both can be either a boolean (/useflag or /skipflag)
+; at the same time).  Both can be either a boolean (``/useflag`` or ``/skipflag``)
 ; or an array of strings.  The default is /useflag, meaning that all flag
 ; rules that have been previously set are applied when the data is
 ; fetched from disk, blanking data as described by each rule.  If
-; /skipflag is set, then all of the flag rules associated with this data
+; ``/skipflag`` is set, then all of the flag rules associated with this data
 ; are ignored and no data will be blanked when fetched from disk (it
 ; may still contain blanked values if the actual values in the disk
-; file have already been blanked by some other process).  If useflag is a
+; file have already been blanked by some other process).  If ``useflag`` is a
 ; string or array of strings, then only those flag rules having the
-; same idstring value are used to blank the data.  If skipflag is a
+; same idstring value are used to blank the data.  If ``skipflag`` is a
 ; string or array of strings, then all flag rules except those
 ; with the same idstring value are used to blank the data.
 ; 
@@ -181,14 +178,10 @@
 ; 
 ; :idl:pro:`accumave`
 ; :idl:pro:`accumclear`
-; :idl:pro:`calsummary`
-; :idl:pro:`check_calib_args`
-; :idl:pro:`data_free`
+; :idl:pro:`DATA_FREE`
 ; :idl:pro:`dcaccum`
 ; :idl:pro:`dcscale`
 ; :idl:pro:`docal`
-; :idl:pro:`find_scan_info`
-; :idl:pro:`get_calib_data`
 ; :idl:pro:`set_data_container`
 ; :idl:pro:`showiftab`
 ;
