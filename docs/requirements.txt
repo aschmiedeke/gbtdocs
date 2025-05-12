@@ -24,6 +24,7 @@ sphinx-hoverxref
 git+https://github.com/aschmiedeke/sphinx-idl.git@mods
 sphinx-inline-tabs
 sphinxcontrib-applehelp
+sphinxcontrib-bibtex
 sphinxcontrib-devhelp
 sphinxcontrib-htmlhelp
 sphinxcontrib-jsmath
