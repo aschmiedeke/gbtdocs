@@ -14,10 +14,11 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../sparrow'))
 sys.path.insert(0, os.path.abspath('../gbtidl'))
+
 # -- Project information -----------------------------------------------------
 
 project = 'GBT Docs'
-copyright = '2023-24, Green Bank Observatory, A. Schmiedeke'
+copyright = '2023-25, Green Bank Observatory, A. Schmiedeke'
 author = 'Green Bank Observatory'
 
 # The full version, including alpha/beta/rc tags
@@ -43,6 +44,7 @@ extensions = ['sphinx.ext.todo',
               'hoverxref.extension',
               'sphinx_idl.domain', 
               'sphinx_idl.auto'
+              'sphinxcontrib.bibtex',
 ]
 
 suppress_warnings = ['autosectionlabel.*']
@@ -58,6 +60,12 @@ intersphinx_mapping = {
 }
 
 pygments_style = 'sphinx'
+
+# for sphinxcontrib-bibtex
+bibtex_bibfiles = ['bibliography.bib']
+bibtex_reference_style = 'author_year'
+bibtex_tooltips = True
+
 
 # We recommend adding the following config value.
 # Sphinx defaults to automatically resolve *unresolved* labels using all your Intersphinx mappings.
