@@ -56,11 +56,9 @@ your data.
 
 Other documents that may be useful to GBTIDL users include:
 
-* The text Practical IDL Programming by :cite:`Gumley2002` is a useful resource for beginning
+* The book Practical IDL Programming by :cite:`Gumley2002` is a useful resource for beginning
 and expert IDL users.
 
 
 
-
-.. bibliography:: references.bib
    
