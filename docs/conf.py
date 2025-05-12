@@ -43,7 +43,7 @@ extensions = ['sphinx.ext.todo',
               'sphinx_inline_tabs',
               'hoverxref.extension',
               'sphinx_idl.domain', 
-              'sphinx_idl.auto'
+              'sphinx_idl.auto',
               'sphinxcontrib.bibtex',
 ]
 
