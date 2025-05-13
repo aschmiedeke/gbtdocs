@@ -26,7 +26,7 @@ User's Guide
 
         Main Features of GBTIDL, Where to run GBTIDL, Obtaining GBTIDL
 
-        .. button-link:: gbtidl/gbtidl_intro.html
+        .. button-link:: gbtidl/users_guide/intro.html
             :color: primary
             :tooltip: GBTIDL Introduction
             :outline:
@@ -42,7 +42,7 @@ User's Guide
 
         How to begin a GBTIDL session
 
-        .. button-link:: gbtidl/gbtidl_getting_started.html
+        .. button-link:: gbtidl/users_guide/get_started.html
             :color: primary
             :tooltip: GBTIDL getting started
             :outline:
@@ -59,7 +59,7 @@ User's Guide
 
         How to access observing data.
 
-        .. button-link:: gbtidl/gbtidl_access_data_files.html
+        .. button-link:: gbtidl/users_guide/access_data_files.html
             :color: primary
             :tooltip: GBTIDL accessing data files
             :outline:
@@ -76,7 +76,7 @@ User's Guide
 
         Description of data containers and how they are used by GBTIDL procedures
 
-        .. button-link:: gbtidl/gbtidl_data_containers.html
+        .. button-link:: gbtidl/users_guide/data_containers.html
             :color: primary
             :tooltip: GBTIDL data containers
             :outline:
@@ -93,7 +93,7 @@ User's Guide
 
         Calibrate SDFITS files.
 
-        .. button-link:: gbtidl/gbtidl_data_calibration.html
+        .. button-link:: gbtidl/users_guide/data_calibration.html
             :color: primary
             :tooltip: GBTIDL data calibration
             :outline:
@@ -110,7 +110,7 @@ User's Guide
 
         Plotting data with GBTIDL
 
-        .. button-link:: gbtidl/gbtidl_data_plotting.html
+        .. button-link:: gbtidl/users_guide/data_plotting.html
             :color: primary
             :tooltip: GBTIDL data plotting
             :outline:
@@ -127,7 +127,7 @@ User's Guide
 
         Analyzing data with GBTIDL
 
-        .. button-link:: gbtidl/gbtidl_data_analysis.html
+        .. button-link:: gbtidl/users_guide/data_analysis.html
             :color: primary
             :tooltip: GBTIDL data analysis
             :outline:
@@ -144,7 +144,7 @@ User's Guide
 
         Analyzing data with GBTIDL
 
-        .. button-link:: gbtidl/gbtidl_data_saving.html
+        .. button-link:: gbtidl/users_guide/data_saving.html
             :color: primary
             :tooltip: GBTIDL data saving
             :outline:
@@ -159,14 +159,14 @@ User's Guide
     :maxdepth: 3
     :hidden:
 
-    gbtidl/gbtidl_intro
-    gbtidl/gbtidl_getting_started
-    gbtidl/gbtidl_access_data_files
-    gbtidl/gbtidl_data_containers
-    gbtidl/gbtidl_data_retrieval
-    gbtidl/gbtidl_data_plotting
-    gbtidl/gbtidl_data_analysis
-    gbtidl/gbtidl_data_saving
+    gbtidl/users_guide/intro
+    gbtidl/users_guide/get_started
+    gbtidl/users_guide/access_data_files
+    gbtidl/users_guide/data_containers
+    gbtidl/users_guide/data_retrieval
+    gbtidl/users_guide/data_plotting
+    gbtidl/users_guide/data_analysis
+    gbtidl/users_guide/data_saving
 
 
 

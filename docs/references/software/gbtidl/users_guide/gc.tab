@@ -1,0 +1,13 @@
+Name, Type, Value, Unit, Description
+!gc.light_speed, double, 2.99792458D8, ":math:`m\, s^{-1}`", The speed of light
+!gc.light_c, double, 2.99792458D5, ":math:`km\,s^{-1}`", The speed of light
+!gc.plank_h, double, 6.6260755D-27, ":math:`g\,cm^2\,s^{−1}`", Planck constant
+!gc.newt_g, double, 6.67259D-8, ":math:`dyne\,cm^2\,g^{−2}`", Newton gravitational constant 
+!gc.boltz_k, double, 1.380658D-16, ":math:`erg\,K^{-1}`", Boltzman constant
+!gc.eV2erg, double, 1.60217733D-12, , eV to ergs
+!gc.AU, double, 1.4960D+13, ":math:`cm`", astronomical unit
+!gc.m_H, double, 1.673534D-24, ":math:`g`", Hydrogen mass
+!gc.m_e, double, 9.1093897D-28, ":math:`g`", Electron mass
+!gc.pc, double, 3.0857D+18, ":math:`cm`", parsec
+!gc.rad_sig, double, 5.67051D-5, ":math:`erg\,cm^{-2}\,s^{-1}\,K^{-4}`", Radiation constants
+

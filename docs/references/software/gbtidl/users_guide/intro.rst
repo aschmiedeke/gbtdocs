@@ -12,15 +12,16 @@ spectrometer or spectral processor.
 Main Features of GBTIDL
 -----------------------
 
-* **GBTIDL is easy and effective** The GBTIDL package consists of a set of straightforward, yet flexible, calibration, averaging, and analysis procedures modeled after the
-UniPOPs and CLASS data reduction philosophies.
+* **GBTIDL is easy and effective** The GBTIDL package consists of a set of straightforward, 
+  yet flexible, calibration, averaging, and analysis procedures modeled after the UniPOPs 
+  and CLASS data reduction philosophies.
 * **Plotter** GBTIDL features a customized plotter with many built-in visualization features.
-* **Support for advanced users** GBTIDL has Data I/O and toolbox functionality that can
-be used for more advanced tasks.
-* **Data structures** GBTIDL makes use of data structures for storing spectra along with
-their headers.
+* **Support for advanced users** GBTIDL has Data I/O and toolbox functionality that can be
+  used for more advanced tasks.
+* **Data structures** GBTIDL makes use of data structures for storing spectra along with 
+  their headers.
 * **Online feature** GBTIDL can be run in ``online`` mode while observing with the GBT to
-give users rapid access to the most recent data.
+  give users rapid access to the most recent data.
 
 
 Where can I run GBTIDL?
@@ -40,25 +41,6 @@ Obtaining GBTIDL
 
 GBTIDL is available as a tar file from the GBTIDL home page at
 http://gbtidl.nrao.edu. Simply click on `Download GBTIDL Now <https://gbtidl.nrao.edu/downloads.shtml>`_ and follow the instructions.
-
-
-User Documentation
-------------------
-
-The following documents are available from links on the http://gbtidl.nrao.edu homepage:
-
-* The GBTIDL Quick Reference Guide gives a topical summary of the IDL procedures and functions.
-* The User Reference provides a list of GBTIDL procedures with detailed descriptions of parameters
-and usage examples.
-* The Contributed Code Reference describes user contributed procedures.
-* Calibration of GBT Spectral Line Data in GBTIDL describes how you can optimize calibration of
-your data.
-
-Other documents that may be useful to GBTIDL users include:
-
-* The book Practical IDL Programming by :cite:`Gumley2002` is a useful resource for beginning
-and expert IDL users.
-
 
 
    
