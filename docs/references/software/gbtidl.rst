@@ -11,9 +11,10 @@ GBTIDL is entirely written in IDL. There is limited support in GBTIDL for GBT co
 
 -----------------
 
-
 User's Guide
-------------
+============
+
+The content is also available as a pdf file `here <https://www.gb.nrao.edu/GBT/DA/gbtidl/users_guide.pdf>`_
 
 .. grid:: 1 2 2 2
 
@@ -22,136 +23,17 @@ User's Guide
         :shadow: md
         :margin: 2 2 0 0 
 
-        **Introduction** 
+        **GBTIDL User's Guide** 
 
-        Main Features of GBTIDL, Where to run GBTIDL, Obtaining GBTIDL
+        User's Guide for GBTIDL. 
 
-        .. button-link:: gbtidl/users_guide/intro.html
+        .. button-link:: gbtidl/users_guide.html
             :color: primary
-            :tooltip: GBTIDL Introduction
+            :tooltip: GBTIDL User's Guide
             :outline:
             :click-parent:
 
-            Introduction
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **Getting Started** 
-
-        How to begin a GBTIDL session
-
-        .. button-link:: gbtidl/users_guide/get_started.html
-            :color: primary
-            :tooltip: GBTIDL getting started
-            :outline:
-            :click-parent:
-
-            Getting Started
-
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **Accessing Data Files** 
-
-        How to access observing data.
-
-        .. button-link:: gbtidl/users_guide/access_data_files.html
-            :color: primary
-            :tooltip: GBTIDL accessing data files
-            :outline:
-            :click-parent:
-
-            Accessing Data Files
-
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **Data Containers** 
-
-        Description of data containers and how they are used by GBTIDL procedures
-
-        .. button-link:: gbtidl/users_guide/data_containers.html
-            :color: primary
-            :tooltip: GBTIDL data containers
-            :outline:
-            :click-parent:
-
-            Data Containers
-
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **Data Calibration** 
-
-        Calibrate SDFITS files.
-
-        .. button-link:: gbtidl/users_guide/data_calibration.html
-            :color: primary
-            :tooltip: GBTIDL data calibration
-            :outline:
-            :click-parent:
-
-            Data Calibration
-
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **Data Plotting** 
-
-        Plotting data with GBTIDL
-
-        .. button-link:: gbtidl/users_guide/data_plotting.html
-            :color: primary
-            :tooltip: GBTIDL data plotting
-            :outline:
-            :click-parent:
-
-            Data PLotting
-
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **Data Analysis** 
-
-        Analyzing data with GBTIDL
-
-        .. button-link:: gbtidl/users_guide/data_analysis.html
-            :color: primary
-            :tooltip: GBTIDL data analysis
-            :outline:
-            :click-parent:
-
-            Data Analysis
-
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **Saving Data** 
-
-        Analyzing data with GBTIDL
-
-        .. button-link:: gbtidl/users_guide/data_saving.html
-            :color: primary
-            :tooltip: GBTIDL data saving
-            :outline:
-            :click-parent:
-
-            Data Saving
-
+            User's Guide
 
 
 
@@ -159,85 +41,12 @@ User's Guide
     :maxdepth: 3
     :hidden:
 
-    gbtidl/users_guide/intro
-    gbtidl/users_guide/get_started
-    gbtidl/users_guide/access_data_files
-    gbtidl/users_guide/data_containers
-    gbtidl/users_guide/data_retrieval
-    gbtidl/users_guide/data_plotting
-    gbtidl/users_guide/data_analysis
-    gbtidl/users_guide/data_saving
+    gbtidl/users_guide
 
-
-
-Tables
-------
-
-.. grid:: 1 2 2 2
-
-   
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **!g structure** 
-
-        Content of the global structure ``!g`` used by many GBTIDL routines
-
-        .. button-link:: gbtidl/gbtidl_g_structure.html
-            :color: primary
-            :tooltip: GBTIDL !g structure
-            :outline:
-            :click-parent:
-
-            ``!g`` structure
-
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **Spectrum data container Content** 
-
-        Functions and procedures from the plotter folder
-
-        .. button-link:: gbtidl/gbtidl_spectrum_dc_content.html
-            :color: primary
-            :tooltip: GBTIDL spectrum dc content
-            :outline:
-            :click-parent:
-
-            Spectrum dc content 
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **Continuum data container Content** 
-
-        Functions and procedures from the toolbox folder
-
-        .. button-link:: gbtidl/gbtidl_continuum_dc_content.html
-            :color: primary
-            :tooltip: GBTIDL continuum dc content
-            :outline:
-            :click-parent:
-
-            Continuum dc content
-
-
-
-.. toctree::
-    :maxdepth: 3
-    :hidden:
-
-    gbtidl/gbtidl_g_structure
-    gbtidl/gbtidl_spectrum_dc_content
-    gbtidl/gbtidl_continuum_dc_content
 
     
 Procedures and Functions
-------------------------
+========================
 
 The package consists of a set of straightforward yet flexible calibration, averaging, and analysis
 procedures (the "GUIDE" layer) modeled after the UniPOPS and CLASS data reduction philosophies,
