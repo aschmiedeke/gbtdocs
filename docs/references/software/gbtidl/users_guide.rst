@@ -174,6 +174,39 @@ User's Guide
             Continuum Data
 
 
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **Other GBTIDL Features and Examples** 
+
+        Collection of Features and Examples
+
+        .. button-link:: users_guide/features_examples.html
+            :color: primary
+            :tooltip: GBTIDL features and examples
+            :outline:
+            :click-parent:
+
+            Other GBTIDL Features and Examples
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **Frequently Asked Questions** 
+
+        GBTIDL FAQ
+
+        .. button-link:: users_guide/faq.html
+            :color: primary
+            :tooltip: GBTIDL FAQ
+            :outline:
+            :click-parent:
+
+            GBTIDL FAQ
+
+
 
 .. toctree::
     :maxdepth: 3
@@ -189,6 +222,8 @@ User's Guide
     users_guide/data_saving
     users_guide/writing_procedures
     users_guide/continuum_data
+    users_guide/features_examples
+    users_guide/faq
 
 
 Tables
