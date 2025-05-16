@@ -117,17 +117,17 @@ Software
         :shadow: md
         :margin: 2 2 0 0 
 
-        **GBTIDL commands** 
+        **GBTIDL** 
 
-        References for GBTIDL commands
+        All things GBTIDL
 
         .. button-link:: software/gbtidl.html
             :color: primary
-            :tooltip: Reference for GBTIDL commands.
+            :tooltip: All things GBTIDL.
             :outline:
             :click-parent:
 
-            GBTIDL commands
+            All things GBTIDL
 
 
 

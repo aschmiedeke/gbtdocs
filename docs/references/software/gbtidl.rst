@@ -36,12 +36,29 @@ The content is also available as a pdf file `here <https://www.gb.nrao.edu/GBT/D
             User's Guide
 
 
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **Quick Reference for GBTIDL v2.8** 
+
+        User's Guide for GBTIDL. 
+
+        .. button-link:: gbtidl/quick_reference.html
+            :color: primary
+            :tooltip: Quick Reference for GBTIDL v2.8
+            :outline:
+            :click-parent:
+
+            Quick Reference for GBTIDL v2.8
+
 
 .. toctree::
     :maxdepth: 3
     :hidden:
 
     gbtidl/users_guide
+    gbtidl/quick_reference
 
 
     

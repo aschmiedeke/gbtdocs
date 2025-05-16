@@ -2,7 +2,7 @@
 User's Guide
 ############
 
-
+* PDF version of the GBTIDL User's Guide: https://www.gb.nrao.edu/GBT/DA/gbtidl/users_guide.pdf
 
 .. grid:: 1 2 2 2
 
