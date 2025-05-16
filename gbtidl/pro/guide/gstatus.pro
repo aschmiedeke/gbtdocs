@@ -12,7 +12,8 @@
 ;
 ; Using ``/full`` adds plotter color settings to the output.
 ;
-; See also the description of the contents of the ``!g`` structure :ref:`here <The !g Structure>`
+; See also the description of the contents of the ``!g`` structure 
+; :ref:`here <The !g Structure>`.
 ;
 ;
 ; :Keyword:
