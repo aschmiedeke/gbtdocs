@@ -16,18 +16,18 @@
 ; displayed x-axis units.  delta_x is calculated independently for
 ; each channel and centered at that channel.  The results are printed
 ; out and returned through the ret keyword. The display of the results
-; can be turned off through the use of the /quiet flag.
+; can be turned off through the use of the ``/quiet`` flag.
 ;
 ; The region is given in the currently displayed x-axis units and
-; the sum starts from the channel number nearest bmoment and ends at the
-; channel number nearest emoment.  If the /chan keyword is used, then
-; bmoment and emoment are given in channels.  If a region is not
+; the sum starts from the channel number nearest ``bmoment`` and ends at the
+; channel number nearest ``emoment``.  If the ``/chan`` keyword is used, then
+; ``bmoment`` and ``emoment`` are given in channels.  If a region is not
 ; specified the user is prompted to use the cursor on the plotter to
-; mark the region. /full can be used to force gmoment to use all channels.
+; mark the region. ``/full`` can be used to force gmoment to use all channels.
 ;
 ; Blanked values are ignored.
 ;
-; The structure returned through the ret keyword has these fields.
+; The structure returned through the ``re`` keyword has these fields.
 ;   * **bchan** The first channel used.
 ;   * **echan** The last channel used.
 ;   * **nchan** The total number of channels used.

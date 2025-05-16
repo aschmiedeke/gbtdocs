@@ -7,8 +7,8 @@
 ; develop more tailored calibration schemes.
 ;
 ; **Summary**
-;   * Data are selected using scan, ifnum, intnum, plnum, and
-;     fdnum or, alternatively, sampler and intnum if you know the
+;   * Data are selected using ``scan``, ``ifnum``, ``intnum``, ``plnum``, and
+;     ``fdnum`` or, alternatively, ``sampler`` and ``intnum`` if you know the
 ;     specific sampler name (e.g. "A10").
 ;  
 ;   * Individual integrations are processed separately using
@@ -17,21 +17,21 @@
 ;     temperature. For scans without any CAL switching data (TPnoCal)
 ;     then nothing is done at this step.  
 ;     *Note:* this step is done even when the data from only one state
-;     is requested using the cal_state or sig_state keywords. If the 
+;     is requested using the ``cal_state`` or ``sig_state`` keywords. If the 
 ;     data from one of the two states is blanked for a given integration
 ;     then the resulting Tsys will be set to Not A Number. If the default
 ;     weighting is used then none of the data from any integration with 
-;     a non-finite Tsys will be used in the final average. The eqweight
+;     a non-finite Tsys will be used in the final average. The ``eqweight``
 ;     keyword can be used to turn off the default weighting.
 ;
 ;   * Averaging of individual integrations is done using :idl:pro:`dcaccum`.
 ;     By default, integrations are weighted as described in dcaccum. If the
-;     eqweight keyword is set, then integrations are averaged with an equal
+;     ``eqweight`` keyword is set, then integrations are averaged with an equal
 ;     weight.
 ;
 ;   * The final average is left in the primary data container (buffer
 ;     0), and a summary line is printed.  The printing of the summary
-;     line can be suppressed by setting the quiet keyword.
+;     line can be suppressed by setting the ``quiet`` keyword.
 ;
 ;   * This can be used on sig-switching data (frequency-switched
 ;     data). Use the sig_state keyword to select the signal
@@ -48,68 +48,68 @@
 ;  
 ; **Parameters**
 ; 
-; The scan number is a required parameter.  Arguments to identify the
+; The ``scan`` number is a required parameter.  Arguments to identify the
 ; IF number, polarization number and feed number are optional.  The
 ; procedure calculates  Tsys based on the Tcal values and the data.
 ; The Tcal value comes from the mean_tcal value in cal_off phase data
-; container unless the user supplies a value using the tcal keyword.
+; container unless the user supplies a value using the ``tcal`` keyword.
 ; In that case, one tcal value is supplied and that value is used for
 ; all integrations processed here.  The two switching phases are
 ; averaged and a system temperature (Tsys) is calculated in the 
 ; :idl:pro:`dototalpower` procedure. See the documentation for that
 ; procedure for details of the Tsys calculation.
 ;
-; If ifnum, fdnum, or plnum are not supplied then the lowest
+; If ``ifnum``, ``fdnum``, or ``plnum`` are not supplied then the lowest
 ; values for each of those where data exists (all combinations may not
 ; have data) will be used, using any user-supplied values.  The value
-; of ifnum is determined first, followed by fdnum and finally plnum.  If a
+; of ifnum is determined first, followed by ``fdnum`` and finally ``plnum``.  If a
 ; combination with data can not be found then :idl:pro:`showiftab`
 ; is used to show the user what the set of valid combinations are.
-; The summary line includes the ifnum, fdnum, and plnum used.
+; The summary line includes the ``ifnum``, ``fdnum``, and ``plnum`` used.
 ; 
 ; **Weighting of Integrations in Scan Average**
 ; 
 ; By default, the averaging of integrations is weighted using
-; tsys, exposure, and frequency_resolution as described in the 
+; ``tsys``, ``exposure``, and ``frequency_resolution`` as described in the 
 ; :idl:pro:`dcaccum` documentation.  To give all integrations equal 
 ; weight instead of the default weighting based on Tsys, use the
-; /eqweight keyword. 
+; ``/eqweight`` keyword. 
 ; 
 ; **Using or Ignoring Flags**
 ; 
 ; Flags (set via :idl:pro:`flag`) can be selectively
-; applied or ignored using the useflag and skipflag keywords.  Only one of
+; applied or ignored using the ``useflag`` and ``skipflag`` keywords.  Only one of
 ; those two keywords can be used at a time (it is an error to use both
-; at the same time).  Both can be either a boolean (/useflag or /skipflag)
-; or an array of strings.  The default is /useflag, meaning that all flag
+; at the same time).  Both can be either a boolean (``/useflag`` or ``/skipflag``)
+; or an array of strings.  The default is ``/useflag``, meaning that all flag
 ; rules that have been previously set are applied when the data is
 ; fetched from disk, blanking data as described by each rule.  If
-; /skipflag is set, then all of the flag rules associated with this data
+; ``/skipflag`` is set, then all of the flag rules associated with this data
 ; are ignored and no data will be blanked when fetched from disk (it
 ; may still contain blanked values if the actual values in the disk
-; file have already been blanked by some other process).  If useflag is a
+; file have already been blanked by some other process).  If ``useflag`` is a
 ; string or array of strings, then only those flag rules having the
-; same idstring value are used to blank the data.  If skipflag is a
+; same idstring value are used to blank the data.  If ``skipflag`` is a
 ; string or array of strings, then all flag rules except those
 ; with the same idstring value are used to blank the data.
 ; 
 ; **Dealing With Duplicate Scan Numbers**
 ; 
 ; There are 3 ways to attempt to resolve ambiguities when the
-; same scan number appears in the data source.  The instance keyword
+; same scan number appears in the data source.  The ``instance`` keyword
 ; refers to the element of the returned array of scan_info structures
 ; that :idl:pro:`scan_info` returns.  So, if scan 23
-; appears 3 times then instance=1 refers to the second time that scan 23
-; appears as returned by scan_info.  The file keyword is useful if a 
+; appears 3 times then ``instance=1`` refers to the second time that scan 23
+; appears as returned by scan_info.  The ``file`` keyword is useful if a 
 ; scan is unique to a specific file and multiple files have been accessed
-; using :idl:pro:`dirin`.  If file is specified and instance
-; is also specified, then instance refers to the instance of that scan
+; using :idl:pro:`dirin`.  If ``file`` is specified and ``instance``
+; is also specified, then ``instance`` refers to the instance of that scan
 ; just within that file (which may be different from its instance within
-; all opened files when dirin is used).  The timestamp keyword is another
+; all opened files when dirin is used).  The ``timestamp`` keyword is another
 ; way to resolve ambiguous scan numbers.  The timestamp here is a string
 ; used essentially as a label by the monitor and control system and is
 ; unique to each scan.  The format of the timestamp string is
-; "YYYY_MM_DD_HH:MM:SS".  When timstamp is given, scan and instance
+; "YYYY_MM_DD_HH:MM:SS".  When ``timstamp`` is given, ``scan`` and ``instance``
 ; are ignored.  If more than one match is found, an error is 
 ; printed and this procedure will not continue.  
 ;
@@ -121,20 +121,20 @@
 ;   ifnum : in, optional, type=integer
 ;       IF number (starting with 0). Defaults to the lowest value 
 ;       associated with data taking into account any user-supplied 
-;       values for fdnum, and plnum.
+;       values for ``fdnum``, and ``plnum``.
 ;   intnum : in, optional, type=integer
 ;       Integration number (starting with 0), defaults to all integrations.
 ;   plnum : in, optional, type=integer
 ;       Polarization number (starting with 0).  Defaults to the lowest
-;       value with data after determining the values of ifnum and fdnum 
+;       value with data after determining the values of ``ifnum`` and ``fdnum``
 ;       if not supplied by the user.
 ;   fdnum : in, optional, type=integer
 ;       Feed number.  Defaults to the lowest value with data after
-;       determining the value of ifnum if not supplied by the user
-;       and using any value of plnum supplied by the user.  
+;       determining the value of ``ifnum`` if not supplied by the user
+;       and using any value of ``plnum`` supplied by the user.  
 ;   sampler : in, optional, type=string
-;       sampler name, this is an alternative way to specify ifnum,plnum,
-;       and fdnum.  When sampler name is given, ifnum, plnum, and fdnum 
+;       sampler name, this is an alternative way to specify ``ifnum``, ``plnum``,
+;       and fdnum.  When sampler name is given, ``ifnum``, ``plnum``, and ``fdnum`` 
 ;       must not be given.
 ;   eqweight : in, optional, type=boolean
 ;       When set, all integrations are averaged with equal weight (1.0).
@@ -148,11 +148,11 @@
 ;       keyword when it is set by the user.
 ;   sig_state : in, optional, type=integer
 ;       For use with sig-switched data. If sig_state is 1 then only the
-;       signal data are used, if sig_state is 0 then only the reference
+;       signal data are used, if ``sig_state`` is 0 then only the reference
 ;       data are used.
 ;   cal_state : in, optional, type=integer
 ;       If cal_state is 1 then only the cal-on data is used to 
-;       calculate the average or integration values.  If cal_state 
+;       calculate the average or integration values.  If ``cal_state`` 
 ;       is 0 then only the cal-off data are used.  If unset then all 
 ;       cal switching states are used.  Both states are always used 
 ;       to determine Tsys.
@@ -161,7 +161,7 @@
 ;       calposition label). If not supplied (the default) no selection
 ;       on wcalpos will be done. 
 ;   subref : in, optional, type=integer
-;       Only select data matching this subref value (the subref_state
+;       Only select data matching this ``subref`` value (the subref_state
 ;       value used when subreflector nodding to indicate the position
 ;       of the subreflector: 1 and -1 are the two positions and 0 
 ;       indicates motion during that integration). If not supplied 
@@ -173,7 +173,7 @@
 ;   keepints : in, optional, type=boolean
 ;       When set, the individual integrations are saved to the current
 ;       output file (fileout).  This keyword is ignored if a specific 
-;       integration is requested using the intnum keyword. Default is
+;       integration is requested using the ``intnum`` keyword. Default is
 ;       unset.
 ;   useflag : in, optional, type=boolean or string
 ;       Apply all or just some of the flag rules?  Default is set.
@@ -188,7 +188,7 @@
 ;       opened.
 ;   timestamp : in, optional, type=string
 ;       The M&C timestamp associated with the desired scan. When supplied,
-;       scan and instance are ignored.
+;       ``scan`` and ``instance`` are ignored.
 ;   status : out, optional, type=integer
 ;       An output parameter to indicate whether the procedure finished as
 ;       expected.  A value of 1 means there were no problems, a value of -1
@@ -216,15 +216,11 @@
 ; :Uses:
 ;   :idl:pro:`accumave`
 ;   :idl:pro:`accumclear`
-;   :idl:pro:`calsummary`
-;   :idl:pro:`check_calib_args`
-;   :idl:pro:`data_free`
+;   :idl:pro:`DATA_FREE`
 ;   :idl:pro:`dcaccum`
 ;   :idl:pro:`dcscale`
 ;   :idl:pro:`dcsetunits`
 ;   :idl:pro:`dototalpower`
-;   :idl:pro:`find_scan_info`
-;   :idl:pro:`get_calib_data`
 ;   :idl:pro:`set_data_container`
 ;   :idl:pro:`showiftab`
 ;

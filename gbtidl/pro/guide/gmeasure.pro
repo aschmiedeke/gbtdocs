@@ -5,8 +5,8 @@
 ; profile.  
 ;
 ; The derived area, width and velocity are displayed unless the
-; /quiet keyword is used.  These values can also be returned using the
-; ret keyword.  The value of ret is a 6-element array containing the
+; ``/quiet`` keyword is used.  These values can also be returned using the
+; ``ret`` keyword.  The value of ret is a 6-element array containing the
 ; area, width, and velocity in that order estimates of the error on
 ; those quantities in the same order. The width and velocity
 ; are always given (shown and returned) in km/s and the area is given
@@ -16,8 +16,8 @@
 ; the velocity error.
 ;
 ; This is a front-end to :idl:pro:`awv`.  The source code there originated at 
-; Arecibo.  See the comments there for a description of the 4 possibly
-; values for mode and how fract and rms are used for each mode.
+; Arecibo.  See the comments there for a description of the 4 possible
+; values for ``mode`` and how ``fract`` and ``rms`` are used for each mode.
 ;
 ; The data that is currently displayed in the plotter is used in
 ; this procedure.  The displayed x-axis can be any type.  The x-axis
@@ -31,8 +31,8 @@
 ;
 ; A baseline should have been removed prior to using this function.
 ;
-; brange, erange, lefthorn, and righthorn are given in the
-; currently display x-axis units unless the chan keyword is set.
+; ``brange``, ``erange``, ``lefthorn``, and ``righthorn`` are given in the
+; currently display x-axis units unless the ``chan`` keyword is set.
 ;
 ; Originally Contributed By: Karen O'Neil, NRAO-GB and Bob Garwood,
 ; NRAO-CV
@@ -55,35 +55,35 @@
 ; 
 ;   brange : in, optional, type=integer
 ;       Starting value of the region of interest in x-axis units unless
-;       chan is set.
+;       ``chan`` is set.
 ;
 ;   erange : in, optional, type=integer
 ;       Ending value of the region of interest in x-axis units unless 
-;       chan is set.
+;       ``chan`` is set.
 ;
 ;   rms : in, optional, type=float
 ;       Used in modes 2, 3 and 4 as described in :idl:pro:`awv`.  If this
 ;       is not supplied, it defaults to the stddev of the data within the
-;       region of interest given by brange and erange.
+;       region of interest given by ``brange`` and ``erange``.
 ;
 ;   chan : in, optional, type=boolean
 ;       Interpret the user supplied range and optional horn positions in 
 ;       channels instead of the current x-axis units. 
 ;
 ;   lefthorn : in, optional, type=float
-;       Location of the left peak in x-axis units unless chan was specified.
+;       Location of the left peak in x-axis units unless ``chan`` was specified.
 ;
 ;   righthorn : in, optional, type=float
-;       Location of the right peak in x-axis units unless chan was specified.
+;       Location of the right peak in x-axis units unless ``chan`` was specified.
 ;
 ;   quiet : in, optional, type=boolean
-;       When set, the results are not printed to the terminal (the ret
+;       When set, the results are not printed to the terminal (the ``ret``
 ;       keyword should be used to get the results).
 ;
 ;   ret : out, optional, type=floating point
 ;       Six-element array giving [area,width,velocity,areaerr,widtherr,velocityerr].
 ;       All six elements will be 0.0 if there was a problem.  The areaerr is
-;       only set when fract is 0.2 or 0.5.  The widtherr and velocityerr are
+;       only set when ``fract`` is 0.2 or 0.5.  The widtherr and velocityerr are
 ;       only set by mode 4.  Unset error values are 0.0.
 ;
 ; :Examples:

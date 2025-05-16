@@ -11,12 +11,12 @@
 ; data at the imag_buffer location is ignored on input (and
 ; overwritten on output).   
 ;
-; <p>The units of the x-axis and the data are not changed here.  The
+; The units of the x-axis and the data are not changed here.  The
 ; user needs to keep track of the state of their data containers.  If
-; a non-zero bdrop or edrop are used, the resulting data containers
+; a non-zero ``bdrop`` or ``edrop`` are used, the resulting data containers
 ; will be shortened by that many elements using :idl:pro:`dcextract`. 
-; Consequently, it may not be appropriate to use the same bdrop and
-; edrop on an inverse FFT as it was when the FFT was first done.
+; Consequently, it may not be appropriate to use the same ``bdrop`` and
+; ``edrop`` on an inverse FFT as it was when the FFT was first done.
 ;
 ; See the discussion in `idl:pro:`dcfft` on how inverse is used for
 ; spectral-line data vs continuum data.  For spectral-line data, an 

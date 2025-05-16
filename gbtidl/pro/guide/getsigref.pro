@@ -47,20 +47,20 @@
 ;     currently opened output file by setting the ``keepints`` keyword.
 ;     The final average is still produced in that case.
 ;   
-; **Parameters
+; **Parameters** 
 ; 
 ; Arguments for sig and ref scan numbers are required.  Arguments to
 ; identify the IF number, polarization number, and feed number are
 ; optional.  The default feed number (0) is the lowest numbered FEED
 ; found in the data.  
 ; 
-; If ifnum, fdnum, or plnum are not supplied then the lowest
+; If ``ifnum``, ``fdnum``, or ``plnum`` are not supplied then the lowest
 ; values for each of those where data exists (all combinations may not
 ; have data) will be used, using any user-supplied values.  The value
-; of ifnum is determined first, followed by fdnum and finally plnum.  If a
-; combination with data can not be found then :idl:pro:`showiftab`
+; of ``ifnum`` is determined first, followed by ``fdnum`` and finally ``plnum``.
+; If a combination with data cannot be found then :idl:pro:`showiftab`
 ; is used to show the user what the set of valid combinations are.
-; The summary line includes the ifnum, fdnum, and plnum used.
+; The summary line includes the ``ifnum``, ``fdnum``, and ``plnum`` used.
 ; 
 ; **Tsys and Available Units**
 ; 
@@ -78,11 +78,11 @@
 ; 
 ; **Smoothing the Reference Spectra**
 ; 
-; A parameter called smthoff can be used to smooth the reference
+; A parameter called ``smthoff`` can be used to smooth the reference
 ; spectrum prior to calibration of each integration.  In certain cases
 ; this can improve the signal to noise ratio, but it may degrade
 ; baseline shapes and artificially emphasize spectrometer glitches.
-; Use with care.   A value of smthoff=16 is often a good choice. 
+; Use with care.   A value of ``smthoff=16`` is often a good choice. 
 ; 
 ; **Weighting of Integrations in Scan Average**
 ;  
@@ -116,22 +116,22 @@
 ; **Dealing With Duplicate Scan Numbers**
 ;
 ; There are 3 ways to attempt to resolve ambiguities when the
-; same scan number appears in the data source.  The ``instance`` keyword
-; refers to the element of the returned array of scan_info structures
+; same scan number appears in the data source.  The ``instance`` keyword 
+; refers to the element of the returned array of scan_info structures 
 ; that :idl:pro:`scan_info` returns.  So, if scan 23
-; appears 3 times then instance=1 refers to the second time that scan
-; 23 appears as returned by scan_info.  The ``file`` keyword is useful if
-; a scan is unique to a specific file and multiple files have been
-; accessed using :idl:pro:`dirin`. If file is specified and instance is also 
-; specified, then instance refers to the instance of that scan just
+; appears 3 times then ``instance=1`` refers to the second time that scan 23
+; appears as returned by scan_info.  The ``file`` keyword is useful if a 
+; scan is unique to a specific file and multiple files have been
+; accessed using :idl:pro:`dirin`. If ``file`` is specified and ``instance`` is also 
+; specified, then ``instance`` refers to the instance of that scan just
 ; within that file (which may be different from its instance within 
 ; all opened files when dirin is used).  The ``timestamp`` keyword is
 ; another way to resolve ambiguous scan numbers.  The timestamp here
 ; is a string used essentially as a label by the monitor and control
 ; system and is unique to each scan.  The format of the timestamp
-; string is "YYYY_MM_DD_HH:MM:SS".  When timstamp is given, scan and
-; instance are ignored.  If more than one match is found, an error is 
-; printed and this procedure will not continue.  These are specified
+; string is "YYYY_MM_DD_HH:MM:SS".  When ``timstamp`` is given, ``scan`` and
+; ``instance`` are ignored.  If more than one match is found, an error is 
+; printed and this procedure will not continue. These are specified
 ; independently for each of the two scans (sigscan and refscan).
 ;
 ; :Params:
@@ -140,73 +140,78 @@
 ;   refscan : in, required, type=integer
 ;       M&C scan number for the reference scan
 ; 
-; :Keywords: 
-;   ifnum : in, optional, type=integer
-;       IF number (starting with 0). Defaults to the lowest value associated
-;       with data taking into account any user-supplied values for fdnum, and plnum.
+; :Keywords:
+;   ifnum : in, optional, type=integer 
+;       IF number (starting with 0). Defaults to the lowest value 
+;       associated with data taking into account any user-supplied 
+;       values for ``fdnum``, and ``plnum``.
 ;   intnum : in, optional, type=integer
-;       integration number, defaults to all integrations. 
+;       Integration number, defaults to all integrations.
 ;   plnum : in, optional, type=integer
-;       Polarization number (starting with 0).  Defaults to the lowest
-;       value with data after determining the values of ifnum and fdnum 
+;       Polarization number (starting with 0). Defaults to the lowest
+;       value with data after determining the values of ``ifnum`` and ``fdnum``
 ;       if not supplied by the user.
 ;   fdnum : in, optional, type=integer
-;       Feed number. Defaults to the lowest value with data after determining
-;       the value of ifnum if not supplied by the user and using any value of 
-;       plnum supplied by the user.  
+;       Feed number. Defaults to the lowest value with data after
+;       determining the value of ``ifnum`` if not supplied by the user 
+;       and using any value of ``plnum`` supplied by the user.  
 ;   sampler : in, optional, type=string
-;       sampler name, this is an alternative way to specify ifnum,plnum, and fdnum.
-;       When sampler name is given, ifnum, plnum, and fdnum must not be given.
+;       sampler name, this is an alternative way to specify ``ifnum``,
+;       ``plnum``, and ``fdnum``. When sampler name is given, ``ifnum``, ``plnum``,
+;       and ``fdnum`` must not be given.
 ;   tau : in, optional, type=float
 ;       tau at zenith, if not supplied, it is estimated using :idl:pro:`get_tau`
 ;       tau is only used when the requested units are other than the default
-;        of Ta and when a user-supplied tsys value at zenith is to be used.
+;       of Ta and when a user-supplied tsys value at zenith is to be used.
 ;   tsys : in, optional, type=float
 ;       tsys at zenith, this is converted to a tsys at the observed elevation.
-;       If not suppled, the tsys for each integration is calculated as described
-;       elsewhere.
+;       If not supplied, the tsys for each integration is calculated as 
+;       described elsewhere.
 ;   ap_eff : in, optional, type=float
-;       aperture efficiency, if not suppled, it is estimated using :idl:pro:`get_ap_eff`
+;       aperture efficiency, if not suppled, it is estimated using :idl:pro:`get_ap_eff` 
 ;       ap_eff is only used when the requested units are Jy.
 ;   smthoff : in, optional, type=integer
-;       smooth factor for reference spectrum, default is no smoothing (1).
+;       smooth factor for reference spectrum, defaults to 1 (no smoothing).
 ;   units : in, optional, type=string
 ;       takes the value 'Jy', 'Ta', or 'Ta*', default is Ta.
 ;   eqweight : in, optional, type=boolean
-;       When set, all integrations are averaged with equal weight (1.0), 
+;       When set, all integrations are averaged with equal weight (1.0),
 ;       default is unset.
 ;   tcal : in, optional, type=float
-;       Cal temperature (K) to use in the Tsys calculation.  If not supplied,
-;       the mean_tcal value from the header of the cal_off switching phase data
-;       in each integration is used.  This must be a scalar, vector tcal is not
-;       yet supported. The resulting data container will have it's mean_tcal 
-;       header value set to this keyword when it is set by the user.
+;       Cal temperature (K) to use in the Tsys calculation. If not 
+;       supplied, the mean_tcal value from the header of the cal_off 
+;       switching phase data in each integration is used. This must 
+;       be a scalar, vector tcal is not yet supported. The resulting 
+;       data container will have it's mean_tcal header value set to 
+;       this keyword when it is set by the user.
 ;   avgref : in, optional, type=boolean, default=unset
 ;       When set, the total power values for the individual integrations in 
 ;       refscan are averaged together using the current weighting option (using
 ;       Tsys or equal weighting) to produce a single reference spectrum that is 
 ;       then used to calibrate each integration of sigscan.  This option will
-;       automatically be selected whenever the number of integrations in refscan
-;       is not the same as in sigscan.
+;       automatically be selected whenever the number of integrations in ``refscan``
+;       is not the same as in ``sigscan``.
 ;   quiet : in, optional, type=boolean
-;       When set, the normal status message on successful completion is not printed.
-;       This will not affect error messages.  default is unset.
+;       When set, the normal status message on successful completion
+;       is not printed. This will not affect error messages. 
+;       Default is unset.
 ;   keepints : in, optional, type=boolean
-;       When set, the individual integrations are saved to the current output file
-;       (fileout).  This is ignored if a specific integration is requested
-;       using the ``intnum`` keyword.  Default is unset.
+;       When set, the individual integrations are saved to the current 
+;       output file (fileout). This option is ignored if a specific 
+;       integration is requested using the ``intnum`` keyword.  Default is unset.
 ;   useflag : in, optional, type=boolean or string
-;       Apply all or just some of the flag rules?  Default is set. 
+;       Apply all or just some of the flag rules?  Default is set.
 ;   skipflag : in, optional, type=boolean or string
-;       Do not apply any or do not apply a few of the flag rules?  Default is unset.
+;       Do not apply any or do not apply a few of the flag rules? 
+;       Default is unset.
 ;   siginstance : in, optional, type=integer
-;       Which occurrence of sigscan should be used, default is 0.
+;       Which occurrence of ``sigscan`` should be used, default is 0.
 ;   sigfile : in, optional, type=string
-;       When specified, limit the search for sigscan (and instance) to this specific
+;       When specified, limit the search for ``sigscan`` (and ``instance``) to this specific
 ;       file, default is all files.
 ;   sigtimestamp : in, optional, type=string
 ;       The M&C timestamp associated with the desired signal scan. When supplied, 
-;       sigscan and siginstance are ignored.
+;       ``sigscan`` and ``siginstance`` are ignored.
 ;   refinstance : in, optional, type=integer
 ;       Which occurrence of refscan should be used, default is 0.
 ;   reffile : in, optional, type=string
@@ -216,14 +221,15 @@
 ;       The M&C timestamp associated with the desired reference scan. When supplied,
 ;       refscan and refinstance are ignored.
 ;   status : out, optional, type=integer
-;       An output parameter to indicate whether the procedure finished as expected. 
-;       A value of 1 means there were no problems, a value of -1 means there were
-;       problems with the arguments before any data was processed, and a value of 0 
-;       means that some of the individual integrations were processed (and possibly
-;       saved to the output file if keepints was set) but there was a problem with 
-;       the final average and buffer 0 likely contains just the result from the last 
-;       integration processed. This keyword is primarily of use when using getsigref
-;       with another procedure or function.
+;       An output parameter to indicate whether the procedure finished as
+;       expected. A value of 1 means there were no problems, a value of
+;       -1 means there were problems with the arguments before any data 
+;       was processed, and a value of 0 means that some of the individual
+;       integrations were processed (and possibly saved to the output file
+;       if keepints was set) but there was a problem with the final average
+;       and buffer 0 likely contains just the result from the last integration
+;       processed. This keyword is primarily of use when using getsigref
+;       within another procedure or function.
 ;
 ; :Examples:
 ; 
@@ -254,15 +260,11 @@
 ; :Uses:
 ;   :idl:pro:`accumave`
 ;   :idl:pro:`accumclear`
-;   :idl:pro:`calsummary`
-;   :idl:pro:`check_calib_args`
-;   :idl:pro:`data_free`
+;   :idl:pro:`DATA_FREE`
 ;   :idl:pro:`dcaccum`
 ;   :idl:pro:`dcscale`
 ;   :idl:pro:`dcsetunits`
 ;   :idl:pro:`dofullsigref`
-;   :idl:pro:`find_scan_info`
-;   :idl:pro:`get_calib_data`
 ;   :idl:pro:`set_data_container`
 ;   :idl:pro:`showiftab`
 ;

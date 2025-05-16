@@ -3,17 +3,19 @@
 ;+
 ; Set some regions for use by GUIDE gaussian procedures and functions.
 ; 
-; This sets the !g.gauss.regions structure with the regions described
-; by the regions argument.  Overlaps in regions are eliminated and the
-; resulting content of !g.gauss.regions is a set of unique,
+; This sets the ``!g.gauss.regions`` structure with the regions described
+; by the ``regions`` argument.  Overlaps in regions are eliminated and the
+; resulting content of ``!g.gauss.regions`` is a set of unique,
 ; non-overlapping regions.  Regions are expressed as channel numbers.  
-; This procedure always clears the contents of !g.gauss.regions before
+; This procedure always clears the contents of ``!g.gauss.regions`` before
 ; starting. 
 ;
-; **Note: there is a limit of 100 regions.** If you need to use
-; more regions you will need to either use the fitting functions
-; directly or make a local copy of the guide_struct file which defines
-; the !g structure and edit the sizes in there.
+; .. note:: 
+;
+;   **There is a limit of 100 regions.**  If you need to use
+;   more regions you will need to either use the fitting functions
+;   directly or make a local copy of the guide_struct file which defines
+;   the ``!g`` structure and edit the sizes in there.
 ;
 ; :Params:
 ;   regions : in, required, type=integer array

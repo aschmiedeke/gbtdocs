@@ -8,8 +8,8 @@
 ; the buffer with unblanked values according to the interpolation
 ; method selected. 
 ;
-; You can limit the range of channels to consider using bchan and
-; echan.  When not supplied, all of the channels are used.
+; You can limit the range of channels to consider using ``bchan`` and
+; ``echan``.  When not supplied, all of the channels are used.
 ;
 ; The default interpolation method is linear. The other
 ; interpolations may not be particularly useful across large gaps.
@@ -27,10 +27,10 @@
 ; 
 ; :Keywords:
 ;   bchan : in, optional, type=integer
-;       The starting channel number. If not specified, bchan=0.
+;       The starting channel number. If not specified, ``bchan=0``.
 ;   echan : in, optional, type=integer
 ;       The last channel number. If not specified use all channels 
-;       from bchan to the end.
+;       from ``bchan`` to the end.
 ;   linear : in, optional, type=boolean
 ;       When set, use the linear interpolation provided by INTERPOL.
 ;       This is the default interpolation when no other method is specified.

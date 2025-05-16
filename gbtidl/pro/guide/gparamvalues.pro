@@ -1,7 +1,7 @@
 ; docformat = 'rst' 
 
 ;+
-; Procedure to put values into the !g.gauss.params container.
+; Procedure to put values into the ``!g.gauss.params`` container.
 ;
 ; :Params:
 ;   gauss_index : in, required, type=long

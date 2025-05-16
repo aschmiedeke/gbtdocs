@@ -1,7 +1,7 @@
 ; docformat = 'rst'
 
 ;+
-; Sets the maximum iterations for fitting guassians: !g.gauss.maxiter
+; Sets the maximum iterations for fitting guassians: ``!g.gauss.maxiter``
 ; 
 ; :Params:
 ;   maxiter : in, required, type=long
