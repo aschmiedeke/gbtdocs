@@ -2,17 +2,17 @@
 
 ;+
 ; Summarize the status of GBTIDL as found in the global structure used
-; by GBTIDL (!g).
+; by GBTIDL (``!g``).
 ;
-; This summarizes the parts of the !g structure that the user
-; is most likely to care about.  help,!g,/struct is useful, but
+; This summarizes the parts of the ``!g`` structure that the user
+; is most likely to care about.  ``help,!g,/struct`` is useful, but
 ; only if you know exactly what you are looking for.  Many fields
-; in !g are not intended to be manipulated directly by the user
+; in ``!g`` are not intended to be manipulated directly by the user
 ; and even those that are are sometimes difficult to interpret.
 ;
-; Using /full adds plotter color settings to the output.
+; Using ``/full`` adds plotter color settings to the output.
 ;
-; See also the description of the contents of the !g structure in the appendix A of the `GBTIDL manual <https://www.gb.nrao.edu/GBT/DA/gbtidl/users_guide.pdf#page=35>`_p">appendix A</a>
+; See also the description of the contents of the ``!g`` structure :ref:`here <The !g Structure>`
 ;
 ;
 ; :Keyword:
