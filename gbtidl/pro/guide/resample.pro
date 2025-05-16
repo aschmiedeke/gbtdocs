@@ -5,19 +5,19 @@
 ; one of four possible interpolation methods.
 ;
 ; Takes the data values in the data container indicated by 
-; the parameter 'buffer' and interpolates them onto a new frequency axis 
-; derived from the newinterval and keychan arguments.  The 
+; the parameter ``buffer`` and interpolates them onto a new frequency axis 
+; derived from the ``newinterval`` and ``keychan`` arguments.  The 
 ; reference_frequency is unchanged by this operation.  
-; The new frequency_interval is given by the **newinterval** 
+; The new frequency_interval is given by the ``newinterval`` 
 ; argument.  The new frequency axis is determined by choosing 
 ; one channel in the original frequency axis and requiring
 ; that the frequency at that channel be centered on one of the
-; channels in the interpolated data (the <b>keychan</b>
+; channels in the interpolated data (the ``keychan``
 ; argument).  This sets the new reference frequency. When not
-; supplied, **keychan** defaults to the channel nearest to the
+; supplied, ``keychan`` defaults to the channel nearest to the
 ; original reference channel.
 ;
-; The data container indicated by the 'buffer' parameter is altered
+; The data container indicated by the ``buffer`` parameter is altered
 ; by this procedure.  The data values will contain the interpolated
 ; values and the header will describe the new frequency axis.  The
 ; number of channels in the resulting interpolated data is just enough

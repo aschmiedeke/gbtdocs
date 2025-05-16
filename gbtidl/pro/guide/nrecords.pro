@@ -3,14 +3,14 @@
 ;+
 ; Retrieve the number of records associated with an i/o object.
 ;
-; If the keyword keep is set, the data comes from !g.lineoutio
+; If the keyword keep is set, the data comes from ``!g.lineoutio``.
 ;
-; If the value of !g.line is true, then the data comes from !g.lineio
-; otherwise the data comes from !g.contio
+; If the value of ``!g.line`` is true, then the data comes from ``!g.lineio``
+; otherwise the data comes from ``!g.contio``.
 ;
 ; :Keywords:
 ;   keep : in, optional, type=bool
-;       the data comes from !g.lineoutio
+;       the data comes from ``!g.lineoutio``
 ; 
 ; :Returns:
 ;   The number of records.

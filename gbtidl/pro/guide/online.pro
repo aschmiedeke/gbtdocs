@@ -5,7 +5,7 @@
 ; 
 ; The online file is determined by finding the most recently 
 ; updated spectral line file (ACS, VEGAS, or SP) in the online directory
-; (/home/sdfits).  Once a file is connected to, this command must be
+; (``/home/sdfits``).  Once a file is connected to, this command must be
 ; used again to connect to a more recent spectral line sdfits file
 ; (from switching projects or switching backends).  The default is to
 ; use the most recent file for either spectral line backend.  Use one
@@ -13,8 +13,8 @@
 ; backend.  If both keywords are true, a message will be printed and
 ; this procedure will return without changing the attached file.
 ; 
-; Note that any file previously attached using "filein" or
-; "offline" will be closed as a result of using this procedure.  There
+; Note that any file previously attached using ``filein`` or
+; ``offline`` will be closed as a result of using this procedure. There
 ; can be only one input spectral line data file at a time.
 ;
 ; The online file may be a directory of FITS files if the vegas

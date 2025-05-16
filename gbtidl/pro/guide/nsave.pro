@@ -2,7 +2,7 @@
 
 ;+
 ; Save a data container to the current fileout with the indicate NSAVE
-; value.  If the !g.sprotect flag is true and nsave already exists,
+; value.  If the ``!g.sprotect`` flag is true and nsave already exists,
 ; then the output file will not be changed and a message to that
 ; effect will be printed out.  Otherwise, if nsave exists it will be
 ; overwritten with the data being saved so that there will only be at

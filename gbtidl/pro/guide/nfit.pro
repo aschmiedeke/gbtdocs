@@ -1,7 +1,7 @@
 ; docformat = 'rst' 
 
 ;+
-; Set the order of the polynomial to be fit as a baseline
+; Set the order of the polynomial to be fit as a baseline.
 ;
 ; :Params:
 ;   order : in, required, type=integer

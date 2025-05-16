@@ -1,8 +1,7 @@
 ; docformat = 'rst'
 
 ;+
-; Plot the Hydrogen, alpha, beta gamma, helium alpha beta and carba alpha 
-; recombination lines.
+; Plot the Hydrogen, :math:`\alpha`, :math:`\beta`, :math:`\gamma`, helium :math:`\alpha`, :math:`beta` and carbon :math:`\alpha` recombination lines.
 ;
 ; Originally by Glen Langston, glangsto\@nrao.edu
 ;

@@ -6,10 +6,10 @@
 ;
 ; A flag table entry is made for an integration within a scan as
 ; follows:
-;   * If QD_BAD is 0, flag the data based on the threshold value
-;   * If QD_BAD is 1 or -1 (all possible values other than 0), flag
-;     the data if the flag_qd_bad keyword is set otherwise (the default)
-;     do not flag the data.
+; * If QD_BAD is 0, flag the data based on the threshold value
+; * If QD_BAD is 1 or -1 (all possible values other than 0), flag
+;   the data if the flag_qd_bad keyword is set otherwise (the default)
+;   do not flag the data.
 ;
 ; Data which pass the QD_BAD test should be flagged for that
 ; integration if 
@@ -29,7 +29,7 @@
 ; already exist with the same idstring.  If you want to regenerate the
 ; flag table (e.g. using a different threshold or flag_qd_bad value)
 ; choose a different idstring or remove all existing flags with that
-; idstring using the <a href="unflag.html">unflag</a> procedure.
+; idstring using the :idl:pro:`unflag` procedure.
 ;
 ; This uses the main data file unless the keep keyword is set, in
 ; which case it uses the keep file.

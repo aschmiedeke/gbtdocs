@@ -2,25 +2,25 @@
 
 ;+
 ; Get a previously saved data container with the matching
-; nsave number, and put it in the indicated global buffer number.
+; ``nsave`` number, and put it in the indicated global buffer number.
 ;
-; Only spectral line data can currently be fetched using an nsave number.
+; Only spectral line data can currently be fetched using an ``nsave`` number.
 ;
-; nget fetchs data from the output file (keep file) unless infile is set.
+; nget fetches data from the output file (keep file) unless ``infile`` is set.
 ; 
 ; Flags (set via :idl:pro:`flag`) can be selectively applied or ignored using 
-; the useflag and skipflag keywords.  Only one of those two keywords
+; the ``useflag`` and ``skipflag`` keywords.  Only one of those two keywords
 ; can be used at a time (it is an error to use both at the same time).
-; Both can be either a boolean (/useflag or /skipflag) or an array of
-; strings.  The default is /useflag, meaning that all flag rules that
+; Both can be either a boolean (``/useflag`` or ``/skipflag``) or an array of
+; strings.  The default is ``/useflag``, meaning that all flag rules that
 ; have been previously set are applied when the data is fetched from
-; disk, blanking data as described by each rule.  If /skipflag is set,
+; disk, blanking data as described by each rule.  If ``/skipflag`` is set,
 ; then all of the flag rules associated with this data are ignored and
 ; no data will be blanked when fetched from disk (it may still contain
 ; blanked values if the actual values in the disk file have already
-; been blanked by some other process).  If useflag is a string or
+; been blanked by some other process).  If ``useflag`` is a string or
 ; array of strings, then only those flag rules having the same
-; idstring value are used to blank the data.  If skipflag is a string
+; idstring value are used to blank the data.  If ``skipflag`` is a string
 ; or array of strings, then all flag rules except those with the same
 ; idstring value are used to blank the data. 
 ;

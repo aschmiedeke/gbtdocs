@@ -1,10 +1,10 @@
 ; docformat = 'rst'
 
 ;+
-; Move the data from the in location to the out location.  Anything in
-; out is lost.  This uses the value of !g.line.  If it is set (1)
-; then the array of line data (!g.s) is used, otherwise the array of
-; continuum data (!g.c) is used.  The contents of in are
+; Move the data from the in location to the out location. Anything in
+; out is lost.  This uses the value of ``!g.line``.  If it is set (1)
+; then the array of line data (``!g.s``) is used, otherwise the array of
+; continuum data (``!g.c``) is used.  The contents of in are
 ; emptied and lost.
 ;
 ; :Params:

@@ -3,7 +3,7 @@
 ;+
 ; This saves several data containers into the output file
 ; (keep file).  These must be spectrum data containers.  This is most
-; often used in conjuction with <a href="getchunk.html">getchunk</a>.
+; often used in conjuction with :idl:pro:`getchunk`.
 ;
 ; :Params:
 ;   chunk : in, required, type=spectrum data container arry

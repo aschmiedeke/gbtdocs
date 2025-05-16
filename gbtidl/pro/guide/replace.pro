@@ -2,9 +2,9 @@
 
 ;+
 ; Replace spectral channels by interpolation, or with zero values or
-; blanks.  If neither zero or blank are set, the data between bchan
-; and echan are replaced with a straight line connecting the two end
-; points.  If neither bchan or echan are given the user is prompted
+; blanks.  If neither zero or blank are set, the data between ``bchan``
+; and ``echan`` are replaced with a straight line connecting the two end
+; points.  If neither ``bchan`` or ``echan`` are given the user is prompted
 ; select the region to be replaced on the plotter.
 ;
 ; :Params:

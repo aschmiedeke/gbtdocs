@@ -7,7 +7,7 @@
 ; 
 ; Provide a project name and optionally the backend type (acs, vegas,
 ; or sp) to connect to file or directory in the online data directory
-; (/home/sdfits) for that project and backend.
+; (``/home/sdfits``) for that project and backend.
 ; Note that this file will not be treated as online, and will not be
 ; updated, just as filein does not do automatic updates.  Continuum is
 ; not supported. 

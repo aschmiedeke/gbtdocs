@@ -37,20 +37,14 @@
 ;       recombh,2,/doprint
 ;
 ; :Uses:
-;   :idl:pro:`freq`
 ;   :idl:pro:`veltovel`
 ;   :idl:pro:`shiftvel`
 ;   :idl:pro:`shiftfreq`
-;   :idl:pro:`decode_veldef`
 ;   :idl:pro:`show`
 ;   :idl:pro:`vline`
 ;   :idl:pro:`getxrange`
 ;   :idl:pro:`getyrange`
-;   :idl:pro:`getxvoffset`
-;   :idl:pro:`getxunits`
-;   :idl:pro:`getxoffset`
 ;   :idl:pro:`getplotterdc`
-;   :idl:pro:`textoidl`
 ;
 ;-
 pro recombhe,dn,doPrint=doPrint

@@ -3,11 +3,11 @@
 ;+
 ; Set some regions for use by other GUIDE procedures and functions.
 ; 
-; This sets the !g.regions structure with the regions described by the
+; This sets the ``!g.regions`` structure with the regions described by the
 ; regions argument.  Overlaps in regions are eliminated and the
-; resulting contents of !g.regions is a set of unique, non-overlapping
+; resulting contents of ``!g.regions`` is a set of unique, non-overlapping
 ; regions.  Regions are expressed as channel numbers.  This procedure
-; always clears the contents of !g.regions before starting. 
+; always clears the contents of ``!g.regions`` before starting. 
 ;
 ; *Note:* there is a limit of 100 regions. If you need to use
 ; more regions you will need to either use the fitting functions

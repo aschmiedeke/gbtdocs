@@ -5,14 +5,14 @@
 ; given sampler name in the scan.
 ;
 ; A three-element array is returned having the value
-; (ifnum,plnum,fdnum) corresponding to the IF, feed, and polarization
+; (``ifnum``, ``plnum``, ``fdnum``) corresponding to the IF, feed, and polarization
 ; numbers associated with the given sampler name and scan.
 ;
 ; If the same scan appears more than once in the data file then the
-; value corresponding to instance will be returned.  If instance is
-; omitted, the first instance (instance=0) will be returned.
+; value corresponding to ``instance`` will be returned.  If ``instance`` is
+; omitted, the first instance (``instance=0``) will be returned.
 ; The instance and file keywords can be used to ensure that a single
-; scan is used.  Alternatively, the timestamp keyword can be used to
+; scan is used.  Alternatively, the ``timestamp`` keyword can be used to
 ; ensure that a single scan is used (scan and instance are ignored in
 ; that case). 
 ;
@@ -20,12 +20,14 @@
 ; of the returned array will be -1.
 ;
 ; There is no check to make sure that there is just one
-; (ifnum,plnum,fdnum) associated with the given sampler.  The values for
+; (``ifnum``, ``plnum``, ``fdnum``) associated with the given sampler.  The values for
 ; the first matching sampler are returned.
 ;
 ; :Params: 
-;   scan {in}{required}{type=integer} scan number
-;   sampler {in}{required}{type=string} sampler name
+;   scan : in, required, type=integer
+;       scan number
+;   sampler : in, required, type=string 
+;       sampler name
 ; 
 ; :Keywords:
 ;   instance : in, optional, type=integer

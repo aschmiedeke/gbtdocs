@@ -5,9 +5,9 @@
 ; the guide structure, and the most recently reported fits for these
 ; gaussians. 
 ;
-; If /fits is the only keyword set, then only the fitted parameters
-; will be reported.  If /params is the only keyword set, then only the
-; intiial guesses will be reported.  If both are set or neither are
+; If ``/fits`` is the only keyword set, then only the fitted parameters
+; will be reported.  If ``/params`` is the only keyword set, then only the
+; intiial guesses will be reported. If both are set or neither are
 ; set (the default) then both initial guesses and fits are reported
 ; for each Gaussian.
 ;
