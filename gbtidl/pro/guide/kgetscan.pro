@@ -4,8 +4,8 @@
 ; Gets the data associated with a given scan number in the 
 ; input data set from the output (keep) file. 
 ;
-; This is shorthand for kget,scan=scan with optional use of
-; useflag or skipflag.  See the documentation for
+; This is shorthand for ``kget,scan=scan`` with optional use of
+; ``useflag`` or ``skipflag``.  See the documentation for
 ; :idl:pro:`kget` for more information. If there is more
 ; than one record that has the requested scan number, only the first
 ; is saved to the primary data container.  This is discussed in more

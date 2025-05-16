@@ -7,7 +7,7 @@
 ; In line mode, this is the most recently retrieved record number
 ; from the input line file.  In continuum mode, this is the most
 ; recently retrieved record number from the input continuum file.  If
-; the /keep keyword is used, this is the most recently retrieved
+; the ``/keep`` keyword is used, this is the most recently retrieved
 ; record number from the output line file (the keep file).
 ;
 ; This is -1 if nothing has been retrieved from that data source or
