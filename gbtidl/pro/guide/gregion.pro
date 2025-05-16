@@ -14,7 +14,7 @@
 ;
 ;   **There is a limit of 100 regions.**  If you need to use
 ;   more regions you will need to either use the fitting functions
-;   directly or make a local copy of the guide_struct file which defines
+;   directly or make a local copy of the ``guide_struct`` file which defines
 ;   the ``!g`` structure and edit the sizes in there.
 ;
 ; :Params:

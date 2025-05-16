@@ -8,10 +8,10 @@
 ; Optionally also decimate the spectrum by keeping only every 
 ; NEWRES channels.
 ;
-; The frequency_resolution field is set to newres *
-; abs(frequency_interval) after this procedure is used.
+; The frequency_resolution field is set to :math:`newres * \abs(frequency_interval)`
+; after this procedure is used.
 ;
-; The width of the smoothing Gaussian is sqrt(newres^2-oldres^2).
+; The width of the smoothing Gaussian is :math:`\sqrt{newres^2 - oldres^2}`.
 ;
 ; :Params:
 ;

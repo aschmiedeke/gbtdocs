@@ -71,9 +71,9 @@
 ;
 ; :Uses:
 ;   :idl:pro:`dcshift`
-;   :idl:pro:`data_copy`
+;   :idl:pro:`DATA_COPY`
 ;   :idl:pro:`set_data_container`
-;   :idl:pro:`data_free`
+;   :idl:pro:`DATA_FREE`
 ;
 ;-
 pro gshift, offset, buffer=buffer, wrap=wrap, ftol=ftol, linear=linear, $

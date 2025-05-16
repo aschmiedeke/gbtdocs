@@ -12,13 +12,13 @@
 ;       The data container buffer containing the model of the most 
 ;       recent gaussian fit.  If this is omitted, a value of -1 is 
 ;       assumed.  If this is -1 then a model is constructed from 
-;       the fit parameters in !g.gauss.  This is ignored if parts
+;       the fit parameters in ``!g.gauss``.  This is ignored if parts
 ;       is set.
 ;   parts : in, optional, type=boolean
 ;       When set, show the individual gaussians as separate plots. 
 ;       This always constructs the gaussians from the parameters
 ;       in !g.gauss.  modelbuffer is ignored when this keyword is set.
-;   color : in, optional, type=integer, default=!g.gshowcolor
+;   color : in, optional, type=integer, default=``!g.gshowcolor``
 ;       A color to use for the plots.
 ;
 ; :Examples:
