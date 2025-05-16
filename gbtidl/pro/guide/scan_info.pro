@@ -24,7 +24,6 @@
 ;
 ; The fields in the returned structure are:
 ; 
-; 
 ; * SCAN, the scan number, long integer
 ; * PROCSEQN, the procedure sequence number, long integer
 ; * PROCEDURE, the procedure name, string
@@ -49,7 +48,7 @@
 ; * N_CAL_STATES, the number of cal switching states, long integer
 ; * N_SIG_STATES, the number of sig switching states, long integer
 ; * N_WCALPOS, the total number of unique WCALPOS values in this
-;  scan. (spectral line data only)
+;   scan. (spectral line data only)
 ; * WCALPOS, a vector giving the list of unique WCALPOS
 ;   (WBand receiver calposition) values for this scan. (spectral line
 ;   data only)

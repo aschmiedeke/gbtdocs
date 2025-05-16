@@ -1,7 +1,7 @@
 ; docformat = 'rst' 
 
 ;+
-; Summarize the valid ifnum, fdnum, plnum combinations for a scan.
+; Summarize the valid ``ifnum``, ``fdnum``, ``plnum`` combinations for a scan.
 ;
 ; :Params:
 ;   scan : in, required, type=integer

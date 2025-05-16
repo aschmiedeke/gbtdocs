@@ -3,8 +3,8 @@
 ;+
 ; Set the element of the appropriate GUIDE data structure array.
 ;
-; If !g.line is true, the value is copied into the desired buffer in
-; !g.s, otherwise it is copied in to !g.c.  This is most often used
+; If ``!g.line`` is true, the value is copied into the desired buffer in
+; ``!g.s``, otherwise it is copied in to ``!g.c``.  This is most often used
 ; when working with toolbox procedures and function where a data
 ; container is used directly as an IDL variable and then copied into
 ; the guide structure so that it can be used with guide procedures and
@@ -20,10 +20,10 @@
 ;       The location to put the data. When not supplied the 0 location
 ;       is used.
 ;   ignore_line : in, optional, type=boolean
-;       When set, the value of !g.line is ignored and the choice of
+;       When set, the value of ``!g.line`` is ignored and the choice of
 ;       which data array to use is determined by the contents of data.
 ;   noshow : in, optional, type=boolean
-;       Normally, if buffer is 0 and !g.frozen is 0 then show is called
+;       Normally, if buffer is 0 and ``!g.frozen`` is 0 then show is called
 ;       at the end.  If this is set, that behavior is turned off.
 ;
 ;-
