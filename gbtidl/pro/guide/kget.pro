@@ -23,26 +23,26 @@
 ; See the output of :idl:pro:`listcols` for a complete list of columns 
 ; that can be selected.
 ;
-; See the discussion on "Select" in the `GBTIDL User's Guide :ref:`here <Select>` 
+; See the discussion on "Select" in the GBTIDL User's Guide :ref:`here <Select>` 
 ; for a summary of selection syntax.
 ;
 ; The selection criteria are passed directly to the io class's
 ; get_spectra or get_continua function via the _EXTRA parameter. 
 ; 
 ; Flags (set via :idl:pro:`flag`) can be selectively applied or ignored 
-; using the useflag and skipflag keywords.  Only one of those two
+; using the ``useflag`` and ``skipflag`` keywords.  Only one of those two
 ; keywords can be used at a time (it is an error to use both at the
-; same time).  Both can be either a boolean (/useflag or /skipflag) 
-; or an array of strings.  The default is /useflag, meaning that all
+; same time).  Both can be either a boolean (``/useflag`` or ``/skipflag``) 
+; or an array of strings.  The default is ``/useflag``, meaning that all
 ; flag rules that have been previously set are applied when the data
 ; is fetched from disk, blanking data as described by each rule.  If
-; /skipflag is set, then all of the flag rules associated with this
+; ``/skipflag`` is set, then all of the flag rules associated with this
 ; data are ignored and no data will be blanked when fetched from disk
 ; (it may still contain blanked values if the actual values in the
 ; disk file have already been blanked by some other process).  If
-; useflag is a string or array of strings, then only those flag rules
+; ``useflag`` is a string or array of strings, then only those flag rules
 ; having the same idstring value are used to blank the data.  If
-; skipflag is a string or array of strings, then all flag rules except
+; ``skipflag`` is a string or array of strings, then all flag rules except
 ; those with the same idstring value are used to blank the data.
 ;
 ; :Keywords:
@@ -68,7 +68,7 @@
 ;       kget.index=0,useflag='wind' ; same record, apply just the 'wind' flag.
 ;
 ; :Uses:
-;   :idl:pro:`set_data_container.html`
+;   :idl:pro:`set_data_container`
 ;
 ;-
 pro kget, useflag=useflag, skipflag=skipflag, _EXTRA=ex
