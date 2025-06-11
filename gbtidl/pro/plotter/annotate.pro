@@ -4,12 +4,15 @@
 ; This procedure places a text string on the plot
 ;
 ; :Params:
-;   x {in}{required}{type=float} X position of the string
-;   y {in}{required}{type=float} Y position of the string
-;   text {in}{required}{type=string} The text to write
+;   x : in, required, type=float
+;       X position of the string
+;   y : in, required, type=float
+;       Y position of the string
+;   text : in, required, type=string
+;       The text to write
 ; 
 ; :Keywords:
-;   color : in, optional, type=integer, default=!g.annotatecolor
+;   color : in, optional, type=integer, default=``!g.annotatecolor``
 ;       Text color index
 ;   charsize : in, optional, type=float
 ;       character size

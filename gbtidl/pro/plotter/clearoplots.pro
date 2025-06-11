@@ -5,11 +5,11 @@
 ; does a reshow. 
 ;
 ; Under normal use, this will not clear region box overlays if 
-; the value of !g.regionboxes is true (1).  That behavior can be
-; overridden by specifying the idstring of the region boxes (see
-; showregion), but that is intended for internal use only and is not
-; recommended for general users.  Instead, use showregion,/off or
-; set !g.regionboxes to false (0) before calling clearoplots.
+; the value of ``!g.regionboxes`` is true (1).  That behavior can be
+; overridden by specifying the ``idstring`` of the region boxes (see
+; :idl:pro:`showregion`), but that is intended for internal use only and is not
+; recommended for general users.  Instead, use ``showregion,/off`` or
+; set ``!g.regionboxes`` to false (0) before calling clearoplots.
 ; 
 ; :Keywords:
 ;   index : in, optional, type=integer

@@ -27,9 +27,9 @@
 ; :Examples:
 ;   Get the x-axis value at channel 100 for the current plot
 ; 
-;       .. code-block:: IDL
+;   .. code-block:: IDL
 ; 
-;           a=chantox(100)
+;       a=chantox(100)
 ;
 ;
 ;   Get the frequency at channel 100 for the current plot
@@ -38,17 +38,17 @@
 ;   same as that in the current display.  If the x-axis is something
 ;   else, then the units of a will be Hz.
 ; 
-;       .. code-block:: IDL
+;   .. code-block:: IDL
 ; 
-;           a = chantox(100,type=1)
+;       a = chantox(100,type=1)
 ;
 ;
 ;   Get the velocity at channel 100 for a data container at
 ;   buffer 7.
 ; 
-;       .. code-block:: IDL
+;   .. code-block:: IDL
 ; 
-;           a = chantox(100,type=2,dc=!g.s[7])
+;       a = chantox(100,type=2,dc=!g.s[7])
 ; 
 ;-
 function chantox, chans, type=type, dc=dc

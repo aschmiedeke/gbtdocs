@@ -8,22 +8,37 @@
 ; The return value is a named structure (**cvfstruct**) containing the
 ; following fields:
 ; 
-;   * **x**       The x value in the data coordinates.
-;   * **y**       The y value in the data coordinates.
-;   * **xdevice** The x value in device coordinates.
-;   * **ydevice** The y value in device coordinates.
-;   * **button**  The button pressed (1=left,2=middle,4=right).
-;   * **chan**    The channel number corresponding to **x**.
-;                 **frame** with the **voffset**.
-;   * **velo**    The velocity (m/s) corresponding to <B>x</B> in 
-;                 **frame** using **veldef** and **voffset**.
-;   * **frame**   The supplied frame argument, defaults to the current
-;                 frame in the plotter.
-;   * **veldef**  The veldef argument (velocity definition),
-;                 defaults to the current velocity definition in the plotter.
-;   * **voffset** The velocity offset (in **frame** and **veldef**) 
-;                 as found in the plotter.
-;   * **ok**      If everything went fine, this is 1, otherwise it's 0.
+; .. list-table::
+;    :widths: 20, 80
+;    :header-rows: 0
+; 
+;    * - **x**       
+;      - The x value in the data coordinates.
+;    * - **y**       
+;      - The y value in the data coordinates.
+;    * - **xdevice** 
+;      - The x value in device coordinates.
+;    * - **ydevice** 
+;      - The y value in device coordinates.
+;    * - **button** 
+;      - The button pressed (1=left,2=middle,4=right).
+;    * - **chan** 
+;      - The channel number corresponding to **x**.**frame** with the 
+;        **voffset**.
+;    * - **velo**   
+;      - The velocity (m/s) corresponding to **x** in **frame** using 
+;        **veldef** and **voffset**.
+;    * - **frame**   
+;      - The supplied frame argument, defaults to the current frame in the 
+;        plotter.
+;    * - **veldef** 
+;      - The veldef argument (velocity definition), defaults to the current 
+;        velocity definition in the plotter.
+;    * - **voffset** 
+;      - The velocity offset (in **frame** and **veldef**) as found in the
+;        plotter.
+;    * - **ok**     
+;      - If everything went fine, this is 1, otherwise it's 0.
 ; 
 ; :Keywords:
 ;   frame : in, optional, type=string
