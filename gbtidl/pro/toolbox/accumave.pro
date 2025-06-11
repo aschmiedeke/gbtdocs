@@ -3,20 +3,22 @@
 ;+
 ; Get the average from an ongoing accumulation. 
 ;
-; The dc argument will contain the result.  The wtarray keyword
+; The dc argument will contain the result.  The ``wtarray`` keyword
 ; will contain the value of the weight array used at the time of the
-; average.  This can be used in a subsequent dcaccum or accum
+; average.  This can be used in a subsequent :idl:pro:`dcaccum` or :idl:pro:`accum`
 ; call.
 ;
 ; The contents of the accum buffer are cleared as a 
 ; consequence of calling accumave, unless the noclear keyword is set.
 ;
-; *Note:* It is a good idea to use :idl:pro:`accumclear` 
-; to clear the accum buffer before using it the first time so that
-; you can be certain it is starting from a cleared (empty) state.
+; .. note:: 
+;   It is a good idea to use :idl:pro:`accumclear` 
+;   to clear the accum buffer before using it the first time so that
+;   you can be certain it is starting from a cleared (empty) state.
 ;
-; *Note:* The frequency_resolution in dc will be the maximum
-; resolution in all of the data containers used in the accumulation.
+; .. note:: 
+;   The frequency_resolution in dc will be the maximum
+;   resolution in all of the data containers used in the accumulation.
 ;
 ; :Params:
 ;   accumbuf : in, out, required, type=accum_struct
@@ -71,13 +73,15 @@
 ;       data_free, myavg
 ;       data_free, mywt
 ;
-; *Note:* the accum_struct structure used here has internal
-; pointers.  Use :idl:pro:`accumclear` to clear them,
-; either implicitly (by use of accumave) or explicitly.
+; .. note:: 
+; 
+;   the accum_struct structure used here has internal
+;   pointers.  Use :idl:pro:`accumclear` to clear them,
+;   either implicitly (by use of accumave) or explicitly.
 ;
 ; :Uses:
 ;   :idl:pro:`accumclear`
-;   :idl:pro:`data_copy`
+;   :idl:pro:`DATA_COPY`
 ;-
 pro accumave, accumbuf, dc, noclear=noclear, quiet=quiet, wtarray=wtarray, count=count
     compile_opt idl2
