@@ -5,8 +5,8 @@
 ; velocity the primary data container with the data container
 ; template in an ongoing accumulation.  
 ;
-; You can use an alternate data container by setting buffer.  You
-; can use an alternate global accumulation buffer by setting accumnum.
+; You can use an alternate data container by setting ``buffer``.  You
+; can use an alternate global accumulation buffer by setting ``accumnum``.
 ;
 ; If the frame is not set, the one implied by the data header is 
 ; used.  Use :idl:pro:`xshift` to align using the current settings of the 

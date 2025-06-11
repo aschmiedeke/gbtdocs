@@ -10,8 +10,8 @@
 ; order to align in the current x-axis with the data in the
 ; accumulation buffer.
 ;
-; You can use an alternate data container by setting buffer.  You
-; can use an alternate global accumulation buffer by setting accumnum.
+; You can use an alternate data container by setting ``buffer``.  You
+; can use an alternate global accumulation buffer by setting ``accumnum``.
 ;
 ; :Params:
 ;   accumnum : in, type=integer, default=0

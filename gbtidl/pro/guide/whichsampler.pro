@@ -1,21 +1,21 @@
 ; docformat = 'rst' 
 
 ;+
-; Find the sampler name which corresponds to the given if, feed, and
+; Find the sampler name which corresponds to the given IF, feed, and
 ; polarization numbers in the scan.  This value is the same as the
-; sampler_name in the data containers associated with that if, feed,
+; ``sampler_name`` in the data containers associated with that IF, feed,
 ; and polarization numbers in the scan.
 ;
 ; A single value is always returned.  If the same scan
 ; appears more than once in the data file then a value corresponding
-; to instance will be returned.  If instance is not used then the
-; value corresponding to the first instance (instances=0) will be
-; returned.  The instance and file keywords can be used to ensure 
-; that a single scan is used.  Alternatively, the timestamp keyword
-; can be used to ensure that a single scan is used (scan and instance
+; to instance will be returned.  If ``instance`` is not used then the
+; value corresponding to the first instance (``instances=0``) will be
+; returned.  The ``instance`` and ``file`` keywords can be used to ensure 
+; that a single scan is used.  Alternatively, the ``timestamp`` keyword
+; can be used to ensure that a single scan is used (``scan`` and ``instance``
 ; are ignored in that case).
 ;
-; If the requested combination of if, feed, and polarization
+; If the requested combination of IF, feed, and polarization
 ; numbers is not found in the scan, the returned value is an empty
 ; string.
 ;
