@@ -27,7 +27,7 @@
 ; 
 ; .. list-table:: 
 ;    :widths: 20, 80
-;    :header-rows:0
+;    :header-rows: 0
 ; 
 ;    * - SCAN
 ;      - the scan number, long integer
