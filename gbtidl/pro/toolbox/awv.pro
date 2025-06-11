@@ -7,33 +7,33 @@
 ; high channel number) edges of the galaxy profile can be determined. The
 ; mode parameter selects one of these methods:
 ; 
-;   1. As a fraction of the mean within the region of interest. The mean
-;      of data from brange through erange is calculated. The edges are 
-;      then those locations where the data values are greater than fract*mean
-;      for 3 consecutive channels starting from the end points of the 
-;      region of interest and searching towards the center.
-;   2. As a fraction of the maximum value within the region of interest. 
-;      The peak of data from brange to erange is found. The edges are 
-;      then those locations where the data values are greater than 
-;      fract*(peak-rms) for 3 consecutive channels starting from the end
-;      points of the region of interest and searching towards the center.
-;   3. As a fraction of each of two peaks - identified by the user. The
-;      user uses the cursor to mark two peaks in the region of interest 
-;      or those peaks are identified through the lefthorn and righthorn 
-;      parameters.  The maximum value within 10 channels of each user-supplied
-;      peak location is found.  The left edge is where the data value 
-;      falls below fract*(peak-rms) for 3 consecutive channels searched
-;      from the location of the peak.  The right-channel peak is similarly
-;      used to find the right edge.
-;   4. A polynomial is fit to either side of the profile between 15-85% of
-;      (peak-rms) (where the peak is from the relevent side of the profile - 
-;      the two peaks are identified by the user). The velocity of the 
-;      polynomical fit at fract*(peak-rms) is then found for both sides of 
-;      the profile. The difference between the two is the width, the mean is
-;	   the central velocity. The order of the polynomial is chosen by the user
-;	   (linear fits are usually sufficient). This scheme (further described in 
-;	   Springob etal 2006) has the advatange of averaging out noise effects from 
-;	   either side of the profile.
+; 1. As a fraction of the mean within the region of interest. The mean
+;    of data from brange through erange is calculated. The edges are 
+;    then those locations where the data values are greater than fract*mean
+;    for 3 consecutive channels starting from the end points of the 
+;    region of interest and searching towards the center.
+; 2. As a fraction of the maximum value within the region of interest. 
+;    The peak of data from brange to erange is found. The edges are 
+;    then those locations where the data values are greater than 
+;    fract*(peak-rms) for 3 consecutive channels starting from the end
+;    points of the region of interest and searching towards the center.
+; 3. As a fraction of each of two peaks - identified by the user. The
+;    user uses the cursor to mark two peaks in the region of interest 
+;    or those peaks are identified through the lefthorn and righthorn 
+;    parameters.  The maximum value within 10 channels of each user-supplied
+;    peak location is found.  The left edge is where the data value 
+;    falls below fract*(peak-rms) for 3 consecutive channels searched
+;    from the location of the peak.  The right-channel peak is similarly
+;    used to find the right edge.
+; 4. A polynomial is fit to either side of the profile between 15-85% of
+;    (peak-rms) (where the peak is from the relevent side of the profile - 
+;    the two peaks are identified by the user). The velocity of the 
+;    polynomical fit at fract*(peak-rms) is then found for both sides of 
+;    the profile. The difference between the two is the width, the mean is
+;    the central velocity. The order of the polynomial is chosen by the user
+;    (linear fits are usually sufficient). This scheme (further described in 
+;    Springob etal 2006) has the advatange of averaging out noise effects from 
+;	 either side of the profile.
 ;
 ; In the first 3 modes, the final left and right edge are linear
 ; interpolations to get the fractional channel where data value crossed
@@ -45,18 +45,32 @@
 ;
 ; The returned value is a 6-element array with these values, in
 ; this order.
+;
+; ..list-table::
+;   :witdhs: 20, 80
+;   :header-rows: 0
 ; 
-;   * **Area**      The sum of data[i]*abs(vel[i+1]-vel[i-1])/2.0 for all i
-;                   from brange to erange (modes 1 and 2) or between the channels where
-;                   the data values first become negative moving out from the two peaks
-;                   found in mode 3 (not including that transition channel).
-;   * **Width**     The absolute value of the difference between the left and right edges
-;                   as determined for that mode.
-;   * **Velocity**  The mean of the left and right edges as determined for that mode.
-;   * The 3 error estimates on the above values, in the same order. The error on Area
-;     is only set for the fract=0.5 and fract=0.2 cases. The Width and Velocity errors
-;     are only set by mode 4.  For mode 4, the Width error is always set at 2x the 
-;     Velocity error.  Unset error estimates have a value of 0.0
+;   * - **Area**      
+;     - The sum of data[i]*abs(vel[i+1]-vel[i-1])/2.0 for all i
+;       from brange to erange (modes 1 and 2) or between the channels where
+;       the data values first become negative moving out from the two peaks
+;       found in mode 3 (not including that transition channel).
+;   * - **Width**     
+;     - The absolute value of the difference between the left and right edges
+;       as determined for that mode.
+;   * - **Velocity**  
+;     - The mean of the left and right edges as determined for that mode.
+;   * - **Error on Area**
+;     - Error estimate on the Area. The error on Area is only set for the 
+;       fract=0.5 and fract=0.2 cases. Unset error estimates have a value of 0.0
+;   * - **Error on Width** 
+;     - Error estimate on the Width. The Width error is only set by mode 4. 
+;       For mode 4, the Width error is always set at 2x the Velocity error. 
+;       Unset error estimates have a value of 0.0
+;   * - **Error on Velocity**
+;     - Error estimate on the Velocity. The Velocity error is only set by mode 4. 
+;       Unset error estimates have a value of 0.0
+
 ;
 ; Blanked data is ignored by this routine.  Since the velocities
 ; used to calculate widths and centers come from the centers of the
