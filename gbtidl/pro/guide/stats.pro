@@ -6,15 +6,15 @@
 ; Statistics are done on the contents of buffer 0.  One
 ; can specify the range over which statistics will be computed in
 ; any of several ways.  To specify a begin and end x-value in the
-; currently displayed x-axis units, use the parameters brange and erange.
+; currently displayed x-axis units, use the parameters ``brange`` and ``erange``.
 ; If no x-axis range is given, the user is prompted to specify the 
 ; region of interest using the mouse.
 ;
-; If there is no plot displayed, then brange and erange are assumed to be 
+; If there is no plot displayed, then ``brange`` and ``erange`` are assumed to be 
 ; in units of channel number.  If either is not supplied and
 ; there is no plot displayed then the full range is used.
 ;
-; Use /chan if brange and range are in channels instead of the
+; Use ``/chan`` if ``brange`` and ``erange`` are in channels instead of the
 ; currently displayed x-axis units.
 ;
 ; :Params:

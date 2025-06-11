@@ -11,63 +11,92 @@
 ; structures would be returned).  This can happen if the same scan
 ; number appears in the data with more than one timestamp.  The
 ; instance and timestamp keywords of the various data retrieval
-; procedures (getscan, get, getnod, getps, etc) can be used to
-; differentiate between these duplicate scans.  The instance keyword
-; in those cases corresponds to the element number of the array
-; returned by scan_info.  The timestamp keyword corresponds to the
-; timestamp field in the scan_info structure.
+; procedures (:idl:pro:`getscan`, :idl:pro:`get`, :idl:pro:`getnod`, 
+; :idl:pro:`getps`, etc) can be used to differentiate between these
+; duplicate scans.  The instance keyword in those cases corresponds
+; to the element number of the array returned by scan_info.  The
+; timestamp keyword corresponds to the timestamp field in the ``scan_info``
+; structure.
 ;
 ; The data corresponding to a given instance are always found in
-; consecutive records.  The index_start and nrecords fields can be
+; consecutive records.  The ``index_start`` and ``nrecords`` fields can be
 ; used to get just the data associated with a specific instance.  See
 ; the examples.
 ;
 ; The fields in the returned structure are:
 ; 
-; * SCAN, the scan number, long integer
-; * PROCSEQN, the procedure sequence number, long integer
-; * PROCEDURE, the procedure name, string
-; * TIMESTAMP, the timestamp associated with this scan, string
-; * FILE, the name of the file where this scan was found
-; * N_INTEGRATION, the number of integrations, long integer.  Note
-;   that different samplers may have different numbers of integrations.
-;   This value is the number of unique times (MJD) found for this scan.
-;   Use N_SAMPINTS for the number of integrations from a given sampler.
-; * N_FEEDS, the number of feeds, long integer
-; * FDNUMS, the specific FDNUM values for this scan.
-; * N_IFS, the number of IFs, long integer
-; * IFNUMS, the specific IFNUM values for this scan.
-; * IFTABLE, a 3-axis array indicating which combinations of ifnum,
-;   fdnum and plnum are present in the data.  The first axis is ifnum,
-;   the second axis is fdnum and the 3rd is plnum.  Combinations with
-;   data have 1 in this array.  Combinations without data have a 0.
-;   *Note:* IDL removes any trailing axis of length 1 (degenerate) so care
-;   must be taken when using the shape of this array.  E.g. if there is
-;   no third axis, then there is only one plnum, plnum=0.
-; * N_SWITCHING_STATES, the number of switching states, long integer
-; * N_CAL_STATES, the number of cal switching states, long integer
-; * N_SIG_STATES, the number of sig switching states, long integer
-; * N_WCALPOS, the total number of unique WCALPOS values in this
-;   scan. (spectral line data only)
-; * WCALPOS, a vector giving the list of unique WCALPOS
-;   (WBand receiver calposition) values for this scan. (spectral line
-;   data only)
-; * N_POLARIZATIONS, the number of unique polarizations, long
-;   integer, will always be less then or equal to 4.
-; * POLARIZATIONS, a vector containing the actual
-;   polarizations, string (unused elements are the null string).
-; * PLNUMS, vector containing the PLNUM values
-;   corresponding to each POLARIZATION, long integer (unused elements
-;   are -1)
-; * FEEDS, a vector containing the unique feed ids, long
-;   integer (unused elements are -1)
-; * BANDWIDTH, a vector containing the unique bandwidths, one for each IF (Hz)
-; * INDEX_START, the starting index number for this scan.
-; * NRECORDS, the total number of records in this scan.
-; * N_SAMPLERS, the total number of unique sampler names in this scan.
-; * SAMPLERS, the list of unique sampler names.
-; * N_SAMPINTS, the number of integrations for each sampler.
-; * N_CHANNELS, the number of channels in each spectrum for each sampler.
+; .. list-table:: 
+;   :widths: 20, 80
+;   :header-rows:0
+; 
+;   * - SCAN
+;     - the scan number, long integer
+;   * - PROCSEQN
+;     - the procedure sequence number, long integer
+;   * - PROCEDURE
+;     - the procedure name, string
+;   * - TIMESTAMP
+;     - the timestamp associated with this scan, string
+;   * - FILE
+;     - the name of the file where this scan was found
+;   * - N_INTEGRATION
+;     - the number of integrations, long integer.  Note that different
+;       samplers may have different numbers of integrations. This value
+;       is the number of unique times (MJD) found for this scan. Use 
+;       ``N_SAMPINTS`` for the number of integrations from a given sampler.
+;   * - N_FEEDS
+;     - the number of feeds, long integer
+;   * - FDNUMS
+;     - the specific FDNUM values for this scan
+;   * - N_IFS
+;     - the number of IFs, long integer
+;   * - IFNUMS
+;     - the specific IFNUM values for this scan
+;   * - IFTABLE
+;     - a 3-axis array indicating which combinations of ``ifnum``, ``fdnum``
+;       and ``plnum`` are present in the data.  The first axis is ``ifnum``,
+;       the second axis is ``fdnum`` and the 3rd is ``plnum``.  Combinations with
+;       data have 1 in this array.  Combinations without data have a 0.
+;       *Note:* IDL removes any trailing axis of length 1 (degenerate) so care
+;       must be taken when using the shape of this array.  E.g. if there is
+;       no third axis, then there is only one plnum, ``plnum=0``.
+;   * - N_SWITCHING_STATES
+;     - the number of switching states, long integer
+;   * - N_CAL_STATES
+;     - the number of cal switching states, long integer
+;   * - N_SIG_STATES
+;     - the number of sig switching states, long integer
+;   * - N_WCALPOS
+;     - the total number of unique WCALPOS values in this scan. (spectral line
+;       data only)
+;   * - WCALPOS
+;     - a vector giving the list of unique WCALPOS (WBand receiver calposition) 
+;       values for this scan (spectral line data only)
+;   * - N_POLARIZATIONS
+;     - the number of unique polarizations, long integer, will always be less 
+;       then or equal to 4
+;   * - POLARIZATIONS
+;     - a vector containing the actual polarizations, string (unused elements
+;       are the null string)
+;   * - PLNUMS
+;     - vector containing the PLNUM values corresponding to each POLARIZATION,
+;       long integer (unused elements are -1)
+;   * - FEEDS
+;     - a vector containing the unique feed ids, long integer (unused elements are -1)
+;   * - BANDWIDTH
+;     - a vector containing the unique bandwidths, one for each IF (Hz)
+;   * - INDEX_START
+;     - the starting index number for this scan
+;   * - NRECORDS
+;     - the total number of records in this scan
+;   * - N_SAMPLERS
+;     - the total number of unique sampler names in this scan
+;   * - SAMPLERS
+;     - the list of unique sampler names
+;   * - N_SAMPINTS
+;     - the number of integrations for each sampler
+;   * - N_CHANNELS
+;     - the number of channels in each spectrum for each sampler
 ; 
 ; :Params:
 ;   scan : in, required, type=integer

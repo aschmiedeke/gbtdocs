@@ -9,9 +9,9 @@
 ; :idl:pro:`list` is usually more useful.
 ;
 ; *Note:* The numbers (nIF, nInt, nFd) are the number of unique
-; values for each parameter (ifnum, intnum, fdnum) found for that
-; scan.  All combinations of all possible values of ifnum, intnum,
-; fdnum, and plnum may not be present in that scan.
+; values for each parameter (``ifnum``, ``intnum``, ``fdnum``) found for that
+; scan.  All combinations of all possible values of ``ifnum``, ``intnum``,
+; ``fdnum``, and ``plnum`` may not be present in that scan.
 ;
 ; :Params:
 ;   file : in, optional, type=string, default=/dev/tty

@@ -10,7 +10,7 @@
 ; are filled (use :idl:pro:`listflags` to see the list of flags for the
 ; currently opened input data set).  When flagged data is retrieved by
 ; GBTIDL, the flagged channels are replaced with NaNs and will not
-; contribute to most operations.  If the skipflag option is used to
+; contribute to most operations.  If the ``skipflag``  option is used to
 ; retrieve the data then flagging is not applied and the original data
 ; values will appear at all channels.  
 ;
@@ -25,12 +25,12 @@
 ; when counting from 0).  That spur does not arise in the ADC in VEGAS
 ; and does not move as the spectral window is tuned across the ADC
 ; bandpass. This routine does not interpolate across that channel.
-; Normal sdfits usage does that interpolation unless the "-nointerp"
+; Normal sdfits usage does that interpolation unless the ``-nointerp``
 ; option is used. 
 ; 
-; If the buffer is not specified then buffer 0 is used.
-; If the display is not already frozen and buffer 0 is used then
-; the show command is used to redisplay the data.
+; If the ``buffer`` is not specified then ``buffer 0`` is used.
+; If the display is not already frozen and ``buffer 0`` is used then
+; the :idl:pro:`show` command is used to redisplay the data.
 ;
 ; This spur locations are determined using the VSPDELT, VSPRPIX,
 ; and VSPRVAL header values.  For data filled using older versions of
