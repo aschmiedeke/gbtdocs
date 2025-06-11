@@ -8,8 +8,8 @@
 ; The flag is completely removed from the flag file using this
 ; command. Use :idl:pro:`flag` or :idl:pro:`flagrec` to re-flag the data.
 ;
-; If ID is an integer, then that is the first value given in the :idl:pro:`listflags`
-; output.  Note that this ID reflects the state of the flags at that
+; If ``ID`` is an integer, then that is the first value given in the :idl:pro:`listflags`
+; output.  Note that thisID reflects the state of the flags at that
 ; particular moment.  A particular rule's ID number will change if a
 ; rule appearing earlier in the flags (having a lower ID number) is
 ; unflagged.  ID numbers always run from 0 to one less than the total
@@ -21,7 +21,7 @@
 ;
 ; Continuum flagging is not supported.
 ;
-; If /all is set then all flags are unflagged and ID is ignored if
+; If ``/all`` is set then all flags are unflagged and ID is ignored if
 ; set.
 ;
 ; :Params:
@@ -99,7 +99,7 @@
 ;   would not generate any error and would also not be what you thought
 ;   you were doing.  
 ;
-;   Always make sure that you use <a href="listflags.html">listflag</a> 
+;   Always make sure that you use :idl:pro:`listflags` 
 ;   before each use of unflag and when you want to unflag several IDs,
 ;   use the array syntax and remove them all with a single use of unflag
 ;   to avoid confusion. 
