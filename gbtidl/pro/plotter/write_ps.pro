@@ -8,7 +8,7 @@
 ; :Params:
 ;   filename : in, optional, type=string
 ;       The postscript filename can be specified using this parameter. 
-;       If omitted, the file will be called 'gbtidl.ps' unless /prompt
+;       If omitted, the file will be called 'gbtidl.ps' unless ``/prompt``
 ;       is used.
 ;
 ; :Keywords:

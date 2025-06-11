@@ -2,7 +2,7 @@
 
 ;+
 ; This procedure sets the units on the X-axis of the plot
-; Valid units are 'Channels','Hz'.'kHz','MHz', 'GHz', 'm/s', and 'km/s'
+; Valid units are Channels, Hz, kHz, MHz, GHz, m/s, and km/s
 ;
 ; :Params:
 ;   unit : in, required, type=string

@@ -7,12 +7,12 @@
 ; regions are shown on the plotter as boxes where the y-size of each
 ; box it the RMS of the data within that box.  You must set the the
 ; value of !g.regionboxes to 1 if you want these region boxes to 
-; persist when a new spectrum is plotted using **show**.  The default
+; persist when a new spectrum is plotted using :idl:pro:`show`.  The default
 ; behavior (!g.regionboxes=0) is to clear all overlaid plots,
-; including region boxes, on each use of **show**.
+; including region boxes, on each use of :idl:pro:`show`.
 ;
 ; The idstring used when plotting the boxes is '__showregion'.  
-; That can be used in **gbtoplots** to turn off just these regions.
+; That can be used in :idl:pro:`gbtoplots` to turn off just these regions.
 ; Any region that already contains that id string will be removed by
 ; this procedure.
 ;

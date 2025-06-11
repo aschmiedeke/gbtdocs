@@ -136,10 +136,13 @@ end
 ; Get the current array of y values.  Useful so that the caller
 ; doesn't have to know how the plotter has stored this quantity.
 ;
-; @keyword count {out}{optional}{type=integer} The number of values.  If
-; there is nothing in the plotter, this will be 0 and the returned
-; value will be -1.
-; @returns the current array of y values.
+; :Keywords:
+;   count : out, optional, type=integer
+;       The number of values.  If there is nothing in the plotter, this will
+;       be 0 and the returned  value will be -1.
+; 
+; :Returns:
+;   the current array of y values.
 ; 
 ; :Note:
 ;   This is part of a collection of routines that return information found

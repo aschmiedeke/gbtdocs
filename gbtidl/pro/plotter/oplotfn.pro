@@ -12,14 +12,14 @@
 ; The syntax of the function call using the fnname parameter 
 ; is:  
 ; 
-;   .. code-block:: IDL
+; .. code-block:: IDL
 ; 
-;       arr = fnname(params, minchan, maxchan, chanperpix,count=count)
+;     arr = fnname(params, minchan, maxchan, chanperpix, count=count)
 ; 
-; where params are exactly as supplied to oplotfn, minchan and
-; maxchan are the current x-axis limits, in channels, and 
-; chanperpix is the current number of channels per pixel (that
-; is a double-precision value).  Count should be set by fnname to be
+; where params are exactly as supplied to oplotfn, ``minchan`` and
+; ``maxchan`` are the current x-axis limits, in channels, and 
+; ``chanperpix`` is the current number of channels per pixel (that
+; is a double-precision value).  ``Count`` should be set by ``fnname`` to be
 ; the total number of points to be plotted.  Use that to signal
 ; that no points should be plotted for this call (e.g. the x channel
 ; range is out of the significant range of the function).  
@@ -28,9 +28,9 @@
 ; value corresponding to those x-axis values.  Typically, the 
 ; x-axis values would be generated using :idl:pro:`seq` as:
 ; 
-;   .. code-block:: IDL
+; .. code-block:: IDL
 ; 
-;       x = seq(minchan, maxchan, chanPerPix)
+;     x = seq(minchan, maxchan, chanPerPix)
 ; 
 ; and then y is generated from x using params and the array
 ; of [x,y] is then returned.  The returned value (arr) is not

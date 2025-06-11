@@ -7,10 +7,10 @@
 ; If there are no arguments, then gbtbox_cursor is used to set the
 ; region of interest. 
 ; 
-;   * Click Left button to set box bottom right corner.
-;   * Drag Left button to move box.
-;   * Drag Middle button near a corner to resize box.
-;   * Right button when done.
+; * Click Left button to set box bottom right corner.
+; * Drag Left button to move box.
+; * Drag Middle button near a corner to resize box.
+; * Right button when done.
 ; 
 ; If any one argument is present, they must all be present.
 ;

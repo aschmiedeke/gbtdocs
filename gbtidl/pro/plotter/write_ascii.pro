@@ -8,7 +8,7 @@
 ; :Params:
 ;   filename : in, optional, type=string
 ;       The filename can be specified using this parameter. If omitted,
-;       the file will be called 'gbtidl.ascii' unless /prompt is used.
+;       the file will be called 'gbtidl.ascii' unless ``/prompt`` is used.
 ;
 ; :Keywords:
 ;   brange : in, optional, type=integer, default=0

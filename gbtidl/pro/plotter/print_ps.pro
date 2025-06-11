@@ -8,13 +8,13 @@
 ; :Params:
 ;   filename : in, optional, type=string
 ;       The postscript filename can be specified using this parameter. 
-;       If omitted, the file will be called 'gbtidl.print.file.ps'.
+;       If omitted, the file will be called ``gbtidl.print.file.ps``.
 ;
 ; :Keywords:
 ;   device : in, optional, type=string
 ;       The name of the printer to use. If not set, this defaults to the 
-;       value of !g.printer. If !g.printer has zero-length, it falls back 
-;       to using 'lp'.
+;       value of ``!g.printer``. If ``!g.printer`` has zero-length, it falls back 
+;       to using ``lp``.
 ;
 ;   portrait : in, optional, type=boolean
 ;       If set then the postscript will be generated in portrait mode 

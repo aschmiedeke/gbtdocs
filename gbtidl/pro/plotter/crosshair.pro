@@ -2,10 +2,10 @@
 
 ;+
 ; This procedure toggles a flag to draw a crosshair cursor.  Use the
-; /on or /off keywords to ensure that the crosshair is on or off
+; ``/on`` or ``/off`` keywords to ensure that the crosshair is on or off
 ; (otherwise it simply toggles the state).
 ;
-; If both /on and /off are used at the same time, an error message
+; If both ``/on`` and ``/off`` are used at the same time, an error message
 ; is printed and the state of the zero line is not changed.
 ;
 ; :Keywords:

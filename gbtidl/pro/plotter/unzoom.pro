@@ -1,7 +1,7 @@
 ; docformat = 'rst'
 
 ;+
-; This procedure unzooms to the full X- and Y-axis ranges
+; This procedure unzooms to the full X- and Y-axis ranges.
 ;
 ; :Keywords:
 ;   onestep : in, optional, type=boolean

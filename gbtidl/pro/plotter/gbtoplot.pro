@@ -21,14 +21,12 @@
 ;   color : in, optional, type=long integer, default=!g.oplotcolor
 ;       The color of the line to be plotted.
 ;
-; :Keywords:
 ;   chan : in, optional, type=boolean
 ;       When set, the x axis is assumed to be in channels and a conversion
 ;       to the existing x axis is necessary to plot them. That conversion 
 ;       is done using the header information of the primary plot (the
 ;       argument to the most recent show).
 ;
-; :Keywords:
 ;   index : out, optional, type=integer
 ;       Returns the index associated with this oplot. This index can be
 ;       used to clear this over plot using clearoplots. Note that once an
