@@ -7,9 +7,9 @@
 ; The result is the difference of the data in the two data
 ; containers:
 ; 
-;   .. code-block:: IDL
+; .. code-block:: IDL
 ; 
-;       (*result.data_ptr) = (*sig_on.data_ptr - *sig_off.data_ptr)/2.0
+;   (*result.data_ptr) = (*sig_on.data_ptr - *sig_off.data_ptr)/2.0
 ; 
 ; The tsys in the result is meanTsys as calculated by :idl:pro:`dcmeantsys`.
 ; The integration and exposure times in the result are the sum of those

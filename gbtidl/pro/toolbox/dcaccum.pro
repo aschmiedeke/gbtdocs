@@ -18,21 +18,21 @@
 ; the public data containers in the guide structure.  Most users will
 ; find using :idl:pro:`accum` preferable to using dcaccum.
 ;
-;   * The data are  : sum(weight*data)
-;   * The times are : sum(duration), sum(exposure)
-;   * The weight is : sum(weight) one weight sum per channel.
-;   * The tsys is   : sqrt(sum(max(weight)*Tsys^2))
-;   * The frequency resolution is the maximum of all f_res values used
-;     during the accumulation.
+; * The data are  : sum(weight*data)
+; * The times are : sum(duration), sum(exposure)
+; * The weight is : sum(weight) one weight sum per channel.
+; * The tsys is   : sqrt(sum(max(weight)*Tsys^2))
+; * The frequency resolution is the maximum of all f_res values used
+;   during the accumulation.
 ;
 ; A warning message is shown if either the frequency_resolution or
 ; the frequency_interval do not match that in an already on-going
 ; accumulation.  If the quiet flag is on, then this message is
 ; suppressed.  In either case, the accumulation proceeds.
 ;
-; If a weight is not supplied, it will be exposure*frequency_resolution/tsys^2
+; If a ``weight`` is not supplied, it will be exposure*frequency_resolution/tsys^2.
 ;
-; <p>weight can either be a scalar or it can be a vector having the same
+; ``Weight`` can either be a scalar or it can be a vector having the same
 ; number of elements as the data in dc.
 ;
 ; If all of data is blanked (not a number) then it is completely
@@ -97,9 +97,9 @@
 ; See :idl:pro:`ave` for additional examples.
 ;
 ; :Uses:
-;   :idl:pro:`accumulate`
-;   :idl:pro:`data_valid`
-;   :idl:pro:`data_free`
+;   :idl:pro:`accum`
+;   :idl:pro:`DATA_VALID`
+;   :idl:pro:`DATA_FREE`
 ;
 ;-
 pro dcaccum, accumbuf, dc, weight=weight, quiet=quiet

@@ -34,9 +34,6 @@
 ;
 ;       esthanres(!g.s[0].frequency_resolution/abs(!g.s[0].frequency_interval))
 ;
-; :Uses:
-;   :idl:pro:`gaussrespfn`
-;
 ;-
 function esthanres, oldres
     compile_opt idl2

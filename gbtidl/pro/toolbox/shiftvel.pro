@@ -4,10 +4,10 @@
 ; Shift a velocity using a velocity offset.  Note that because of the
 ; nature of the non-true velocity definitions, this is not a simply
 ; reversable shift for anything by a TRUE velocity.  Namely,
-; v=shiftvel(shiftvel(v,voffset),-voffset) will not result in the same
+; ``v=shiftvel(shiftvel(v,voffset),-voffset)`` will not result in the same
 ; value of v as you started out with for anything except
-; veldef='TRUE'.  If you want to undo a velocity shift using the same
-; voffset, use unshiftvel.
+; ``veldef='TRUE'``.  If you want to undo a velocity shift using the same
+; voffset, use :idl:pro:`unshiftvel`.
 ;
 ; :Params:
 ;   vel : in, required, type=double

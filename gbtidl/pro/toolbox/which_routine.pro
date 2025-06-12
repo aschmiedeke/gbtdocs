@@ -52,19 +52,27 @@
 ; then you are a bad programmer and should seek professional
 ; counseling.
 ;
-; **Notes:**
-; First, all currently-compiled procedures and functions are searched.
-; Then the remainder of the IDL !path is searched.
-;
-; **MODIFICATION HISTORY:**
+; .. note::
 ; 
-; * 30 May 2003  Written by Tim Robishaw, Berkeley
-; * 17 Feb 2004  Fixed oddity where user tries to call a function as
-;                if it were a procedure, thus listing the module in both
-;                the Compiled Functions and Compiled Procedures list.
-; * 14 Jun 2005  Split code into which_routine function for use
-;                elsewhere in GBTIDL and which.  Reformatted
-;                comments for use with idldoc.
+;   First, all currently-compiled procedures and functions are searched.
+;   Then the remainder of the IDL !path is searched.
+;
+; :Modification History:
+; 
+; .. list-table:: 
+;    :widths: 20, 80
+;    :header-rows: 0
+; 
+;    * - 2003, May 30
+;      - Written by Tim Robishaw, Berkeley
+;    * - 2004, Feb 17
+;      - Fixed oddity where user tries to call a function as
+;        if it were a procedure, thus listing the module in both
+;        the Compiled Functions and Compiled Procedures list.
+;    * - 2005, Jun 14
+;      - Split code into which_routine function for use
+;        elsewhere in GBTIDL and which.  Reformatted
+;        comments for use with idldoc.
 ;
 ; :Params: 
 ;   name : in, required, type=string

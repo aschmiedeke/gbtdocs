@@ -55,27 +55,35 @@
 ; of .run, .compile, .rnew, DOC_LIBRARY, etc.
 ;
 ; 
-; **MODIFICATION HISTORY:**
+; :Modification History:
 ; 
-; * 30 May 2003  Written by Tim Robishaw, Berkeley
-; * 17 Feb 2004  Fixed oddity where user tries to call a function as
-;                  if it were a procedure, thus listing the module in both
-;                  the Compiled Functions and Compiled Procedures
-;                  list.
-; * 14 Jun 2005  Split code into which_routine function for use
-;                  elsewhere in GBTIDL and which.  Reformatted
-;                  comments for use with idldoc.
-; * 11 May 2006  Incorporate T. Robishaw changes found in original
-;                  version of which into this version.
-;                  Fixed scenario where two modules with the same
-;                  name are compiled, one as a procedure, the
-;                  other as a function.
-;                  Add current directory to the top of the path and
-;                  make sure the path is a unique list of directories.
-;                  Added capability to cope with symbolic links.
-;                  Fixed up warning and documentation for the strange
-;                  case of having both a procedure and function of the
-;                  same name compiled.
+; .. list-table:: 
+;    :widths: 20, 80
+;    :header-rows: 0
+; 
+;    * - 2003, May 30  
+;      - Written by Tim Robishaw, Berkeley
+;    * - 2004, Feb 17
+;      - Fixed oddity where user tries to call a function as
+;        if it were a procedure, thus listing the module in both
+;        the Compiled Functions and Compiled Procedures
+;        list.
+;    * - 2005, Jun 14
+;      - Split code into which_routine function for use
+;        elsewhere in GBTIDL and which.  Reformatted
+;        comments for use with idldoc.
+;    * - 2006, May 11
+;      - Incorporate T. Robishaw changes found in original
+;        version of which into this version.
+;        Fixed scenario where two modules with the same
+;        name are compiled, one as a procedure, the
+;        other as a function.
+;        Add current directory to the top of the path and
+;        make sure the path is a unique list of directories.
+;        Added capability to cope with symbolic links.
+;        Fixed up warning and documentation for the strange
+;        case of having both a procedure and function of the
+;        same name compiled.
 ;
 ; :Params:
 ;   name : in, required, type=string

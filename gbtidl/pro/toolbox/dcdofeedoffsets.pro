@@ -33,6 +33,7 @@
 ;       The data container to be used. The longitude, latitude, azimuth,
 ;       and elevation values are changed by this procedure unless /reportonly
 ;       is set.
+; 
 ; :Keywords:
 ;   remove : in, optional, type=boolean, default=0
 ;       When set, remove the feed offsets from the positions. The default
@@ -42,7 +43,7 @@
 ;       is set.  For continuum data containers, the report is generated for
 ;       a position near the middle integration.
 ;   status : out, optional, type=integer
-;   On success, this is set to 1.  On failure it is set to 0.
+;       On success, this is set to 1.  On failure it is set to 0.
 ;
 ;-
 pro dcdofeedoffsets, dc, remove=remove, reportonly=reportonly, status=status

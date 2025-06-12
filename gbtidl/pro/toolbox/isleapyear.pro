@@ -7,7 +7,7 @@
 ;
 ; The input can be a scalar or an array.
 ;
-; This code came from `Phil Perillat <http://www.naic.edu/~phil/>`_
+; This code came from `Phil Perillat <http://www.naic.edu/~phil/>`__
 ; at Arecibo.
 ; 
 ; Local changes:

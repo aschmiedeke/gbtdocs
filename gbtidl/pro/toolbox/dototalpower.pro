@@ -9,7 +9,7 @@
 ; 
 ; .. math:: 
 ; 
-;     (*result.data_ptr) = (*sig_off.data_ptr + *sig_on.data_ptr)/2.0
+;     (*result.data_{ptr}) = (*sig_{off}.data_{ptr} + *sig_{on}.data_{ptr})/2.0
 ; 
 ; The tsys in the result is meanTsys as calculated by :idl:pro:`dcmeantsys`.
 ; The integration and exposure times in the result are the sum of those
@@ -24,7 +24,7 @@
 ; like gettp.  This does not check the arguments for consistency or type.
 ;
 ; It is the responsibility of the caller to ensure that result is freed using
-; :idl:pro:`data_free` when it is no longer needed (i.e. at the end of all 
+; :idl:pro:`DATA_FREE` when it is no longer needed (i.e. at the end of all 
 ; anticipated calls to this function before returning to the calling level).
 ; Failure to do that will result in memory leaks.  It is not necessary to free
 ; these data containers between consecutive calls to this function at the same

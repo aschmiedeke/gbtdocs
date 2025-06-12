@@ -15,7 +15,7 @@
 ; NOTE: this routine will only find regular files, a
 ; directory name will return a non-existant file.
 ;
-; This code came from `Phil Perillat <http://www.naic.edu/~phil/>`_
+; This code came from `Phil Perillat <http://www.naic.edu/~phil/>`__
 ; at Arecibo.
 ; Local changes:
 ; 

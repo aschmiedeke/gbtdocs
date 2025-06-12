@@ -8,21 +8,21 @@
 ; arguments except the dc parameter have the same meaning and use as
 ; in the CONVOL function.  Users should consult the IDL documentation
 ; for CONVOL for a more detailed explanation than is given here.  All
-; of the CONVOL keywords are passed in through the _EXTRA keyword are
-; so are not shown explicitly here.  These keywords are **/CENTER,
-; /EDGE_WRAP, /EDGE_TRUNCATE, MISSING, /NAN and /NORMALIZE**
+; of the CONVOL keywords are passed in through the ``_EXTRA`` keyword are
+; so are not shown explicitly here.  These keywords are ``/CENTER``,
+; ``/EDGE_WRAP``, ``/EDGE_TRUNCATE``, ``MISSING``, ``/NAN`` and ``/NORMALIZE``.
 ;
 ; This procedure replaces the data values in dc with the results of
 ; the convolution.
 ;
-; NORMALIZE was added in IDL 6.2. It is essential when working
+; ``NORMALIZE`` was added in IDL 6.2. It is essential when working
 ; with blanked data (NAN).  It is implemented here so that it works
-; for earlier version of IDL.  For IDL 6.2 and later, /NORMALIZE is passed 
+; for earlier version of IDL.  For IDL 6.2 and later, ``/NORMALIZE`` is passed 
 ; directly to CONVOL.  For earlier versions of IDL, a second 
 ; convolution is done using a vector of 1.0s having the same length as
 ; the and blanked in the same locations as the data.  The convolution
 ; of the data is then divided by this convolution and the result is
-; put back into the data container.  BIAS was also added in IDL 6.2
+; put back into the data container.  ``BIAS`` was also added in IDL 6.2
 ; but that functionality isn't necessary for the rest of GBTIDL and so
 ; it has not been implemented here appart from what CONVOL provides in
 ; IDL 6.2 
@@ -69,7 +69,6 @@
 ;       dcconvol, dc, kernel, /nan, /edge_truncate, /normalize
 ;
 ; :Uses:
-;   :idl:pro:`getdcdata`
 ;   :idl:pro:`setdcdata`
 ;
 ;-

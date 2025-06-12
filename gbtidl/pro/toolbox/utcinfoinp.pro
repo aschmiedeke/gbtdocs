@@ -21,21 +21,25 @@
 ; requested juliandate,  the earliest value in the file will be used and
 ; and error will be returned. 
 ;
-; **>Note: \@utc_info must be done before this function is called.**
+; .. note:: 
+;   
+;   ``@utc_info`` must be done before this function is called.
 ;
-; This code came from `Phil Perillat <http://www.naic.edu/~phil/>`_ at Arecibo.
+; This code came from `Phil Perillat <http://www.naic.edu/~phil/>`__ at Arecibo.
 ; Local changes:
 ; 
 ; * modify to find the local copy of utcToUt1.dat file.
 ; * modify this documentation for use by idldoc.
 ; 
 ;
-; NOTE: The file is updated whenever a leap second occurs or whenever the
-;       drift rate changes (usually every 6 months or a year). If you have 
-;       downloaded this file from ao, then you need to redownload the
-;       newer versions occasionally. Check the file
-;       aodefdir()/data/pnt/lastUpdateTmStamp for when your file was 
-;      last updated.
+; .. note:: 
+;   
+;   The file is updated whenever a leap second occurs or whenever the
+;   drift rate changes (usually every 6 months or a year). If you have 
+;   downloaded this file from ao, then you need to redownload the
+;   newer versions occasionally. Check the file
+;   aodefdir()/data/pnt/lastUpdateTmStamp for when your file was 
+;   last updated.
 ;
 ; :Params:
 ;   juliandate : in, required, type=double

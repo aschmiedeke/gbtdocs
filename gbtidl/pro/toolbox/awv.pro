@@ -32,8 +32,8 @@
 ;    the profile. The difference between the two is the width, the mean is
 ;    the central velocity. The order of the polynomial is chosen by the user
 ;    (linear fits are usually sufficient). This scheme (further described in 
-;    Springob etal 2006) has the advatange of averaging out noise effects from 
-;	 either side of the profile.
+;    Springob etal 2006) has the advatange of averaging out noise effects
+;    from either side of the profile.
 ;
 ; In the first 3 modes, the final left and right edge are linear
 ; interpolations to get the fractional channel where data value crossed
@@ -46,8 +46,8 @@
 ; The returned value is a 6-element array with these values, in
 ; this order.
 ;
-; ..list-table::
-;   :witdhs: 20, 80
+; .. list-table::
+;   :widths: 30, 70
 ;   :header-rows: 0
 ; 
 ;   * - **Area**      
@@ -70,7 +70,6 @@
 ;   * - **Error on Velocity**
 ;     - Error estimate on the Velocity. The Velocity error is only set by mode 4. 
 ;       Unset error estimates have a value of 0.0
-
 ;
 ; Blanked data is ignored by this routine.  Since the velocities
 ; used to calculate widths and centers come from the centers of the

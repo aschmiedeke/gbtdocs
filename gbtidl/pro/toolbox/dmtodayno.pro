@@ -4,7 +4,7 @@
 ; Convert from day of month, month, and year to daynumber of year.
 ; It also works with arrays. 
 ;
-; This code came from `Phil Perillat <http://www.naic.edu/~phil/>`_
+; This code came from `Phil Perillat <http://www.naic.edu/~phil/>`__
 ; at Arecibo.
 ; 
 ; Local changes:

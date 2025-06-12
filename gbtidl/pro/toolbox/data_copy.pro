@@ -31,8 +31,8 @@
 ;       data_free, spec  ; clean up memory
 ;
 ; :Uses:
-;   :idl:pro:`data_valid`
-;   :idl:pro:`data_free`
+;   :idl:pro:`DATA_VALID`
+;   :idl:pro:`DATA_FREE`
 ;
 ;-
 PRO DATA_COPY, in, out

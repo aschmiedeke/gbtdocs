@@ -31,7 +31,7 @@
 ;
 ; :Returns:
 ;   polyfit array: contains information for fitting to arbitrary
-; points using the recursion relations
+;   points using the recursion relations
 ;
 ; :Examples:
 ; 

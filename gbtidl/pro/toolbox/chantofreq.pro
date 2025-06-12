@@ -29,7 +29,7 @@
 ;   frequencies (Hz)
 ;
 ; :Uses:
-;   :idl:pro:`data_valid`
+;   :idl:pro:`DATA_VALID`
 ;   :idl:pro:`frame_velocity`
 ; 
 ;-

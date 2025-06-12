@@ -10,7 +10,7 @@
 ; channel i+offset after the shift.  The data's reference channel is
 ; also shifted so that features should remain stationary when
 ; displayed except when the x-axis is channels.  Shifted data is
-; replaced with zeros unless the /wrap keyword is set in which case
+; replaced with zeros unless the ``/wrap`` keyword is set in which case
 ; the data wraps around as necessary during the shift. Data are first
 ; shifted by the nearest integer number of channels and then the
 ; result is shifted by the remaining fractional channel if that
@@ -35,7 +35,7 @@
 ; an intermediate step (the final result will have the original size
 ; of the data).  This is done to reduce ringing due to any
 ; discontinuities between the two ends of the data.  This can be
-; turned off using the /nopad keyword. If there are any bad data
+; turned off using the ``/nopad`` keyword. If there are any bad data
 ; points, they are interpolated using a linear interpolation prior to
 ; the FFT and then reblanked after the FFT.
 ;
@@ -59,7 +59,7 @@
 ; Spline takes about 20 times longer and lsquadratic takes about 100
 ; times as long as the linear interpolation.
 ;
-; If none of /linear, /spline, /quadratic, /lsquadratic, or /cubic
+; If none of ``/linear``, ``/spline``, ``/quadratic``, ``/lsquadratic``, or ``/cubic``
 ; are specified then an FFT is used for the fractional shift.  It is
 ; an error to use more than one of these flags in the same call.
 ;
@@ -134,7 +134,7 @@
 ;       This is set to 1 on success or 0 on failure (e.g. bad arguments).
 ;
 ; :Uses:
-;   :idl:pro:`data_valid`
+;   :idl:pro:`DATA_VALID`
 ;
 ;-
 pro dcshift, dc, offset, wrap=wrap, ftol=ftol, linear=linear, $

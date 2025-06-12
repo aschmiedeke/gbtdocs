@@ -24,8 +24,8 @@
 ;   channel number.
 ;
 ; :Uses:
-;   :idl:pro:`data_valid`
-;   :idl:pro:`decode_veldef`
+;   :idl:pro:`DATA_VALID`
+;   :idl:pro:`DECODE_VELDEF`
 ;   :idl:pro:`chantofreq`
 ;   :idl:pro:`freqtovel`
 ;   :idl:pro:`veltofreq`

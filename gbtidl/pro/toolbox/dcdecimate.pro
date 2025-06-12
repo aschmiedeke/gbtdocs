@@ -39,7 +39,7 @@
 ;       show,a
 ; 
 ; :Uses"
-;   :idl:pro:`data_valid`
+;   :idl:pro:`DATA_VALID`
 ;   :idl:pro:`seq`
 ;
 ;-

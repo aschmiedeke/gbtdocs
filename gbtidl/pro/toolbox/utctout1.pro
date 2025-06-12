@@ -10,7 +10,7 @@
 ; The utc to ut1 conversion info is passed in via the structure
 ; UTC_INFO.
 ;
-; This code came from `Phil Perillat <http://www.naic.edu/~phil/>`_ at
+; This code came from `Phil Perillat <http://www.naic.edu/~phil/>`__ at
 ; Arecibo.
 ; 
 ; Local changes:

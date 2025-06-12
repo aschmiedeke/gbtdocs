@@ -7,8 +7,8 @@
 ; and the reference channel is moved left by 1/2 channel width.
 ;
 ; Replaces the contents of the data being smoothed with the smoothed
-; data.  Use the GUIDE procedure, BOXCAR, to smoothing data containers
-; in the !g structure.
+; data.  Use the :idl:pro:`boxcar` procedure to smoothing data containers
+; in the ``!g`` structure.
 ;
 ; For spectrum data containers, the frequency_resolution is set 
 ; using :idl:pro:`estboxres`. 
@@ -28,7 +28,6 @@
 ;
 ; :Uses:
 ;   :idl:pro:`doboxcar1d`
-;   :idl:pro:`doextract`
 ;
 ;-
 pro dcboxcar, dc, width, decimate=decimate

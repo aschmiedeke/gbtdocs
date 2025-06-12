@@ -16,7 +16,7 @@
 ;       be either 'CONTINUUM_STRUCT' or 'SPECTRUM_STRUCT'.  
 ;
 ; :Returns:
-;   n_elements(*data_ptr) if valid and -1 if invalid. (hence if the
+;   ``n_elements(*data_ptr)`` if valid and ``-1`` if invalid. (hence if the
 ;   return value is = 0 it's undefined).
 ;
 ;-

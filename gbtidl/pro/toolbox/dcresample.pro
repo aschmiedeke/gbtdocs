@@ -8,16 +8,16 @@
 ; interpolates them onto a new frequency axis 
 ; derived from the newinterval and keychan arguments.  The 
 ; reference_frequency is unchanged by this operation.  
-; The new frequency_interval is given by the **newinterval** 
+; The new frequency_interval is given by the ``newinterval`` 
 ; argument.  The new frequency axis is determined by choosing 
 ; one channel in the original frequency axis and requiring
 ; that the frequency at that channel be centered on one of the
 ; channels in the interpolated data (the **keychan**
 ; argument).  This sets the new reference frequency. When not
-; supplied, **keychan** defaults to the channel nearest to the
+; supplied, ``keychan`` defaults to the channel nearest to the
 ; original reference channel.
 ;
-; The **dc** argument is altered by this operation.  The data
+; The ``dc`` argument is altered by this operation.  The data
 ; values will contain the interpolated values and the header will
 ; describe the new frequency axis.  The number of channels in the
 ; resulting interpolated data is just enough to use as much of the
@@ -78,7 +78,7 @@
 ;       if ok then show,dc
 ;
 ; :Uses:
-;   :idl:pro:`data_valid`
+;   :idl:pro:`DATA_VALID`
 ;   :idl:pro:`dcinvert`
 ;
 ;-

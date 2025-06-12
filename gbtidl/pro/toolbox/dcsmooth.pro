@@ -3,10 +3,10 @@
 ;+
 ; Smooth the data with a GAUSSIAN such that the spectrum in the given
 ; data container with an original resolution of frequency_resolution
-; now has a resolution of NEWRES, where NEWRES is expressed in channels.  
+; now has a resolution of ``newres``, where ``newres`` is expressed in channels.  
 ; 
 ; Optionally also decimate the spectrum by keeping only every 
-; NEWRES channels.
+; ``newres`` channels.
 ;
 ; The frequency_resolution field is set to newres *
 ; abs(frequency_interval) after this procedure is used.
@@ -46,7 +46,7 @@
 ;       dcsmooth,dc,4,/decimate
 ;
 ; :Uses:
-;   :idl:pro:`data_valid`
+;   :idl:pro:`DATA_VALID`
 ;   :idl:pro:`dcconvol`
 ;   :idl:pro:`dcdecimate`
 ;   :idl:pro:`make_gauss_data`

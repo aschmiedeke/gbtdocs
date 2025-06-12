@@ -8,7 +8,7 @@
 ; of 390 microns.  Currently the aperture efficiency returned is
 ; independent of elevation.  For observations at low elevations it
 ; is especially important for the observer to bypass the default value
-;  returned by this routine.
+; returned by this routine.
 ;
 ; :Params:
 ;   freq : in, required, type=float

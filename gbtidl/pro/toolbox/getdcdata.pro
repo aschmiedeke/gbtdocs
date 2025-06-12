@@ -26,7 +26,7 @@
 ;       somedata = getdcdata(dc,[100:400])
 ;
 ; :Uses:
-;   :idl:pro:`data_valid`
+;   :idl:pro:`DATA_VALID`
 ;
 ;-
 FUNCTION GETDCDATA, dc, elements

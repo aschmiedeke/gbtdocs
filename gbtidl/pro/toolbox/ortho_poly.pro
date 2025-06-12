@@ -40,7 +40,7 @@
 ;
 ; :Examples:
 ;   Fit a 7-th order polynomial to the data in !g.s[0] and subtract
-; the result of the fit from that data, replacing the data in !g.s[0].
+;   the result of the fit from that data, replacing the data in !g.s[0].
 ; 
 ;   .. code-block:: IDL
 ;       

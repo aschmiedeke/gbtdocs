@@ -12,12 +12,13 @@
 ;   two signal spectra and for the two reference spectra.  
 ; * These are then combined using :idl:pro:`dosigref` to get the
 ;   calibrated results.
-;   * sigresult is done using the signal total power as the "signal"
-;     and the reference total power as the "reference"
+; 
+;   * sigresult is done using the signal total power as the "signal" and the reference total power as the "reference"
 ;   * refresult is done using the reference reference total power as
 ;     the "signal" and the signal total power as the "reference".
+; 
 ; * See dototalpower and dosigref for details about
-; each step in the process of producing the two results.
+;   each step in the process of producing the two results.
 ; 
 ;
 ; :idl:pro:`dcfold` can then be used to combine sigresult and 

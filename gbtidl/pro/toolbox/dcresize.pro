@@ -5,8 +5,8 @@
 ;
 ; If new channels are added to the end of an existing data
 ; container, they are filled with the blanked value (not a number,
-; NAN) unless the /zero flag is set (in which case they are replaced
-; with zeros).  If /beginning is set then the extra channels are added
+; NAN) unless the ``/zero`` flag is set (in which case they are replaced
+; with zeros).  If ``/beginning`` is set then the extra channels are added
 ; to the beginning of the data and reference_channel value is adjust
 ; accordingly.
 ;

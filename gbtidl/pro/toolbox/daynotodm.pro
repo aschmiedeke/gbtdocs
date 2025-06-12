@@ -4,7 +4,7 @@
 ; Convert daynumber and year to day of month (1..31) and  month
 ; of year (1.l12).
 ;
-; This code came from `Phil Perillat <http://www.naic.edu/~phil/>`_ at Arecibo.
+; This code came from `Phil Perillat <http://www.naic.edu/~phil/>`__ at Arecibo.
 ; 
 ; Local changes:
 ; 

@@ -6,13 +6,24 @@
 ;
 ; Recognized frames:
 ; 
-;   * TOPO - topocentric. The observed (sky) frame.
-;   * GEO  - geocentric.
-;   * HEL  - heliocentric.
-;   * BAR  - barycentric.
-;   * LSR  - Local standard of rest (kinematic).
-;   * LSD  - Dynamic LSR.
-;   * GAL  - galactocentric.
+; .. list-table::
+;    :widths: 20, 80
+;    :header-rows: 0
+; 
+;    * - TOPO 
+;      - topocentric. The observed (sky) frame.
+;    * - GEO 
+;      - geocentric.
+;    * - HEL  
+;      - heliocentric.
+;    * - BAR 
+;      - barycentric.
+;    * - LSR  
+;      - Local standard of rest (kinematic).
+;    * - LSD 
+;      - Dynamic LSR.
+;    * - GAL  
+;      - galactocentric.
 ; 
 ; :Params:
 ;   data : in, required, type=spectrum

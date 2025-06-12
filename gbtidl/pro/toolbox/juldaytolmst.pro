@@ -8,7 +8,7 @@
 ; the equinox to these values (see nutation_m()).
 ;
 ; This code came from 
-; `Phil Perillat <https://www.naic.edu/~phil/>`_ at Arecibo.
+; `Phil Perillat <https://www.naic.edu/~phil/>`__ at Arecibo.
 ; 
 ; Local changes:
 ;   * use the position of the GBT as the default position.

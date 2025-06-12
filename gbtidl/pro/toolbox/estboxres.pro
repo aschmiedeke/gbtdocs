@@ -37,9 +37,6 @@
 ;       print,
 ;
 ;       esthanres(5,!g.s[0].frequency_resolution/abs(!g.s[0].frequency_interval))
-; 
-; :Uses:
-;   :idl:pro:`gaussrespfn`
 ;
 ;-
 function estboxres, width, oldres

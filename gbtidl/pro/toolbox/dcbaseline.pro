@@ -4,15 +4,15 @@
 ; Fit a baseline to the contents of the dc argument with various options.
 ;
 ; This fits a set of orthogonal polynomials with a maximum order given by 
-; the nfit argument to the data values in dc.  The range of channels to use
-; is given by the regions and nregion arguments. The parameters of the fit
+; the ``nfit`` argument to the data values in dc.  The range of channels to use
+; is given by the ``regions`` and ``nregion`` arguments. The parameters of the fit
 ; are placed in the value of the polyfit argument and the rms values of the
 ; fits are placed in the polyrms argument.  If there is a problem, the return
 ; value is 0, otherwise the return value is 1.
 ;
 ; :Params:
 ;   dc : in, required, type=data container
-;       The data container to use.  The values to fit come from *dc.data_ptr.
+;       The data container to use.  The values to fit come from ``*dc.data_ptr``.
 ;   nfit : in, required, type=integer
 ;       The order of polynomial to fit.
 ;   regions : in, required, type=2D array
@@ -37,7 +37,7 @@
 ;       ok = dcbaseline(!g.s[0], 2, !g.regions, !g.nregion, polyfit, polyrms)
 ; 
 ; :Uses:
-;   :idl:pro:`data_valid`
+;   :idl:pro:`DATA_VALID`
 ;   :idl:pro:`get_chans`
 ;   :idl:pro:`ortho_fit`
 ; 

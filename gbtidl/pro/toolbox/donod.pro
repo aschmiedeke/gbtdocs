@@ -22,7 +22,6 @@
 ;   :idl:pro:`dcaccum` to produce the final calibrated
 ;   result.
 ; 
-;
 ; See dototalpower and dosigref for details about each step.
 ;
 ; The returned tsys (ret_tsys) are the 4 system temperatures
@@ -58,7 +57,7 @@
 ; containers and all have the same number of data points).
 ;
 ; It is the responsibility of the caller to ensure that result is freed
-; using :idl:pro:`data_free`when it is no longer needed (i.e. at the end
+; using :idl:pro:`DATA_FREE` when it is no longer needed (i.e. at the end
 ; of all anticipated calls to this function before returning to the
 ; calling level).  Failure to do that will result in memory leaks. It 
 ; is not necessary to free these data containers between consecutive 

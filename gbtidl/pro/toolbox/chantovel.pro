@@ -39,10 +39,9 @@
 ;   velocity (m/s)
 ;
 ; :Uses:
-;   :idl:pro:`data_valid`
-;   :idl:pro:`decode_veldef`
-;   :idl:pro:`chantofreq
-;   :idl:pro:`freqtovel
+;   :idl:pro:`DATA_VALID`
+;   :idl:pro:`chantofreq`
+;   :idl:pro:`freqtovel`
 ; 
 ;-
 function chantovel, data, chans, frame=frame, veldef=veldef, $

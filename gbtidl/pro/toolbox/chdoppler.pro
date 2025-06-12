@@ -14,25 +14,25 @@
 ; Updated using code found via google from same source on 11/30/2009.
 ; Local changes:
 ; 
-;   * modify this documentation for use by idldoc.
-;   * removed path argument and related code, replaced by obspos argument.
-;   * default position is the GBT.
-;   * Observatory longitude was not being passed to juldaytolmst.
-;   * LSRD added 
-;   * Galactocentric added
-;   * Checked against aips++ Measures.  Differences were less then 20 m/s in
-;     one test case (less then 10m/s for geo, bary, and lsrk).
-;   * Double precision throughout.
-;   * Relativistic addition of velocities.
+; * modify this documentation for use by idldoc.
+; * removed path argument and related code, replaced by obspos argument.
+; * default position is the GBT.
+; * Observatory longitude was not being passed to juldaytolmst.
+; * LSRD added 
+; * Galactocentric added
+; * Checked against aips++ Measures.  Differences were less then 20 m/s in
+;   one test case (less then 10m/s for geo, bary, and lsrk).
+; * Double precision throughout.
+; * Relativistic addition of velocities.
 ; 
 ;
 ; Previous revision history: carlh 29oct04
 ; 
-;   * from idpppler_chl; changed calculation epoch to 2000.
-;   * 19nov04: correct bad earth spin calculation
-;   * 07 Jun 2005: vectorize to make faster for quantity calculations
-;   * 20 Mar 2007: CH updated documentation
-;   * 08 Feb 2015: CH fixed doppler additions for array inputs. See
+; * from idpppler_chl; changed calculation epoch to 2000.
+; * 19nov04: correct bad earth spin calculation
+; * 07 Jun 2005: vectorize to make faster for quantity calculations
+; * 20 Mar 2007: CH updated documentation
+; * 08 Feb 2015: CH fixed doppler additions for array inputs. See
 ;                  annotated statements at end of program.
 ;
 ; :Params:
@@ -54,8 +54,8 @@
 ;   lsrd, gal].
 ;
 ; :Uses:
-;   `baryvel <https://idlastro.gsfc.nasa.gov/ftp/pro/astro/baryvel.pro>_`
-;   `precess <https://idlastro.gsfc.nasa.gov/ftp/pro/astro/precess.pro>_`
+;   `baryvel <https://asd.gsfc.nasa.gov/archive/idlastro/ftp/pro/astro/baryvel.pro>`_
+;   `precess <https://asd.gsfc.nasa.gov/archive/idlastro/ftp/pro/astro/precess.pro>`_
 ;   :idl:pro:`juldaytolmst`
 ;
 ;-

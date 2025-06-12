@@ -25,22 +25,26 @@
 ;   list the current displayed spectrum at the terminal from 1415 
 ;   to 1425 MHz. The current x-axis must be in MHz.
 ; 
-;       .. code-block:: IDL
+;   .. code-block:: IDL
 ;           
-;           dcascii,brange=1415,erange=1425
-;           ; the output looks something like this:
+;       dcascii,brange=1415,erange=1425
+;   
+;   the output looks something like this:
 ;
-;           Scan:     88         GalPlane 2005-11-15 +08 06 49.0
+; 
+;   .. code-block:: TEXT
+; 
+;       Scan:     88         GalPlane 2005-11-15 +08 06 49.0
 ;                                  Ta    
-;                  MHz-LSR                 YY
-;           1424.9752215054413682     -0.0136188
-;           1424.9361597211752724      0.0389956
-;           1424.8970979369089491      0.0697150
-;           1424.8580361526428533      0.0732256
-;           1424.8189743683767574      0.0983463
-;           1424.7799125841104342      0.1009806
-;           .....
-;           < Press Spacebar to continue, ? for help >
+;              MHz-LSR                 YY
+;       1424.9752215054413682     -0.0136188
+;       1424.9361597211752724      0.0389956
+;       1424.8970979369089491      0.0697150
+;       1424.8580361526428533      0.0732256
+;       1424.8189743683767574      0.0983463
+;       1424.7799125841104342      0.1009806
+;       .....
+;       < Press Spacebar to continue, ? for help >
 ; 
 ;   The first line shows the scan number, source name, date, and UT
 ;   associated with this data.  The next two lines describe what is in
