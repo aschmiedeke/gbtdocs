@@ -2,6 +2,8 @@
 Quick Reference for GBTIDL v2.8
 ###############################
 
+* PDF version of the GBTIDL User's Guide: https://www.gb.nrao.edu/GBT/DA/gbtidl/QRG_release.pdf
+
 
 For help with a routine from the gbtidl command line, use the :idl:pro:`usage` command, for example:
 

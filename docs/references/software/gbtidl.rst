@@ -6,15 +6,16 @@ GBTIDL
 
 
 GBTIDL is an interactive package for reduction and analysis of spectral line data taken with the GBT.
-GBTIDL is entirely written in IDL. There is limited support in GBTIDL for GBT continuum data, but it is mainly intended for spectral line data from the spectrometer or spectral processor. 
+GBTIDL is entirely written in IDL. There is limited support in GBTIDL for GBT continuum data, but it is mainly intended for spectral line data from the spectrometer or spectral processor.
+
+All GBTIDL documentation is available at `https://gbtidl.nrao.edu <https://gbtidl.nrao.edu/>`__. We copied that documentation here to simplify linking GBTIDL documentation within GBTdocs. 
+
 
 
 -----------------
 
 User's Guide
 ============
-
-The content is also available as a pdf file `here <https://www.gb.nrao.edu/GBT/DA/gbtidl/users_guide.pdf>`_
 
 .. grid:: 1 2 2 2
 
@@ -24,9 +25,7 @@ The content is also available as a pdf file `here <https://www.gb.nrao.edu/GBT/D
         :margin: 2 2 0 0 
 
         **GBTIDL User's Guide** 
-
-        User's Guide for GBTIDL. 
-
+ 
         .. button-link:: gbtidl/users_guide.html
             :color: primary
             :tooltip: GBTIDL User's Guide
@@ -41,8 +40,6 @@ The content is also available as a pdf file `here <https://www.gb.nrao.edu/GBT/D
         :margin: 2 2 0 0 
 
         **Quick Reference for GBTIDL v2.8** 
-
-        User's Guide for GBTIDL. 
 
         .. button-link:: gbtidl/quick_reference.html
             :color: primary
