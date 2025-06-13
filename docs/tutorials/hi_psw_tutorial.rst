@@ -5,7 +5,13 @@
 HI Position Switched (psw) Spectrum
 ###################################
 
-This tutorial will run you through the steps required to setup your scheduling blocks to execute an HI observation using position switching and how to calibrate the data.
+.. admonition:: Goal
+
+    This tutorial will run you through the steps required to
+
+    1. setup your scheduling blocks 
+    2. execute an HI pointed observation (using position-switching)
+    3. calibrate the data   
 
 
 .. admonition:: What you should already know
@@ -16,16 +22,13 @@ This tutorial will run you through the steps required to setup your scheduling b
 
 .. admonition:: Data
 
-   This example is from the HI survey dataset http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml
+   This example is from the `HI survey dataset <http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml>`__.
 
 
 
 
 1 Observation Preparation
 =========================
-
-The instructions below will run you through the steps required to setup your scheduling blocks to execute an HI pointed observation (using position-switching) and how to calibrate the data.
-
 
 1.1 Catalog
 -----------
@@ -62,8 +65,8 @@ At the GBT we use `AstrID` to prepare and execute scheduling blocks. `AstrID` is
 2. Observations
 ===============
 
-
 To learn how to execute your observing scripts, please follow the :ref:`GBT observations 101` guide.
+
 
 
 2.1 AutoPeakFocus observations
@@ -136,7 +139,7 @@ We will show two examples of how to process the obtained spectra:
 3.1 Simple Example
 ------------------
 
-This simple example is from the HI survey dataset (http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml). It also matches the observation technique in Observing, example 1. 
+This simple example is from the `HI survey dataset <http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml>`__. It also matches the observation technique in Observing, example 1. 
 
 
 3.1.1 Start gbtidl
@@ -156,17 +159,23 @@ You should see the following welcome screen:
 3.1.2 Load files of interest
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: text
+In GBTIDL use :idl:pro:`dirin` to load the files you want to look at: 
+
+.. code-block:: IDL
     
-    GBTIDL -> dirin, '/home/astro-util/HIsurvey/Session02'
+    dirin, '/home/astro-util/HIsurvey/Session02'
 
 
 3.1.3 Look at file content
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: text
-    
-    GBTIDL -> summary
+Using :idl:pro:`summary` you can get an overview of the content of the file you have just loaded:
+
+.. code-block:: IDL
+
+    summary
+
+You should see this output: 
 
 .. literalinclude:: material/HI_survey_Session02_summary.txt
     :language: text
@@ -175,11 +184,11 @@ You should see the following welcome screen:
 3.1.4 Empty the buffer memory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Make sure the buffer memory is empty
+Make sure the buffer memory is empty using :idl:pro:`sclear`: 
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> sclear
+    sclear
 
 3.1.5 Process single on+off pair
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -187,11 +196,13 @@ Make sure the buffer memory is empty
 3.1.5.1 Process first polarization
 ''''''''''''''''''''''''''''''''''
 
-Process the first polarization of the on+off pair (scan #270, 271), setting the intensity unit to Jansky.
+Process the first polarization of the on+off pair (scan #270, 271) using :idl:pro:`getps`, setting the intensity unit to Jansky.
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL --> getps, 270, plnum=0, units='Jy'
+    getps, 270, plnum=0, units='Jy'
+
+The plotter should open and you should this spectrum: 
 
 .. image:: material/HI_survey_processing_01.png
 
@@ -199,11 +210,11 @@ Process the first polarization of the on+off pair (scan #270, 271), setting the 
 3.1.5.2 Adjust x-axis
 '''''''''''''''''''''
 
-Set the x-axis to an interesting frequency:
+Set the x-axis to an interesting frequency using :idl:pro:`setx`:
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> setx, 1.396, 1.402
+    setx, 1.396, 1.402
 
 .. image:: material/HI_survey_processing_02.png
 
@@ -211,20 +222,20 @@ Set the x-axis to an interesting frequency:
 3.1.5.3 Accumulate results
 ''''''''''''''''''''''''''
 
-Accumulate the results from first polarization in the buffer. 
+Accumulate the results from first polarization in the buffer using :idl:pro:`accum`. 
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> accum
+    accum
 
 3.1.5.4 Process second polarization
 '''''''''''''''''''''''''''''''''''
 
 Now process the second polarization of the same on+pff pair (scan #270, 271), again setting the intensity unit to Jansky.
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> getps, 270, plnum=1, units='Jy'
+    getps, 270, plnum=1, units='Jy'
 
 .. image:: material/HI_survey_processing_03.png
 
@@ -234,17 +245,19 @@ Now process the second polarization of the same on+pff pair (scan #270, 271), ag
 
 Accumulate the results from second polarization in the buffer. 
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> accum
+    accum
 
 
 3.1.5.4 Average polarizations
 '''''''''''''''''''''''''''''
+Using the function :idl:pro:`ave` you can average the two polarizations (i.e. the two spectra you have just accumulated):
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> ave
+    ave
+
 
 .. image:: material/HI_survey_processing_04.png
 
@@ -252,9 +265,11 @@ Accumulate the results from second polarization in the buffer.
 3.1.6 Smooth the result
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: text
+Using :idl:pro:`gsmooth` you can smooth your data. Here we also use the ``/decimate`` option, this will reduce the number of channels in your spectrum.
 
-    GBTIDL -> gsmooth, 100, /decimate
+.. code-block:: IDL
+
+    gsmooth, 100, /decimate
 
 .. image:: material/HI_survey_processing_05.png
 
@@ -265,11 +280,11 @@ Accumulate the results from second polarization in the buffer.
 3.1.7.1 Choose region
 '''''''''''''''''''''
 
-To choose the region for baseline fitting, mark the start and end of the baseline region on either side of the source interactively. Use the left button of your mouse to mark the region and the right button to exit.
+To choose the region for baseline fitting, use :idl:pro:`setregion` and mark the start and end of the baseline region on either side of the source interactively. Use the left button of your mouse to mark the region and the right button to exit.
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> setregion
+    setregion
 
 
 This is what the plotter window will look like after marking the basline regions (white vertical lines) while still in interactive more (green crosshair cursor).
@@ -283,19 +298,21 @@ This is what the plotter window will look like after exiting the interactive mod
 3.1.7.2 Set order of baseline fit
 '''''''''''''''''''''''''''''''''
 
-We will use a polynomial baseline fit of order 3.
+We will use a polynomial baseline fit of order 3 (:idl:pro:`nfit`).
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> nfit, 3
+    nfit, 3
 
 
 3.1.7.3 Show the fitted baseline
 ''''''''''''''''''''''''''''''''
 
-.. code-block:: text
+Use :idl:pro:`bshape` to show the fitted baseline
 
-    GBTIDL -> bshape
+.. code-block:: IDL
+
+    bshape
 
 
 .. image:: material/HI_survey_processing_08.png
@@ -304,9 +321,11 @@ We will use a polynomial baseline fit of order 3.
 3.1.7.4 Subtract the fitted baseline
 ''''''''''''''''''''''''''''''''''''
 
-.. code-block:: text
+To apply, i.e. subtract the fitted baseline from the data, use the command :idl:pro:`baseline`:
 
-    GBTIDL -> baseline
+.. code-block:: IDL
+
+    baseline
 
 .. image:: material/HI_survey_processing_09.png
 
@@ -314,11 +333,11 @@ We will use a polynomial baseline fit of order 3.
 3.1.8 Switch the x-axis
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Switch the x-axis from frequency to velocity
+Switch the x-axis from frequency to velocity (:idl:pro:`velo`)
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> velo
+    velo
 
 .. image:: material/HI_survey_processing_10.png
 
@@ -330,19 +349,19 @@ Switch the x-axis from frequency to velocity
 3.1.9.1 RMS
 '''''''''''
 
-Determine the statistics in the velocity ranges surrounding the galaxy, i.e. 4000 km/s - 4400 km/s and 4800 km/s - 5200 km/s.
+Determine the statistics (:idl:pro:`stats`) in the velocity ranges surrounding the galaxy, i.e. 4000 km/s - 4400 km/s and 4800 km/s - 5200 km/s.
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> stats, 4000, 4400
+    stats, 4000, 4400
 
 .. literalinclude:: material/HI_survey_processing_stats_01.txt
     :language: text
 
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> stats, 4800, 5200
+    stats, 4800, 5200
 
 .. literalinclude:: material/HI_survey_processing_stats_02.txt
     :language: text
@@ -351,11 +370,11 @@ Determine the statistics in the velocity ranges surrounding the galaxy, i.e. 400
 3.1.9.2 Line properties
 '''''''''''''''''''''''
 
-Using the AWV (area, width, velocity) routine, determine the line's properties, including the velocity width at 20% of the line's peak velocity.
+Using the :idl:pro:`awv` (area, width, velocity) routine, determine the line's properties, including the velocity width at 20% of the line's peak velocity.
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> gmeasure, 1, 0.2, brange=4610, erange=4735, rms=0.0039
+    gmeasure, 1, 0.2, brange=4610, erange=4735, rms=0.0039
 
 .. literalinclude:: material/HI_survey_processing_gmeasure.txt
     :language: text
@@ -364,14 +383,14 @@ Using the AWV (area, width, velocity) routine, determine the line's properties, 
 3.1.10 Compare with online database
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Check your results against the online database available here: http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml.
+Check your results against the online database available `here <http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml>`__.
 
 
 3.2 More Complicated Example
 ----------------------------
 
 
-This example is from the HI survey dataset (http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml). 
+This example is from the `HI survey dataset <http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml>`__. 
 
 It also matches the observation technique in Observing, example 1. Note, though, that not all the data in this
 dataset was taken using the standard ONOFF command with the cals (noise diodes) firing. Instead many of the
@@ -396,17 +415,21 @@ You should see the following welcome screen:
 3.2.2 Load files of interest
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: text
+In GBTIDL use :idl:pro:`dirin` to load the files you want to look at:
+
+.. code-block:: IDL
     
-    GBTIDL -> dirin, '/home/astro-util/HIsurvey/Session02'
+    dirin, '/home/astro-util/HIsurvey/Session02'
 
 
 3.2.3 Look at file content
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: text
+Using :idl:pro:`summary`, you can get an overview of the content of the file you have just loaded:
+
+.. code-block:: IDL
     
-    GBTIDL -> summary
+    summary
 
 Here we're showing only the scans of interest for this example. We have two OffOn pairs (scans pairs 295+296, 297+298) and one track scan (scan 299).
 
@@ -418,9 +441,11 @@ Here we're showing only the scans of interest for this example. We have two OffO
 3.2.4 Double-check the scans
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: text
+:idl:pro:`list` allows to list individual scans:
 
-    GBTIDL -> list, scan=295
+.. code-block:: IDL
+
+    list, scan=295
 
 Here you can see that there is no noise diode (cal) firing during the on + off scans. We're only showing the first few lines of the output, when you run the command, the output list will be a bit longer.
 
@@ -428,18 +453,18 @@ Here you can see that there is no noise diode (cal) firing during the on + off s
     :language: text
     :lines: 1-11
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> list, scan=296
+    list, scan=296
 
 .. literalinclude:: material/HI_survey_Session02_list296.txt
     :language: text
     :lines: 1-11
 
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> list, scan=299
+    list, scan=299
 
 .. literalinclude:: material/HI_survey_Session02_list299.txt
     :language: text
@@ -447,19 +472,19 @@ Here you can see that there is no noise diode (cal) firing during the on + off s
 3.2.5 Determine :math:`T_{sys}`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We will use the track scan (scan 299) to determine the system temperature, :math:`T_{sys}` for each polarization.
+We will use the track scan (scan 299) to determine the system temperature, :math:`T_{sys}` for each polarization. The procedure :idl:pro:`gettp` allows us to load those scans:
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> gettp, 299, plnum=0
+    gettp, 299, plnum=0
 
 .. code-block:: text
 
     Scan:   299 (IF:0 FD:0 PL:0)    Tsys:  27.98
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> gettp, 299, plnum=1
+    gettp, 299, plnum=1
 
 .. code-block:: text
 
@@ -468,58 +493,58 @@ We will use the track scan (scan 299) to determine the system temperature, :math
 3.2.6 Empty the buffer memory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Make sure the buffer memory is empty
+Make sure the buffer memory is empty using :idl:pro:`sclear`.
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> sclear
+    sclear
 
 
 3.2.7 Process on+off pairs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Here you have to use the `getsigref` command, and explicitly give the command the on and off scan numbers. 
+Here you have to use the :idl:pro:`getsigref` command, and explicitly give the command the on and off scan numbers. We then use :idl:pro:`accum` to accumulate the results for both polarizations and :idl:pro:`ave` to average to accumulated spectra into one final spectra.
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> getsigref, 296, 295, plnum=0, tsys=27.98, unit='Jy'
+    getsigref, 296, 295, plnum=0, tsys=27.98, unit='Jy'
 
 .. code-block:: text
 
     SigScan:   296  RefScan:   295 (IF:0 FD:0 PL:0)   units: Jy  tau:0.008 ap_eff:0.710  Tsys:  27.98
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> accum
-    GBTIDL -> getsigref, 296, 295, plnum=1, tsys=27.40, unit='Jy'
+    accum
+    getsigref, 296, 295, plnum=1, tsys=27.40, unit='Jy'
 
 .. code-block:: text
 
     Blanked spectra: ignored 2 integrations
     SigScan:   296  RefScan:   295 (IF:0 FD:0 PL:1)   units: Jy  tau:0.008 ap_eff:0.710  Tsys:  27.40
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> accum
-    GBTIDL -> getsigref, 298, 297, plnum=0, tsys=27.98, unit='Jy'
+    accum
+    getsigref, 298, 297, plnum=0, tsys=27.98, unit='Jy'
 
 .. code-block:: text
 
     SigScan:   298  RefScan:   297 (IF:0 FD:0 PL:0)   units: Jy  tau:0.008 ap_eff:0.710  Tsys:  27.98
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> accum
-    GBTIDL -> getsigref, 298, 297, plnum=0, tsys=27.40, unit='Jy'
+    accum
+    getsigref, 298, 297, plnum=0, tsys=27.40, unit='Jy'
 
 .. code-block:: text
 
     SigScan:   298  RefScan:   297 (IF:0 FD:0 PL:1)   units: Jy  tau:0.008 ap_eff:0.710  Tsys:  27.40
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> accum
-    GBTIDL -> ave
+    accum
+    ave
 
 
 .. image:: material/HI_survey_processing_11.png
@@ -527,11 +552,11 @@ Here you have to use the `getsigref` command, and explicitly give the command th
 3.2.8 Adjust x-axis
 ^^^^^^^^^^^^^^^^^^^
 
-Set the x-axis to avoid the edges.
+Set the x-axis to avoid the edges (:idl:pro:`setx`).
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> setx, 1.401, 1.412
+    setx, 1.401, 1.412
 
 .. image:: material/HI_survey_processing_12.png
 
@@ -539,9 +564,11 @@ Set the x-axis to avoid the edges.
 3.2.9 Smooth the spectrum
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: text
+Using :idl:pro:`gsmooth` you can smooth your data. Here we also use the ``/decimate`` option, this will reduce the number of channels in your spectrum.
 
-    GBTIDL -> gsmooth, 100, /decimate
+.. code-block:: IDL
+
+    gsmooth, 100, /decimate
 
 .. image:: material/HI_survey_processing_13.png
 
@@ -549,19 +576,19 @@ Set the x-axis to avoid the edges.
 3.2.10 Remove baseline
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Set regions avoiding the RFI spike. 
+Set regions avoiding the RFI spike (:idl:pro:`setregion`). 
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> setregion
+    setregion
 
 .. image:: material/HI_survey_processing_14.png
 
-Remove baseline (after inspection) using first order polynomial (i.e. a line).
+Remove baseline (after inspection) using first order polynomial (i.e. a line) using :idl:pro:`nfit`, :idl:pro:`bshape`, and :idl:pro:`baseline`.
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> nfit, 1
+    nfit, 1
     GBTIDL -> bshape
     GBTIDL -> baseline
 
@@ -573,19 +600,19 @@ Remove baseline (after inspection) using first order polynomial (i.e. a line).
 3.2.11.1 RMS noise
 ''''''''''''''''''
 
-Determine the statistics in the velocity ranges surrounding the galaxy, i.e. 2000 km/s - 2500 km/s and 3500 km/s - 4000 km/s.
+Determine the statistics in the velocity ranges surrounding the galaxy, i.e. 2000 km/s - 2500 km/s and 3500 km/s - 4000 km/s (:idl:pro:`stats`).
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> stats, 2000, 2500
+    stats, 2000, 2500
 
 .. literalinclude:: material/HI_survey_processing_stats_03.txt
     :language: text
 
 
-.. code-block:: text
+.. code-block:: IDL
 
-    GBTIDL -> stats, 3500, 4000
+    stats, 3500, 4000
 
 .. literalinclude:: material/HI_survey_processing_stats_04.txt
     :language: text
@@ -594,23 +621,23 @@ Determine the statistics in the velocity ranges surrounding the galaxy, i.e. 200
 3.2.11.2 Line properties
 ''''''''''''''''''''''''
 
-Using the AWV (area, width, velocity) routine, we can determine the line's properties, including the velocity width at 20% of the line's peak velocity. Here we will use a few methods:
+Using the :idl:pro:`awv` (area, width, velocity) routine, we can determine the line's properties, including the velocity width at 20% of the line's peak velocity. Here we will use a few methods:
 
 #. **Fraction of mean** 
     As a fraction of the mean within the region of interest. The mean of data from brange through erange is calculated. The edges are then those locations where the data values are greater than fract*mean for 3 consecutive channels starting from the end points of the region of interest and searching towards the center (method #1), first using 50% of the peak intensity and then 20%
 
-    .. code-block:: text
+    .. code-block:: IDL
 
-        GBTIDL -> gmeasure, 1, 0.5, brange=2815, erange=3142, rms=0.00252
+        gmeasure, 1, 0.5, brange=2815, erange=3142, rms=0.00252
 
     .. code-block:: text
 
           Area, Width, Velocity (followed by errors in same order) =    9.45  252.76 2979.57    0.27    0.00    0.00
 
 
-    .. code-block:: text
+    .. code-block:: IDL
 
-        GBTIDL -> gmeasure, 1, 0.2, brange=2815, erange=3142, rms=0.00252
+        gmeasure, 1, 0.2, brange=2815, erange=3142, rms=0.00252
 
     .. code-block:: text
 
@@ -619,17 +646,17 @@ Using the AWV (area, width, velocity) routine, we can determine the line's prope
 #. **Fraction of maximum value** 
     As a fraction of the maximum value within the region of interest. The peak of data from brange to erange is found. The edges are then those locations where the data values are greater than fract*(peak-rms) for 3 consecutive channels starting from the end points of the region of interest and searching towards the center (method #2) , first using 50% of the peak intensity and then 20%.
 
-    .. code-block:: text
+    .. code-block:: IDL
 
-        GBTIDL -> gmeasure, 2, 0.5, brange=2815, erange=3142, rms=0.00252
+        gmeasure, 2, 0.5, brange=2815, erange=3142, rms=0.00252
 
     .. code-block:: text
 
           Area, Width, Velocity (followed by errors in same order) =    9.45  238.38 2980.15    0.26    0.00    0.00
 
-    .. code-block:: text
+    .. code-block:: IDL
 
-        GBTIDL -> gmeasure, 2, 0.2, brange=2815, erange=3142, rms=0.00252
+        gmeasure, 2, 0.2, brange=2815, erange=3142, rms=0.00252
 
     .. code-block:: text
 
@@ -638,18 +665,18 @@ Using the AWV (area, width, velocity) routine, we can determine the line's prope
 #. **Fraction of each of two peaks -- identified by user**
     You use the cursor to mark two peaks in the region of interest or those peaks are identified through the lefthorn and righthorn parameters. The maximum value within 10 channels of each user-supplied peak location is found. The left edge is where the data value falls below fract*(peak-rms) for 3 consecutive channels searched from the location of the peak. The right-channel peak is similarly used to find the right edge (method #3) , first using 50% of the peak intensity and then 20%.
 
-    .. code-block:: text
+    .. code-block:: IDL
 
-        GBTIDL -> gmeasure, 3, 0.5, brange=2815, erange=3142, rms=0.00252
+        gmeasure, 3, 0.5, brange=2815, erange=3142, rms=0.00252
 
     .. code-block:: text
 
         click on the positions for the two peaks
           Area, Width, Velocity (followed by errors in same order) =    9.49  239.90 2979.39    0.26    0.00    0.00
 
-    .. code-block:: text
+    .. code-block:: IDL
 
-        GBTIDL -> gmeasure, 3, 0.2, brange=2815, erange=3142, rms=0.00252
+        gmeasure, 3, 0.2, brange=2815, erange=3142, rms=0.00252
 
     .. code-block:: text
 
@@ -673,16 +700,19 @@ This example is from the HI survey dataset (http://greenbankobservatory.org/~kon
     :language: idl
 
 
-Let's say you have the script saved as HI_survey_process.pro. You can execute the script doing the following
+Let's say you have the script saved as ``HI_survey_process.pro``. You can execute the script doing the following
  in a regular terminal
 
 .. code-block:: bash
 
     gbtidl
 
-.. code-block:: text
 
-    GBTIDL -> @HI_survey_process.pro
+Within GBTIDL type
+
+.. code-block:: IDL
+
+    @HI_survey_process.pro
 
 Once done you should see this output from the code:
 
