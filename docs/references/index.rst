@@ -40,42 +40,42 @@ Observing Modes
 Hardware
 ========
 
-Receivers
----------
-
 .. grid:: 1 2 2 2
 
     .. grid-item-card::
         :shadow: md
         :margin: 2 2 0 0 
 
-        **Argus** 
+        **Receivers** 
 
-        References for Argus (75-115 GHz)
+        Detailed information for all GBT receivers
 
-        .. button-link:: receivers/argus.html
+        .. button-link:: receivers/index.html
             :color: primary
-            :tooltip: Argus, a 16-pixel receiver operating from 75-115 GHz.
+            :tooltip: GBT receivers
             :outline:
             :click-parent:
 
-            Argus
+            Receivers 
+
 
     .. grid-item-card::
         :shadow: md
-        :margin: 2 2 0 0
+        :margin: 2 2 0 0 
 
-        **MUSTANG-2**
+        **Backends** 
 
-        References for MUSTANG-2 (bolometer camera)
+        Detailed information for all GBT backends
 
-        .. button-link:: receivers/mustang2.html
+        .. button-link:: backends/index.html
             :color: primary
-            :tooltip: MUSTANG-2, a 223-feedhorn bolometer camera operating at 90 GHz.
+            :tooltip: GBT receivers
             :outline:
             :click-parent:
 
-            MUSTANG-2
+            Backends
+
+
 
 
 .. toctree::
@@ -83,8 +83,8 @@ Receivers
     :hidden:
 
 
-    receivers/argus
-    receivers/mustang2
+    receivers
+    backends
 
 
 ----------

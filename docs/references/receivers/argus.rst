@@ -13,11 +13,11 @@ Introduction
 
 Argus is a 16 element focal-plane-array operating from 74 GHz o 116 GHz. The feeds are configured in a 4x4 array and are each separated by 30.4 arcsec on the sky. 
 
-.. image:: images/argus_footprint.png
+.. image:: argus/images/argus_footprint.png
 
 Argus has an absorber vane that can be placed over the entire array for calibration. The 16 Argus beams can be connected to the 16 separate VEGAS channels (VEGAS has 8 bank, each of which have two channels [A1, A2, B1, B2, ..., H1, H2]). Each of the 16 beams only measure 1 polarization (linear, X). Argus uses an IQ-mixer scheme to separate the USB and LSB, and the side-band isolation is aproximately 15-20 dB.
 
-.. image:: images/argus_block.png
+.. image:: argus/images/argus_block.png
 
 The instantaneous bandwidth for Argus is ~1.5 GHz, which is similar to the VEGAS spectrometer bandwidth. Users can observe multiple lines simultaneously using the VEGAS sub=banding modes (modes 20-29) for lines separated by less than the ~1.25 GHz effective bandwidth of an individual VEGAS bank. For spectral line mapping experiments, Argus is typically configured with each of the Argus beams connected to an individual VEGAS channel. BEams 9-16 use the regular GBT IF system and can be configured with multiple VEGAS banks, or the DCR for pointing, focus and OOF. Beams 1-8 have dedicated IF paths that are only connected to specific VEGAS banks.
 
@@ -55,11 +55,11 @@ The observing strategies for Argus are similar to those presented for the 4mm W-
 #. If pointing is problematic with Argus, e.g., observations during the day, or in periods of marginal weather, or in cases where the pointing source is too weak, observers can point and focus in X-band and use these telescope corrections for their Argus observations. Also, if there are no nearby bright sources to point with Argus and the telescope is at slow slew rate (at cold temperatures), it can be faster to switch receivers for pointing than to slew far away and point with Argus. Pointing and focus using Argus requires special attention, and users should not blindly accept the default solutions provided by the software system.  Users can enter solutions manually as needed as discussed in Section~\ref{sec:gfmsendcorrections}. If you are unsure of the Argus pointing results, point in X-band (which is adjacent to Argus in the turret).
 #. After configuration and balancing VEGAS for science observations, check the power levels in the system. The VEGAS levels should be ~ -20+/i 3 dBm. 
    
-    .. image:: images/argus_vegas.png
+    .. image:: argus/images/argus_vegas.png
 
 #. The target power levels in the IF rack (for beams 9-16) are 1.5 Volts. The YIG LO power level going into the instrument should range from ~0.2--0.6 Volts (above 84 GHz).  The power coming out of the warm electronics of Argus should read about ~1.0--1.4 for beams 1-8 and ~0.5-0.9 for beams 9-16 (under the TP column of the WIF section of the Argus pyCLEO window.
 
-    .. image:: images/argus_cleo.png
+    .. image:: argus/images/argus_cleo.png
 
 #. Users must run the argus_vanecal procedure to calibrate the data (located in /users/astro-util/projects/Argus/OBS/argus\_vanecal) after each configuration and/or balance for observations that need to be calibrated.  The vane calibration is stable over longer periods than is needed for pointing and focusing, so only one argus_vanecal procedure is required for each set of VEGAS observations between the pointing and focus observations.  Under stable temperature conditions, the vane calibration is consistent over several hours while it is recommended to point and focus every 30--50 minutes for Argus.
 #. It is best to observe similar frequencies together in time since it can take a few minutes for the YIG system to adjust to large frequency jumps.  If you need to switch by a large amount in frequency (e.g., >4 GHz), configure and wait a couple of minutes before observing.  If the YIG LO power is low after a large frequency shift (e.g., <0.2), re-configure again.
@@ -76,7 +76,7 @@ Monitoring and Diagnostics
 
 The Argus pyCleo page can be used to monitor the status of the instrument. 
 
-.. image:: images/argus_cleo.png
+.. image:: argus/images/argus_cleo.png
 
 This tool can be started from the CleoLauncher under the Receivers tab labeled "RcvrArray75_115". The pyCleo can be used for running basic instrument commands, such as startup or the vane control. Before issueing a command, you must unlock the CLEO window by clicking the green "locked" button to unlocked (red). The instrument parameters showin by pyCleo for Argus are updated after a configuration, at the start of each scan during observing, and every 30 minutes when not observing. Updated instrument values can be obtained by issuing a "prepare" command, which is done under the top managers tab (prepare) or the prepare button under the reboot button.
 
@@ -92,11 +92,11 @@ IF Routing
 
 The mapping between the VEGAS channels, Converter Modules, IF channels, and the VEGAS beams is shown below
 
-.. image:: images/argus_ifmapping.png
+.. image:: argus/images/argus_ifmapping.png
 
 Observers should verify the VEGAS power levels ~-20+/-3 dBm via the VEGAS Cleo window.
 
-.. image:: images/argus_vegas.png
+.. image:: argus/images/argus_vegas.png
 
 As an example shown by Figure fig:argusvegas, the VEGAS channel H1 is $-33$ dBm which is too low to yield useful data.  The H1 VEGAS bank corresponds to VEGAS channel J15, converter module CM12, dedicated fiber "6", and Argus beam 6.  In this example, the data associated with Beam-6 from Argus would be bad and would show non-physical system temperatures.
 
