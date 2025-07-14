@@ -50,7 +50,7 @@ Hardware
 
         Detailed information for all GBT receivers
 
-        .. button-link:: receivers/index.html
+        .. button-link:: receivers.html
             :color: primary
             :tooltip: GBT receivers
             :outline:
@@ -67,7 +67,7 @@ Hardware
 
         Detailed information for all GBT backends
 
-        .. button-link:: backends/index.html
+        .. button-link:: backends.html
             :color: primary
             :tooltip: GBT receivers
             :outline:
