@@ -16,7 +16,7 @@ Receivers
 
         References for the L-Band receiver (1.15-1.73 GHz)
 
-        .. button-link:: l-band.html
+        .. button-link:: receivers/l-band.html
             :color: primary
             :tooltip: L-Band receiver
             :outline:
@@ -33,7 +33,7 @@ Receivers
 
         References for the S-Band receiver (1.73-2.6 GHz)
 
-        .. button-link:: s-band.html
+        .. button-link:: receivers/s-band.html
             :color: primary
             :tooltip: S-Band receiver
             :outline:
@@ -50,7 +50,7 @@ Receivers
 
         References for the C-Band receiver (3.95-7.8 GHz)
 
-        .. button-link:: c-band.html
+        .. button-link:: receivers/c-band.html
             :color: primary
             :tooltip: C-Band receiver
             :outline:
@@ -67,7 +67,7 @@ Receivers
 
         References for the X-Band receiver (7.8-12 GHz)
 
-        .. button-link:: x-band.html
+        .. button-link:: receivers/x-band.html
             :color: primary
             :tooltip: X-Band receiver
             :outline:
@@ -84,7 +84,7 @@ Receivers
 
         References for the Ku-Band receiver (12-15.4 GHz)
 
-        .. button-link:: ku-band.html
+        .. button-link:: receivers/ku-band.html
             :color: primary
             :tooltip: Ku-Band receiver
             :outline:
@@ -101,7 +101,7 @@ Receivers
 
         References for KFPA (18-27.5 GHz)
 
-        .. button-link:: kfpa.html
+        .. button-link:: receivers/kfpa.html
             :color: primary
             :tooltip: KFPA
             :outline:
@@ -118,7 +118,7 @@ Receivers
 
         References for the Ka-Band receiver (26-39.5 GHz)
 
-        .. button-link:: Ka-band.html
+        .. button-link:: receivers/ka-band.html
             :color: primary
             :tooltip: Ka-Band receiver
             :outline:
@@ -135,7 +135,7 @@ Receivers
 
         References for the Q-Band receiver (39.2-50.5 GHz)
 
-        .. button-link:: q-band.html
+        .. button-link:: receivers/q-band.html
             :color: primary
             :tooltip: Q-Band receiver
             :outline:
@@ -152,7 +152,7 @@ Receivers
 
         References for the W-Band receiver (67-93 GHz)
 
-        .. button-link:: w-band.html
+        .. button-link:: receivers/w-band.html
             :color: primary
             :tooltip: W-Band receiver
             :outline:
@@ -169,7 +169,7 @@ Receivers
 
         References for Argus (75-115 GHz)
 
-        .. button-link:: argus.html
+        .. button-link:: receivers/argus.html
             :color: primary
             :tooltip: Argus, a 16-pixel receiver operating from 75-115 GHz.
             :outline:
@@ -185,7 +185,7 @@ Receivers
 
         References for MUSTANG-2 (bolometer camera)
 
-        .. button-link:: mustang2.html
+        .. button-link:: receivers/mustang2.html
             :color: primary
             :tooltip: MUSTANG-2, a 223-feedhorn bolometer camera operating at 90 GHz.
             :outline:
