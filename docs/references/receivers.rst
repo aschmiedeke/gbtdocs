@@ -4,194 +4,65 @@
 Receivers
 #########
 
-
-.. grid:: 1 2 2 2
-
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **L-Band** 
-
-        References for the L-Band receiver (1.15-1.73 GHz)
-
-        .. button-link:: receivers/l-band.html
-            :color: primary
-            :tooltip: L-Band receiver
-            :outline:
-            :click-parent:
-
-            L-Band
-
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **S-Band** 
-
-        References for the S-Band receiver (1.73-2.6 GHz)
-
-        .. button-link:: receivers/s-band.html
-            :color: primary
-            :tooltip: S-Band receiver
-            :outline:
-            :click-parent:
-
-            S-Band
-
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **L-Band** 
-
-        References for the C-Band receiver (3.95-7.8 GHz)
-
-        .. button-link:: receivers/c-band.html
-            :color: primary
-            :tooltip: C-Band receiver
-            :outline:
-            :click-parent:
-
-            C-Band
-
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **X-Band** 
-
-        References for the X-Band receiver (7.8-12 GHz)
-
-        .. button-link:: receivers/x-band.html
-            :color: primary
-            :tooltip: X-Band receiver
-            :outline:
-            :click-parent:
-
-            X-Band
-
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **Ku-Band** 
-
-        References for the Ku-Band receiver (12-15.4 GHz)
-
-        .. button-link:: receivers/ku-band.html
-            :color: primary
-            :tooltip: Ku-Band receiver
-            :outline:
-            :click-parent:
-
-            Ku-Band
-
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **KFPA** 
-
-        References for KFPA (18-27.5 GHz)
-
-        .. button-link:: receivers/kfpa.html
-            :color: primary
-            :tooltip: KFPA
-            :outline:
-            :click-parent:
-
-            KFPA
-
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **Ka-Band** 
-
-        References for the Ka-Band receiver (26-39.5 GHz)
-
-        .. button-link:: receivers/ka-band.html
-            :color: primary
-            :tooltip: Ka-Band receiver
-            :outline:
-            :click-parent:
-
-            Ka-Band
-
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **Q-Band** 
-
-        References for the Q-Band receiver (39.2-50.5 GHz)
-
-        .. button-link:: receivers/q-band.html
-            :color: primary
-            :tooltip: Q-Band receiver
-            :outline:
-            :click-parent:
-
-            Q-Band
-
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **W-Band** 
-
-        References for the W-Band receiver (67-93 GHz)
-
-        .. button-link:: receivers/w-band.html
-            :color: primary
-            :tooltip: W-Band receiver
-            :outline:
-            :click-parent:
-
-            W-Band
-
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **Argus** 
-
-        References for Argus (75-115 GHz)
-
-        .. button-link:: receivers/argus.html
-            :color: primary
-            :tooltip: Argus, a 16-pixel receiver operating from 75-115 GHz.
-            :outline:
-            :click-parent:
-
-            Argus
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0
-
-        **MUSTANG-2**
-
-        References for MUSTANG-2 (bolometer camera)
-
-        .. button-link:: receivers/mustang2.html
-            :color: primary
-            :tooltip: MUSTANG-2, a 223-feedhorn bolometer camera operating at 90 GHz.
-            :outline:
-            :click-parent:
-
-            MUSTANG-2
+Prime Focus Receivers
+---------------------
+
++----------+-------------+---------------+--------------+----------+---------------+-----------------+-----------------+
+| Receiver | Astrid name | Frequency     | Polarization | Number   | Polarizations | :math:`T_{rec}` | :math:`T_{sys}` |
+|          |             | Range [GHz]   |              | of beams | per beam      | [K]             | [K]             |
++==========+=============+===============+==============+==========+===============+=================+=================+
+|          | Rcvr_342    | 0.290 - 0.395 | Lin/Circ     | 1        | 2             | 12              | 46              |
+|          +-------------+---------------+--------------+----------+---------------+-----------------+-----------------+
+|          | Rcvr_450    | 0.385 - 0.520 | Lin/Circ     | 1        | 2             | 22              | 43              |
+| PF1      +-------------+---------------+--------------+----------+---------------+-----------------+-----------------+
+|          | Rcvr_600    | 0.510 - 0.690 | Lin/Circ     | 1        | 2             | 12              | 22              |
+|          +-------------+---------------+--------------+----------+---------------+-----------------+-----------------+
+|          | Rcvr_800    | 0.680 - 0.920 | Lin/Circ     | 1        | 2             | 21              | 35              |
++----------+-------------+---------------+--------------+----------+---------------+-----------------+-----------------+
+| PF2      | Rcvr_1070   | 0.910 - 1.230 | Lin/Circ     | 1        | 2             | 10              | 17              |
++----------+-------------+---------------+--------------+----------+---------------+-----------------+-----------------+
+
+
+Gregorian Receivers
+-------------------
+
++-----------------------------------------------+-----------------+-------+-------------+----------+----------+-----------+-----------------+-----------------+
+| Receiver                                      | Astrid name     | Band  | Frequency   | Polari-  | Number   | Polariza- | :math:`T_{rec}` | :math:`T_{sys}` |
+|                                               |                 |       | Range [GHz] | zation   | of beams | tions per | [K]             | [K]             |
+|                                               |                 |       |             |          |          | beam      |                 |                 |
++===============================================+=================+=======+=============+==========+==========+===========+=================+=================+
+| :ref:`L-Band <L-Band receiver>`               | Rcvr1_2         |       | 1.15 - 1.73 | Lin/Circ | 1        | 2         | 6               | 20              |
++-----------------------------------------------+-----------------+-------+-------------+----------+----------+-----------+-----------------+-----------------+
+| :ref:`S-Band <S-Band receiver>`               | Rcvr2_3         |       | 1.73 - 2.60 | Lin/Circ | 1        | 2         | 8-12            | 22              |
++-----------------------------------------------+-----------------+-------+-------------+----------+----------+-----------+-----------------+-----------------+
+| :ref:`C-Band <C-Band receiver>`               | Rcvr4_6         |       | 3.95 - 7.80 | Lin/Circ | 1        | 2         | 5               | 18              |
++-----------------------------------------------+-----------------+-------+-------------+----------+----------+-----------+-----------------+-----------------+
+| :ref:`X-Band <X-Band receiver>`               | Rcvr8_10        |       | 7.8 - 12.0  | Circ     | 1        | 2         | 17              | 27              |
++-----------------------------------------------+-----------------+-------+-------------+----------+----------+-----------+-----------------+-----------------+
+| :ref:`Ku-Band <Ku-Band receiver>`             | Rcvr12_18       |       | 12.0 - 15.4 | Circ     | 2        | 2         | 14              | 30              |
++-----------------------------------------------+-----------------+-------+-------------+----------+----------+-----------+-----------------+-----------------+
+| :ref:`KFPA <K-Band Focal Plane Array (KFPA)>` | RcvrArray18_26  |       | 18.0 - 27.5 | Circ     | 7        | 2         | 15-25           | 30-45           |
++-----------------------------------------------+-----------------+-------+-------------+----------+----------+-----------+-----------------+-----------------+
+| :ref:`Ka-Band <Ka-Band receiver>`             | Rcvr26_40       | MM-F1 | 26.0 - 31.0 | Lin      | 2        | 1         | 20              | 35              |
++                                               +                 +-------+-------------+----------+----------+-----------+-----------------+-----------------+
+|                                               |                 | MM-F2 | 30.5 - 37.0 | Lin      | 2        | 1         | 20              | 30              |
++                                               +                 +-------+-------------+----------+----------+-----------+-----------------+-----------------+
+|                                               |                 | MM-F3 | 39.2 - 50.5 | Lin      | 2        | 1         | 20              | 45              |
++-----------------------------------------------+-----------------+-------+-------------+----------+----------+-----------+-----------------+-----------------+
+| :ref:`Q-Band <Q-Band receiver>`               | Rcvr40_52       |       | 39.2 - 50.5 | Circ     | 2        | 2         | 40-70           | 67-134          |
++-----------------------------------------------+-----------------+-------+-------------+----------+----------+-----------+-----------------+-----------------+
+| :ref:`W-Band <W-Band receiver>`               | Rcvr68_92       | FL1   | 67-74       | Lin/Circ | 2        | 2         | 50              | 160             |
+|                                               +                 +-------+-------------+----------+----------+-----------+-----------------+-----------------+
+|                                               |                 | FL2   | 73-80       | Lin/Circ | 2        | 2         | 50              | 120             |
+|                                               +                 +-------+-------------+----------+----------+-----------+-----------------+-----------------+
+|                                               |                 | FL3   | 79-86       | Lin/Circ | 2        | 2         | 50              | 100             |
+|                                               +                 +-------+-------------+----------+----------+-----------+-----------------+-----------------+
+|                                               |                 | FL4   | 85-93       | Lin/Circ | 2        | 2         | 60              | 110             |
++-----------------------------------------------+-----------------+-------+-------------+----------+----------+-----------+-----------------+-----------------+
+| :ref:`Argus <Argus>`                          | RcvrArray75_115 |       | 74 - 116    | Lin      | 16       | 1         | 50              | 110             |
++-----------------------------------------------+-----------------+-------+-------------+----------+----------+-----------+-----------------+-----------------+
+| :ref:`MUSTANG-2 <MUSTANG-2>`                  |                 |       | 75 - 105    |          | 223      |           |                 |                 |
++-----------------------------------------------+-----------------+-------+-------------+----------+----------+-----------+-----------------+-----------------+
 
 
 .. toctree::
