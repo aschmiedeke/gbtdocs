@@ -4,8 +4,13 @@
 Receivers
 #########
 
+The GBT receivers cover several frequency bands from 0.290 - 50 GHz and 70-115 GHz. The The properties of the receivers are listed below. System temperatures are derived from lab measurements or from exptected receiver performance given reasonable assumptions about spillover and atmospheric contributions.
+
+
 Prime Focus Receivers
 ---------------------
+
+The Prime focus receivers are mounted in a Focus Rotation Mount (FRM) on a retractable boom. The boom is moved to the prime focus position when prime focus receivers are to be used, and retracted when using Gregorian receivers. The FRM holds one receiver box at a time. Currently there are two receiver boxes, PF1 and PF2. A change from PF1 to PF2 receivers requires a box change, taking about 4 hours and is done only during scheduled maintenance days.
 
 +-------------------------------------------+-------------+---------------+--------------+----------+---------------+-----------------+-----------------+
 | Receiver                                  | Astrid name | Frequency     | Polarization | Number   | Polarizations | :math:`T_{rec}` | :math:`T_{sys}` |
@@ -25,6 +30,8 @@ Prime Focus Receivers
 
 Gregorian Receivers
 -------------------
+
+The Gregorian receivers are mounted in a rotating turret in a receiver room located at the Gregorian Focus of the telescope. The turret has 8 portals for receiver boxes. Up to 8 receivers can be kept cold and active at all times. Changing between any two Gregorian receivers that are installed in the turret takes about 60-90 seconds.
 
 +-----------------------------------------------+-----------------+-------+-------------+----------+----------+-----------+-----------------+-----------------+
 | Receiver                                      | Astrid name     | Band  | Frequency   | Polari-  | Number   | Polariza- | :math:`T_{rec}` | :math:`T_{sys}` |
@@ -63,7 +70,6 @@ Gregorian Receivers
 +-----------------------------------------------+-----------------+-------+-------------+----------+----------+-----------+-----------------+-----------------+
 | :ref:`MUSTANG-2 <MUSTANG-2>`                  |                 |       | 75 - 105    |          | 223      |           |                 |                 |
 +-----------------------------------------------+-----------------+-------+-------------+----------+----------+-----------+-----------------+-----------------+
-
 
 .. toctree::
     :maxdepth: 3
