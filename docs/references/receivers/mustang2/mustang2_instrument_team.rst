@@ -14,7 +14,6 @@ The following are members of the MUSTANG-2 Instrument Team and should be include
 - Jack Orlowski-Scherer
 - Charles Romero
 - Craig Sarazin
-- Karen Perez Sarmiento
 - Jonathan Sievers
 - Joshiwa van Marrewijk
 

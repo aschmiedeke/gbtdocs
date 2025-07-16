@@ -25,9 +25,9 @@ All cases below require that you have installed `M2_ProposalTools <https://m2-tj
 
 1.1 Galaxy Clusters
 -------------------
-We will use the common scientific case of galaxy clusters to demonstrate how to use ``M2_ProposalTools``. Galaxy clusters are expected to be nearly self-similar and observations tend to support that they can be described by a universal pressure profile (UPP). Specifically, it's common practice to use an A10 `A10 <https://ui.adsabs.harvard.edu/abs/2010A%26A...517A..92A/abstract>`_ , from Arnaud et al. (2010), pressure profile which is a function of solely mass and redshift. For many MUSTANG-2 observations of galaxy clusters, we find that it is sufficient to assume the parameters in A10 for the morphologically disturbed subset (see Table C.2 in Arnaud et al. (2010)).
+We will use the common scientific case of galaxy clusters to demonstrate how to use ``M2_ProposalTools``. Galaxy clusters are expected to be nearly self-similar and observations tend to support that they can be described by a universal pressure profile (UPP). Specifically, it's common practice to use an `A10 <https://ui.adsabs.harvard.edu/abs/2010A%26A...517A..92A/abstract>`_ , from Arnaud et al. (2010), pressure profile which is a function of solely mass and redshift. For many MUSTANG-2 observations of galaxy clusters, we find that it is sufficient to assume the parameters in A10 for the morphologically disturbed subset (see Table C.2 in Arnaud et al. 2010).
 
-Note that ``M2_ProposalTools`` adopts a default assumption of an Arnaud+ 2010 UPP profile for clusters (as a function of M,z) and has a keyword to assume the parameters for the pressure profile of the disturbed clusters used in A10.
+Note that ``M2_ProposalTools`` adopts a default assumption of an Arnaud+ 2010 UPP profile for clusters (as a function of M_500,z) and has a keyword to assume the parameters for the pressure profile of the disturbed clusters used in A10.
 
 1.1.1 Cluster Core Detection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
