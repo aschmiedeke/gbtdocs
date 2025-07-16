@@ -22,7 +22,11 @@ During observing, you are expected to edit the MUSTANG-2 observing run notes wik
 
 #. On the new log page you have created you can put in the text from a `log template <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/NewRunNotes#Log_Template>`_. On the log template page, go to "Edit", copy that text, and paste it into your new log (also in the "Edit" mode). You will have to get rid of some extra spaces.
 
-.. note::
+.. attention::
+
+    Save your log often (not only at the end of the observation) to ensure that your notes are being saved!
+
+.. tip::
 
     When you are actually recording information during observing you can be in either the "Edit Wiki Text" or "Edit" modes. But for some reason copying the formatting from the log template to your log has to be done in the "Edit" mode.
 
@@ -107,8 +111,8 @@ The following are suggested CLEO windows to have open during observing:
 
 A few minutes before your observing start time (say 15 minutes, better 30 minutes), get on Talk & Draw, tell the operator who you are and what project you are observing for. Also ask who the operator is. 
 
-3.2. Fill AstrID info
----------------------
+3.2. Fill in AstrID info
+------------------------
 
 In Astrid under ObservationManagement, go to the Run tab and fill in the Observer and Operator information. 
 
@@ -208,6 +212,14 @@ It's a good idea to check the time streams (see the :ref:`check time streams sec
 
 #. Continue to do ~30 minutes of science data followed by a quick daisy on the pointing calibrator for the rest of the night. 
 #. Monitor the beam size (``WidthA`` and ``WidthB``) and the ``Peak_Height`` using the m2gui to determine if you need to OOF again.
+
+.. note:: 
+
+    We note that when observing with MUSTANG-2 on the GBT, the preferred maximum elevation limit of a target if 75 degrees. It is possible to observe targets up to 80 degrees elevation but this is not preferable. The hard limit is around 84 degrees. At these higher elevations, the MUSTNAG-2 beam becomes large because the GBT cannot keep up with the slewing speeds required to map and track the source. Conversely, the preferred minimum elevation is 30 degrees. However, it is possible to but can go lower, but lower than 30 is hard on the hardware.
+
+.. attention::
+
+    Save your wiki observing log often (not only at the end of the observation) to ensure that your notes are being saved!
 
 
 3.10 When to OOF?
