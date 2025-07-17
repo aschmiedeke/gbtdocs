@@ -29,6 +29,21 @@ Here are the current options for obtaining and working with MUSTANG-2 data. Unle
         :shadow: md
         :margin: 2 2 0 0 
 
+        :octicon:`telescope;3em;green` **Quick Look Data**
+
+        How to determine if a source has been observed by MUSTANG-2, for how long, and how to make a "quick look" image.
+   
+        .. button-link:: data/mustang2_find_src.html
+            :color: primary
+            :outline:
+            :click-parent:
+
+            Find Data
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
         :octicon:`browser;3em;green` **Basic Reduction**
 
         MUSTANG-2 wiki page that describes how to make preliminary images from MUSTANG-2 data.

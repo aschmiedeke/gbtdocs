@@ -65,7 +65,6 @@ or if you copied your catalog over to ``/users/penarray/Public/Catalogs/Science_
 Once you have created your catalog you can update the filepath to the catalog in your science scripts (``5_XXX``) and load them into the Scheduler & Skyview.
 
 
-
 3. Choose your calibrators
 ==========================
 You are expected to have your calibrator sources planned out **at least a few hours before** the time of your observation. You can use CLEO's Scheduler and Skyview to do this.
@@ -78,7 +77,7 @@ Find those that are closest to your source. You can use any of the ALMA grid cal
 ===============
 It is efficient to use the flux calibrators as your first OOF source of the night. For OOF sources, a general guide is that you want a bright source that is > 1 Jy and 25 < elevation < 60. The main quality of a good OOF source is that you it to be a nice point source as seen by M2. Out of the planets Uranus and Neptune are the only planets that work well as an OOF source (especially Uranus). You want to avoid sources that have structure like Saturn or 3C273 (M87).
 
-A more intricate way of thinking about an OOF source is to consider the elevation of your science target: if it will be "low" (average observing elevation is ~35 or less), or "high" (average observing elevation ~60 or higher) then one would prefer to OOF on a source with a similar elevation. If the science target is in between, then the OOF elevation will be less important.
+Additionally, a good general rule to follow for picking your OOF source is that you want to choose an OOF source that is approximately at same elevation as your source. This is because one of the main contributors to the deformations in the dish (what OOF is correcting for) is gravity and at each elevation the dish will deform differently due to gravity. However, a more nuanced way of choosing an OOF source is to consider the average elevation of your science target. If the average observing elevation of your target will be "low" (~35 or less), or "high" (average observing elevation ~60 or higher) then one would prefer to OOF on a source with a similar elevation. But if the science target is in between, then the OOF elevation will be less important.
 
 Once you determine your OOF source, fill in the source name in the ``2_m2oof`` and ``3_m2quickDaisyOOF`` scripts.
 

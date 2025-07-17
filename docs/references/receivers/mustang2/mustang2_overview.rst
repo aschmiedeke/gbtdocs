@@ -17,6 +17,6 @@ MUSTANG-2 has been developed by a collaboration including the University of Penn
 
 Many :ref:`papers <MUSTANG-2 Publications>` have been published using both MUSTANG and MUSTANG-2. 
 
-The Status of Future GBT Open-Skies Observing
----------------------------------------------
-In order to cope with an evolving funding landscape the GBT is in the process of moving to a model which relies upon a larger fraction of private and collaborative (“pay-to-play”) partnerships. It is expected that a significant fraction of GBT time, depending on the future level of NSF funding, will remain open under something like the current proposable, open-skies arrangement; however the mix of observing capabilities that is available under this arrangement is TBD. **If you are interested in forming or contributing to such a partnership to ensure continued access to MUSTANG-2 on the GBT, please contact the director of the Green Bank Observatory, Jim Jackson.**
+Scientific Motivation for MUSTANG-2 and Future Upgrades
+=======================================================
+See the `science cases for MUSTANG3 <https://greenbankobservatory.org/portal/gbt/instruments/mustang-3/>`_.

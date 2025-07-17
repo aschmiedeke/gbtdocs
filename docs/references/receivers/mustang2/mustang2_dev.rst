@@ -27,7 +27,7 @@ Historical Updates
 	- In June 2014 72 packaged detectors were delivered to U.Penn for testing and characterization.
 
 **MUSTANG retired at the end of 2013**
-	- MUSTANG – the original 90 GHz, 64 pixel GBT bolometer camera– was retired at the end of calendar year 2013 in anticipation of the arrival of its successor, MUSTANG-1.5 MUSTANG proposals were accepted from June 2009 through Feburary 2012.
+	- MUSTANG – the original 90 GHz, 64 pixel GBT bolometer camera– was retired at the end of calendar year 2013 in anticipation of the arrival of its successor, MUSTANG-1.5. MUSTANG proposals were accepted from June 2009 through Feburary 2012.
 
 Photos
 ------

@@ -44,6 +44,10 @@ Source visibility considerations
 --------------------------------
 Daytime observing at 90 GHz is currently not advised. The changing solar illumination gives rise to thermal distortions in the telescope structure which make calibrating 90 GHz data extremely difficult. Useful 3mm observations are currently only possible between 3h after sunset and a half hour past sunrise. Further cooler temperatures are required for observing at 90 GHz thus the high-frequency observing season for MUSTANG-2 is typically ~October - May. Thus your target must be visibile to the GBT 3h after sunset and a half hour past sunrise in ~October - May. 
 
+`M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_ has the capability to create `visibility curves <https://m2-tj.readthedocs.io/en/latest/Visibility_From_GB.html>`_ for targets of interest. 
+
+We note that when observing with MUSTANG-2 on the GBT, the preferred maximum elevation limit of a target if 75 degrees. It is possible to observe targets up to 80 degrees elevation but this is not preferable. The hard limit is around 84 degrees. At these higher elevations, the MUSTNAG-2 beam becomes large because the GBT cannot keep up with the slewing speeds required to map and track the source. Conversely, the preferred minimum elevation is 30 degrees. However, it is possible to but can go lower, but lower than 30 is hard on the hardware.
+
 Other things of note
 ====================
 Proposal Tools
