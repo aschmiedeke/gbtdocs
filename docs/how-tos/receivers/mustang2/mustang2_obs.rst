@@ -101,6 +101,9 @@ The following are suggested CLEO windows to have open during observing:
 
 - Launch → Observer Tools → **Talk and Draw** 
 
+2.4 Reconnect to Roaches
+------------------------
+If you need to reconnect to the roaches (e.g., you tuned a while ago and want to make sure everything is working before you start biasing/observing) execute ``/users/penarray/Public/startMUSTANG.bash <project1> reconnect``. For more information about this script/command see the `Advanced Usage <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Newest_Method_45_25_473_472022>`_ of startMUSTANG.bash section of the MUSTANG-2 wiki.
 
 3. Observing Procedure
 ======================

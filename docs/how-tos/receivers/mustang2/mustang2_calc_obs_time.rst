@@ -81,7 +81,7 @@ Finally to calculate your :math:`t_2` is the required integration time that you 
 
 2.2 You have existing MUSTANG-2 data
 ------------------------------------
-Let's say that you have a previous observation of the same source or a similar source. You will have :math:`t_1` which is the number of hours the source was observed and the RMS achieved in that observation, :math:`\sigma_1`.
+Let's say that you have a previous observation of the same source or a similar source (you can find those observations by following the instructions in the :ref:`Quick Look Guide <How to Get a "Quick Look" of a Source Observed with MUSTANG-2>`). You will have :math:`t_1` which is the number of hours the source was observed and the RMS achieved in that observation, :math:`\sigma_1`.
 
 2.2.1 Check mapping speed of existing data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

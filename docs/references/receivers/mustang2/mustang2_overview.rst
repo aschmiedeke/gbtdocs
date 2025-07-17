@@ -16,3 +16,7 @@ MUSTANG-2 was commissioned on the GBT in spring 2016 (see development :ref:`time
 MUSTANG-2 has been developed by a collaboration including the University of Pennsylvania, NIST, NRAO, the University of Michigan, and Cardiff University. All critical MUSTANG-2 systems have already been proven in operation on the GBT in early 2015 during an engineering run using a partially populated version of the receiver (“MUSTANG-1.5”, which had 64 populated feed horns).
 
 Many :ref:`papers <MUSTANG-2 Publications>` have been published using both MUSTANG and MUSTANG-2. 
+
+Scientific Motivation for MUSTANG-2 and Future Upgrades
+=======================================================
+See the `science cases for MUSTANG3 <https://greenbankobservatory.org/portal/gbt/instruments/mustang-3/>`_.
