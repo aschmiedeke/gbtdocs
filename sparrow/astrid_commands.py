@@ -32,11 +32,11 @@ def AutoPeakFocus(source=None, location=None, frequency=None, flux=None,
     location:
         A Catalog source name or Location object. It specifies the center of the search radius. The 
         default is the antenna’s current beam location on the sky. Planets and other moving objects
-        may not be used.
+        may **not** be used.
 
     frequency: float
         It specifies the observing frequency in MHz. The default is the rest frequency used by the
-        standard continuum configurations, or the current configuration value if “configure=False”.
+        standard continuum configurations, or the current configuration value if ``configure=False``.
 
     flux: float
         It specifies the minimum acceptable calibration flux in Jy at the observing frequency. The
@@ -66,16 +66,16 @@ def AutoPeakFocus(source=None, location=None, frequency=None, flux=None,
     beamName: str
         It specifies which receiver beam will be the center of the cross-scan. beamName can be ‘C’, ‘1’, ‘2’,
         ‘3’, ‘4’, etc, up to ‘7’ for the KFPA receiver. This keyword should not be specified unless there is
-        an issue with the default beams used for pointing (7.6). 
+        an issue with the default beams used for pointing. 
 
     refBeam: str
         It specifies which beam will be the reference beam for subtracting the sky contribution for the pointing
-        observations. The name strings are the same as for the beamName argument. This keyword should not be
-        specified unless there is an issue with the default beams used for pointing (7.6). The KFPA and Argus
+        observations. The name strings are the same as for the ``beamName`` argument. This keyword should not be
+        specified unless there is an issue with the default beams used for pointing. The KFPA and Argus
         have backup beam pairs that can be used for pointing and focus if there is an issue with one of the
-        default beams. The valid beam pairs for the KFPA are beamName=’4’, refBeam=’6’ (default beam pair) 
-        or beamName=’3’, refBeam=’7’ (backup beam pair), while the valid beam pairs for Argus are beamName=’10’,
-        refBeam=’11’ (default beam pair) or beamName=’14’, refBeam=’15’ (backup beam pair). 
+        default beams. The valid beam pairs for the KFPA are ``beamName='4'``, ``refBeam='6'`` (default beam pair) 
+        or ``beamName='3'``, ``refBeam='7'`` (backup beam pair), while the valid beam pairs for Argus are ``beamName='10'``,
+        ``refBeam='11'`` (default beam pair) or ``beamName='14'``, ``refBeam='15'`` (backup beam pair). 
 
     elAzOrder: bool
         If True, the elevation peak scans will be done first before the azimuth peak scans. This can be helpful
@@ -84,23 +84,23 @@ def AutoPeakFocus(source=None, location=None, frequency=None, flux=None,
         for which the azimuth pointing scans will be done before the elevation scans.
 
     calSeq: bool
-        If True, then for ‘Rcvr68 92’ (W-Band) the observations will be preceeded by calibration calSeq observations,
-        or for ‘RcvrArray75 115’ (argus) the calibration “vanecal” observations. If False, then the calibration
+        If True, then for 'Rcvr68_92' (W-Band) the observations will be preceeded by calibration calSeq observations,
+        or for 'RcvrArray75_115' (Argus) the calibration “vanecal” observations. If False, then the calibration
         vanecal or calSeq observations will be skipped. This keyword is only applicable for receivers operating
-        above 66 GHz, and the associated calibration observations depend on the receiver (‘Rcvr68 92’,
-        ‘RcvrArray75 115’, and ‘Rcrv PAR’) and the particular Auto utilty procedure (see the individual receiver
+        above 66 GHz, and the associated calibration observations depend on the receiver ('Rcvr68_92',
+        'RcvrArray75_115', and 'Rcrv_PAR') and the particular Auto utilty procedure (see the individual receiver
         chapters for specifics). The default value is True.
 
     gold: bool
         If True then only “Gold standard sources” (.i.e. sources suitable for pointing at high frequencies) will be
-        used by AutoPeakFocus(). This parameter is ignored if the “source” parameter is specified.
+        used by :func:`AutoPeakFocus() <astrid_commands.AutoPeakFocus>`. This parameter is ignored if the ``source`` parameter is specified.
 
 
     AutoPeakFocus will use the default scanning rates and lengths listed in Table 7.6.
     
     .. todo::
 
-        Copy Table 7.6 from Observer's Guide here. 
+        Copy Table 5.3 from Observer's Guide here. 
 
         
     .. admonition:: Sequence of events done by AutoPeakFocus() in full automatic mode, i.e. with no arguments
@@ -110,7 +110,7 @@ def AutoPeakFocus(source=None, location=None, frequency=None, flux=None,
         2. Determine the recommended beam, antenna/subreflector motions, and duration for peak and focus scans.
         3. Get current antenna beam location from the control system.
         4. Configure for continuum observations with the current receiver.
-        5. Run a balance (see § 7.4.1.9) to place the IF power levels appropriately.
+        5. Run a balance to place the IF power levels appropriately.
         6. Determine the source as specified by the user or as chosen by software using the minimum flux, observing frequency, location, and search radius. If no pointing source is found within the specified radius, then provide the observer the option to use a more distant source (default), and if none found either aborting (second default) or continuing the scheduling block.
         7. Slew to source.
         8. Run another balance to set the power levels at the location of the source.
@@ -137,7 +137,7 @@ def AutoPeakFocus(source=None, location=None, frequency=None, flux=None,
         # find a pointing source near ra=16:30:00 dec=47:23:00
         AutoPeakFocus(location=Location('J2000','16:30:00','47:23:00'))
 
-        # Since AutoPeakFocus has executed its own configuration Reconfigure for science observations
+        # Since AutoPeakFocus has executed its own configuration reconfigure for science observations
         Configure(tp_config)
 
     """
@@ -176,7 +176,7 @@ def AutoPeak(source=None, location=None, frequency=None, flux=None,
 
     frequency: float
         It specifies the observing frequency in MHz. The default is the rest frequency used by the
-        standard continuum configurations, or the current configuration value if “configure=False”.
+        standard continuum configurations, or the current configuration value if ``configure=False``.
 
     flux: float
         It specifies the minimum acceptable calibration flux in Jy at the observing frequency. The
@@ -204,18 +204,19 @@ def AutoPeak(source=None, location=None, frequency=None, flux=None,
             configured first before running the command.
 
     beamName: str
-        It specifies which receiver beam will be the center of the cross-scan. beamName can be ‘C’, ‘1’, ‘2’,
-        ‘3’, ‘4’, etc, up to ‘7’ for the KFPA receiver. This keyword should not be specified unless there is
-        an issue with the default beams used for pointing (7.6). 
+        It specifies which receiver beam will be the center of the cross-scan. ``beamName`` can be 'C', '1', '2',
+        '3', '4', etc, up to '7' for the KFPA receiver. This keyword should not be specified unless there is
+        an issue with the default beams used for pointing. 
 
     refBeam: str
         It specifies which beam will be the reference beam for subtracting the sky contribution for the pointing
         observations. The name strings are the same as for the beamName argument. This keyword should not be
         specified unless there is an issue with the default beams used for pointing (7.6). The KFPA and Argus
         have backup beam pairs that can be used for pointing and focus if there is an issue with one of the
-        default beams. The valid beam pairs for the KFPA are beamName=’4’, refBeam=’6’ (default beam pair) 
-        or beamName=’3’, refBeam=’7’ (backup beam pair), while the valid beam pairs for Argus are beamName=’10’,
-        refBeam=’11’ (default beam pair) or beamName=’14’, refBeam=’15’ (backup beam pair). 
+        default beams. The valid beam pairs for the KFPA are ``beamName='4'``, ``refBeam='6'`` (default beam pair) 
+        or ``beamName='3'``, ``refBeam='7'`` (backup beam pair), while the valid beam pairs for Argus are 
+        ``beamName='10'``, ``refBeam='11'`` (default beam pair) or ``beamName='14'``, ``refBeam='15'`` 
+        (backup beam pair). 
 
     elAzOrder: bool
         If True, the elevation peak scans will be done first before the azimuth peak scans. This can be helpful
@@ -224,23 +225,23 @@ def AutoPeak(source=None, location=None, frequency=None, flux=None,
         for which the azimuth pointing scans will be done before the elevation scans.
 
     calSeq: bool
-        If True, then for ‘Rcvr68 92’ (W-Band) the observations will be preceeded by calibration calSeq observations,
-        or for ‘RcvrArray75 115’ (argus) the calibration “vanecal” observations. If False, then the calibration
+        If True, then for 'Rcvr68_92' (W-Band) the observations will be preceeded by calibration calSeq observations,
+        or for 'RcvrArray75_115' (Argus) the calibration “vanecal” observations. If False, then the calibration
         vanecal or calSeq observations will be skipped. This keyword is only applicable for receivers operating
-        above 66 GHz, and the associated calibration observations depend on the receiver (‘Rcvr68 92’,
-        ‘RcvrArray75 115’, and ‘Rcrv PAR’) and the particular Auto utilty procedure (see the individual receiver
+        above 66 GHz, and the associated calibration observations depend on the receiver ('Rcvr68_92',
+        'RcvrArray75_115', and 'Rcrv_PAR') and the particular Auto utilty procedure (see the individual receiver
         chapters for specifics). The default value is True.
 
     gold: bool
         If True then only “Gold standard sources” (.i.e. sources suitable for pointing at high frequencies) will be
-        used by AutoPeakFocus(). This parameter is ignored if the “source” parameter is specified.
+        used by AutoPeak(). This parameter is ignored if the ``source`` parameter is specified.
 
 
-    AutoPeak will use the default scanning rates and lengths listed in Table 7.6.
+    AutoPeak will use the default scanning rates and lengths listed in Table 5.6.
     
     .. todo::
 
-        Copy Table 7.6 from Observer's Guide here. 
+        Copy Table 5.6 from Observer's Guide here. 
 
         
     .. admonition:: Sequence of events done by AutoPeak() in full automatic mode, i.e. with no arguments
@@ -250,7 +251,7 @@ def AutoPeak(source=None, location=None, frequency=None, flux=None,
         2. Determine the recommended beam, antenna/subreflector motions, and duration for peak and focus scans.
         3. Get current antenna beam location from the control system.
         4. Configure for continuum observations with the current receiver.
-        5. Run a balance (see § 7.4.1.9) to place the IF power levels appropriately.
+        5. Run a balance to place the IF power levels appropriately.
         6. Determine the source as specified by the user or as chosen by software using the minimum flux, observing frequency, location, and search radius. If no pointing source is found within the specified radius, then provide the observer the option to use a more distant source (default), and if none found either aborting (second default) or continuing the scheduling block.
         7. Slew to source.
         8. Run another balance to set the power levels at the location of the source.
@@ -259,7 +260,7 @@ def AutoPeak(source=None, location=None, frequency=None, flux=None,
 
     Examples
     --------
-    The script below gives examples demonstrating the expected use of AutoPeakFocus.
+    The script below gives examples demonstrating the expected use of AutoPeak.
 
     .. code-block:: python
 
@@ -349,38 +350,39 @@ def AutoFocus(source=None, location=None, frequency=None, flux=None,
             configured first before running the command.
 
     beamName: str
-        It specifies which receiver beam will be the center of the cross-scan. beamName can be ‘C’, ‘1’, ‘2’,
-        ‘3’, ‘4’, etc, up to ‘7’ for the KFPA receiver. This keyword should not be specified unless there is
-        an issue with the default beams used for pointing (7.6). 
+        It specifies which receiver beam will be the center of the cross-scan. ``beamName`` can be 'C', '1', '2',
+        '3', '4', etc, up to '7' for the KFPA receiver. This keyword should not be specified unless there is
+        an issue with the default beams used for pointing. 
 
     refBeam: str
         It specifies which beam will be the reference beam for subtracting the sky contribution for the pointing
         observations. The name strings are the same as for the beamName argument. This keyword should not be
         specified unless there is an issue with the default beams used for pointing (7.6). The KFPA and Argus
         have backup beam pairs that can be used for pointing and focus if there is an issue with one of the
-        default beams. The valid beam pairs for the KFPA are beamName=’4’, refBeam=’6’ (default beam pair) 
-        or beamName=’3’, refBeam=’7’ (backup beam pair), while the valid beam pairs for Argus are beamName=’10’,
-        refBeam=’11’ (default beam pair) or beamName=’14’, refBeam=’15’ (backup beam pair). 
+        default beams. The valid beam pairs for the KFPA are ``beamName='4'``, ``refBeam='6'`` (default beam pair) 
+        or ``beamName='3'``, ``refBeam='7'`` (backup beam pair), while the valid beam pairs for Argus are 
+        ``beamName='10'``, ``refBeam='11'`` (default beam pair) or ``beamName='14'``, ``refBeam='15'`` 
+        (backup beam pair). 
 
 
     calSeq: bool
-        If True, then for ‘Rcvr68 92’ (W-Band) the observations will be preceeded by calibration calSeq observations,
-        or for ‘RcvrArray75 115’ (argus) the calibration “vanecal” observations. If False, then the calibration
+        If True, then for 'Rcvr68_92' (W-Band) the observations will be preceeded by calibration calSeq observations,
+        or for 'RcvrArray75_115' (Argus) the calibration “vanecal” observations. If False, then the calibration
         vanecal or calSeq observations will be skipped. This keyword is only applicable for receivers operating
-        above 66 GHz, and the associated calibration observations depend on the receiver (‘Rcvr68 92’,
-        ‘RcvrArray75 115’, and ‘Rcrv PAR’) and the particular Auto utilty procedure (see the individual receiver
+        above 66 GHz, and the associated calibration observations depend on the receiver ('Rcvr68_92',
+        'RcvrArray75_115', and 'Rcrv_PAR') and the particular Auto utilty procedure (see the individual receiver
         chapters for specifics). The default value is True.
 
     gold: bool
         If True then only “Gold standard sources” (.i.e. sources suitable for pointing at high frequencies) will be
-        used by AutoPeakFocus(). This parameter is ignored if the “source” parameter is specified.
+        used by AutoFocus(). This parameter is ignored if the ``source`` parameter is specified.
 
 
-    AutoPeak will use the default scanning rates and lengths listed in Table 7.6.
+    AutoFocus will use the default scanning rates and lengths listed in Table 5.3.
     
     .. todo::
 
-        Copy Table 7.6 from Observer's Guide here. 
+        Copy Table 5.3 from Observer's Guide here. 
 
         
     .. admonition:: Sequence of events done by AutoFocus() in full automatic mode, i.e. with no arguments
@@ -390,7 +392,7 @@ def AutoFocus(source=None, location=None, frequency=None, flux=None,
         2. Determine the recommended beam, antenna/subreflector motions, and duration for peak and focus scans.
         3. Get current antenna beam location from the control system.
         4. Configure for continuum observations with the current receiver.
-        5. Run a balance (see § 7.4.1.9) to place the IF power levels appropriately.
+        5. Run a balance to place the IF power levels appropriately.
         6. Determine the source as specified by the user or as chosen by software using the minimum flux, observing frequency, location, and search radius. If no pointing source is found within the specified radius, then provide the observer the option to use a more distant source (default), and if none found either aborting (second default) or continuing the scheduling block.
         7. Slew to source.
         8. Run another balance to set the power levels at the location of the source.
@@ -400,7 +402,7 @@ def AutoFocus(source=None, location=None, frequency=None, flux=None,
 
     Examples
     --------
-    The script below gives examples demonstrating the expected use of AutoPeakFocus.
+    The script below gives examples demonstrating the expected use of AutoFocus.
 
     .. code-block:: python
 
@@ -443,23 +445,26 @@ calSeq, gold, nseq="optional"):
     Note
     ----
 
-        AutoOOF is used in a similar manner to AutoPeakFocus. The command should normally be run without any
-        arguments, since the default options are handled best by the OOF processing software. It is important
-        to only OOF on bright sources (at least 3-4 Jy). 
-
+        AutoOOF is used in a similar manner to :func:`AutoPeakFocus() <astrid_commands.AutoPeakFocus>`.
+        The command should normally be run without any arguments, since the default options are handled
+        best by the OOF processing software. It is important to only OOF on bright sources (at least 3-4 Jy). 
 
     Parameters
     ----------
 
     nseq:
-        Is an optional parameter for use with ‘Rcvr PAR’. It is used to specify the number of OTF maps made
+        Is an optional parameter for use with 'Rcvr_PAR'. It is used to specify the number of OTF maps made
         with AutoOOF and may take values of 3 or 5.
         
     calSeq: bool
         The default value is True which will run a set of calibration scans before the OOF map scans for 
-        ‘Rcvr68 92’ and ‘RcvrArray75 115’. This keyword is only applicable for receivers operating above 66 GHz
-        and the associated calibration observations depend on the receiver (‘Rcvr68 92’, ‘RcvrArray75 115’, and
-        ‘Rcrv PAR’; see the individual receiver chapters for specifics).
+        'Rcvr68 92’ and 'RcvrArray75_115'. This keyword is only applicable for receivers operating above 66 GHz
+        and the associated calibration observations depend on the receiver ('Rcvr68 92', 'RcvrArray75_115', and
+        'Rcrv_PAR'; see the individual receiver chapters for specifics).
+
+        .. todo:: 
+            
+            Replace with links to the receiver reference sections.
 
 
     Examples
@@ -474,7 +479,7 @@ calSeq, gold, nseq="optional"):
     Note
     ----
         The example OOF command above is applicable for all receivers, and users should refer to the individual
-        reciever chapters to understand the specifics on how the OOF data are calibrated via the calSeq keyword.
+        receiver chapters to understand the specifics on how the OOF data are calibrated via the calSeq keyword.
         For Ka-band, the default backend for the AutoOOF procedure is the CCB. Besides the much higher sensitivity
         provided by the CCB (a fast beam-switching backend designed for continuum measurements), the larger beam at
         lower frequency makes the surface solutions less affected by winds. Since the Ka+CCB system provides the most
@@ -509,11 +514,11 @@ def Peak(location, hLength=None, vLength=None, scanDuration=None,
         Catalog source name or Location object. It specifies the source upon which to do the scan.
 
     hLength : Offset object
-        Specifies the horitzontal distance used for the Peak. hLength values may be negative.
+        Specifies the horitzontal distance used for the Peak. ``hLength`` values may be negative.
         The default value is the recommended value for the receiver.
 
     vLength : Offset object
-        Specifies the vertical distance used for the Peak. vLength calues may be negative. 
+        Specifies the vertical distance used for the Peak. ``vLength`` values may be negative. 
         The default value is the recommended value for the receiver.
 
     scanDuration : float
@@ -535,7 +540,8 @@ def Peak(location, hLength=None, vLength=None, scanDuration=None,
 
     Caution
     -------
-        hLength, vLength and scanDuration should be overridden as a unit since together they determine the rate.
+        ``hLength``, ``vLength`` and ``scanDuration`` should be overridden as an unit since
+        together they determine the rate.
 
     
 
@@ -553,10 +559,9 @@ def Peak(location, hLength=None, vLength=None, scanDuration=None,
 
     """
 
+
 def Focus(location, start=None, focusLength=None, scanDuration=None, 
          beamName=None, refBeam=None):
-
-
 
     """
     An utility scan. Focus scan type moves the subreflector or prime focus receiver (depending on the receiver in use)
@@ -627,7 +632,8 @@ def Tip(location, endOffset, beamName='1', scanDuration=None,
 
     beamName : str
         Specifies the receiver beam to use for the Tip. beamName can be 'C' (center),
-        '1', '2', '3', '4' or any valid combination for the receiver you are using such as 'MR12' (i.e. track halfway between beams 1 and 2). 
+        '1', '2', '3', '4' or any valid combination for the receiver you are using such
+        as 'MR12' (i.e. track halfway between beams 1 and 2). 
 
     scanDuration : float
         Specifies the length of the scan in seconds. 
@@ -663,13 +669,9 @@ def Tip(location, endOffset, beamName='1', scanDuration=None,
 
 def Slew(location=None, offset=None, beamName='1', submotion=None):
 
-
-
     """
     An utility scan. Slew moves the telescope beam to point to a specified locaiton on 
     the sky without collecting any data.
-
-
 
     
     Parameters
@@ -722,8 +724,8 @@ def Balance():
     throughout the GBT IF system so that each devise is operating in its linear response
     regime. Balance() will work for any device with attenuators and for a particular
     backend. Individual devices can be balanced such as Prime Focus receivers, the
-    IF system, the DCR, and VEGAS. The Gregorian receivers lack attenuators and do
-    not need to be balanced. If the argument to Balance() is blank (recommended usage),, 
+    IF system, the DCR, and VEGAS. The Gregorian receivers, except Argus, lack attenuators and do
+    not need to be balanced. If the argument to Balance() is blank (recommended usage), 
     then all devices for the current state of the IF system will be balanced using the
     last executed configuration to decide what hardware will be balanced.
 
@@ -841,18 +843,39 @@ def Track(location, endOffset, scanDuration=None, beamName='1',
         This specifies when the scan begins in the Universal Time (UT). If startTime is in the past
         then the scan starts as soon as possible with a message sent to the scan log. If (startTime +
         scanDuration) is in the past, then the scan is skipped with a message to the observation log. 
-        The value may be.
+        The value may be
+
+        - **A time object:** Note, if ``startTime`` is more than ten minutes in the future then a 
+          message is sent to the observation log. 
+        - **A Horizon object:** The following script implicitely calculates the startTime using Horizon():
+
+          .. code-block:: python
+
+            Track('VirgoA', None, 120.0, startTime=horizon, startTime=Horizon())
+
+          If the source never rises then the scan is skipped and if the source never sets then the scan
+          is started immediately. In either case a message is sent to the observation log. 
 
     stopTime: Time object
         This specifies when the scan completes. If stopTime is in the past then the scan is skipped with
         a message to the observation log.
 
+        - **A Horizon Object:** When a Horizon object is used, the stop time is implicitely computed. 
+          The following lines in an SB would track VirgoA from rise to set using a horizon of 20 degree:
+
+          .. code-block:: python
+
+            horizon = Horizon(20.0)
+            Track('VirgoA', None, 120.0, startTime=horizon, stopTime=horizon)
+        
+          If the source never sets, then the scan stop time is set to 12 hours from the current time. 
+ 
     fixedOffset: Offset object
-        Track follows the sky location plus this fixed Offset. The fixedOffset may be in a different
-        coordinate mode than the location. If an endOffset is also specified, Track starts at 
-        (location+fixedOffset), and ends at (location+fixedOffset+endOffset). The fixedOffset and
-        endOffset must be both of the same coordinate mode, buyt may be of a different mode than the
-        location. The fixedOffset parameter may be omitted.
+        Track follows the sky location plus this fixed Offset. The ``fixedOffset`` may be in a different
+        coordinate mode than the ``location``. If an ``endOffset`` is also specified, Track starts at 
+        (location+fixedOffset), and ends at (location+fixedOffset+endOffset). The ``fixedOffset`` and
+        ``endOffset`` must be both of the same coordinate mode, but may be of a different mode than the
+        ``location``. The ``fixedOffset`` parameter may be omitted.
         
 
     Note
@@ -2260,4 +2283,86 @@ def TimeObject():
 
         Track(srcB, None, 600)
 
+    """
+
+
+def CalSeq(type, scanDuration, location=None, beamName=None, fixedOffset=None, 
+           tablePositionList=None, dwellFractonList=None):
+
+    """
+    The CalSeq procedure is used to calibrate W-band data. This procedure should be
+    run after every configuration and balance. This is needed to convert instrumental 
+    counts into antenna temperatures.
+
+    Parameters
+    ----------
+
+    type: 
+        string keyword to indicate type of calibration scan: manual, auto, autocirc
+
+        - "manual" -- A separate scan will be done for each table position. The user can
+          input a list of calibration table wheel positions with the tablePositionList argument.
+        - "auto" -- default dwell fraction =(0.33, 0.33, 0.34) and default three
+          positions = (Observing, Cold1, Cold2). The user can specify a list of positions and 
+          dwell times with the tablePostionList and dwellFractionList arguments.
+        - "autocirc" -- dwell fraction =(0.25, 0.25, 0.25, 0.25) and four positions = 
+          (Observing, [Position2 for beamName='1' or Position5 for beamName='2' for use 
+          with circular VLBI observations], Cold1, Cold2).
+    
+    scanDuration:
+        scan exposure time, in seconds. For manual mode, each specified position will be
+        observed for the scan exposure time (i.e., separate scans for each position). For 
+        auto modes, the total scan exposure time will be divided between positions based
+        on the dwell fractions (i.e., one scan for all positions).
+
+    location:
+        a Catalog source name or Location object; default is None (use current location).
+    
+    beamName: 
+        Beam name associated with pointing location. This argument is a string.
+        Default beam is '1'.
+    
+    fixedOffset: 
+        offset sky position (used in cases when observing a bright source and want to measure
+        the system temperature of the sky off-source). This argument should be an Offset 
+        object. Default sky offset is 0.
+    
+    tablePositionList: 
+        user-specified, variable-length ordered list of cal table positions for the manual
+        or auto modes.  The default sequence is ['Observing', 'Cold1', 'Cold2'].
+    
+    dwellFractionList:
+        user-specified, ordered list of dwell fractions associated with the tablePositionList 
+        for use only with the auto mode. By using auto mode with tablePositionList and 
+        dwellFractionList, expert users can control the wheel in any order of positions
+        and dwell fractions. This input is not needed for autocirc or manual modes and is
+        ignored in these modes if given.
+
+
+    Examples
+    --------
+
+
+    .. code-block:: python
+        
+        # This command can be used for most observations, which uses
+        # the default tablePositionList=['Observing', 'Cold1', 'Cold2'].
+
+        CalSeq(``auto'',45.0)           
+
+        # This command can be used for bright objects where one wants a 
+        # system temperature measurement on blank sky.  In this example, 
+        # the offset is $2^{\prime}$ to the north.  If observing a 
+        # large object, one can increase the offset size to move off-source 
+        # for the blank-sky measurement.
+
+        CalSeq(``auto'',45.0,fixedOffset=Offset(``J2000'', ''00:00:00'', ''00:02:00''))
+
+        # This is an example command for calibration of VLBI observations with beam-1 
+        # circular polarization. We can only observe the cold and ambient loads with 
+        # linear  polarization.  The calibration from linear to circular requires 
+        # observations of the same sky with both linear and circular polarization 
+        # (Observing and Position2, respectively, in this example).
+
+        CalSeq(``manual'',10.0,tablePositionList=['Position2', 'Observing', 'Cold1', 'Cold2'])
     """
