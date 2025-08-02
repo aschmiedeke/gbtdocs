@@ -4,8 +4,7 @@
 Backends
 ########
 
-
-
+VEGAS is the backend for spectral line observing. VEGAS can also be used for pulsar observing (VEGAS Pulsar Modes, VPM). The GBT has two continuum backends: The Digital Continuum Receiver (DCR) and the Caltech Continuum Backend (CCB).  There is a single dish mode for the Very Long Baseline Array (VLBA) backend that is available for high time-resolution observations. Planetary radar uses a specialized backend.
 
 .. grid:: 1 2 2 2
 
@@ -25,7 +24,6 @@ Backends
             :click-parent:
 
             VEGAS
-
 
     .. grid-item-card::
         :shadow: md
@@ -119,3 +117,36 @@ Backends
     backends/vlbi
     backends/radar
             
+
+-------
+
+Deprecated backends
+===================
+
+
+.. grid:: 1 2 2 2
+
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **Green Bank Ultimate Pulsar Processing Instrument (GUPPI)** 
+
+        Spectral line backend.
+
+        .. button-link:: backends/guppi.html
+            :color: primary
+            :tooltip: GUPPI
+            :outline:
+            :click-parent:
+
+            GUPPI
+
+
+.. toctree::
+    :maxdepth: 3
+    :hidden:
+
+    backends/guppi
+
