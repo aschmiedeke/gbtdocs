@@ -5,6 +5,8 @@ Backends
 ########
 
 
+
+
 .. grid:: 1 2 2 2
 
 
@@ -12,11 +14,11 @@ Backends
         :shadow: md
         :margin: 2 2 0 0 
 
-        **VEGAS** 
+        **VErsatile GBT Astronomical Spectrometer (VEGAS)** 
 
-        References for the VEGAS backend
+        Spectral line backend.
 
-        .. button-link:: vegas.html
+        .. button-link:: backends/vegas.html
             :color: primary
             :tooltip: VEGAS
             :outline:
@@ -24,3 +26,96 @@ Backends
 
             VEGAS
 
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **VEGAS Pulsar Modes (VPM)** 
+
+        Pulsar observing modes using VEGAS
+
+        .. button-link:: backends/vpm.html
+            :color: primary
+            :tooltip: VPM
+            :outline:
+            :click-parent:
+
+            VPM
+
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **Digital Continuum Receiver (DCR)** 
+
+        Continuum backend
+
+        .. button-link:: backends/dcr.html
+            :color: primary
+            :tooltip: DCR
+            :outline:
+            :click-parent:
+
+            DCR
+
+ 
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **CalTech Continuum Backend (CCB)** 
+
+        Continuum backend
+
+        .. button-link:: backends/ccb.html
+            :color: primary
+            :tooltip: CCB
+            :outline:
+            :click-parent:
+
+            CCB
+
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **VLBI** 
+
+        .. button-link:: backends/vlbi.html
+            :color: primary
+            :tooltip: VLBI
+            :outline:
+            :click-parent:
+
+            VLBI
+
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **Radar** 
+
+        .. button-link:: backends/radar.html
+            :color: primary
+            :tooltip: Radar
+            :outline:
+            :click-parent:
+
+            Radar
+
+
+.. toctree::
+    :maxdepth: 3
+    :hidden:
+
+    backends/vegas
+    backends/vpm
+    backends/dcr
+    backends/ccb
+    backends/vlbi
+    backends/radar
+            
