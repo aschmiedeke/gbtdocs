@@ -1237,7 +1237,7 @@ def RALongMap(location, hLength, vLength, vDelta, scanDuration,
 
 
 def RALongMapWithReference(location, hLength, vLength, vDelta,
-                           referenceOffset, referenceInterval, scanDuration,
+                           referenceOffset, referenceInterval, scanDuration, referenceScanDuration=None,
                            beamName="1", unidirectional=False, start=1, stop=None):
 
 
@@ -1276,6 +1276,9 @@ def RALongMapWithReference(location, hLength, vLength, vDelta,
 
     scanDuration: float
         It specifies the length of each scan in seconds.
+
+    referenceScanDuration: float
+        It specifies the length of each reference scan in seconds. If not set, it will default to `scanDuration`.
 
     beamName: str
         It specifies the receiver beam to use for the scan. beamName can be ‘C’, ‘1’, ‘2’, ‘3’, ‘4’
@@ -1395,7 +1398,7 @@ def DecLatMap(location, hLength, vLength, hDelta, scanDuration,
 
 
 def DecLatMapWithReference(location, hLength, vLength, hDelta,
-                        referenceOffset, referenceInterval, scanDuration,
+                        referenceOffset, referenceInterval, scanDuration, referenceScanDuration=None,
                         beamName="1", unidirectional=False, start=1, stop=None):
 
     """
@@ -1436,6 +1439,9 @@ def DecLatMapWithReference(location, hLength, vLength, hDelta,
     scanDuration: float
         It specifies the length of each scan in seconds.
         
+    referenceScanDuration: float
+        It specifies the length of each reference scan in seconds. If not set, it will default to `scanDuration`.
+
     beamName: str
         It specifies the receiver beam to use for the scan. beamName can be 'C', '1', '2', '3', '4'
         or any valid combination for the receiver you are using such as 'MR12'.
@@ -1541,7 +1547,7 @@ def PointMap(location, hLength, vLength, hDelta, vDelta,
 
 
 def PointMapWithReference(location, hLength, vLength, hDelta, vDelta,
-                          referenceOffset, referenceInterval, scanDuration,
+                          referenceOffset, referenceInterval, scanDuration, referenceScanDuration=None,
                           beamName="1", start=1, stop=None):
 
 
@@ -1581,6 +1587,9 @@ def PointMapWithReference(location, hLength, vLength, hDelta, vDelta,
 
     scanDuration: float
         It specifies the length of each scan in seconds.
+
+    referenceScanDuration: float
+        It specifies the length of each reference scan in seconds. If not set, it will default to `scanDuration`.
 
     beamName: str
         It specifies the receiver beam to use for the scan. beamName can be ‘C’, ‘1’, ‘2’, ‘3’, ‘4’ or
