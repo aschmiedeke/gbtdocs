@@ -881,8 +881,11 @@ def Track(location, endOffset, scanDuration=None, beamName='1',
     Note
     -------
 
-        Scan timing must be specified by either a scanDuration, a stopTime, a startTime plus stopTime,
-        or a startTime plus scanDuration. 
+        Scan timing must be specified by either 
+            * a ``scanDuration``, 
+            * a ``stopTime``,
+            * a ``startTime`` plus ``stopTime``, or
+            * a ``startTime`` plus ``scanDuration``. 
         
 
     Examples
@@ -940,7 +943,9 @@ def OnOff(location, referenceOffset, scanDuration=None, beamName='1'):
     
     .. code-block:: python
 
-        # OnOff scan with reference offsets of 1 degree in RA and 1 deg in Dec with a 60 s scan duration using beam 1.
+        # OnOff scan with reference offsets of 1 degree in RA and 1 deg in Dec
+        # with a 60 s scan duration using beam 1.
+        
         OnOff('0137+3309', Offset('J2000', 1.0, 1.0, cosv=False), 60, '1')
 
     """
@@ -979,7 +984,9 @@ def OffOn(location, referenceOffset, scanDuration=None, beamName='1'):
     
     .. code-block:: python
 
-        # OffOn scan with reference offsets of 1 degree in RA and 1 deg in Dec with a 60 s scan duration using beam 1.
+        # OffOn scan with reference offsets of 1 degree in RA and 1 deg in Dec
+        # with a 60 s scan duration using beam 1.
+        
         OffOn('0137+3309', Offset('J2000', 1.0, 1.0, cosv=False), 60, '1')
 
     """
@@ -1014,6 +1021,7 @@ def OnOffSameHA(location, scanDuration, beamName='1'):
     .. code-block:: python
 
         # OnOffSameHA scan with 60s scan duration using beam 1.
+
         OnOffSameHA('0137+3309', 60, '1')
 
     """
@@ -1065,6 +1073,7 @@ def Nod(location, beamName1, beamName2, scanDuration):
     .. code-block:: python
 
         # Nod between beams 3 and 7 with a 60s scan duration
+
         Nod('1011-2610', '3', '7', 60.)
 
     """
@@ -1095,12 +1104,12 @@ def SubBeamNod(location, scanDuration, beamName, nodLength, nodUnit='seconds'):
     beamName: str
         It specifies the receiver beam pair to use for nodding. beamName can be 'MR12'.
 
-    nodLengt: depends on unit of nodUnit (int for 'integrations', float or int for 'seconds')
+    nodLength: depends on unit of ``nodUnit`` (int for 'integrations', float or int for 'seconds')
         It specifies the half-cycle time which is the time spent in one position plus move
         time to the second position.
 
     nodUnit: str
-        Either 'integrations' or 'seconds'. 
+        Either 'integrations' or 'seconds' (default). 
 
 
     Examples
@@ -1127,11 +1136,11 @@ def SubBeamNod(location, scanDuration, beamName, nodLength, nodUnit='seconds'):
         is about ~1.5 second).
             
         For example, if we had previously configured for Rcvr26 40 and an integration time of
-        1.5 sec- onds (tint=1.5 in the configuration), example 2 in script 7.49 would blank roughly
-        one out of every three integrations in a half-cycle (nodLength=3) while the subreflector was
-        moving between beams. If nodLength=5, then only one in five integrations would be blanked.
+        1.5 sec- onds (``tint=1.5`` in the configuration), example 2 above would blank roughly
+        one out of every three integrations in a half-cycle (``nodLength=3``) while the subreflector was
+        moving between beams. If ``nodLength=5``, then only one in five integrations would be blanked.
         A resonable compromise in terms of performance and to minimize the amount of data blanked
-        is to use subBeamNod with an integration time of 0.2s and a nodLength=30 (6 sec nodding 
+        is to use subBeamNod with an integration time of 0.2s and a ``nodLength=30`` (6 sec nodding 
         between beams). It is important to use a small tint value to avoid blanking too much data
         (e.g., 0.5 sec or less).
 
@@ -1164,7 +1173,7 @@ def RALongMap(location, hLength, vLength, vDelta, scanDuration,
     on a sky location. Scans are performed along the major axis of the selected coordinate system.
     One can map in a variety of corrdinate systems, including J2000, Galactic, and AzEl. The
     selected coordinate system is defined by the coordinateMode keyword for the Offset object.
-    The starting point of the map is defined as (-hLength/2, -vLength/2) from the specified center
+    The starting point of the map is defined as (-``hLength``/2, -``vLength``/2) from the specified center
     location.
 
     Parameters
@@ -1182,27 +1191,27 @@ def RALongMap(location, hLength, vLength, vDelta, scanDuration,
         latitude-like direction). vLength values may be negative.
 
     vDelta: 
-        An Offset object. It specifies the distance between map rows. vDelta values must be
+        An Offset object. It specifies the distance between map rows. ``vDelta`` values must be
         positive. 
 
     scanDuration: float
         It specifies the length of each scan in seconds.
 
     beamName: str
-        It specifies the receiver beam to use for the scan. beamName can be ‘C’, ‘1’, ‘2’, ‘3’, ‘4’
-        or any valid combination for the receiver you are using such as ‘MR12’.
+        It specifies the receiver beam to use for the scan. ``beamName`` can be 'C', '1', '2', '3', '4'
+        or any valid combination for the receiver you are using such as 'MR12'.
 
     unidirectional: bool
         It specifies whether the map is unidirectional (True) or boustrophedonic (False;
-        from the Greek meaning 'as the ox plows, i.e. back and forth).
+        from the Greek meaning "as the ox plows", i.e. back and forth).
 
     start: int
         It specifies the starting row for the map. This is useful for doing parts of a map at
         different times. For example, if map has 42 rows, one can do rows 1-12 by setting 
-        "start=1, stop=12", and later finishing the map using "start=13, stop=42".
+        ``start=1, stop=12``, and later finishing the map using ``start=13, stop=42``.
 
     stop: int
-        It specifies the stopping row for the map. The default is None, meaning "go to the end".
+        It specifies the stopping row for the map. The default is ``None``, meaning "go to the end".
 
 
     Note
@@ -1228,7 +1237,7 @@ def RALongMap(location, hLength, vLength, vDelta, scanDuration,
     Caution
     -------
     Observers should ensure that they are sampling sufficiently in the scanning direction when using
-    OTF mapping. In this example data were recorded every 5 seconds (tint=5.0 in the configuration).
+    OTF mapping. In this example data were recorded every 5 seconds (``tint=5.0`` in the configuration).
     This results in one sample every 1.67arcmin in the scanning direction using the above scan rate 
     of 20arcmin/min. This is suitable for observations at 1420 MHz, where the FWHM of the beam is 
     8.8 arcmin. as the beam will be sampled at least 5 times.
@@ -1278,8 +1287,8 @@ def RALongMapWithReference(location, hLength, vLength, vDelta,
         It specifies the length of each scan in seconds.
 
     beamName: str
-        It specifies the receiver beam to use for the scan. beamName can be ‘C’, ‘1’, ‘2’, ‘3’, ‘4’
-        or any valid combination for the receiver you are using such as ‘MR12’.
+        It specifies the receiver beam to use for the scan. beamName can be 'C', '1', '2', '3', '4' 
+        or any valid combination for the receiver you are using such as 'MR12'.
 
     unidirectional: bool
         It specifies whether the map is unidirectional (True) or boustrophedonic (False;
@@ -1288,7 +1297,7 @@ def RALongMapWithReference(location, hLength, vLength, vDelta,
     start: int
         It specifies the starting row for the map. This is useful for doing parts of a map at
         different times. For example, if map has 42 rows, one can do rows 1-12 by setting 
-        "start=1, stop=12", and later finishing the map using "start=13, stop=42".
+        ``start=1, stop=12``, and later finishing the map using ``start=13, stop=42``.
 
     stop: int
         It specifies the stopping row for the map. The default is None, meaning "go to the end".
@@ -1318,11 +1327,11 @@ def DecLatMap(location, hLength, vLength, hDelta, scanDuration,
               beamName="1", unidirectional=False, start=1, stop=None):
 
     """
-    A mapping scan. A Declination/Latitude map, or DecLatMap, performs and on-the-fly (OTF) raster scan centered on
+    A mapping scan. A Declination/Latitude (DecLat) map, performs an on-the-fly (OTF) raster scan centered on
     a specific location on the sky. Scans are performed in declination, latitude, or elevation
-    coordinates depending on the desired coordinate system. This procedure does not allow the user
+    coordinates depending on the desired coordinate system. This procedure does **not** allow the user
     to periodically move to a reference location on the sky, please see DecLatMapWithReference for
-    such a map. The starting point of the map is at (-hLength/2, -vLength/2).
+    such a map. The starting point of the map is at (-``hLength``/2, -``vLength``/2).
 
 
     Parameters
@@ -1340,8 +1349,8 @@ def DecLatMap(location, hLength, vLength, hDelta, scanDuration,
         latitude-like direction. cLength values may be negative.
 
     hDelta:
-        An Offset object. Similar to vDelta in RALongMap. It specifies the horizontal distance
-        between map columns. hDelta values must be positive.
+        An Offset object. Similar to ``vDelta`` in RALongMap. It specifies the horizontal distance
+        between map columns. ``hDelta`` values must be positive.
 
     scanDuration: float
         It specifies the length of each scan in seconds.
@@ -1352,15 +1361,15 @@ def DecLatMap(location, hLength, vLength, hDelta, scanDuration,
 
     unidirectional: bool
         It specifies whether the map is unidirectional (True) or boustrophedonic (False;
-        from the Greek meaning 'as the ox plows, i.e. back and forth). 
+        from the Greek meaning "as the ox plows", i.e. back and forth). 
 
     start: int
         It specifies the starting row for the map. This is useful for doing parts of a map at 
         different times. For example, if map has 42 rows, one can do rows 1-12 by setting
-        "start=1, stop=12", and later finish the map using "start=13, stop=42".
+        ``start=1, stop=12``, and later finish the map using ``start=13, stop=42``.
 
     stop: int
-        It specifies the stopping row for the map. The default is None, meaning "go to the end".
+        It specifies the stopping row for the map. The default is ``None``, meaning "go to the end".
 
 
     Note
@@ -1390,7 +1399,6 @@ def DecLatMap(location, hLength, vLength, hDelta, scanDuration,
     Guide unfortunately shows the inverted RA axis, providing the impression the scan is obtained in
     negative RA direction.
 
-
     """
 
 
@@ -1399,11 +1407,11 @@ def DecLatMapWithReference(location, hLength, vLength, hDelta,
                         beamName="1", unidirectional=False, start=1, stop=None):
 
     """
-    A mapping scan. A Declination/Latitude map, or DecLatMap, performs an On-the-fly (OTF) raster scan centered on
+    A mapping scan. A Declination/Latitude (DecLat) map performs an On-the-fly (OTF) raster scan centered on
     a specific location on the sky.  Scanning is done in the declination, latitude, or elevation 
     coordinate depending on the desired coordinate mode. This procedure allows the user to periodically
     move to a reference location on the sky. Please see DecLatMap if no reference point is required.
-    The starting point of the map is at (-hLength/2, -vLength/2).
+    The starting point of the map is at (-``hLength``/2, -``vLength``/2).
 
 
     Parameters
@@ -1421,8 +1429,8 @@ def DecLatMapWithReference(location, hLength, vLength, hDelta,
         latitude-like direction. cLength values may be negative.
 
     hDelta:
-        An Offset object. Similar to vDelta in RALongMap. It specifies the horizontal distance
-        between map columns. hDelta values must be positive.
+        An Offset object. Similar to ``vDelta`` in RALongMap. It specifies the horizontal distance
+        between map columns. ``hDelta`` values must be positive.
 
     referenceOffset:
         An Offset object. It specifies the position of the reference source on the sky relative 
@@ -1442,15 +1450,15 @@ def DecLatMapWithReference(location, hLength, vLength, hDelta,
 
     unidirectional: bool
         It specifies whether the map is unidirectional (True) or boustrophedonic (False;
-        from the Greek meaning 'as the ox plows, i.e. back and forth). 
+        from the Greek meaning "as the ox plows", i.e. back and forth). 
 
     start: int
         It specifies the starting row for the map. This is useful for doing parts of a map at 
         different times. For example, if map has 42 rows, one can do rows 1-12 by setting
-        "start=1, stop=12", and later finish the map using "start=13, stop=42".
+        ``start=1, stop=12``, and later finish the map using ``start=13, stop=42``.
 
     stop: int
-        It specifies the stopping row for the map. The default is None, meaning "go to the end".
+        It specifies the stopping row for the map. The default is ``None``, meaning "go to the end".
 
     
     Example
@@ -1476,10 +1484,10 @@ def PointMap(location, hLength, vLength, hDelta, vDelta,
 
 
     """
-    A mapping scan. A PointMap constructs a map by tracking fixed positions layed out on a grid. This procedure does
-    not allow the user to periodically move to a reference location on the sky, please see
-    PointMapWithReference for such a map. The starting point of the map is defined as
-    (-hlength/2,-vLength/2).
+    A mapping scan. A PointMap constructs a map by tracking fixed positions laid out on a grid. 
+    This procedure does not allow the user to periodically move to a reference location on the sky,
+    please see PointMapWithReference for such a map. The starting point of the map is defined as
+    (-``hlength``/2, -``vLength``/2).
 
     Parameters
     ----------
@@ -1494,25 +1502,25 @@ def PointMap(location, hLength, vLength, hDelta, vDelta,
         An Offset object. It specifies the vertical height of the map. vLength values may be negative.
 
     hDelta:
-        An Offset object. It specifies the horizontal distance between points in the map. hDelta values
+        An Offset object. It specifies the horizontal distance between points in the map. ``hDelta`` values
         must be positive.
 
     vDelta:
-        An Offset object. It specifies the vertical distance between points in the map. vDelta values 
+        An Offset object. It specifies the vertical distance between points in the map. ``vDelta`` values 
         must be positive.
 
     scanDuration: float
         It specifies the length of each scan in seconds.
 
     beamName: str
-        It specifies the receiver beam to use for the scan. beamName can be ‘C’, ‘1’, ‘2’, ‘3’, ‘4’ or
-        any valid combination for the receiver you are using such as ‘MR12’.
+        It specifies the receiver beam to use for the scan. ``beamName`` can be 'C', '1', '2', '3', '4' or
+        any valid combination for the receiver you are using such as 'MR12'.
 
     start: int
         It specifies the starting point for the map. Note in PointMap this counts points, not stripes.
 
     stop: int
-        It specifies the stopping point for the map. The default is None, meaning "go to the end".
+        It specifies the stopping point for the map. The default is ``None``, meaning "go to the end".
 
 
 
@@ -1532,7 +1540,7 @@ def PointMap(location, hLength, vLength, hDelta, vDelta,
 
     Todo
     ----
-    Add a plot showing the actual trajectory of the antenna on the sky. Figure 7.5 in the Observer's
+    Add a plot showing the actual trajectory of the antenna on the sky. Figure 5.5 in the Observer's
     Guide unfortunately shows the inverted RA axis, providing the impression the scan is obtained in
     negative RA direction. The figure itself it correct, but I think it can be misleading to observers 
     who may not pay attention to the x-axis.
@@ -1557,17 +1565,17 @@ def PointMapWithReference(location, hLength, vLength, hDelta, vDelta,
         A Catalog source name or Location object. It specifies the center of the map.
 
     hLength:
-        An Offset object. It specifies the horizontal width of the map. hLength values may be negative.
+        An Offset object. It specifies the horizontal width of the map. ``hLength`` values may be negative.
 
     vLength:
-        An Offset object. It specifies the vertical height of the map. vLength values may be negative.
+        An Offset object. It specifies the vertical height of the map. ``vLength`` values may be negative.
 
     hDelta:
-        An Offset object. It specifies the horizontal distance between points in the map. hDelta values
+        An Offset object. It specifies the horizontal distance between points in the map. ``hDelta`` values
         must be positive.
 
     vDelta:
-        An Offset object. It specifies the vertical distance between points in the map. vDelta values 
+        An Offset object. It specifies the vertical distance between points in the map. ``vDelta`` values 
         must be positive.
 
     referenceOffset: 
@@ -1583,14 +1591,14 @@ def PointMapWithReference(location, hLength, vLength, hDelta, vDelta,
         It specifies the length of each scan in seconds.
 
     beamName: str
-        It specifies the receiver beam to use for the scan. beamName can be ‘C’, ‘1’, ‘2’, ‘3’, ‘4’ or
-        any valid combination for the receiver you are using such as ‘MR12’.
+        It specifies the receiver beam to use for the scan. ``beamName`` can be 'C', '1', '2', '3', '4' or
+        any valid combination for the receiver you are using such as 'MR12'.
 
     start: int
         It specifies the starting point for the map. Note in PointMap this counts points, not stripes.
 
     stop: int
-        It specifies the stopping point for the map. The default is None, meaning "go to the end".
+        It specifies the stopping point for the map. The default is ``None``, meaning "go to the end".
 
 
     Example
@@ -1625,12 +1633,12 @@ def Daisy(location, map_radius, radial_osc_period, radial_phase, rotation_phase,
 
     .. todo::
 
-        Add figure 7.6 from the Observer's Guide above. Same issue with the x-axis here as in the figures
+        Add figure 5.6 from the Observer's Guide above. Same issue with the x-axis here as in the figures
         for RALongMap, DecLatMap etc.
 
 
     
-    For beam-sizes of 20 arcsec FWHM or so, the circular area mapped will be fully sampled if the map radius
+    For beamsizes of 20 arcsec FWHM or so, the circular area mapped will be fully sampled if the map radius
     is less than 6 arcmin. It is not an especially useful observing mode for general-purpose single-beam mapping,
     since the largest “hole” in the map is ~0.3× the map radius.
 
@@ -1679,8 +1687,8 @@ def Daisy(location, map_radius, radial_osc_period, radial_phase, rotation_phase,
         It specifies the length of the scan in seconds.
 
     beamName: str. 
-        It specifies the receiver beam to use for both scans. beamName can be ‘C’, ‘1’, ‘2’, ‘3’, ‘4’
-        or any valid combination for the receiver you are using such as ‘MR12’. 
+        It specifies the receiver beam to use for both scans. ``beamName`` can be 'C', '1', '2', '3', '4'
+        or any valid combination for the receiver you are using such as 'MR12'. 
 
     cos_v: bool
         It specifies whether secant minor corrections (the :math:`cos(\hat{y}_0)` term in the first equation
@@ -1698,7 +1706,7 @@ def Daisy(location, map_radius, radial_osc_period, radial_phase, rotation_phase,
     Note
     -------
     It takes approximately 22 radial oscillation periods to complete a closed Daisy pattern. However,
-    radial oscillation period is typically set to be in the range of 15–60 seconds depending on the
+    ``radial_osc_period`` is typically set to be in the range of 15–60 seconds depending on the
     radius being used. As an example, 22 oscillations of 20 seconds would take 440 seconds. If a long
     trajectory such as this is sent to the antenna manager, intrinsic inefficiencies in the array handling
     mechanism can significantly increase overhead at the start of a scan. Therefore one should try to
@@ -1707,8 +1715,8 @@ def Daisy(location, map_radius, radial_osc_period, radial_phase, rotation_phase,
 
     Example
     -------
-    The script below will do 22 radial periods over 5 scans lasting 110 seconds each. The rotation phase
-    and radial phase arguments are used so that each scan starts where the previous scan finished. This
+    The script below will do 22 radial periods over 5 scans lasting 110 seconds each. The ``rotation_phase``
+    and ``radial_phase`` arguments are used so that each scan starts where the previous scan finished. This
     will produce the closed Daisy pattern. The entire SB should take approximately
     10 minutes to complete.
 
@@ -1735,7 +1743,7 @@ def Daisy(location, map_radius, radial_osc_period, radial_phase, rotation_phase,
 
     Todo
     ----
-    Add figure 7.7 from Observer's Guide here. Same issue with the x-axis here as in the figures for
+    Add figure 5.7 from Observer's Guide here. Same issue with the x-axis here as in the figures for
     RALongMap, DecLatMap etc.
 
     """
@@ -1759,7 +1767,7 @@ def Annotation(key, value=None, comment=None):
     ----------
 
     key: str
-        A completely uppercase string of eight characters or less. Do not use any standard FITS keywords!
+        A completely uppercase string of eight characters or less. **Do not use any standard FITS keywords!**
 
     value: str
         A value for the key.
@@ -1775,8 +1783,8 @@ def Annotation(key, value=None, comment=None):
 
     .. code-block:: python
 
-        Annotation('SRCTYPE',value='HII', comment='Type of source observed.')
-        Annotation('SRCTYPE',value='PNe', comment='Type of source observed.')
+        Annotation('SRCTYPE', value='HII', comment='Type of source observed.')
+        Annotation('SRCTYPE', value='PNe', comment='Type of source observed.')
 
 
     Todo
@@ -1805,7 +1813,7 @@ def Break(message="Observation paused.", timeout=300.0):
 
     timeout: float
         The number of seconds to get user-input before continuing the SB. If you wish for the timeout to
-        last forever then use None. The default is 300 seconds, or 5 minutes.
+        last forever then use ``None``. The default is 300 seconds, or 5 minutes.
 
         .. note::
             
@@ -1912,9 +1920,9 @@ def GetLST():
     .. code-block:: python
 
         while GetLST() < 13.5 and GetLST() != None:
-            Track('1153+1107',None,600.)
+            Track('1153+1107', None, 600.)
 
-        Track('1712+036',None,600.)
+        Track('1712+036', None, 600.)
 
     """
 
@@ -1945,7 +1953,7 @@ def Now():
     .. code-block:: python
 
         while Now() < '2016-06-12 09:54:12' and Now() != None:
-            Track('1153+1107',None,600.)
+            Track('1153+1107', None, 600.)
 
     """
 
@@ -2004,7 +2012,7 @@ def ChangeAttenuation(devicename, attnchange):
     ----------
 
     devicename: str
-        Can be either ‘IFRack’ or ‘ConverterRack’. This specifies the device in which the attenuators
+        Can be either 'IFRack' or 'ConverterRack'. This specifies the device in which the attenuators
         will be changed.
 
     attnchange: float. 
@@ -2024,7 +2032,7 @@ def ChangeAttenuation(devicename, attnchange):
     .. code-block:: python
         
         ChangeAttenuation('IFRack', 1.0)
-        ChangeAttenuation('ConverterRack',-0.5)
+        ChangeAttenuation('ConverterRack', -0.5)
 
 
     """
@@ -2096,8 +2104,12 @@ def Offset(coordinateMode, value1, value2, cosv=True):
     A scheduling block object. An Offset is a displacement from the position of a source or from the
     center position of a map. Offset objects may be added to other offset objects with the same coordinate
     mode and cosv correction. Offset objects may be added to Location objects with the same coordinate 
-    mode. Note that such addition is not commutative and must be of the form (Location+Offset). 
-    Offset+Location will produce a validation error.
+    mode. 
+
+    .. note:: 
+
+        The addition is not commutative and must be of the form (Location+Offset). 
+        Offset+Location will produce a validation error.
 
     Parameters
     ----------
@@ -2169,9 +2181,9 @@ def Offset(coordinateMode, value1, value2, cosv=True):
         offset2 = Offset('J2000', 2.0 , 2.0 ,cosv=False)
         offset3 = offset1 + offset2
 
-        loc1 = start_location + offset1 #loc1 (RA,Dec) = (12:04:00, 45:00:00)
-        loc2 = start_location - offset2 #loc2 (RA,Dec) = (11:52:00, 43:00:00)
-        loc3 = start_location + offset3 #loc3 (RA,Dec) = (12:12:00, 48:00:00)
+        loc1 = start_location + offset1         # loc1 (RA,Dec) = (12:04:00, 45:00:00)
+        loc2 = start_location - offset2         # loc2 (RA,Dec) = (11:52:00, 43:00:00)
+        loc3 = start_location + offset3         # loc3 (RA,Dec) = (12:12:00, 48:00:00)
 
         print 'RA,Dec of loc3 = (%s,%s)'%(loc3.GetH(),loc3.GetV())
 
@@ -2236,7 +2248,7 @@ def Horizon(elevation=5.25):
 def TimeObject():
 
     """
-    The Time Object is primarily used for defining scan start or stop times. The time may be represented a"
+    The Time Object is primarily used for defining scan start or stop times. The time may be represented as
     either a sexegesimal string or in a python mxDateTime object. You can learn more about mxDateTime at
     http://www.egenix.com/files/python/mxDateTime.html.
 

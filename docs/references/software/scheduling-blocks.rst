@@ -10,14 +10,11 @@ Scheduling Block Commands
 .. This is not showing up?
 
 
-:func:`DecLatMap() <astrid_commands.DecLatMap>`
+.. :func:`DecLatMap() <astrid_commands.DecLatMap>`
 
-Show a :hoverxref:`tooltip <How to connect remotely to the GBO network>`
+.. Show a :hoverxref:`tooltip <How to connect remotely to the GBO network>`
 
-
-
-
-:func:`dysh:dysh.spectra.core.average` 
+.. :func:`dysh:dysh.spectra.core.average` 
 
 
 .. - :ref:`dysh:core functions`
