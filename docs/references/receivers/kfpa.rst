@@ -46,13 +46,20 @@ The hexagon is oriented such that the central feed is not at the same cross-elev
 or the same elevation as any of the other beams.  Beam pairs (3,7) and (4,6) are at 
 equal elevations and are appropriate choices for nodding and peak/focus observations.
 
-Unlike other receivers, KFPA uses variable noise diodes for each beam (~10% of the system temperature)
-that can change, so it is very important for observers to calibrate their data every session. 
+.. caution:: 
+
+   Unlike other receivers, KFPA uses variable noise diodes for each beam (~10% of the system
+   temperature) that can change. We can not guarantee that the noise diodes will provide the
+   same signal strength from one observation to the next. So it is very important that you
+   calibrate your data every session. 
+
+   
 The maximum instantaneous bandwidth for the receiver, in normal observing modes, is currently 1.8GHz.
 A "broadband" mode has been developed for the KFPA in which it is possible to route 7.5 GHz of bandwidth
 from beam 1 of the receiver to the VEGAS backend. Alternatively, using this mode allows for ~4 GHz of 
-bandwidth to be routed from both beams 1 and 2 simultaneously. Advice should be sought from a staff
-scientist if this mode is desired.
+bandwidth to be routed from both beams 1 and 2 simultaneously. Please seek advice from a staff
+scientist if you desire to use this mode.
+
 
 
 Configuration

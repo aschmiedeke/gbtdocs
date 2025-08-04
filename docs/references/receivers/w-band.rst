@@ -33,7 +33,8 @@ Configuration
 The W-band receiver uses the standard config-tool software that automatically 
 configures the GBT IF system based on user input (e.g., frequency and bandwidth).
 Example W-band configuration files are given in /home/astro-util/projects/4mm/.  
-The 4mm system is broken into four separate bands:
+
+The IF system for the W-band receiver is broken into four separate bands:
 
 * FL1: 67-74 GHz
 * FL2: 73-80 GHz

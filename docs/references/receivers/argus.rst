@@ -11,7 +11,7 @@ Argus
 Introduction
 ^^^^^^^^^^^^^
 
-Argus is a 16 element focal-plane-array operating from 74 GHz o 116 GHz. The feeds are configured in a 4x4 array and are each separated by 30.4 arcsec on the sky. 
+Argus is a 16-pixel focal plane array operating from 74 GHz o 116 GHz. The feeds are configured in a 4x4 array and are each separated by 30.4 arcsec on the sky. 
 
 .. image:: argus/images/argus_footprint.png
 
