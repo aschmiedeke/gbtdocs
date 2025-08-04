@@ -22,7 +22,7 @@ Choose a discriptive name for your SB, such as "map_G11.0"or "pointfocus", which
 
         References to create Scheduling Blocks (SBs)
 
-        .. button-link:: configure.html
+        .. button-link:: observing/configure.html
             :color: primary
             :tooltip: Configure the GBT system
             :outline:
@@ -39,7 +39,7 @@ Choose a discriptive name for your SB, such as "map_G11.0"or "pointfocus", which
 
         References to create source catalogs
 
-        .. button-link:: catalog.html
+        .. button-link:: observing/catalog.html
             :color: primary
             :tooltip: Source catalogs
             :outline:
@@ -56,7 +56,7 @@ Choose a discriptive name for your SB, such as "map_G11.0"or "pointfocus", which
 
         Scan type overview
 
-        .. button-link:: scan_types.html
+        .. button-link:: observing/scan_types.html
             :color: primary
             :tooltip: Scan type overview
             :outline:
@@ -69,9 +69,9 @@ Choose a discriptive name for your SB, such as "map_G11.0"or "pointfocus", which
     :maxdepth: 3
     :hidden:
 
-    configure
-    catalog
-    scan_types
+    observing/configure
+    observing/catalog
+    observing/scan_types
 
 
 ------------
@@ -86,7 +86,7 @@ Choose a discriptive name for your SB, such as "map_G11.0"or "pointfocus", which
 
         References for scheduling block commands
 
-        .. button-link:: sb_commands.html
+        .. button-link:: observing/sb_commands.html
             :color: primary
             :tooltip: Scheduling block commands
             :outline:
@@ -98,7 +98,7 @@ Choose a discriptive name for your SB, such as "map_G11.0"or "pointfocus", which
     :maxdepth: 3
     :hidden:
 
-    sb_commands
+    observing/sb_commands
 
 
 
