@@ -46,11 +46,11 @@ Observing
 
         **Scheduling Blocks (SBs)** 
 
-        References to create Scheduling Blocks (SBs)
+        Information to create Scheduling Blocks (SBs)
 
         .. button-link:: observing/scheduling-blocks.html
             :color: primary
-            :tooltip: Reference materials to create SBs
+            :tooltip: Information material to create SBs
             :outline:
             :click-parent:
 
