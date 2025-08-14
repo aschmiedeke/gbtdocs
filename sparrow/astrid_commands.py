@@ -2387,3 +2387,63 @@ def CalSeq(type, scanDuration, location=None, beamName=None, fixedOffset=None,
 
         CalSeq(``manual'',10.0,tablePositionList=['Position2', 'Observing', 'Cold1', 'Cold2'])
     """
+
+def ResetConfig():
+
+    """
+
+    """
+
+
+
+def Configure(action):
+
+    """
+
+
+    Parameters
+    ----------
+
+    action: str
+        For each configuration, all keywords and values exist as line separated
+        keyword=value pairs, all enclosed within a single set of triple-quotes.
+
+        For a list of all keywords see here.
+
+        .. todo:: Add reference to the section with all configuration keywords.
+
+
+    Example
+    -------
+
+    .. code-block:: python
+
+        # An SB to configure only 
+
+        myconfiguration = '''
+        #This is a comment (ignored by software)
+        primarykeyword1 =  your primarykeyword value
+        primarykeyword2 = your primarykeyword value
+        ...
+        ...
+        primarykeywordN = your primarykeyword value
+        '''
+
+        Configure(myconfiguration)
+    """
+
+
+execfile():
+
+    """
+    Built-in function in python 2 that allows the execution of a python script from a file
+    within the current program's namespace. 
+
+    Example
+    -------
+
+    ..code-block:: python
+
+        execfile('my_script.py') 
+        execfile('my_configurations.config')    # file ending does not need to be .py
+    """
