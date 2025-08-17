@@ -1,0 +1,50 @@
+
+########################################################
+#
+# 31jan06 bsm -- SB for peak/focus checks with CCB
+#                          Also does a nod on the calibrator source.
+#
+########################################################
+
+#######################################################
+# 
+# configuration variables
+#  
+
+# your source should be in the default gbt pointing catalog
+#  which is at /home/astro-util/pointing/pcals4.0/pntKaband.cat
+mySrc= "0241-0815"
+
+Catalog()
+
+#
+# You shouldn't have to change anything below here
+#
+#######################################################
+
+Slew(mySrc)                                        
+Configure("/users/bmason/ccbPub/ccbbothcalslong.conf")			       
+execfile("/users/bmason/ccbPub/addwx.py")
+execfile("/users/bmason/ccbPub/killlo.py")			       
+execfile("/users/bmason/ccbPub/deselectDeadCcbChans.py")			       
+AutoPeakFocus(source=mySrc,configure=False)
+
+trajdir="/users/bmason/gbt-dev/scanning/ptcsTraj"
+if (trajdir not in sys.path):
+	sys.path.append(trajdir)
+from readFitsTraj import readFitsTraj
+
+#
+# Read in the trajectories
+#
+trajnod=readFitsTraj("/users/bmason/ccbPub/ka-otfnod-symmShort.fits",1.0)
+DefineScan("dotrajectory", "/users/bmason/gbt-dev/scanning/ptcsTraj/dotrajectory.py")
+
+Configure("/users/bmason/ccbPub/ccb.conf")
+execfile("/users/bmason/ccbPub/addwx.py")
+execfile("/users/bmason/ccbPub/killlo.py")
+execfile("/users/bmason/ccbPub/deselectDeadCcbChans.py")			       
+Slew(mySrc)
+dotrajectory(trajnod,location=mySrc, beamName="1", cos_v=True,  coordMode="Encoder") 
+
+

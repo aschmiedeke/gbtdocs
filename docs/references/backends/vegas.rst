@@ -39,13 +39,11 @@ the maximum bandwidth is typically limited to 4-6 GHz by filters in the GBT IF s
 
 All banks have the same switching signal (i.e., same switching period, same 
 integration time, same frequency switching offset), which is controlled by 
-spectrometer bank A. Each bank can be configured in one of the 29 modes listed 
-in Table~\ref{tab:vegas_modes}.
+spectrometer bank A. Each bank can be configured in one of the 29 modes listed
+in :numref:`tab-vegas-modes` below.
 
-.. csv-table:: Vegas Modes, including blanking, supported by each of the 8 VEGAS spectrometers.
-    :file: material/vegas_modes.csv
-    :widths: 5, 10, 15, 15, 15, 15
-    :header-rows: 1
+.. include:: material/vegas_modes.tab
+
 
 In short:
 
@@ -72,19 +70,6 @@ of channels or sampling speed. VEGAS can also record only a single polarization
 for single-polarization receivers.
 
 
-.. ^a Maximum data rate is calculated for recording full polarization and all
-..    channels at the minimum integration period for one spectrometer. Each
-..    spectral value is represented by 4 bytes.
-.. ^b The integration per switching state should be $\ge$ the minimum integration. 
-..    For example, if an observation uses 2 switching states, then the minimum 
-..    integration will be 2 times the value listed in the table.
-.. ^c For modes 20$\rightarrow$24 the subbands can be placed within the baseband
-..    bandwidth of 1500~MHz (see note $d$) and for modes 25$\rightarrow$29 the 
-..    subbands can be placed within 1000~MHz.
-.. ^d The actual usable frequency range for modes 1 \& 2 as well as 20$\rightarrow$24 
-..    is 1250 MHz and for mode 3, as well as 25$\rightarrow$29 is 800 MHz.
-.. ^e To use more than one subband, set subband=8, and the actual number of subbands
-..    used is then defined by the number of frequencies provided. 
 
 
 Data Rates
@@ -122,152 +107,43 @@ frequently enough that the required blanking time can become a non-negligible pe
 of the total observing time. For efficient observing, it is important to choose switching
 periods that are long enough for the total amount of blanking to be negligible. The amount
 of blanking per switching signal is dependent on the VEGAS mode used. Conservative values 
-are shown in Tables~\ref{tab:blanking_cal} and~\ref{tab:blanking_nocal} for values with 
+are shown in :numref:`tab-vegas-swper-cal` and :numref:`tab-vegas-swper-nocal` for values with 
 the noiseDiode turned either on or off. For a more thorough description of the appropriate 
 switching periods for a given amount of blanking, and more accurate estimates of the minimum
-switching periods we refer the interested reader to \citet{Kepley2014}.
+switching periods we refer the interested reader to :cite:t:`Kepley2014`.
 
-.. todo:: 
-   
-    Add both tables, refer to them properly and add reference to Kepley2014.
 
-.. .. csv-table:: Minimum recommended switching periods (``swper``) for VEGAS observations using a noise diode.
-..     :file: material/vegas_blanking_cal.csv
-..     :widths: 20, 20, 20, 20, 20
-..     :header-rows: 1
+.. include:: material/vegas_swper_cal.tab
+
+.. include:: material/vegas_swper_nocal.tab
 
 
 
-.. \begin{table}
-.. \resizebox{0.60\textheight}{!}{
-..     \begin{threeparttable}
-..     \caption[Minimum recommended switching periods for VEGAS observations using a noise diode.]{Minimum recommended switching periods (swper) with VEGAS for observations that \textbf{use a noise diode}.\label{tab:blanking_cal}}
-..     %
-..     \begin{tabular}{cdddd}
-..         \toprule
-..             & \multicolumn{1}{c}{\textbf{\Gls{tpower}} (\texttt{tp})} & \multicolumn{3}{c}{\textbf{\Gls{fsw}}$^a$ (\texttt{sp})} \\
-..         \cmidrule(lr){2-2}\cmidrule(lr){3-5} 
-..             & \myalign{c}{Nominal$^b$ swper}  & \myalign{c}{Nominal$^c$ swper} & \myalign{c}{$\nu_{min}$$^d$(GHz)} & \myalign{c}{Mapping$^e$ swper} \\
-..         \textbf{Mode}     &  \myalign{c}{(sec)} & \myalign{c}{(sec)} & \myalign{c}{swper=1.52 sec} & \myalign{c}{(sec)}  \\
-..        \midrule
-..        1  &0.01   & 0.4    & 115.0  & 0.4      \\
-..        2  &0.028  & 0.4    & 115.0  & 0.4      \\
-..        3  &0.04   & 0.4    & 115.0  & 0.4      \\
-..        4  &0.028  & 0.4    & 115.0  & 0.4      \\
-..        5  &0.0559 & 0.4    & 115.0  & 0.4      \\
-..        6  &0.1118 & 0.4318 & 115.0  & 1.52     \\
-..        7  &0.0524 & 0.4    & 115.0  & 0.4      \\
-..        8  &0.1049 & 0.4249 & 115.0  & 1.52     \\
-..       9  &0.2097 & 0.5297 & 59.6   & 1.52     \\
-..        10 &0.2237 & 0.5437 & 54.4   & 1.52     \\
-..        11 &0.4474 & 0.8948 & 16.5   & 1.52     \\
-..        12 &0.8948 & 1.7896 &        & 1.7896   \\
-..        13 &1.7896 & 3.5791 &        & 3.5791   \\
-..        14 &3.5791 & 7.1583 &        & 7.1583   \\
-..        15 &0.4474 & 0.8948 & 16.5   & 1.52     \\
-..        16 &0.8948 & 1.7896 &        & 1.7896   \\
-..        17 &1.7896 & 3.5791 &        & 3.5791   \\
-..        18 &3.5791 & 7.1583 &        & 7.1583   \\
-..        19 &7.5383 & 14.3166 &       & 14.3166  \\ %100 MHz switch
-..        20 &0.028  & 0.4    & 115.0  & 0.4      \\
-..        21 &0.0559 & 0.4    & 115.0  & 0.4      \\
-..        22 &0.1118 & 0.4318 & 115.0  & 1.52     \\
-..        23 &0.2237 & 0.5437 & 54.4   & 1.52     \\
-..        24 &0.4474 & 0.8948 & 16.5   & 1.52     \\
-..        25 &0.0388 & 0.4    & 115.0  & 0.4      \\
-..        26 &0.0777 & 0.4    & 115.0  & 1.52     \\
-..        27 &0.1553 & 0.4753 & 89.7   & 1.52     \\
-..        28 &0.3107 & 0.6307 & 33.8   & 1.52     \\
-..        29 &0.6214 & 1.2428 & 8.6    & 1.52     \\
-..        
-..        \bottomrule
-..    \end{tabular}
-..    \begin{tablenotes}
-..        \footnotesize
-..        \item [$^a$] When frequency switching, switching periods must always be $>$0.4 seconds due to the settling time of the \gls{LOone}.
-..        \item[$^b$] Recommended minimum switching period (\texttt{swper}) for \gls{tpower} observations with \glspl{noiseDiode} (\texttt{swtype='tp'}). These values will yield less than 10\% blanking overall.
-..        \item[$^c$] Recommended minimum switching period for \gls{fsw} observations with \glspl{noiseDiode} (\texttt{swtype='sp'}). These values will yield less than 10\% blanking in the first state of the switching cycle as well as less than 10\% blanking overall.
-..        \item[$^d$] The minimum recommended switching period is 1.52 seconds \textbf{when Doppler tracking} frequencies above $\nu_{min}$.
-..        \item[$^e$] Recommended minimum switching period (\texttt{swper}) for \textbf{Doppler-tracked}, \gls{fsw} observations with \glspl{noiseDiode} (\texttt{swtype='sp'}). These values will yield less than 10\% blanking in the first state of the switching cycle as well as less than 10\% blanking overall. This switching period will result in less than 10\% of the data being blanked. These values assume that the maps are sampled at twice Nyquist in the scanning direction and that there are four integrations per switching period \textbf{when Doppler tracking}.
-..    \end{tablenotes}
-.. \end{threeparttable}}
-.. \end{table}
-
-
-.. \begin{table}
-.. \resizebox{0.65\textheight}{!}{
-..     \begin{threeparttable}
-..    \caption[Minimum recommended switching periods for VEGAS observations not using a noise diode.]{Minimum recommended switching periods (swper) with VEGAS for observations that \textbf{do not use a noise diode}. \label{tab:blanking_nocal}}
-..    %
-..    \begin{tabular}{cdddcd}
-..        \toprule
-..            & \multicolumn{2}{c}{ {\textbf{\Gls{tpower}}} (\texttt{tp\_nocal}) } & \multicolumn{3}{c}{{\textbf{\Gls{fsw}}}$^a$ (\texttt{sp\_nocal})}\\
-..            \cmidrule(lr){2-3}\cmidrule(lr){4-6}
-..            & \myalign{c}{Nominal$^b$ swper}  & \myalign{c}{Mapping$^c$ swper} & \myalign{c}{Nominal$^d$ swper} & \myalign{c}{$\nu_{min}$$^e$(GHz)} & \myalign{c}{Mapping$^f$ swper} \\
-..        \textbf{Mode}     &  \myalign{c}{(sec)} & \myalign{c}{(sec) }& \myalign{c}{(sec)} & \myalign{c}{swper=0.76 sec} & \myalign{c}{(sec)}  \\
-..        \midrule
-..        1  & 0.0005 & 0.001  & 0.4    & 115.0  & 0.4 \\
-..        2  & 0.0014 & 0.0028 & 0.4    & 115.0  & 0.4 \\
-..        3  & 0.002  & 0.004  & 0.4    & 115.0  & 0.4 \\
-..        4  & 0.01   & 0.0114 & 0.4    & 115.0  & 0.4 \\
-..        5  & 0.0199 & 0.0227 & 0.4    & 115.0  & 0.4 \\
-..        6  & 0.0301 & 0.0357 & 0.4    & 115.0  & 0.76 \\
-..        7  & 0.0102 & 0.0128 & 0.4    & 115.0  & 0.4 \\
-..        8  & 0.0203 & 0.0256 & 0.4    & 115.0  & 0.76 \\
-..        9  & 0.0301 & 0.0406 & 0.4    & 115.0  & 0.76 \\
-..        10 & 0.0056 & 0.0168 & 0.4    & 115.0  & 0.76 \\
-..        11 & 0.0112 & 0.0336 & 0.4474 & 33.1   & 0.76 \\
-..        12 & 0.028  & 0.0727 & 0.8948 &        & 0.8948 \\
-..        13 & 0.0447 & 0.1342 & 1.7896 &        & 1.7896 \\
-..        14 & 0.0671 & 0.2461 & 3.5791 &        & 3.5791 \\
-..        15 & 0.0056 & 0.028  & 0.4474 & 33.1   & 0.76 \\
-..        16 & 0.0112 & 0.0559 & 0.8948 &        & 0.8948  \\
-..        17 & 0.0336 & 0.123  & 1.7896 &        & 1.7896 \\
-..        18 & 0.0447 & 0.2237 & 3.5791 &        & 3.5791 \\
-..        19 & \myalign{c}{0.0895 or$^g$ 0.38}   & 0.4474 & 7.1583 & & 7.1583 \\ % @10.3
-..       20 & 0.0051 & 0.0065 & 0.4    &  115.0 & 0.4 \\
-..        21 & 0.0101 & 0.0129 & 0.4    &  115.0 & 0.4 \\
-..        22 & 0.0301 & 0.0357 & 0.4    & 115.0  & 0.76 \\
-..        23 & 0.0405 & 0.0517 & 0.4    & 115.0  & 0.76 \\
-..        24 & 0.0755 & 0.0979 & 0.4474 & 33.1   & 0.76 \\
-..        25 & 0.007  & 0.009  & 0.4    &  115.0 & 0.4 \\
-..        26 & 0.0141 & 0.018  & 0.4    &  115.0 & 0.76 \\
-..        27 & 0.0398 & 0.0476 & 0.4    & 115.0  & 0.76 \\
-..        28 & 0.0544 & 0.0699 & 0.4    & 68.6   & 0.76 \\
-..        29 & 0.101  & 0.132  & 0.6214 & 17.1   & 0.76 \\
-..
-..        \bottomrule %Doppler tracking swper=0.76 above v_min
-..    \end{tabular}
-..    \begin{tablenotes}
-..        \footnotesize
-..        \item [$^a$] When frequency switching, switching periods must always be $>$0.4 seconds due to the settling time of the \gls{LOone}.
-..        \item[$^b$] Recommended minimum switching period (\texttt{swper}) for \gls{tpower} observations that do not use \glspl{noiseDiode} (\texttt{swtype='tp\_nocal'}). This value is equivalent to the hardware exposure value for VEGAS.
-..        \item[$^c$] Recommended minimum switching period (\texttt{swper}) for \gls{tpower} \gls{OTF} mapping observations that do not use \glspl{noiseDiode} (\texttt{swtype='tp\_nocal'}) \textbf{when Doppler Tracking}. These values will yield less than 10\% blanking overall and assume that the maps are sampled at twice Nyquist in the scanning direction and that there are four integrations per switching period.
-..        \item[$^d$] Recommended minimum switching period for \gls{fsw} observations that do not make use of \glspl{noiseDiode} (\texttt{swtype='sp\_nocal'}). These values will yield less than 10\% blanking in the first state of the switching cycle as well as less than 10\% blanking overall.
-..        \item[$^e$] The minimum recommended switching period is 0.76 seconds \textbf{when Doppler tracking} frequencies above $\nu_{min}$.
-..        \item[$^f$] Recommended minimum switching period (\texttt{swper}) for \textbf{Doppler-tracked}, \gls{fsw} \gls{OTF} mapping observations without \glspl{noiseDiode} (\texttt{swtype='sp\_nocal'}). These values will yield less than 10\% blanking in the first state of the switching cycle as well as less than 10\% blanking overall.  This switching period will result in less than 10\% of the data being blanked. These values assume that the maps are sampled at twice Nyquist in the scanning direction and that there are four integrations per switching period.
-..        \item[$^g$] For mode 19 this value is 0.0895/0.38 seconds for observations below/above 10.3~GHz \textbf{when Doppler tracking}.
-..    \end{tablenotes}
-.. \end{threeparttable}}
-.. \end{table}
 
 
 Monitoring VEGAS observations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Spectral Line tab in the Astrid Data Display (See \S~\ref{sec:spectral_data_display}) is not fully capable
-of displaying VEGAS observations in real time (it will display passbands at the end of a scan, and may be used
-in offline mode). Rather, there are three monitoring tools that are useful with VEGAS:
-
-* the VEGAS CLEO screen (See \S~\ref{sec:vegas_cleo}).
-* VEGASDM -- the VEGAS Data Monitor (See \S~\ref{sec:vegasdm}).
-* vegas_status -- the VEGAS shared memory display. %(See \S~\ref{sec:vegas_status}).
+The Spectral Line tab in the Astrid Data Display is not fully capable of displaying VEGAS
+observations in real time (it will display passbands at the end of a scan, and may be used
+in offline mode). Rather, there are two monitoring tools that you may find useful as a VEGAS 
+user:
 
 
-The first two items are generally useful while observing with VEGAS and are described in S~\ref{sec:vegas_monitoring_tools}, while \texttt{vegas\_status} is for specialized problem diagnosis only. 
+* the VEGAS CLEO screen 
+
+  .. figure:: images/vegascleoscreen.jpg
+    
+* VEGASDM -- the VEGAS Data Monitor
+  
+  .. figure:: images/vegasdatamonitor.jpg
+  
+.. * vegas_status -- the VEGAS shared memory display, this tool is useful for specialized problem
+  diagnosis only.
 
 
-.. todo:: Add the sections here and replace the references accordingly.
+.. todo:: Add reference to Cleo sections detailing these VEGAS tools.
+
 
 
 The Online Filler and filling VEGAS data using SDFITS

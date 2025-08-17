@@ -39,7 +39,7 @@ The IF system for the W-band receiver is broken into four separate bands:
 * FL1: 67-74 GHz
 * FL2: 73-80 GHz
 * FL3: 79-86 GHz
-8 FL4: 85-92 GHz
+* FL4: 85-92 GHz
 
 
 You can only use one of these bands at a time (i.e., you cannot simultaneously 

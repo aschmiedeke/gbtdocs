@@ -1,0 +1,69 @@
+########################################################
+#
+#  19apr07 ccb mapping SB
+#          Uses trajectory in independent fits file
+#
+#  With default file kaRaster5x2-6sec does a 5'x2' square
+#   map in just over 4 minutes.
+#
+#  You can also just use standard RALongMap instead of 
+#   the single trajectory, though this is 
+#   less efficient and may excite more feedarm 
+#   vibration.
+#
+########################################################
+
+
+# the above sources must be in this
+# ASTRID format catalog:
+targetcat=Catalog("/users/bmason/ccbPub/example.acat")
+# or in the default catalog...
+Catalog()
+
+mySrc="0241-0815"
+
+###############################################
+#
+# Define custom scan "dotrajectory" 
+#  also define the function that reads in a trajectory FITS file,
+#  and then use it, to read in some trajectories.
+#
+
+import os
+import sys
+
+trajdir="/users/bmason/gbt-dev/scanning/ptcsTraj"
+if (trajdir not in sys.path):
+	sys.path.append(trajdir)
+from readFitsTraj import readFitsTraj
+from offsetFitsTraj import offsetFitsTraj
+
+#
+# Read in the trajectory
+#
+traj=readFitsTraj("/users/bmason/ccbPub/karaster5x2-6sec.fits",1.0)
+DefineScan("dotrajectory", "/users/bmason/gbt-dev/scanning/ptcsTraj/dotrajectory.py")
+
+# set an initial configuration and add the weather data to the archivist
+#  if the first source is not a calibrator this also leaves us in a
+#  happy state for CCB observations
+Configure("/users/bmason/ccbPub/ccb.conf")
+execfile("/users/bmason/ccbPub/addwx.py")
+execfile("/users/bmason/ccbPub/killlo.py")
+execfile("/users/bmason/ccbPub/deselectDeadCcbChans.py")			       
+
+Slew(mySrc)
+dotrajectory(traj,location=mySrc, beamName="1", cos_v=True,  coordMode="Encoder")
+
+# offset by 2 arcmin in the vertical direction (in whatever coordinate system
+#  the offset is being applied -- here Encoder ie az/el)
+traj=readFitsTraj("/users/bmason/ccbPub/karaster5x2-6sec.fits",1.0)
+offsetFitsTraj(traj,0.0,2.0/60.0)
+dotrajectory(traj,location=mySrc, beamName="1", cos_v=True,  coordMode="Encoder")
+
+# offset by 4 arcmin in the vertical direction (in whatever coordinate system
+#  the offset is being applied -- here Encoder ie az/el)
+traj=readFitsTraj("/users/bmason/ccbPub/karaster5x2-6sec.fits",1.0)
+offsetFitsTraj(traj,0.0,4.0/60.0)
+dotrajectory(traj,location=mySrc, beamName="1", cos_v=True,  coordMode="Encoder")
+

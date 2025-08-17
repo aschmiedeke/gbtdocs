@@ -120,8 +120,8 @@ VEGAS is the backend for spectral line observing. VEGAS can also be used for pul
 
 -------
 
-Deprecated backends
-===================
+Retired backends
+================
 
 
 .. grid:: 1 2 2 2

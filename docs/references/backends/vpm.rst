@@ -158,7 +158,7 @@ discussed in detail in the GBT Observer's Guide. Here we review only those keywo
 * ``obstype`` will always be ``"Pulsar"``.
 * ``backend`` will always be ``"VEGAS"``. GUPPI has been decommissioned and is no longer installed.
 * ``bandwidth`` will be either ``100``, ``200``, ``800``, or ``1500``.
-* ``dopplertrackfreq`` is not always required, but it is safe to include (See :ref:`Use of the ``dopplertrackfreq`` 
+* ``dopplertrackfreq`` is not always required, but it is safe to include (See :ref:`Use of the \`\`dopplertrackfreq\`\` keyword`
   Keyword` for more details). It should be equal to the center of your observing band. If you are using one spectral
   window (i.e., one value of the restfreq keyword) then the value of dopplertrackfreq will be equal to 
   the value of restfreq. If you are using multiple spectral windows (i.e. multiple values for the restfreq 
@@ -245,7 +245,7 @@ monitor for Bank A will be in use. Note the VEGAS Power Monitor button on the ri
 display information about setup on individual banks. The most relevant parameters for pulsar observers are the 
 mode and integration time. The bottom panels show the state of the VEGAS managers on each bank.  
 
-.. figure:: figures/VPM_CLEO.png
+.. figure:: images/VPM_CLEO.png
 
 
 
@@ -279,7 +279,7 @@ Below is a screenshot of the data monitor looks.  Data for Bank A is selected in
 banks are active. The chart recorder shows proper input values of approximately -20 dB. The histograms of
 8-bit ADC output values are also in an acceptable range, with a FWHM of approximately 30 counts.
 
-.. figure:: figures/VPM_DM.png
+.. figure:: images/VPM_DM.png
 
 
 The top panel shows the input power level in chart recorder form for both polarization channels. *The target
@@ -331,13 +331,13 @@ You need only pay attention to the status of banks currently in-use.*
 
 Below is an example of the vpmHPCStatus screen where VEGAS is configured for coherent dedispersion at L-band: 
 
-.. figure:: figures/vpmHPCStatus.png
+.. figure:: images/vpmHPCStatus.png
 
 
 This is an example of the vpmHPCStatus screen where VEGAS is configured for coherent dedispersion at at 820 MHz
 with 200 MHz of bandwidth:
 
-.. figure:: figures/vpmHPCStatus_LBW.png
+.. figure:: images/vpmHPCStatus_LBW.png
 
 
 
@@ -354,7 +354,7 @@ all frequencies.
 
 .. note::
     
-    Note that long scans will be broken into multiple output files, and when a new file is opened the S/N may seem 
+   Note that long scans will be broken into multiple output files, and when a new file is opened the S/N may seem 
    to suddenly drop. This is expected and the S/N should recover as more data is written to that file. Also note that
    under certain browsers (e.g. Chrome) the page not always automatically refresh. If VPM seems to be running but 
    the plots are not updating, first try clearing your browser's cache and then reopening the page. If it still is 
@@ -369,7 +369,7 @@ This page plays the same role as www.gb.nrao.edu/guppi.
 The VPM data monitoring webpage; in this case, VEGAS is configured for coherent dedispersion with 200 MHz of 
 bandwidth at a center frequency of 820 MHz. Only two banks are active:
 
-.. figure:: figures/VPM_webpage_LBW.png
+.. figure:: images/VPM_webpage_LBW.png
 
     
 
@@ -551,7 +551,7 @@ Tips and Tricks
 
 
 
-Use of the ``dopplertrackfreq`` Keyword
+Use of the ``dopplertrackfreq`` keyword
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -611,32 +611,7 @@ If you adopt Option 1 then Option 2 isn't necessary, and vice versa. Of course, 
 
 
 
-Transitioning From GUPPI to VPM
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Switching from GUPPI to VPM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Experienced pulsar observers will recognize that GUPPI and VPM observing are very similar, especially the 
-parameters used in scheduling blocks. The following table summarizes the similarities and some differences
-between GUPPI and VPM.
-
-**Astrid**: Most ``"guppi."`` parameters can be replaced with ``"vegas."``. The exceptions are ``guppi.datadisk``,
-which has no VPM equivalent.
-
-**File names:** VPM output file names include a new element, the number of seconds after midnight UTC.
-``vegas_<MJD>_<secUTC>_<sourceName>_<scanNumber>_<fileNumber>.fits``
-``vegas_<MJD>_<secUTC>_<sourceName>_cal_<scanNumber>_<fileNumber>.fits``
-
-The table below can be used a cheat-sheet for navigating between some common GUPPI and VPM tasks. 
-
-.. csv-table:: Quick Reference for Transitioning from GUPPI to VPM
-    :file: material/guppi2vpm.csv
-    :header-rows: 1
-    :class: longtable
-    :widths: 1 1 1
-
-.. note::
-
-    The asterisk denotes a shortcut for ``/lustre/gbtdata``.
-
-
-
-
+See :ref:`here <Transitioning from GUPPI to VPM>`.

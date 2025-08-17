@@ -1,0 +1,97 @@
+########################################################
+#
+# 26jan06
+#  template scheduling block for GBT CCB observations
+#
+# Uses new symmetric otf nods with 10 sec per phase and
+#  10 sec initial settle
+#
+#  This scan takes 1.5m per source including intrasource slew
+#  During the day you should have 20 sources in this block plus
+#   the peak/focus
+#  During the night you can let it slip to 27 sources plus
+#   peak/focus
+#  Take care that if you increase the value of NNODS below
+#   (the number of nods done on  each source) to decrease
+#   the number of sources commensurately.
+#
+########################################################
+
+#######################################################
+# 
+# configuration variables
+#  
+#######################################################
+
+# number of nods to do on each source
+nnods=1
+
+#
+# sources to observe in this scheduling block.
+#
+srclist=[
+"020003+0013",
+"020056+0004",
+"020108+0009",
+"015859+0013",
+"020145+0007",
+"015842+0024",
+"015802+0018",
+"020048+0034",
+"020056+0033",
+"020053+0025"]
+
+
+# the above sources must be in this
+# ASTRID format catalog:
+targetcat=Catalog("/users/bmason/ccbPub/example.acat")
+
+#
+# NB: which catalog you gotta be in is defined by the "isCal" fields
+#  in the above array
+#
+########################################################
+# You shouldn't have to change anything below this line
+#
+#######################################################
+
+###############################################
+#
+# Define custom scan "dotrajectory" 
+#  also define the function that reads in a trajectory FITS file,
+#  and then use it, to read in some trajectories.
+#
+
+import os
+import sys
+
+trajdir="/users/bmason/gbt-dev/scanning/ptcsTraj"
+if (trajdir not in sys.path):
+	sys.path.append(trajdir)
+from readFitsTraj import readFitsTraj
+
+#
+# Read in the trajectories
+#
+trajnod=readFitsTraj("/users/bmason/ccbPub/ka-otfnod-symmShort.fits",1.0)
+DefineScan("dotrajectory", "/users/bmason/gbt-dev/scanning/ptcsTraj/dotrajectory.py")
+
+# set an initial configuration and add the weather data to the archivist
+#  if the first source is not a calibrator this also leaves us in a
+#  happy state for CCB observations
+Configure("/users/bmason/ccbPub/ccb.conf")
+execfile("/users/bmason/ccbPub/addwx.py")
+execfile("/users/bmason/ccbPub/killlo.py")
+execfile("/users/bmason/ccbPub/deselectDeadCcbChans.py")			       
+
+srccnt=0
+for mySrc in srclist:
+   SetValues("ScanCoordinator", {"source": mySrc} )
+   Slew(mySrc)
+   for iter in xrange(nnods):
+      dotrajectory(trajnod,location=mySrc, beamName="1", cos_v=True,  coordMode="Encoder")
+
+
+Comment("END OF SCHEDULING BLOCK")
+
+

@@ -1,6 +1,6 @@
 
 Ku-Band receiver
----------------
+----------------
 
 The Ku-band receiver has two beams on the sky with fixed separation, each with dual circular polarization. 
 The feeds have cooled polarizers producing circular polarizations. Internal switching modes are frequency 

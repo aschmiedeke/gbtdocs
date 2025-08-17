@@ -1,0 +1,45 @@
+########################################################
+#
+#  19apr07 ccb mapping SB
+#          Uses trajectory in independent fits file
+#
+#  With default file kaRaster5x2-6sec does a 5'x2' square
+#   map in just over 4 minutes.
+#
+#  You can also just use standard RALongMap instead of 
+#   the single trajectory, though this is 
+#   less efficient and may excite more feedarm 
+#   vibration.
+#
+########################################################
+
+
+# the above sources must be in this
+# ASTRID format catalog:
+targetcat=Catalog("/users/bmason/ccbPub/example.acat")
+# or in the default catalog...
+Catalog()
+
+mySrc="0241-0815"
+
+# set an initial configuration and add the weather data to the archivist
+#  if the first source is not a calibrator this also leaves us in a
+#  happy state for CCB observations
+Configure("/users/bmason/ccbPub/ccb.conf")
+execfile("/users/bmason/ccbPub/addwx.py")
+execfile("/users/bmason/ccbPub/killlo.py")
+execfile("/users/bmason/ccbPub/deselectDeadCcbChans.py")			       
+
+Slew(mySrc)
+
+RALongMap(mySrc,
+	Offset("AzEl",0.2,0,cosv=True), # length of map (az direction, deg)
+	Offset("AzEl",0,0.1,cosv=True), # height of map (el direction, deg)
+	Offset("AzEl",0,0.001667,cosv=True), # row spacing (deg)
+	12.0, # row scan duration, sec
+	False # FALSE=not unidirectional - i.e., go back and forth
+	)
+# optional integer valued start, stop arguments following UNIDIRECTIONAL 
+# allow you to break the map up into smaller chunks, eg, possibly invoked
+# from different SBs
+

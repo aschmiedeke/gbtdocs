@@ -5,7 +5,6 @@
 ################################################
 
 
-.. bibliography::
-    :list: bullet 
+.. bibliography:: 
 
 

@@ -141,5 +141,5 @@ The hub follows the `diataxis <https://diataxis.fr/>`_ approach, where documenta
    explanations/index
    references/index
    glossary
-   bibliography
+   zbibliography
 
