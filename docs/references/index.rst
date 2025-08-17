@@ -31,7 +31,7 @@ Nitty-gritty technical descriptions of how the GBT works. Most useful when you n
     :maxdepth: 3
     :hidden:
 
-    observing/gbt
+    gbt
 
 
 
@@ -48,7 +48,7 @@ Observing
 
         Information to create Scheduling Blocks (SBs)
 
-        .. button-link:: observing/scheduling-blocks.html
+        .. button-link:: scheduling-blocks.html
             :color: primary
             :tooltip: Information material to create SBs
             :outline:
@@ -60,7 +60,7 @@ Observing
     :maxdepth: 3
     :hidden:
 
-    observing/scheduling-blocks
+    scheduling-blocks
 
 
 

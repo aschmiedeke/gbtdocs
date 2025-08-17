@@ -61,8 +61,11 @@ intersphinx_mapping = {
 
 pygments_style = 'sphinx'
 
+# number tables
+numfig = True
+
 # for sphinxcontrib-bibtex
-bibtex_bibfiles = ['bibliography.bib']
+bibtex_bibfiles = ['zbibliography.bib']
 bibtex_reference_style = 'author_year'
 bibtex_tooltips = True
 
