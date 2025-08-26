@@ -68,6 +68,17 @@ You may then use :func:`Configure() <astrid_commands.Configure>` to execute each
 as necessary.
 
 
+Resetting the configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The configuration tool in AstrID remembers all the keyword values defined during a session.
+This feature occasionally results in AstrID being unable to validate an otherwise correct
+configuration because of previously set values or hardware being configured improperly. To
+reset the configuration parameters to their default state, you can issue the :func:`ResetConfig() 
+<astrid_commands.ResetConfig>` command in a script before another :func:`Configure() <astrid_commands.
+Configure>`.
+
+
 
 Configuration keywords
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -212,31 +223,31 @@ continuum observations. There are three available syntaxes for ``restfreq``:
 
    * ``'bandwidth'``: 
      
-     same meaning sd the standard configuration keyword   
+     same meaning as the standard configuration keyword   
 
    * ``'nchan'``
 
-     same meaning sd the standard configuration keyword  
+     same meaning as the standard configuration keyword  
 
    * ``'deltafreq'``
 
-     same meaning sd the standard configuration keyword  
+     same meaning as the standard configuration keyword  
 
    * ``'tint'``
 
-     same meaning sd the standard configuration keyword  
+     same meaning as the standard configuration keyword  
 
    * ``'vpol'``
 
-     same meaning sd the standard configuration keyword  
+     same meaning as the standard configuration keyword  
 
    * ``'beam'``
 
-     same meaning sd the standard configuration keyword  
+     same meaning as the standard configuration keyword  
 
    * ``'subband'``
 
-     same meaning sd the standard configuration keyword  
+     same meaning as the standard configuration keyword  
 
 
    .. note::
@@ -402,29 +413,94 @@ Hardware dependent keywords
 '''''''''''''''''''''''''''
 (in alphabetical order)
 
-
-``broadband``
-"""""""""""""
-
-
-``dopplertrackfreq``
-""""""""""""""""""""
+Some configuration keywords depend on which backends and receivers are being used. Some 
+observations may require one of these keywords while for other observations none may be needed.
 
 
-``nchan``
-"""""""""
+``broadband`` (int)
+"""""""""""""""""""
+
+This keyword is used to activate the "broadband" 7.5 GHz maximum instantaneous mode of the KFPA by
+setting ``broadband=1``. This may only be used with single beam configurations using either beam 1
+or beam 2 of the KFPA. 
+
+.. admonition:: Default
+
+   The default value is ``broadband=0``, i.e. broadband mode is turned off.
 
 
-``noisecal``
-""""""""""""
+``dopplertrackfreq`` (float)
+""""""""""""""""""""""""""""
+
+Specifies the rest frequency in MHz used to compute the velocity for doppler tracking. When using the 
+simple restfreq syntax, the default is the first listed restfreq value.
 
 
-``notchfilter``
+``nchan`` (int)
 """""""""""""""
 
+Used to determine the number of spectral channels that VEGAS will provide. Available values are listed in 
+Table XXX
 
-``pol``
-""""""
+.. todo:: Add reference to Table 10.1 from observer guide.
+
+
+.. note:: 
+
+   The following string values designed for use with the now obsolete GBT spectrometer
+   may still be used:
+
+   * ``'low'``
+   * ``'medium-low'``
+   * ``'medium'``
+   * ``'medium-high'``
+   * ``'high'``
+
+   These string values may be used to distinguish between up to 5 levels of resolution for a given bandwidth. 
+   For example, mode 18 of VEGAS could be set by setting ``bandwidth=11.72`` and ``nchan=262144`` or ``nchan='medium-high'``
+
+
+
+``noisecal`` (str)
+""""""""""""""""""
+
+All receivers below 12 GHz have two noise diodes for calibration signals -- one with an
+equivalent brightness temperature at roughly one tenth the system temperature (``'lo'`` 
+value). and one nearly equal to the system temperature (``'hi'`` value). This keyword
+specifies which noise diode is to be used. Allowed values are ``'low'``, ``'hi'``, and 
+``'off'``.
+
+.. admonition:: Default
+
+   The default value is ``'lo'`` except for the Radar backend, for which the default value
+   is ``'off'``.
+
+
+``notchfilter`` (str)
+"""""""""""""""""""""
+
+There is a notch filter covering roughly 1200-1310 MHz in the L-band receiver that filters
+out an Federal Aviation Administration (FAA) radar signal. This keyword determines if this
+notch filter is in place and used by the system or is removed from the receiver's RF path.
+Allowed values are ``'In'`` or ``'Out'``.
+
+.. admonition:: Default
+
+   The default value is ``'In'``.
+
+
+``pol`` (str)
+"""""""""""""
+
+Each of the prime focus, L-band, S-band, and C-band receivers have a hybrid that can output
+either linear or circular polarization. Additionally the W-band receiver is linear when using 
+two beams and circular when using one beam. The ``pol`` keyword specifies whether linear or 
+circular polarization is desired for these receivers. Allowed values are ``'Linear'`` and 
+``'Circular'``.
+
+.. admonition:: Default
+
+   The default is ``'Circular'`` for the VLBI and Radar backends and ``'Linear'`` otherwise.
 
 
 ``vegas.dm``
@@ -463,69 +539,151 @@ Hardware dependent keywords
 """""""""""""""
 
 
-``vegas.subband``
-"""""""""""""""""
+``vegas.subband`` (int)
+"""""""""""""""""""""""
+
+Used by the config tool to select between 23.44 MHz VEGAS modes with single and multiple spectral
+windows (see Table XX). Is assumed values ``1`` or ``8``. 
+
+.. todo:: Add reference to table 10.1 from observer guide.
+
+.. admonition:: Default
+
+   The default value is ``8``.
 
 
-``vegas.vpol``
-""""""""""""""
+
+``vegas.vpol`` (str)
+""""""""""""""""""""
+
+Specifies which spectral product to record in the FITS file. It assumes the following values:
+
+* ``'self'``: Record the total intensity polarization products.
+* ``'cross'``: Record the full Stokes polarization products.
+* ``'self1'``: Record the polarization from the first Analog to Digital Converter (ADC) card only.
+  There are two ADCs per VEGAS bank, one for each polarization.
+* ``'self2'``: Record the polarization from the second ADC only.
+
+.. admonition:: Default
+
+   The default value is ``'self'``
 
 
-``vlbi.phasecal``
-"""""""""""""""""
+
+``vlbi.phasecal`` (str)
+"""""""""""""""""""""""
+
+This expert keyword turns the VLBI phase cals on or off. The phase cals can run at 1 MHz 
+(``'M1'``) or 5 MHz (``'M5'``). Allowed values are ``'off'``, ``'M1'`` or ``'M5'``.
 
 
 
-
+.. todo:: Add CCB configuration keywords to this list.
 
 
 
 Expert keywords
 '''''''''''''''
-
 (in alphabetical order)
 
-
-``if0freq``
-"""""""""""
-
-
-``if3freq``
-"""""""""""
-
-
-``ifbw``
-""""""""
-
-
-``iftarget``
-""""""""""""
-
-
-``lo1bfreq``
-""""""""""""
-
-
-``lo2freq``
-"""""""""""
-
-
-``polswitch``
-"""""""""""""
-
-
-``vhigh``
-"""""""""
-
-
-``vlow``
-""""""""
+These keywords should only be used by very experienced observers who have expert knowledge of how 
+a given backend works or in how the GBT IF system works.
 
 
 
-``xfer``
-""""""""
+``if0freq`` (float)
+"""""""""""""""""""
 
+Used to set the center frequency of the IF after the mixing of the RF signal with the first LO. 
+The keyword value is a float with units of MHz.
+
+
+
+``if3freq`` (comma-separated list of floats)
+""""""""""""""""""""""""""""""""""""""""""""
+
+Used to set the IF input frequency of the backend. The keyword value is a comma separated list
+of floats with units of MHz.
+
+
+ 
+``ifbw`` (float)
+""""""""""""""""
+
+Sets the minimum IF bandwidth to be used in filters within the receiver and in the IF rack. 
+The keyword value is a float with units of MHz.
+
+
+
+``iftarget`` (float)
+""""""""""""""""""""
+
+Specifies the target voltage level to use when balancing the IF rack. The nominal range of the 
+IF rack is 0.0 - 10.0 and the linear range is 0.1-5.0.
+
+
+
+``lo1bfreq`` (float)
+""""""""""""""""""""
+
+Used to set the center frequency of synthesizer used for the alternative first LO, LO1B in MHz.
+This keyword is only to be used with the Ka-band receiver. 
+
+
+``lo2freq`` (comma-separated list of floats)
+""""""""""""""""""""""""""""""""""""""""""""
+
+Used to set the frequency values of the eight LO2 synthesizers within the Converter Rack in 
+units of MHz.
+
+``polswitch`` (str)
+"""""""""""""""""""
+
+Sets the polarization switch for the L-band and X-band receivers. Allowed values are ``'ext'``, 
+``'thru'``, and ``'cross'``. 
+
+.. admonition:: Default
+
+   The default value is ``'ext'`` if ``swtype='psw'`` and ``'thru'`` otherwise.
+
+
+``vhigh`` (float)
+"""""""""""""""""
+
+Specifies the maximum velocity to be observed from a group of sources in units of km/s. The use 
+of ``vhigh`` is not recommended for frequencies where there can be large amounts of RFI.
+
+.. admonition:: Default
+
+   The default value is ``0.0``
+
+.. todo:: Add context from Appendix C from observer guide.
+
+
+
+``vlow`` (float)
+""""""""""""""""
+
+Specifies the minimum velocity to be observed from a group of sources in units of km/s. The use 
+of ``vlow`` is not recommended for frequencies where there can be large amounts of RFI.
+
+.. admonition:: Default
+
+   The default value is ``0.0``
+
+.. todo:: Add context from Appendix C from observer guide.
+
+
+
+``xfer`` (str)
+""""""""""""""
+
+Sets the beam switch for the Ku-band, K-band and Ka-band receivers. Allowed values are ``'ext'``, 
+``'thru'``, or ``'cross'``. 
+
+.. admonition:: Default
+
+   The default value is ``'ext'`` when ``swtype='bsw'`` and ``'thru'`` otherwise.
 
 
 
