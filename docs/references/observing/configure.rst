@@ -503,40 +503,83 @@ circular polarization is desired for these receivers. Allowed values are ``'Line
    The default is ``'Circular'`` for the VLBI and Radar backends and ``'Linear'`` otherwise.
 
 
-``vegas.dm``
-""""""""""""
+``vegas.dm`` (?)
+""""""""""""""""
+
+[VPM] Controls the DM used for coherent dedispersion fold and search modes.
+It is not used by any other modes.
 
 
-``vegas.fold_bins``
-"""""""""""""""""""
+``vegas.fold_bins`` (int)
+"""""""""""""""""""""""""
+
+[VPM] Controls the number of pulse phase bins used for either incoherent or coherent 
+dedispersion fold- or cal-modes. Enough bins should be used to fully resolve fine 
+profile structure. Typical values are ``256`` in incoherent dedispersion modes and
+``2048`` in coherent dedispersion fold- or cal-modes.
 
 
-``vegas.fold_dumptime``
-"""""""""""""""""""""""
+``vegas.fold_dumptime`` (int)
+"""""""""""""""""""""""""""""
+
+[VPM] Controls the length of a sub-integration in either incoherent or coherent dedispersion
+fold- or cal-modes. The value is specified in seconds with ``10`` seconds being typical. 
+It must be shorter than the total scan length.
 
 
 ``vegas.fold_parfile``
 """"""""""""""""""""""
 
+[VPM] Specifies the path to the ephemeris (parfile) used for either incoherent or coherent
+dedispersion fold-modes. 
 
-``vegas.numchan``
-"""""""""""""""""
+.. important:: 
 
-
-``vegas.obsmode``
-"""""""""""""""""
-
-
-``vegas.outbits``
-"""""""""""""""""
+   The parfile must be compatible with the TEMPO1 prediction mode.
 
 
-``vegas.polnmode``
-""""""""""""""""""
+``vegas.numchan`` (?)
+"""""""""""""""""""""
 
 
-``vegas.scale``
-"""""""""""""""
+[VPM] Sets the number of spectral channels. Care must be taken to not exceed the maximum data rate.
+
+.. todo:: Add reference to VPM tables.
+
+
+``vegas.obsmode`` (str)
+"""""""""""""""""""""""
+
+[VPM] Controls both the dedispersion and observing mode. Allowed values are:
+* ``"search"``: Incoherent dedispersion search-mode.
+* ``"fold"``: Incoherent dedispersion fold-mode.
+* ``"cal"``: Incoherent dedispersion cal-mode.
+* ``"coherent_search"``: Coherent dedispersion search-mode.
+* ``"coherent_fold"``: Coherent dedispersion fold-mode.
+* ``"coherent_cal"``: Coherent dedispersion cal-mode.
+
+
+``vegas.outbits`` (int)
+"""""""""""""""""""""""
+
+[VPM] Controls the number of bits used for output values. The only allowed value is ``8``.
+
+
+``vegas.polnmode`` (str)
+""""""""""""""""""""""""
+
+[VPM] Controls whether full Stokes or total intensity data are recorded. Allowed
+values are ``"full_stokes"`` and ``"total_intensity"``, though total intensity
+can only be used in incoherent search-mode.
+
+
+``vegas.scale`` (?)
+"""""""""""""""""""
+
+[VPM] Controls the VPM internal gain so that the output data is properly scaled for 8-bit values.
+These values are empirically measured and recommended values are in the VPM tables.
+
+.. todo:: Add reference to VPM tables.
 
 
 ``vegas.subband`` (int)
@@ -549,8 +592,11 @@ windows (see Table XX). Is assumed values ``1`` or ``8``.
 
 .. admonition:: Default
 
-   The default value is ``8``.
+   The default value is ``8``. 
 
+.. note::
+
+   This value is always ``1`` for pulsar observing.
 
 
 ``vegas.vpol`` (str)
@@ -688,4 +734,45 @@ Sets the beam switch for the Ku-band, K-band and Ka-band receivers. Allowed valu
 
 
 
+
+Example Configurations
+^^^^^^^^^^^^^^^^^^^^^^
+The best way to learn about how to define and perform configurations is through examples.
+Keywords available for use in a configuration definition have been discussed above. All examples
+have been placed in the directory ``/home/astro-util/projects/GBTog/configs/``.
+
+.. todo:: Check that those scripts are the same as the ones shown here.
+
+
+Continuum Observations
+''''''''''''''''''''''
+
+.. include:: script_descriptions/continuum_config.rst
+
+
+Spectral Line, Frequency Switching Observations
+'''''''''''''''''''''''''''''''''''''''''''''''
+
+.. include:: script_descriptions/fs_config.rst
+
+
+Multiple Spectral Lines, Total Power Observations
+'''''''''''''''''''''''''''''''''''''''''''''''''
+
+.. include:: script_descriptions/tp_config.rst
+
+Multiple Spectral Lines, Multi-beam, Total Power Observations
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+.. include:: script_descriptions/tp_config_multi_beam.rst
+
+Multiple Spectral Lines, KFPA Observations
+''''''''''''''''''''''''''''''''''''''''''
+
+.. include:: script_descriptions/kfpa_config.rst
+
+Advanced Use of the ``restfreq`` Keyword
+''''''''''''''''''''''''''''''''''''''''
+
+.. include:: script_descriptions/adv_restfreq_config.rst
 
