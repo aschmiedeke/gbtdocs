@@ -2433,7 +2433,7 @@ def Configure(action):
     """
 
 
-execfile():
+def execfile():
 
     """
     Built-in function in python 2 that allows the execution of a python script from a file
@@ -2442,7 +2442,7 @@ execfile():
     Example
     -------
 
-    ..code-block:: python
+    .. code-block:: python
 
         execfile('my_script.py') 
         execfile('my_configurations.config')    # file ending does not need to be .py
