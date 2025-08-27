@@ -1,0 +1,8 @@
+# My source list
+format=spherical
+coordmode=J2000
+HEAD = NAME   RA        DEC
+Object1  09:56:16.98  +49:16:25.5
+Object2  10:56:16.98  +50:16:25.5
+Object3  11:56:16.98  +51:16:25.5
+Object4  12:56:16.98  +52:16:25.5
