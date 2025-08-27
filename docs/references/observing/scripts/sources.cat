@@ -1,0 +1,8 @@
+ # My source list with radial velocities
+ format=spherical
+ coordmode = B1950
+ head = name   ra        dec        velocity
+ Object1  09:56:16.98  +49:16:25.5  27.23
+ Object2  08:56:16.98  +48:16:25.5  28.24
+ Object3  07:56:16.98  +47:16:25.5  29.25
+ Object4  06:56:16.98  +45:16:25.5  30.26

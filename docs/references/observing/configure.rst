@@ -15,7 +15,10 @@ Defining and executing a configuration
 
 Configurations are defined as sets of keyword-value pairs within a single string variable. 
 To execute a configuration, this variable is passed as an argument into the 
-:func:`Configure() <astrid_commands.Configure>` command in an SB.
+:func:`Configure() <astrid_commands.Configure>` command in an SB. For each configuration all 
+keywords and values exist as line separated 'keyword=value' pairs, all enclosed within a single
+set of triple-quotes.
+
 
 Configurations may be defined in two ways:
 
