@@ -1,4 +1,4 @@
-.. literalinclude:: /references/observing/scripts/tp_config.py
+.. literalinclude:: /references/observing/scripts/adv_restfreq_config.py
     :language: python
     :lines: 3-
     :caption: An example showing advanced use of the ``restfreq`` keyword.
