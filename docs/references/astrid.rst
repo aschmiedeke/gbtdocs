@@ -1,3 +1,5 @@
+.. |icon-open| image:: images/DTopen.jpg
+
 
 .. astrid::
 
@@ -65,6 +67,10 @@ Astrid Modes
 ''''''''''''
 
 On startup AstrID will automatically ask what mode to operate in via a pop-up window. 
+
+.. image:: images/AstridMode.jpg
+
+
 You can reopen the selection window any time by clicking ``File`` :math:`\rightarrow`
 ``Real time mode...`` in the AstrID GUI.
 
@@ -73,26 +79,27 @@ You can reopen the selection window any time by clicking ``File`` :math:`\righta
     You should use ``File`` :math:`\rightarrow` ``Real time mode...`` to relinquish 
     control  of the telescope immediately after your scheduled observing session.
 
-.. image:: images/AstridMode.jpg
-
 
 You should select the most appropriate mode for your purpose:
 
-* **Work offline**: Primarily used to create, edit and validate SBs. It is alo the 
-  preferred method to look at previously obtained data in the Data Display since online
-  modes will continually refresh the display window with near-real time data.
+* **Work offline**
+    Primarily used to create, edit and validate SBs. It is alo the 
+    preferred method to look at previously obtained data in the Data Display since online
+    modes will continually refresh the display window with near-real time data.
 
-* **Work online, but only monitor observations**: May be used to view what is happening
-  in the AstrID observing logs and Data Display for the current observations. You will
-  not be able to submit SBs or affect observing in any manner.
+* **Work online, but only monitor observations**
+    May be used to view what is happening
+    in the AstrID observing logs and Data Display for the current observations. You will
+    not be able to submit SBs or affect observing in any manner.
 
-* **Work online with control of the telescope**: Use to perform observations with the
-  GBT by allowing you to submit SBs. Log information and real-time data displays are
-  also available in this mode.
+* **Work online with control of the telescope**
+    Use to perform observations with the
+    GBT by allowing you to submit SBs. Log information and real-time data displays are
+    also available in this mode.
 
-  .. note:: 
+    .. note:: 
     
-    Working online requires the GBT operator to "put you in the gateway", i.e. give you security access.
+        Working online requires the GBT operator to "put you in the gateway", i.e. give you security access.
 
 .. _tab-astrid-mode-features:
 .. list-table:: AstrID mode features
@@ -536,12 +543,374 @@ friend.
 Data Display Tab
 ^^^^^^^^^^^^^^^^
 
-The Data Display Tab provides a near-real time display of your GBT data and is discussed
-in Chapter 4.
+The Data Display Tab provides a real time display of your GBT data so that you can
+check that you are getting valid data. The Data Display is actually running an 
+application called GBT Fits Monitor (GFM). This application provides scan-based 
+display and analysis of GBT data, either in real-time as the data is being collected,
+or in an offline mode where it can be used to simply step through the scans from an
+observation. You are encouraged to run GFM offline for reanalyzing data during 
+observations. A separate GFM application can be launched from the Linux prompt via 
+the ``gfm`` command or AstrID could be switched to offline-mode.
+
+
+Working Online
+''''''''''''''
+
+If you are using either of AstrID's ``online`` modes (see :ref:`Astrid Modes`) and have
+selected the ``DataDisplay`` tab, then the data display will update as new data are 
+obtained. Continuum and Spectral Line data are only updated when these displays are
+being viewed. 
+
+.. important:: 
+
+    Pointing and Focus data are always automatically updated whether or not their 
+    displays are being shown or not.  Due to this feature, clicking on previous 
+    observations while Pointing and Focus scans are in progress can confuse GFM 
+    and should be avoided. 
+    
+The list of scans will always automatically update.
+
+Working Offline
+'''''''''''''''
+
+You can look at data that have already been taken with the GBT by running AstrID in 
+``offline`` mode. To view data in this mode you need to follow these steps:
+
+#. Change the AstrID mode to ``offline`` (see :ref:`Astrid Modes`).
+#. Select the DataDisplay tab in AstrID
+#. Select ``File`` :math:`\rightarrow` ``Open`` from the drop-down menu or click the 
+   |icon-open| icon in the toolbar.
+#. Select a project ID from the list of project directories in ``/home/gbtdata/``.
+#. Double-click ``ScanLog.fits`` file to access the data.
+
+   .. note:: 
+
+    It may take several seconds to a few minutes to access all of your scans depending on
+    the amount of data to load. The process is complete when you see a list of scans displayed
+    sequentially on the left hand side of the GFM display.
+
+#. Click on a scan in the scan list window to process it.
+
+Pointing and Focus Data Display
+'''''''''''''''''''''''''''''''
+
+Pointing scans (from :func:`Peak() <astrid_commands.Peak>`, :func:`AutoPeak() <astrid_commands.AutoPeak>`
+and :func:`AutoPeakFocus() <astrid_commands.AutoPeakFocus>`) will appear under the Pointing Tab.
+If working ``online``, the data display will automatically process the pointing scans. 
+
+.. note:: 
+
+    Clicking on previous scans while Pointing and Focus scans are in progress may interfere with 
+    automatic processing.
+   
+It will calibrate the data, remove a baseline and fit a Gaussian to the data. After the two 
+azimuth scans (cross-elevation, i.e. :math:`{\text{Az}} \times \cos{({\text{Dec}})}`) it will
+then automatically update the GBT M&C system with the new azimuth pointing offset values that
+it determined. It will then automatically update the elevation pointing offset after the two
+elevation scans, unless certain criteria are not met (see :ref:`Fitting Acceptance Options`).
+Here is a sample of the Data Display Application after a pointing 
+
+.. image:: images/AstridDataDisplayTabPointing.jpg
+
+The measured FWHM width (``Wid``) is shown in arcminutes. The fitted center of the Gaussian (``Ctr``) 
+is pointing offset in arcmin. The measured height of the Gaussian (``Hgt``) is in units of the 
+calibrated temperature scale or raw counts (as given by the y-axis label).
+
+The focus scan data will appear under the Focus Tab.
+
+.. image:: images/AstridDataDisplayTabFocus.jpg
+
+Again, in ``online`` mode the data will be processed automatically. They will be calibrated, have
+a baseline removed and a Gaussian will be fit to the data. The focus offset will automatically
+be sent to the M&C system.
+
+The details of pointing and focus observations are described in XXX
+
+.. todo:: Add reference to section 5.4.1. in GBTog.
+
+
+Fitting Acceptance Options
+""""""""""""""""""""""""""
+
+GFM has several levels of determining whether or not the pointing and focus solutions will be 
+updated in the M&C system. The expected FWHM of the Gaussian fitted to the observed pointing
+data as the GBT slews across the source should be :math:`\sim748/\nu_{\text{GHz}}` arcsec, 
+where :math:`\nu_{\text{GHz}}` is the observing frequency in GHz.
+
+For a focus scan the resulting data should approximate a Gaussian with a FWHM of
+:math:`1080 \nu_{\text{GHz}}`, in mm. The default behavior for observations below 27 GHz is 
+to assume that a pointing fit is bad if the FWHM differ from the expected value by more than
+30\% or if the pointing correction is more than twice the FWHM in magnitude; for observations
+above 27 GHz, the fit is bad if the FWHM differ from the expected value by more than 50% or 
+if the pointing correction is more than three times the FWHM in magnitude. The default for a
+bad focus scan is if the FWHM is more than 30% from the expected value. 
+
+You may change fitting acceptance criteria by: 
+
+#. Select the Pointing or Focus Subtab in the DataDisplay tab.
+#. Select ``Tools`` :math:`\rightarrow` ``Options...`` from the drop-down menu.
+#. Select the new mode in the ``Fitting Acceptance Criteria`` tab of the pop-up window.
+
+   .. note:: 
+    
+        This Option must be set independently for both Pointing and Focus **before** each 
+        type of observation in order to take effect.
+
+The GFM recognizes the fitting acceptance criteria shown below only when AstrID is in one of 
+its online modes. 
+
+.. image:: images/Astrid_fittingacceptance.jpg
+
+The default setting is to ``Automatically accept good fits, automatically reject bad fits``.
+You may also choose to never apply corrections or interactively accept bad and/or good fits. 
+There is also an option to ``Accept all automatically`` which can be very dangerous and should
+only be used by experts.
+
+
+
+Data Processing Options
+"""""""""""""""""""""""
+
+You may change the data processing strategy, beams, and/or polarizations used by GFM in reducing
+pointing or focus scans.  This is not needed typically since the software picks the proper default
+settings under normal conditions.  However, for example, if the X polarization channel is faulty
+for some reason, one can use the Y channel instead. This can be done by:
+
+#. Select the Pointing or Focus Subtab in the DataDisplay tab.
+#. Select ``Tools`` :math:`\rightarrow` ``Options...`` from the drop-down menu.
+#. Make new data processing selections in the ``Data Processing`` Tab of the pop--up window 
+   
+   .. image:: images/Astrid_dataProcessing.jpg
+
+   .. note:: 
+
+    Options must be set independently for both Pointing and Focus **before** each type of
+    observation in order to take effect.
+
+
+Heuristics Options
+""""""""""""""""""
+
+Heuristics is a generic term used at the GBT to quantify the "goodness of fit" of the pointing and
+focus data reduction solutions. Based on the known properties of the GBT, parts of the solution, 
+such as the beamwidth in pointing data, should have certain values within measurement errors. The
+Heuristics define how large these errors can be. You may change the Heuristics by:
+
+#. Select the Pointing or Focus Subtab in the DataDisplay tab.
+#. Select ``Tools`` :math:`\rightarrow` ``Options...`` from the drop-down menu.
+#. Select the new mode in the Heuristics tab of the pop-up window 
+   
+   .. image:: images/Astrid_heuristicsOptions.png
+
+   .. note:: 
+
+    Options must be set independently for both Pointing and Focus **before** each type of observation
+    in order to take effect.
+
+The GFM allows you to switch between ``default``, ``standard``, ``relaxed``, and ``user-defined``
+heuristics. The meaning of ``standard`` and ``relaxed`` heuristic values are predefined and cannot 
+be changed by you.  The ``standard`` heuristic expects that the fitted Gaussians have a FWHM within
+30% of the expected values and that the pointing solution is within twice the FWHM of the nominal
+location of the source. For the ``relaxed`` heuristics this becomes within 50% of the expected FWHM
+of the Gaussian fits and three times the FWHM for the pointing correction.  
+
+The ``default`` option is the software default, and at low frequency (<27 GHz) it is equivalent to 
+``standard`` heurisitics, while at high frequency (>27 GHz) the ``default`` mode corresponds to
+``relaxed`` heursitics.  Under normal observing conditions, you should expect to use the ``default``
+values.  Under marginal weather conditions ``relaxed`` heuristics may be appropriate even at low 
+frequencies (below 27 GHz).  The ``user-defined`` heuristic values should only be used by experts.
+If you wish to use ``user-defined`` heuristics then you should contact your GBT project friend.
+
+
+Sending Corrections
+"""""""""""""""""""
+
+For most observations, GFM processing produces good fits, and the solutions are automatically sent
+to the telescope using the default settings.  However, at high frequencies (especially for W-Band
+and Argus), fits may fail, and you may want to manually send the corrections to the telescope. You 
+may tell the operator to enter a solution, or you can send the corrections yourself using the 
+Send Corrections functionality.
+
+.. note:: 
+
+    Corrections show up instantly within the CLEO status window (see XXX), but do not take effect
+    until the start of the next scan.
+
+This can be done by:
+
+#. Select the Pointing or Focus Subtab in the DataDisplay tab.
+#. Select ``Tools`` :math:`\rightarrow` ``Options...`` from the drop-down menu.
+#. Select the ``Send Corrections`` Tab in the pop-up window (if not visible use the arrow button on 
+   the right, the ``Send Corrections`` tab is farthest to the right)
+
+   .. image:: images/Astrid_sendCorrections.jpg
+
+#. Enter the corrections in the text box, and click ``Send`` to send the solutions to the telescope.
+  
+
+
+
+
+OOF Data Display
+''''''''''''''''
+
+Out-of-focus holography (OOF) is a technique for measuring large-scale errors in the shape of the
+reflecting surface by mapping a strong point source both in and out of focus. The procedure derives 
+surface corrections which can be sent to the active surface controller to correct surface errors. 
+The procedure is only recommended for observing at frequencies of 40 GHz and higher.
+
+The :func:`AutoOOF() <astrid_commands.AutoOOF>` procedure will obtain three OTF maps, each taken at
+a different focus position. Processing will begin automatically upon completion of the third map,
+the status of which can be viewed in the progress bar under ``AutoOOF Processing Status`` on the 
+right-hand-side of the screen. Once complete, the result will be displayed in the OOF subtab of the
+AstrID DataDisplay. 
+
+.. image:: images/AstridDataDisplayTabOOF.jpg
+
+Once processing is complete, the default solution displayed in AstrID is the fifth-order Zernike fit
+(z5). The most aggressive fit is z6, while z3 is less aggressive. Solutions may be selected and viewed
+via the radio buttons in the upper-right section of the screen. Derived Local Pointing Corrections
+(LPCs) in arcminutes, and Local Focus Corrections (LFCy) in millimeters are displayed to the right 
+of each radio button. Raw AutoOOF data at each focus position can be viewed as a timestream and map 
+by selecting the ``raw data`` radio button.  The ``fitted beam map`` radio button will display fitted
+beam map images and reduced :math:`\chi^{2}` values for the three highest orders of Zernike fits
+(z3, z4, and z5 by default).
+
+Solutions must be chosen by the observer and manually sent to the active surface. Therefore, it is 
+essential that the Zernike fits and raw AutoOOF data are examined carefully before deciding upon a
+solution. Steps for validating and discerning appropriate solutions can be found in XXX.
 
 .. todo:: 
 
-    The description from GBT Observer Guide chapter 4 should move here. 
+   Add reference to GBTog 6.2
+
+
+Continuum Data Display
+''''''''''''''''''''''
+
+Continuum data taken with the GBT that are not part of pointing and focus scans will show up in plots 
+under the Continuum Tab. This will show the uncalibrated continuum data as a function of time only.
+
+
+.. image:: images/AstridDataDisplayTabContinuum.jpg
+
+
+
+
+
+Spectral Data Display
+'''''''''''''''''''''
+
+The Spectral Line Display was a tool originally designed for browsing the previous GBT Spectrometer 
+spectral line data.  
+
+When viewing data online, the most recent integration is plotted automatically. Individual integrations 
+may be selected and viewed offline. Here is an example of the spectral line data display. 
+
+.. image:: images/AstridDataDisplayTabSpectralLine.jpg
+
+The spectra displayed are raw data and no calibration has been applied to them. As spectra are plotted,
+information about each plot is printed in the console window. Each line is color coded to match the
+color of that spectrum in the plotting window. In addition, some of the information for the very first 
+spectra are used to annotate the plot. The plot title is parsed as ``project_name:scan_number:integration_number``.
+For offline usage, the desired integration can be selected either using the up/down arrows, or by typing
+in a value in the edit box.
+
+All user interaction for this plugin occurs in the right-hand side options panel. The check boxes allow
+selection of spectra to plot via astronomical variables: Beams, Polarizations, IF numbers, and Phases.
+The options panel also includes three buttons and a radio box for plot viewing. The ``Views`` radio box
+offers options for plotting the bandpass vs. Channels or Sky Frequency. The ``Keep Zoom`` toggle button
+will maintain the current zoom, even as new spectra are plotted. Using the unzoom command (mouse 
+right-click, or via the toolbar) will return the plot to its original scale. The ``Overlay`` toggle 
+button can be used to overplot spectra from different integrations or scans. Finally, the ``Clear`` 
+button erases the plot.
+
+
+Data Display Plotting Panel Toolbar
+'''''''''''''''''''''''''''''''''''
+
+The plotting panel toolbar allows user interactions with plots in the display window and is located near
+the top of the Astrid Screen. The following features are available:
+
+
+.. list-table:: 
+    :widths: 10, 10, 80
+    :header-rows: 0
+
+    * - .. image:: images/DTopen.jpg
+      - **Open**
+      - Allows the user to open a previously saved session.  This has the same functionality as ``File``
+        :math:`\rightarrow` ``Open...`` described in :ref:`Working Offline`.
+    * - .. image:: images/DTsave.jpg
+      - **Save** 
+      - Allows the user to save output from the data display log as a text file.
+    * - .. image:: images/DTprint.jpg
+      - **Print** 
+      - **DO NOT USE**, Please use the ``Export`` function instead.
+    * - .. image:: images/DTexport.jpg
+      - **Export**
+      - Allows the user to save the figure displayed in the plotting panel to a file.  The name must 
+        have an extension of either .png, .ps or .eps.
+    * - .. image:: images/DTunfreeze.jpg
+      - **Unfreeze**
+      - Not applicable to Astrid general use. Unfreezes the processing of commands via the command line
+        and intended for use in conjunction with the ``Freeze`` command.
+    * - .. image:: images/DTundo.jpg
+      - **Undo**
+      - Undoes your last command.
+    * - .. image:: images/DTredo.jpg
+      - **Redo**
+      - Redoes your last command.
+    * - .. image:: images/DTunzoom.jpg
+      - **Unzoom**
+      - Undoes a previously executed zoom.
+    * - .. image:: images/DTrezoom.jpg
+      - **Rezoom**
+      - Redoes a previously executed zoom.
+    * - .. image:: images/DTinfo.jpg
+      - **Info Tool**
+      - Selecting the info tool allows the user to use the mouse pointer to focus in/out among the 
+        available subplots (e.g., peak scans). Left-clicking the mouse brings a subplot into focus
+        (hiding the other subplots). Right-clicking the mouse on the focused plot will show all 
+        subplots. If there is only one subplot, the info tool simply displays the mouse xy 
+        coordinates.
+    * - .. image:: images/DTzoom.jpg
+      - **Zoom Tool**
+      - Selecting the zoom tool allows the user to use the mouse pointer for zooming in on a 
+        particular area of the plot. Left-clicking the mouse will zoom in. Right-clicking the 
+        mouse will zoom out.
+    * - .. image:: images/DTpan.jpg
+      - **Pan Tool**
+      - Allows the user to use the mouse pointer to pan around the selected subplot. Left-clicking
+        the mouse and holding the left button down will pan around the subplot. Right-clicking 
+        restores the original view.
+    * - .. image:: images/DTgrid.jpg
+      - **Grid Tool**
+      - Turns on the plot grid.
+    * - .. image:: images/DTplotedit.jpg
+      - **Plot Edit Tool**
+      - Allows you to edit plot labels, colors, and title. Clicking on "Advanced Options" brings up
+        an additional dialog which contains options for transparency, legend placement, and ordering
+        of plots. Colors may be entered as hex codes or selected by clicking on the colored button 
+        to the right of the text field. Plots can only be reordered within their subplot - i.e., Y1
+        lines will always be below Y2 lines. Legend location can be specified with simple strings 
+        (e.g., "upper right") or coordinates 0-1 along the plot edges. If a string is chosen it will
+        be used in place of any coordinates.
+    * - .. image:: images/DTusermanual.jpg
+      - **User Manual**
+      - Displays the Data Extraction and Analysis Program (DEAP) user manual.
+
+.. todo:: Transfer DEAP user manual to GBTdocs.
+
+
+Use of Plotting Capabilities
+''''''''''''''''''''''''''''
+
+A User Manual is available http://deap.sourceforge.net/help/index.html that describes all the plotting
+functionality available in GFM. There is also a plotting Tutorial that illustrates the plotting 
+capabilities by example which is available at http://deap.sourceforge.net/tutorial/index.html.
+
+.. todo:: Transfer the guide and tutorial to GBTdocs.
 
 
 GbtStatus Tab

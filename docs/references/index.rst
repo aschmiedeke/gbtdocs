@@ -74,12 +74,31 @@ Observing
 
             AstrID
 
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **CLEO** 
+
+        Interface from which one can monitor the GBT
+
+        .. button-link:: cleo.html
+            :color: primary
+            :tooltip: Information material to use CLEO
+            :outline:
+            :click-parent:
+
+            CLEO
+
+
 .. toctree::
     :maxdepth: 3
     :hidden:
 
     scheduling-blocks
     astrid
+    cleo
 
 
 Hardware

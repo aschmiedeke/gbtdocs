@@ -130,20 +130,46 @@ in offline mode). Rather, there are two monitoring tools that you may find usefu
 user:
 
 
-* the VEGAS CLEO screen 
+The CLEO VEGAS screen 
+'''''''''''''''''''''
 
-  .. figure:: images/vegascleoscreen.jpg
+See the :ref:`CLEO VEGAS description <references/cleo:VEGAS>` for more information.
+
+.. figure:: images/vegascleoscreen.jpg
+
+   
     
-* VEGASDM -- the VEGAS Data Monitor
-  
-  .. figure:: images/vegasdatamonitor.jpg
-  
+VEGAS Data Monitor (VEGASDM)
+''''''''''''''''''''''''''''
+
+The VEGAS Data Monitor (VEGASDM) provides a real-time display of the current total power level
+as measured by the VEGAS ADC, as well as a histogram of the distribution of ADC counts. VEGASDM
+may be launched by:
+
+.. code-block:: bash
+    
+    source /home/gbt/gbt.bash  # (or .csh)
+    VEGASDM
+
+or by clicking the ``VEGAS Power Monitor...`` button from the CLEO VEGAS screen. 
+
+.. figure:: images/vegasdatamonitor.jpg
+
+VEGASDM has nine tabs, one for each Bank, and one overview tab. If a Bank is active, the tab label
+will be green, otherwise it will be red. Each Bank tab shows whether the Bank is in the running 
+state, and what mode it is in. The upper plot shows the total power from each polarization as a 
+function of time, while the lower two plots show the distribution of ADC counts for each polarization.
+If VEGAS is balanced correctly, the ADC counts should be approximately Gaussian, centered around zero,
+with a full-width half maximum of approximately 25-50 counts. If the ADC counts are very centrally
+peaked, there is not enough power going into VEGAS, while if the ADC counts have peaks at +/- 127 counts,
+VEGAS is being over-driven.
+
+The final tab of VEGASDM gives an overview plot of the total power for all eight banks on a single screen.
+
+
+
 .. * vegas_status -- the VEGAS shared memory display, this tool is useful for specialized problem
   diagnosis only.
-
-
-.. todo:: Add reference to Cleo sections detailing these VEGAS tools.
-
 
 
 The Online Filler and filling VEGAS data using SDFITS
