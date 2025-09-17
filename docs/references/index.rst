@@ -56,12 +56,30 @@ Observing
 
             SBs
 
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **AstrID** 
+
+        Interface from which one can create, execute, and monitor GBT observations
+
+
+        .. button-link:: astrid.html
+            :color: primary
+            :tooltip: Information material to use AstrID
+            :outline:
+            :click-parent:
+
+            AstrID
+
 .. toctree::
     :maxdepth: 3
     :hidden:
 
     scheduling-blocks
-
+    astrid
 
 
 Hardware
