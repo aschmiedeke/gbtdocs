@@ -64,6 +64,10 @@ pygments_style = 'sphinx'
 # number tables
 numfig = True
 
+# autosectionlabel
+autosectionlabel_prefix_document = True
+
+
 # for sphinxcontrib-bibtex
 bibtex_bibfiles = ['zbibliography.bib']
 bibtex_reference_style = 'author_year'
