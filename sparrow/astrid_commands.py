@@ -2369,7 +2369,7 @@ def CalSeq(type, scanDuration, location=None, beamName=None, fixedOffset=None,
         # This command can be used for most observations, which uses
         # the default tablePositionList=['Observing', 'Cold1', 'Cold2'].
 
-        CalSeq(``auto'',45.0)           
+        CalSeq("auto", 45.0)           
 
         # This command can be used for bright objects where one wants a 
         # system temperature measurement on blank sky.  In this example, 
@@ -2377,7 +2377,7 @@ def CalSeq(type, scanDuration, location=None, beamName=None, fixedOffset=None,
         # large object, one can increase the offset size to move off-source 
         # for the blank-sky measurement.
 
-        CalSeq(``auto'',45.0,fixedOffset=Offset(``J2000'', ''00:00:00'', ''00:02:00''))
+        CalSeq("auto", 45.0, fixedOffset=Offset("J2000", "00:00:00", "00:02:00"))
 
         # This is an example command for calibration of VLBI observations with beam-1 
         # circular polarization. We can only observe the cold and ambient loads with 
@@ -2385,7 +2385,7 @@ def CalSeq(type, scanDuration, location=None, beamName=None, fixedOffset=None,
         # observations of the same sky with both linear and circular polarization 
         # (Observing and Position2, respectively, in this example).
 
-        CalSeq(``manual'',10.0,tablePositionList=['Position2', 'Observing', 'Cold1', 'Cold2'])
+        CalSeq("manual", 10.0, tablePositionList=['Position2', 'Observing', 'Cold1', 'Cold2'])
     """
 
 def ResetConfig():

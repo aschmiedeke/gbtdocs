@@ -12,9 +12,9 @@ This guide contains instructions for the recommended observing procedure for the
 
     2024-01-04: 
        - Adjusted instructions to reflect change of available receivers
-       - Modified code snippet in :ref:`3.1 Pointing and Focus Correction` to apply  :math:`\Delta_\text{focus}` when switching from Argus to "peak/focus receiver"        
+       - Modified code snippet in :ref:`how-tos/receivers/argus/argus_obs:3.1 Pointing and Focus Correction` to apply  :math:`\Delta_\text{focus}` when switching from Argus to "peak/focus receiver"        
     2023-11-13: 
-       - Added code snippet in :ref:`3.1 Pointing and Focus Correction` to automatically apply :math:`\Delta_\text{focus}`.
+       - Added code snippet in :ref:`how-tos/receivers/argus/argus_obs:3.1 Pointing and Focus Correction` to automatically apply :math:`\Delta_\text{focus}`.
 
 
 1. Turn on Argus
@@ -163,7 +163,7 @@ Run **AutoPeakFocus** using *Ka-Band*, this script will at the end automatically
 3.2 Add the focus correction factor manually
 --------------------------------------------
 
-If you don't use the code snippet provided in :ref:`3.1 Pointing and Focus Correction` to add the focus offset, :math:`\Delta_\text{focus}` you calculated in step 2.3 to the determined focus correction, LFC, you will need to do it manually. 
+If you don't use the code snippet provided in :ref:`how-tos/receivers/argus/argus_obs:3.1 Pointing and Focus Correction` to add the focus offset, :math:`\Delta_\text{focus}` you calculated in step 2.3 to the determined focus correction, LFC, you will need to do it manually. 
 
 .. admonition:: Example
     :class: note
@@ -196,7 +196,7 @@ Go to your science target, configure Argus for your science observations, check 
 5. Subsequent observing procedure
 =================================
 
-Alternate between observations of your science target (:ref:`Step 4 above <4. Science Target>`) and observations of the secondary calibrator (:ref:`Step 3 above <3. Secondary Calibrator>`) every 30-40 min, depending on weather conditions. 
+Alternate between observations of your science target (:ref:`Step 4 above <how-tos/receivers/argus/argus_obs:4. Science Target>`) and observations of the secondary calibrator (:ref:`Step 3 above <how-tos/receivers/argus/argus_obs:3. Secondary Calibrator>`) every 30-40 min, depending on weather conditions. 
 
 Remember to re-run an AutoOOF every 3-6 hours, depending on weather (and more often if you've been scheduled at or shortly after sunset while the temperature was still dropping).
 

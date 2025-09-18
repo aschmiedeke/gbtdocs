@@ -4,9 +4,9 @@
 How to Propose with MUSTANG-2
 ##############################
 
-General properties (such as FOV, resolution, bandpass information) can be found on :ref:`the MUSTANG-2 overview page<MUSTANG-2 Overview>`.
+General properties (such as FOV, resolution, bandpass information) can be found on :ref:`the MUSTANG-2 overview page <references/receivers/mustang2/mustang2_overview:MUSTANG-2 Overview>`.
 
-If you have general questions about feasibility or initial questions feel free to reach to the members listed under the Contact section on :ref:`MUSTANG-2 instrument team <MUSTANG-2 Instrument Team>` webpage. However, we ask that you please do this in a reasonable amount of time before a proposal deadline as the team will be busy with many proposals right before the deadline. 
+If you have general questions about feasibility or initial questions feel free to reach to the members listed under the Contact section on :ref:`MUSTANG-2 instrument team <references/receivers/mustang2/mustang2_instrument_team:MUSTANG-2 Instrument Team>` webpage. However, we ask that you please do this in a reasonable amount of time before a proposal deadline as the team will be busy with many proposals right before the deadline. 
 
 
 Proposal Requirements
@@ -14,17 +14,17 @@ Proposal Requirements
 
 Team Approval
 -------------
-All MUSTANG-2 proposals are shared-risk and must be approved by the :ref:`MUSTANG-2 instrument team <MUSTANG-2 Instrument Team>`. Furthermore, the entire MUSTANG-2 instrument team **must** be included as **co-investigators on the proposal**. 
+All MUSTANG-2 proposals are shared-risk and must be approved by the :ref:`MUSTANG-2 instrument team <references/receivers/mustang2/mustang2_instrument_team:MUSTANG-2 Instrument Team>`. Furthermore, the entire MUSTANG-2 instrument team **must** be included as **co-investigators on the proposal**. 
 
-In order to get your proposal approved by the MUSTANG-2 team, contact one or all of the instrument team member listed under :ref:`the Contact section <MUSTANG-2 Contact Details>` of the MUSTANG-2 Instrument Team webpage and send a draft of your proposal **at least one week in advance** of the proposal deadline. The MUSTANG-2 team will principally focus on validating the technical feasibility of a proposal and make suggestions accordingly. Because the main objective of the MUSTANG-2 team reviewing your proposal is to evaluate technical justification, when you send the draft of your proposal needs to include technical justification. To do this you can either: a) send us a PDF of both your draft science justification and a PDF of your technical justification, or b) fill in your technical justification in the NRAO Proposal Submission Tool and your draft science justification, and have the NRAO Proposal Submission Tool output a PDF of your proposal. If you are unsure about the feasibility of your idea and/or would like help with the technical aspects of your MUSTANG-2 proposal, please contact the MUSTANG-2 instrument team. This initial contact must be done more than a week in advance of the proposal deadline. 
+In order to get your proposal approved by the MUSTANG-2 team, contact one or all of the instrument team member listed under :ref:`the Contact section <references/receivers/mustang2/mustang2_instrument_team:MUSTANG-2 Contact Details>` of the MUSTANG-2 Instrument Team webpage and send a draft of your proposal **at least one week in advance** of the proposal deadline. The MUSTANG-2 team will principally focus on validating the technical feasibility of a proposal and make suggestions accordingly. Because the main objective of the MUSTANG-2 team reviewing your proposal is to evaluate technical justification, when you send the draft of your proposal needs to include technical justification. To do this you can either: a) send us a PDF of both your draft science justification and a PDF of your technical justification, or b) fill in your technical justification in the NRAO Proposal Submission Tool and your draft science justification, and have the NRAO Proposal Submission Tool output a PDF of your proposal. If you are unsure about the feasibility of your idea and/or would like help with the technical aspects of your MUSTANG-2 proposal, please contact the MUSTANG-2 instrument team. This initial contact must be done more than a week in advance of the proposal deadline. 
 
 Technical Justification
 -----------------------
-The technical justification on a proposal should reference publicly available mapping speeds (e.g. from the MUSTANG-2 mapping :ref:`webpage <MUSTANG-2 Mapping Information>` and/or the :download:`MUSTANG-2 mapping speeds memo </_static/mustang2_documents/MUSTANG_2_Mapping_Speeds_Public.pdf>`). The GBT sensitivity calculator does not currently incorporate MUSTANG-2 mapping speeds.
+The technical justification on a proposal should reference publicly available mapping speeds (e.g. from the MUSTANG-2 mapping :ref:`webpage <references/receivers/mustang2/mustang2_mapping:MUSTANG-2 Mapping Information>` and/or the :download:`MUSTANG-2 mapping speeds memo </_static/mustang2_documents/MUSTANG_2_Mapping_Speeds_Public.pdf>`). The GBT sensitivity calculator does not currently incorporate MUSTANG-2 mapping speeds.
 
 .. admonition:: Guides for Calculating MUSTANG-2 Integration Times
 
-    For instructions on calculating the time you will need to request using MUSTANG-2 to reach your science goals, see the resources provided in this :ref:`Guide <How to Calculate Observing Time Required for MUSTANG-2>`.
+    For instructions on calculating the time you will need to request using MUSTANG-2 to reach your science goals, see the resources provided in this :ref:`Guide <how-tos/receivers/mustang2/mustang2_calc_obs_time:How to Calculate Observing Time Required for MUSTANG-2>`.
 
 .. note:: 
 
@@ -33,7 +33,7 @@ The technical justification on a proposal should reference publicly available ma
 Requirements for MUSTANG-2 technical justification:
 	1. You must explain in detail how you arrived at the total observing time. If you used equations, please include those and the progression of how you used any equations in how you arrived at your final time request. 
 	2. You must consider the effect of filtering (this is used in MUSTANG-2 data reduction pipelines Minkasi or MIDAS) on your data. Please include discussion of these effects in your technical justification. If you run simulations using `M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_ then filtering is taken into account and you can simply say this.
-	3. You must account for overheads - see :ref:`Overhead observing constraints <Overhead observing constraints>` below.
+	3. You must account for overheads - see :ref:`Overhead observing constraints <how-tos/receivers/mustang2/mustang2_proposal:Overhead observing constraints>` below.
 	4. You must have a MUSTANG-2 instrument team member read through the technical justification and sign off on it **before you submit your proposal** as this is the only technical review a MUSTANG-2 proposal will get. 
 
 Overhead observing constraints
@@ -66,4 +66,4 @@ The PI can request MUSTANG-2 instrument team observing support when scheduled bu
 
 Data
 ----
-Though the entire MUSTANG-2 instrument team will be involved in the proposal process, conversely, the MUSTANG-2 team will reduce the data and provide appropriate data products (principally a calibrated map, transfer function, and beam characterization) to the proposal team (see :ref:`the list of possible data products<MUSTANG-2 Deliverables>`). End-to-end data reduction is currently fairly involved. We will work to provide documentation on data processing and hope to eventually allow proposers to process their own data. 
+Though the entire MUSTANG-2 instrument team will be involved in the proposal process, conversely, the MUSTANG-2 team will reduce the data and provide appropriate data products (principally a calibrated map, transfer function, and beam characterization) to the proposal team (see :ref:`the list of possible data products<how-tos/receivers/mustang2/data/mustang2_deliverables:MUSTANG-2 Deliverables>`). End-to-end data reduction is currently fairly involved. We will work to provide documentation on data processing and hope to eventually allow proposers to process their own data. 

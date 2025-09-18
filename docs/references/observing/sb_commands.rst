@@ -4,9 +4,7 @@ Scheduling Block Commands
 
 .. automodule:: astrid_commands
     :members:
-
-
-
+    
 
 .. Testing
 .. This is not showing up?

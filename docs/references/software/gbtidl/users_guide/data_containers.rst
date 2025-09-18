@@ -7,7 +7,7 @@ Overview
 
 To make effective use of GBTIDL, you must have an understanding of data containers and how they are
 used by GBTIDL procedures. The following sections give an introduction to data containers. Advanced
-users may wish to refer to the section :ref:`Tips on Using Data Containers for Experts`.
+users may wish to refer to the section :ref:`references/software/gbtidl/users_guide/data_containers:Tips on Using Data Containers for Experts`.
 A data container (DC) is an IDL data structure used by GBTIDL to store a spectrum and its
 associated header. A data container uses standard data types (e.g. integers, floats and strings) for
 header values and an IDL pointer for the data itself. There are 16 global data containers, or buffers,
@@ -66,7 +66,7 @@ all users will not need to be concerned with how to work with pointers in IDL. I
 the data in a data container to a standard IDL array, and back again into the data container using the
 GBTIDL function :idl:pro:`getdata` and the command :idl:pro:`setdata`. An example follows later in this 
 section. Users who wish to learn more about advanced manipulation of data containers should see the 
-:ref:`Tips on Using Data Containers for Experts` section.
+:ref:`references/software/gbtidl/users_guide/data_containers:Tips on Using Data Containers for Experts` section.
 
 
 About the Primary Data Container

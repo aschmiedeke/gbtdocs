@@ -13,7 +13,7 @@
 ; Using ``/full`` adds plotter color settings to the output.
 ;
 ; See also the description of the contents of the ``!g`` structure 
-; :ref:`here <The !g Structure>`.
+; :ref:`here <references/software/gbtidl/users_guide/g_structure:The !g Structure>`.
 ;
 ;
 ; :Keyword:

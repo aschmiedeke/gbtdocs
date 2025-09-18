@@ -28,7 +28,7 @@ In addition, the following solar system bodies may be referred to by name, i.e. 
 catalog needs to be invoked for the system to understand these names: ``'Sun'``,
 ``'Moon'``, ``'Mercury'``, ``'Venus'``, ``'Mars'``, ``'Jupiter'``, ``'Saturn'``, 
 ``'Uranus'``, ``'Neptune'``, and ``'Pluto'``. These names are case-insensitive and 
-may be given to any :ref:`Scan Type function <Scan Types and other functions - Overview`.
+may be given to any :ref:`Scan Type function <references/observing/scan_types:Scan Types and other functions - Overview>`.
 
 
 

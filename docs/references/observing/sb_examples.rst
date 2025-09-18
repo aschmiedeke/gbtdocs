@@ -2,7 +2,7 @@ Scheduling Block Examples
 -------------------------
 
 For the following SB examples we will use the configuration examples from 
-:ref:`Example Configurations`. All configurations, catalogs, and scripts 
+:ref:`references/observing/configure:Example Configurations`. All configurations, catalogs, and scripts 
 are available within the Green Bank computing environment at ``/home/astro-util/projects/GBTog``.
 
 .. todo:: Check the folder and ensure all scripts are there.

@@ -18,14 +18,14 @@ This tutorial assumes your scientific proposal has been accepted. It will then w
 
     You need a GBO computing account. You should be relatively familiar with using the command line, and starting AstrID. 
 
-    You can find general instructions for using AstrID, as well as starting CLEO, contacting the operator, etc. :ref:`here <GBT observations 101>`.
+    You can find general instructions for using AstrID, as well as starting CLEO, contacting the operator, etc. :ref:`here <how-tos/general_guides/gbt_observing:GBT observations 101>`.
 
 
 
 
 .. admonition:: Data
 
-   The data we will be working with in this tutorial is taken from a set of observations of the RAMPS project. RAMPS observed a section of the Galactic Plane (40°>l>10°; b<\|0.4°\|) at frequencies including the ammonia (J,K = 1,1 and 2,2) inversion transition lines. These data are accessible at /home/scratch/lmorgan/Observer_Training/QuickGuides/KFPA/Data/RAMPS/RAMPS_W51.raw.vegas.
+   The data we will be working with in this tutorial is taken from a set of observations of the RAMPS project. RAMPS observed a section of the Galactic Plane (40°>l>10°; b<\|0.4°\|) at frequencies including the ammonia (J,K = 1,1 and 2,2) inversion transition lines. These data are accessible at ``/home/scratch/lmorgan/Observer_Training/QuickGuides/KFPA/Data/RAMPS/RAMPS_W51.raw.vegas``.
 
 
 
@@ -65,11 +65,11 @@ The individual components of this script are
 
     2. :code:`config = ""` -- This configuration string, labelled :code:`config` is a set of parameters with their desired values that tell the system how you want to set up your observations. This will be covered in more detail shortly. 
 
-    3. :code:`Configure(config)` -- This command passes the parameter settings in the configuration string to the system itself and sets them. Strictly speaking, it is not necessary to configure the telescope before performing an :func:`AutoPeakFocus() <AstrID_commands.AutoPeakFocus>`, as this command performs its own configuration. However, it can be useful to do so, to pre-empt potential issues, such as the wrong receiver (i.e. the receiver that was being used by the previous observer) being selected for observations by mistake.
+    3. :code:`Configure(config)` -- This command passes the parameter settings in the configuration string to the system itself and sets them. Strictly speaking, it is not necessary to configure the telescope before performing an :func:`AutoPeakFocus() <astrid_commands.AutoPeakFocus>`, as this command performs its own configuration. However, it can be useful to do so, to pre-empt potential issues, such as the wrong receiver (i.e. the receiver that was being used by the previous observer) being selected for observations by mistake.
 
-    4. :code:`W51Source = Location('Galactic', 49.445, -0.35)` -- This defines the string "W51" as a :func:`Location object <AstrID_commands.Location>`, which contains the sky coordinates of the source to be observed. This could alternatively be read via a :code:`Catalog()` function, or input in a different coordinate system.
+    4. :code:`W51Source = Location('Galactic', 49.445, -0.35)` -- This defines the string "W51" as a :func:`Location object <astrid_commands.Location>`, which contains the sky coordinates of the source to be observed. This could alternatively be read via a :code:`Catalog()` function, or input in a different coordinate system.
 
-    5. :func:`AutoPeakFocus() <AstrID_commands.AutoPeakFocus>` -- For this example, note that the first argument passed to :func:`AutoPeakFocus() <AstrID_commands.AutoPeakFocus>` would be the actual source you want to perform the pointing/focus scans on. If you have a particular known source that you would like to use for this purpose, it can be supplied to the command using a catalog source or :func:`Location object <AstrID_commands.Location>`, similarly to the `W51Source` object. For most observers, the actual source used for this purpose is unimportant, so long as the pointing/focus scans are successful and sensible. In this case, we supply `None` as the first argument so that :func:`AutoPeakFocus() <AstrID_commands.AutoPeakFocus>` will search for a source automatically. The second argument passed to :func:`AutoPeakFocus() <AstrID_commands.autoPeakFocus>` is the location of the center point of the circle that it will use to search for a valid nearby pointing source. The defaults are that AutoPeakFocus will search for a source of at least 1.0 Jy within a radius of 10 degrees. If it is unable to find one, it will query the user on what they would like to do.
+    5. :func:`AutoPeakFocus() <astrid_commands.AutoPeakFocus>` -- For this example, note that the first argument passed to :func:`AutoPeakFocus() <astrid_commands.AutoPeakFocus>` would be the actual source you want to perform the pointing/focus scans on. If you have a particular known source that you would like to use for this purpose, it can be supplied to the command using a catalog source or :func:`Location object <astrid_commands.Location>`, similarly to the `W51Source` object. For most observers, the actual source used for this purpose is unimportant, so long as the pointing/focus scans are successful and sensible. In this case, we supply `None` as the first argument so that :func:`AutoPeakFocus() <astrid_commands.AutoPeakFocus>` will search for a source automatically. The second argument passed to :func:`AutoPeakFocus() <astrid_commands.autoPeakFocus>` is the location of the center point of the circle that it will use to search for a valid nearby pointing source. The defaults are that AutoPeakFocus will search for a source of at least 1.0 Jy within a radius of 10 degrees. If it is unable to find one, it will query the user on what they would like to do.
 
 
 Spectral Line Calibration Observation Script
@@ -133,7 +133,7 @@ Most of the features here have already been described, with the following except
 Observing
 =========
 
-To learn how to execute your observing scripts, please follow the :ref:`GBT observations 101` guide. Here we show what would be expected to happen when carrying out the scripts described above.
+To learn how to execute your observing scripts, please follow the :ref:`how-tos/general_guides/gbt_observing:GBT observations 101` guide. Here we show what would be expected to happen when carrying out the scripts described above.
 
 Point and Focus
 ---------------

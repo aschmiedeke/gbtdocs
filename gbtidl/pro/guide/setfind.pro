@@ -9,7 +9,7 @@
 ; A single value can be entered as can a range of values.  Or, a
 ; single string can be used here in which case that string is saved as
 ; is to be used by SELECT inside of FIND.  See the discussion on
-; "Find" in the GBTIDL User's Guide :ref:`here <Find>` for selection
+; "Find" in the GBTIDL User's Guide :ref:`here <references/software/gbtidl/users_guide/data_analysis:Find>` for selection
 ; syntax examples. This routine can be used to either replace the current 
 ; selection parameter value with another (the default behavior) or it can be
 ; used to append more information to the current selection parameter

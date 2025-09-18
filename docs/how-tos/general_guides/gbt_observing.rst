@@ -3,7 +3,7 @@ GBT observations 101
 ####################
 
 
-We assume you are either on-site or are using a :ref:`remote connection <How to connect remotely to the GBO network>`. 
+We assume you are either on-site or are using a :ref:`remote connection <how-tos/infrastructure/remote-connection:How to connect remotely to the GBO network>`. 
 
 Observing Preparation
 =====================

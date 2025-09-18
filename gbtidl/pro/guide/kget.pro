@@ -23,7 +23,7 @@
 ; See the output of :idl:pro:`listcols` for a complete list of columns 
 ; that can be selected.
 ;
-; See the discussion on "Select" in the GBTIDL User's Guide :ref:`here <Select>` 
+; See the discussion on "Select" in the GBTIDL User's Guide :ref:`here <references/software/gbtidl/users_guide/data_analysis:Select>` 
 ; for a summary of selection syntax.
 ;
 ; The selection criteria are passed directly to the io class's

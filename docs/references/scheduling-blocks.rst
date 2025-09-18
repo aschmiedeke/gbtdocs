@@ -31,15 +31,15 @@ Here is an example of a simple SB:
    # observe the source for ten minutes
    Track('B0329+54', None, 600)
 
-* ``execfile()`` loads definitions for configuring the GBT's receivers, IF system and backends for the observations and ``Configure()`` runs the configuration defined in ``myconfiguration.txt`` (see :ref:`Configure the GBT system` for more information).   
+* ``execfile()`` loads definitions for configuring the GBT's receivers, IF system and backends for the observations and ``Configure()`` runs the configuration defined in ``myconfiguration.txt`` (see :ref:`references/observing/configure:Configure the GBT system` for more information).   
 
-* ``Catalog()`` loads a catalog containing information such as positions and radial velocity on the sources to observe (see :ref:`here <Catalog>`)
+* ``Catalog()`` loads a catalog containing information such as positions and radial velocity on the sources to observe (see :ref:`here <references/observing/catalog:Catalogs>`)
 
 * ``Slew()`` moves the telescope to the desired source.
 
 * ``Balance()`` balances the power levels in the IF system and backend so that they should be in their linear regime.
 
-* ``Track()`` performs and aquires data for the desired observations. Track and other pre-defined scans are described :ref:`here <Scan Types and other functions - Overview>`.
+* ``Track()`` performs and aquires data for the desired observations. Track and other pre-defined scans are described :ref:`here <references/observing/scan_types:Scan Types and other functions - Overview>`.
 
 
 

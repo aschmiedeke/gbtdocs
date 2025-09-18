@@ -1,6 +1,7 @@
 ##################################################
 How to Account for Sky Opacity in GBT Observations
 ##################################################
+
 This guide walks you through how to calculate the opacity for your observations after the fact to use as input into GBTIDL.
 
 1. Background
@@ -84,9 +85,9 @@ This GUI/application has multiple features which are described below. However, p
 
 We will now go through the features of this GUI that you should pay attention to quickly, by eye calculate the sky opacity for your observations. They are:
 
-- ``Model`` (see :ref:`3.1 Model`)
-- ``Sites`` (see :ref:`3.2 Sites`)
-- Other Parameters of Interest (see :ref:`3.3 Other Parameters of Interest`)
+- ``Model`` (see :ref:`how-tos/data_reduction/calculate_opacity:3.1 Model`)
+- ``Sites`` (see :ref:`how-tos/data_reduction/calculate_opacity:3.2 Sites`)
+- Other Parameters of Interest (see :ref:`how-tos/data_reduction/calculate_opacity:3.3 Other Parameters of Interest`)
 
 3.1 Model
 ---------
@@ -146,7 +147,7 @@ The image below shows an example of a much shorter timescale query, covering an 
 
 	Figure 4: Zenith Opacity variation at 23 GHz over a period of two hours. The plot shows data points for the sites of Elkins (green crosses), Hot Springs (red triangles) and Lewisburg (blue squares) as well as the average of those three sites (solid line).
 
-It should be noted that, at the beginning of this observing period, there is good agreement between the three different physical locations from which data is taken, with :math:`\tau_0` values ranging from ~0.05 to ~0.062. However, by the midpoint of the period, there is a significant spread in :math:`\tau_0` values between the three. At this time, the site of Elkins shows a :math:`\tau_0` value of ~0.05, while the Hot Springs site shows a :math:`\tau_0` value of ~0.167. As can be seen, the two sites of Lewisburg (which shows a :math:`\tau_0` value of ~0.14) and Hot Springs are in reasonable agreement (< 20% error on their mean value), while the Elkins value shows a significant deviation from either of these sites. The default assumption in many cases (and for many GBO operations in general) is to take the averaged value of :math:`\tau_0` as the value supplied for data reduction. However, as can be seen in this particular case, that could lead to a potential over- or underestimate, depending on which site most closely resembles the conditions at the GBO site for the time of the observations. For this presented case, peak :math:`T_A^*` and spectral RMS values could vary by as much as ~15%, simply from poor selection of which site is used to represent weather conditions at the GBO site. See (:ref:`3.2.1 Choosing Which Sites are Most Relevant to GBO Weather`) for more information.
+It should be noted that, at the beginning of this observing period, there is good agreement between the three different physical locations from which data is taken, with :math:`\tau_0` values ranging from ~0.05 to ~0.062. However, by the midpoint of the period, there is a significant spread in :math:`\tau_0` values between the three. At this time, the site of Elkins shows a :math:`\tau_0` value of ~0.05, while the Hot Springs site shows a :math:`\tau_0` value of ~0.167. As can be seen, the two sites of Lewisburg (which shows a :math:`\tau_0` value of ~0.14) and Hot Springs are in reasonable agreement (< 20% error on their mean value), while the Elkins value shows a significant deviation from either of these sites. The default assumption in many cases (and for many GBO operations in general) is to take the averaged value of :math:`\tau_0` as the value supplied for data reduction. However, as can be seen in this particular case, that could lead to a potential over- or underestimate, depending on which site most closely resembles the conditions at the GBO site for the time of the observations. For this presented case, peak :math:`T_A^*` and spectral RMS values could vary by as much as ~15%, simply from poor selection of which site is used to represent weather conditions at the GBO site. See (:ref:`how-tos/data_reduction/calculate_opacity:3.2.1 Choosing Which Sites are Most Relevant to GBO Weather`) for more information.
 
 
 4. Calculate Zenith Sky Opacity: Retrieving More Granular Values of Zenith Opacity

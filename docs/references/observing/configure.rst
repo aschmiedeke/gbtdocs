@@ -376,7 +376,7 @@ is 1.
 Specifies offsets in MHz for each spectral window so that ``restfreq`` is not centered in the middle
 of the spectral window. ``deltafreq`` can be specified as a single float offset which will be applied
 across all windows or in the same manner as ``restfreq``. For example using ``deltafreq`` with 
-different types of restfreq syntax as described :ref:`here <\`\`restfreq\`\` (depends)>`. The default 
+different types of restfreq syntax as described :ref:`here <references/observing/configure:\`\`restfreq\`\` (depends)>`. The default 
 value is 0.0.
 
 

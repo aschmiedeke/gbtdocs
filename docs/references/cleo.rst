@@ -138,4 +138,4 @@ The CLEO VEGAS screen can be used to launch the VEGAS Data Monitor by clicking o
 ``VEGAS Power Monitor...`` button.
 
 
-See here for more information on :ref:`Monitoring VEGAS observations`.
+See here for more information on :ref:`references/backends/vegas:Monitoring VEGAS observations`.

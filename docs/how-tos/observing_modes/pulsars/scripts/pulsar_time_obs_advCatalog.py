@@ -29,7 +29,7 @@ for i, source in enumerate(catalog.keys()):
     Track(source, None, cal_scan_length)
 
     # Configure for pulsar observation
-    Configure(config_common + config_LBand + config_vegas_common + vegas_config_fold%catalog[source][‘parfile’])
+    Configure(config_common + config_LBand + config_vegas_common + vegas_config_fold%catalog[source]['parfile'])
 
     # Take pulsar data
     Track(source, None, pulsar_scan_length)

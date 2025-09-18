@@ -98,7 +98,7 @@ where :math:`n_{\text{pol}}` is the number of polarization products (4 for full 
 :math:`t_{\text{int}}` is the integration time (i.e. sampling time).
 
 The following tables list all currently supported VPM modes and the vegas.scale values for each.
-Observers should still use the :ref:`VPM Observing Tools` to check the value of vegas.scale for\
+Observers should still use the :ref:`references/backends/vpm:VPM Observing Tools` to check the value of vegas.scale for\
 their particular observing setup.
 
 
@@ -158,7 +158,7 @@ discussed in detail in the GBT Observer's Guide. Here we review only those keywo
 * ``obstype`` will always be ``"Pulsar"``.
 * ``backend`` will always be ``"VEGAS"``. GUPPI has been decommissioned and is no longer installed.
 * ``bandwidth`` will be either ``100``, ``200``, ``800``, or ``1500``.
-* ``dopplertrackfreq`` is not always required, but it is safe to include (See :ref:`Use of the \`\`dopplertrackfreq\`\` keyword`
+* ``dopplertrackfreq`` is not always required, but it is safe to include (See :ref:`references/backends/vpm:Use of the \`\`dopplertrackfreq\`\` keyword`
   Keyword` for more details). It should be equal to the center of your observing band. If you are using one spectral
   window (i.e., one value of the restfreq keyword) then the value of dopplertrackfreq will be equal to 
   the value of restfreq. If you are using multiple spectral windows (i.e. multiple values for the restfreq 
@@ -611,7 +611,7 @@ If you adopt Option 1 then Option 2 isn't necessary, and vice versa. Of course, 
 
 
 
-Switching from GUPPI to VPM
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Transitioning from GUPPI to VPM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See :ref:`here <Transitioning from GUPPI to VPM>`.
+See :ref:`here <references/backends/guppi:Transitioning from GUPPI to VPM>`.

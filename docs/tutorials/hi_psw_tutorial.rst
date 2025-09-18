@@ -65,7 +65,7 @@ At the GBT we use `AstrID` to prepare and execute scheduling blocks. `AstrID` is
 2. Observations
 ===============
 
-To learn how to execute your observing scripts, please follow the :ref:`GBT observations 101` guide.
+To learn how to execute your observing scripts, please follow the :ref:`how-tos/general_guides/gbt_observing:GBT observations 101` guide.
 
 
 
@@ -115,7 +115,7 @@ Once your first set of data is written to disk (here when the first ON scan is c
 
    You cannot look at the fully processed spectrum (ON+OFF) in gbtidl until the ON+OFF pair is complete (after about 10.5 minutes). You can, however, look to see that the data looks ok, using gbtidl and the :code:`gettp, 5` command (where 5 is the scan number of interest). 
    
-More information on data processing in the :ref:`next section <3. Data Reduction>`. Happy Observing!
+More information on data processing in the :ref:`next section <tutorials/hi_psw_tutorial:3. Data Reduction>`. Happy Observing!
 
 3. Data Reduction
 =================
@@ -124,14 +124,14 @@ We will show two examples of how to process the obtained spectra:
 
 .. admonition:: Example 1
 
-    :ref:`Simple example <3.1 Simple Example>`
+    :ref:`Simple example <tutorials/hi_psw_tutorial:3.1 Simple Example>`
    
     Data taken with standard ONOFF command with cals (noise diodes) firing.
 
 
 .. admonition:: Example 2
 
-    :ref:`More complicated example <3.2 More Complicated Example>`
+    :ref:`More complicated example <tutorials/hi_psw_tutorial:3.2 More Complicated Example>`
     
     Many observations were taken with the noise diodes turned off, followed by a short period where the noise diodes are firing. As a result you need to determine :math:`T_{sys}` and then apply it to the on+off scans.
 

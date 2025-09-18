@@ -338,7 +338,7 @@ RFI and other faults that cause intermittent or frequency-dependent bad data mak
 selective when operating on a data set. Bad data can be addressed with a combination of flagging and
 blanking. Flagging is the process of assigning a set of rules for marking bad data. Blanking is the
 process of applying these rules to the data, and replacing the flagged data with a special blanking 
-value. See :ref:`More About Flagging Data` for more information.
+value. See :ref:`references/software/gbtidl/users_guide/data_analysis:More About Flagging Data` for more information.
 
 The most common purpose of flagging and blanking is to identify data to be excluded from a calibration
 or averaging operation. As such, flagging is usually applied to raw data and data that have not yet been
@@ -783,7 +783,7 @@ The :idl:pro:`select` procedure in GBTIDL is used to search and select records f
 the input data set and add indices of the matching entries to the stack. To locate
 the relevant records, :idl:pro:`select` uses the contents of the GBTIDL index file.
 The parameters for the :idl:pro:`search` procedure are the same as those for the 
-:idl:pro:`get` procedure (see :ref:`Retrieving Individual Records`). The procedure 
+:idl:pro:`get` procedure (see :ref:`references/software/gbtidl/users_guide/data_calibration:Retrieving Individual Records`). The procedure 
 :idl:pro:`listcols` can be used to list all parameters available for searching. Note
 that in this procedure, like all IDL procedures, the parameter names do not need to be
 typed in their entirety, only enough characters to uniquely identify the parameter 

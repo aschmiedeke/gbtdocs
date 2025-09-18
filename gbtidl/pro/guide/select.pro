@@ -13,7 +13,7 @@
 ; source name, polarization type, IF number, etc.  For a complete list
 ; of eligible parameters use the procedure :idl:pro:`listcols`.
 ;
-; See the discussion on "Select" in the GBTIDL User's Guide :ref:`here <Select>`
+; See the discussion on "Select" in the GBTIDL User's Guide :ref:`here <references/software/gbtidl/users_guide/data_analysis:Select>`
 ; for a summary of selection syntax.
 ;
 ; The selection criteria are ultimately passed to the io class's

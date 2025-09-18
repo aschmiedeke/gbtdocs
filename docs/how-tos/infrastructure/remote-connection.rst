@@ -6,8 +6,8 @@ This connection is needed for performing observations and is also available to p
 
 There are multiple ways to connect remotely to the GBO network:
 
-1. :ref:`FastX connection`
-2. :ref:`VNC connection`
+1. :ref:`how-tos/infrastructure/remote-connection:FastX connection`
+2. :ref:`how-tos/infrastructure/remote-connection:VNC connection`
 
 
 .. Only those observers who have used the GBT before and have demonstrated that they are fully able to set up and observe on the GBT without staff assistance may observe remotely. All observers must come to Green Bank at least once before they can be approved for remote observing. Also, observers may be required to come to Green Bank to be re-qualified for remote observing if the observations are significantly different than previous observations or if the observer has not used the GBT recently.
@@ -46,7 +46,7 @@ We recommend the FastX connection using your browser. FastX is a commercial prod
 Accessing the GBO network
 -------------------------
 
-Point your browser at https://ssh.gb.nrao.edu:3443/ or https://stargate.gb.nrao.edu:3443/. See the :ref:`Gateway Machines` description at the top of this page for which option to choose. You will be prompted for a username and password. This should be your NRAO/GBO username and your UNIX password.
+Point your browser at https://ssh.gb.nrao.edu:3443/ or https://stargate.gb.nrao.edu:3443/. See the :ref:`how-tos/infrastructure/remote-connection:Gateway Machines` description at the top of this page for which option to choose. You will be prompted for a username and password. This should be your NRAO/GBO username and your UNIX password.
 
 .. image:: images/fastX_gb_login.png
 
@@ -80,7 +80,7 @@ While in a FastX session, there is a small drop-down menu in the top part of the
 From left to right: 
     1. **House** brings you back to the FastX dashboard.
     2. **Keyboard** allows you to set the keyboard.
-    3. **People** controls the sharing of the session (more :ref:`here<Sharing a session>`).
+    3. **People** controls the sharing of the session (more :ref:`here <how-tos/infrastructure/remote-connection:Sharing a session>`).
     4. **Settings** allows you to change other settings such as the window size. Tinkering with these settings should not generally be required but on a very slow connection lowering refresh rates and picture quality may be helpful. 
 
 
@@ -147,7 +147,7 @@ VNC allows the remote GBT observer to connect to a computer in the GBT control r
 
 .. attention::
 
-    The VNC instructions below use *ssh*/*prospero* as the gateway machine. As described in the :ref:`Gateway Machines` section at the top of the page, **please use** ``stargate.gb.nrao.edu`` **when observing and** ``ssh.gb.nrao.edu`` **for everything else.**
+    The VNC instructions below use *ssh*/*prospero* as the gateway machine. As described in the :ref:`how-tos/infrastructure/remote-connection:Gateway Machines` section at the top of the page, **please use** ``stargate.gb.nrao.edu`` **when observing and** ``ssh.gb.nrao.edu`` **for everything else.**
 
 Quick VNC Reference
 -------------------
@@ -277,7 +277,7 @@ If this is your first session ever with VNC, you need to setup a VNC password. I
    
    Choose a VNC password that is different from your NRAO Linux account as you may later wish to share your VNC password with other who can then watch your VNC session. For example, if you are having difficulties during a remote observing session, you might wish to share your VNC password with a Green Bank staff member who can access your virtual desktop and suggest solutions to your problems.
 
-To create a VNC password, you must :ref:`log into a GBO computer <Log into the host machine>`. Once you are logged into the GBO computer, type at the Linux prompt in the terminal window on the remote computer
+To create a VNC password, you must :ref:`log into a GBO computer <how-tos/infrastructure/remote-connection:Log into the host machine>`. Once you are logged into the GBO computer, type at the Linux prompt in the terminal window on the remote computer
 
 .. code-block:: bash
     
@@ -289,12 +289,12 @@ Then enter your chosen VNC password.
 
 .. caution::
 
-    Please do not start more than one VNC session at a time! There is only a limited total number of sessions and ports available at any time. Likewise, don't forget to end your VNC server session when you have finished observing. For instructions on ending your VNC server, please read :ref:`How do I close my VNC session?`.
+    Please do not start more than one VNC session at a time! There is only a limited total number of sessions and ports available at any time. Likewise, don't forget to end your VNC server session when you have finished observing. For instructions on ending your VNC server, please read :ref:`how-tos/infrastructure/remote-connection:How do I close my VNC session?`.
 
 Starting a VNC session
 _____________________________
 
-You only need to do this section once, upon starting the VNC session. As long as the session isn't ended, you may skip ahead to :ref:`Starting a VNC viewer on your local machine<Starting a VNC viewer on your local machine>`. Once you are logged into the GBO host machine you want to start the VNC session in, and regardless of your remote computer, type at the Linux prompt
+You only need to do this section once, upon starting the VNC session. As long as the session isn't ended, you may skip ahead to :ref:`how-tos/infrastructure/remote-connection:Starting a VNC viewer on your local machine`. Once you are logged into the GBO host machine you want to start the VNC session in, and regardless of your remote computer, type at the Linux prompt
 
 
 .. code-block:: bash
@@ -423,7 +423,7 @@ ______________________________
 
 Also, please **do not start more than one VNC session at a time**. Note that you do not need to start a new VNC session every time you want to connect to an already existing VNC. If you are using a data reduction machine to perform long-running scripts, you do not need to worry about closing the VNC session until you are done with data reduction.
 
-To stop your VNC session, use a separate terminal window on your local machine and connect to the computer hosting the VNC session as described :ref:`above <Log into the host machine>`. This can be the same window you used to start the VNC session, if you still have it open. Type:
+To stop your VNC session, use a separate terminal window on your local machine and connect to the computer hosting the VNC session as described :ref:`above <how-tos/infrastructure/remote-connection:Log into the host machine>`. This can be the same window you used to start the VNC session, if you still have it open. Type:
 
 
 .. code-block:: bash
@@ -480,7 +480,7 @@ A similar fix must be applied to the puTTY Tunnels tab as well, for Windows user
 VNC screen remains black
 ________________________
 
-You followed the quick instructions (:ref:`Quick VNC Reference above <Quick VNC Reference>`), you're asked for your VNC password, a new screen opens, but it is entirely black. If that's the case, check the content of the ``xstartup`` file in your .vnc folder. This folder is located in your home folder on the GBO network. 
+You followed the quick instructions (:ref:`Quick VNC Reference above <how-tos/infrastructure/remote-connection:Quick VNC Reference>`), you're asked for your VNC password, a new screen opens, but it is entirely black. If that's the case, check the content of the ``xstartup`` file in your .vnc folder. This folder is located in your home folder on the GBO network. 
 
 The file ideally contains these first lines:
 
@@ -489,7 +489,7 @@ The file ideally contains these first lines:
     #!/bin/sh
     dbus-launch xfce4-session
 
-If it doesn't, add these two lines at the top of the ``xstartup`` file, then after step 2 of the :ref:`Quick VNC Reference above <Quick VNC Reference>` kill your vnc server using ``vncserver -kill :n`` and then proceed with the remaining instructions as given in the :ref:`Quick VNC Reference above <Quick VNC Reference>`.
+If it doesn't, add these two lines at the top of the ``xstartup`` file, then after step 2 of the :ref:`Quick VNC Reference above <how-tos/infrastructure/remote-connection:Quick VNC Reference>` kill your vnc server using ``vncserver -kill :n`` and then proceed with the remaining instructions as given in the :ref:`Quick VNC Reference above <how-tos/infrastructure/remote-connection:Quick VNC Reference>`.
 
 
 

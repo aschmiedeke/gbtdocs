@@ -64,7 +64,7 @@ The AstrID GUI should appear on screen after 10-20s.
 
 
 Astrid Modes 
-''''''''''''
+^^^^^^^^^^^^
 
 On startup AstrID will automatically ask what mode to operate in via a pop-up window. 
 
@@ -185,7 +185,7 @@ drop-down menus in this document but we will provide some highlights.
 * ``File``
     * ``New Window`` - Launch applications within the AstrID GUI or in an independent GUI.
     * ``Close Window`` - Close the currently displayed application in the AstrID GUI.
-    * ``Real time mode...`` - Change between the :ref:`operational modes of AStrID <Astrid Modes>`.
+    * ``Real time mode...`` - Change between the :ref:`operational modes of AStrID <references/astrid:Astrid Modes>`.
 
 * ``Edit`` - Standard "Windows" undo, redo, cut and paste options.
 
@@ -231,7 +231,7 @@ Command Console
 The Command Console is a Python shell that imports the Configuration Tool and Balance APIs.
 Both APIs will only interact with the Monitor & Control (M&C) systems if the user has been 
 granted security access and is operating AstrID from the ``Work online with control of the telescope``
-mode (see :ref:`Astrid Modes`).
+mode (see :ref:`references/astrid:Astrid Modes`).
 
 
 State
@@ -556,7 +556,7 @@ the ``gfm`` command or AstrID could be switched to offline-mode.
 Working Online
 ''''''''''''''
 
-If you are using either of AstrID's ``online`` modes (see :ref:`Astrid Modes`) and have
+If you are using either of AstrID's ``online`` modes (see :ref:`references/astrid:Astrid Modes`) and have
 selected the ``DataDisplay`` tab, then the data display will update as new data are 
 obtained. Continuum and Spectral Line data are only updated when these displays are
 being viewed. 
@@ -576,7 +576,7 @@ Working Offline
 You can look at data that have already been taken with the GBT by running AstrID in 
 ``offline`` mode. To view data in this mode you need to follow these steps:
 
-#. Change the AstrID mode to ``offline`` (see :ref:`Astrid Modes`).
+#. Change the AstrID mode to ``offline`` (see :ref:`references/astrid:Astrid Modes`).
 #. Select the DataDisplay tab in AstrID
 #. Select ``File`` :math:`\rightarrow` ``Open`` from the drop-down menu or click the 
    |icon-open| icon in the toolbar.
@@ -607,7 +607,7 @@ It will calibrate the data, remove a baseline and fit a Gaussian to the data. Af
 azimuth scans (cross-elevation, i.e. :math:`{\text{Az}} \times \cos{({\text{Dec}})}`) it will
 then automatically update the GBT M&C system with the new azimuth pointing offset values that
 it determined. It will then automatically update the elevation pointing offset after the two
-elevation scans, unless certain criteria are not met (see :ref:`Fitting Acceptance Options`).
+elevation scans, unless certain criteria are not met (see :ref:`references/astrid:Fitting Acceptance Options`).
 Here is a sample of the Data Display Application after a pointing 
 
 .. image:: images/AstridDataDisplayTabPointing.jpg
@@ -840,7 +840,7 @@ the top of the Astrid Screen. The following features are available:
     * - .. image:: images/DTopen.jpg
       - **Open**
       - Allows the user to open a previously saved session.  This has the same functionality as ``File``
-        :math:`\rightarrow` ``Open...`` described in :ref:`Working Offline`.
+        :math:`\rightarrow` ``Open...`` described in :ref:`references/astrid:Working Offline`.
     * - .. image:: images/DTsave.jpg
       - **Save** 
       - Allows the user to save output from the data display log as a text file.

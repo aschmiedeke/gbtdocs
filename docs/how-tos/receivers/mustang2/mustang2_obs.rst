@@ -42,11 +42,11 @@ During observing, you are expected to edit the MUSTANG-2 observing run notes wik
 2.1 Connect
 -----------
 
-Open and connect to :ref:`VNC session <Quick VNC Reference>` or start an XFCE :ref:`FastX session <FastX connection>` on ``titania`` or ``ariel`` via FastX.
+Open and connect to :ref:`VNC session <how-tos/infrastructure/remote-connection:Quick VNC Reference>` or start an XFCE :ref:`FastX session <how-tos/infrastructure/remote-connection:FastX connection>` on ``titania`` or ``ariel`` via FastX.
 
 Connection Issues?
 ^^^^^^^^^^^^^^^^^^
-The internet at GBO can be intermitent at times. Specifically there are days that the internet goes down for 30-60 seconds at a time quite often. Are you having issues with FastX or your VNC being really laggy? Check `this status page <https://status.gb.nrao.edu/>`_ to see the status of the ssh gateways. See :ref:`these instructions <What to do if the GBO network is down/slow>` for FastX and VNC workarounds using Charlottesville to potentially better your connection. 
+The internet at GBO can be intermitent at times. Specifically there are days that the internet goes down for 30-60 seconds at a time quite often. Are you having issues with FastX or your VNC being really laggy? Check `this status page <https://status.gb.nrao.edu/>`__ to see the status of the ssh gateways. See :ref:`these instructions <how-tos/infrastructure/remote-connection:What to do if the GBO network is down/slow>` for FastX and VNC workarounds using Charlottesville to potentially better your connection. 
 
 
 2.2 AstrID 
@@ -157,7 +157,7 @@ Run the ``1_m2setup`` script in Astrid.
         - IR Cloud Cover
         - Wind Velocity.
 
-    - :ref:`Start the m2gui <4. Checking data with the m2gui>` which is used to check M2 data while observing.
+    - :ref:`Start the m2gui <how-tos/receivers/mustang2/mustang2_obs:4. Checking data with the m2gui>` which is used to check M2 data while observing.
 
     - In the m2gui check
         - the skydip (once this has been executed through the OOF process)
@@ -176,7 +176,7 @@ Run the ``1_m2setup`` script in Astrid.
      
 #. Record these values in your observing log
 
-#. It's a good idea to check the time streams (see the :ref:`check time streams section <4.5 Checking Time Streams>` for instructions and examples.)
+#. It's a good idea to check the time streams (see the :ref:`check time streams section <how-tos/receivers/mustang2/mustang2_obs:4.5 Checking Time Streams>` for instructions and examples.)
 
 3.7 Quick daisy on pointing calibrator
 --------------------------------------
@@ -191,7 +191,7 @@ Run the ``1_m2setup`` script in Astrid.
 
 .. note:: 
 
-   During this initial data acquisition (and to some extent, throughout the night) check your Mustang2 CLEO screen, and make sure that the numbers in sections such as ``Frame Cntr`` and ``Roach Data`` are continuing to change with time (if so, the boxes will mostly be blue). However, if they stop (indicated when the boxes turn lavender) then the Mustang2 manager has crashed, and you’ll need to :ref:`restart it <7.1 MUSTANG-2 Manager>`.
+   During this initial data acquisition (and to some extent, throughout the night) check your Mustang2 CLEO screen, and make sure that the numbers in sections such as ``Frame Cntr`` and ``Roach Data`` are continuing to change with time (if so, the boxes will mostly be blue). However, if they stop (indicated when the boxes turn lavender) then the Mustang2 manager has crashed, and you’ll need to :ref:`restart it <how-tos/receivers/mustang2/mustang2_obs:7.1 MUSTANG-2 Manager>`.
  
 
 3.8 Take science data
@@ -199,7 +199,7 @@ Run the ``1_m2setup`` script in Astrid.
 
 Take ~30 minutes of science data followed by a quick daisy on your pointing calibrator. Often this is accomplished by submitting several science scripts (e.g., ``5_science_rX``) in Astrid. For example, often for cluster science each individual science scan is ~8-9 minutes in length. So if you are submitting individual beauty scans (which ``5_science_rX`` are), you can submit 4 of the science scripts in a row followed by your pointing calibrator scan. 
 
-It's a good idea to check the time streams (see the :ref:`check time streams section <4.5 Checking Time Streams>` for instructions and examples.)
+It's a good idea to check the time streams (see the :ref:`check time streams section <how-tos/receivers/mustang2/mustang2_obs:4.5 Checking Time Streams>` for instructions and examples.)
 
 .. note:: 
 
@@ -304,7 +304,7 @@ After you have opened the m2gui follow these steps to check the tipping scan, mo
 
             .. image:: images/m2gui_05_tip_scan_bad_example.png
 
-    If the tipping scan doesn’t look right (a lot of wiggles), try running the ``skydip`` script in AstrID. This reruns the tipping scan without having to redo the whole OOF. If it still looks bad, check the weather conditions in CLEO. The weather might not be good enough to observe (consult :ref:`5. General Advice for Determining “Bad Weather“` for advice). You can also call one of the M2 instrument team and get their advice.
+    If the tipping scan doesn’t look right (a lot of wiggles), try running the ``skydip`` script in AstrID. This reruns the tipping scan without having to redo the whole OOF. If it still looks bad, check the weather conditions in CLEO. The weather might not be good enough to observe (consult :ref:`how-tos/receivers/mustang2/mustang2_obs:5. General Advice for Determining “Bad Weather“` for advice). You can also call one of the M2 instrument team and get their advice.
 
 
 #. **Check the number of live detectors**
@@ -394,7 +394,7 @@ If you would like to make a map of a science scan(s), you can do so by following
 
 It is a good idea to check the time streams (checking how the sky temperature is changing over time) as well as the maps. To do so:
 
-- Make your map (see :ref:`4.3 Checking Calibrator/Beam Parameters` or :ref:`4.4 Checking Science Scans`)
+- Make your map (see :ref:`how-tos/receivers/mustang2/mustang2_obs:4.3 Checking Calibrator/Beam Parameters` or :ref:`how-tos/receivers/mustang2/mustang2_obs:4.4 Checking Science Scans`)
 - Click ``show time stream`` button underneath the ``Fit Map`` button after making your map
     .. image:: images/18_show_time_stream_button.png
 
@@ -467,11 +467,11 @@ Find the PIDs of startm2gui and idl and kill both.
 ======================================================
 Once you have some indication of bad weather (bad skydip, bad time streams, or physical weather indication), you will want to make an educated guess as to what the trajectory of the weather/data is in order to determine whether or not to keep observing or give up the time. There are many tools that you can use to an assessment of this trajectory. Consider, do the following suggest that the remainder of your scans would be scientifically useful? (this can be used as a checklist of sorts)
     - Time streams
-        - Check the time streams of the science scans as laid out above in :ref:`4.5 Checking Time Streams`. Are they wiggly? How wiggly? See examples below in :ref:`5.1 Examples of effect of bad weather`.
+        - Check the time streams of the science scans as laid out above in :ref:`how-tos/receivers/mustang2/mustang2_obs:4.5 Checking Time Streams`. Are they wiggly? How wiggly? See examples below in :ref:`how-tos/receivers/mustang2/mustang2_obs:5.1 Examples of effect of bad weather`.
         - How many “bad” science scans have there been in a row?
 
     - Skydip(s)
-        - How does the first skydip of night look? How wiggly is it? See examples below :ref:`5.1 Examples of effect of bad weather`.
+        - How does the first skydip of night look? How wiggly is it? See examples below :ref:`how-tos/receivers/mustang2/mustang2_obs:5.1 Examples of effect of bad weather`.
         - If you are seeing indications of bad weather and you decide to OOF again one could add a skydip in to test the weather (calSeq=True).
         - One could even do a one off skydip.
 

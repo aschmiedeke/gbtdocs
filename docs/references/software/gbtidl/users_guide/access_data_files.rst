@@ -63,7 +63,7 @@ months before it is automatically deleted. You may wish to preserve your SDFITS 
 from ``/home/sdfits/project`` to your own account (where ”project” here is the name of the project that
 you wish to preserve).
 To connect to data in the ``/home/sdfits`` directory after the project has finished observing, you can
-either use the :idl:pro:`filein` command (described :ref:`in the next section <Creating SDFITS Files>`)
+either use the :idl:pro:`filein` command (described :ref:`in the next section <references/software/gbtidl/users_guide/access_data_files:Creating SDFITS Files>`)
 or the `offline` command:
 
 .. code-block:: IDL

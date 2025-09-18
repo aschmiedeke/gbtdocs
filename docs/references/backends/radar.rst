@@ -42,7 +42,7 @@ At present, the best choice is the JPL system which can be configured flexibly
 under computer control for a wide choice of bandwidths and sampling rates. Sample
 rates and bandwidths are listed in :numref:`tab-radar-backends`. For the rest of
 this chapter, we will explain the usage of the JPL Radar backend. The VEGAS baseband
-modes will function similarly to the incoherent pulsar modes described in :ref:`VPM`,
+modes will function similarly to the incoherent pulsar modes described in :ref:`references/backends/vpm:VPM`,
 but consult with your project friend to ensure correct and efficient usage.
 
 
@@ -57,7 +57,7 @@ acquisition process.
 
 Here is an example script for 8560 MHz observations.
 
-.. literalinclude:: radar_sb.py
+.. literalinclude:: material/radar_sb.py
     :language: python
 
 The ephemeris file referred to in the ``Catalog()`` command, above, gives the

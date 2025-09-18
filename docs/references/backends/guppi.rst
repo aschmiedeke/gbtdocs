@@ -3,7 +3,7 @@ GUPPI
 -----
 
 The Green Bank Ultimate Pulsar Processing Instrument (GUPPI) was previously the main pulsar backend for the GBT.
-It is retired as of January 2021 and has been replaced by :ref:`VEGAS Pulsar Modes (VPM) <VPM>`.
+It is retired as of January 2021 and has been replaced by :ref:`VEGAS Pulsar Modes (VPM) <references/backends/vpm:VPM>`.
 
 
 Transitioning from GUPPI to VPM
