@@ -1,0 +1,19 @@
+Usage:  jpl2astrid cometfilename.txt [vel]
+    If 'vel' is blank,  do not write the radial velocities.
+    If 'vel' is non-blank,  do write the radial velocities.
+    output will have '.astrid' extension.
+    Include in Astrid with, e.g. Catalog(fullpath/cometfile.astrid ) 
+ 
+    If '-h' or '-help' instead of 1st argument, print help message
+ 
+ Access the JPL Horizons web interface: http://ssd.jpl.nasa.gov/horizons.cgi
+ Set up Horizons web-interface as follows
+   ephemeris type:   OBSERVER
+   target body:      [select the object]
+   Observer Location:   Green Bank (GBT) [select from list of observatories]
+   Time Span:        [put in desired values]
+   Table Settings:   QUANTITIES=1,3,20
+        i.e., (1)Astrometric RA&Dec, (3)rates RA&Dec, and (20)Range and range rate
+   Display/Output:   plain text
+ 
+ Use the web browser file menu to save the output file as (for example) cometfilename.txt

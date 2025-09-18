@@ -1,0 +1,5 @@
+# My source list
+format=spherical
+HEAD = NAME COORDMODE   RA  DEC        RESTFREQ   VELDEF     VEL  type
+Object1  J2000  09:56:16.9  +49:16:25  1420.405  VRAD-LSR   -25.3  HII
+Src_A    J2000  10:56:16.9  +50:16:25  1665.401  VOPT-BAR   100.9  Gal

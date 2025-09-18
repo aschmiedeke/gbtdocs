@@ -1,0 +1,72 @@
+*******************************************************************************
+JPL/HORIZONS                   103P/Hartley 2              2016-Apr-05 07:53:21
+Rec #:900870 (+COV)   Soln.date: 2014-Nov-10_13:49:39   # obs: 6506 (1986-2013)
+ 
+FK5/J2000.0 helio. ecliptic osc. elements (au, days, deg., period=Julian yrs): 
+ 
+  EPOCH=  2456981.5 ! 2014-Nov-20.0000000 (TDB)    RMSW= n.a.                  
+   EC= .6937804720128784   QR= 1.064195154203179   TP= 2457863.8230300969      
+   OM= 219.7487450736021   W= 181.3222857728302    IN= 13.6042724340803        
+   A= 3.475268743304754    MA= 225.7701522441      ADIST= 5.886342332406328    
+   PER= 6.4787437937458    N= .152132314           ANGMOM= .023095142          
+   DAN= 5.88279            DDN= 1.06431            L= 41.0339546               
+   B= -.310996             MOID= .0720049          TP= 2017-Apr-20.3230300969  
+ 
+Comet physical (GM= km^3/s^2; RAD= km):                                        
+   GM= n.a.                RAD= .800                                           
+   M1=  14.7     M2=  n.a.     k1=  8.     k2= n.a.     PHCOF= n.a.            
+ 
+COMET comments 
+1: soln ref.= JPL#252, data arc: 1986-03-15 to 2013-05-14
+2: k1=8.;
+*******************************************************************************
+ 
+ 
+*******************************************************************************
+Ephemeris / WWW_USER Tue Apr  5 07:53:22 2016 Pasadena, USA      / Horizons    
+*******************************************************************************
+Target body name: 103P/Hartley 2                  {source: JPL#252}
+Center body name: Earth (399)                     {source: DE431}
+Center-site name: Green Bank (GBT)
+*******************************************************************************
+Start time      : A.D. 2016-Apr-05 00:00:00.0000 UT      
+Stop  time      : A.D. 2016-Apr-06 00:00:00.0000 UT      
+Step-size       : 5 minutes
+*******************************************************************************
+Target pole/equ : No model available
+Target radii    : 0.8 km                                                       
+Center geodetic : 280.160200,38.4330940,0.8760930 {E-lon(deg),Lat(deg),Alt(km)}
+Center cylindric: 280.160200,5003.37558,3943.7589 {E-lon(deg),Dxy(km),Dz(km)}
+Center pole/equ : High-precision EOP model        {East-longitude +}
+Center radii    : 6378.1 x 6378.1 x 6356.8 km     {Equator, meridian, pole}    
+Target primary  : Sun
+Vis. interferer : MOON (R_eq= 1737.400) km        {source: DE431}
+Rel. light bend : Sun, EARTH                      {source: DE431}
+Rel. lght bnd GM: 1.3271E+11, 3.9860E+05 km^3/s^2                              
+Small-body perts: Yes                             {source: SB431-BIG16}
+Atmos refraction: NO (AIRLESS)
+RA format       : HMS
+Time format     : CAL 
+RTS-only print  : NO       
+EOP file        : eop.160404.p160626                                           
+EOP coverage    : DATA-BASED 1962-JAN-20 TO 2016-APR-04. PREDICTS-> 2016-JUN-25
+Units conversion: 1 au= 149597870.700 km, c= 299792.458 km/s, 1 day= 86400.0 s 
+Table cut-offs 1: Elevation (-90.0deg=NO ),Airmass (>38.000=NO), Daylight (NO )
+Table cut-offs 2: Solar Elongation (  0.0,180.0=NO ),Local Hour Angle( 0.0=NO )
+*******************************************************************************
+Initial FK5/J2000.0 heliocentric ecliptic osculating elements (au, days, deg.):
+  EPOCH=  2456981.5 ! 2014-Nov-20.0000000 (TDB)    RMSW= n.a.                  
+   EC= .6937804720128784   QR= 1.064195154203179   TP= 2457863.8230300969      
+   OM= 219.7487450736021   W= 181.3222857728302    IN= 13.6042724340803        
+Comet physical (GM= km^3/s^2; RAD= km):                                        
+   GM= n.a.                RAD= .800                                           
+   M1=  14.7     M2=  n.a.     k1=  8.     k2= n.a.     PHCOF= n.a.            
+**********************************************************************************************
+ Date__(UT)__HR:MN     R.A._(ICRF/J2000.0)_DEC dRA*cosD d(DEC)/dt            delta      deldot
+**********************************************************************************************
+$$SOE
+ 2016-Apr-05 00:00 C   18 27 00.30 -13 25 32.9 12.40954  9.786338 3.50004632213965 -36.1740593
+ 2016-Apr-05 00:05 C   18 27 00.37 -13 25 32.0 12.40419  9.784071 3.49997377062988 -36.1812496
+                                     ...........
+                                       .......
+                                         ...

@@ -1,0 +1,6 @@
+# My source list
+format=spherical
+coordmode=jmean
+equinox=2007.123456
+HEAD = NAME     RA        DEC   
+Object2  10:56:16.98  +50:16:25.5
