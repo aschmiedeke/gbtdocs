@@ -528,7 +528,7 @@ SPHERICAL
     Object4  12:56:16.98  +52:16:25.5
 
 
-Because all the keyword values in :numref:`script-simple-spherical-catalog` use the defaults, the
+Because all the keyword values in :numref:`script-spherical-catalog1` use the defaults, the
 following is equivalent:
 
 .. _script-spherical-catalog2:
