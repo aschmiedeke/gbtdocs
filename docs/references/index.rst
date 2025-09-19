@@ -1,9 +1,9 @@
 .. _references:
 
 
-#####################################################
-:octicon:`tools;2em;sd-text-primary` Reference Guides
-#####################################################
+#######################################################
+:octicon:`tools;2em;sd-text-primary` Reference Material
+#######################################################
 
 Nitty-gritty technical descriptions of how the GBT works. Most useful when you need detailed information about different GBT components or applications (receivers, observation procedures, data analysis tools). 
 
@@ -92,6 +92,24 @@ Observing
             CLEO
 
 
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **DSS** 
+
+        Dynamic Scheduling System
+
+        .. button-link:: dss.html
+            :color: primary
+            :tooltip: Information material to use the DSS
+            :outline:
+            :click-parent:
+
+            DSS
+
+
 .. toctree::
     :maxdepth: 3
     :hidden:
@@ -99,7 +117,7 @@ Observing
     scheduling-blocks
     astrid
     cleo
-
+    dss
 
 Hardware
 ========
