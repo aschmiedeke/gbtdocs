@@ -45,6 +45,7 @@ extensions = ['sphinx.ext.todo',
               'sphinx_idl.domain', 
               'sphinx_idl.auto',
               'sphinxcontrib.bibtex',
+              'sphinxcontrib.email',
 ]
 
 suppress_warnings = ['autosectionlabel.*']
@@ -73,6 +74,8 @@ bibtex_bibfiles = ['zbibliography.bib']
 bibtex_reference_style = 'author_year'
 bibtex_tooltips = True
 
+# sphinxcontrib.email
+email_automode = True
 
 # We recommend adding the following config value.
 # Sphinx defaults to automatically resolve *unresolved* labels using all your Intersphinx mappings.

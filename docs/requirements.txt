@@ -26,6 +26,7 @@ sphinx-inline-tabs
 sphinxcontrib-applehelp
 sphinxcontrib-bibtex
 sphinxcontrib-devhelp
+sphinxcontrib-email
 sphinxcontrib-htmlhelp
 sphinxcontrib-jsmath
 sphinxcontrib-qthelp

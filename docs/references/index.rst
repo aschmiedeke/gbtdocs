@@ -27,11 +27,29 @@ Nitty-gritty technical descriptions of how the GBT works. Most useful when you n
 
             GBT
 
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **Radio Frequency Interference** 
+
+        .. button-link:: rfi.html
+            :color: primary
+            :tooltip: RFI
+            :outline:
+            :click-parent:
+
+            RFI
+
+
+
 .. toctree::
     :maxdepth: 3
     :hidden:
 
     gbt
+    rfi
 
 
 
