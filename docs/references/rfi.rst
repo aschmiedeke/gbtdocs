@@ -12,7 +12,7 @@ Useful resources, references from the above webpage include a `list of known sou
 Additionally the GBT RFI GUI is now available through the GBO computing network. This 
 is a new software tool that generates RFI spectrum plots for receiver and time frame 
 specified by the user. To run it, log into any GBO Linux machine, open a terminal window, 
-and type ``gbt-rfi-gui``. More information is available `here <https://greenbankobservatory.org/about/interference-protection/rfi-gui-user-guide`.
+and type ``gbt-rfi-gui``. More information is available `here <https://greenbankobservatory.org/about/interference-protection/rfi-gui-user-guide>`__.
 
 Every observer should check for known RFI around their observing frequencies. If you suspect
 that this could have a significant impact on your observations, you should contact your
