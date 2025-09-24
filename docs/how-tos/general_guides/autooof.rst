@@ -199,7 +199,10 @@ user to manually change the maximum order of fit to process in the following way
     function in order to take effect.  You may also repeat processing after making any changes by pressing 
     ``Reanalyze OOF (Online Only)``.
 
-More information on AutoOOF can be found at `https://safe.nrao.edu/wiki/bin/view/GB/PTCS/AutoOOFInstructions`__
 
-.. todo:: Transfer the relevant content from the wiki page here.
+.. admonition:: Internal Access Only
+
+    More information on AutoOOF can be found `here <https://safe.nrao.edu/wiki/bin/view/GB/PTCS/AutoOOFInstructions>`__.
+
+    .. todo:: Transfer the relevant content from that wiki page here.
 

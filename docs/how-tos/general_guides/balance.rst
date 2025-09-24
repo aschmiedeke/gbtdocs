@@ -82,13 +82,14 @@ the origin carefully:
     
         The useable dynamic range of VEGAS is actually >20 dB.  It is set at a low level by quantization 
         effects, and at high levels by saturation. If the IF power level looks reasonable, the next check
-        is to look at the ADC histogram counts. As long as the histogram looks like a Gaussian distribution,
-        with a a FWHM around 20 counts or larger, but with no counts approaching :math:`\pm` 127, then the
-        IF level into VEGAS is acceptable (see Figure XXX).  Make sure you monitor the ADC histogram through
-        all phases of your observation (e.g. switching on and off a bright source).
+        is to look at the ADC histogram counts using the :ref:`references/backends/vegas:VEGAS Data Monitor (VEGASDM)`.
 
-        .. todo:: Add reference to Figure 4.15 from observer Guide.
+        .. image:: /references/backends/images/vegasdatamonitor.jpg
 
+        As long as the histogram looks like a Gaussian distribution, with a a FWHM around 20 counts or 
+        larger, but with no counts approaching :math:`\pm` 127, then the IF level into VEGAS is acceptable.
+        Make sure you monitor the ADC histogram through all phases of your observation (e.g. switching on
+        and off a bright source).
    
 #. **Adjusting the "digital gain" inside the VEGAS processing firmware** 
    There should be no circumstances (e.g. an FFT overflow) which result in lost precision.     

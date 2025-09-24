@@ -33,20 +33,23 @@ HI Position Switched (psw) Spectrum
 1.1 Catalog
 -----------
 
-Before you start writing your scheduling block(s) it is helpful to prepare a source catalog in a separate file. This is especially advised if you have a long list of sources. For a short catalog it is also possible to add the sources directly in your scheduling block (not described here). 
+Before you start writing your scheduling block(s) it is helpful to prepare a source :ref:`catalog <references/observing/catalog:Catalogs>`
+in a separate file. This is especially advised if you have a long list of sources. For a short
+catalog it is also possible to add the sources directly in your scheduling block (not described here). 
 
-Here is an example of a RA/Dec coordinate system catalog with velocity, showing the header lines of the catalog and then 5 sources. The full catalog is available at `/home/astro-util/HIsurvey/HI_survey.cat`.
+Here is an example of a RA/Dec coordinate system catalog with velocity, showing the header lines of
+the catalog and then 5 sources. The full catalog is available at `/home/astro-util/HIsurvey/HI_survey.cat`.
 
 .. literalinclude:: material/HI_survey.cat
     :language: text
     :lines: 1-4,68-72
   
 
-Here `Name` is the name of the source (choose a name that uniquely identifies the source in your catalog), `RA` is the right ascension, `Dec` is the declination, and `VEL` is the source velocity in units of km/s. 
+Here ``Name`` is the name of the source (choose a name that uniquely identifies the source in your catalog),
+``RA`` is the right ascension, ``Dec`` is the declination, and ``VEL`` is the source velocity in units of km/s. 
 
-We advise to save this catalog as a `.cat` file, in a known location. We will call it later from our scheduling block(s).
+We advise to save this catalog as a ``.cat`` file, in a known location. We will call it later from our scheduling block(s).
 
-.. todo:: Add link to reference material for catalogs.
 
 
 1.2 Configuration and Observing Scripts
