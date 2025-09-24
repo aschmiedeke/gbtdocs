@@ -67,11 +67,27 @@ These guides provide information on how to perform general and common tasks with
             GBT observing
 
 
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **Observing Tactics and Recommendations** 
+
+        .. button-link:: general_guides/gbt_tactics.html
+            :color: primary
+            :tooltip: Common tactics
+            :outline:
+            :click-parent:
+
+            GBT tactics
+
+
 .. toctree::
     :hidden:
     :maxdepth: 3
 
     general_guides/gbt_observing
+    general_guides/gbt_tactics
 
 Observing Mode Guides
 ======================
