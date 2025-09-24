@@ -43,6 +43,21 @@ Nitty-gritty technical descriptions of how the GBT works. Most useful when you n
             RFI
 
 
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **Weather Effects on Observations** 
+
+        .. button-link:: weather.html
+            :color: primary
+            :tooltip: Weather
+            :outline:
+            :click-parent:
+
+            Weather
+
+
 
 .. toctree::
     :maxdepth: 3
@@ -50,6 +65,7 @@ Nitty-gritty technical descriptions of how the GBT works. Most useful when you n
 
     gbt
     rfi
+    weather
 
 
 
