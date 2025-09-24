@@ -86,9 +86,7 @@ on mapping beams to VEGAS banks:
 
 An example configuring for the 7+1 mode of the KFPA is given in Script 5.9
 
-.. todo:: 
-
-    Adjust the following configuration to match an actual/typical 7+1 spectral line setup.
+.. todo:: Adjust the following configuration to match an actual/typical 7+1 spectral line setup.
 
 .. literalinclude:: scripts/kfpa_config.py
 

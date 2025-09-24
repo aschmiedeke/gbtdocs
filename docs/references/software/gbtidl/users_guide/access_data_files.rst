@@ -89,8 +89,7 @@ In addition to the online help, the sdfits program has full documentation at
 http://safe.nrao.edu/wiki/bin/view/GB/Data/Sdfits including development status, known issues, request list, 
 and usage examples.
 
-.. todo::
-   Transfer this wiki page to gbtdocs.
+.. todo:: Transfer this wiki page to gbtdocs.
 
 
 The ``sdfits`` program offers three levels of calibration, identified by the -mode switch as “raw” (default),
@@ -101,8 +100,7 @@ stored individually in the SDFITS file. The other modes (cal and avg) are not re
 use un-maintained, older calibration code. In the future these will use the same calibration code used
 by GBTIDL.
 
-.. todo:: 
-    Check is the information above still applies.
+.. todo:: Check is the information above still applies.
 
 The sdfits program writes data into the current directory by default, so it is best to change into a
 directory in which you can write large files before running sdfits. In Green Bank, you have a quota on

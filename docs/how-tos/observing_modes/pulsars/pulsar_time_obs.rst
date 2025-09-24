@@ -47,9 +47,7 @@ The following configuration keywords are receiver-specific. In this example, we 
     - The value of nwin must match the number of rest frequencies.
     - You should choose a bandwidth that is well-matched to the frequency range of the receiver.  See the Observer’s Guide for receiver frequency ranges.
 
-.. todo:: 
-
-   Remove reference to Observer's Guide, add the table with receiver frequency ranges to GBTdocs.
+.. todo:: Remove reference to Observer's Guide, add the table with receiver frequency ranges to GBTdocs.
 
 
 Common VEGAS Configuration Keywords
@@ -86,9 +84,7 @@ These keywords define the setup for observing the known pulsar with a specific p
     - vegas.fold_parfile must specify a valid TEMPO1 formatted file specific to your pulsar of interest.
     - For further information about the use of the swmode and noisecal parameters, refer to the Observer’s Guide.
 
-.. todo:: 
-
-   Move the relevant content from the Observer's Guide to GBTdocs, replace the vague reference above with the specific reference within GBTdocs.
+.. todo:: Move the relevant content from the Observer's Guide to GBTdocs, replace the vague reference above with the specific reference within GBTdocs.
 
 
 VEGAS Keywords Specific to Calibration Scans
@@ -104,9 +100,7 @@ These keywords specify the setup for taking data that can be used for polarizati
 
     - For further information about the use of the swmode and noisecal parameters, refer to the Observer’s Guide.
 
-.. todo:: 
-
-   Move the relevant content from the Observer's Guide to GBTdocs, replace the vague reference above with the specific reference within GBTdocs.
+.. todo:: Move the relevant content from the Observer's Guide to GBTdocs, replace the vague reference above with the specific reference within GBTdocs.
 
 
 Observing Scripts

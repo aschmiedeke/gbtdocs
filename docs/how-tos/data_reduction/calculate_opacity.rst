@@ -170,6 +170,4 @@ As a basic example of the use of this tool, the opacities for the observing peri
 
 This will create a directory in the location in which the user is working and return a set of files to that directory in which the requested data are recorded. A user can then use these files in a scriptable way for your specific needs (e.g., one can interpolate to one's exact time of observations). In this case, the files contain the opacities at the frequencies 23.1, 23.2 and 23.3 GHz and they were requested on an hourly timescale. It is not currently possible to retrieve opacities at a finer time resolution than one hour. However, it is possible to retrieve opacities at much finer frequency resolution than through using the GUI tool. Unless specified otherwise, this command will return values for each of the Lewisburg, Hot Springs and Elkins sites, as well as the average of all three.
 
-.. todo::
-
-	Possibly provide a script that uses this command line version of forecasts as an examplar way to script this process.
+.. todo:: Possibly provide a script that uses this command line version of forecasts as an examplar way to script this process.

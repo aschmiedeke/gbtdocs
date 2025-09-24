@@ -52,9 +52,7 @@ The following configuration keywords are receiver-specific. In this example, we 
     - The value of nwin must match the number of rest frequencies.
     - You should choose a bandwidth that is well-matched to the frequency range of the receiver.  See the Observer’s Guide for receiver frequency ranges.
 
-.. todo:: 
-
-   Move a table with frequency range to GBTdocs, link that table here and remove the reference to the Observer's Guide. 
+.. todo:: Move a table with frequency range to GBTdocs, link that table here and remove the reference to the Observer's Guide. 
 
 Common VEGAS Configuration Keywords
 -----------------------------------

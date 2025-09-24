@@ -55,9 +55,7 @@ center frequencies of each bank can thus be arranged to contiguously cover up to
 bandwidth from any receiver to < 4 GHz (up to 8 GHz is available for certain receivers; see 
 the GBT Observer's Guide).
 
-.. todo:: 
-
-    Remove reference to Observer's guide and replace with link to receiver frequency ranges (chapter 1.3 observer guide?)
+.. todo:: Remove reference to Observer's guide and replace with link to receiver frequency ranges (chapter 1.3 observer guide?)
 
 When operating in coherent dedispersion modes with 800 or 1500 MHz of sampled bandwidth, 
 one FPGA sends output to all eight HPCs. Since all the HPCs are in use the maximum total
@@ -145,10 +143,7 @@ their particular observing setup.
 Configuring VEGAS Pulsar Modes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. todo::
-
-    Remove Observers guide reference. Might want to move this part here to the Configure
-    page and add a reference to that page here instead.
+.. todo:: Remove Observers guide reference. Might want to move this part here to the Configure page and add a reference to that page here instead.
 
 
 VPM is configured using the standard Astrid keyword/value configuration block, which is 
@@ -210,10 +205,7 @@ GUPPI has been retired. Dual backend operation with VEGAS and GUPPI is no longer
 
 
 
-.. todo::
-
-    The Observer Guide has example Configurations and example scheduling blocks. Add them to the 
-    scheduling block section and reference that here.
+.. todo:: The Observer Guide has example Configurations and example scheduling blocks. Add them to the scheduling block section and reference that here.
 
 
 
@@ -228,9 +220,7 @@ Once you start observing you will want to check the quality of your data and mak
 The VEGAS CLEO Screen
 '''''''''''''''''''''
 
-.. todo::
-
-    replace Observer's Guide reference with link to the upcoming CLEO section on gbtdocs.
+.. todo:: replace Observer's Guide reference with link to the upcoming CLEO section on gbtdocs.
 
 Unlike GUPPI, VEGAS has its own CLEO application that can be used for spectral line and pulsar observing modes
 (see the GBT Observer's Guide for more information on CLEO). There are two ways to launch the VEGAS CLEO application:
@@ -473,9 +463,7 @@ Timing Offsets
 Each VPM mode has a different backend timing delay. To determine the timing offset for your
 observing mode use ``/home/pulsar_rhel7/bin/vpmTimingOffsets.py``
 
-.. todo:: 
-
-   Do we need an update here to point to a rhel8 script instead of a rhel7 one?
+.. todo:: Do we need an update here to point to a rhel8 script instead of a rhel7 one?
 
 
 This delay accounts for delays arising from the polyphase filterbanks employed on the ROACH2's. 
@@ -489,9 +477,7 @@ via a PSRFITS keyword. This was not the case with GUPPI.
 Putting it All Together
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-.. todo:: 
-
-   This section should probably move to the recipe section and referenced here.
+.. todo:: This section should probably move to the recipe section and referenced here.
 
 In summary, a typical VPM observing session will consist of the following steps.
 

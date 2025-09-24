@@ -243,9 +243,7 @@ Data Reduction
 
 To find out more about data reduction: GBTIDL User's Guide
 
-.. todo::
-    
-    Add GBTIDL API in references and then link properly.
+.. todo:: Add GBTIDL API in references and then link properly.
 
 
 
@@ -264,9 +262,7 @@ Position-switched spectra
     TGBT20A_506_01
 
 
-.. todo::
-    
-    Make sure this is the right data directory.
+.. todo:: Make sure this is the right data directory.
 
 
 
@@ -297,9 +293,7 @@ View a summary of the observations:
    summary
 
 
-.. todo:: 
-
-    Add screenshot of the output here.
+.. todo:: Add screenshot of the output here.
 
 
 For more information on what each column is, please see the GBTIDL User’s Guide GBTIDL User's Guide: Section 4.7.
@@ -366,9 +360,7 @@ Frequency-switched spectra
     TGBT20A_506_02
 
 
-.. todo::
-    
-    Make sure this is the right data directory.
+.. todo:: Make sure this is the right data directory.
 
 
 
@@ -399,9 +391,7 @@ View a summary of the observations:
    summary
 
 
-.. todo:: 
-
-    Add screenshot of the output here.
+.. todo:: Add screenshot of the output here.
 
 
 For more information on what each column is, please see the GBTIDL User’s Guide GBTIDL User's Guide: Section 4.7.
@@ -414,9 +404,7 @@ To view the position-switched observations type
    getfs, 6
 
 
-.. todo::
-
-    Add screenshot
+.. todo:: Add screenshot
 
 
 You can change the x-axis to the Doppler shifted velocity of the rest frequency (F0) by clicking on the 'GHz' GUI button and selecting 'km/s'.    
@@ -445,9 +433,7 @@ To smooth your spectra by a specific number of channels, you can use the ‘gsmo
    gsmooth, 5
 
 
-.. todo::
-   
-   Add screenshot.
+.. todo:: Add screenshot.
 
 
 You can do all this for the second source as well.

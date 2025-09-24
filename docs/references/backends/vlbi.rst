@@ -115,10 +115,7 @@ The receivers and frequency bands are listed in Table below
 
       * Gain curves, see https://safe.nrao.edu/wiki/bin/view/GB/Observing/GainPerformance
 
-        .. todo:: 
-
-            Move that content over here if possible. Wiki pages are not accessible 
-            to the public (anymore)
+        .. todo:: Move that content over here if possible. Wiki pages are not accessible to the public (anymore)
 
     
 +----------+-------------+-------------+-----------------+----------+-------+---------+-------+---------+

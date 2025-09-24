@@ -32,10 +32,7 @@ Although the individual banks could be arranged to cover 10 GHz of total bandwid
 the maximum bandwidth is typically limited to 4-6 GHz by filters in the GBT IF system
 (see your project friend for more information). 
 
-.. todo:: 
-
-    Either replace the reference to the project friend with the helpdesk or 
-    provide the information here.
+.. todo:: Either replace the reference to the project friend with the helpdesk or provide the information here.
 
 All banks have the same switching signal (i.e., same switching period, same 
 integration time, same frequency switching offset), which is controlled by 

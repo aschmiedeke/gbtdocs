@@ -779,9 +779,7 @@ Solutions must be chosen by the observer and manually sent to the active surface
 essential that the Zernike fits and raw AutoOOF data are examined carefully before deciding upon a
 solution. Steps for validating and discerning appropriate solutions can be found in XXX.
 
-.. todo:: 
-
-   Add reference to GBTog 6.2
+.. todo:: Add reference to GBTog 6.2
 
 
 Continuum Data Display

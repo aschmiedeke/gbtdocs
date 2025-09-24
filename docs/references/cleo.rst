@@ -14,9 +14,7 @@ its best to consult your GBT project friend for details.
 * http://www.gb.nrao.edu/~rmaddale/GBT/CLEOManual/index.html
 * http://www.gb.nrao.edu/~rmaddale/GBT/CLEOManual/tableofcontents.html
 
-.. todo:: 
-
-    Transfer (relevant) content of the CLEO manual to GBTdocs.
+.. todo:: Transfer (relevant) content of the CLEO manual to GBTdocs.
 
 The following section describes just a few \gls{CLEO} utilities that are useful for observers.
 
@@ -47,9 +45,7 @@ of the same application including the GBT operator.
 
 .. image:: images/CLEOtalkAndDraw.jpg
 
-.. todo:: 
-
-    Replace image with screenshot of standalong Talk And Draw window.
+.. todo:: Replace image with screenshot of standalong Talk And Draw window.
 
 Messages typed in the white text box near the bottom of the screen will become visible to 
 other users after pressing the ``Enter`` key.
@@ -70,9 +66,7 @@ This displays a plot of the sky in Az/El coordinates as viewed from Green Bank.
 
 .. image:: images/CLEOscheduler.jpg
 
-.. todo:: 
-
-    Replace image with screenshot of standalong Scheduler window.
+.. todo:: Replace image with screenshot of standalong Scheduler window.
 
 
 You can import a catalog of source positions to be displayed, or display one of the lists of 
@@ -99,9 +93,7 @@ This displays the status of many GBT systems all on one screen.
 
 .. image:: images/CLEOstatus.jpg
 
-.. todo:: 
-
-    Replace image with screenshot of standalong Status window.
+.. todo:: Replace image with screenshot of standalong Status window.
 
 
 
@@ -114,9 +106,7 @@ This shows all system status messages.
 
 .. image:: images/CLEOmessages.jpg
 
-   .. todo:: 
-
-    Replace image with screenshot of standalone message window.
+   .. todo:: Replace image with screenshot of standalone message window.
 
 
 

@@ -5,8 +5,7 @@
 NH\ :sub:`3` Mapping Observations with the KFPA
 ###############################################
 
-.. todo::
-	Want to link to the KFPA beam diagram (Fig 7.1 in the Observers Guide, once that is on RTD), this would be at the Pointing Script section.
+.. todo:: Want to link to the KFPA beam diagram (Fig 7.1 in the Observers Guide, once that is on RTD), this would be at the Pointing Script section.
 	
 This tutorial walks you through the process of conducting a set of observations using the KFPA on the GBT. We will observe the first two inversion transitions of ammonia (J,K = 1, 1 and 2,2) towards the active star-forming region W51.
 
@@ -228,17 +227,13 @@ This will return the reduced spectrum for the position-switched scan pair of sca
     By default, :code:`getps` will show you the data for :code:`fdnum=0` (i.e. beam 1), :code:`ifnum=0` (i.e. the first input rest frequency) and :code:`plnum=0` (i.e. the left-hand circularly polarized channel). 
     
     
-.. todo::
-
-    Show the resulting spectrum. 
+.. todo:: Show the resulting spectrum. 
     
 .. note:: 
 
     In order to achieve a high signal-to-noise ratio for these data both polarizations have been averaged and the spectrum has been smoothed by 12 channels).
 
-.. todo:: 
-
-    Add all commands required to achieve this.
+.. todo:: Add all commands required to achieve this.
 
 
 The ammonia spectrum is clearly visible, which gives us confidence that our configuration, telescope pointing and power levels are all within reasonable limits. A final further assurance of the data quality of our observations can be found by noting the system temperature, given in the top right corner of the GBTIDL data plotter window. A good range for the system temperature of the KFPA is ~30 - 45 K. Here we see that we have a system temperature of 35.0 K. This implies that everything is running smoothly and we have good observing conditions.

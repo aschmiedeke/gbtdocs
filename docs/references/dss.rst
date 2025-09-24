@@ -3,9 +3,7 @@ Dynamic Scheduling System
 -------------------------
 
 
-.. todo::
-
-   Add a short paragraph describing why the DSS is important from the perspective of the observer. 
+.. todo:: Add a short paragraph describing why the DSS is important from the perspective of the observer. 
 
 The GBT has been scheduled with the Dynamic Scheduling System (DSS) since October 1, 2009.
 You can access the DSS through `https://dss.gb.nrao.edu`__.
@@ -144,9 +142,7 @@ application can read target coordinates from a standard astrid catalog file. Obs
 this tool handy for identifying the time of day a project may get scheduled, as well as helping to
 plan observations in detail after they are scheduled. 
 
-.. todo:: 
-
-    Add the relevant references CLEO scheduler, FastX/VNC connection. 
+.. todo:: Add the relevant references CLEO scheduler, FastX/VNC connection. 
 
 
 Contact Information and Project Notes

@@ -46,9 +46,7 @@ Here `Name` is the name of the source (choose a name that uniquely identifies th
 
 We advise to save this catalog as a `.cat` file, in a known location. We will call it later from our scheduling block(s).
 
-.. todo:: 
-
-   Add link to reference material for catalogs.
+.. todo:: Add link to reference material for catalogs.
 
 
 1.2 Configuration and Observing Scripts
