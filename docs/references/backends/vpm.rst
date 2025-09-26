@@ -101,6 +101,7 @@ their particular observing setup.
 
 
 
+.. _tab-vpm-coherent-modes:
 .. csv-table:: Coherent Modes
     :file: material/coherent_VPM_modes.csv
     :header-rows: 1
@@ -114,6 +115,7 @@ their particular observing setup.
     artifacts in the final data products.**
 
 
+.. _tab-vpm-incoherent-modes:
 .. csv-table:: Incoherent Modes
     :file: material/incoherent_VPM_modes.csv
     :header-rows: 1

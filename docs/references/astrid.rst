@@ -310,7 +310,7 @@ AstrID database for that project, an editor, a validation area, and a log summar
 
 .. image:: images/AstridEditSubtab.jpg
 
-.. todo:: Add reference to contents and creation of SBs here.
+You can find detailed information on the content and creation of SBs :ref:`here <references/scheduling-blocks:Scheduling Blocks (SBs)>`.
 
 
 
@@ -438,7 +438,8 @@ turn red, while it will turn green if the SB passes validation.
 
 
 The Observing Log
-""""""""""""""""
+"""""""""""""""""
+
 The observing log is always visible at the bottom of the Observation Management Tab. It shows 
 information from the execution of SBs in either of the AstrID online modes. The observing log
 can be saved to a disk file by hitting the ``Export`` button that is just above the top right
@@ -623,9 +624,7 @@ Again, in ``online`` mode the data will be processed automatically. They will be
 a baseline removed and a Gaussian will be fit to the data. The focus offset will automatically
 be sent to the M&C system.
 
-The details of pointing and focus observations are described in XXX
-
-.. todo:: Add reference to section 5.4.1. in GBTog.
+The details of pointing and focus observations are described in :ref:`references/observing/scan_types:Utility Scan Types`.
 
 
 Fitting Acceptance Options
@@ -777,9 +776,8 @@ beam map images and reduced :math:`\chi^{2}` values for the three highest orders
 
 Solutions must be chosen by the observer and manually sent to the active surface. Therefore, it is 
 essential that the Zernike fits and raw AutoOOF data are examined carefully before deciding upon a
-solution. Steps for validating and discerning appropriate solutions can be found in XXX.
-
-.. todo:: Add reference to GBTog 6.2
+solution. Steps for validating and discerning appropriate solutions can be found in
+:ref:`how-tos/general_guides/autooof:AutoOOF Strategy`.
 
 
 Continuum Data Display
@@ -942,15 +940,10 @@ General Status
       - The observer name
     * - Project ID
       - The data directory of the FITS files. This is your Project Name with the session as a suffix.  
-        For example, the Project ID for session 02 of AGBT16A_001 would be ``AGBT16A_001_02``
-        
-        .. todo:: Add reference to GBT-OG 3.4.1.1.
-        
+        For example, the Project ID for session 02 of AGBT16A_001 would be ``AGBT16A_001_02``. See 
+        :ref:`references/astrid:Project Name and List of SBs` for details.
     * - Status
-      - The status of the GBT.  
-        
-        .. todo:: Add reference to GBT-OG 3.3.8
-
+      - The status of the GBT. See :ref:`references/astrid:State` for details. 
     * - LST
       - The Local Sideral Time of the last update
     * - Last Update
@@ -987,10 +980,8 @@ Telescope Status
         position of the telescope in arc-seconds.
     * - Coordinate Mode
       - The coordinate mode used to represent a particular location 
-        on the sky.
-        
-        .. todo:: Add reference to GBT-OG Section location_objects
-
+        on the sky. See :func:`Location object <astrid_commands.Location>`
+        for more information. 
     * - Major and Minor Coord
       - The telescope position in the current Coordinate Mode.
     * - Major and Minor Cmd Coord
@@ -1014,9 +1005,6 @@ Telescope Status
     * - LFCs (XYZ mm)
       - The Local Focus Correction (LFC) for the offset focus position
         in millimeters.  This value is determined from a Focus observation
-        
-        .. todo:: Add reference to GBT-OG chap:scripts
-
     * - LFCs (XYZ deg)
       - The subreflector tilt offset in degrees.
     * - DC Focus Y (mm)
@@ -1071,10 +1059,7 @@ Scan and Source Status
         .. todo:: Add reference to Explanation section (TBW) 
 
     * - Vel Frame
-      - The velocity frame or inertial reference frame.  
-        
-        .. todo:: Add reference to GBT-OG \dq{vframe} keyword in sec:keywords. 
-
+      - The velocity frame or inertial reference frame. See :ref:`references/observing/configure:\`\`vframe\`\` (str)` for more information. 
     * - Source Vel
       - The source velocity (km :math:`{\text{s}}^{-1}`).
     * - Time To Set
@@ -1095,10 +1080,8 @@ Configuration Status
       - ``ON`` if the noise diode is firing during the scan 
     * - Sw Period
       - The period in seconds over which the full switching cycle occurs. 
-        This is determined by the user in their configuration 
-        
-        .. todo:: Add reference to GBT-OG sec:config
-        
+        This is determined by the user in their configuration.
+        See :ref:`references/observing/configure:\`\`swper\`\` (float)` for more information. 
     * - Obs Freq
       - The observed spectral line frequency in the local frame (MHz).
     * - Rest Freq
@@ -1164,11 +1147,8 @@ VEGAS Status
         are two ADCs per bank, one for each polarization. The VEGAS
         balance API sets these values to approximately -20dBm by default.
     * - Mode Name
-      - Each VEGAS Bank can be configured in one of 29 Spectral Modes or
-        1 of 24 Pulsar Modes.
-
-        .. todo:: Add reference to VEGAS spectral mode table and VPM table.
-
+      - Each VEGAS Bank can be configured in 1 of 29 Spectral Modes (:numref:`tab-vegas-modes`) or
+        1 of 24 Pulsar Modes (:numref:`tab-vpm-coherent-modes` and :numref:`tab-vpm-incoherent-modes`).
     * - FilterBW
       - The bandwidth (MHz) of the digital filter implemented in the 
         FPGA.
@@ -1176,23 +1156,13 @@ VEGAS Status
         .. note:: 
             
             These values do not correspond to the bandwidths listed in 
-            Table XXX.
+            :numref:`tab-vegas-modes`.
             
-            .. todo:: Add reference to VEGAS spectral mode table.
-
     * - Noise
       - The state of the noise source which can be either ``On`` or ``Off``.
     * - Polarization
-      - Users may specify which spectral product to record (See the ``vegas.vpol``
-        keyword in XYZ). 
-        
-        * ``vegas.vpol="self"`` records "Total Intensity" products
-        * ``vegas.vpol="cross"`` records "Full Stokes" parameters
-        * ``vegas.vpol="self1"`` records the polarization inputs from the first ADC only
-        * ``vegas.vpol="self2"`` records the polarization inputs from the second ADC only.        
-
-        .. todo:: Add reference to vegas.vpol keyword       
-
+      - Users may specify which spectral product to record (see :ref:`references/observing/configure:\`\`vegas.vpol\`\` (str)`
+        for more information). 
     * - Subbands
       - Each VEGAS bank can select between single (subbands=1) and multiple
         (subbands=8) spectral windows when using VEGAS modes with a 23.44 MHz bandwidth.  

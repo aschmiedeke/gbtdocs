@@ -10,8 +10,32 @@ B1929+10    	19:32:13.9497       	+10:59:32.420       	3.1832
 # Load a source catalog
 catalog = Catalog('valid/path/to/catalog.cat')
 
-< rest of observing script here, as in example above >
+# Define config strings
+config_common = """
+obstype = 'Pulsar'
+backend = 'VEGAS'
+deltafreq = 0.0
+swtype = 'none'
+swper = 0.04
+swfreq = 0
+vdef = 'Radio'
+vframe = 'topo'
+vlow = 0.0
+vhigh = 0.0 
+vegas.outbits = 8
+"""
 
+config_LBand = """
+receiver = 'Rcvr1_2'
+pol = 'Linear'
+notchfilter = 'In'
+nwin = 1
+restfreq = 1500.0
+dopplertrackfreq = 1500.0
+bandwidth = 800.0
+"""
+
+# Note the use of string substitution to dynamically specify the parfile name
 vegas_config_search = """
 swmode = 'tp_nocal' 
 noisecal = 'off' 
@@ -19,7 +43,7 @@ vegas.obsmode = 'coherent_search'
 vegas.dm = %f
 """
 
-< rest of observing script here, as in example above >
+ResetConfig()
 
 for i, source in enumerate(catalog.keys()):
       # Only perform AutoPeakFocus() for first source
