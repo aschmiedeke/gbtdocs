@@ -754,7 +754,10 @@ def Balance():
 
     :code:`Balance(device, {option:value})`
 
-    Use only if you really know what you're doing!
+    
+    .. warning:: 
+
+        Use only if you really know what you're doing!
 
     **Parameters**
     
