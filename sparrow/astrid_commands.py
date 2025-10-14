@@ -729,19 +729,8 @@ def Balance():
     then all devices for the current state of the IF system will be balanced using the
     last executed configuration to decide what hardware will be balanced.
 
-
-    **Advanced Syntax**
-
-    Use only if you really know what you're doing.
-
-    .. code-block:: python
-
-        Balance('DeviceName', {'DeviceKeyword': Value})
-
-
-
-    Examples
-    _________
+    Example
+    ________
 
     
     .. code-block:: python
@@ -758,6 +747,55 @@ def Balance():
         # Balance IF and devices for specified configuration
         Balance()
 
+
+
+    Advanced Syntax
+    ---------------
+
+    :code:`Balance(device, {option:value})`
+
+    Use only if you really know what you're doing!
+
+    **Parameters**
+    
+    *device: str*
+        A string that may take the following values: ``'IFRack'``, ``'DCR_AF'``, ``'GUPPI'``,
+        ``'vlbi'``, ``'VEGAS'``, ``'RcvrPF_1'``, ``'RcvrPF_2'``.
+
+    *{option: value}:*
+        An optional parameter to the Balance() function. Can be a Python dictionary containing
+        one or more of the balancing options listed below. Items which are not in the dictionary
+        are assigned their default values and non-applicable options are ignored.
+
+        **option** is a string used to control the balancing. The allowed **value** types depend
+        on the option:
+
+        * ``'target_level'``: The target balancing level for the specified device. 
+            * value is a float. 
+            * Default values vary by device.
+
+        * ``'port'``: Used to specify which ports to balance.
+            * value is an integer list (e.g. [1,2,9,10]). VEGAS ports are in the range of 1-16.
+            * The default is to balance all ports.
+
+        * ``'sample_time'``: Only applicable when balancing the prime focus receivers. 
+            The prime focus balance API will try and balance the receiver over a period of ``sample_time``
+            seconds. This will be repeated a maximum of 6 times or until the power level is within 20% of
+            the target_level.
+
+            * value is an integer between 1 and 41 seconds. 
+            * The default is 2.
+
+        * ``'cal'``: Turns the noise diodes on or off when balancing the prime focus receivers.
+            * value can be either ``'on'`` or ``'off'``. 
+            * The default is ``'on'``.
+
+    **Usage**
+
+    .. code-block:: 
+
+        Balance('RcvrPF_1', {'sample_time': 5, 'cal': 'on'})
+        Balance('VEGAS', {'target_level': -20})
 
     """
 
