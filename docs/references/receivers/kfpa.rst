@@ -1,3 +1,4 @@
+.. _KFPA:
 
 K-Band Focal Plane Array (KFPA)
 -------------------------------

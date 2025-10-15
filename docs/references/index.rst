@@ -192,7 +192,21 @@ Hardware
             Backends
 
 
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
 
+        **IF system** 
+
+        Detailed information on the GBT IF system
+
+        .. button-link:: if_system.html
+            :color: primary
+            :tooltip: GBT IF system
+            :outline:
+            :click-parent:
+
+            GBT IF system
 
 .. toctree::
     :maxdepth: 3
@@ -201,7 +215,7 @@ Hardware
 
     receivers
     backends
-
+    if_system
 
 ----------
 
