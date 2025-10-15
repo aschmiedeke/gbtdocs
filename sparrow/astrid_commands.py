@@ -2488,3 +2488,305 @@ def execfile():
         execfile('my_script.py') 
         execfile('my_configurations.config')    # file ending does not need to be .py
     """
+
+
+def GetValue(manager, parameter):
+
+    """ 
+    Function for advanced GBT users. GetValue can be used to retrieve any parameter or sampler value 
+    within the Monitor and Control (M&C) system.
+
+    Parameters
+    ----------
+
+    manager: str
+        The manager in the M&C system such as 'scanCoordinator'.
+
+    parameter: str
+        The name of the parameter or sampler value to retrieve. This may be a composite 
+        string in the form of 'parameter,parameter_field'.
+
+    Returns
+    -------
+
+    value: str
+        If you need the return value to be another data type such as an integer or float, 
+        please consult your favorite Python manual to find out how to use conversion 
+        operators.
+
+    Examples
+    --------
+
+    Please consult with your project friend.
+
+    .. code-block:: python
+
+        current_source = GetValue('ScanCoordinator','source')
+        current_El_lpc = GetValue('Antenna','localPointingOffsets,elOffset')
+
+    """
+
+
+def SetValue(manager, parameter):
+
+    """
+    Function for advanced GBT users. SetValue can be used to directly set any of the parameters within the
+    Monitor & Control (M&C) system. As a result, it is used to support complex configurations
+    and expert observations. Please note that SetValues() does not always issue a "prepare" on
+    the M&C manager containing the parameter. If you with to do a "prepare", you can also use 
+    SetValue() to do that as well, but it needs to be a separate command.
+
+    Parameters
+    ----------
+
+    manager: str
+        The manager containing the parameter in the M&C system.
+
+    paramDict:  dict
+        A dictionary containing the parameter string as a key (can be of the form 'parameter,parameter_field')
+        and the actual value to set. Data types depend on the parameter.
+
+    Examples
+    -----
+
+    Please consult with your project friend! 
+
+    .. code-block:: python
+
+        lfcValues = {
+            'local_focus_correction,Y': -7.469,             # in mm
+            'localPointingOffsets,azOffset2': 9.8902e-06,   # in radians
+            'localPointingOffsets,elOffset': 7.27221e-05}   # in radians
+
+        SetValues('Antenna', lfcValues)
+        SetValues('Antenna', {'state': 'prepare'})
+
+    """
+
+
+def DefineScan(scanName, filepath):
+
+    """
+    Function for advanced GBT users. If you have written your own scan type
+    using the Python language, the DefineScan() function is used to load your 
+    new scan type into the current SB. Once loaded, it can be referred to by 
+    name, just like any other scan type.
+
+    Parameters
+    ----------
+
+    scanName: str
+        Specifies a name for the scan.
+
+    filepath: str
+        Specifies the full filepath to the scan. 
+
+
+    Examples
+    --------
+
+    .. code-block:: python
+
+        # The following example defines and then executes a scan used primarily
+        # with MUSTANG-2 observations.
+
+        DefineScan('boxtraj', '/users/bmason/gbt-dev/scanning/ptcsTraj/boxtraj.py')
+
+        boxtraj(mySrc, x0=x0, y0=y0, taux=taux, tauy=tauy, scanDuration=scandur, 
+                dx=dx, dy=dy)
+
+    """ 
+
+
+def GetCurrentLocation(coordinateMode):
+
+    """ 
+    Function for advanced GBT users. Given a coordinate mode, GetCurrentLocation() 
+    returns a Location object.
+
+    Parameters
+    ----------
+
+    coordinateMode: str
+        Specifies the coordinate mode of the Location object in the return value.
+        Available coordinate modes are
+
+        * ``'J2000'``
+        * ``'B1950'``
+        * ``'RaDecOfDate'``
+        * ``'HaDec'``
+        * ``'ApparentRaDec'``
+        * ``'Galactic'``
+        * ``'AzEl'``
+        * ``'Encoder'``
+        
+
+    Returns
+    -------
+        
+        Location object: obj 
+            contains the coordinates of the currently selected receiver
+            beam's position on the sky (as selected in the most recent scan type).
+
+
+    Example
+    -------
+
+    .. code-block:: python
+
+        # print the current coordinates in azimuth and elevation.
+        # Note that GetH() and GetV() return float values for the major and minor
+        # axis coordinate of Location and Offset objects.
+
+        location = GetCurrentLocation('AzEl')
+        print 'Az = %s, El = %s' % (location.GetH(), location.GetV())
+    
+    """ 
+
+
+def SetSourceVelocity(velocity):
+
+    """
+    Function for advanced GBT users. The SetSourceVelocity() function sets the 
+    LO1 source velocity directly, in units of km/s. If you include the source 
+    velocities in your catalog, then you do not need to use this function. 
+
+    Parameters
+    ----------
+
+    velocity: float
+        Source velocity in km/s.
+
+    Examples
+    --------
+
+    .. code-block:: python
+
+        SetSourceVelocity(10.5)
+
+
+    """
+
+
+def Spider(location, startOffset, scanDuration, slices=4, beamName='1', 
+           unidirectional=True, cals='both', calDuration=10.):
+
+    """
+    Specialty Scan Type. Spider() executes the specified number of slices of duration 
+    ``scanDuration`` through the specified location. each slice is of length 2* 
+    ``startOffset``. The argument startOffset also specifies the angle of the initial 
+    slice. The use may specify unidirectional or bidirectional subscans of length
+    ``calDuration`` and when to run calibration subscans relative to each slice, i.e. 
+    at ``'begin'``, ``'end'``, or ``'both'``.
+
+    Parameters
+    ----------
+
+    location: str or obj
+        Catalog source name or Location object. Is specifies the source which is to be 
+        tracked.
+
+    startOffset: Offset obj
+        It specifies the 1/2 length of the subscans and the angle from location of the
+        initial subscan. For example, if ``startOffset = Offset('AzEl', '00:40:00', '00:00:00', cosv=True)``
+        then the first leg of the scan would start at +40' in azimuth (from the location)
+        and would complete t -40' in Az. If instead you used 
+        ``startOffset = Offset('AzEl', '00:40:00', '00:40:00', cosv=True)`` the first 
+        leg would start at Az=+40', El=+40', and would go to the opposite (Az=-40', El=-40')
+
+    scanDuration: float
+        Specifies the length of the subscans in seconds.
+
+    slices: int
+        Specifies the number of subscans through location. the default is 4 (making a 
+        spider shape - i.e. eight legs).
+
+    beamName: str
+        Specifies the receiver beam to use for the scan. ``beamName`` can be ``'C'``,
+        ``'1'``, ``'2'``, ``'3'``, ``'4'`` or any valid combination for the receiver
+        you are using such as ``'MR12'``. The default is ``'1'``.
+
+    unidirectional: bool
+        Specifies whether each slice is scanned once in one direction or twice in both 
+        directions. The default is True (one direction).
+
+    cals: str
+        Specifies the order of calibration subscans, i.e. at the beginning of the slice
+        subscan (``'begin'``), at the end of the slice subscan (``'end'``) or both (``'both'``).
+        The default is ``'both'``.
+
+    calDuration: float
+        Specifies the length of the calibration subscan in seconds. The default is 10.
+
+    
+    Example
+    -------
+
+    .. code-block:: python
+
+        # Subscans through 3C 286 starting the first leg 40' from the source's "right".
+
+        Spider('3C286', Offset('AzEl', '00:40:00', 0.0, cosv=True), 80)
+
+
+    This is the source's trajectory on the sky. Black crosses mark timestamps, of data sampled
+    along the red trajectory.
+
+    .. image:: /../sparrow/images/spider.jpg
+
+    """
+
+
+def Z17(location, startOffset, scanDuration, beamName='1', calDuration=10.0):
+
+    """
+    Specialty Scan Type. Z17() executes two circles of point subscans around location at 
+    :math:`45^\circ` intervals. The first circle with a radius of ``startOffset`` and the 
+    second circle at a radius of :math:`\sqrt{2}` * ``startOffset``. The initial subscan
+    is at the angle specified bu the ``startOffset``. After circling twice, the procedure
+    executes a subscan on location. The entire set of 17 subscans each of length 
+    ``scanDuration``, is sandwiched between two cal subscans of length ``calDuration``
+    which consist of equal parts calibration noise signal on and off.
+
+
+    Parameters
+    ----------
+
+    location: str or obj
+        A Catalog source name or Location object. Specifies the source which is to be tracked.
+
+    startOffset: obj
+        An Offset object. Specifies the angle from location of the initial subscan as well as
+        the radius of the inner circle.
+
+    scanDuration: float
+        Specifies the length of the subscans in seconds.
+
+    beamName: str
+        Specifies the receiver beam to use for the scan. ``beamName`` can be ``'C'``, ``'1'``, 
+        ``'2'``, ``'3'``, ``'4'`` or any valid combination for the receiver you are using such
+        as ``'MR12'``. The default is ``'1'``.
+
+    calDuration: float
+        Specifies the length of the calibration subscan in second. The default is 10.0.
+
+
+    Example
+    -------
+
+    .. code-block:: 
+
+        # subscan points around G135.1+54.4 starting the first circle at the source's "right". 
+
+        Z17('G135.1+54.4', Offset('AzEl', '00:04:30', '00:00:00', cosv=True), 10)
+
+
+    This is the actual trajectory on the sky. Black crosses mark timestamps of data sampled
+    along the red trajectory.
+
+    .. image:: /../sparrow/images/z17.jpg
+
+    """
+
+
+
