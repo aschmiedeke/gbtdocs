@@ -7,7 +7,7 @@ The GBT User Documentation Hub is a prototype documentation system under active 
 
 .. only:: html
 
-    The entire documentation is also available as a :octicon:`file;1em;sd-text-primary` single pdf file from the fly-out menu in the bottom left corner.
+    The entire documentation is also available as a :octicon:`file;1em;sd-text-primary` single pdf file from the fly-out menu in the bottom right corner.
 
 ------------------
 
