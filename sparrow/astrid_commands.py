@@ -721,13 +721,18 @@ def Balance():
 
     """
     An utility scan. The Balance() command is used to balance the electronic signal 
-    throughout the GBT IF system so that each devise is operating in its linear response
+    throughout the GBT IF system so that each device is operating in its linear response
     regime. Balance() will work for any device with attenuators and for a particular
     backend. Individual devices can be balanced such as Prime Focus receivers, the
     IF system, the DCR, and VEGAS. The Gregorian receivers, except Argus, lack attenuators and do
     not need to be balanced. If the argument to Balance() is blank (recommended usage), 
     then all devices for the current state of the IF system will be balanced using the
     last executed configuration to decide what hardware will be balanced.
+
+    If the balance command is blank (Balance()), and if the system fails to balance, the user will be presented
+    with a pop-up window asking if the user would like to abort the observation script, continue without balancing, 
+    or re-run the balance command.  In addition, a message will appear in teh Astrid messages window 
+    noting which piece of hardware failed in balancing.
 
     Example
     ________
