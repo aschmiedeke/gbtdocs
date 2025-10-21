@@ -1,7 +1,6 @@
 What is the NRQZ?
 =================
 
-
 The National Radio Quiet Zone (NRQZ) was established by the Federal Communications
 Commission (FCC) and by the Interdepartmental Radio Advisory Committee (IRAC) on 
 November 19, 1958 to minimize possible harmful interference to the National Radio
@@ -16,8 +15,6 @@ between Virginia and West Virginia.
 * Further `NRQZ documentation <https://info.nrao.edu/do/spectrum-management/national-radio-quiet-zone-nrqz-1>`__
   managed by Observatory `Spectrum Management <https://info.nrao.edu/do/spectrum-management/>`__.
 
-
 * Information on the `West Virginia State Code Chapter 37A "Radio Astronomy Zoning Act" (WVRAZ) <https://code.wvlegislature.gov/37A-1/>`__.
-
 
 .. image:: images/NRQZ.jpg
