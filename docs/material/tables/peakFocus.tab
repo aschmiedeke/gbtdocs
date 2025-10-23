@@ -1,0 +1,77 @@
+
+.. _tab-peak-focus-default-vals:
+.. table:: Default values for performing peak and focus observations.
+
+   +-----------------------+---------+-----------+-----------+----------+-------+--------+-------+---------+--------+------+----------+
+   | .. centered:: **Receiver**      |           |           |          | .. centered:: **Peak** | .. centered:: **Focus** |          |
+   +                       +         +           +           +          +-------+--------+-------+---------+--------+------+          +
+   | Astrid Name           | Name    | Frequency | Bandwidth | Beam     | Beam  | Length | Time  | Focus   | Length | Time |          |
+   |                       |         | [MHz]     | [MHz]     | -refBeam | FWHM  | [']    | [s]   | FWHM    | [mm]   | [s]  | Notes    |
+   +=======================+=========+===========+===========+==========+=======+========+=======+=========+========+======+==========+
+   | Rcvr_342              | PF342   | 340       | 20        | 1        | 36'   | 180    | 30    | 3.2 m   | --     | --   | A, C     |
+   +-----------------------+---------+-----------+-----------+----------+-------+--------+-------+---------+--------+------+----------+
+   | Rcvr_450              | PF450   | 415       | 20        | 1        | 30'   | 180    | 30    | 2.6 m   | --     | --   | A, C     |
+   +-----------------------+---------+-----------+-----------+----------+-------+--------+-------+---------+--------+------+----------+
+   | Rcvr_600              | PF600   | 680       | 20        | 1        | 18'   | 90     | 15    | 1.6 m   | --     | --   | A, C     |
+   +-----------------------+---------+-----------+-----------+----------+-------+--------+-------+---------+--------+------+----------+
+   | Rcvr_800              | PF800   | 770       | 20        | 1        | 16'   | 80     | 15    | 1.4 m   | --     | --   | A, C     |
+   +-----------------------+---------+-----------+-----------+----------+-------+--------+-------+---------+--------+------+----------+
+   | Rcvr_1070             | PF1070  | 970       | 20        | 1        | 13'   | 65     | 15    | 1.1 m   | --     | --   | A, C     |
+   +-----------------------+---------+-----------+-----------+----------+-------+--------+-------+---------+--------+------+----------+
+   | Rcvr1_2               | L-Band  | 1400      | 80        | 1        | 8.8'  | 130    | 30    | 76 cm   | 480    | 60   | B, D, E  |
+   +-----------------------+---------+-----------+-----------+----------+-------+--------+-------+---------+--------+------+----------+
+   | Rcvr2_3\ :sup:`(a)`   | S-Band  | 1800      | 80        | 1        | 6.2'  | 90     | 30    | 54 cm   | 480    | 60   | B, D, E  |
+   +-----------------------+---------+-----------+-----------+----------+-------+--------+-------+---------+--------+------+----------+
+   | Rcvr4_6\ :sup:`(a)`   | C-Band  | 5000      | 80        | 1        | 2.5'  | 40     | 30    | 22 cm   | 480    | 60   | B, D, E  |
+   +-----------------------+---------+-----------+-----------+----------+-------+--------+-------+---------+--------+------+----------+
+   | Rcvr8_10\ :sup:`(a)`  | X-Band  | 9000      | 80        | 1        | 1.4'  | 16     | 24    | 12 cm   | 480    | 60   | B, D, E  |
+   +-----------------------+---------+-----------+-----------+----------+-------+--------+-------+---------+--------+------+----------+
+   | Rcvr12_18\ :sup:`(a)` | Ku-Band | 14000     | 320       | 1-2      | 53"   | 18     | 30    | 76 mm   | 320    | 60   | B, D, F  |
+   +-----------------------+---------+-----------+-----------+----------+-------+--------+-------+---------+--------+------+----------+
+   | RcvrArray18_26        | KFPA    | 25000     | 800       | 4-6      | 30"   | 9      | 30    | 43 mm   | 240    | 60   | B, D, F  |
+   +-----------------------+---------+-----------+-----------+----------+-------+--------+-------+---------+--------+------+----------+
+   | Rcvr26_40             | Ka-Band | 32000     | 320       | 1-2      | 23"   | 8      | 24    | 32 mm   | 180    | 60   | B, D, F  |
+   +-----------------------+---------+-----------+-----------+----------+-------+--------+-------+---------+--------+------+----------+
+   | Rcvr40_52\ :sup:`(a)` | Q-Band  | 43000     | 320       | 1-2      | 17"   | 6      | 30    | 25 mm   | 120    | 60   | B, D, F  |
+   +-----------------------+---------+-----------+-----------+----------+-------+--------+-------+---------+--------+------+----------+
+   | Rcvr68_92             | W_Band  | 77000     | 320       | 1-2      | 10"   | 3      | 30    | 14 mm   | 100    | 60   | B, D     |
+   +-----------------------+---------+-----------+-----------+----------+-------+--------+-------+---------+--------+------+----------+
+   | RcvrArray_75_115      | Argus   | 86000     | 320       | 10-11    | 8.6"  | 3      | 30    | 12 mm   | 100    | 60   | B, D     |
+   +-----------------------+---------+-----------+-----------+----------+-------+--------+-------+---------+--------+------+----------+
+
+
+.. admonition:: Footnotes for :numref:`tab-peak-focus-default-vals`
+
+    ``(a)``
+        Please note that the receiver name no longer correlates exactly with 
+        the actual frequency range of the receiver.
+
+
+    ``A`` 
+        Prime Focus: Peak Lengths are chosen to be 5x FWHM with a scan time 
+        of 15 seconds to have good sampling across the beam.
+
+    ``B``
+        Gregorian Focus: Peak Rates are chosen to give 2 seconds across the 
+        FWHM, Peak Times to give a scan time of 30 seconds (to allow vibrations
+        to settle).
+
+    ``C``
+        Prime Focus: Axial focus measurements aare not recommended for prime focus
+        receivers since the gain changes only slightly over the entire focus range.
+
+    ``D``
+        Gregorian Focus: The optimal focus length is 2x FWHM, but to allow for 
+        varying baselines we currently recommend ~3x FWHM, plus 40mm at each end
+        to allow for the fact that focus measurement is done with respect to focus
+        tracking curve, not last offset. The Focus Rate is then chosen to give a
+        60 s scan time. This is a trade-off between completing the focus scan quickly,
+        and allowing any potential scan-start anomalies to die away.
+
+    ``E``
+        Focus rates and lengths are conservative limits set by subreflector hardware
+        (the absolute maximum would be 600 mm/min and 600 mm).
+
+    ``F``
+        Multi-beam receivers uses a larger peak length to accomodate the beam separation
+        in azimuth.    

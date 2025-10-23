@@ -74,8 +74,9 @@ def AutoPeakFocus(source=None, location=None, frequency=None, flux=None,
         specified unless there is an issue with the default beams used for pointing. The KFPA and Argus
         have backup beam pairs that can be used for pointing and focus if there is an issue with one of the
         default beams. The valid beam pairs for the KFPA are ``beamName='4'``, ``refBeam='6'`` (default beam pair) 
-        or ``beamName='3'``, ``refBeam='7'`` (backup beam pair), while the valid beam pairs for Argus are ``beamName='10'``,
-        ``refBeam='11'`` (default beam pair) or ``beamName='14'``, ``refBeam='15'`` (backup beam pair). 
+        or ``beamName='3'``, ``refBeam='7'`` (backup beam pair), while the valid beam pairs for Argus are 
+        ``beamName='10'``, ``refBeam='11'`` (default beam pair) or ``beamName='14'``, ``refBeam='15'`` (backup
+        beam pair). 
 
     elAzOrder: bool
         If True, the elevation peak scans will be done first before the azimuth peak scans. This can be helpful
@@ -84,25 +85,25 @@ def AutoPeakFocus(source=None, location=None, frequency=None, flux=None,
         for which the azimuth pointing scans will be done before the elevation scans.
 
     calSeq: bool
-        If True, then for 'Rcvr68_92' (W-Band) the observations will be preceeded by calibration calSeq observations,
-        or for 'RcvrArray75_115' (Argus) the calibration “vanecal” observations. If False, then the calibration
+        If True, then for ``'Rcvr68_92'`` (W-Band) the observations will be preceeded by calibration calSeq observations,
+        or for ``'RcvrArray75_115'`` (Argus) the calibration “vanecal” observations. If False, then the calibration
         vanecal or calSeq observations will be skipped. This keyword is only applicable for receivers operating
-        above 66 GHz, and the associated calibration observations depend on the receiver ('Rcvr68_92',
-        'RcvrArray75_115', and 'Rcrv_PAR') and the particular Auto utilty procedure (see the individual receiver
+        above 66 GHz, and the associated calibration observations depend on the receiver (``'Rcvr68_92'``,
+        ``'RcvrArray75_115'``, and ``'Rcvr_PAR'``) and the particular Auto utilty procedure (see the individual receiver
         chapters for specifics). The default value is True.
+
+        .. todo:: 
+        
+            Check if Rcvr_PAR should be replaced by Rcvr_MBA1_5.
 
     gold: bool
         If True then only “Gold standard sources” (.i.e. sources suitable for pointing at high frequencies) will be
-        used by :func:`AutoPeakFocus() <astrid_commands.AutoPeakFocus>`. This parameter is ignored if the ``source`` parameter is specified.
+        used by :func:`AutoPeakFocus() <astrid_commands.AutoPeakFocus>`. This parameter is ignored if the ``source``
+        parameter is specified.
 
 
-    AutoPeakFocus will use the default scanning rates and lengths listed in Table 7.6.
-    
-    .. todo::
-
-        Copy Table 5.3 from Observer's Guide here. 
-
-        
+    AutoPeakFocus will use the default scanning rates and lengths listed in :numref:`tab-peak-focus-default-vals`.
+   
     .. admonition:: Sequence of events done by AutoPeakFocus() in full automatic mode, i.e. with no arguments
         :class: note
 
@@ -225,25 +226,25 @@ def AutoPeak(source=None, location=None, frequency=None, flux=None,
         for which the azimuth pointing scans will be done before the elevation scans.
 
     calSeq: bool
-        If True, then for 'Rcvr68_92' (W-Band) the observations will be preceeded by calibration calSeq observations,
-        or for 'RcvrArray75_115' (Argus) the calibration “vanecal” observations. If False, then the calibration
+        If True, then for ``'Rcvr68_92'`` (W-Band) the observations will be preceeded by calibration calSeq observations,
+        or for ``'RcvrArray75_115'`` (Argus) the calibration “vanecal” observations. If False, then the calibration
         vanecal or calSeq observations will be skipped. This keyword is only applicable for receivers operating
-        above 66 GHz, and the associated calibration observations depend on the receiver ('Rcvr68_92',
-        'RcvrArray75_115', and 'Rcrv_PAR') and the particular Auto utilty procedure (see the individual receiver
+        above 66 GHz, and the associated calibration observations depend on the receiver (``'Rcvr68_92'``,
+        ``'RcvrArray75_115'``, and ``'Rcvr_PAR'``) and the particular Auto utilty procedure (see the individual receiver
         chapters for specifics). The default value is True.
+
+        .. todo:: 
+
+            Check if Rcvr_PAR should be replaced by Rcvr_MBA1_5.
+
 
     gold: bool
         If True then only “Gold standard sources” (.i.e. sources suitable for pointing at high frequencies) will be
         used by AutoPeak(). This parameter is ignored if the ``source`` parameter is specified.
 
 
-    AutoPeak will use the default scanning rates and lengths listed in Table 5.6.
+    AutoPeak will use the default scanning rates and lengths listed in :numref:`tab-peak-focus-default-vals`.
     
-    .. todo::
-
-        Copy Table 5.6 from Observer's Guide here. 
-
-        
     .. admonition:: Sequence of events done by AutoPeak() in full automatic mode, i.e. with no arguments
         :class: note
 
@@ -366,25 +367,24 @@ def AutoFocus(source=None, location=None, frequency=None, flux=None,
 
 
     calSeq: bool
-        If True, then for 'Rcvr68_92' (W-Band) the observations will be preceeded by calibration calSeq observations,
-        or for 'RcvrArray75_115' (Argus) the calibration “vanecal” observations. If False, then the calibration
+        If True, then for ``'Rcvr68_92'`` (W-Band) the observations will be preceeded by calibration calSeq observations,
+        or for ``'RcvrArray75_115'`` (Argus) the calibration “vanecal” observations. If False, then the calibration
         vanecal or calSeq observations will be skipped. This keyword is only applicable for receivers operating
-        above 66 GHz, and the associated calibration observations depend on the receiver ('Rcvr68_92',
-        'RcvrArray75_115', and 'Rcrv_PAR') and the particular Auto utilty procedure (see the individual receiver
+        above 66 GHz, and the associated calibration observations depend on the receiver (``'Rcvr68_92'``,
+        ``'RcvrArray75_115'``, and ``'Rcvr_PAR'``) and the particular Auto utilty procedure (see the individual receiver
         chapters for specifics). The default value is True.
+
+        .. todo:: 
+
+            Check if Rcvr_PAR should be replaced by Rcvr_MBA1_5.
 
     gold: bool
         If True then only “Gold standard sources” (.i.e. sources suitable for pointing at high frequencies) will be
         used by AutoFocus(). This parameter is ignored if the ``source`` parameter is specified.
 
 
-    AutoFocus will use the default scanning rates and lengths listed in Table 5.3.
+    AutoFocus will use the default scanning rates and lengths listed in :numref:`tab-peak-focus-default-vals`.
     
-    .. todo::
-
-        Copy Table 5.3 from Observer's Guide here. 
-
-        
     .. admonition:: Sequence of events done by AutoFocus() in full automatic mode, i.e. with no arguments
         :class: note
 

@@ -405,16 +405,219 @@ benefit from the most appropriate weather.
 Other DSS Control Parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A list of the most relevant parameters can be found in Appendix~\ref{appendix:dsscontrolparameters}.
+A list of the most relevant parameters is provided below. Any changes to these parameters must
+be requested by contacting the GBT scheduler via the :email:`DSS helpdesk <helpdesk-dss@nrao.edu>`.
 
-.. todo:: Add these parameters here.
+* **Required Minimum Duration**
+    Minimum time for scheduling a session.
+
+* **Required Maximum Duration**
+    Maximum time for scheduling a session.
+
+* **Time Between Sessions**
+    Time which must elapse between the end of one scheduled session period and the start of the
+    next, typically used to allow the observer to sleep or reduce data.
+
+* **Minimum Effective System Temperature** (:math:`\xi`)
+    Some observers may wish to have their project scheduled even if the weather is not ideal.
+    For example, projects that use very short integration times are dominated by overheads,
+    not the radiometer equation, and so they may wish to get a scoring boost in order to allow
+    observing under a wider range of weather conditions. To implement this desire, we allow 
+    observers to modify the minimum effective system temperature, :math:`T_{\text{sys}}^{'}e^{\tau^{'}}`.
+    This value usually has a default set by the DSS, and depends on observing frequency. Here,
+    :math:`T_{\text{sys}}` is the atmospheric system temperature and :math:`\tau` is the opacity.
+    Recall the atmospheric observing efficiency is
+    
+    .. math::
+        
+        \eta_{\text{atm}} = \left(\frac{{T_{\text{sys}}^{'}e^{\tau'}}}{{T_{\text{sys}}e^{\tau}}}\right)^2,
+    
+    where the prime denotes the minimum value. The minimum effective system temperature can be 
+    scaled by a factor :math:`\xi` to either improve or degrade the atmospheric conditions for 
+    a particular session. The default is :math:`\xi = 1.0`. You needs to use caution when modifying
+    this parameter, especially because it will have a different effect at different frequencies.
+    For example, doubling the minimum effective system temperature will have a much larger effect
+    at Ku-band than at K-band.
+    
+    The parameter :math:`\xi` enters into the scoring in two ways.  It affects the computation of 
+    overall observing efficiency, :math:`\eta_{\text{total}} = \eta_{\text{atm}} \times \eta_{\text{tracking}} \times \eta_{\text{surface}}`
+    and it also enters by modifying the threshold, minimum value.
+    
+* **Tracking Error Threshold, Source Size, and Tracking Efficiency**
+    To control the effect of the expected tracking error on scheduling a session, you should be 
+    able to modify either of two values:
+    
+    * :math:`f_{\text{max}}`
+        the tracking error limit in units of HPBW (default 0.22 for Rcvr68_92, 0.4 for Rcvr_PAR and
+        0.2 for all other receivers)}
+    * :math:`\theta_{\text{src}}`
+         the nominal source size in units of arc seconds (default 0.0)
+
+    The tracking error is called :math:`f`, and the tracking error limit is called :math:`f_{\text{max}}`.
+    If :math:`f > f_{\text{max}}` the observation is too inefficient and does not get scheduled. Keep in
+    mind that the tracking error :math:`f` comes into play not only in regard to the limit, but also in 
+    the scoring equation. The value of :math:`f` is ultimately a function of wind speed and observing
+    frequency: 
+
+    .. math:: 
+    
+        f = \frac{\sigma}{\theta_b},
+
+    where
+
+    .. math:: 
+
+        \left(\frac{\sigma}{\text{arcsec}}\right) \simeq \sqrt{\sigma_0^2+\left(\frac{|v|}{3.5 {\text{ m s}}^{-1}}\right)^4}    
+    
+    (see Eq. 1, :cite:alp:`Maddalena2014`) and
+
+    .. math:: 
+
+        \left(\frac{\theta_b}{\text{arcsec}}\right) \simeq \frac{748}{\nu},
+    
+    with :math:`\theta_b` being the HPBW, :math:`\sigma_0` being the rms tracking error in the absence
+    of wind, equal to 1.32" at night and 2.19" during the day, and :math:`\nu` being the observing 
+    frequency in GHz.
+
+    A value :math:`f_{\text{max}} = 0.2` assures observers that their flux uncertainty due to tracking
+    errors will be no more than 10%, assuming they are observing a point source (:math:`\theta_{\text{src}} = 0.0`).
+    Observers who wish to do better than 10% may decide to specify a smaller value of :math:`f_{\text{max}}`. For
+    example :math:`f_{\text{max}} = 0.14` assures no more than 5% flux uncertainty due to tracking errors.
+
+    Some observers may wish to relax the tracking restrictions because their source is extended, not point-like.
+    So the most natural way for them to ease the constraint is to specify a source size: :math:`\theta_{\text{src}}`.
+    The default value is :math:`\theta_{\text{src}} = 0.0"`. If the user specifies :math:`\theta_{\text{src}}` then
+    the tracking error :math:`f` should be calculated as follows:
+    
+    .. math::
+
+        f = \frac{\sigma}{\theta_{\text{obs}}}, 
+    
+    where
+
+    .. math::
+
+        \theta_{\text{obs}} = \sqrt{\theta_{\text{src}}^2 + \theta_{\text{b}}^2}
+    
+
+    This new value for the tracking error must then be used in calculating the tracking efficiency,
+    :math:`\eta_{\text{tr}}`. So changing the source size impacts the scoring equation through both
+    the tracking efficiency and the tracking error limit.
+
+    To summarize, most observers will not need to modify :math:`f_{\text{max}}` or :math:`\theta_{\text{src}}`.
+    If they do, it would be most sensible to modify only one or the other. If observing point sources, the
+    observer may wish to change :math:`f_{\text{max}}` to tighten or loosen the requirements. If observing 
+    extended sources, the observer should stick with :math:`f_{\text{max}} = 0.2` and change the value of 
+    :math:`\theta_{\text{src}}`.
+
+    Specifying both :math:`f_{\text{max}}` and :math:`\theta_{\text{src}}` need not be forbidden by the 
+    software, but it is probably not the best approach.
+  
+
+* **Irradiance** 
+    Section 3.4.5 of DSPN5 describes the concept of irradiance, an important concept for continuum observations
+    above 2 GHz.  Most continuum observations prefer the default values of irradiance (300 W M\ :math:`^{-2}`),
+    there are times when the value should be tunable, and any value of irradiance may be used for the DSS.
+
+    .. todo:: 
+
+    Copy the section from the DSPN here, or make it otherwise available and add reference.
+
+   
+* **Elevation Limit**
+    This parameter allows the observer to modify the frequency dependent hard elevation limit, and instead 
+    set it to any value (in degrees). When using this parameter, the hour angle scoring factor will be set 
+    to zero when the source for a session is less than the minimum allowed elevation and set to one otherwise.
+    
+* **Solar Avoidance**
+    The angle by which the project must avoid the sun. The default here is 0.
+    
+* **Time of Day**
+    Time of day restrictions for this session. Options are: 
+    * Any Time of Day (default)
+    * RFI (8pm - 8am)
+    * PTCS (sunset - sunrise+2hours).
+    
+* **Transit**
+    The central coordinates of this session must pass through transit, with  at least 25% of the session on
+    either side of the transit window.
+    
+* **LST Exclude/Include**
+    This allows the session to exclude/include LST ranges when scheduling.  More than one range can be given,
+    but they must be listed sequentially.
+    
+* **Keyhole Limit**
+    Boolean to set a maximum elevation, specified by the sessions primary (first in list) receiver.  When 
+    set to true, sessions not requiring Mustang will not be scheduled when their source will be above 80 degrees
+    in elevation during the duration of the telescope period; Mustang observations will not be scheduled when
+    the source will be above 78 degrees in elevation during the duration of the telescope period.
+    
+* **Good Atmospheric Stability (GAS)**
+    The atmospheric stability limit, :math:`\ell_{\text{st}}`, is a factor in the scoring algorithm (see DSPN 5).
+    It is used only for continuum observations which are sensitive to atmospheric fluctuations. Currently, a 
+    forecast downward irradiance, :math:`I_{\text{down}}`, threshold value of 300 W/mi\ :math:`^2`, is used to 
+    derive :math:`\ell_{\text{st}}`. However, a different metric has been developed for the 90 GHz Bolometer 
+    array, MUSTANG, that uses the atmospheric system temperature (including hydrosols) at the target position
+    elevation. GAS is used to set the value of :math:`\ell_{\text{st}}` for MUSTANG only and is ignored for all 
+    other receivers, as follows:
+    
+    For MUSTANG **only** derive the atmospheric stability limit by first calculating the zenith atmospheric 
+    system temperature at 90 GHz. (This includes hydrosols, the default in the CLEO command line interface,
+    and is described in equation 7 in DSPN 5.)
+   
+    .. todo:: 
+
+        Either add the eq.7 section from DSPN5 here or make DSPN5 available otherwise.
+
+    The atmospheric system temperature is the last term on the right hand side of the equation, 
+
+    .. math:: 
+
+        T_{\text{sys}}^{\text{atm}}(El = 90^\circ) = T_{\text{k}}\left(1-e^{\left(EL=90^\circ\right)}\right),
+
+    then derive the low opacity atmospheric system temperature}
+        
+    .. math:: 
+
+        T_{\text{sys}}^{\text{atm}}(El = 90^\circ)/Sin(El)
+    
+    For MUSTANG, assume a frequency of 90 GHz. 
+  
+    .. math::
+
+
+        \begin{align}
+            \text{GAS is TRUE ("good"), i.e. } 
+            \begin{cases}
+                T_\text{sys}^\text{atm}(El = 90^\circ)/Sin(El) <  35K  & \rightarrow \quad\ell_\text{st}=1 \\
+                \text{otherwise} & \rightarrow \quad\ell_\text{st}=0
+            \end{cases}\\
+            %
+            \text{GAS is FALSE ("usable"), i.e.} 
+            \begin{cases}
+                T_\text{sys}^\text{atm}(El = 90^\circ)/Sin(El) <  50K  & \rightarrow \quad\ell_\text{st}=1 \\
+                \text{otherwise} & \rightarrow \quad\ell_\text{st}=0
+            \end{cases}
+        \end{align}
+    
+    For all other receivers derive the atmospheric stability limit as usual: 
+    
+    .. math:: 
+
+        \ell_\text{st} =  
+        \begin{cases}
+            1   & \text{if } I_\text{down} < 300 \text{W/mi}^2 \\
+            0   & \text{else}
+        \end{cases}
+    
+
 
 There are a number of additional controls and parameters that can be used within the DSS system which
-are fully described in \citet{ONeil2011}.
+are fully described in DSPN10.6.
 
-.. todo:: Add these descriptions here.
+.. todo:: 
 
-Any changes to these parameters must be requested by contacting the GBT scheduler via the :email:`DSS helpdesk <helpdesk-dss@nrao.edu>`.
-
+    It is currently unclear is all parameters described in DSPN10.6 have actually 
+    been implemented in the DSS. Eventually we would want to copy the relevant content from DSPN10.6 here.
 
 

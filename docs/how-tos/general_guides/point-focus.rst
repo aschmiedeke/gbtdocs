@@ -36,7 +36,7 @@ for filled arrays.  An :math:`f_{max}` value of 0.2 assures observers that their
 uncertainty due to tracking errors is no more than 10%, assuming they are observing a point
 source.
 
-.. _tab-peak-focus:
+.. _tab-peak-focus-recommendations:
 .. table:: Observing wind limits using DSS default parameters and suggested time periods 
    between pointing and focus observations
 
@@ -82,7 +82,7 @@ source.
 .. [#] It is not recommended to observe with Argus during the day.
 
 
-:numref:`tab-peak-focus` lists wind limits using default DSS parameters. You may wish to alter some parameters 
+:numref:`tab-peak-focus-recommendations` lists wind limits using default DSS parameters. You may wish to alter some parameters 
 in the DSS to better suit your observing requirements. For example, pointing may be relaxed for extended sources 
 (i.e. set :math:`\theta_{src}>0` in the DSS), or more tightly constrained (a value of :math:`f_{max}=0.14` in the
 DSS assures no more than 5% flux uncertainty due to tracking errors). You may request changes to DSS control
@@ -90,4 +90,14 @@ parameters by contacting your GBT project friend and emailing the :email:`DSS he
 
 For further information on DSS control parameters see :ref:`references/dss:Other DSS Control Parameters`. 
 See DSS Project Note 18.1 :cite:p:`Maddalena2014` for tracking performance and parameters used in Equation :eq:`eq-wind`.
+
+
+:numref:`tab-peak-focus-default-vals`  lists the default scanning rates and lengths for all receivers.
+
+.. include:: /material/tables/peakFocus.tab
+
+
+.. todo:: 
+
+    Move this table to an appropriate place in the reference section.
 

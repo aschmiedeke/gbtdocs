@@ -706,8 +706,7 @@ of ``vhigh`` is not recommended for frequencies where there can be large amounts
 
    The default value is ``0.0``
 
-.. todo:: Add context from Appendix C from observer guide.
-
+For more information on ``vhigh`` see :ref:`here <vlow-vhigh-more-info>`.
 
 
 ``vlow`` (float)
@@ -722,6 +721,32 @@ of ``vlow`` is not recommended for frequencies where there can be large amounts 
 
 .. todo:: Add context from Appendix C from observer guide.
 
+
+
+.. _vlow-vhigh-more-info:   
+.. admonition:: More information on vlow and vhigh
+
+   The configuration keywords ``vlow`` and ``vhigh`` give the range of velocities of all sources to
+   be observed. This information is used to set various filters in the system that will simultaneously
+   cover the required range of velocity. Setting the velocity for each specific source is done later 
+   in the SB. For galactic sources where the range of velocities is rather small it is usually best
+   to set both ``vlow`` and ``vhigh`` to zero.
+
+   When strong RFI is present it is best not to use ``vlow`` and ``vhigh``. The use of ``vlow`` and
+   ``vhigh`` can cause the GBT IF system to have a larger IF bandwidth than is necessary for a single 
+   source. This can let parts of the IF system be unnecessarily affected by RFI. The observers might 
+   need to reconfigure after each source if the change in velocity is larger than the bandwidth of a
+   filter.
+
+   An example of how ``vlow`` and ``vhigh`` can be used is as follows. Suppose that you are looking for 
+   water masers in extragalactic AGN. Furthermore, let's say that you are looking at 100 candidates with
+   velocities from 1,000 km/s to 40,000 km/s. Then you would set ``vlow=1000.0`` and ``vhigh=40000 km/s``
+   and will not change the IF configuration when you change sources.
+
+   Note that if ``vdef='Red'`` (i.e., redshift), then you must give the redshift parameter "z" as the 
+   values for ``vlow`` and ``vhigh`` instead of velocity.
+
+   You GBT project friend can help you decide if you should use ``vlow`` and ``vhigh``.
 
 
 ``xfer`` (str)
@@ -778,4 +803,121 @@ Advanced Use of the ``restfreq`` Keyword
 ''''''''''''''''''''''''''''''''''''''''
 
 .. include:: script_descriptions/adv_restfreq_config.rst
+
+
+
+Introduction to Spectral Windows
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Several simultaneous frequency bands may be specified with a list of rest frequencies and offsets 
+(keywords ``restfreq``, ``deltafreq``). If using a backend other than :ref:`VEGAS`, the ``nwin``
+(number of spectral windows) keyword will also need to be specified. Each spectral window includes
+both polarizations. i.e., if you specify one window, you get two IF systems routed to the back end
+device, one for each polarization; if you specify two windows, you get IFs, and so forth.
+
+The configuration software tries to put the midpoint of the total frequency range spanned by all
+windows at the center of the nominal IF1 band so as to use the narrowest IF bandpass filters that
+will pass the desired range of frequencies. In some uncommon cases this is not possible, so the IF
+bandwidth must be increased to pass the desired range of frequencies. 
+
+You specify the rest frequencies (``restfreq`` keyword) and may also specify a range of radial 
+velocities (``vlow`` and ``vhigh`` keywords). The various IF filters are set to  include the range
+of frequencies in the local frame required by the radial velocity range. The configuration software 
+predicts the local frequency for each spectral window based on the rest frequencies and the radial 
+velocity. During observing the tracking LO will correctly track the doppler tracking frequecy set 
+by the ``dopplertrackfreq`` keyword.  If ``dopplertrackfreq`` is not provided, the default value 
+will be the first spectral window specified by the ``restfreq`` keyword (if not using the advanced
+restfreq syntax). Because there is only one tracking LO, the other spectral windows are set up with 
+frequency offsets in the local frame with respect to the doppler tracking frequency. When observing 
+at a variety of high velocities, one should run a configuration for each change of velocity (i.e., 
+do not rely on just changing the velocity in the LO1 manager), and one should set ``vlow=vhigh``.  
+
+Note that the ``deltafreq`` keyword gives frequency offsets that are applied in the local (or
+topocentric) frame i.e., it is applied as an offset in the IF system. For example, if 
+:math:`V_{\text{frame}}` is velocity of the reference frame, :math:`V` is source velocity in that 
+frame, :math:`\nu_{\text{rest}}` is the rest frequency of the line and we use the Radio definition 
+of velocity then the topocentric frequency will be
+   
+.. math:: 
+
+    \nu_{\text{topo}} = \nu_{\text{rest}} \left( 1 - \frac{\left(V+V_{\text{frame}}\right)}{c} \right) + {\text{deltafreq}}
+
+Finally note that the expert user may specify any of the IF system conversion frequencies and total 
+IF system bandwidth, overriding the calculations done by the configuration software (``ifbw``, 
+``if0freq``, ``lo1bfreq``, ``lo2freq``, and ``if3freq`` keywords). This option may be needed in some 
+peculiar cases. Of course one needs a good knowledge of the \gls{IFsys} to make use of this option. 
+
+Array Receiver Spectral Windows
+'''''''''''''''''''''''''''''''
+
+Array Receivers can be configured with a variety of spectral windows. The *configtool*, part of AstrID,
+sets up these spectral windows, and a new syntax was required to specify more complex configurations.
+Each feed has the potential to be tuned to a different rest frequency. For the :ref:`KFPA` receiver,
+a special ``'all'`` beam mode is defined which uses all 7 beams, plus one beam tuned to a second, 
+different spectral window. This stretches the syntax of the *configtool* ``restfreq`` and ``deltafreq``
+keywords. In order to support these modes within the *configtool*, expanded values and intepretations
+of ``nwin``, ``deltafreq`` and ``restfreq`` were implemented.
+
+The syntax uses a python dictionary for the ``restfreq`` and ``deltafreq`` keyword values for KFPA
+configurations. The ``restfreq`` dictionary maps beams and frequencies of the spectral windows. The 
+delta frequency is a map of ``deltafreq`` to ``restfreq``. The list of values syntax continues to be 
+supported for simpler modes. When the dictionary is used to specify the rest frequencies, this 
+dictionary must contain a key named ``DopplerTrackFreq``. The value assigned to this key is the rest
+frequency that will be used by the LO as the Doppler tracking frequency.
+
+.. todo:: 
+
+   Double-check if this should be ``DopplerTrackFreq`` or ``dopplertrackfreq``.
+
+
+
+The following examples show how to specify *configtool* frequency settings:
+
+* **Example 1**
+
+  Requests that beams 1,2,3 and 4 have a rest frequency of 24000~MHz, that beams 5,6,7 have a rest 
+  frequency of 23400 MHz and the 2nd beam 1 IF band has a rest frequency of 25000 MHz. There are no
+  delta frequencies used in this observation. For non zero delta frequencies, the ``deltafreq`` 
+  values should be specified in the same manner as the ``restfreq``.
+
+  .. literalinclude:: scripts/spw_example1.py
+    :language: python
+
+
+* **Example 2**
+
+  For simple configurations the syntax for the existing receivers would also be supported. This 
+  results in the routing of 4 beams, 2 polarizations with each tuned to a rest frequency of 24000 MHz.
+
+  .. literalinclude:: scripts/spw_example2.py
+    :language: python
+
+
+* **Example 3**
+
+  Comparison of two *configtool* inputs where ``restfreq`` is a list, and input with the dictionary 
+  syntax.  The two configurations are equal.
+
+  .. literalinclude:: scripts/spw_example3a.py
+    :language: python
+
+  .. literalinclude:: scripts/spw_example3b.py
+    :language: python
+
+    
+* **Example 4**
+
+  8 different rest frequencies specified.
+    
+  .. literalinclude:: scripts/spw_example4.py
+    :language: python
+
+
+* **Example 5**
+
+  A configuration that specifies delta frequencies.
+    
+  .. literalinclude:: scripts/spw_example5.py
+    :language: python
+  
 
