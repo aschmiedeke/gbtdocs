@@ -178,6 +178,10 @@ Run the ``1_m2setup`` script in Astrid.
 
 #. It's a good idea to check the time streams (see the :ref:`check time streams section <how-tos/receivers/mustang2/mustang2_obs:4.5 Checking Time Streams>` for instructions and examples.)
 
+.. note::
+
+    Note that in February ALMA is shutdown so it isn't as useful to observe ALMA grid cals for your flux calibrator source (which we recommend you use as your OOF source). 
+
 3.7 Quick daisy on pointing calibrator
 --------------------------------------
 

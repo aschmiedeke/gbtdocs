@@ -71,7 +71,13 @@ You are expected to have your calibrator sources planned out **at least a few ho
 
 3.1 Flux calibrators
 ====================
-Find those that are closest to your source. You can use any of the ALMA grid cals listed in the following catalog: ``/users/penarray/Public/Catalogs/alma_gridcal.cat``. Uranus and Neptune, especially Uranus, are also good flux calibrators. You will need to observe at least one of these during your observing session to ensure flux calibration. Preferably 2-3, but if you are ok with a 10-20% error in your flux measurement one calibrator is ok.
+You will need to observe at least one of flux calibrator during your observing session to ensure flux calibration. Preferably you would observe 2-3 flux calibrators, but if you are ok with a 10-20% error in your flux measurement one calibrator is ok. In general, you will want to find the flux calibrators that are closest to your source.
+
+Where can you find flux calibrators? You can use any of the ALMA grid cals listed in the following catalog: ``/users/penarray/Public/Catalogs/alma_gridcal.cat``. You can check the `ALMA Calibrator Source Catalogs <https://almascience.nrao.edu/sc/>`_ for the current flux density levels in Band 3 of the ALMA grid calibrators listed in ``/users/penarray/Public/Catalogs/alma_gridcal.cat`` (the flux density values listed in the CLEO catalog are quite old). Uranus and Neptune, especially Uranus, are also good flux calibrators. 
+
+.. note::
+
+	Note that in February ALMA is shutdown so it isn't as useful to observe ALMA grid cals. Best to observe something else like a planet."
 
 3.2 OOF sources
 ===============

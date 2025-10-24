@@ -59,3 +59,4 @@ Here are the current options for obtaining and working with MUSTANG-2 data. Unle
     :hidden:
 
     data/mustang2_deliverables
+    data/mustang2_find_src
