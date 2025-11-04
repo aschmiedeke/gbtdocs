@@ -3,7 +3,7 @@ AutoOOF Strategy
 
 AutoOOF is recommended for observing at frequencies of 40 GHz and higher and only available 
 for use with ``Rcvr26_40`` (Ka-Band), ``Rcvr40_52`` (Q-Band), ``Rcvr68_92`` (W-Band), 
-``RcvrArray75_115`` (Argus), and ``Rcvr_PAR`` (MUSTANG-2). For the associated data display,
+``RcvrArray75_115`` (Argus), and ``Rcvr_MBA1_5`` (MUSTANG-2). For the associated data display, see
 :ref:`references/astrid:OOF Data Display`.  
 
 .. note:: 
