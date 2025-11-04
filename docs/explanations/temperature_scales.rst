@@ -222,7 +222,7 @@ fills. :math:`T^*_R` corrects for both forward and rearward losses.
 :math:`\eta_{fss}` is the fraction of power in the forward :math:`2\pi` direction that is
 contained within the diffraction pattern of the telescope including the error beam pattern."
 
-- :cite:t:`Frayer2014` 
+- :cite:t:`Frayer2019` 
 
 
 .. note::

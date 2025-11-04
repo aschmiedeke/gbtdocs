@@ -787,10 +787,11 @@ Introduction to Spectral Windows
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Several simultaneous frequency bands may be specified with a list of rest frequencies and offsets 
-(keywords ``restfreq``, ``deltafreq``). If using a backend other than :ref:`VEGAS`, the ``nwin``
-(number of spectral windows) keyword will also need to be specified. Each spectral window includes
-both polarizations. i.e., if you specify one window, you get two IF systems routed to the back end
-device, one for each polarization; if you specify two windows, you get IFs, and so forth.
+(keywords ``restfreq``, ``deltafreq``). If using a backend other than :ref:`references/backends/vegas:VEGAS`,
+the ``nwin`` (number of spectral windows) keyword will also need to be specified. Each spectral 
+window includes both polarizations. i.e., if you specify one window, you get two IF systems 
+routed to the back end device, one for each polarization; if you specify two windows, you get IFs,
+and so forth.
 
 The configuration software tries to put the midpoint of the total frequency range spanned by all
 windows at the center of the nominal IF1 band so as to use the narrowest IF bandpass filters that

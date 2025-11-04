@@ -135,7 +135,7 @@ including comets. The position is updated each day prior to scheduling. On the p
 session is automatically updated in this manner.
 
 Many observers find it helpful to use a sky-plotting tool to help plan their observations
-and keep track of target locations on the sky. The CLEO :ref:`<references/cleo:Scheduler and Skyview`
+and keep track of target locations on the sky. The CLEO :ref:`references/cleo:Scheduler and Skyview`
 tool, which runs on Linux systems in Green Bank and can be run 
 :ref:`remotely through VNC or FastX <how-tos/infrastructure/remote-connection:How to connect remotely to the GBO network>`,
 is one such tool that allows a GBT user to plot target locations on the sky for any date and time. This

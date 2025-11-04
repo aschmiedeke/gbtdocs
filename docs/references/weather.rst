@@ -13,7 +13,7 @@ Winds
 
 Winds can set the feed arm into motion. The current recommendations for wind limits can be found in 
 :ref:`how-tos/general_guides/point-focus:Pointing and Focusing Strategies` (specifically in 
-:numref:`tab-peak-focus`). 
+:numref:`tab-peak-focus-recommendations`). 
 
 Ries (PTCS-PN 68.1) show the cumulative percentages when wind speeds are below a certain value:
 
