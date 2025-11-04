@@ -254,9 +254,7 @@ data, and so the observer must be careful to inspect and average the data select
 
 * Retrieve the data: W3OH.fits (http://safe.nrao.edu/wiki/pub/GB/Data/GBTIDLExampleAndSampleData/W3OH.fits)
 
-  .. todo:: 
-    
-    Make the file available for download here.
+  .. todo:: Make the file available for download here.
 
   
 * Example data reduction:
@@ -380,9 +378,7 @@ spectrum to disk.
 
 * Retrieve the data: IC1481.fits (http://safe.nrao.edu/wiki/pub/GB/Data/GBTIDLExampleAndSampleData/IC1481.fits)
   
-  .. todo:: 
-    
-    Make the file available for download here.
+  .. todo:: Make the file available for download here.
 
 * Simple reduction of this data set:
     Get the data into GBTIDL and accumulate some of the data:

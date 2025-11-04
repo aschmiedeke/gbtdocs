@@ -55,7 +55,5 @@ See DSS Project Note 18.1 :cite:p:`Maddalena2014` for tracking performance and p
 .. include:: /material/tables/peak-focus-default-vals.tab
 
 
-.. todo:: 
-
-    Move this table to an appropriate place in the reference section.
+.. todo:: Move this table to an appropriate place in the reference section.
 

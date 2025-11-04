@@ -92,9 +92,7 @@ def AutoPeakFocus(source=None, location=None, frequency=None, flux=None,
         ``'RcvrArray75_115'``, and ``'Rcvr_PAR'``) and the particular Auto utilty procedure (see the individual receiver
         chapters for specifics). The default value is True.
 
-        .. todo:: 
-        
-            Check if Rcvr_PAR should be replaced by Rcvr_MBA1_5.
+        .. todo:: Check if Rcvr_PAR should be replaced by Rcvr_MBA1_5.
 
     gold: bool
         If True then only “Gold standard sources” (.i.e. sources suitable for pointing at high frequencies) will be
@@ -233,9 +231,7 @@ def AutoPeak(source=None, location=None, frequency=None, flux=None,
         ``'RcvrArray75_115'``, and ``'Rcvr_PAR'``) and the particular Auto utilty procedure (see the individual receiver
         chapters for specifics). The default value is True.
 
-        .. todo:: 
-
-            Check if Rcvr_PAR should be replaced by Rcvr_MBA1_5.
+        .. todo:: Check if Rcvr_PAR should be replaced by Rcvr_MBA1_5.
 
 
     gold: bool
@@ -374,9 +370,7 @@ def AutoFocus(source=None, location=None, frequency=None, flux=None,
         ``'RcvrArray75_115'``, and ``'Rcvr_PAR'``) and the particular Auto utilty procedure (see the individual receiver
         chapters for specifics). The default value is True.
 
-        .. todo:: 
-
-            Check if Rcvr_PAR should be replaced by Rcvr_MBA1_5.
+        .. todo:: Check if Rcvr_PAR should be replaced by Rcvr_MBA1_5.
 
     gold: bool
         If True then only “Gold standard sources” (.i.e. sources suitable for pointing at high frequencies) will be
@@ -462,9 +456,7 @@ calSeq, gold, nseq="optional"):
         and the associated calibration observations depend on the receiver ('Rcvr68 92', 'RcvrArray75_115', and
         'Rcrv_PAR'; see the individual receiver chapters for specifics).
 
-        .. todo:: 
-            
-            Replace with links to the receiver reference sections.
+        .. todo:: Replace with links to the receiver reference sections.
 
 
     Examples
@@ -489,10 +481,8 @@ calSeq, gold, nseq="optional"):
         software is customized per receiver based on the default parameters (e.g., avoid running an AutoOOF at
         a non-default frequency or pre-configuring and running with the configuration=False keyword).
 
-    Todo
-    ----
-
-    Add receiver specific instructions in the Hardware segment of the reference guides.
+    
+    .. todo:: Add receiver specific instructions in the Hardware segment of the reference guides.
     
     """
 
@@ -1442,11 +1432,7 @@ def DecLatMap(location, hLength, vLength, hDelta, scanDuration,
                   360.0)                                    # 6 minutes per column
 
 
-    Todo
-    ----
-    Add a plot showing the actual trajectory of the antenna on the sky. Figure 7.4 in the Observer's
-    Guide unfortunately shows the inverted RA axis, providing the impression the scan is obtained in
-    negative RA direction.
+    .. todo:: Add a plot showing the actual trajectory of the antenna on the sky. Figure 7.4 in the Observer's Guide unfortunately shows the inverted RA axis, providing the impression the scan is obtained in negative RA direction.
 
     """
 
@@ -1590,12 +1576,7 @@ def PointMap(location, hLength, vLength, hDelta, vDelta,
                  Offset('J2000', 0.00, 10.0 / 3600.0, cosv=True),       # 10 arcsec vertical spacing
                  30.0)                                                  # 30 second scan length
 
-    Todo
-    ----
-    Add a plot showing the actual trajectory of the antenna on the sky. Figure 5.5 in the Observer's
-    Guide unfortunately shows the inverted RA axis, providing the impression the scan is obtained in
-    negative RA direction. The figure itself it correct, but I think it can be misleading to observers 
-    who may not pay attention to the x-axis.
+    .. todo:: Add a plot showing the actual trajectory of the antenna on the sky. Figure 5.5 in the Observer's Guide unfortunately shows the inverted RA axis, providing the impression the scan is obtained in negative RA direction. The figure itself it correct, but I think it can be misleading to observers who may not pay attention to the x-axis.
 
     """
 
@@ -1686,10 +1667,7 @@ def Daisy(location, map_radius, radial_osc_period, radial_phase, rotation_phase,
     view. The Daisy scan will produce an approximately closed circular pattern on the sky after 22 radial
     oscillation periods.
 
-    .. todo::
-
-        Add figure 5.6 from the Observer's Guide above. Same issue with the x-axis here as in the figures
-        for RALongMap, DecLatMap etc.
+    .. todo:: Add figure 5.6 from the Observer's Guide above. Same issue with the x-axis here as in the figures for RALongMap, DecLatMap etc.
 
 
     
@@ -1796,10 +1774,7 @@ def Daisy(location, map_radius, radial_osc_period, radial_phase, rotation_phase,
                   beamName='1', coordMode='J2000', cos_v=True, calc_dt=0.2)
 
 
-    Todo
-    ----
-    Add figure 5.7 from Observer's Guide here. Same issue with the x-axis here as in the figures for
-    RALongMap, DecLatMap etc.
+    .. todo:: Add figure 5.7 from Observer's Guide here. Same issue with the x-axis here as in the figures for RALongMap, DecLatMap etc.
 
     """
 
@@ -1842,10 +1817,7 @@ def Annotation(key, value=None, comment=None):
         Annotation('SRCTYPE', value='PNe', comment='Type of source observed.')
 
 
-    Todo
-    ----
-    The Observer's Guide does not mention comment as a parameter and does not explicitely state value in the command.
-    Exact code usage needs to be checked.
+    .. todo:: The Observer's Guide does not mention comment as a parameter and does not explicitely state value in the command. Exact code usage needs to be checked.
 
     """
 

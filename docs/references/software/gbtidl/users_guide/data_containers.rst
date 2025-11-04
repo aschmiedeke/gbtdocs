@@ -26,9 +26,7 @@ stores the order of the polynomial for the baseline to be fit, so that value doe
 each time the baseline procedure is run. The :idl:pro:`gstatus` procedure summarizes the current contents of the
 ``!g`` structure. Many users will never need to interact directly with the ``!g`` structure. 
 
-.. todo:: 
-
-    Add reference to the ``!g`` table section
+.. todo::  Add reference to the ``!g`` table section
     
 A second global structure called ``!gc`` is used to store various constants . This structure is read-only. It’s
 contents are listed in the following table.
@@ -95,9 +93,7 @@ set the rest frequency by hand. The change can be made using the following comma
 Another example involves setting the y-axis label on the plotter. For more information about changing
 axis labels, see Appendix H.
 
-.. todo::
-
-   Replace this with the correct reference.
+.. todo:: Replace this with the correct reference.
 
 .. code-block:: IDL   
 

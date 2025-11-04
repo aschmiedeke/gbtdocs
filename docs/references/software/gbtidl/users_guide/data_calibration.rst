@@ -12,9 +12,7 @@ used to retrieve and calibrate the data. GBT calibration can be complex. These p
 give results accurate to 10% - 20%. If you require higher precision, refer to the document Calibration of
 Spectral Line Data in GBTIDL.
 
-.. todo:: 
-
-   Retrieve the document "Calibration of Spectral Line Data in GBTIDL and add it to GBTdocs.
+.. todo::  Retrieve the document "Calibration of Spectral Line Data in GBTIDL and add it to GBTdocs.
 
 
 For spectral line data, the following calibration procedures are available:

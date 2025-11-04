@@ -843,9 +843,7 @@ supported for simpler modes. When the dictionary is used to specify the rest fre
 dictionary must contain a key named ``DopplerTrackFreq``. The value assigned to this key is the rest
 frequency that will be used by the LO as the Doppler tracking frequency.
 
-.. todo:: 
-
-   Double-check if this should be ``DopplerTrackFreq`` or ``dopplertrackfreq``.
+.. todo::  Double-check if this should be ``DopplerTrackFreq`` or ``dopplertrackfreq``.
 
 
 
