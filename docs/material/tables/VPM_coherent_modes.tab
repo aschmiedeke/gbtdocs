@@ -1,0 +1,13 @@
+.. _tab-vpm-coherent-modes:
+.. csv-table:: Coherent Modes
+    :file: /material/tables/VPM_coherent_modes.csv
+    :header-rows: 1
+    :class: longtable
+    :widths: 1 1 1 1 1 1
+
+.. attention::
+
+    ** Do not use longer integration times in coherent dedispersion modes. Due to the way blocks
+    of data are sized for FFTs on the GPUs, longer integration times can result in artifacts in
+    the final data products.**
+

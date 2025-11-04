@@ -15,7 +15,7 @@ The above example will configure for the following:
 * VEGAS as the backend detector using circular polarization without cross-polarization 
   products [``backend='VEGAS', ``pol='Circular'``]
 
-* Mode 21 of VEGAS (see Table XXX). This mode is defined by a bandwidth of 23.44 MHz,
+* Mode 21 of VEGAS (see :numref:`tab-vegas-modes`). This mode is defined by a bandwidth of 23.44 MHz,
   8192 spectral channels in the eight subband mode of VEGAS [``bandwidth=23.44``,
   ``nchan=8192``]
   
@@ -23,8 +23,6 @@ The above example will configure for the following:
 
       Not specifying ``vegas.subband`` for a bandwidth of 23.44~MHz will 
       default to ``vegas.subband=8``.
-
-  .. todo:: Add reference to VEGAS modes table.
 
 * 9 spectral windows, each of which centered on one of the 9 frequencies (in MHz) listed
   under restfreq [``restfreq=9816.867, 9487.824, 9173.323, ....``]

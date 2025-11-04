@@ -39,7 +39,7 @@ integration time, same frequency switching offset), which is controlled by
 spectrometer bank A. Each bank can be configured in one of the 29 modes listed
 in :numref:`tab-vegas-modes` below.
 
-.. include:: material/vegas_modes.tab
+.. include:: /material/tables/VEGAS_modes.tab
 
 
 In short:
@@ -110,9 +110,9 @@ switching periods for a given amount of blanking, and more accurate estimates of
 switching periods we refer the interested reader to :cite:t:`Kepley2014`.
 
 
-.. include:: material/vegas_swper_cal.tab
+.. include:: /material/tables/VEGAS_swper_cal.tab
 
-.. include:: material/vegas_swper_nocal.tab
+.. include:: /material/tables/VEGAS_swper_nocal.tab
 
 
 

@@ -15,13 +15,11 @@ The above example will configure for the following:
 * VEGAS as the backend detector using linear polarization without 
   cross-polarization products [``backend='VEGAS'``, ``pol='Linear'``].
 
-* Take data using a single band using VEGAS mode 11 (see Table XXX) defined by
+* Take data using a single band using VEGAS mode 11 (see :numref:`tab-vegas-modes`) defined by
   23.44 MHz bandwidth, 65536 channels, and one band per spectrometer
   [``bandwidth=23.44``, ``nchan=65536``, ``vegas.subband=1``], 
   centered on 1420 MHz [``restfreq=1420``].
   
-  .. todo:: Add reference to VEGAS modes table.
-
 * Go through a full switching cycle in 2 seconds [``swper=2.0``]. Over one cycle, 
   the fsw states will be centered on the line, and then be shifted by -5~MHz 
   [``swfreq=0,-5.0``]

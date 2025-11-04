@@ -6,7 +6,7 @@ Dynamic Scheduling System
 .. todo:: Add a short paragraph describing why the DSS is important from the perspective of the observer. 
 
 The GBT has been scheduled with the Dynamic Scheduling System (DSS) since October 1, 2009.
-You can access the DSS through `https://dss.gb.nrao.edu`__.
+You can access the DSS through https://dss.gb.nrao.edu.
 
 
 Overview of the DSS
@@ -54,15 +54,15 @@ scheduler (via the helpdesk) and request that the project not be billed for the 
 Controlling the Scheduling of a Project}
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Users can access their DSS account by logging in to the system at `https://dss.gb.nrao.edu`__.
+Users can access their DSS account by logging in to the system at https://dss.gb.nrao.edu.
 The DSS username and password are the same as those used for NRAO Interactive Services (i.e.,
 the Proposal Submission Tool).
 
-From the DSS web site, users can view and manage the scheduling information for their projects.
+From the DSS website, users can view and manage the scheduling information for their projects.
 In order for a project session to enter the pool of sessions eligible for scheduling, the user 
 is responsible for ensuring that the session is enabled in the DSS, and that a qualified observer
 is available to perform the observation. Sessions and observers are enabled for observing simply
-by clicking a check box in the DSS project page (See figure~\ref{fig:dss_project_page}). 
+by clicking a check box in the :ref:`DSS project page <references/dss:DSS Project Page>`. 
 
 Users can control when their project is scheduled by enabling or disabling individual sessions.
 
@@ -135,14 +135,13 @@ including comets. The position is updated each day prior to scheduling. On the p
 session is automatically updated in this manner.
 
 Many observers find it helpful to use a sky-plotting tool to help plan their observations
-and keep track of target locations on the sky. The CLEO Scheduler & Skyview tool, which
-runs on Linux systems in Green Bank and can be run remotely through VNC or FastX, is one such tool
-that allows a GBT user to plot target locations on the sky for any date and time. This
+and keep track of target locations on the sky. The CLEO :ref:`<references/cleo:Scheduler and Skyview`
+tool, which runs on Linux systems in Green Bank and can be run 
+:ref:`remotely through VNC or FastX <how-tos/infrastructure/remote-connection:How to connect remotely to the GBO network>`,
+is one such tool that allows a GBT user to plot target locations on the sky for any date and time. This
 application can read target coordinates from a standard astrid catalog file. Observers will find
 this tool handy for identifying the time of day a project may get scheduled, as well as helping to
 plan observations in detail after they are scheduled. 
-
-.. todo:: Add the relevant references CLEO scheduler, FastX/VNC connection. 
 
 
 Contact Information and Project Notes
@@ -519,9 +518,7 @@ be requested by contacting the GBT scheduler via the :email:`DSS helpdesk <helpd
     above 2 GHz.  Most continuum observations prefer the default values of irradiance (300 W M\ :math:`^{-2}`),
     there are times when the value should be tunable, and any value of irradiance may be used for the DSS.
 
-    .. todo:: 
-
-    Copy the section from the DSPN here, or make it otherwise available and add reference.
+    .. todo:: Copy the section from the DSPN here, or make it otherwise available and add reference.
 
    
 * **Elevation Limit**
@@ -565,9 +562,7 @@ be requested by contacting the GBT scheduler via the :email:`DSS helpdesk <helpd
     system temperature at 90 GHz. (This includes hydrosols, the default in the CLEO command line interface,
     and is described in equation 7 in DSPN 5.)
    
-    .. todo:: 
-
-        Either add the eq.7 section from DSPN5 here or make DSPN5 available otherwise.
+    .. todo:: Either add the eq.7 section from DSPN5 here or make DSPN5 available otherwise.
 
     The atmospheric system temperature is the last term on the right hand side of the equation, 
 
@@ -615,9 +610,6 @@ be requested by contacting the GBT scheduler via the :email:`DSS helpdesk <helpd
 There are a number of additional controls and parameters that can be used within the DSS system which
 are fully described in DSPN10.6.
 
-.. todo:: 
-
-    It is currently unclear is all parameters described in DSPN10.6 have actually 
-    been implemented in the DSS. Eventually we would want to copy the relevant content from DSPN10.6 here.
+.. todo:: It is currently unclear is all parameters described in DSPN10.6 have actually been implemented in the DSS. Eventually we would want to copy the relevant content from DSPN10.6 here.
 
 

@@ -57,7 +57,7 @@
    +----------------+-----------+-----------+---------------+-----------------------+---------------------------+
    | 23\ :sup:`(c)` | 23.44     | 32768     | 0.70          | 51                    | 12                        | 
    +----------------+-----------+-----------+---------------+-----------------------+---------------------------+
-   | 24\ :sup:`(d)` | 23.44     | 65536     | 0.40          | 97                    | 13                        | 
+   | 24\ :sup:`(c)` | 23.44     | 65536     | 0.40          | 97                    | 13                        | 
    +----------------+-----------+-----------+---------------+-----------------------+---------------------------+
    | 25\ :sup:`(d)` | 16.9      | 4096      | 4.10          | 8                     | 9                         |
    +----------------+-----------+-----------+---------------+-----------------------+---------------------------+
@@ -85,17 +85,15 @@
 
     ``(c)`` 
         For modes 20 :math:`\rightarrow` 24 the subbands can be placed within the baseband
-        bandwidth of 1500 MHz (see note ``(d)``) and for modes 25 :math:`\rightarrow` 29 the 
-        subbands can be placed within 1000 MHz.
+        bandwidth of 1500 MHz. The actual usable frequency range for modes 1 & 2 as well as modes 
+        20 :math:`\rightarrow` 24 is 1250 MHz.
 
     ``(d)`` 
-        The actual usable frequency range for modes 1 & 2 as well as modes 
-        20 :math:`\rightarrow` 24 is 1250 MHz and fr mode 3 as well as modes
-        25 :math:`\rightarrow` 29 is 800 MHz.
+        For modes 25 :math:`\rightarrow` 29 the subbands can be placed within 1000 MHz.
+        The actual usable frequency range for mode 3 as well as modes 25 :math:`\rightarrow` 29
+        is 800 MHz.
     
     ``(e)`` 
-        To use more than one subband, set subband=8, and the actual number of subband
+        To use more than one subband, set ``vegas.subband=8``, and the actual number of subband
         used is then defined by the number of frequencies provided. 
 
-
-.. todo:: Fix the table footnotes, their order is incorrect.

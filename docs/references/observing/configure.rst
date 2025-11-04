@@ -96,10 +96,7 @@ The following keywords do not have default values and must be present in all con
 """"""""""""""""""
 
 Specifies the name of the GBT receiver to be used. The names and frequency ranges of the
-receivers can be found in Table XX
-
-.. todo:: Add table reference.
-
+receivers can be found in :numref:`tab-receivers-pf` and :numref:`tab-receivers-gregorian`.
 
 
 ``backend`` (str)
@@ -128,9 +125,9 @@ strings:
 """""""""""""""""""""
 
 Specifies the bandwidth in MHz to be used by the specified backend. Possible values depend on
-the receiver and backend that are chosen. 
+the receiver and backend that are chosen. For VEGAS values are listed in :numref:`tab-vegas-modes`.
 
-.. todo:: Add reference to tables that are in the observer guide labeled 9.2 and 10.1
+.. todo:: Add reference to table 9.2 in observer guide (bandwidth per backend). 
 
 
 ``restfreq`` (depends)
@@ -174,9 +171,8 @@ continuum observations. There are three available syntaxes for ``restfreq``:
 
    This example specifies a rest frequency of 24000 MHz for beams 1-4, 23400 MHz for beams 5 and 6,
    and 25000 MHz for beam 7. Different feeds of multi-beam receivers may be tuned to different rest
-   frequencies. Rest frequencies and delta frequencies are input as python dictionaries. 
-
-   .. todo:: Check what content of Appendix B of the Observer Guide is needed here.
+   frequencies. Rest frequencies and delta frequencies are input as python dictionaries. Further information
+   on this syntax and examples can be found in section :ref:`references/observing/configure:Introduction to Spectral Windows`.  
 
    .. note::
 
@@ -215,9 +211,8 @@ continuum observations. There are three available syntaxes for ``restfreq``:
    * ``'res'``: float in kHz
 
      spectral resolution, can be used as an alternative to the ``nchan`` restfreq dictionary key or the ``nchan``
-     keyword in the main configuration block to select the VEGAS mode.
+     keyword in the main configuration block to select the VEGAS mode (see :numref:`tab-vegas-modes`).
          
-     .. todo:: Add reference to table 10.1 (observer guide)
 
    * ``'bank'``: str (``'A'`` :math:`\rightarrow` ``'H'``)
 
@@ -312,10 +307,8 @@ default is ``'bsw'``.
 ``swper`` (float)
 """""""""""""""""
  
-Defines the period in seconds over which the full switching cycle occurs. See Table XX  
-for recommended minimum switching periods for each VEGAS mode. 
-
-.. todo:: Add reference to table 10.1 from the observer guide.
+Defines the period in seconds over which the full switching cycle occurs. See :numref:`tab-vegas-swper-cal`
+and :numref:`tab-vegas-swper-nocal` for recommended minimum switching periods for each VEGAS mode. 
 
 Default values are 0.2 for ``obstype='continuum'``, 0.04 for ``obstype='pulsar'``, and 1.0 for
 any other value for the ``obstype`` keyword. 
@@ -335,13 +328,11 @@ number of channels giving less artifacts in data reduction. Default values are
 """"""""""""""""
 
 Specifies the backend's integration (dump) time. The value is a float with units of seconds.
-See Table XX for minimum integration times with VEGAS. Default values are
+See :numref:`tab-vegas-modes` for minimum integration times with VEGAS. Default values are
 
 * 10.0 for ``obstype='continuum'``
 * tint=swper for ``obstype='spectroscopy'``
 * 30.0 for any other value of the ``obstype`` keyword
-
-.. todo:: Add reference to VEGAS table 10.1 in Observer Guide.
 
 
 ``beam`` (str of comma separated int)
@@ -378,9 +369,6 @@ of the spectral window. ``deltafreq`` can be specified as a single float offset 
 across all windows or in the same manner as ``restfreq``. For example using ``deltafreq`` with 
 different types of restfreq syntax as described :ref:`here <references/observing/configure:\`\`restfreq\`\` (depends)>`. The default 
 value is 0.0.
-
-
-.. todo:: Check what information from Appendix B from Observer Guide should go here.
 
 ``vframe`` (str)
 """"""""""""""""
@@ -443,10 +431,7 @@ simple restfreq syntax, the default is the first listed restfreq value.
 """""""""""""""
 
 Used to determine the number of spectral channels that VEGAS will provide. Available values are listed in 
-Table XXX
-
-.. todo:: Add reference to Table 10.1 from observer guide.
-
+:numref:`tab-vegas-modes`.
 
 .. note:: 
 
@@ -546,8 +531,7 @@ dedispersion fold-modes.
 
 
 [VPM] Sets the number of spectral channels. Care must be taken to not exceed the maximum data rate.
-
-.. todo:: Add reference to VPM tables.
+See :numref:`tab-vpm-coherent-modes` and :numref:`tab-vpm-incoherent-modes`.
 
 
 ``vegas.obsmode`` (str)
@@ -580,24 +564,21 @@ can only be used in incoherent search-mode.
 """""""""""""""""""
 
 [VPM] Controls the VPM internal gain so that the output data is properly scaled for 8-bit values.
-These values are empirically measured and recommended values are in the VPM tables.
-
-.. todo:: Add reference to VPM tables.
+These values are empirically measured and recommended values are listed in :numref:`tab-vpm-coherent-modes`
+and :numref:`tab-vpm-incoherent-modes`..
 
 
 ``vegas.subband`` (int)
 """""""""""""""""""""""
 
 Used by the config tool to select between 23.44 MHz VEGAS modes with single and multiple spectral
-windows (see Table XX). Is assumed values ``1`` or ``8``. 
-
-.. todo:: Add reference to table 10.1 from observer guide.
+windows (see :numref:`tab-vegas-modes`). It assumes values ``1`` or ``8``. 
 
 .. admonition:: Default
 
    The default value is ``8``. 
 
-.. note::
+.. important::
 
    This value is always ``1`` for pulsar observing.
 
@@ -718,10 +699,6 @@ of ``vlow`` is not recommended for frequencies where there can be large amounts 
 .. admonition:: Default
 
    The default value is ``0.0``
-
-.. todo:: Add context from Appendix C from observer guide.
-
-
 
 .. _vlow-vhigh-more-info:   
 .. admonition:: More information on vlow and vhigh

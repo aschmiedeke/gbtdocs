@@ -1087,10 +1087,9 @@ Configuration Status
     * - Rest Freq
       - The spectral line frequency in the rest frame (MHz).
     * - Center Freq
-      - The center IF frequency set by the LO in MHz. 
-        
-        .. todo:: Add reference to GBT-OG appendix:spectralwindows for further details
-
+      - The center IF frequency set by the LO in MHz. See 
+        :ref:`here <references/observing/configure:Introduction to Spectral Windows>` 
+        for further details 
     * - Frequency State
       - The switching type.  Either "total power" or "frequency-switching".
 

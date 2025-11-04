@@ -46,11 +46,9 @@ The following points give details on the usage of the advanced restfreq syntax i
   defaults to beam 1 [``'beam': '1'``]
 
 * VEGAS modes are set for a window by defining valid combinations of bandwidth and resolution,
-  and the number of sub-bands if using a 23.44~MHz bandwidth (see Table XXX). If these values
+  and the number of sub-bands if using a 23.44~MHz bandwidth (see :numref:`tab-vegas-modes`). If these values
   are not defined as dictionary keys, then values defined in the main configuration block or 
   default values will be used. It is worth noting the following points in this example:
-
-  .. todo:: Add reference to VEGAS modes table.
 
   * Bank C has been split into 3 subbands and uses VEGAS mode 23 defined by 23.44 MHz bandwidth,
     8 subbands, and 0.7 kHz resolution [``'bank': 'C', 'bandwidth': 23.44, 'res': 0.7, 'subband': 8``].

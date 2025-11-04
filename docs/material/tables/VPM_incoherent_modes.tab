@@ -1,0 +1,26 @@
+.. _tab-vpm-incoherent-modes:
+.. csv-table:: Incoherent Modes
+    :file: /material/tables/VPM_incoherent_modes.csv
+    :header-rows: 1
+    :class: longtable
+    :widths: 1 1 1 1 1 1
+
+.. attention::
+
+    Note that low bandwidth modes may be routed differently than high bandwidth modes.
+
+    * When using incoherent dedispersion and and 100 or 200 MHz of bandwidth, Bank A should 
+      be the only active bank. The exception to this rule is when using the 342 MHz feed of 
+      the prime focus receiver, in which case the IF path is routed to Bank E. Bank A will 
+      still be active because it is always the switching signal master.
+    * When using coherent dedispersion and 200 MHz of bandwidth, Banks A, C, and D will 
+      be active, but only bank C and D will record data. Bank A is active because it is 
+      the switching signal master.
+    * When using coherent dedispersion and 100 MHz of bandwidth, Banks A and D will be active,
+      but only Bank D will record data. Bank A is active because it is the switching signal master.
+
+    The reason for this setup is that the VEGAS FPGA boards cannot be clocked at rates slow enough
+    to natively sample 100 or 200 MHz. Instead, they are clocked at a rate of 800 MHz, but only a
+    portion of the sampled bandwidth is sent to the HPCs for processing. 
+
+

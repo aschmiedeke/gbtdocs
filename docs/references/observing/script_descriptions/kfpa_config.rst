@@ -13,25 +13,21 @@ The above example will configure for the following:
 * VEGAS as the backend detector with circular cross-polarization products 
   [``backend='VEGAS'``, ``vegas.vpol='cross'``, ``pol='Circular'``]
 
-* Mode 4 of VEGAS (see Table XXX).  This mode is defined by a bandwidth of 187.5 MHz with 
+* Mode 4 of VEGAS (see :numref:`tab-vegas-modes`).  This mode is defined by a bandwidth of 187.5 MHz with 
   32768 spectral channels [``bandwidth=187.5``, ``nchan=32768``]
-
-  .. todo:: Add reference to VEGAS modes table.
-
 
 * 3 spectral windows centered on 24600, 23900, and 25500 MHz. Data will be recorded for 
   beams 1 :math:`\rightarrow` 4 using the first window (24600 MHz) while beams 
   5 :math:`\rightarrow` 7 will use the second window (23900 MHz). An additional 
   IF path will be routed from beam 1 to the window centered on 25500 MHz.  
-  This is known as the "7+1" mode of the KFPA [``restfreq={24600:'1,2,3,4', 23900:'5,6,7', 25500:'-1', 'DopplerTrackFreq': 24700}``]
-
+  This is known as the "7+1" mode of the :ref:`KFPA <references/receivers/kfpa:K-Band Focal Plane Array (KFPA)>`
+  [``restfreq={24600:'1,2,3,4', 23900:'5,6,7', 25500:'-1', 'DopplerTrackFreq': 24700}``].
+ 
   .. note:: 
 
     Doppler tracking the center (24700 MHz) of the full frequency range (25500 - 23900 + bandwidth)
     is necessary in this example. The maximum frequency separation limitation of the KFPA is 1.8 GHz
     when using multiple beams.  
-
-    .. todo:: Add reference to KFPA section.
 
 * The Radio definition of doppler tracking has been used in the Local Standard of Rest Velocity
   [``vframe='lsrk'``, ``vdef='Radio'``] 

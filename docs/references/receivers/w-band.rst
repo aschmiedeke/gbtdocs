@@ -126,10 +126,8 @@ where the pointing source is too weak, observers can point and focus in
 X-band and use these telescope corrections for their W-band observations.  
 Pointing and focus for W-band requires special attention, and users should
 not blindly accept the default solutions provided by the software system. 
-Users can enter solutions manually as needed as discussed in
-Section~\ref{sec:gfmsendcorrections}.
-
-.. todo:: Add reference to the section on gfm sending corrections
+You can enter solutions manually as needed as shown
+:ref:`here <references/astrid:Sending Corrections>`.
 
 
 Calibration and Data Reduction

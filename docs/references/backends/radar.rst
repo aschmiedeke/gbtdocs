@@ -75,18 +75,17 @@ done by the transmitting telescope.
 
 .. todo:: Reference table 9.2 in the observer guide.
 
-Refer to chapter 5 for more information on GBT configurations and SBs.
-
-.. todo:: Reference section 5 in observer guide.
+Please refer to :ref:`references/observing/configure:Configure the GBT system`
+for more information on GBT configurations and SBs.
 
 
 Tracking moving objects
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Here is an example of an ephemeris file for an asteroid. Refer to 5.3.5 for a 
-description of the Ephemeris format.
+Here is an example of an ephemeris file for an asteroid. Please refer 
+:ref:`references/observing/catalog:Ephemeris Catalogs` for a detailed description 
+of the Ephemeris format.
 
-.. todo:: Add reference to 5.3.5 section in observer guide.
 
 
 .. literalinclude:: material/radar_asteroid_ephem_example.astrid

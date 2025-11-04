@@ -2449,10 +2449,7 @@ def Configure(action):
         For each configuration, all keywords and values exist as line separated
         keyword=value pairs, all enclosed within a single set of triple-quotes.
 
-        For a list of all keywords see here.
-
-        .. todo:: Add reference to the section with all configuration keywords.
-
+        For a list of all keywords see :ref:`here <references/observing/configure:Configuration keywords>`.
 
     Example
     -------

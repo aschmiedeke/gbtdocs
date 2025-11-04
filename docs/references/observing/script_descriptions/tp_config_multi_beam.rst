@@ -15,10 +15,8 @@ The above example will configure for the following:
 * VEGAS as the backend detector using circular polarization without 
   cross-polarization products [``backend='VEGAS'``, ``pol='Circular'``]
 
-* Mode 2 of VEGAS (see Table XXX).  This mode is defined by a bandwidth
+* Mode 2 of VEGAS (see :numref:`tab-vegas-modes`).  This mode is defined by a bandwidth
   of 1500 MHz with 16384 spectral channels [``bandwidth=1500``, ``nchan=16384``]
-
-  .. todo:: Add reference to VEGAS modes table.
 
 * 4 spectral windows, each of which centered on one of the 4 frequencies (in MHz)
   listed under restfreq [``restfreq=44580, 43751, 45410, 46250``]

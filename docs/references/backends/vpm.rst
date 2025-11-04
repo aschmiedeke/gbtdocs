@@ -53,9 +53,7 @@ the IF system limit the *maximum usable bandwidth to 1250 MHz per spectrometer b
 center frequencies of each bank can thus be arranged to contiguously cover up to 
 8 x 1250 Hz = 10 GHz, though, once again, IF limitations generally limit the maximum available
 bandwidth from any receiver to < 4 GHz (up to 8 GHz is available for certain receivers; see 
-the GBT Observer's Guide).
-
-.. todo:: Remove reference to Observer's guide and replace with link to receiver frequency ranges (chapter 1.3 observer guide?)
+:ref:`here <references/receivers:Receivers>`).
 
 When operating in coherent dedispersion modes with 800 or 1500 MHz of sampled bandwidth, 
 one FPGA sends output to all eight HPCs. Since all the HPCs are in use the maximum total
@@ -96,60 +94,21 @@ where :math:`n_{\text{pol}}` is the number of polarization products (4 for full 
 :math:`t_{\text{int}}` is the integration time (i.e. sampling time).
 
 The following tables list all currently supported VPM modes and the vegas.scale values for each.
-Observers should still use the :ref:`references/backends/vpm:VPM Observing Tools` to check the value of vegas.scale for\
-their particular observing setup.
+Observers should still use the :ref:`references/backends/vpm:VPM Observing Tools` to check the value
+of vegas.scale for their particular observing setup.
 
 
+.. include:: /material/tables/VPM_coherent_modes.tab
 
-.. _tab-vpm-coherent-modes:
-.. csv-table:: Coherent Modes
-    :file: material/coherent_VPM_modes.csv
-    :header-rows: 1
-    :class: longtable
-    :widths: 1 1 1 1 1 1
-
-.. attention::
-
-    ** **Observers should not use longer integration times in coherent dedispersion modes. Due to 
-    the way blocks of data are sized for FFTs on the GPUs, longer integration times can result in 
-    artifacts in the final data products.**
-
-
-.. _tab-vpm-incoherent-modes:
-.. csv-table:: Incoherent Modes
-    :file: material/incoherent_VPM_modes.csv
-    :header-rows: 1
-    :class: longtable
-    :widths: 1 1 1 1 1 1
-
-.. attention::
-
-    Note that low bandwidth modes may be routed differently than high bandwidth modes.
-
-    * When using incoherent dedispersion and and 100 or 200 MHz of bandwidth, Bank A should 
-      be the only active bank. The exception to this rule is when using the 342 MHz feed of 
-      the prime focus receiver, in which case the IF path is routed to Bank E. Bank A will 
-      still be active because it is always the switching signal master.
-    * When using coherent dedispersion and 200 MHz of bandwidth, Banks A, C, and D will 
-      be active, but only bank C and D will record data. Bank A is active because it is 
-      the switching signal master.
-    * When using coherent dedispersion and 100 MHz of bandwidth, Banks A and D will be active,
-      but only Bank D will record data. Bank A is active because it is the switching signal master.
-
-    The reason for this setup is that the VEGAS FPGA boards cannot be clocked at rates slow enough
-    to natively sample 100 or 200 MHz. Instead, they are clocked at a rate of 800 MHz, but only a
-    portion of the sampled bandwidth is sent to the HPCs for processing. 
-
+.. include:: /material/tables/VPM_incoherent_modes.tab
 
 
 Configuring VEGAS Pulsar Modes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. todo:: Remove Observers guide reference. Might want to move this part here to the Configure page and add a reference to that page here instead.
-
-
-VPM is configured using the standard Astrid keyword/value configuration block, which is 
-discussed in detail in the GBT Observer's Guide. Here we review only those keywords relevant for VPM.
+VPM is configured using the standard AstrID keyword/value configuration block, which is 
+discussed in detail :ref:`here <references/observing/configure:Configure the GBT system>`.
+Below we review only those keywords relevant for VPM:
 
 
 * ``obstype`` will always be ``"Pulsar"``.
@@ -215,30 +174,34 @@ GUPPI has been retired. Dual backend operation with VEGAS and GUPPI is no longer
 VPM Observing Tools
 ^^^^^^^^^^^^^^^^^^^
 
-Once you start observing you will want to check the quality of your data and make sure that things run smoothly. A number of tools have been designed to facilitate this, many of which are similar to those used for GUPPI.
+Once you start observing you will want to check the quality of your data and make sure that things run
+smoothly. A number of tools have been designed to facilitate this, many of which are similar to those 
+that were used for GUPPI.
 
 
 
-The VEGAS CLEO Screen
+The CLEO VEGAS Screen
 '''''''''''''''''''''
 
 .. todo:: replace Observer's Guide reference with link to the upcoming CLEO section on gbtdocs.
 
-Unlike GUPPI, VEGAS has its own CLEO application that can be used for spectral line and pulsar observing modes
-(see the GBT Observer's Guide for more information on CLEO). There are two ways to launch the VEGAS CLEO application:
+Unlike GUPPI, VEGAS has its own :ref:`CLEO application <references/cleo:VEGAS>` that can be used for spectral
+line and pulsar observing modes. There are two ways to launch the VEGAS CLEO application:
 
 
 * From the main CLEO launcher, go to **Backends** and select **VEGAS**.
 * Type ``cleo vegas`` from any command prompt.
 
-Below is an example of the VEGAS CLEO screen when operating in high bandwidth pulsar mode. Here VPM is configured 
-for coherent dedispersion, so all eight banks are active and configured in the same way. However, only the power
-monitor for Bank A will be in use. Note the VEGAS Power Monitor button on the right-hand side. The upper panels
-display information about setup on individual banks. The most relevant parameters for pulsar observers are the 
-mode and integration time. The bottom panels show the state of the VEGAS managers on each bank.  
 
+.. _fig-VPM-cleo-vegas-screen:
 .. figure:: images/VPM_CLEO.png
+   :alt: CLEO VEGAS screen
 
+   This is an example of the VEGAS CLEO screen when operating in high bandwidth pulsar mode. Here VPM is configured 
+   for coherent dedispersion, so all eight banks are active and configured in the same way. However, only the power
+   monitor for Bank A will be in use. Note the VEGAS Power Monitor button on the right-hand side. The upper panels
+   display information about setup on individual banks. The most relevant parameters for pulsar observers are the 
+   mode and integration time. The bottom panels show the state of the VEGAS managers on each bank.  
 
 
 When using incoherent dedispersion, anywhere from one to eight banks may be active, depending on how the system 
@@ -267,11 +230,12 @@ used for GUPPI. There are two ways to launch the data monitor:
 * Type ``vegasdm`` from any command prompt.
 
 
-Below is a screenshot of the data monitor looks.  Data for Bank A is selected in this example, but all eight
-banks are active. The chart recorder shows proper input values of approximately -20 dB. The histograms of
-8-bit ADC output values are also in an acceptable range, with a FWHM of approximately 30 counts.
-
 .. figure:: images/VPM_DM.png
+   :alt: VPM Data Monitor
+
+   This is a screenshot of the data monitor looks.  Data for Bank A is selected in this example, but all eight
+   banks are active. The chart recorder shows proper input values of approximately -20 dB. The histograms of
+   8-bit ADC output values are also in an acceptable range, with a FWHM of approximately 30 counts.
 
 
 The top panel shows the input power level in chart recorder form for both polarization channels. *The target
@@ -297,7 +261,7 @@ memory will only be properly configured on banks that are in use.
 
 ``vpmStatus`` plays the same role as ``guppi_status``.
 
-.. note::
+.. important::
 
     Note that as of Aug 26, 2021, the VEGAS HPC names have changed. ``vegas-hpc1`` through ``vegas-hpc8`` 
     should not be used. Instead, use ``vegas-hpc11`` through ``vegas-hpc18``.
@@ -321,23 +285,26 @@ You need only pay attention to the status of banks currently in-use.*
 
 ``vpmHPCStatus`` plays the same role as ``guppi_gpu_status.`` 
 
-Below is an example of the vpmHPCStatus screen where VEGAS is configured for coherent dedispersion at L-band: 
-
 .. figure:: images/vpmHPCStatus.png
+   :alt: VPM HPC status 
 
+   This is an example of the vpmHPCStatus screen where VEGAS is configured for coherent dedispersion at L-band.
 
-This is an example of the vpmHPCStatus screen where VEGAS is configured for coherent dedispersion at at 820 MHz
-with 200 MHz of bandwidth:
 
 .. figure:: images/vpmHPCStatus_LBW.png
+   :alt: VPM HPC status, LBW
+
+   This is an example of the vpmHPCStatus screen where VEGAS is configured for coherent dedispersion at at 820 MHz
+   with 200 MHz of bandwidth.
+
 
 
 
 Coherent Dedispersion VPM Data Display Webpage
 ''''''''''''''''''''''''''''''''''''''''''''''
 
-Data from each HPC that is collected in coherent dedispersion fold- or cal-modes is displayed on a public webpage:
-`<https://www.gb.nrao.edu/vpm/>`__. The page refreshes every few seconds and should reflect the most recently written
+Data from each HPC that is collected in coherent dedispersion fold- or cal-modes is displayed on a `public webpage 
+<https://www.gb.nrao.edu/vpm/>`__. The page refreshes every few seconds and should reflect the most recently written
 scan in close to real-time. The source name and modification time are displayed at the top of the page. The first 
 column shows observing frequency vs pulse phase summed over the entire data file. The middle column shows frequency 
 vs pulse phase for the most recent sub-integration. The last column shows observing time vs pulse phase summed over
@@ -346,22 +313,28 @@ all frequencies.
 
 .. note::
     
-   Note that long scans will be broken into multiple output files, and when a new file is opened the S/N may seem 
-   to suddenly drop. This is expected and the S/N should recover as more data is written to that file. Also note that
-   under certain browsers (e.g. Chrome) the page not always automatically refresh. If VPM seems to be running but 
-   the plots are not updating, first try clearing your browser's cache and then reopening the page. If it still is 
-   not updating ask the GBT operator to make sure that the VPM coherent dedispersion autoplotting script is still 
-   running.
+   * Long scans will be broken into multiple output files, and when a new file is opened the S/N may seem 
+     to suddenly drop. This is expected and the S/N should recover as more data is written to that file. 
 
-Note that in low bandwidth modes, not all banks may be active. A text box will appear next to those banks that are 
-not configured to record data.
+   * Under certain browsers (e.g. Chrome) the page might not always automatically refresh. If VPM seems to be 
+     running but the plots are not updating, first try clearing your browser's cache and then reopening the page. 
+     If it still is not updating ask the GBT operator to make sure that the VPM coherent dedispersion autoplotting 
+     script is still running.
 
-This page plays the same role as www.gb.nrao.edu/guppi.
+   * In low bandwidth modes, not all banks may be active. A text box will appear next to those banks that are 
+     not configured to record data.
+
+
+This webpage plays the same role as the old `GUPPI Data Display Webpage <https://www.gb.nrao.edu/guppi>`__ used to.
 
 The VPM data monitoring webpage; in this case, VEGAS is configured for coherent dedispersion with 200 MHz of 
 bandwidth at a center frequency of 820 MHz. Only two banks are active:
 
 .. figure:: images/VPM_webpage_LBW.png
+   :alt: VPM webpage, LBW
+
+   The VPM data monitoring webpage. In this case, VEGAS is configured for coherent dedispersion with 200 MHz of 
+   bandwidth at a center frequency of 820 MHz. Only two banks are active.
 
     
 
@@ -370,8 +343,8 @@ bandwidth at a center frequency of 820 MHz. Only two banks are active:
 Incoherent Dedispersion VPM Monitor Webpage
 '''''''''''''''''''''''''''''''''''''''''''
 
-When operating in incoherent dedispersion mode, bandpass plots are displayed on a public webpage:
-`<www.gb.nrao.edu/vpm/vpm_monitor>`__. The page refreshes every few seconds and so should be close 
+When operating in incoherent dedispersion mode, bandpass plots are displayed on another `public webpage
+<https://www.gb.nrao.edu/vpm/vpm_monitor>`__. The page refreshes every few seconds and so should be close 
 to real-time. Note that there is a separate panel for each bank, but only active banks will display 
 data. The red curve shows the mean and the blue curves show the minimum and maximum values for the
 current data block. The average value should be around 30-40 counts and can be adjusted using the 
@@ -382,8 +355,8 @@ If you wish, you can run the same tool manually for more current data. To do thi
 at the command prompt *while logged into one of the VEGAS HPCs*. VPM must be taking data at the time.
 Use of the webpage is preferred.
 
-These tools play the same role as www.gb.nrao.edu/guppi/guppi_monitor and ``guppi_monitor``.
-
+These tools play the same role as old `GUPPI Data Monitor Webpage <https://www.gb.nrao.edu/guppi/guppi_monitor>`__
+and ``guppi_monitor`` used to.
 
 
 Monitoring the VEGAS Manager Output
@@ -398,8 +371,8 @@ the output by typing ``tail -f <logName>``, where you replace ``<logName>`` with
 name.
 
 Users typically will not have to check the logs unless they are trying to diagnose a problem. These
-log files play the same role as ``/tmp/guppi_daq_server.log``, but they record output for all scans, 
-both in incoherent and coherent dedispersion mode. 
+log files play the same role as ``/tmp/guppi_daq_server.log`` used to, but they record output for all
+scans, both in incoherent and coherent dedispersion mode. 
 
 
 
@@ -408,41 +381,47 @@ Accessing Your Data
 
 
 VPM data are written directly to the lustre file system, and can be accessed from any of the machines
-listed as lustre clients at `<www.gb.nrao.edu/pubcomputing/public.shtml>`_ (e.g. euclid or thales).
+listed as lustre clients at `this website <https://greenbankobservatory.org/portal/gbt/processing/>`__
+(e.g. euclid or thales).
 
-.. todo:: Update the link to point to greenbankobservatory.
+In **coherent dedispersion modes** data are written to
 
-In coherent dedispersion modes data are written to
+``/lustre/gbtdata/<projectID>/VEGAS_CODD/<bankID>``,
 
-``/lustre/gbtdata/<projectID>/VEGAS_CODD/<bankID>``
+where 
 
-where ``<projectID>`` is your GBT project code with the session number in Astrid appended,
-e.g. AGBT18A_100_01, and ``<bankID>`` is the one-letter bank name (A--H).
+* ``<projectID>`` is your GBT project code with the session number in AstrID appended, e.g. AGBT18A_100_01
+* ``<bankID>`` is the one-letter bank name (A-H)
 
-In incoherent dedispersion modes data are written to
+In **incoherent dedispersion modes** data are written to
 
 ``/lustre/gbtdata/<projectID>/VEGAS/<bankID>``
 
 File names follow the forms:
 
-``vegas_<MJD>_<secUTC>_<sourceName>_<scanNumber>_<fileNumber>.fits`` (fold- and search-modes)
+* ``vegas_<MJD>_<secUTC>_<sourceName>_<scanNumber>_<fileNumber>.fits`` (fold- and search-modes)
 
-``vegas_<MJD>_<secUTC>_<sourceName>_cal_<scanNumber>_<fileNumber>.fits`` (cal-mode)
+* ``vegas_<MJD>_<secUTC>_<sourceName>_cal_<scanNumber>_<fileNumber>.fits`` (cal-mode)
 
-where ``<MJD>`` is the modified Julian date of the observation, ``<secUTC>`` is the number of seconds 
-after midnight UTC at the start of the scan, ``<sourceName>`` is the source name as identified from 
-the Antenna manager, ``<scanNumber>`` is the scan number within the current Astrid session, and 
-``<fileNumber>`` is the file number within the current scan (long scans are broken across multiple 
-files to avoid any one file from being very large). ``<secUTC>`` is a zero-padded five-digit integer 
-and and ``<fileNumber>`` are zero-padded four-digit integers. Example file names are
+where 
 
-``vegas_58150_05400_B1937+21_0001_cal_0001.fits``
+* ``<MJD>`` is the modified Julian date of the observation, 
+* ``<secUTC>`` is the number of seconds after midnight UTC at the start of the scan. It is a zero-padded 
+  five-digit integer 
+* ``<sourceName>`` is the source name as identified from the Antenna manager,
+* ``<scanNumber>`` is the scan number within the current Astrid session, and 
+* ``<fileNumber>`` is the file number within the current scan (long scans are broken across multiple 
+  files to avoid any one file from being very large). It is a zero-padded four-digit integer.
+ 
+Example file names are
 
-``vegas_58150_05490_B1937+21_0002_0001.fits``
+* ``vegas_58150_05400_B1937+21_0001_cal_0001.fits``
+* ``vegas_58150_05490_B1937+21_0002_0001.fits``
+
 
 .. note::
 
-    This format differs slightly from GUPPI, which does not have the ``<secUT>`` element. This has been 
+    This format differs slightly from GUPPI, which did not have the ``<secUT>`` element. This has been 
     added to avoid corner cases where GUPPI file names may not be unique.
 
 Data are recorded in the PSRFITS standard, which can be processed by all common pulsar data analysis 

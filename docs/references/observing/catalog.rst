@@ -149,10 +149,8 @@ Velocity definition in the FITS convention, e.g. ``VOPT-BAR``, ``VRAD-LSR``, etc
 The default is the velocity definition or reference frame that was previously set. In the a
 bove example we put the ``VELDEF`` keyword in the ``HEAD`` line since we have sources whose 
 velocity definitions are different. This keyword may be given as either a header keyword or 
-columnn heading under ``HEAD``. This value will also override the velocity definition in the
-configuration.
-
-.. todo:: Add reference to sec GBTog 5.2.5
+columnn heading under ``HEAD``. This value will also override the :ref:`velocity definition in the
+configuration <references/observing/configure:Configuration keywords>`.
 
 
 RESTFREQ
