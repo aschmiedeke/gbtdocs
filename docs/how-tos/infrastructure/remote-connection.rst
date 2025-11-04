@@ -105,7 +105,7 @@ Short answer: Yes! Access to this service is only available over the HTTPS proto
 
 What can't I do?
 ----------------
-You cannot fire up a browser in a session and access the FastX service in that browser. This kind of recursion is not permitted. As usual the `NRAO Computer Use Policy <https://www.nrao.edu/policy/usepolicy.shtml>`_ applies to all use of this service.
+You cannot fire up a browser in a session and access the FastX service in that browser. This kind of recursion is not permitted. As usual the `NRAO Computer Use Policy <https://info.nrao.edu/policy/nrao-computer-use-policy>`__ applies to all use of this service.
 
 Sharing a session
 -----------------
