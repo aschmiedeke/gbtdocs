@@ -112,7 +112,8 @@ solutions are valid. For a set of raw data to be considered valid, it should sho
 
 The AutoOOF raw data can be viewed by selecting the ``raw data`` radio button in the upper-right section of the OOF Subtab
 of the Data Display. Each column represents one focus position. The top row is the raw timestream data from the receiver,
-the second row has the baselines removed, and the bottom row shows the corresponding beam maps. See Figure~\ref{fig:rawOOFdata} for a comparison of acceptable and unacceptable raw AutoOOF data.
+the second row has the baselines removed, and the bottom row shows the corresponding beam maps. See :numref:`fig-good-oof-raw-data`
+and :numref:`fig-bad-oof-raw-data` for a comparison of acceptable and unacceptable raw AutoOOF data.
 
 
 .. _fig-good-oof-raw-data:
@@ -123,7 +124,7 @@ the second row has the baselines removed, and the bottom row shows the correspon
 .. _fig-bad-oof-raw-data:
 .. figure:: material/OOFrawData_badExample.png
 
-    A plot of  raw OOF data on a sourceh which is too faint.
+    A plot of  raw OOF data on a source which is too faint.
 
 
 
