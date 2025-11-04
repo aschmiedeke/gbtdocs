@@ -10,9 +10,9 @@ def AutoPeakFocus(source=None, location=None, frequency=None, flux=None,
 
     Warning
     -------
-        AutoPeakFocus() should not be used with Prime Focus receivers. The prime focus receivers have 
-        pre-determined focus positions and there is not enough travel in the feed to move them significantly
-        out of focus.
+        :func:`AutoPeakFocus() <astrid_commands.AutoPeakFocus>` should not be used with Prime Focus 
+        receivers. The prime focus receivers have pre-determined focus positions and there is not 
+        enough travel in the feed to move them significantly out of focus.
 
     AutoPeakFocus() will execute its own default continuum configuration unless “configure=False”
     is supplied as an optional argument, which is not recommended in general unless one knows the
@@ -85,14 +85,15 @@ def AutoPeakFocus(source=None, location=None, frequency=None, flux=None,
         for which the azimuth pointing scans will be done before the elevation scans.
 
     calSeq: bool
-        If True, then for ``'Rcvr68_92'`` (W-Band) the observations will be preceeded by calibration calSeq observations,
-        or for ``'RcvrArray75_115'`` (Argus) the calibration “vanecal” observations. If False, then the calibration
-        vanecal or calSeq observations will be skipped. This keyword is only applicable for receivers operating
-        above 66 GHz, and the associated calibration observations depend on the receiver (``'Rcvr68_92'``,
-        ``'RcvrArray75_115'``, and ``'Rcvr_PAR'``) and the particular Auto utilty procedure (see the individual receiver
-        chapters for specifics). The default value is True.
+        This keyword is only applicable for receivers operating above 66 GHz, and the associated calibration
+        observations depend on the receiver (``'Rcvr68_92'``, ``'RcvrArray75_115'``, ``'Rcvr_MBA1_5'``) and the 
+        particular Auto utilty procedure (see the individual receiver chapters for specifics).
 
-        .. todo:: Check if Rcvr_PAR should be replaced by Rcvr_MBA1_5.
+        If True, then for ``'Rcvr68_92'`` (:ref:`W-Band <references/receivers/w-band:W-Band receiver>`) the 
+        observations will be preceeded by calibration calSeq observations, for ``'RcvrArray75_115'`` 
+        (:ref:`references/receivers/argus:Argus`) the calibration “vanecal” observations, and for 
+        ``'Rcvr_MBA1_5'`` (:ref:`references/receivers/mustang2:MUSTANG-2`) by a calibration skydip. If False,
+        then the calibration calSeq, vanecal or skydip observations will be skipped. The default value is True.
 
     gold: bool
         If True then only “Gold standard sources” (.i.e. sources suitable for pointing at high frequencies) will be
@@ -224,15 +225,15 @@ def AutoPeak(source=None, location=None, frequency=None, flux=None,
         for which the azimuth pointing scans will be done before the elevation scans.
 
     calSeq: bool
-        If True, then for ``'Rcvr68_92'`` (W-Band) the observations will be preceeded by calibration calSeq observations,
-        or for ``'RcvrArray75_115'`` (Argus) the calibration “vanecal” observations. If False, then the calibration
-        vanecal or calSeq observations will be skipped. This keyword is only applicable for receivers operating
-        above 66 GHz, and the associated calibration observations depend on the receiver (``'Rcvr68_92'``,
-        ``'RcvrArray75_115'``, and ``'Rcvr_PAR'``) and the particular Auto utilty procedure (see the individual receiver
-        chapters for specifics). The default value is True.
+        This keyword is only applicable for receivers operating above 66 GHz, and the associated calibration
+        observations depend on the receiver (``'Rcvr68_92'``, ``'RcvrArray75_115'``, ``'Rcvr_MBA1_5'``) and the 
+        particular Auto utilty procedure (see the individual receiver chapters for specifics).
 
-        .. todo:: Check if Rcvr_PAR should be replaced by Rcvr_MBA1_5.
-
+        If True, then for ``'Rcvr68_92'`` (:ref:`W-Band <references/receivers/w-band:W-Band receiver>`) the 
+        observations will be preceeded by calibration calSeq observations, for ``'RcvrArray75_115'`` 
+        (:ref:`references/receivers/argus:Argus`) the calibration “vanecal” observations, and for 
+        ``'Rcvr_MBA1_5'`` (:ref:`references/receivers/mustang2:MUSTANG-2`) by a calibration skydip. If False,
+        then the calibration calSeq, vanecal or skydip observations will be skipped. The default value is True.
 
     gold: bool
         If True then only “Gold standard sources” (.i.e. sources suitable for pointing at high frequencies) will be
@@ -363,14 +364,15 @@ def AutoFocus(source=None, location=None, frequency=None, flux=None,
 
 
     calSeq: bool
-        If True, then for ``'Rcvr68_92'`` (W-Band) the observations will be preceeded by calibration calSeq observations,
-        or for ``'RcvrArray75_115'`` (Argus) the calibration “vanecal” observations. If False, then the calibration
-        vanecal or calSeq observations will be skipped. This keyword is only applicable for receivers operating
-        above 66 GHz, and the associated calibration observations depend on the receiver (``'Rcvr68_92'``,
-        ``'RcvrArray75_115'``, and ``'Rcvr_PAR'``) and the particular Auto utilty procedure (see the individual receiver
-        chapters for specifics). The default value is True.
+        This keyword is only applicable for receivers operating above 66 GHz, and the associated calibration
+        observations depend on the receiver (``'Rcvr68_92'``, ``'RcvrArray75_115'``, ``'Rcvr_MBA1_5'``) and the 
+        particular Auto utilty procedure (see the individual receiver chapters for specifics).
 
-        .. todo:: Check if Rcvr_PAR should be replaced by Rcvr_MBA1_5.
+        If True, then for ``'Rcvr68_92'`` (:ref:`W-Band <references/receivers/w-band:W-Band receiver>`) the 
+        observations will be preceeded by calibration calSeq observations, for ``'RcvrArray75_115'`` 
+        (:ref:`references/receivers/argus:Argus`) the calibration “vanecal” observations, and for 
+        ``'Rcvr_MBA1_5'`` (:ref:`references/receivers/mustang2:MUSTANG-2`) by a calibration skydip. If False,
+        then the calibration calSeq, vanecal or skydip observations will be skipped. The default value is True.
 
     gold: bool
         If True then only “Gold standard sources” (.i.e. sources suitable for pointing at high frequencies) will be
@@ -451,13 +453,15 @@ calSeq, gold, nseq="optional"):
         with AutoOOF and may take values of 3 or 5.
         
     calSeq: bool
-        The default value is True which will run a set of calibration scans before the OOF map scans for 
-        'Rcvr68 92’ and 'RcvrArray75_115'. This keyword is only applicable for receivers operating above 66 GHz
-        and the associated calibration observations depend on the receiver ('Rcvr68 92', 'RcvrArray75_115', and
-        'Rcrv_PAR'; see the individual receiver chapters for specifics).
+        This keyword is only applicable for receivers operating above 66 GHz, and the associated calibration
+        observations depend on the receiver (``'Rcvr68_92'``, ``'RcvrArray75_115'``, ``'Rcvr_MBA1_5'``) and the 
+        particular Auto utilty procedure (see the individual receiver chapters for specifics).
 
-        .. todo:: Replace with links to the receiver reference sections.
-
+        If True, then for ``'Rcvr68_92'`` (:ref:`W-Band <references/receivers/w-band:W-Band receiver>`) the 
+        observations will be preceeded by calibration calSeq observations, for ``'RcvrArray75_115'`` 
+        (:ref:`references/receivers/argus:Argus`) the calibration “vanecal” observations, and for 
+        ``'Rcvr_MBA1_5'`` (:ref:`references/receivers/mustang2:MUSTANG-2`) by a calibration skydip. If False,
+        then the calibration calSeq, vanecal or skydip observations will be skipped. The default value is True.
 
     Examples
     --------

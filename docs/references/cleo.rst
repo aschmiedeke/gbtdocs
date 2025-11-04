@@ -43,9 +43,7 @@ Talk and Draw
 Launching "Talk and Draw" will open a window that allows communication with all other users
 of the same application including the GBT operator.
 
-.. image:: images/CLEOtalkAndDraw.jpg
-
-.. todo:: Replace image with screenshot of standalong Talk And Draw window.
+.. image:: images/CLEOtalkAndDraw.png
 
 Messages typed in the white text box near the bottom of the screen will become visible to 
 other users after pressing the ``Enter`` key.
@@ -62,25 +60,24 @@ Scheduler and Skyview
 
 ``Launch`` :math:`\rightarrow` ``Observer Tools`` :math:`\rightarrow` ``Scheduler & Skyview...``
 
-This displays a plot of the sky in Az/El coordinates as viewed from Green Bank.
+This displays a plot of the sky in Az/El coordinates as viewed from Green Bank. 
 
-.. image:: images/CLEOscheduler.jpg
+.. image:: images/CLEOscheduler_schedule.png
 
-.. todo:: Replace image with screenshot of standalong Scheduler window.
+It defaults to open in the "Scheduling mode". You may enter a date and time and display
+the sky for that time.  It shows the corresponding LST, and moving the cursor on the plot 
+displays the RA/Dec and Az/EL under the cursor. This is very useful for planning observations.
 
+There is also a ``Real Time`` option in which the location of objects and the direction the
+GBT is pointed are displayed for the current time.
+
+.. image:: images/CLEOscheduler_realTime.png
 
 You can import a catalog of source positions to be displayed, or display one of the lists of 
 standard calibration sources. By default it displays solar system objects. For example, to 
 display sources listed in the standard AstrID "xband_pointing" catalog press
 ``Catalog`` :math:`\rightarrow` ``Add/Select/DeSelect Catalogs...`` :math:`\rightarrow` 
 ``xband_pointing`` :math:`\rightarrow` ``Apply`` :math:`\rightarrow` ``OK``.
-
-
-If you select ``Schedule`` (button at upper right), you may enter a date and time and display
-the sky for that time.  It shows the corresponding LST, and moving the cursor on the plot 
-displays the RA/Dec and Az/EL under the cursor. This is very useful for planning observations.
-There is also a ``Real Time`` option in which the location of objects and the direction the
-GBT is pointed are displayed for the current time.
 
 
 
@@ -91,10 +88,7 @@ Status
 
 This displays the status of many GBT systems all on one screen.
 
-.. image:: images/CLEOstatus.jpg
-
-.. todo:: Replace image with screenshot of standalong Status window.
-
+.. image:: images/CLEOstatus.png
 
 
 Messages 
@@ -102,16 +96,11 @@ Messages
 
 ``Launch`` :math:`\rightarrow` ``Messages...``
 
-This shows all system status messages.
+This shows all system status messages. It's often useful to identify problems that might
+arise with any of the GBT devices. This application is most commonly used by GBO staff.
 
-.. image:: images/CLEOmessages.jpg
-
-   .. todo:: Replace image with screenshot of standalone message window.
-
-
-
-It's often useful to identify problems that might arise with any of the GBT devices.
-
+For an overview of status messages, you can also click on the ``Messages`` tab in the 
+CLEO Status application.
 
 VEGAS
 ^^^^^
