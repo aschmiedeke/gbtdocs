@@ -1159,10 +1159,14 @@ def SubBeamNod(location, scanDuration, beamName, nodLength, nodUnit='seconds'):
     .. code-block:: python
 
         # nodLength units in second
-        SubBeamNod('3C48', scanDuration=60.0, beamName='MR12', nodLength=4.4826624)
+        SubBeamNod('3C84', scanDuration=60.0, beamName='MR12', nodLength=4.4826624)
 
         # nodLength units are 'tint' as set in the configuration
-        SubBeamNod('3C48', scanDuration=60.0, beamName='MR12', nodLength=3, nodUnit='integrations')
+        SubBeamNod('3C84', scanDuration=60.0, beamName='MR12', nodLength=3, nodUnit='integrations')
+
+        #Example for Argus for 2 minute scan and 6 sec cycle for a 0.5 sec integration time using beams 10 and 11
+        SubBeamNod('3C84',scanDuration=120,beamName=None,receiver='RcvrArray75_115',nodLength=12,nodUnit='integrations',beam1='10',beam2='11')
+    
 
 
     Hint
