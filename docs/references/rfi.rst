@@ -5,9 +5,9 @@ Radio Frequency Interference
 
 Radio Frequency Interference (RFI) can be a significant problem for some observations.
 The most up-to-date information on the RFI environment at the GBT can be found 
-`here <https://greenbankobservatory.org/about/interference-protection/>`__.
+`here <https://greenbankobservatory.org/about/interference-protection/>`_.
 
-Recent scans showing the RFI environment in Green Bank can be found 'here <https://greenbankobservatory.org/gbt-rfi-scans/>`__.
+Recent scans showing the RFI environment in Green Bank can be found `here <https://greenbankobservatory.org/gbt-rfi-scans/>`_.
 The page also provide instructions for running the GBT RFI GUI and accesssing the 
 online RFI webpages, however both of these tools require an NRAO account.
 

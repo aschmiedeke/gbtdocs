@@ -3,7 +3,41 @@
 ##########################################
 How to Prepare MUSTANG-2 Observing Scripts
 ##########################################
-You are expected to have your scripts ready **several hours before** the time of your observation. Ideally at the start of the observing semester. You will likely receive an email from your project friend spurring you to do this.
+You are expected to have your scripts ready well before your first observation (ideally at the start of the observing semester). You will likely receive an email from your project friend spurring you to do this.
+
+Explanation of M2 scan pattern: Daisy
+=====================================
+A majority of scans that M2 takes are :func:`Daisy() <astrid_commands.Daisy>` scans. In particular, they are lissadous daisy scans that execute the Astrid command ``DaisyWithDither()``. In general, daisy scans are "an on-the-fly scan around a central point in the form of daisy petals" (see :func:`Daisy() <astrid_commands.Daisy>`) and looks like the following:
+
+.. image:: images/m2_scripts_Daisy.png
+Image credit: Observer's guide.
+
+
+For M2, we have ~215 detectors. *Each* of which will be scanning in a daisy pattern, illustrated in `Dicker et al 2020 Figure 1 <https://ui.adsabs.harvard.edu/abs/2020ApJ...902..144D/abstract>`_ shown below:
+
+.. image:: images/m2_scripts_Dicker+20_Fig1.png
+"The black lines represent the path of the central detector of the array. Shown in the bottom left is the footprint of the array with the central detector marked as the red dot. The scan pattern is designed to provide cross-linking on many diﬀerent timescales, between all parts of the array."
+
+
+We use ``DaisyWithDither()`` to take daisy scans with M2 and in general the command in the template scripts looks like this:
+
+.. code::
+
+	DaisyWithDither(mySrc,map_radius=daisyRad,radial_osc_period=daisyRadPd,radial_phase=0,rotation_phase=0,scanDuration=daisyScanDur,beamName='C',cos_v=True,coordMode=coordSys,lissajous=lissHw)
+
+where all that varies between scans is ``mySrc``, ``daisyRad``, parameters associated with ``daisyRadPd``, ``daisyScanDur``, and sometimes ``lissHw``. These parameters are all set in the Astrid script (see template examples in ``/users/penarray/Public/m2_template_scripts/``).
+
+Explanations of the daisy parameters you need to understand:
+	* ``daisyRad`` is the radius of the daisy in arcminutes
+	* ``daisyRadPd`` is the period of the daisy in seconds. Said in a different way, ``daisyRadPd`` is how long it takes to sketch out one oscillation period or petal of the daisy. You should keep daisyRadPd >= 20 sec * (daisyRad/2 arcmin)^(1/3) to avoid jerking the feedarm for 90 GHz observations. So once you know ``daisyRad`` you can calculate ``daisyRadPd``. 
+	* ``daisyScanDur`` - the total duration in seconds of the scan. 
+		* For science scans, we know that "the Daisy scan will produce an approximately closed circular pattern on the sky after 22 radial oscillation periods" so in the M2 template scripts for science targets ``daisyScanDur`` is set by ``daisyScanDur=daisyRadPd*22.0`` and you will not have to change this as you will be updating ``daisyRadPd``. So for science scans, the total science scan duration is 8.5-9.25 minutes.
+		* For calibrator scans, we use something called a "quick daisy." Insteaad of completing the full, 22 radial oscillation periods, we only do 4.5. The calibrator scans are meant to be a quick check of a point source so do not need the full 22 radial oscillations. We typically have ~190-200 detectors online during a given observation so the 4.5 radial oscillations of the point source are enough for calibration. Note that ``daisyRad=1.5`` for these "quick daisies." Thus, in total ``daisyScanDur=daisyRadPd*4.5`` for a quick daisy which amounts to ~1.5 minutes.
+	* ``lissHw`` is the lissajous dithering half-width in arcminutes. The M2 standard scan is the sum of a (smallish lissajous box scan and a larger daisy scan which is what you would get from a spirograph. The idea is that the smaller lissajous pattern spreads out the coverage. This was more important with MUSTANG1 when the array was normally smaller than the region we were mapping and you would get a very large peak in coverage where the daisy scans cross at the center. ``lissHW`` is basically the size of that lissajous box and if you want to cover a large area can be made larger, but if you are trying to concentrate integration time in the center r=2' then keep it small. It is not so important for most our targets which are ~4' across but for something very large (the Moon) then you would get a big, arraysized peak in the coverage map for small lissHw. So in short except in extreme cases it is not too important. This is set for you in the template scripts.
+
+Note that you can use ``~bmason/mustangPub/daisycalc.py`` to help determine appropriate parameters.
+
+The following are the things you need to do to get your M2 scripts ready for observations.
 
 1. Copy script templates into Astrid
 ====================================
@@ -105,3 +139,11 @@ The goal is to find a calibrator that is 10-15 deg from your target and > 0.5 Jy
     - Find a source that is showing and is 10-15 deg from your target.
 
 It is suggested that you find a few options for each science target. Once you determine your pointing calibrator(s), fill in the source name(s) with the strength in a comment in the ``4_m2quickDaisyPC`` script. It is suggested that you leave the best one uncommented and comment out the other options.
+
+4. Choose your science scan size
+================================
+The scan size for your science scans was likely predetermined by the proposal. In that when the proposal was submitted, the PI needed to determine the scan size for a noise estimation and/or the size of the object(s) being observed. Check the proposal under the "Technical Justification" section for these details. You may want to again reference :ref:`M2 mapping speeds <references/receivers/mustang2/mustang2_mapping:MUSTANG-2 Mapping Information>`.
+
+Once you know the size of scans that is appropriate for your science, you can check in ``/users/penarray/Public/m2_template_scripts/`` for ``5_science_rX`` that are Astrid scripts for science daisy scans of a ~8.5 minute duration with a daisy radius of X'. If there is not one with the radius that you need, you can calculate it yourself. All you need to change  is ``daisyRad`` to your desired radius and calculate ``daisyRadPd`` such that daisyRadPd >= 20 sec * (daisyRad/2 arcmin)^(1/3) (see text in the DAISY PARAMS section of the template scripts). If you have questions, contact Emily Moravec for help in doing this.
+
+In general, the M2 instrument team recommends doing an offset strategy where 4 science scans have the center of their daisy varied in the corners of a 1.5'x1.5' box. This offset strategy helps especially for projects recovering extended signal (that is, separating extended signal from extended, i.e. large-scale noise). There are two advantages to the offset strategy: (1) it seems to reduce the large-scale noise somewhat, and (2) it gives a more uniform noise in the center of the map (more so than with a single pointing). The trade-off is that the coverage is more spread-out, so there's a minor hit to sensitivity/mapping speed. There is an example of the offset strategy in ``5_science_r3_offset_4scans``; if you need a different daisy radius you will have to update that script with your requirements.

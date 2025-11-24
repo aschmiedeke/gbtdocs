@@ -3,9 +3,11 @@ MUSTANG-2 Instrument Team
 ##########################
 The following are members of the MUSTANG-2 Instrument Team and should be included on all proposals:
 
+- Eleonora Barbavara
 - Mark Devlin
 - Simon Dicker
 - Saianeesh Haridas
+- Giovanni Isopi
 - Ian Lowe
 - Luca Di Mascolo
 - Brian Mason

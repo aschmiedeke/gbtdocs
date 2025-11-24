@@ -242,7 +242,7 @@ Issues with Manager? Restart the Manager
 
 If you are having issues with the manager or it crashed, you will need to restart the M2 manager. To do this, do the following:
 
-#. Ask the operator to restart the MUSTANG manager using TaskMaster, even if you've been told how to do this yourself. Restarting machines through TaskMaster is a responsibility that is supposed to only be held by the operator.
+#. Ask the operator to restart the MUSTANG manager using TaskMaster, even if you've been told how to do this yourself. Restarting machines through TaskMaster is a responsibility that is supposed to only be held by the operator. But if you need to do it yourself, the instructions on how to do so are `here <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Restart_Manager_by_Hand>`_.
 
 #. When the operator has told you that they have restarted the M2 manager:
     #. Go to your Cleo Mustang Manager screen
