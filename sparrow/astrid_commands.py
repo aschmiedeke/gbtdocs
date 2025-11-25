@@ -2410,19 +2410,26 @@ def CalSeq(type, scanDuration, location=None, beamName=None, fixedOffset=None,
         CalSeq("manual", 10.0, tablePositionList=['Position2', 'Observing', 'Cold1', 'Cold2'])
     """
 
+
 def ResetConfig():
 
     """
+    .. todo:: Documentation forthcoming
 
     """
 
+
+def Catalog():
+
+    """
+    .. todo:: Documentation forthcoming
+
+    """
 
 
 def Configure(action):
 
     """
-
-
     Parameters
     ----------
 
@@ -2763,6 +2770,150 @@ def Z17(location, startOffset, scanDuration, beamName='1', calDuration=10.0):
     along the red trajectory.
 
     .. image:: /../sparrow/images/z17.jpg
+
+    """
+
+
+def CalSeqTrack():
+
+    """
+    .. todo:: Documentation forthcoming
+
+    """
+
+
+def CircleTrack():
+
+    """
+    .. todo:: Documentation forthcoming
+
+    """
+
+
+def DaisyWithDither():
+
+    """
+    .. todo:: Documentation forthcoming
+
+    """
+
+
+def LSFS():
+
+    """
+    .. todo:: Documentation forthcoming
+
+    """
+
+
+def DefineProcedure():
+
+    """
+    .. todo:: Documentation forthcoming
+
+    """
+
+
+def OOFAnalysisProcedure():
+
+    """
+    .. todo:: Documentation forthcoming
+
+    """
+
+
+def Procedure():
+
+    """
+    .. todo:: Documentation forthcoming
+
+    """
+
+
+def ProcessScript():
+
+    """
+    .. todo:: Documentation forthcoming
+
+    """
+
+
+def RosePetal():
+
+    """
+    .. todo:: Documentation forthcoming
+
+    """
+
+
+def RuntimeScan():
+
+    """
+    .. todo:: Documentation forthcoming
+
+    """
+
+
+def RunVLBI():
+
+    """
+    .. todo:: Documentation forthcoming
+
+    """
+
+
+def Scheduler():
+
+    """
+    .. todo:: Documentation forthcoming
+
+    """
+
+
+def TrajectoryFromFile():
+
+    """
+    .. todo:: Documentation forthcoming
+
+    """
+
+
+def TrajectoryMap():
+
+    """
+    .. todo:: Documentation forthcoming
+
+    """
+
+
+def TurtleState():
+
+    """
+    .. todo:: Documentation forthcoming
+
+    """
+
+
+def Validator():
+
+    """
+    .. todo:: Documentation forthcoming
+
+    """
+
+
+def VaneCal():
+
+    """
+    .. todo:: Documentation forthcoming
+
+    """
+
+
+def VaneCalTrack():
+
+    """
+    .. todo:: Documentation forthcoming
 
     """
 
