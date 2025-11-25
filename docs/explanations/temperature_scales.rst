@@ -201,7 +201,7 @@ of the beam). We can then derive the desired ratio of :math:`T_{MB_1}/T_{MB_2}` 
 :math:`\theta` (see last equation below).
 
 .. _fig-TempScales-Tmb-ratio:
-.. figure:: images/TempScales_Tmb_ratio.png
+.. figure:: images/temperature_scales/TempScales_Tmb_ratio.png
    :alt: Ratio of T_MBs
 
    Left is an illustration of observing a source (represented by the dot in the center) with two different 
