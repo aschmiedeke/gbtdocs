@@ -9,7 +9,7 @@ How to observe with MUSTANG-2
 
 1.1 Prepare observing scripts
 -----------------------------
-Before you observe you need to have prepared your observing scripts and chosen your flux calibrators, your OOF sources, and pointing calibrators. For a guide on how to do all of these things see :ref:` this guide <How to Prepare MUSTANG-2 Observing Scripts>` for instructions on preparing your scripts.
+Before you observe you need to have prepared your observing scripts and chosen your flux calibrators, your OOF sources, and pointing calibrators. For a guide on how to do all of these things see :ref:`this guide <mustang2_obs_scripts>` for instructions on preparing your scripts.
 
 1.2 Observing Log
 -------------------
@@ -103,7 +103,10 @@ The following are suggested CLEO windows to have open during observing:
 
 2.4 Reconnect to Roaches
 ------------------------
-If you need to reconnect to the roaches (e.g., you tuned a while ago and want to make sure everything is working before you start biasing/observing) execute ``/users/penarray/Public/startMUSTANG.bash <project1> reconnect``. For more information about this script/command see the `Advanced Usage <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Newest_Method_45_25_473_472022>`_ of startMUSTANG.bash section of the MUSTANG-2 wiki.
+If you need to reconnect to the roaches (e.g., you tuned a while ago and want to make sure everything is working before you start biasing/observing) execute ``/users/penarray/Public/startMUSTANG.bash <project1> reconnect``. If the tuning was done a while ago, run ``um1.fixIQ()`` on each roach - over many hours temperature drifts will make the tuning less optimal and this will fix it.
+
+For more information about the ``./startMUSTANG.bash`` script see `Advanced Useage of the startMUSTANGbash <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Advanced_Usage_of_startMUSTANG.bash>`_.
+
 
 3. Observing Procedure
 ======================
@@ -201,7 +204,7 @@ Run the ``1_m2setup`` script in Astrid.
 3.8 Take science data
 ---------------------
 
-Take ~30 minutes of science data followed by a quick daisy on your pointing calibrator. Often this is accomplished by submitting several science scripts (e.g., ``5_science_rX``) in Astrid. For example, often for cluster science each individual science scan is ~8-9 minutes in length. So if you are submitting individual beauty scans (which ``5_science_rX`` are), you can submit 4 of the science scripts in a row followed by your pointing calibrator scan. 
+Take ~30 minutes of science data followed by a quick daisy on your pointing calibrator. Often this is accomplished by submitting several science scripts (e.g., ``5_science_rX``) in Astrid. For example, often for cluster science each individual science scan is ~8-9 minutes in length. So if you are submitting individual science scans (which ``5_science_rX`` are), you can submit 4 of the science scripts in a row followed by your pointing calibrator scan. 
 
 It's a good idea to check the time streams (see the :ref:`check time streams section <how-tos/receivers/mustang2/mustang2_obs:4.5 Checking Time Streams>` for instructions and examples.)
 
@@ -229,15 +232,29 @@ It's a good idea to check the time streams (see the :ref:`check time streams sec
     Save your wiki observing log often (not only at the end of the observation) to ensure that your notes are being saved!
 
 
-3.10 When to OOF?
------------------
+3.10 When to OOF again?
+-----------------------
 
-If the new ``Peak_Height`` is down by more than ~15%, or if ``WidthA`` and ``WidthB`` become very different from one another (indicating that the beam has become overly elliptical) you'll want to do an OOF. 
+First, know that there is no right answer and you have to gain experience to get a feel for when to OOF again. But the following is some advice for when to consider OOFing again.
+
+The two criteria for determining if you need to OOF again are the ``Peak_Height`` and the width of the beam.
+
+The ``Peak_Height`` is important as it is related to the efficiency of the telescope. If the ``PeakHeight`` is down by more than ~15-25%, you will want to do another OOF. It can be a good idea to take another.
 
 .. admonition:: Optional
     :class: note
 
-    If you don't have much observing time left, once the PeakHeight is down by more than 15%, instead of redoing the OOF scan, you can do another m2QuickDaisy on the pointing source to be sure that it is that low, and then do two more Beauty scans until the PeakHeight has gone down by another 15% (so a cumulative 30%).
+    If you don't have much observing time left, once the ``PeakHeight`` is down by more than 15%, instead of redoing the OOF scan, you can do another ``m2QuickDaisy`` on the pointing source to be sure that it is that low, and then do two more science scans until the ``PeakHeight`` has gone down by another 15% (so a cumulative 30%).
+
+Generally, you want to monitor the size and shape of the beam. If the largest diameter of the beam (whichever of ``WidthA`` or ``WidthB``) is 12-13" you'll want to consider doing another OOF. For more extended sources (like clusters), a slightly more diffuse beam isn't so harmful; you can stretch a beam up to 13" for diffuse sources. But for point sources the beam size matters more so a largest beam width of ~12" is worrisome. Additionally, you should monitor the shape of the beam. If the beam has become quite elliptical (i.e., ``WidthA`` and ``WidthB`` become very different from one another), you'll want to consider doing another OOF. In the case of M2, a nice beam is 9"x9". An elliptical beam is when there is a :math:`≳` 3" difference between ``WidthA`` and ``WidthB``.
+
+Often you will see that a decrease in ``PeakHeight`` and a degradation of the beam will come hand in hand.
+
+If you have a 1/2 hour of a project left, it isn't worth it to OOF again because OOF takes ~a half hour so you likely wouldn't get much if any observing time done after the OOF.
+
+.. attention::
+
+    Make sure that you are not being fooled by a bad detector or two. A bad detector will affect your measurements of the calibrator. See :ref:`how-tos/receivers/mustang2/mustang2_obs:4.6 Use crmask to Mask Bad Detectors` for how to mask bad detectors. You will see a bad detector in your map as a bright daisy pattern or in the time streams.
 
 
 3.11 Be aware - Issue with quadrant detector
@@ -258,7 +275,7 @@ If this happens during observing, press ok and ask the operator to restart the q
 4.1 Start-up m2gui
 ------------------
 
-To open up the m2gui, execute in a terminal (in a directory where you have write-access):
+To open up the m2gui, first make sure you are in a directory that you have write permissions in and then in a terminal execute:
 
 .. code:: bash
                 
@@ -324,8 +341,8 @@ After you have opened the m2gui follow these steps to check the tipping scan, mo
     If the tipping scan and number of live detectors look good.
 
 
-4.3 Checking Calibrator/Beam Parameters
----------------------------------------
+4.3 Checking the Calibrator/Beam
+--------------------------------
 
 #. **Make map**
     To make a map of a calibrator, after you have run the ``m2quickDaisy`` script on a source in AstrID
@@ -351,7 +368,7 @@ After you have opened the m2gui follow these steps to check the tipping scan, mo
 
         The maps that the M2 team makes are called daisy scans. This is because they loop many times around a central point, looking somewhat like daisy petals. This emphasizes exposure time on the center of the map, with less exposure on the outside edges of the map, making the center of the map more accurately calibrated. They then use the outside of the map to calibrate the sky temperature and remove these effects in the center of the daisy in later post-processing.
 
-        .. image:: images/14_m2gui_daisy_explanation.png
+        .. image:: images/daisy_illustration.png
 
         The lines drawn on the map designate the beam path of the GBT on the sky relative to your source. As you can see, each loop begins at the source, extends out, and then returns to the source. This is done throughout the space around your source. Because every loop returns to your source, this results in a higher exposure time on your source relative to the rest of the sky. However, because the units are in Kelvin of the forward beam, this does not mean a higher temperature, but instead simply less noise in the map.
 
@@ -378,12 +395,17 @@ After you have opened the m2gui follow these steps to check the tipping scan, mo
 
    Write down the values for ``PEAK_HEIGHT``, ``WIDTHA``, and ``WIDTHB`` in the observing log to compare to later pointing scans to monitor the beam and decide if you need to re-OOF. 
 
+   .. note::
 
-4.4 Checking Science Scans
---------------------------
+        When you fit a quick daisy map, the units of ``PEAK_HEIGHT`` that are output in the terminal are in the units of the calibration, which in the GUI the calibration is the skydip which are in units of ``T_RJ``. The units of ``WIDTH`` are arcseconds.
+
+4.4 Make Science Maps
+---------------------
 
 If you would like to make a map of a science scan(s), you can do so by following the same steps as making a map of a calibrator with the following modification
     - under ``Source Type`` select ``Faint Science`` 
+
+.. image:: images/m2gui_12_MOO_1142_3sets_map.png 
 
 .. note::
 
@@ -391,16 +413,39 @@ If you would like to make a map of a science scan(s), you can do so by following
 
 .. note::
 
-    You can add several science scans together by putting them all separated by commas in the scan list.
+    You can add several science scans together by putting them all separated by commas in the scan list. Please note that when you put several science scans together to make a map, it will likely take a while (>5 minutes) to make the map. A suggestion to combat this is to have two GUIs open while observing, one for checking the beam and one for making science maps.
+
+.. note::
+
+    You may not see any signal in your science map in the GUI. This is because. To see what your object looks like and what sort of SNR you are getting, you'll want to look at an SNR map. See instructions on how to do that below.
+
+4.4.1 Make SNR Map
+^^^^^^^^^^^^^^^^^^
+
+You can make an SNR map with the GUI. To do this, first follow the instructions above for making a science scan, once the map has been made, click the ``SNR map`` button. 
+
+.. admonition:: How to make an SNR map
+
+    .. tab:: Make SNR Map
+
+        .. image:: images/m2gui_13_make_SNR.png
+
+        To make an SNR map, first make a make of your science scan(s), then click the ``SNR map`` button.
+
+    .. tab:: SNR Example
+
+        .. image:: images/m2gui_14_SNR_result.png
+
+        Resulting SNR map from a map of MOO 1142.
 
 4.5 Checking Time Streams
-------------------------------------
+-------------------------
 
 It is a good idea to check the time streams (checking how the sky temperature is changing over time) as well as the maps. To do so:
 
-- Make your map (see :ref:`how-tos/receivers/mustang2/mustang2_obs:4.3 Checking Calibrator/Beam Parameters` or :ref:`how-tos/receivers/mustang2/mustang2_obs:4.4 Checking Science Scans`)
+- Make your map (see :ref:`how-tos/receivers/mustang2/mustang2_obs:4.3 Checking the Calibrator/Beam` or :ref:`how-tos/receivers/mustang2/mustang2_obs:4.4 Make Science Maps`)
 - Click ``show time stream`` button underneath the ``Fit Map`` button after making your map
-    .. image:: images/18_show_time_stream_button.png
+    .. image:: images/m2gui_18_show_time_stream_button.png
 
     .. admonition:: Example Time Streams
 
@@ -451,10 +496,48 @@ It is a good idea to check the time streams (checking how the sky temperature is
 
 .. image:: images/crmask04_set.png
 
-4.7 Troubleshooting: m2gui hangs
---------------------------------
 
-If your m2gui is hanging (won't quit) do the following in a terminal:
+4.7 Save FITS image
+-------------------
+
+It is possible to save the images that you make in the GUI as a FITS image. Instructions below:
+
+.. admonition:: How to save the image in the GUI
+
+    .. tab:: 1. Set image path.
+
+        .. image:: images/m2gui_15_save_image_path.png
+
+        First you need to set the path where your image will be saved. To do this click in the ``Path`` box marked in red in the image above. 
+
+    .. tab:: 2. Set image path via popup.
+
+        .. image:: images/m2gui_16_save_image_path_box.png
+
+        A box will popup where you can set the path and file name. Hit enter to set the path. 
+
+    .. tab:: 3. Save image.
+
+        .. image:: images/m2gui_17_save_image.png
+
+        Once you have set the image path, click ``Save FITS image``. 
+
+
+4.8 GUI Troubleshooting
+-----------------------
+
+4.8.1 m2gui hangs
+^^^^^^^^^^^^^^^^^
+
+If your m2gui is hanging (won't quit), you will need to kill it and open a new window. To kill the GUI, do the following in a terminal:
+
+.. code:: bash
+
+    xkill
+
+This will turn your cursor into an ``x``. Use the ``x`` to click on the GUI window (``xkill`` allows you to select the window of the process you want to kill). Then close the terminal that m2idl is running in to fully kill everything.
+
+If that doesn't work for some reason, you can get the PID of the GUI and kill it manually with the following commands in your terminal:
 
 .. code:: bash
 
@@ -466,6 +549,14 @@ Find the PIDs of startm2gui and idl and kill both.
    
     kill -9 PID
 
+4.8.2 m2gui is slow
+^^^^^^^^^^^^^^^^^^^
+
+If m2gui is slow/not working, you can ssh to another computer and start m2idl and the GUI from there.
+
+4.8.3 m2gui is not making maps
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+When you start the m2gui, you need to be in a directory that you have write access to, otherwise the gui will not make maps. It will display scans but will not make maps. If you have this issue, close the GUI and terminal running m2idl, cd to a directory where you have write permissions and restart m2idl and the GUI.
 
 5. General Advice for Determining “Bad Weather“
 ======================================================
