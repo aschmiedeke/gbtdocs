@@ -58,6 +58,9 @@ Practical step-by-step guides to help perform pulsar observations.
 
             Search Observations
 
+
+
+
 .. toctree::
     :hidden:
 
@@ -67,6 +70,27 @@ Practical step-by-step guides to help perform pulsar observations.
 
 
 
+.. grid:: 1 2 2 2
 
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **How to use the Cyclic Spectroscopy Backend** 
+
+        Instructions for using the Cyclic Spectroscopy backend.
+
+        .. button-link:: pulsars/cycspec.html
+            :color: primary
+            :tooltip: CycSpec
+            :outline:
+            :click-parent:
+
+            CycSpec
+
+.. toctree:
+    :hidden:
+
+    pulsars/cycspec
 
 
