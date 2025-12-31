@@ -227,12 +227,11 @@ contained within the diffraction pattern of the telescope including the error be
 
 .. note::
 
-    * This temperature scale does not have a name per se (e.g., how :math:`T^*_A` is referred 
-      to as the forward beam brightness temperature). 
+    This temperature scale does not have a name per se (e.g., how :math:`T^*_A` is referred to as the forward beam brightness temperature). 
 
-	* :math:`T^*_R` is generally not the same as :math:`T_r` (radiation temperature) in the GBT 
-      sensitivity calculator.
+.. note::
 
+	:math:`T^*_R` is generally not the same as :math:`T_r` (radiation temperature) in the GBT sensitivity calculator.
 
 How do the temperature scales relate to one another?
 ====================================================
