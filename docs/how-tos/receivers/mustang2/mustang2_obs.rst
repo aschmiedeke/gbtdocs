@@ -52,7 +52,7 @@ The internet at GBO can be intermitent at times. Specifically there are days tha
 2.2 AstrID 
 -----------
 
-Open an AstrID session and navigate to your corresponding MUSTANG-2 project. The MUSTANG-2 instrument team should have already populated your Astrid area with appropriate scripts.
+Open an AstrID session and navigate to your corresponding MUSTANG-2 project. The MUSTANG-2 instrument team should have already populated your AstrID area with appropriate scripts.
 
 2.3 CLEO
 --------
@@ -120,29 +120,29 @@ A few minutes before your observing start time (say 15 minutes, better 30 minute
 3.2. Fill in AstrID info
 ------------------------
 
-In Astrid under ObservationManagement, go to the Run tab and fill in the Observer and Operator information. 
+In AstrID under ObservationManagement, go to the Run tab and fill in the Observer and Operator information. 
 
 
 3.3. Take control
 -----------------
 
-Once the member of the M2 instrument team has finished biasing and the operator tells you are in the gateway/gives you the go ahead, in Astrid → File → Real time mode ... → Select ``work online with control of the telescope``.
+Once the member of the M2 instrument team has finished biasing and the operator tells you are in the gateway/gives you the go ahead, in AstrID → File → Real time mode ... → Select ``work online with control of the telescope``.
 
 
 3.4. Configure
 --------------
 
-Run the ``1_m2setup`` script in Astrid.
+Run the ``1_m2setup`` script in AstrID.
 
 
 3.5. OOF
 --------
 
-#. Make sure that you have changed ``mySrc`` in ``2_m2oof`` and run the ``2_m2OOF`` script in Astrid. 
+#. Make sure that you have changed ``mySrc`` in ``2_m2oof`` and run the ``2_m2OOF`` script in AstrID. 
 
 #. For the first OOF of the night, you need to have ``calSeq=True`` so that a skydip is done as a part of the OOFing process. An OOF will take ~20 minutes to run. 
 
-#. Check the OOF results in Astrid → DataDisplay → OOF and re-rerun if necessary. 
+#. Check the OOF results in AstrID → DataDisplay → OOF and re-rerun if necessary. 
     For M2, we typically apply the z5 corrections. When the corrections are available, press the green button that reads ``After selecting the Zernike solution above, click this green button to send the solutions to the telescope.``
    
     .. note::
@@ -153,7 +153,7 @@ Run the ``1_m2setup`` script in Astrid.
 
     While your OOF is running, it is a good time to:
 
-    - Write down the weather conditions from the GbtStatus tab in Astrid in the observing log 
+    - Write down the weather conditions from the GbtStatus tab in AstrID in the observing log 
         - Pyrgeometer - if working
         - Temperature
         - Humidity
@@ -204,7 +204,7 @@ Run the ``1_m2setup`` script in Astrid.
 3.8 Take science data
 ---------------------
 
-Take ~30 minutes of science data followed by a quick daisy on your pointing calibrator. Often this is accomplished by submitting several science scripts (e.g., ``5_science_rX``) in Astrid. For example, often for cluster science each individual science scan is ~8-9 minutes in length. So if you are submitting individual science scans (which ``5_science_rX`` are), you can submit 4 of the science scripts in a row followed by your pointing calibrator scan. 
+Take ~30 minutes of science data followed by a quick daisy on your pointing calibrator. Often this is accomplished by submitting several science scripts (e.g., ``5_science_rX``) in AstrID. For example, often for cluster science each individual science scan is ~8-9 minutes in length. So if you are submitting individual science scans (which ``5_science_rX`` are), you can submit 4 of the science scripts in a row followed by your pointing calibrator scan. 
 
 It's a good idea to check the time streams (see the :ref:`check time streams section <how-tos/receivers/mustang2/mustang2_obs:4.5 Checking Time Streams>` for instructions and examples.)
 
@@ -677,14 +677,14 @@ where ``old_project_session`` is the full name of the previous M2 project and ``
 
     The last modified file will tell you what the most recent project ID was.
 
-6.2 ``Run m2setup``
--------------------
+6.2 Configure
+-------------
 
-When the observing time for the second project starts, you need run m2setup in AstrID again. This is already outlined in the directions.
+When the observing time for the second project starts, you need run ``1_m2setup`` in AstrID again. This is already outlined in the directions.
 
 .. warning::
    
-   Some people think they can skip this step when changing from another MUSTANG-2 run. This is not the case. It's very important to still run ``m2setup`` at the beginning of your session.
+   Some people think they can skip this step when changing from another MUSTANG-2 run. This is not the case. It's very important to still run ``1_m2setup`` at the beginning of your session.
 
 6.3 Skydip/OOF 
 --------------

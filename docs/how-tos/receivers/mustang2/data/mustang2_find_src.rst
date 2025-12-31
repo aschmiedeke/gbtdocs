@@ -11,7 +11,7 @@ In order to determine if MUSTANG-2 has observed a source and if so, how much tim
 ==========================================
 The script is located on the GBO network at ``/users/penarray/Public/find_src``. To run the script cd to ``/users/penarray/Public/`` then simply execute it with ``find_src`` via the command line or just provide the full path. For example, if you wanted to know about any observations of the galaxy cluster MOO J1142+1527, you would execute ``find_src MOO_1142``. 
 
-We note that if you are searching for an object by name, you will need to know what the name of the object was in the catalog used by the AstrID scripts when the target was observed. Often the name used in the scripts is not the full name. 
+We note that if you are searching for an object by name, you will need to know what the name of the object was in the catalog used by the AstrID scripts when the target was observed. Further, often suffixes are added to the source name in the script (for example when using the offset script it adds `_off_1p5` to the source name). Thus, you'll typically want to add a star to the end of the name. So its best to just add the star by default when searching by source name. For example, `find_src MOO_1142*`.
 
 If you want to input multiple source names, assuming there are no bugs the source argument can be a comma separated list and each item can contain wildcards. It is easy to get a name wrong (moo1142 is not MOO1142). If you are unsure what names were used in AstrID, the best solution is to search by location.
 
