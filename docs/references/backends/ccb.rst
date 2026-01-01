@@ -17,7 +17,7 @@ and labels for these 8 channels (or ports in GBT parlance) are summarized below:
 .. csv-table:: CCB port labels and the astronomical quantities they measure
     :file: material/ccb_port_labels.csv
     :widths: 25, 25, 25, 25
-    :header-rows: 1
+ f   :header-rows: 1
 
 It provides carefully optimized radio frequency (not an intermediate frequency) detector circuits
 and the capability to beam-switch the receiver rapidly to suppress instrumental gain fluctuations.
@@ -54,15 +54,16 @@ are needed:
 * ``ccbbothcalslong.conf`` - integration time of 25 miliseconds, useful in preak/focus 
   observations to speed up processing of the data.
 
+.. tabs::
 
-.. tab:: ccb.conf
+    .. tab:: ccb.conf
 
-    .. literalinclude:: material/ccb.conf
-       :language: python
+        .. literalinclude:: material/ccb.conf
+            :language: python
 
-.. tab:: ccbbothcalslong.conf
+    .. tab:: ccbbothcalslong.conf
 
-    .. literalinclude:: material/ccbbothcalslong.conf
+        .. literalinclude:: material/ccbbothcalslong.conf
 
 
 
@@ -118,27 +119,28 @@ The basic template SB are:
   you choose this approach.
 
 
+.. tabs::
 
-.. tab:: ccbObsCycle.turtle
+    .. tab:: ccbObsCycle.turtle
 
-   .. literalinclude:: material/ccbObsCycle.turtle
-        :language: python
+        .. literalinclude:: material/ccbObsCycle.turtle
+            :language: python
 
-.. tab:: ccbRALongMap.turtle
+    .. tab:: ccbRALongMap.turtle
 
-   .. literalinclude:: material/ccbRaLongMap.turtle
-        :language: python
+        .. literalinclude:: material/ccbRaLongMap.turtle
+            :language: python
 
 
-.. tab:: ccbMap.turtle
+    .. tab:: ccbMap.turtle
 
-   .. literalinclude:: material/ccbMap.turtle
-        :language: python
+        .. literalinclude:: material/ccbMap.turtle
+            :language: python
 
-.. tab:: ccbMosaicMap.turtle
+    .. tab:: ccbMosaicMap.turtle
 
-   .. literalinclude:: material/ccbMosaicMap.turtle
-        :language: python
+        .. literalinclude:: material/ccbMosaicMap.turtle
+            :language: python
 
 
 Point source photometry is accomplished with an OTF variant of the symmetric :func:`Nod() <astrid_commands.Nod>`

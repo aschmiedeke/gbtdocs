@@ -75,21 +75,6 @@ Practical step-by-step guides to help you use MUSTANG-2.
 
             Setup
 
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0
-
-        :octicon:`telescope;3em;green` **Observing**
-
-        How to setup MUSTANG-2 for observations
-
-        .. button-link:: mustang2/mustang2_obs.html
-            :color: primary
-            :tooltip: How-to observe with MUSTANG-2?
-            :outline:
-            :click-parent:
-
-            Observe
 
     .. grid-item-card::
         :shadow: md
@@ -114,6 +99,5 @@ Practical step-by-step guides to help you use MUSTANG-2.
     mustang2/mustang2_calc_obs_time
     mustang2/mustang2_obs_scripts
     mustang2/mustang2_setup
-    mustang2/mustang2_obs
     mustang2/mustang2_data
 

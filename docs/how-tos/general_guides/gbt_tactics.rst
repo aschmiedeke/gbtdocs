@@ -161,5 +161,3 @@ These guides provide information on common used tactics and recommendations for 
     high-freq-obs
     continuum-obs
 
-
-

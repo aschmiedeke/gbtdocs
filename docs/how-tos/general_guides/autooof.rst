@@ -4,6 +4,7 @@
 AutoOOF Strategy
 ################
 
+
 AutoOOF is recommended for observing at frequencies of 40 GHz and higher and only available 
 for use with ``Rcvr26_40`` (Ka-Band), ``Rcvr40_52`` (Q-Band), ``Rcvr68_92`` (W-Band), 
 ``RcvrArray75_115`` (Argus), and ``Rcvr_MBA1_5`` (MUSTANG-2). For the associated data display, see
@@ -228,7 +229,7 @@ How do I know if I have a good SNR for the OOF? Ask yourself, do you see peaks? 
 
 .. admonition:: Tip for determining if you have enough SNR for OOFing.
 
-    Change to the "DataDisplay" -> "Continuum" tab for the first OOF scan and see if you see signal from a source or not. If you don't see spikes, then you might want to abort and change to a stronger source.
+    Change to the *DataDisplay* -> *Continuum* tab for the first OOF scan and see if you see signal from a source or not. If you don't see spikes, then you might want to abort and change to a stronger source.
 
 .. note::
 
@@ -285,43 +286,56 @@ Tips and Tricks
 
 Uncheck Fixed Scale
 -------------------
-You'll notice that the z-axis values of the surface delta map are by default from -2.5 to 2.5 (see scale bar to the right of the surface delta map). This is because the box to the right of the surface image map labeled ``Show Fixed-Scale Image`` is checked. It can be useful to see the full range of z-axis values. To do this uncheck the box next to ``Show Fixed-Scale Image`` and it will then display the full range of values. This can be helpful in the case that the OOF is clearly bad or you are uncertain.
+You'll notice that the z-axis values of the surface delta map are by default from -2.5 to 2.5 (see scale bar to the right of the surface delta map). This is because the box to the right of the surface image map labeled *Show Fixed-Scale Image* is checked. It can be useful to see the full range of z-axis values. To do this uncheck the box next to *Show Fixed-Scale Image* and it will then display the full range of values. This can be helpful in the case that the OOF is clearly bad or you are uncertain.
 
 .. note::
 
     It is unknown what the units are for the z-axis of the surface delta map (the scale bar).
 
+
+    
 Scaling for a Bad OOF
 ^^^^^^^^^^^^^^^^^^^^^
-.. admonition:: Example 1: The effect of scaling for a bad OOF
 
-    .. tab:: Fixed z5
+.. _scaling_bad_oof_ex1:
+
+Example 1
+'''''''''
+
+.. tab-set::
+
+    .. tab-item:: Fixed z5
 
         .. image:: images/autoOOF/Q-band/AGMV24B_376_01_OOF1_bad_z5_fixedScale.png
 
-    .. tab:: Scaled z5
+    .. tab-item:: Scaled z5
 
         .. image:: images/autoOOF/scaled/AGMV24B_376_01_OOF1_bad_z5_scaled.png
 
-    .. tab:: Fixed z4
+    .. tab-item:: Fixed z4
 
         .. image:: images/autoOOF/Q-band/AGMV24B_376_01_OOF1_bad_z4_fixedScale.png
 
-    .. tab:: Scaled z4
+    .. tab-item:: Scaled z4
 
         .. image:: images/autoOOF/scaled/AGMV24B_376_01_OOF1_bad_z4_scaled.png
 
-    .. tab:: Fixed z3
+    .. tab-item:: Fixed z3
 
         .. image:: images/autoOOF/Q-band/AGMV24B_376_01_OOF1_bad_z3_fixedScale.png
 
-    .. tab:: Scaled z3
+    .. tab-item:: Scaled z3
 
         .. image:: images/autoOOF/scaled/AGMV24B_376_01_OOF1_bad_z3_scaled.png
 
-For more details about this OOF see the :ref:`how-tos/general_guides/autooof:Q-band` section -> Bad.
+For more details about this OOF see the :ref:`Q-Band Bad Example <qband_bad>`.
 
-.. admonition:: Example 1: The effect of scaling for a bad OOF
+.. _scaling_bad_oof_ex2:
+
+Example 2
+'''''''''
+
+.. tabs::
 
     .. tab:: Fixed z5
 
@@ -347,12 +361,13 @@ For more details about this OOF see the :ref:`how-tos/general_guides/autooof:Q-b
 
         .. image:: images/autoOOF/scaled/AGBT21B_206_06_s46_z3_scaled.png
 
-For more details about this OOF see the :ref:`how-tos/general_guides/autooof:MUSTANG-2` section -> Bad -> Example 2. 
+For more details about this OOF see the :ref:`MUSTANG2 Bad Example 2 <mustang2_bad_ex2>`.
+
 
 Scaling for an Uncertain OOF
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. admonition:: The effect of scaling for an OOF you are uncertain about
+.. tabs::
 
     .. tab:: Fixed z5
 
@@ -378,12 +393,13 @@ Scaling for an Uncertain OOF
 
         .. image:: images/autoOOF/scaled/AGMV24B_376_01_OOF2_iffy_z3_scaled.png
 
-For more details about this OOF see the :ref:`how-tos/general_guides/autooof:Q-band` section -> Uncertain.
+For more details about this OOF see the :ref:`Q-Band Uncertain Example <qband_uncertain>`.
+
 
 Scaling for a Good OOF
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. admonition:: The effect of scaling for a good OOF
+.. tabs:: 
 
     .. tab:: Fixed z5
 
@@ -409,15 +425,16 @@ Scaling for a Good OOF
 
         .. image:: images/autoOOF/scaled/AGBT21A_376_01_s5_z3_scaled.png
 
-For more details about this OOF see the :ref:`how-tos/general_guides/autooof:MUSTANG-2` section -> Good -> Example 1. 
+For more details about this OOF see the :ref:`MUSTANG2 Good Example 1 <mustang2_good_ex1>`. 
+
 
 Show Solutions with Focus Removed
 ---------------------------------
-When you are inspecting the surface delta map, there is an option on the right hand side to "Show Solutions with Focus Removed". OOF solves for the pointing and focus corrections in addtion to the surface corrections. "Show Solutions with Focus Removed" allows you to look at the surface corrections with the focus removed. This is particularly useful to do when you have a large focus correction (:math:`|` LFC_Y :math:`| \gtrsim` 10 mm). It is also useful to check when you are unsure if you have good surface corrections (typically when you have indications that the OOF is bad or marginal) as this allows you check the surface delta map with the focus removed to see if the underlying surface corrections are good. 
+When you are inspecting the surface delta map, there is an option on the right hand side to *Show Solutions with Focus Removed*. OOF solves for the pointing and focus corrections in addtion to the surface corrections. *Show Solutions with Focus Removed* allows you to look at the surface corrections with the focus removed. This is particularly useful to do when you have a large focus correction (:math:`|` LFC_Y :math:`| \gtrsim` 10 mm). It is also useful to check when you are unsure if you have good surface corrections (typically when you have indications that the OOF is bad or marginal) as this allows you check the surface delta map with the focus removed to see if the underlying surface corrections are good. 
 
-For an example, see the following surface delta maps of a project that OOFed with Ka+CCB.
+For an example, see the following surface delta maps of a project that OOFed with Ka+CCB for different orders of Zernike polynomials.
 
-.. admonition:: Different Zernike order surface delta maps
+.. tabs::
 
     .. tab:: z5
 
@@ -431,9 +448,10 @@ For an example, see the following surface delta maps of a project that OOFed wit
 
         .. image:: images/autoOOF/misc_examples/AGBT20A_322_16_s1_z3_fixedScale.png
 
-One will notice that with all of those the surface delta map looks ok (no sharp edges really), but the surface RMS for z5 is a bit on the high side. The main thing of concern is that the focus offsets are quite high (:math:`\gtrsim|10mm|`). This is a good case in which it is good to inspect the surface corrections with the focus removed. To do this, check the box that says ``Show Solutions with Focus Removed``. Once you have done that you can inspect all three orders of Zernike surface delta maps. For this case they look like the following:
 
-.. admonition:: Solutions with Focus Removed
+You will notice that with all of those the surface delta map looks ok (no sharp edges really), but the surface RMS for z5 is a bit on the high side. The main thing of concern is that the focus offsets are quite high (:math:`\gtrsim|10mm|`). This is a good case in which it is good to inspect the surface corrections with the focus removed. To do this, check the box that says *Show Solutions with Focus Removed*. Once you have done that you can inspect all three orders of Zernike surface delta maps. For this case they look like the following:
+
+.. tabs:: 
 
     .. tab:: z5
 
@@ -449,7 +467,7 @@ One will notice that with all of those the surface delta map looks ok (no sharp 
 
 .. note:: 
 
-    ``Show Solutions with Focus Removed`` shows three different surface delta maps: relative solution, absolute solution, and absolute solution with focus removed. Note that the relative solution is the one that most looks like the surface delta map that is initially displayed. The "absolute solution with focus removed" is the map that you want to look at. 
+    *Show Solutions with Focus Removed* shows three different surface delta maps: relative solution, absolute solution, and absolute solution with focus removed. Note that the relative solution is the one that most looks like the surface delta map that is initially displayed. The "absolute solution with focus removed" is the map that you want to look at. 
 
 For this example, in the main z5 surface delta map you see (a) a spherically symmetric shape that is indicative of being out of focus, and (b) a higher surface RMS. Then when you look at the solution with the focus removed ("absolute solution with focus removed") there is a decent surface with the spherically symmetric shape gone and the RMS is more reasonable. This example demonstrates the use of looking at the surface corrections with the focus removed. And in this case, we would say that the z5 solutions are good (we saw that the surface solutions look good via removing the focus) and would apply those.
 
@@ -468,7 +486,7 @@ Bad: Keyhole
 ------------
 OOF done with Argus in the keyhole at >85° which resulted in an OOF "rms"=438 :math:`\mu\mathrm{m}` with a large implied focus and elevation (el) pointing offset. 
 
-.. admonition:: Different Zernike order surface delta maps
+.. tabs:: 
 
     .. tab:: z5
 
@@ -494,7 +512,7 @@ Bad: High Winds
 ---------------
 OOF done with Argus in windy conditions.
 
-.. admonition:: Different Zernike order surface delta maps
+.. tabs:: 
 
     .. tab:: z5
 
@@ -508,7 +526,6 @@ OOF done with Argus in windy conditions.
 
         .. image:: images/autoOOF/bad/AGBT19A_326_07_s20_z3_fixedScale.png
 
-.. admonition:: Raw data and fitted beam maps
 
     .. tab:: Raw data
 
@@ -528,7 +545,7 @@ You should always check the SNR of your OOF sources. To do this go to the ``Data
 
 But here is an example of an OOF done with Argus that is categorized as a "marginal OOF" with borderline SNR.
 
-.. admonition:: Argus Marginal OOF Example 
+.. tabs:: 
 
     .. tab:: z5 Surface Delta Map
 
@@ -554,7 +571,7 @@ Comparing Ka and Argus OOF on Same Source
 -----------------------------------------
 Here is a comparison of the raw data from an OOF taken on the same source (3C84 - 0319+4130) with Ka+CCB and Argus. 
 
-.. admonition:: Comparison of OOF on 3C84 with Ka+CCB and Argus
+.. tabs:: 
 
     .. tab:: Ka+CCB
 
@@ -572,11 +589,13 @@ Q-band
 ------
 Both of the following OOFs were taken during a VLBI run where the observer used Q-band to OOF and then observed with W-band.
 
+.. _qband_bad:
+
 Bad
 ^^^
 Right at the start of the observing session, the observer started with an OOF with Q-band.
 
-.. admonition:: Different Zernike order surface delta maps
+.. tabs:: 
 
     .. tab:: z5
 
@@ -590,9 +609,11 @@ Right at the start of the observing session, the observer started with an OOF wi
 
         .. image:: images/autoOOF/Q-band/AGMV24B_376_01_OOF1_bad_z3_fixedScale.png
 
-All of the above surface delta maps have a) sharp features, b) a high surface RMS, and c) high focus corrections. The observer chose not to apply the solutions. You can look at the scaled surface delta maps in :ref:`how-tos/general_guides/autooof:Scaling for a Bad OOF` -> Example 1.
+All of the above surface delta maps have a) sharp features, b) a high surface RMS, and c) high focus corrections. 
+The observer chose not to apply the solutions. You can look at the scaled surface delta maps in
+:ref:`Scaling for a Bad OOF Example 1 <scaling_bad_oof_ex1>`. 
 
-.. admonition:: Raw data and fitted beam maps
+.. tabs:: 
 
     .. tab:: Raw data
 
@@ -608,11 +629,13 @@ All of the above surface delta maps have a) sharp features, b) a high surface RM
 
 .. todo:: confirm this is the advice to give in this situation.
 
+.. _qband_uncertain:
+
 Uncertain
 ^^^^^^^^^
 Then later in the session, the observer decided to OOF again.
 
-.. admonition:: Different Zernike order surface delta maps
+.. tabs:: 
 
     .. tab:: z5
 
@@ -636,7 +659,7 @@ You can look at the scaled surface delta maps in :ref:`how-tos/general_guides/au
 
 This is a good example in which to see if the surface corrections look ok with the focus removed.
 
-.. admonition:: Solutions with Focus Removed
+.. tabs:: 
 
     .. tab:: z5
 
@@ -658,7 +681,7 @@ This is a good example in which to see if the surface corrections look ok with t
 
 Check the raw data and fitted beam maps.
 
-.. admonition:: Raw data and fitted beam maps
+.. tabs:: Raw data and fitted beam maps
 
     .. tab:: Raw data
 
@@ -679,9 +702,11 @@ Argus
 
     When the weather is good, OOFing with Argus is ok (in that you can get the SNR needed to fit the surface), but when the weather is marginal getting a useable Argus OOF is challenging. Thus, the general guidance is to OOF with Ka if its available.
 
+.. _argus_good:
+
 Good
 ^^^^
-.. admonition:: Different Zernike order surface delta maps
+.. tabs:: 
 
     .. tab:: z5
 
@@ -698,7 +723,7 @@ Good
 
 Check the raw data and fitted beam maps.
 
-.. admonition:: Raw data and fitted beam maps
+.. tabs:: 
 
     .. tab:: Raw data
 
@@ -710,25 +735,33 @@ Check the raw data and fitted beam maps.
 
 .. todo:: Replace this example or add another one.
 
+.. _argus_bad:
+
 Bad
 ^^^
 See the many examples above (see the first three bad examples of :ref:`how-tos/general_guides/autooof:OOF examples` section).
 
+
 MUSTANG-2
 ---------
+
 MUSTANG-2 observers use OOF not only for correcting the surface but also for their pointing and focus corrections (as opposed to using an AutoPeakFocus as other receivers do). Below are examples of good, bad, and uncertain OOFs. Additionally, MUSTANG-2 observers use an IDL GUI to check the beam and keep an eye on the data (see :ref:`how-tos/receivers/mustang2/mustang2_obs:4. Checking data with the m2gui`). Thus the "raw data" view in the "DataDisplay" -> "OOF" tab are not of particular use to MUSTANG-2 observers. 
 
 .. note::
 
     The order of the focus values for a MUSTANG-2 OOF is typically -10mm, 0 mm, then 10 mm. However, when you look at the "fitted beam map" in AstrID, the order will be +10mm, 0, -10mm (so inverted from the order of the scans).
 
+.. _mustang2_good:
+
 Good
 ^^^^
 
-Example 1
-~~~~~~~~~
+.. _mustang2_good_ex1:
 
-.. admonition:: Different Zernike order surface delta maps
+Example 1
+'''''''''
+
+.. tabs:: 
 
     .. tab:: z5
 
@@ -747,7 +780,9 @@ Example 1
 
 You can look at the scaled surface delta maps in :ref:`how-tos/general_guides/autooof:Scaling for a Good OOF`.
 
-.. admonition:: Solutions with Focus Removed
+Solutions with Focus Removed: 
+
+.. tabs:: 
 
     .. tab:: z5
 
@@ -767,7 +802,7 @@ You can look at the scaled surface delta maps in :ref:`how-tos/general_guides/au
 
 Check the raw data and fitted beam maps.
 
-.. admonition:: Raw data and fitted beam maps
+.. tabs:: 
 
     .. tab:: Raw data
 
@@ -783,11 +818,12 @@ Check the raw data and fitted beam maps.
 
         Lower left hand corner has the scan number (s#) then the focus value.
 
+.. _mustang2_good_ex2:
 
 Example 2
-~~~~~~~~~
+'''''''''
 
-.. admonition:: Different Zernike order surface delta maps
+.. tabs:: 
 
     .. tab:: z5
 
@@ -806,7 +842,7 @@ Example 2
 
 Check the raw data and fitted beam maps.
 
-.. admonition:: Raw data and fitted beam maps
+.. tabs::
 
     .. tab:: Raw data
 
@@ -822,10 +858,12 @@ Check the raw data and fitted beam maps.
 
         Lower left hand corner has the scan number (s#) then the focus value.
 
-Example 3
-~~~~~~~~~
+.. _mustang2_good_ex3:
 
-.. admonition:: Different Zernike order surface delta maps
+Example 3
+'''''''''
+
+.. tabs:: 
 
     .. tab:: z5
 
@@ -844,7 +882,7 @@ Example 3
 
 Check the raw data and fitted beam maps.
 
-.. admonition:: Raw data and fitted beam maps
+.. tabs:: 
 
     .. tab:: Raw data
 
@@ -861,12 +899,17 @@ Check the raw data and fitted beam maps.
         Lower left hand corner has the scan number (s#) then the focus value.
 
 
+.. _mustang2_bad:
+
 Bad
 ^^^
 
+.. _mustang2_bad_ex1:
+
 Example 1
-~~~~~~~~~
-.. admonition:: Different Zernike order surface delta maps
+'''''''''
+
+.. tabs:: 
 
     .. tab:: z5
 
@@ -887,7 +930,9 @@ Example 1
         Notice the sharp features, very high surface RMS, and very large focus correction.
 
 
-.. admonition:: Solutions with Focus Removed
+Solutions with Focus Removed
+
+.. tabs::
 
     .. tab:: z5
 
@@ -910,7 +955,7 @@ Example 1
 
 Check the raw data and fitted beam maps.
 
-.. admonition:: Raw data and fitted beam maps
+.. tabs:: 
 
     .. tab:: Raw data
 
@@ -928,10 +973,12 @@ Check the raw data and fitted beam maps.
 
 .. todo:: advice for what to do in this case.
 
-Example 2
-~~~~~~~~~
+.. _mustang2_bad_ex2:
 
-.. admonition:: Different Zernike order surface delta maps
+Example 2
+'''''''''
+
+.. tabs:: 
 
     .. tab:: z5
 
@@ -951,9 +998,11 @@ Example 2
 
         Notice that the sharp features have gotten better and reasonable surface RMS, but a very large focus correction.
 
-You can look at the scaled surface delta maps in :ref:`how-tos/general_guides/autooof:Scaling for a Bad OOF` -> Example 2.
+You can look at the scaled surface delta maps in :ref:`Scaling for a Bad OOF Example 2 <scaling_bad_oof_ex2>`.
 
-.. admonition:: Solutions with Focus Removed
+Solutions with Focus Removed
+
+.. tabs:: 
 
     .. tab:: z5
 
@@ -976,7 +1025,7 @@ You can look at the scaled surface delta maps in :ref:`how-tos/general_guides/au
 
 Check the raw data and fitted beam maps.
 
-.. admonition:: Raw data and fitted beam maps
+.. tabs:: 
 
     .. tab:: Raw data
 
@@ -994,12 +1043,17 @@ Check the raw data and fitted beam maps.
 
 .. todo:: advice for what to do in this case.
 
+.. _mustang2_uncertain:
+
 Uncertain
 ^^^^^^^^^
 
+.. _mustang2_uncertain_ex1:
+
 Example 1
-~~~~~~~~~
-.. admonition:: Different Zernike order surface delta maps
+'''''''''
+
+.. tabs:: 
 
     .. tab:: z5
 
@@ -1020,7 +1074,9 @@ Example 1
         Notice that the sharp features have disappeared and there is now a reasonable surface RMS, but still a large focus correction.
 
 
-.. admonition:: Solutions with Focus Removed
+Solutions with Focus Removed
+
+.. tabs:: 
 
     .. tab:: z5
 
@@ -1043,7 +1099,7 @@ Example 1
 
 Check the raw data and fitted beam maps.
 
-.. admonition:: Raw data and fitted beam maps
+.. tabs:: 
 
     .. tab:: Raw data
 
@@ -1061,9 +1117,12 @@ Check the raw data and fitted beam maps.
 
 **Advice for this situation:** apply z3.
 
+.. _mustang2_uncertain_ex2:
+
 Example 2
-~~~~~~~~~
-.. admonition:: Different Zernike order surface delta maps
+'''''''''
+
+.. tabs:: 
 
     .. tab:: z5
 
@@ -1083,8 +1142,9 @@ Example 2
 
         Notice that the sharp feature has mostly disappeared and there is now a low surface RMS, but now there is a large focus correction.
 
+Solutions with Focus Removed
 
-.. admonition:: Solutions with Focus Removed
+.. tabs:: 
 
     .. tab:: z5
 
@@ -1107,7 +1167,7 @@ Example 2
 
 Check the raw data and fitted beam maps.
 
-.. admonition:: Raw data and fitted beam maps
+.. tabs:: 
 
     .. tab:: Raw data
 
@@ -1125,10 +1185,12 @@ Check the raw data and fitted beam maps.
 
 **Advice for this situation:** apply z5.
 
+.. _mustang2_uncertain_ex3:
 
 Example 3
-~~~~~~~~~
-.. admonition:: Different Zernike order surface delta maps
+'''''''''
+
+.. tabs:: 
 
     .. tab:: z5
 
@@ -1148,8 +1210,9 @@ Example 3
 
         Not much different from z4.
 
+Solutions with Focus Removed
 
-.. admonition:: Solutions with Focus Removed
+.. tabs:: 
 
     .. tab:: z5
 
@@ -1172,7 +1235,7 @@ Example 3
 
 Check the raw data and fitted beam maps.
 
-.. admonition:: Raw data and fitted beam maps
+.. tabs:: 
 
     .. tab:: Raw data
 

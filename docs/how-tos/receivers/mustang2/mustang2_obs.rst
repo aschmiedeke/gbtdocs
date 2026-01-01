@@ -311,7 +311,9 @@ After you have opened the m2gui follow these steps to check the tipping scan, mo
 
     .. image:: images/m2gui_03_tip_individ.png
 
-    .. admonition:: Examples of tipping scans
+    Example of tipping scans: 
+
+    .. tabs::
 
         .. tab:: Good Tip Scan 
 
@@ -424,7 +426,7 @@ If you would like to make a map of a science scan(s), you can do so by following
 
 You can make an SNR map with the GUI. To do this, first follow the instructions above for making a science scan, once the map has been made, click the ``SNR map`` button. 
 
-.. admonition:: How to make an SNR map
+.. tabs:: 
 
     .. tab:: Make SNR Map
 
@@ -447,7 +449,7 @@ It is a good idea to check the time streams (checking how the sky temperature is
 - Click ``show time stream`` button underneath the ``Fit Map`` button after making your map
     .. image:: images/m2gui_18_show_time_stream_button.png
 
-    .. admonition:: Example Time Streams
+    .. tabs:: 
 
         .. tab:: Calibrator Time Stream
 
@@ -474,7 +476,7 @@ It is a good idea to check the time streams (checking how the sky temperature is
 
 2. **Set crmask**. Click the ``Set crmask`` button and another window will pop up with 4 columns: ``r`` is the detector number and ``c`` stands for column which is the roach number. There is a button next to each detector that is selected or "pressed in" if it is being used and is unselected or "not pressed in" if it is being masked (see images below).
 
-.. admonition:: Setting crmask
+.. tabs:: 
 
     .. tab:: Default crmask
 
@@ -502,7 +504,7 @@ It is a good idea to check the time streams (checking how the sky temperature is
 
 It is possible to save the images that you make in the GUI as a FITS image. Instructions below:
 
-.. admonition:: How to save the image in the GUI
+.. tabs:: 
 
     .. tab:: 1. Set image path.
 
@@ -614,7 +616,10 @@ Again, when in doubt you can always call an M2 team member to help you make the 
 -------------------------------------
 Here are some examples of science time streams and skydips in good and bad weather.
 
-.. admonition:: Faint Science
+Faint Science
+^^^^^^^^^^^^^
+
+.. tabs:: 
 
     .. tab:: Good Time Stream
 
@@ -628,8 +633,10 @@ Here are some examples of science time streams and skydips in good and bad weath
 
         This is what faint science time streams look like when they are heavily affected by weather - very wiggly.
 
+Skydip
+^^^^^^
 
-.. admonition:: Skydip
+.. tabs::
 
     .. tab:: Good Skydip
 
@@ -745,52 +752,55 @@ In AstrID, go from ``working online`` to ``working offline``:
 
 For the shutdown process you can either do this **(a) automatically** or **(b) manually**.
 
+.. tabs::
 
-.. tab:: Automatic Shutdown
+    .. tab:: Automatic Shutdown
 
-    Execute ONE of the following in a terminal:
-        .. code:: bash
+        Execute ONE of the following in a terminal:
+            .. code:: bash
         
-            /users/penarray/Public/stopMUSTANG.bash 
+                /users/penarray/Public/stopMUSTANG.bash 
 
-        OR
+            OR
 
-        .. code:: bash
+            .. code:: bash
         
-            cd /users/penarray/Public  
-            ./stopMUSTANG.bash
+                cd /users/penarray/Public  
+                ./stopMUSTANG.bash
 
-.. tab:: Manual Shutdown
+    .. tab:: Manual Shutdown
 
-    #. **Set detector biases to zero**
-        - Go to the Mustang Manager in CLEO
-        - Click on the miscellaneous tab
-        - In the top middle, you will see 4 rows of Det Bias 1-4, corresponding to the 4 roaches.
-        - Unlock the manager
-        - roach-by-roach:
-            - type ``0`` in the left DetBias box
-            - press enter
-            - wait until the blue box (right DetBias box) shows a DetBias of 0
-            - repeat this step for all 4 roaches.
+        #. **Set detector biases to zero**
+            - Go to the Mustang Manager in CLEO
+            - Click on the miscellaneous tab
+            - In the top middle, you will see 4 rows of Det Bias 1-4, corresponding to the 4 roaches.
+            - Unlock the manager
+            - roach-by-roach:
+                - type ``0`` in the left DetBias box
+                - press enter
+                - wait until the blue box (right DetBias box) shows a DetBias of 0
+                - repeat this step for all 4 roaches.
 
-    #. **Turn off data transmission**
-        - Mustang2 CLEO scan turn off ``DataXinit`` for all four roaches. 
+        #. **Turn off data transmission**
+            - Mustang2 CLEO scan turn off ``DataXinit`` for all four roaches. 
           
-        .. note::
+            .. note::
             
-            You will need to be in gateway AND unlock both the ``unlock`` and ``advanced features unlock`` buttons to do this.
+                You will need to be in gateway AND unlock both the ``unlock`` and ``advanced features unlock`` buttons to do this.
 
-    #. **Turn off components**
-        In VNC session, go to http://mustangboot.gbt.nrao.edu and turn off the *roaches*, *HEMTs*, and *Function Generator* by checking those three boxes then go to left of the screen and click 'Off’ (gray button).
+        #. **Turn off components**
+            In VNC session, go to http://mustangboot.gbt.nrao.edu and turn off the *roaches*, *HEMTs*, and *Function Generator* by checking those three boxes then go to left of the screen and click 'Off’ (gray button).
 
-    #. **Turn on daily cycle**
-        Mustang2 CLEO window
-            - go to ``Housekeeping``
-            - unlock
-            - recheck daily cycle to be on and put autocycle trigger to HE4
-                This means that if either of the He4 fridges run out it starts a cycle. 
-            - set the ``daily cycle time`` = 0.65 of a day in UT
-                This is the time of day that the daily cycle starts measured in fraction of a day (UT).  0.65 is a nice balance between ensuring the cycle is over by the time any observations are likely to come up, yet not so early that there is no time to work with the receiver in the morning.
+        #. **Turn on daily cycle**
+            Mustang2 CLEO window
+                - go to ``Housekeeping``
+                - unlock
+                - recheck daily cycle to be on and put autocycle trigger to HE4
+                    This means that if either of the He4 fridges run out it starts a cycle. 
+                - set the ``daily cycle time`` = 0.65 of a day in UT
+                    This is the time of day that the daily cycle starts measured in fraction of a day (UT).  0.65 is a nice balance 
+                    between ensuring the cycle is over by the time any observations are likely to come up, yet not so early that 
+                    there is no time to work with the receiver in the morning.
 
 8.3 Kill VNC session
 --------------------
