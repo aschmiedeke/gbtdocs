@@ -317,16 +317,16 @@ if you are not observing), and type
 
 How you can access your data depends on if you are currently observing or not.
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: Currently observing (online)
+    .. tab-item:: Currently observing (online)
 
 
         .. code-block:: idl
 
             online
 
-    .. tab:: Not currently observing (offline)
+    .. tab-item:: Not currently observing (offline)
 
         .. code-block:: idl
 

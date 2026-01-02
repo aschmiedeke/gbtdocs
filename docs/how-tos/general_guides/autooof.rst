@@ -82,7 +82,7 @@ Below we provide some general information about the OOF process:
 * **Allow approximately 25 minutes for an AutoOOF**.
     * The AutoOOF procedure obtains three consecutive OTF maps (each map takes 5-6 minutes) at a different focus position (typically at focus, 10 mm, and -10mm).
 * **Use AutoOOF to derive pointing and focus offsets**
-    * The oof-processing is launched automatically upon completion of the third map, and the result is displayed in the OOF plug-in tab of Astrid. It is incumbent upon you, as the user, to examine the solutions (see guidance below), and click the button (in the Astrid DataDisplay tab) to send the selected solution to the active surface. It is recommended that when sending the solutions, you use the button in the OOF display tab labeled ``After selecting the Zernike solution above, click this button to send the solutions to the telescope``.
+    * The oof-processing is launched automatically upon completion of the third map, and the result is displayed in the OOF plug-in tab-item of Astrid. It is incumbent upon you, as the user, to examine the solutions (see guidance below), and click the button (in the Astrid DataDisplay tab-item) to send the selected solution to the active surface. It is recommended that when sending the solutions, you use the button in the OOF display tab-item labeled ``After selecting the Zernike solution above, click this button to send the solutions to the telescope``.
 
 .. note:: 
 
@@ -94,7 +94,7 @@ How long does an OOF solution remain valid?
 
 Nighttime
 ----------
-A general rule of thumb is if the corrections are measured at least two hours after sunset, then the solutions should be good for about 4 hours. This depends on how rapidly the backup structure cools off after sunset and how sunny the day was. If the OOF is taken after midnight, the structure has typically stabilized by then, and the solutions may be good until after sunrise. But in general, OOF solutions are good for 2-6 hours at night time depending on the conditions of any particular night. It is not recommended that you OOF until ~2 hours after sunset because prior to this the telescope is still “settling” (aka changing thermally) from the thermal effects during the day. 
+A general rule of thumb is if the corrections are measured at least two hours after sunset, then the solutions should be good for about 4 hours. This depends on how rapidly the backup structure cools off after sunset and how sunny the day was. If the OOF is taken after midnight, the structure has typically stab-itemilized by then, and the solutions may be good until after sunrise. But in general, OOF solutions are good for 2-6 hours at night time depending on the conditions of any particular night. It is not recommended that you OOF until ~2 hours after sunset because prior to this the telescope is still “settling” (aka changing thermally) from the thermal effects during the day. 
 
 .. todo:: confirm two hours. 
 
@@ -132,7 +132,7 @@ Good solutions have the following characteristics:
       gravity-zernike model).
 
 
-Here is an example of an acceptable OOF solution: 
+Here is an example of an acceptab-itemle OOF solution: 
 
 .. _fig-good-oof-solution:
 .. figure:: images/autoOOF/OOFgoodExample.jpg
@@ -140,7 +140,7 @@ Here is an example of an acceptable OOF solution:
     This solution shows broad features (:math:`\pm` 1.5 radians of phase) with a surface rms of 197\ :math:`\mu m`.
 
 
-Here is an example of an unacceptable OOF solution:
+Here is an example of an unacceptab-itemle OOF solution:
 
 .. _fig-bad-oof-solution:
 .. figure:: images/autoOOF/OOFbadExample.jpg
@@ -151,7 +151,7 @@ Here is an example of an unacceptable OOF solution:
 Selecting the Zernike order
 ---------------------------
 
-By default, AutoOOF will halt processing after the fifth-order Zernike (z5) solution has been computed. The z5 solution is suitable for most conditions and is generally what observers should expect to use. A more agressive sixth-order (z6) fit may also be derived at the cost of a few additional minutes of 
+By default, AutoOOF will halt processing after the fifth-order Zernike (z5) solution has been computed. The z5 solution is suitab-itemle for most conditions and is generally what observers should expect to use. A more agressive sixth-order (z6) fit may also be derived at the cost of a few additional minutes of 
 processing time. This is usually unnecessary and should only be done on bright calibrators under favorable weather conditions. See :ref:`how-tos/general_guides/autooof:OOF z6 Processing Options` for information on how to change the maximum order of fit to process.
 
 Occasionally, it may be necessary to drop to a lower order of fit if the following features are seen:
@@ -177,9 +177,9 @@ OOF z6 Processing Options
 
 Deriving the sixth-order Zernike (z6) solution will require a few additional minutes of processing time and for the user to manually change the maximum order of fit to process in the following way:
 
-#. Select the OOF Subtab of the AstrID Data Display.
+#. Select the OOF Subtab-item of the AstrID Data Display.
 #. Select ``Tools`` :math:`\rightarrow` ``Options...`` from the drop--down menu.
-#. Select the maximum order of fit to process from the ``Processing Options`` tab of the pop--up window.
+#. Select the maximum order of fit to process from the ``Processing Options`` tab-item of the pop--up window.
 
    .. image:: images/autoOOF/OOFprocessing_options.jpg
 
@@ -208,7 +208,7 @@ For a set of raw data to be considered valid, it should show the following chara
 * Symmetrical left/right positive/negative pattern in all three raw data images.
 * Smooth features in all three raw data images. Sharp edges or stripes indicate hardware/software glitches or excessive winds.
 
-The AutoOOF raw data can be viewed by selecting the ``raw data`` radio button in the upper-right section of the OOF Subtab of the Data Display. Each column represents one focus position. The top row is the raw timestream data from the receiver, the second row has the baselines removed, and the bottom row shows the corresponding beam maps. See :numref:`fig-good-oof-raw-data` and :numref:`fig-bad-oof-raw-data` for a comparison of acceptable and unacceptable raw AutoOOF data.
+The AutoOOF raw data can be viewed by selecting the ``raw data`` radio button in the upper-right section of the OOF Subtab-item of the Data Display. Each column represents one focus position. The top row is the raw timestream data from the receiver, the second row has the baselines removed, and the bottom row shows the corresponding beam maps. See :numref:`fig-good-oof-raw-data` and :numref:`fig-bad-oof-raw-data` for a comparison of acceptab-itemle and unacceptab-itemle raw AutoOOF data.
 
 
 .. _fig-good-oof-raw-data:
@@ -229,7 +229,7 @@ How do I know if I have a good SNR for the OOF? Ask yourself, do you see peaks? 
 
 .. admonition:: Tip for determining if you have enough SNR for OOFing.
 
-    Change to the *DataDisplay* -> *Continuum* tab for the first OOF scan and see if you see signal from a source or not. If you don't see spikes, then you might want to abort and change to a stronger source.
+    Change to the *DataDisplay* -> *Continuum* tab-item for the first OOF scan and see if you see signal from a source or not. If you don't see spikes, then you might want to abort and change to a stronger source.
 
 .. note::
 
@@ -335,29 +335,29 @@ For more details about this OOF see the :ref:`Q-Band Bad Example <qband_bad>`.
 Example 2
 '''''''''
 
-.. tabs::
+.. tab-set::
 
-    .. tab:: Fixed z5
+    .. tab-item:: Fixed z5
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s46_z5_fixedScale.png
 
-    .. tab:: Scaled z5
+    .. tab-item:: Scaled z5
 
         .. image:: images/autoOOF/scaled/AGBT21B_206_06_s46_z5_scaled.png
 
-    .. tab:: Fixed z4
+    .. tab-item:: Fixed z4
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s46_z4_fixedScale.png
 
-    .. tab:: Scaled z4
+    .. tab-item:: Scaled z4
 
         .. image:: images/autoOOF/scaled/AGBT21B_206_06_s46_z4_scaled.png
 
-    .. tab:: Fixed z3
+    .. tab-item:: Fixed z3
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s46_z3_fixedScale.png
 
-    .. tab:: Scaled z3
+    .. tab-item:: Scaled z3
 
         .. image:: images/autoOOF/scaled/AGBT21B_206_06_s46_z3_scaled.png
 
@@ -367,29 +367,29 @@ For more details about this OOF see the :ref:`MUSTANG2 Bad Example 2 <mustang2_b
 Scaling for an Uncertain OOF
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. tabs::
+.. tab-set::
 
-    .. tab:: Fixed z5
+    .. tab-item:: Fixed z5
 
         .. image:: images/autoOOF/Q-band/AGMV24B_376_01_OOF2_iffy_z5_fixedScale.png
 
-    .. tab:: Scaled z5
+    .. tab-item:: Scaled z5
 
         .. image:: images/autoOOF/scaled/AGMV24B_376_01_OOF2_iffy_z5_scaled.png
 
-    .. tab:: Fixed z4
+    .. tab-item:: Fixed z4
 
         .. image:: images/autoOOF/Q-band/AGMV24B_376_01_OOF2_iffy_z4_fixedScale.png
 
-    .. tab:: Scaled z4
+    .. tab-item:: Scaled z4
 
         .. image:: images/autoOOF/scaled/AGMV24B_376_01_OOF2_iffy_z4_scaled.png
 
-    .. tab:: Fixed z3
+    .. tab-item:: Fixed z3
 
         .. image:: images/autoOOF/Q-band/AGMV24B_376_01_OOF2_iffy_z3_fixedScale.png
 
-    .. tab:: Scaled z3
+    .. tab-item:: Scaled z3
 
         .. image:: images/autoOOF/scaled/AGMV24B_376_01_OOF2_iffy_z3_scaled.png
 
@@ -399,29 +399,29 @@ For more details about this OOF see the :ref:`Q-Band Uncertain Example <qband_un
 Scaling for a Good OOF
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: Fixed z5
+    .. tab-item:: Fixed z5
 
         .. image:: images/autoOOF/M2/good/AGBT21A_376_01_s5_z5_fixedScale.png
 
-    .. tab:: Scaled z5
+    .. tab-item:: Scaled z5
 
         .. image:: images/autoOOF/scaled/AGBT21A_376_01_s5_z5_scaled.png
 
-    .. tab:: Fixed z4
+    .. tab-item:: Fixed z4
 
         .. image:: images/autoOOF/M2/good/AGBT21A_376_01_s5_z4_fixedScale.png
 
-    .. tab:: Scaled z4
+    .. tab-item:: Scaled z4
 
         .. image:: images/autoOOF/scaled/AGBT21A_376_01_s5_z4_scaled.png
 
-    .. tab:: Fixed z3
+    .. tab-item:: Fixed z3
 
         .. image:: images/autoOOF/M2/good/AGBT21A_376_01_s5_z3_fixedScale.png
 
-    .. tab:: Scaled z3
+    .. tab-item:: Scaled z3
 
         .. image:: images/autoOOF/scaled/AGBT21A_376_01_s5_z3_scaled.png
 
@@ -434,34 +434,34 @@ When you are inspecting the surface delta map, there is an option on the right h
 
 For an example, see the following surface delta maps of a project that OOFed with Ka+CCB for different orders of Zernike polynomials.
 
-.. tabs::
+.. tab-set::
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/misc_examples/AGBT20A_322_16_s1_z5_fixedScale.png
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/misc_examples/AGBT20A_322_16_s1_z4_fixedScale.png
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/misc_examples/AGBT20A_322_16_s1_z3_fixedScale.png
 
 
 You will notice that with all of those the surface delta map looks ok (no sharp edges really), but the surface RMS for z5 is a bit on the high side. The main thing of concern is that the focus offsets are quite high (:math:`\gtrsim|10mm|`). This is a good case in which it is good to inspect the surface corrections with the focus removed. To do this, check the box that says *Show Solutions with Focus Removed*. Once you have done that you can inspect all three orders of Zernike surface delta maps. For this case they look like the following:
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/misc_examples/AGBT20A_322_16_s1_z5_focusRemoved.png
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/misc_examples/AGBT20A_322_16_s1_z4_focusRemoved.png
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/misc_examples/AGBT20A_322_16_s1_z3_focusRemoved.png
 
@@ -486,17 +486,17 @@ Bad: Keyhole
 ------------
 OOF done with Argus in the keyhole at >85° which resulted in an OOF "rms"=438 :math:`\mu\mathrm{m}` with a large implied focus and elevation (el) pointing offset. 
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/bad/AGBT17B_044_01_s3_bad_keyhole_z5_fixedScale.png
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/bad/AGBT17B_044_01_s3_bad_keyhole_z4_fixedScale.png
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/bad/AGBT17B_044_01_s3_bad_keyhole_z3_fixedScale.png
 
@@ -512,26 +512,26 @@ Bad: High Winds
 ---------------
 OOF done with Argus in windy conditions.
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/bad/AGBT19A_326_07_s20_z5_fixedScale.png
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/bad/AGBT19A_326_07_s20_z4_fixedScale.png
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/bad/AGBT19A_326_07_s20_z3_fixedScale.png
 
 
-    .. tab:: Raw data
+    .. tab-item:: Raw data
 
         .. image:: images/autoOOF/bad/AGBT19A_326_07_s20_raw_data.png
 
-    .. tab:: Fitted beam map
+    .. tab-item:: Fitted beam map
 
         .. image:: images/autoOOF/bad/AGBT19A_326_07_s20_fitted_beam_map.png
 
@@ -541,21 +541,21 @@ OOF done with Argus in windy conditions.
 
 Bad: Low SNR
 ------------
-You should always check the SNR of your OOF sources. To do this go to the ``DataDisplay`` tab and then click ``raw data``. See :numref:`fig-good-oof-raw-data` (look particularly at the row that is marked "After baseline removal") for an example of what good raw data SNR plots look like and see :numref:`fig-bad-oof-raw-data` for an example of what bad raw data SNR plots look like (as in you do not see the source at all).
+You should always check the SNR of your OOF sources. To do this go to the ``DataDisplay`` tab-item and then click ``raw data``. See :numref:`fig-good-oof-raw-data` (look particularly at the row that is marked "After baseline removal") for an example of what good raw data SNR plots look like and see :numref:`fig-bad-oof-raw-data` for an example of what bad raw data SNR plots look like (as in you do not see the source at all).
 
 But here is an example of an OOF done with Argus that is categorized as a "marginal OOF" with borderline SNR.
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5 Surface Delta Map
+    .. tab-item:: z5 Surface Delta Map
 
         .. image:: images/autoOOF/bad/AGBT17B_151_68_s3_z5_fixedScale.png
 
-    .. tab:: Raw data
+    .. tab-item:: Raw data
 
         .. image:: images/autoOOF/bad/AGBT17B_151_68_s3_raw_data.png
 
-    .. tab:: Fitted beam map
+    .. tab-item:: Fitted beam map
 
         .. image:: images/autoOOF/bad/AGBT17B_151_68_s3_fitted_beam_map.png
 
@@ -571,13 +571,13 @@ Comparing Ka and Argus OOF on Same Source
 -----------------------------------------
 Here is a comparison of the raw data from an OOF taken on the same source (3C84 - 0319+4130) with Ka+CCB and Argus. 
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: Ka+CCB
+    .. tab-item:: Ka+CCB
 
         .. image:: images/autoOOF/Argus/TGBT19B_506_01_s3_Ka_raw_data.png
 
-    .. tab:: Argus
+    .. tab-item:: Argus
 
         .. image:: images/autoOOF/Argus/Argus_3C84_resized.png
 
@@ -595,17 +595,17 @@ Bad
 ^^^
 Right at the start of the observing session, the observer started with an OOF with Q-band.
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/Q-band/AGMV24B_376_01_OOF1_bad_z5_fixedScale.png
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/Q-band/AGMV24B_376_01_OOF1_bad_z4_fixedScale.png
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/Q-band/AGMV24B_376_01_OOF1_bad_z3_fixedScale.png
 
@@ -613,13 +613,13 @@ All of the above surface delta maps have a) sharp features, b) a high surface RM
 The observer chose not to apply the solutions. You can look at the scaled surface delta maps in
 :ref:`Scaling for a Bad OOF Example 1 <scaling_bad_oof_ex1>`. 
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: Raw data
+    .. tab-item:: Raw data
 
         .. image:: images/autoOOF/Q-band/AGMV24B_376_01_OOF1_bad_raw_data.png
 
-    .. tab:: Fitted beam map
+    .. tab-item:: Fitted beam map
 
         .. image:: images/autoOOF/Q-band/AGMV24B_376_01_OOF1_bad_fitted_beam_map.png
 
@@ -635,21 +635,21 @@ Uncertain
 ^^^^^^^^^
 Then later in the session, the observer decided to OOF again.
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/Q-band/AGMV24B_376_01_OOF2_iffy_z5_fixedScale.png
 
         Notice the sharp features, very high surface RMS, and large focus correction. 
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/Q-band/AGMV24B_376_01_OOF2_iffy_z4_fixedScale.png
 
         Notice the sharp features, high surface RMS, and large focus correction. 
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/Q-band/AGMV24B_376_01_OOF2_iffy_z3_fixedScale.png
 
@@ -659,21 +659,21 @@ You can look at the scaled surface delta maps in :ref:`how-tos/general_guides/au
 
 This is a good example in which to see if the surface corrections look ok with the focus removed.
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/Q-band/AGMV24B_376_01_OOF2_iffy_z5_focus_removed.png
 
         Notice the sharp features are still there and there is still a very high surface RMS.
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/Q-band/AGMV24B_376_01_OOF2_iffy_z4_focus_removed.png
 
         Notice the sharp features are still there (though more muted) but now the surface RMS has dropped to a reasonable regime. 
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/Q-band/AGMV24B_376_01_OOF2_iffy_z3_focus_removed.png
 
@@ -681,13 +681,13 @@ This is a good example in which to see if the surface corrections look ok with t
 
 Check the raw data and fitted beam maps.
 
-.. tabs:: Raw data and fitted beam maps
+.. tab-set:: 
 
-    .. tab:: Raw data
+    .. tab-item:: Raw data
 
         .. image:: images/autoOOF/Q-band/AGMV24B_376_01_OOF2_iffy_raw_data.png
 
-    .. tab:: Fitted beam map
+    .. tab-item:: Fitted beam map
 
         .. image:: images/autoOOF/Q-band/AGMV24B_376_01_OOF2_iffy_fitted_beam_map.png
 
@@ -706,30 +706,30 @@ Argus
 
 Good
 ^^^^
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/Argus/AGBT21B_024_40_s3_z5_fixedScale.png
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/Argus/AGBT21B_024_40_s3_z4_fixedScale.png
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/Argus/AGBT21B_024_40_s3_z3_fixedScale.png
 
 
 Check the raw data and fitted beam maps.
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: Raw data
+    .. tab-item:: Raw data
 
         .. image:: images/autoOOF/Argus/AGBT21B_024_40_s3_raw_data.png
 
-    .. tab:: Fitted beam map
+    .. tab-item:: Fitted beam map
 
         .. image:: images/autoOOF/Argus/AGBT21B_024_40_s3_fitted_beam_map.png
 
@@ -745,7 +745,7 @@ See the many examples above (see the first three bad examples of :ref:`how-tos/g
 MUSTANG-2
 ---------
 
-MUSTANG-2 observers use OOF not only for correcting the surface but also for their pointing and focus corrections (as opposed to using an AutoPeakFocus as other receivers do). Below are examples of good, bad, and uncertain OOFs. Additionally, MUSTANG-2 observers use an IDL GUI to check the beam and keep an eye on the data (see :ref:`how-tos/receivers/mustang2/mustang2_obs:4. Checking data with the m2gui`). Thus the "raw data" view in the "DataDisplay" -> "OOF" tab are not of particular use to MUSTANG-2 observers. 
+MUSTANG-2 observers use OOF not only for correcting the surface but also for their pointing and focus corrections (as opposed to using an AutoPeakFocus as other receivers do). Below are examples of good, bad, and uncertain OOFs. Additionally, MUSTANG-2 observers use an IDL GUI to check the beam and keep an eye on the data (see :ref:`how-tos/receivers/mustang2/mustang2_obs:4. Checking data with the m2gui`). Thus the "raw data" view in the "DataDisplay" -> "OOF" tab-item are not of particular use to MUSTANG-2 observers. 
 
 .. note::
 
@@ -761,20 +761,20 @@ Good
 Example 1
 '''''''''
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/M2/good/AGBT21A_376_01_s5_z5_fixedScale.png
 
         Notice the relatively smooth features, good surface RMS, and small focus correction. 
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/M2/good/AGBT21A_376_01_s5_z4_fixedScale.png
 
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/M2/good/AGBT21A_376_01_s5_z3_fixedScale.png
 
@@ -782,37 +782,37 @@ You can look at the scaled surface delta maps in :ref:`how-tos/general_guides/au
 
 Solutions with Focus Removed: 
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/M2/good/AGBT21A_376_01_s5_z5_focus_removed.png
 
         Notice the relatively smooth features, good surface RMS, and small focus correction. 
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/M2/good/AGBT21A_376_01_s5_z4_focus_removed.png
 
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/M2/good/AGBT21A_376_01_s5_z3_focus_removed.png
 
 
 Check the raw data and fitted beam maps.
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: Raw data
+    .. tab-item:: Raw data
 
         .. image:: images/autoOOF/M2/good/AGBT21A_376_01_s5_raw_data.png
 
-    .. tab:: Fitted beam map
+    .. tab-item:: Fitted beam map
 
         .. image:: images/autoOOF/M2/good/AGBT21A_376_01_s5_fitted_beam_map.png
 
-    .. tab:: Beam maps from M2 GUI
+    .. tab-item:: Beam maps from M2 GUI
 
         .. image:: images/autoOOF/M2/good/AGBT21A_376_01_s5_m2_gui_beam_maps.png
 
@@ -823,36 +823,36 @@ Check the raw data and fitted beam maps.
 Example 2
 '''''''''
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/M2/good/AGBT21B_206_06_s8_z5_fixedScale.png
 
         Notice the relatively smooth features, good surface RMS, and small focus correction. 
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/M2/good/AGBT21B_206_06_s8_z4_fixedScale.png
 
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/M2/good/AGBT21B_206_06_s8_z3_fixedScale.png
 
 Check the raw data and fitted beam maps.
 
-.. tabs::
+.. tab-set::
 
-    .. tab:: Raw data
+    .. tab-item:: Raw data
 
         .. image:: images/autoOOF/M2/good/AGBT21B_206_06_s8_raw_data2.png
 
-    .. tab:: Fitted beam map
+    .. tab-item:: Fitted beam map
 
         .. image:: images/autoOOF/M2/good/AGBT21B_206_06_s8_fitted_beam_map.png
 
-    .. tab:: Beam maps from M2 GUI
+    .. tab-item:: Beam maps from M2 GUI
 
         .. image:: images/autoOOF/M2/good/AGBT21B_206_06_s8_m2_gui_beam_maps.png
 
@@ -863,36 +863,36 @@ Check the raw data and fitted beam maps.
 Example 3
 '''''''''
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/M2/good/AGBT21B_298_08_s42_z5_fixedScale.png
 
         Notice the relatively smooth features, good surface RMS, and small focus correction. 
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/M2/good/AGBT21B_298_08_s42_z4_fixedScale.png
 
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/M2/good/AGBT21B_298_08_s42_z3_fixedScale.png
 
 Check the raw data and fitted beam maps.
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: Raw data
+    .. tab-item:: Raw data
 
         .. image:: images/autoOOF/M2/good/AGBT21B_298_08_s42_raw_data.png
 
-    .. tab:: Fitted beam map
+    .. tab-item:: Fitted beam map
 
         .. image:: images/autoOOF/M2/good/AGBT21B_298_08_s42_fitted_beam_map.png
 
-    .. tab:: Beam maps from M2 GUI
+    .. tab-item:: Beam maps from M2 GUI
 
         .. image:: images/autoOOF/M2/good/AGBT21B_298_08_s42_m2_gui_beam_maps.png
 
@@ -909,21 +909,21 @@ Bad
 Example 1
 '''''''''
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s41_z5_fixedScale.png
 
         Notice the sharp features, very high surface RMS, and very large focus correction.  
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s41_z4_fixedScale.png
 
         Notice the sharp features, very high surface RMS, and very large focus correction.
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s41_z3_fixedScale.png
 
@@ -932,21 +932,21 @@ Example 1
 
 Solutions with Focus Removed
 
-.. tabs::
+.. tab-set::
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s41_z5_focus_removed.png
 
         Notice that even though the spherical shape indicative of a large focus correction the sharp features are still there. There is a more reasonable but still high surface RMS.
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s41_z4_focus_removed.png
 
         Notice that even though the spherical shape indicative of a large focus correction the sharp features are still there. There is a more reasonable but still high surface RMS.
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s41_z3_focus_removed.png
 
@@ -955,17 +955,17 @@ Solutions with Focus Removed
 
 Check the raw data and fitted beam maps.
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: Raw data
+    .. tab-item:: Raw data
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s41_raw_data.png
 
-    .. tab:: Fitted beam map
+    .. tab-item:: Fitted beam map
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s41_fitted_beam_map.png
 
-    .. tab:: Beam maps from M2 GUI
+    .. tab-item:: Beam maps from M2 GUI
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s41_m2_gui_beam_maps.png
 
@@ -978,21 +978,21 @@ Check the raw data and fitted beam maps.
 Example 2
 '''''''''
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s46_z5_fixedScale.png
 
         Notice the sharp features, very high surface RMS, but small focus correction.  
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s46_z4_fixedScale.png
 
         Notice the sharp features, high surface RMS, and large focus correction.
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s46_z3_fixedScale.png
 
@@ -1002,21 +1002,21 @@ You can look at the scaled surface delta maps in :ref:`Scaling for a Bad OOF Exa
 
 Solutions with Focus Removed
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s46_z5_focus_removed.png
 
         Notice that the sharp features are still there, very high surface RMS, and large focus correction.
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s46_z4_focus_removed.png
 
         Notice that the sharp features are still there, very high surface RMS, and large focus correction.
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s46_z3_focus_removed.png
 
@@ -1025,17 +1025,17 @@ Solutions with Focus Removed
 
 Check the raw data and fitted beam maps.
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: Raw data
+    .. tab-item:: Raw data
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s46_raw_data.png
 
-    .. tab:: Fitted beam map
+    .. tab-item:: Fitted beam map
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s46_fitted_beam_map.png
 
-    .. tab:: Beam maps from M2 GUI
+    .. tab-item:: Beam maps from M2 GUI
 
         .. image:: images/autoOOF/M2/bad/AGBT21B_206_06_s46_m2_gui_beam_maps.png
 
@@ -1053,21 +1053,21 @@ Uncertain
 Example 1
 '''''''''
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/M2/uncertain/AGBT21B_298_08_s3_z5_fixedScale.png
 
         Notice the sharp features, high surface RMS, and very large focus correction.  
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/M2/uncertain/AGBT21B_298_08_s3_z4_fixedScale.png
 
         Notice that the sharp features have become more muted (though still a bit there on the right of the surface delta map), high surface RMS, and large focus correction.
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/M2/uncertain/AGBT21B_298_08_s3_z3_fixedScale.png
 
@@ -1076,21 +1076,21 @@ Example 1
 
 Solutions with Focus Removed
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/M2/uncertain/AGBT21B_298_08_s3_z5_focus_removed.png
 
         Notice that the sharp features are still there and a high surface RMS.
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/M2/uncertain/AGBT21B_298_08_s3_z4_focus_removed.png
 
         Notice that removing the focus correction has created some more features in the surface delta map but that the surface RMS is still in the reasonable regime. 
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/M2/uncertain/AGBT21B_298_08_s3_z3_focus_removed.png
 
@@ -1099,17 +1099,17 @@ Solutions with Focus Removed
 
 Check the raw data and fitted beam maps.
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: Raw data
+    .. tab-item:: Raw data
 
         .. image:: images/autoOOF/M2/uncertain/AGBT21B_298_08_s3_raw_data.png
 
-    .. tab:: Fitted beam map
+    .. tab-item:: Fitted beam map
 
         .. image:: images/autoOOF/M2/uncertain/AGBT21B_298_08_s3_fitted_beam_map.png
 
-    .. tab:: Beam maps from M2 GUI
+    .. tab-item:: Beam maps from M2 GUI
 
         .. image:: images/autoOOF/M2/uncertain/AGBT21B_298_08_s3_m2_gui_beam_maps.png
 
@@ -1122,21 +1122,21 @@ Check the raw data and fitted beam maps.
 Example 2
 '''''''''
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/M2/uncertain/AGBT21B_298_08_s20_z5_fixedScale.png
 
         Notice the sharp feature in the upper portion of the surface delta map and high surface RMS, but a relatively reasonable focus correction.  
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/M2/uncertain/AGBT21B_298_08_s20_z4_fixedScale.png
 
         Notice that the sharp feature has become more muted though still exists but now there is a reasonable surface RMS. however the focus correction has doubled.
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/M2/uncertain/AGBT21B_298_08_s20_z3_fixedScale.png
 
@@ -1144,21 +1144,21 @@ Example 2
 
 Solutions with Focus Removed
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/M2/uncertain/AGBT21B_298_08_s20_z5_focus_removed.png
 
         Notice that removing the focus corretion has muted the sharp features are still and there is now a reasonable surface RMS.
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/M2/uncertain/AGBT21B_298_08_s20_z4_focus_removed.png
 
         Notice that removing the focus correction has created sharper features in the surface delta map and now there is a higher surface RMS.
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/M2/uncertain/AGBT21B_298_08_s20_z3_focus_removed.png
 
@@ -1167,17 +1167,17 @@ Solutions with Focus Removed
 
 Check the raw data and fitted beam maps.
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: Raw data
+    .. tab-item:: Raw data
 
         .. image:: images/autoOOF/M2/uncertain/AGBT21B_298_08_s20_raw_data.png
 
-    .. tab:: Fitted beam map
+    .. tab-item:: Fitted beam map
 
         .. image:: images/autoOOF/M2/uncertain/AGBT21B_298_08_s20_fitted_beam_map.png
 
-    .. tab:: Beam maps from M2 GUI
+    .. tab-item:: Beam maps from M2 GUI
 
         .. image:: images/autoOOF/M2/uncertain/AGBT21B_298_08_s20_m2_gui_beam_maps.png
 
@@ -1190,21 +1190,21 @@ Check the raw data and fitted beam maps.
 Example 3
 '''''''''
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/M2/uncertain/AGBT22A_459_04_s3_z5_fixedScale.png
 
         Notice the sharp features in the upper, lower, left, and right portions of the surface delta map and just generally looks a little wonky. Notice that though the RMS is in the reasonable range it is on this high end. The focus correction is reasonable.   
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/M2/uncertain/AGBT22A_459_04_s3_z4_fixedScale.png
 
         Notice that previously shapr feature has disappeared and the typical structure of a MUSTANG-2 OOF is now seen. Surface RMS and focus corrections are in the reasonable range. 
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/M2/uncertain/AGBT22A_459_04_s3_z3_fixedScale.png
 
@@ -1212,21 +1212,21 @@ Example 3
 
 Solutions with Focus Removed
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: z5
+    .. tab-item:: z5
 
         .. image:: images/autoOOF/M2/uncertain/AGBT22A_459_04_s3_z5_focus_removed.png
 
         Notice that removing the focus corretion has not changed the surface delta map nor the surface RMS.
 
-    .. tab:: z4
+    .. tab-item:: z4
 
         .. image:: images/autoOOF/M2/uncertain/AGBT22A_459_04_s3_z4_focus_removed.png
 
         Notice that removing the focus corretion has not changed the surface delta map nor the surface RMS.
 
-    .. tab:: z3
+    .. tab-item:: z3
 
         .. image:: images/autoOOF/M2/uncertain/AGBT22A_459_04_s3_z3_focus_removed.png
 
@@ -1235,17 +1235,17 @@ Solutions with Focus Removed
 
 Check the raw data and fitted beam maps.
 
-.. tabs:: 
+.. tab-set:: 
 
-    .. tab:: Raw data
+    .. tab-item:: Raw data
 
         .. image:: images/autoOOF/M2/uncertain/AGBT22A_459_04_s3_raw_data.png
 
-    .. tab:: Fitted beam map
+    .. tab-item:: Fitted beam map
 
         .. image:: images/autoOOF/M2/uncertain/AGBT22A_459_04_s3_fitted_beam_map.png
 
-    .. tab:: Beam maps from M2 GUI
+    .. tab-item:: Beam maps from M2 GUI
 
         .. image:: images/autoOOF/M2/uncertain/AGBT22A_459_04_s3_m2_gui_beam_maps.png
 
@@ -1267,7 +1267,7 @@ FAQ
 
 I have a low RMS. What should I do?
 -----------------------------------
-Nothing! It is not bad to have a low RMS. It just means it is a stable night and the difference in the surface between when the surface was last set and now is small. Technically, there isn’t a lower limit for OOF surface RMS solutions; though GBO staff haven't seen one below 40 :math:`\mu\mathrm{m}`. See below for an example of a "low" RMS of 66 :math:`\mu\mathrm{m}` from an Argus observing run:
+Nothing! It is not bad to have a low RMS. It just means it is a stab-itemle night and the difference in the surface between when the surface was last set and now is small. Technically, there isn’t a lower limit for OOF surface RMS solutions; though GBO staff haven't seen one below 40 :math:`\mu\mathrm{m}`. See below for an example of a "low" RMS of 66 :math:`\mu\mathrm{m}` from an Argus observing run:
 
 .. image:: images/autoOOF/misc_examples/AGBT21B_065_03_z5_fixedScale.png
 
@@ -1284,4 +1284,4 @@ If you get this, start another OOF and diagnose the underlying problem.
 
 How do I view the results of a previous OOF?
 --------------------------------------------
-In AstrID, select the ``DataDisplay`` tab, then go to ``File`` -> ``Open``. Load the project folder of interest via the ``Location`` field, by entering the path and hit enter. Select the ``ScanLog.fits`` file, and press ``Open``. As you wait for the scan details to load, go to ``DataDislay`` -> ``OOF``. Once the scan information has loaded, find the set of OOF scans (3 RALongMaps together), and select the third scan and you should see the OOF results.
+In AstrID, select the ``DataDisplay`` tab-item, then go to ``File`` -> ``Open``. Load the project folder of interest via the ``Location`` field, by entering the path and hit enter. Select the ``ScanLog.fits`` file, and press ``Open``. As you wait for the scan details to load, go to ``DataDislay`` -> ``OOF``. Once the scan information has loaded, find the set of OOF scans (3 RALongMaps together), and select the third scan and you should see the OOF results.

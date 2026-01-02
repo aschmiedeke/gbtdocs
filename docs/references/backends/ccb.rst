@@ -17,7 +17,7 @@ and labels for these 8 channels (or ports in GBT parlance) are summarized below:
 .. csv-table:: CCB port labels and the astronomical quantities they measure
     :file: material/ccb_port_labels.csv
     :widths: 25, 25, 25, 25
- f   :header-rows: 1
+    :header-rows: 1
 
 It provides carefully optimized radio frequency (not an intermediate frequency) detector circuits
 and the capability to beam-switch the receiver rapidly to suppress instrumental gain fluctuations.
@@ -54,14 +54,14 @@ are needed:
 * ``ccbbothcalslong.conf`` - integration time of 25 miliseconds, useful in preak/focus 
   observations to speed up processing of the data.
 
-.. tabs::
+.. tab-set::
 
-    .. tab:: ccb.conf
+    .. tab-item:: ccb.conf
 
         .. literalinclude:: material/ccb.conf
             :language: python
 
-    .. tab:: ccbbothcalslong.conf
+    .. tab-item:: ccbbothcalslong.conf
 
         .. literalinclude:: material/ccbbothcalslong.conf
 
@@ -119,25 +119,25 @@ The basic template SB are:
   you choose this approach.
 
 
-.. tabs::
+.. tab-set::
 
-    .. tab:: ccbObsCycle.turtle
+    .. tab-item:: ccbObsCycle.turtle
 
         .. literalinclude:: material/ccbObsCycle.turtle
             :language: python
 
-    .. tab:: ccbRALongMap.turtle
+    .. tab-item:: ccbRALongMap.turtle
 
         .. literalinclude:: material/ccbRaLongMap.turtle
             :language: python
 
 
-    .. tab:: ccbMap.turtle
+    .. tab-item:: ccbMap.turtle
 
         .. literalinclude:: material/ccbMap.turtle
             :language: python
 
-    .. tab:: ccbMosaicMap.turtle
+    .. tab-item:: ccbMosaicMap.turtle
 
         .. literalinclude:: material/ccbMosaicMap.turtle
             :language: python
