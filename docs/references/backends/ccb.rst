@@ -54,15 +54,16 @@ are needed:
 * ``ccbbothcalslong.conf`` - integration time of 25 miliseconds, useful in preak/focus 
   observations to speed up processing of the data.
 
+.. tab-set::
 
-.. tab:: ccb.conf
+    .. tab-item:: ccb.conf
 
-    .. literalinclude:: material/ccb.conf
-       :language: python
+        .. literalinclude:: material/ccb.conf
+            :language: python
 
-.. tab:: ccbbothcalslong.conf
+    .. tab-item:: ccbbothcalslong.conf
 
-    .. literalinclude:: material/ccbbothcalslong.conf
+        .. literalinclude:: material/ccbbothcalslong.conf
 
 
 
@@ -118,27 +119,28 @@ The basic template SB are:
   you choose this approach.
 
 
+.. tab-set::
 
-.. tab:: ccbObsCycle.turtle
+    .. tab-item:: ccbObsCycle.turtle
 
-   .. literalinclude:: material/ccbObsCycle.turtle
-        :language: python
+        .. literalinclude:: material/ccbObsCycle.turtle
+            :language: python
 
-.. tab:: ccbRALongMap.turtle
+    .. tab-item:: ccbRALongMap.turtle
 
-   .. literalinclude:: material/ccbRaLongMap.turtle
-        :language: python
+        .. literalinclude:: material/ccbRaLongMap.turtle
+            :language: python
 
 
-.. tab:: ccbMap.turtle
+    .. tab-item:: ccbMap.turtle
 
-   .. literalinclude:: material/ccbMap.turtle
-        :language: python
+        .. literalinclude:: material/ccbMap.turtle
+            :language: python
 
-.. tab:: ccbMosaicMap.turtle
+    .. tab-item:: ccbMosaicMap.turtle
 
-   .. literalinclude:: material/ccbMosaicMap.turtle
-        :language: python
+        .. literalinclude:: material/ccbMosaicMap.turtle
+            :language: python
 
 
 Point source photometry is accomplished with an OTF variant of the symmetric :func:`Nod() <astrid_commands.Nod>`

@@ -311,15 +311,17 @@ After you have opened the m2gui follow these steps to check the tipping scan, mo
 
     .. image:: images/m2gui_03_tip_individ.png
 
-    .. admonition:: Examples of tipping scans
+    Example of tipping scans: 
 
-        .. tab:: Good Tip Scan 
+    .. tab-set::
+
+        .. tab-item:: Good Tip Scan 
 
             A good weather skydip. The black lines (one for each roach) should be fairly free of wiggles and the dashed green line (which is the fit) should follow the black lines fairly closely. 
 
             .. image:: images/m2gui_04_tip_scan_good_example.png
 
-        .. tab:: Bad Tip Scan 
+        .. tab-item:: Bad Tip Scan 
 
             A bad weather skydip. The black lines (one for each roach) are full of wiggles and the dashed green line (the fit) is not following the black lines well.
 
@@ -424,15 +426,15 @@ If you would like to make a map of a science scan(s), you can do so by following
 
 You can make an SNR map with the GUI. To do this, first follow the instructions above for making a science scan, once the map has been made, click the ``SNR map`` button. 
 
-.. admonition:: How to make an SNR map
+.. tab-set:: 
 
-    .. tab:: Make SNR Map
+    .. tab-item:: Make SNR Map
 
         .. image:: images/m2gui_13_make_SNR.png
 
         To make an SNR map, first make a make of your science scan(s), then click the ``SNR map`` button.
 
-    .. tab:: SNR Example
+    .. tab-item:: SNR Example
 
         .. image:: images/m2gui_14_SNR_result.png
 
@@ -447,15 +449,15 @@ It is a good idea to check the time streams (checking how the sky temperature is
 - Click ``show time stream`` button underneath the ``Fit Map`` button after making your map
     .. image:: images/m2gui_18_show_time_stream_button.png
 
-    .. admonition:: Example Time Streams
+    .. tab-set:: 
 
-        .. tab:: Calibrator Time Stream
+        .. tab-item:: Calibrator Time Stream
 
             .. image:: images/timestream_calibrator_AGBT23B_005_08_scan9.png
 
             This is an exemplar time stream for a calibrator source. Notice that you see the point-like source as a gaussian peak in most time streams.
 
-        .. tab:: Faint Science Time Stream
+        .. tab-item:: Faint Science Time Stream
 
             .. image:: images/timestream_faint_sci_good_AGBT23B_005_08_scan13.png
 
@@ -474,15 +476,15 @@ It is a good idea to check the time streams (checking how the sky temperature is
 
 2. **Set crmask**. Click the ``Set crmask`` button and another window will pop up with 4 columns: ``r`` is the detector number and ``c`` stands for column which is the roach number. There is a button next to each detector that is selected or "pressed in" if it is being used and is unselected or "not pressed in" if it is being masked (see images below).
 
-.. admonition:: Setting crmask
+.. tab-set:: 
 
-    .. tab:: Default crmask
+    .. tab-item:: Default crmask
 
         .. image:: images/crmask02_default.png
 
         In this example we find detector 60 on roach 3 or ``r 60 c 3`` and see it is not included in the crmask.
 
-    .. tab:: Add detector to crmask
+    .. tab-item:: Add detector to crmask
 
         .. image:: images/crmask03_changed.png
 
@@ -502,21 +504,21 @@ It is a good idea to check the time streams (checking how the sky temperature is
 
 It is possible to save the images that you make in the GUI as a FITS image. Instructions below:
 
-.. admonition:: How to save the image in the GUI
+.. tab-set:: 
 
-    .. tab:: 1. Set image path.
+    .. tab-item:: 1. Set image path.
 
         .. image:: images/m2gui_15_save_image_path.png
 
         First you need to set the path where your image will be saved. To do this click in the ``Path`` box marked in red in the image above. 
 
-    .. tab:: 2. Set image path via popup.
+    .. tab-item:: 2. Set image path via popup.
 
         .. image:: images/m2gui_16_save_image_path_box.png
 
         A box will popup where you can set the path and file name. Hit enter to set the path. 
 
-    .. tab:: 3. Save image.
+    .. tab-item:: 3. Save image.
 
         .. image:: images/m2gui_17_save_image.png
 
@@ -575,7 +577,7 @@ Once you have some indication of bad weather (bad skydip, bad time streams, or p
 
     - Weather forecast
         - Check https://www.gb.nrao.edu/~rmaddale/Weather/AllOverviews.html.
-        - Check another reputable weather forecaster (Weather underground, weather.forcast.gov, Windy, etc.)
+        - Check another reputab-itemle weather forecaster (Weather underground, weather.forcast.gov, Windy, etc.)
 
     - Direct communication with the operator
         - Ask the operator what the weather is like. Since you asked at the beginning of the observation you have one data point.
@@ -614,30 +616,35 @@ Again, when in doubt you can always call an M2 team member to help you make the 
 -------------------------------------
 Here are some examples of science time streams and skydips in good and bad weather.
 
-.. admonition:: Faint Science
+Faint Science
+^^^^^^^^^^^^^
 
-    .. tab:: Good Time Stream
+.. tab-set:: 
+
+    .. tab-item:: Good Time Stream
 
         .. image:: images/timestream_faint_sci_good_AGBT23B_005_08_scan13.png
 
         This is what a good, unaffected faint science time streams (a cluster) looks like in good weather - flat.
 
-    .. tab:: Bad Time Stream
+    .. tab-item:: Bad Time Stream
 
         .. image:: images/timestream_faint_sci_bad_AGBT18A_215_04_scan93.png
 
         This is what faint science time streams look like when they are heavily affected by weather - very wiggly.
 
+Skydip
+^^^^^^
 
-.. admonition:: Skydip
+.. tab-set::
 
-    .. tab:: Good Skydip
+    .. tab-item:: Good Skydip
 
         .. image:: images/skydip_good_AGBT23B_005_08.png
 
         This is what a good skydip looks like in good weather - not wiggly.
         
-    .. tab:: Bad Skydip
+    .. tab-item:: Bad Skydip
 
         .. image:: images/skydip_bad_AGBT23B_005_06_scan13.png
 
@@ -745,52 +752,55 @@ In AstrID, go from ``working online`` to ``working offline``:
 
 For the shutdown process you can either do this **(a) automatically** or **(b) manually**.
 
+.. tab-set::
 
-.. tab:: Automatic Shutdown
+    .. tab-item:: Automatic Shutdown
 
-    Execute ONE of the following in a terminal:
-        .. code:: bash
+        Execute ONE of the following in a terminal:
+            .. code:: bash
         
-            /users/penarray/Public/stopMUSTANG.bash 
+                /users/penarray/Public/stopMUSTANG.bash 
 
-        OR
+            OR
 
-        .. code:: bash
+            .. code:: bash
         
-            cd /users/penarray/Public  
-            ./stopMUSTANG.bash
+                cd /users/penarray/Public  
+                ./stopMUSTANG.bash
 
-.. tab:: Manual Shutdown
+    .. tab-item:: Manual Shutdown
 
-    #. **Set detector biases to zero**
-        - Go to the Mustang Manager in CLEO
-        - Click on the miscellaneous tab
-        - In the top middle, you will see 4 rows of Det Bias 1-4, corresponding to the 4 roaches.
-        - Unlock the manager
-        - roach-by-roach:
-            - type ``0`` in the left DetBias box
-            - press enter
-            - wait until the blue box (right DetBias box) shows a DetBias of 0
-            - repeat this step for all 4 roaches.
+        #. **Set detector biases to zero**
+            - Go to the Mustang Manager in CLEO
+            - Click on the miscellaneous tab-item
+            - In the top middle, you will see 4 rows of Det Bias 1-4, corresponding to the 4 roaches.
+            - Unlock the manager
+            - roach-by-roach:
+                - type ``0`` in the left DetBias box
+                - press enter
+                - wait until the blue box (right DetBias box) shows a DetBias of 0
+                - repeat this step for all 4 roaches.
 
-    #. **Turn off data transmission**
-        - Mustang2 CLEO scan turn off ``DataXinit`` for all four roaches. 
+        #. **Turn off data transmission**
+            - Mustang2 CLEO scan turn off ``DataXinit`` for all four roaches. 
           
-        .. note::
+            .. note::
             
-            You will need to be in gateway AND unlock both the ``unlock`` and ``advanced features unlock`` buttons to do this.
+                You will need to be in gateway AND unlock both the ``unlock`` and ``advanced features unlock`` buttons to do this.
 
-    #. **Turn off components**
-        In VNC session, go to http://mustangboot.gbt.nrao.edu and turn off the *roaches*, *HEMTs*, and *Function Generator* by checking those three boxes then go to left of the screen and click 'Off’ (gray button).
+        #. **Turn off components**
+            In VNC session, go to http://mustangboot.gbt.nrao.edu and turn off the *roaches*, *HEMTs*, and *Function Generator* by checking those three boxes then go to left of the screen and click 'Off’ (gray button).
 
-    #. **Turn on daily cycle**
-        Mustang2 CLEO window
-            - go to ``Housekeeping``
-            - unlock
-            - recheck daily cycle to be on and put autocycle trigger to HE4
-                This means that if either of the He4 fridges run out it starts a cycle. 
-            - set the ``daily cycle time`` = 0.65 of a day in UT
-                This is the time of day that the daily cycle starts measured in fraction of a day (UT).  0.65 is a nice balance between ensuring the cycle is over by the time any observations are likely to come up, yet not so early that there is no time to work with the receiver in the morning.
+        #. **Turn on daily cycle**
+            Mustang2 CLEO window
+                - go to ``Housekeeping``
+                - unlock
+                - recheck daily cycle to be on and put autocycle trigger to HE4
+                    This means that if either of the He4 fridges run out it starts a cycle. 
+                - set the ``daily cycle time`` = 0.65 of a day in UT
+                    This is the time of day that the daily cycle starts measured in fraction of a day (UT).  0.65 is a nice balance 
+                    between ensuring the cycle is over by the time any observations are likely to come up, yet not so early that 
+                    there is no time to work with the receiver in the morning.
 
 8.3 Kill VNC session
 --------------------

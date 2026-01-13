@@ -35,8 +35,7 @@ Differential heating and cooling of the telescope alters the surface of the tele
 degradation of telescope efficiencies, and "bends" the telescope, resulting in pointing changes. At 
 high frequencies, these effects are important. The current recommendations are that, for best work, 
 observing above 40 GHz should only be done at night, from 3 hours after sunset to 2 hours after sunrise. 
-At 40 GHz and above it is recommended to use :ref:`AutoOOF <how-tos/general_guides/autooof:AutoOOF Strategy>`
-at the start of an observing session.
+At 40 GHz and above it is recommended to use :ref:`AutoOOF <AutoOOF_strategy>` at the start of an observing session.
 
 
 Time of Day

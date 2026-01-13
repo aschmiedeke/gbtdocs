@@ -317,18 +317,20 @@ if you are not observing), and type
 
 How you can access your data depends on if you are currently observing or not.
 
-.. tab:: Currently observing (online)
+.. tab-set:: 
+
+    .. tab-item:: Currently observing (online)
 
 
-    .. code-block:: idl
+        .. code-block:: idl
 
-        online
+            online
 
-.. tab:: Not currently observing (offline)
+    .. tab-item:: Not currently observing (offline)
 
-    .. code-block:: idl
+        .. code-block:: idl
 
-        offline, 'AGBT24A_000_01'
+            offline, 'AGBT24A_000_01'
 
 
 Once you have successfully connected to your dataset, you can look at some basic metadata via

@@ -32,7 +32,6 @@ Receiver-specific Tutorials
         - Calibrate the data.
         - Grid the data.
 
-
         Keys: *KFPA*
 
 

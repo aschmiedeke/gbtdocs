@@ -13,14 +13,12 @@ This is a simplified flow chart of the GBT IF system
 .. image:: images/IFsystem.jpg
 
 
-.. information:: 
-
-    MUSTANG-2 is not covered in those figures, since it is a direct detection system.
-    
-    
 .. note:: 
 
-    During each frequency mix, each polarization pair is mixed with a signal from the same synthesizer. All synthesizers are locked to our H-maser frequency standard.
+    * MUSTANG-2 is not covered in those figures, since it is a direct detection system.
+
+    * During each frequency mix, each polarization pair is mixed with a signal from the same synthesizer. 
+      All synthesizers are locked to our H-maser frequency standard.
 
 
 From the Receiver to the IF Rack

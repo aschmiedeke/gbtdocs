@@ -10,33 +10,46 @@ There are multiple ways to connect remotely to the GBO network:
 2. :ref:`how-tos/infrastructure/remote-connection:VNC connection`
 
 
-.. Only those observers who have used the GBT before and have demonstrated that they are fully able to set up and observe on the GBT without staff assistance may observe remotely. All observers must come to Green Bank at least once before they can be approved for remote observing. Also, observers may be required to come to Green Bank to be re-qualified for remote observing if the observations are significantly different than previous observations or if the observer has not used the GBT recently.
+.. Only those observers who have used the GBT before and have demonstrated that they are fully able to set up and observe on the GBT
+   without staff assistance may observe remotely. All observers must come to Green Bank at least once before they can be approved for
+   remote observing. Also, observers may be required to come to Green Bank to be re-qualified for remote observing if the observations
+   are significantly different than previous observations or if the observer has not used the GBT recently.
 
 Gateway Machines
 ================
 
-Please ensure that you use the correct gateway machine for connecting to the GBO network. The gateway machines host the tunnel between your local computer and the internally networked machine that hosts your computing session.
+Please ensure that you use the correct gateway machine for connecting to the GBO network. The gateway machines host the tunnel between your
+local computer and the internally networked machine that hosts your computing session.
 
+.. tab-set::
 
-.. tab:: General Use
+    .. tab-item:: General Use
     
-    When logging on to perform data reduction, write/check AstrID scripts, or for any other reason, use *ssh*. This machine is also known as *prospero*, and has been improved to handle many more simultaneous logins. The FastX URL will be https://ssh.gb.nrao.edu:3443/ and the SSH address will be ``ssh.gb.nrao.edu``.
+        When logging on to perform data reduction, write/check AstrID scripts, or for any other reason, use *ssh*. This machine is also
+        known as *prospero*, and has been improved to handle many more simultaneous logins. The FastX URL will be https://ssh.gb.nrao.edu:3443/ 
+        and the SSH address will be ``ssh.gb.nrao.edu``.
 
-    This machine is meant to handle general GBO login use on a day-to-day basis, and should be your tunnel for anything that isn't current GBT observations.
+        This machine is meant to handle general GBO login use on a day-to-day basis, and should be your tunnel for anything that isn't
+        current GBT observations.
 
 
-.. tab:: Observing Only
+    .. tab-item:: Observing Only
 
-    When logging on to perform observations, use *stargate*. The FastX URL will be https://stargate.gb.nrao.edu:3443/ and the SSH address will be ``stargate.gb.nrao.edu``.
+        When logging on to perform observations, use *stargate*. The FastX URL will be https://stargate.gb.nrao.edu:3443/ and the SSH 
+        address will be ``stargate.gb.nrao.edu``.
 
-    This machine is meant to only handle the observer(s) logging in to monitor and control observations. The operator on duty can and will end sessions that are left idling long after observations are done, or those that use excess computing resources. When logging in through FastX, only *ariel* and *titania* will be available as hosts.
+        This machine is meant to only handle the observer(s) logging in to monitor and control observations. The operator on duty can 
+        and will end sessions that are left idling long after observations are done, or those that use excess computing resources. When 
+        logging in through FastX, only *ariel* and *titania* will be available as hosts.
 
 
 
 FastX connection
 ================
 
-We recommend the FastX connection using your browser. FastX is a commercial product that provides remote access to Linux systems by giving you a full graphical interface within your browser. No software is required on your machine except a browser. This service is available from anywhere that has a reasonable internet connection.
+We recommend the FastX connection using your browser. FastX is a commercial product that provides remote access to Linux systems by giving you
+a full graphical interface within your browser. No software is required on your machine except a browser. This service is available from anywhere
+that has a reasonable internet connection.
 
 .. caution::
 
@@ -87,7 +100,7 @@ From left to right:
 Ending a FastX session
 ----------------------
 
-When you are finished, click the home button in the control menu (see above) and close the browser tab that contains the session you were working in. In the FastX starting page you will see a session in the center (Disconnected Sessions). This will expire automatically after 7 days, but if you don’t need it anymore, please terminate the session to help save ressources for your fellow observers.
+When you are finished, click the home button in the control menu (see above) and close the browser tab-item that contains the session you were working in. In the FastX starting page you will see a session in the center (Disconnected Sessions). This will expire automatically after 7 days, but if you don’t need it anymore, please terminate the session to help save ressources for your fellow observers.
 
 You can reconnect to a disconnected session by clicking the “play” button.
 
@@ -152,60 +165,66 @@ VNC allows the remote GBT observer to connect to a computer in the GBT control r
 Quick VNC Reference
 -------------------
 
-.. tab:: Mac OS X
+.. tab-set::
 
-    #. (Once) Login to GBO ``ssh [username]@ssh.gb.nrao.edu``
-    #. (Once) SSH to your machine of choice by ``ssh <machine>``. If you're actively observing, pick either ``titania`` or ``ariel``, otherwise use one of our data reduction machines ``fourier``, ``planck``, ``newton``, ``euclid``, ``thales``, or ``arcturus``. 
-    #. (Once) Start vnc session with ``vncserver -geometry [horiz_len]x[vert_len]``, with the lengths given in pixels, e.g. ``-geometry 1800x1000``. This command starts the persistent VNC session and will give you your session number.
-    #. Every time you want to connect to the VNC session, open a new terminal on your computer and type
+    .. tab-item:: Mac OS X
 
-        .. code-block:: bash
+        #. (Once) Login to GBO ``ssh [username]@ssh.gb.nrao.edu``
+        #. (Once) SSH to your machine of choice by ``ssh <machine>``. If you're actively observing, pick either ``titania`` or ``ariel``, otherwise 
+           use one of our data reduction machines ``fourier``, ``planck``, ``newton``, ``euclid``, ``thales``, or ``arcturus``. 
+        #. (Once) Start vnc session with ``vncserver -geometry [horiz_len]x[vert_len]``, with the lengths given in pixels, e.g. ``-geometry 1800x1000``. 
+           This command starts the persistent VNC session and will give you your session number.
+        #. Every time you want to connect to the VNC session, open a new terminal on your computer and type
 
-            ssh -N -C -L 590n:titania.gb.nrao.edu:590n username@ssh.gb.nrao.edu	
+           .. code-block:: bash
+
+                ssh -N -C -L 590n:titania.gb.nrao.edu:590n username@ssh.gb.nrao.edu	
             
-        where ``n`` is the number you were given in step 3. 
+           where ``n`` is the number you were given in step 3. 
         
-        .. note::
+           .. note::
 
-            * If ``n`` is a double-digit number replace the ``0`` in the ssh command.
-            * Replace ``titania`` with the name of the machine you ssh-ed into in step 2. 
+                * If ``n`` is a double-digit number replace the ``0`` in the ssh command.
+                * Replace ``titania`` with the name of the machine you ssh-ed into in step 2. 
         
-        After entering your password, this terminal window will just keep the tunnel open, and there is no need to interact with it anymore.  
-    #. You can e.g. use the MacOS native application "Screen Sharing" to view your session, with ``localhost:590n`` as the VNC session name. Alternative third-party applications are e.g. `RealVNC <https://realvnc.com/en/connect/download/viewer/>`_ or `TigerVNC <https://tigervnc.org>`_.
-.. tab:: Linux
+           After entering your password, this terminal window will just keep the tunnel open, and there is no need to interact with it anymore.  
+        #. You can e.g. use the MacOS native application "Screen Sharing" to view your session, with ``localhost:590n`` as the VNC session name. Alternative
+           third-party applications are e.g. `RealVNC <https://realvnc.com/en/connect/download/viewer/>`_ or `TigerVNC <https://tigervnc.org>`_.
+
+    .. tab-item:: Linux
 	
-	#. (Once) Login to GBO ``ssh [username]@ssh.gb.nrao.edu``
-	#. (Once) SSH to your machine of choice by ``ssh <machine>``. If you're actively observing, pick either ``titania`` or ``ariel``, otherwise use one of our data reduction machines ``fourier``, ``planck``, ``newton``, ``euclid``, ``thales``, or ``arcturus``.
-	#. (Once) Start vnc session with ``vncserver -geometry [horiz_len]x[vert_len]``, with the lengths given in pixels, e.g. ``-geometry 1800x1000``. This command starts the persistent VNC session and will give you your session number.
-	#. Every time you want to connect to the VNC session and view it, open a new terminal on your computer and type
+	    #. (Once) Login to GBO ``ssh [username]@ssh.gb.nrao.edu``
+	    #. (Once) SSH to your machine of choice by ``ssh <machine>``. If you're actively observing, pick either ``titania`` or ``ariel``, otherwise use one of our data reduction machines ``fourier``, ``planck``, ``newton``, ``euclid``, ``thales``, or ``arcturus``.
+	    #. (Once) Start vnc session with ``vncserver -geometry [horiz_len]x[vert_len]``, with the lengths given in pixels, e.g. ``-geometry 1800x1000``. This command starts the persistent VNC session and will give you your session number.
+	    #. Every time you want to connect to the VNC session and view it, open a new terminal on your computer and type
 
-	    .. code-block:: bash
+	       .. code-block:: bash
     
         	    vncviewer -Shared -via [username]@ssh.gb.nrao.edu titania.gb.nrao.edu:n
     
-	    where `n` is the number you were given in step 3.
+	       where `n` is the number you were given in step 3.
 
-        .. note::
+           .. note::
 
-            * If `n` is a double-digit number replace the `0` in the ssh command.
-            * Replace ``titania`` with the name of the machine you ssh-ed into in step 2.
-            * If your Linux version does not support the "-via" option, see the note in the detailed instructions.
+                * If `n` is a double-digit number replace the `0` in the ssh command.
+                * Replace ``titania`` with the name of the machine you ssh-ed into in step 2.
+                * If your Linux version does not support the "-via" option, see the note in the detailed instructions.
 
 
 
-.. tab:: Windows
+    .. tab-item:: Windows
 
-	#. (Once) Start PuTTY, Host Name is *ssh.gb.nrao.edu*, choose 'Open' to open terminal window, log in to Linux account.
-	#. (Once) SSH to your machine of choice by ``ssh <machine>``. If you're actively observing, pick either ``titania`` or ``ariel``, otherwise use one of our data reduction machines ``fourier``, ``planck``, ``newton``, ``euclid``, ``thales``, or ``arcturus``.
-	#. (Once) ``vncserver -geometry [horiz_len]x[vert_len]``, with the lengths given in pixels, e.g. ``-geometry 1800x1000``. This command starts the persistent VNC session and will give you your session number "n".
-	#. Every time you want to connect to the VNC session, start PuTTY again with the following options:
+	    #. (Once) Start PuTTY, Host Name is *ssh.gb.nrao.edu*, choose 'Open' to open terminal window, log in to Linux account.
+	    #. (Once) SSH to your machine of choice by ``ssh <machine>``. If you're actively observing, pick either ``titania`` or ``ariel``, otherwise use one of our data reduction machines ``fourier``, ``planck``, ``newton``, ``euclid``, ``thales``, or ``arcturus``.
+	    #. (Once) ``vncserver -geometry [horiz_len]x[vert_len]``, with the lengths given in pixels, e.g. ``-geometry 1800x1000``. This command starts the persistent VNC session and will give you your session number "n".
+	    #. Every time you want to connect to the VNC session, start PuTTY again with the following options:
 
-		* Host Name:*ssh.gb.nrao.edu*
-		* Connection > Data - Set Auto-login username to linux account user name
-		* Connection > SSH > Tunnels - Source port is ``590n``, destination is ``titania.gb.nrao.edu:590n``. Replace ``titania`` with the name of the machine you ssh-ed into in step 2.
+		    * Host Name:*ssh.gb.nrao.edu*
+		    * Connection > Data - Set Auto-login username to linux account user name
+		    * Connection > SSH > Tunnels - Source port is ``590n``, destination is ``titania.gb.nrao.edu:590n``. Replace ``titania`` with the name of the machine you ssh-ed into in step 2.
 
-	#. Choose 'Add', then 'Open' to open the second terminal window, then enter your GBO Linux account password
-	#. Use your vnc viewer on your computer to view your session, with "localhost:n" as the VNC session name.
+	    #. Choose 'Add', then 'Open' to open the second terminal window, then enter your GBO Linux account password
+    	#. Use your vnc viewer on your computer to view your session, with "localhost:n" as the VNC session name.
 
 
 
@@ -217,13 +236,15 @@ How do I get the necessary software?
 
 VNC comes with most Linux distributions and is easily set up, the same applies to an SSH client. Mac OS and Windows users should download and install a VNC Viewer.
 
-.. tab:: Mac OS
+.. tab-set::
+
+    .. tab-item:: Mac OS
 
         Mac users can use the built-in VNC viewer (Screen sharing application), `RealVNC <https://realvnc.com/en/connect/download/viewer/>`__ or `TigerVNC <https://tigervnc.org>`__. 
 
         Mac OS includes a SSH client. You can open a terminal by launching either Terminal or X11, both of which are in your Mac's Applications > Utilities folder.
 
-.. tab:: Windows
+    .. tab-item:: Windows
 
         VNC for Windows is available from `TightVNC <www.tightvnc.com>`_ or `RealVNC <www.realvnc.com/en/connect/download/viewer/>`__. Several commercial versions of VNC are available, but the free edition is suitable for remote GBT observations. For purposes of remote GBT observations, only the VNC viewer has to be installed on your computer. The VNC server has already been installed on the GBT control room computers and other appropriate machines in Green Bank.
 
@@ -248,7 +269,9 @@ ____________________________
 
 Log into your host machine of choice through the GBO gateway machine. Please use ``titania`` and ``ariel`` for active observing only. For observing script preparation, data processing etc, please use one of our data reduction machines: ``fourier``, ``planck``, ``newton``, ``euclid``, ``thales``, or ``arcturus``. In all steps below replace ``titania`` with the machine you want to work on. The steps for Linux and Mac OS  are different from those for Windows users:
 
-.. tab:: Mac OS and Linux
+.. tab-set::
+
+   .. tab-item:: Mac OS and Linux
 
        Open a terminal on your local computer and type
 
@@ -259,13 +282,13 @@ Log into your host machine of choice through the GBO gateway machine. Please use
 
        If you are not using an SSH agent, you will be asked to enter your NRAO Linux account username and password. 
 
-.. tab:: Windows
+    .. tab-item:: Windows
 
-	Start up PuTTY on your Windows machine. A PuTTY configuration window will appear. In the configuration window, specify the host name as "ssh.gb.nrao.edu" and click on 'Open' to obtain a terminal window to the host. After specifying the host name, one can choose 'Save' to save the session for future use. If the host name already appears among the 'Saved Sessions", double click on the host name to open a terminal window to that host.
+	    Start up PuTTY on your Windows machine. A PuTTY configuration window will appear. In the configuration window, specify the host name as "ssh.gb.nrao.edu" and click on 'Open' to obtain a terminal window to the host. After specifying the host name, one can choose 'Save' to save the session for future use. If the host name already appears among the 'Saved Sessions", double click on the host name to open a terminal window to that host.
         
-	.. image:: images/puTTY_titania_1.png
+	    .. image:: images/puTTY_titania_1.png
 
-	The PuTTY terminal window will ask for your NRAO Linux account username and password. then, ssh to titania with ``ssh titania``
+	    The PuTTY terminal window will ask for your NRAO Linux account username and password. then, ssh to titania with ``ssh titania``
 
 How do I provide a VNC password?
 ________________________________
@@ -325,7 +348,9 @@ ________________________________________________
 You will need to establish a SSH tunnel and start a VNC viewer in order to view the session on your local machine. The process is different for each computer platform:
 
 
-.. tab:: Mac OS
+.. tab-set::
+
+    .. tab-item:: Mac OS
 
 
         To establish an SSH tunnel, open a terminal on your Mac and type:
@@ -345,7 +370,7 @@ You will need to establish a SSH tunnel and start a VNC viewer in order to view 
 
         Select File > New Connection, type in ``localhost:590n``, and type in your VNC password. The VNC Viewer window to titania will now appear. In this window you can start astrid and cleo, open xterm, etc. Alternatively you can open Finder, type Cmd+K or click `Go` in the top bar and select `Connect to Server...` at the very bottom of the drop-down menu. Enter `vnc:localhost:590n` in the new window and click "Connect".
 
-.. tab:: Linux
+    .. tab-item:: Linux
 
         To establish an SSH tunnel AND start a VNC viewer, open a terminal on your local computer and type:
  
@@ -355,7 +380,7 @@ You will need to establish a SSH tunnel and start a VNC viewer in order to view 
 
         Replace **n** with the desktop number from the previous step and [username] with the name of your GBO Linux account. The -Shared option allows support staff to "snoop" on your session when assisting you. If you are not using an SSH agent, you will be prompted for your GBO Linux account password. You will next be prompted for your VNC password, which should be different from your GBO Linux account password and sharable with support staff. You will be asked for this password regardless of whether or not you have an SSH agent running.
 	
-	As mentioned above, if you are using a data reduction machine, you will replace ``titania`` with the name of your machine (e.g. ``euclid``, ``fourier``, etc.)
+	    As mentioned above, if you are using a data reduction machine, you will replace ``titania`` with the name of your machine (e.g. ``euclid``, ``fourier``, etc.)
        
         .. note::
 
@@ -374,13 +399,13 @@ You will need to establish a SSH tunnel and start a VNC viewer in order to view 
         The VNC Viewer window to titania will now appear. In this window you can start astrid and cleo, open xterm, etc.
 
 
-.. tab:: Windows
+    .. tab-item:: Windows
 
         **To establish an SSH tunnel**: 
         
         Start another instance of PuTTY. In this second PuTTY window, enter the following information under each Category (listed in the left panel of the window). This information can be saved for future use. 
 
-	* Session - Host Name is ssh.gb.nrao.edu.
+	    * Session - Host Name is ssh.gb.nrao.edu.
 
         * Connection > Data - Enter your Green Bank Linux account login name as the Auto-login username.
         
@@ -389,7 +414,7 @@ You will need to establish a SSH tunnel and start a VNC viewer in order to view 
         * Connection > SSH > Tunnels - Remove any previously used ports with the Remove button. For Source port enter ``590n``, where n is the VNC session number reported in the first PuTTY window (the VNC server). For Destination, enter ``titania.gb.nrao.edu:590n`` Then choose Add, then Open. As mentioned above, if you are using a data reduction machine, you will replace ``titania`` with the name of your machine (e.g. ``euclid``, ``fourier``, etc.)
 
 
-	.. image:: images/puTTY_titania_2.png
+	    .. image:: images/puTTY_titania_2.png
 
         A terminal screen will open to ssh.gb.nrao.edu. If you are not using an SSH agent, you will be prompted for your GBO Linux account password.
 
@@ -399,9 +424,9 @@ You will need to establish a SSH tunnel and start a VNC viewer in order to view 
 
         Start the VNC viewer on your Windows machine. If using TightVNC, please select the viewer having the "best compression." A popup window will appear, VNC Viewer: Connection Details. Click on Options. Search for and select the option for sharing the connection and then click OK. For Server enter localhost:n, where **n** is the VNC session number, as before.
 
-	If using RealVNC, select File > New Connection and fill in localhost:n under the VNC server field. You may want to switch to the Options tab and deselect the options for passing media/audio keys to the VNC server.
+	    If using RealVNC, select File > New Connection and fill in localhost:n under the VNC server field. You may want to switch to the Options tab-item and deselect the options for passing media/audio keys to the VNC server.
 
-	.. image:: images/realVNC_titania_3.png
+	    .. image:: images/realVNC_titania_3.png
 
         Next a VNC Viewer: Authentication window will pop up. Enter your vncserver password (not your GBO Linux password).
 
@@ -474,7 +499,7 @@ becomes
 
     ssh -N -C -L 59nn:titania.gb.nrao.edu:59nn [username]@ssh.gb.nrao.edu
 
-A similar fix must be applied to the puTTY Tunnels tab as well, for Windows users.
+A similar fix must be applied to the puTTY Tunnels tab-item as well, for Windows users.
 
 
 VNC screen remains black
