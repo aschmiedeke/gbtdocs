@@ -7,17 +7,22 @@ You are expected to have your scripts ready well before your first observation (
 
 Explanation of M2 scan pattern: Daisy
 =====================================
-A majority of scans that M2 takes are :func:`Daisy() <astrid_commands.Daisy>` scans. In particular, they are lissadous daisy scans that execute the Astrid command ``DaisyWithDither()``. In general, daisy scans are "an on-the-fly scan around a central point in the form of daisy petals" (see :func:`Daisy() <astrid_commands.Daisy>`) and looks like the following:
+A majority of scans that M2 takes are :func:`Daisy() <astrid_commands.Daisy>` scans. In particular, they are lissadous daisy scans that execute the AstrID command ``DaisyWithDither()``. In general, daisy scans are "an on-the-fly scan around a central point in the form of daisy petals" (see :func:`Daisy() <astrid_commands.Daisy>`) and looks like the following:
 
-.. image:: images/m2_scripts_Daisy.png
-Image credit: Observer's guide.
+.. figure:: images/m2_scripts_Daisy.png
 
+.. Image of daisy is from the Observer's guide (August 2024 version the figure is 5.6) in the description of a Daisy. As of Dec 2025, this figure should be in the :func:`Daisy() <astrid_commands.Daisy>` description but is not. 
 
-For M2, we have ~215 detectors. *Each* of which will be scanning in a daisy pattern, illustrated in `Dicker et al 2020 Figure 1 <https://ui.adsabs.harvard.edu/abs/2020ApJ...902..144D/abstract>`_ shown below:
+.. todo:: Once image of daisy has been uploaded to :func:`Daisy() <astrid_commands.Daisy>`, link to that image. 
 
-.. image:: images/m2_scripts_Dicker+20_Fig1.png
-"The black lines represent the path of the central detector of the array. Shown in the bottom left is the footprint of the array with the central detector marked as the red dot. The scan pattern is designed to provide cross-linking on many diﬀerent timescales, between all parts of the array."
+For M2, on a typical night there are 180-195 live detectors. *Each* of these detectors will be scanning in ``DaisyWithDither()`` pattern (illustrated in :numref:`daisy-with-dither-dicker2020`). 
 
+.. _daisy-with-dither-dicker2020:
+.. figure:: images/m2_scripts_Dicker+20_Fig1.png
+
+	`Dicker et al 2020 Figure 1 <https://ui.adsabs.harvard.edu/abs/2020ApJ...902..144D/abstract>`_. The black lines represent the path of the central detector of the array. Shown in the bottom left is the footprint of the array with the central detector marked as the red dot. The scan pattern is designed to provide cross-linking on many diﬀerent timescales, between all parts of the array. The blue represents the normalized coverage.
+
+.. todo:: Add explanation of ``DaisyWithDither()``. Include text, "Notice how the central detector does not cross the center each time."
 
 We use ``DaisyWithDither()`` to take daisy scans with M2 and in general the command in the template scripts looks like this:
 
@@ -25,7 +30,7 @@ We use ``DaisyWithDither()`` to take daisy scans with M2 and in general the comm
 
 	DaisyWithDither(mySrc,map_radius=daisyRad,radial_osc_period=daisyRadPd,radial_phase=0,rotation_phase=0,scanDuration=daisyScanDur,beamName='C',cos_v=True,coordMode=coordSys,lissajous=lissHw)
 
-where all that varies between scans is ``mySrc``, ``daisyRad``, parameters associated with ``daisyRadPd``, ``daisyScanDur``, and sometimes ``lissHw``. These parameters are all set in the Astrid script (see template examples in ``/users/penarray/Public/m2_template_scripts/``).
+where all that varies between scans is ``mySrc``, ``daisyRad``, parameters associated with ``daisyRadPd``, ``daisyScanDur``, and sometimes ``lissHw``. These parameters are all set in the AstrID script (see template examples in ``/users/penarray/Public/m2_template_scripts/``).
 
 Explanations of the daisy parameters you need to understand:
 	* ``daisyRad`` is the radius of the daisy in arcminutes
@@ -33,13 +38,15 @@ Explanations of the daisy parameters you need to understand:
 	* ``daisyScanDur`` - the total duration in seconds of the scan. 
 		* For science scans, we know that "the Daisy scan will produce an approximately closed circular pattern on the sky after 22 radial oscillation periods" so in the M2 template scripts for science targets ``daisyScanDur`` is set by ``daisyScanDur=daisyRadPd*22.0`` and you will not have to change this as you will be updating ``daisyRadPd``. So for science scans, the total science scan duration is 8.5-9.25 minutes.
 		* For calibrator scans, we use something called a "quick daisy." Insteaad of completing the full, 22 radial oscillation periods, we only do 4.5. The calibrator scans are meant to be a quick check of a point source so do not need the full 22 radial oscillations. We typically have ~190-200 detectors online during a given observation so the 4.5 radial oscillations of the point source are enough for calibration. Note that ``daisyRad=1.5`` for these "quick daisies." Thus, in total ``daisyScanDur=daisyRadPd*4.5`` for a quick daisy which amounts to ~1.5 minutes.
-	* ``lissHw`` is the lissajous dithering half-width in arcminutes. The M2 standard scan is the sum of a (smallish lissajous box scan and a larger daisy scan which is what you would get from a spirograph. The idea is that the smaller lissajous pattern spreads out the coverage. This was more important with MUSTANG1 when the array was normally smaller than the region we were mapping and you would get a very large peak in coverage where the daisy scans cross at the center. ``lissHW`` is basically the size of that lissajous box and if you want to cover a large area can be made larger, but if you are trying to concentrate integration time in the center r=2' then keep it small. It is not so important for most our targets which are ~4' across but for something very large (the Moon) then you would get a big, arraysized peak in the coverage map for small lissHw. So in short except in extreme cases it is not too important. This is set for you in the template scripts.
+	* ``lissHw`` is the lissajous dithering half-width in arcminutes. The M2 standard scan is the combination of a smallish lissajous box scan and a larger daisy scan (which is what you would get from a spirograph). ``lissHW`` is essentially the size of that lissajous box. A smaller lissajous pattern spreads out the coverage. If you want to cover a large area ``lissHW`` can be made larger, but if you are trying to concentrate integration time in the center r=2' then keep ``lissHW`` small. For most MUSTANG-2 targets which are ~4' across ``lissHW`` is not so important but for very large target (e.g., the Moon) then you would get a big, arraysized peak in the coverage map for small ``lissHW``. So in short except in extreme cases ``lissHW`` is not too important and ``lissHW`` is set for you in the template scripts so that you don't have to worry about this.
+
+.. todo:: Move description of standard scan earlier. 
 
 Note that you can use ``~bmason/mustangPub/daisycalc.py`` to help determine appropriate parameters.
 
 The following are the things you need to do to get your M2 scripts ready for observations.
 
-1. Copy script templates into Astrid
+1. Copy script templates into AstrID
 ====================================
 The M2 instrument team has created template observing scripts which are located in: ``/users/penarray/Public/m2_template_scripts/``. 
 
@@ -56,7 +63,7 @@ If you are creating the scripts for the first time for your project, you will wa
 	           
 The scripts ``m2quickDaisy`` and ``skydip`` are extra but can be of use.
 
-To copy these scripts into your project directory in Astrid, first open Astrid and navigate to your project (first go to the observing semester then to your full project code). Then click ``File`` → ``Import from file...``  → ``/users/penarray/Public/m2_template_scripts/`` → ``Open`` at which point the script will appear in the Astrid window. Save this script to your project directory by ``Save to Database`` and enter the name of the script and hit ``Save``. You will have to open each template script this way and save each one.
+To copy these scripts into your project directory in AstrID, first open AstrID and navigate to your project (first go to the observing semester then to your full project code). Then click *File* → *Import from file...*  → ``/users/penarray/Public/m2_template_scripts/`` → *Open* at which point the script will appear in the AstrID window. Save this script to your project directory by clicking *Save to Database* and enter the name of the script and hit *Save*. You will have to open each template script this way and save each one.
 
 Read the README (``/users/penarray/Public/m2_template_scripts/README.txt``) for instructions on editing these scripts once you have them in your project directory.
 
@@ -111,39 +118,45 @@ Where can you find flux calibrators? You can use any of the ALMA grid cals liste
 
 .. note::
 
-	Note that in February ALMA is shutdown so it isn't as useful to observe ALMA grid cals. Best to observe something else like a planet."
+	Note that in February ALMA is shutdown so it isn't as useful to observe ALMA grid cals. Best to observe something else like a planet.
 
 3.2 OOF sources
 ===============
-It is efficient to use the flux calibrators as your first OOF source of the night. For OOF sources, a general guide is that you want a bright source that is > 1 Jy and 25 < elevation < 60. The main quality of a good OOF source is that you it to be a nice point source as seen by M2. Out of the planets Uranus and Neptune are the only planets that work well as an OOF source (especially Uranus). You want to avoid sources that have structure like Saturn or 3C273 (M87).
+It is efficient to use the flux calibrators as your first OOF source of the night. For OOF sources, a general guide is that you want a bright source that is > 1 Jy and 25 < elevation < 60. The main quality of a good OOF source is that you it to be a nice point source as seen by M2. You want to avoid sources that have structure like Saturn or 3C273 (M87). Out of the planets Uranus and Neptune are the only planets that work ok as an OOF source. However, Uranus is more extended than Neptune so not a great choice for OOFing. Neptune is not a bad choice to OOF on, but there can be better choices. If you happen to have something brighter nearby (say an ALMA calibrator) - do that instead.
 
 Additionally, a good general rule to follow for picking your OOF source is that you want to choose an OOF source that is approximately at same elevation as your source. This is because one of the main contributors to the deformations in the dish (what OOF is correcting for) is gravity and at each elevation the dish will deform differently due to gravity. However, a more nuanced way of choosing an OOF source is to consider the average elevation of your science target. If the average observing elevation of your target will be "low" (~35 or less), or "high" (average observing elevation ~60 or higher) then one would prefer to OOF on a source with a similar elevation. But if the science target is in between, then the OOF elevation will be less important.
 
 Once you determine your OOF source, fill in the source name in the ``2_m2oof`` and ``3_m2quickDaisyOOF`` scripts.
+
+.. note::
+
+	An advanced technique for choosing an OOF source is to choose the OOF source in real time based on where the last observer left the telescope.
 
 3.3 Pointing calibrators
 ========================
 For each science target you will need to determine a pointing calibrator that you will go to roughly every 30 minutes. 
 
 You can find suitable calibrators using CLEO's Scheduler & Skyview
-	- Click ``Catalog...`` in the upper right-hand corner
-	- Click ``Add/Select/DeSelect Catalogs ...``
-	- Select ``mustang_pointing``
-	- Click ``Apply`` 
+	- Click *Catalog...* in the upper right-hand corner
+	- Click *Add/Select/DeSelect Catalogs ...*
+	- Select *mustang_pointing*
+	- Click *Apply*
     
-The goal is to find a calibrator that is 10-15 deg from your target and > 0.5 Jy (though if have good weather a better choice is something close that is 0.1 Jy). To find a source that is > 0.5 Jy fo the following in CLEO's Scheduler & SkyView:
-    - Go to the box in the right-hand corner that says ``Source Intensity Range`` and in the ``Min`` box put 0.5
+The goal is to find a calibrator that is within 10-15 degrees of your target and > 0.5 Jy. If a pointing calibrator can also be a bright absolute calibrator, that is worth a few extra degrees of slewing (over a lower brightness close by source). You should also take into consideration if the pointing calibrator will be too low/high at any point of during your observations.
+
+To find a source that is > 0.5 Jy fo the following in CLEO's Scheduler & SkyView:
+    - Go to the box in the right-hand corner that says *Source Intensity Range* and in the *Min* box put 0.5
     - Hit enter
     - Load your science source catalog
-    - Enter the time you will be observing in the ``UT Date and Time`` box
+    - Enter the time you will be observing in the *UT Date and Time* box
     - Find a source that is showing and is 10-15 deg from your target.
 
 It is suggested that you find a few options for each science target. Once you determine your pointing calibrator(s), fill in the source name(s) with the strength in a comment in the ``4_m2quickDaisyPC`` script. It is suggested that you leave the best one uncommented and comment out the other options.
 
 4. Choose your science scan size
 ================================
-The scan size for your science scans was likely predetermined by the proposal. In that when the proposal was submitted, the PI needed to determine the scan size for a noise estimation and/or the size of the object(s) being observed. Check the proposal under the "Technical Justification" section for these details. You may want to again reference :ref:`M2 mapping speeds <references/receivers/mustang2/mustang2_mapping:MUSTANG-2 Mapping Information>`.
+The scan size for your science scans was likely predetermined by the proposal. In that when the proposal was submitted, the PI needed to determine the scan size for a noise estimation and/or the size of the object(s) being observed. Check the proposal under the Technical Justification section for these details. You may want to again reference :ref:`M2 mapping speeds <references/receivers/mustang2/mustang2_mapping:MUSTANG-2 Mapping Information>`.
 
-Once you know the size of scans that is appropriate for your science, you can check in ``/users/penarray/Public/m2_template_scripts/`` for ``5_science_rX`` that are Astrid scripts for science daisy scans of a ~8.5 minute duration with a daisy radius of X'. If there is not one with the radius that you need, you can calculate it yourself. All you need to change  is ``daisyRad`` to your desired radius and calculate ``daisyRadPd`` such that daisyRadPd >= 20 sec * (daisyRad/2 arcmin)^(1/3) (see text in the DAISY PARAMS section of the template scripts). If you have questions, contact Emily Moravec for help in doing this.
+Once you know the size of scans that is appropriate for your science, you can check in ``/users/penarray/Public/m2_template_scripts/`` for ``5_science_rX`` that are AstrID scripts for science daisy scans of a ~8.5 minute duration with a daisy radius of X'. If there is not one with the radius that you need, you can calculate it yourself. All you need to change  is ``daisyRad`` to your desired radius and calculate ``daisyRadPd`` such that daisyRadPd >= 20 sec * (daisyRad/2 arcmin)^(1/3) (see text in the DAISY PARAMS section of the template scripts). If you have questions, contact Emily Moravec for help in doing this.
 
 In general, the M2 instrument team recommends doing an offset strategy where 4 science scans have the center of their daisy varied in the corners of a 1.5'x1.5' box. This offset strategy helps especially for projects recovering extended signal (that is, separating extended signal from extended, i.e. large-scale noise). There are two advantages to the offset strategy: (1) it seems to reduce the large-scale noise somewhat, and (2) it gives a more uniform noise in the center of the map (more so than with a single pointing). The trade-off is that the coverage is more spread-out, so there's a minor hit to sensitivity/mapping speed. There is an example of the offset strategy in ``5_science_r3_offset_4scans``; if you need a different daisy radius you will have to update that script with your requirements.

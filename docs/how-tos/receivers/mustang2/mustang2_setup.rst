@@ -97,9 +97,13 @@ Detailed M2 instrument team instructions on tuning and biasing that can be used 
         #. Then it will set the manager into observing mode and check if data are flowing - if not it will attempt to fix this.
 
     **Troubleshooting**
-        See https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Newest_Method_45_25_473_472022 -> Advanced Usage of startMUSTANG.bash -> Common Problems & solutions for a few issues that have come up.
+        For a list of common problems and solutions see `this section of the M2 OnGbtOps wiki <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Common_problems_38_solutions>`_. Further, `this tuning results wiki <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/TuningResults>`_ also lists common issues that come up during the tuning and biasing process.
 
-        Additionally if **roaches is not awake** you may see an error in the tuning process like this:
+        .. note::
+
+            The M2 CLEO manager -> *Housekeeping* -> *Status* is typically yellow and says "Warning" and that's ok.
+
+        One common problem is that one of the **roaches is not awake**. In this case you may see an error in the tuning process like this:
 
           .. image:: images/roach_connection_error.png
 
@@ -120,26 +124,26 @@ Detailed M2 instrument team instructions on tuning and biasing that can be used 
 
 3. Check that data is flowing
 -----------------------------
-Go to the Mustang Manager in CLEO. Click the miscellaneous tab, and click the “Locked” on the bottom left of the window to unlock the regular features, then also unlock advanced features by clicking the “Locked” next to Advanced Features.
+Go to the Mustang Manager in CLEO. Click the miscellaneous tab, and click the *Locked* on the bottom left of the window to unlock the regular features, then also unlock advanced features by clicking the *Locked* next to *Advanced Features*.
 
 .. image:: images/01_mustang_manager_unlocking.png
 
 Click through the channels and look for:
 
-- The "Frame Cntr" numbers should be changing and not be really low or 0.
-- The "Roach Data" numbers changing.
-- The Frame and Clock Cntr columns next to the Channel and Roach data should be similar across the 4 roaches (if they finished tuning at the same time).
+- The *Frame Cntr* numbers should be changing and not be really low or 0.
+- The *Roach Data* numbers changing.
+- The *Frame Cntr* and *Clock Cntr* columns next to the *Channel* and *Roach Data* should be similar across the 4 roaches (if they finished tuning at the same time).
 
 If there is no data flowing in one or more roaches, you have a few potential solutions:
 
-- You can try resending the channel numbers by going to "Num Chan"  -> enter 64 -> press enter.
-- Or turn "DataXinit" off then on.
-- SSH to the problematic roach(es), e.g. "ssh root@mustangr1-1".
+- You can try resending the channel numbers by going to *Num Chan*  -> enter 64 -> press enter.
+- Or turn *DataXinit* off then on.
+- SSH to the problematic roach(es), e.g. ``ssh root@mustangr1-1``.
 - If these steps do not solve the problem, you may need to either restart the manager, or worst case, turn off data streaming (zero biases if you notice a problem after biasing the detectors) and power cycle the roaches (in the ibootbar). If after restarting the manager, the problem persists, restart the roaches (in ibootbar). If you restart the ROACHes, you will need to redo the tuning steps.
 
 .. note:: 
 
-    Be sure to lock the Mustang Manager back when you are done to prevent any accidental miss-clicks. You press the same "Locked" buttons as you did in the beginning of this step, only now they will appear as "unlocked" until you click them again.
+    Be sure to lock the Mustang Manager back when you are done to prevent any accidental miss-clicks. You press the same *Locked* buttons as you did in the beginning of this step, only now they will appear as *Unlocked* until you click them again.
 
 
 
@@ -187,7 +191,7 @@ All previous steps (tuning) can take place in the 1-hour prep before your allott
     
     .. note:: 
 
-        The bias curve plots and information is stored in ``/home/gbtlogs/Rcvr_MBA1_5tuning/detbias/``. However a symlink has been made in ``/users/penarray/Public``(``/users/penarray/Public/link2detbias``) for your convenience. 
+        The bias curve plots and information is stored in ``/home/gbtlogs/Rcvr_MBA1_5tuning/detbias/``. However, for your convenience a symlink has been made: ``/users/penarray/Public/link2detbias``.
 
 #. **Inspect the bias plots**
     They are typically referred to as det bias files, as det bias is a shortened way of referring to the determined bias. You will see the speed of data coming going quickly and ‘Det Bias’ (in Misc tab) changing. After waiting a while (5 min or more), you will get a set of graphs.
@@ -222,14 +226,14 @@ If you have a short observing session, you can manually enter the biases to save
 
 - unlock the manager
 - roach-by-roach
-    - set the DetBias to 5.0
+    - set the *DetBias* to 5.0
     - press enter
-    - wait until the blue box shows a DetBias of 5.0
-    - then enter 1.2 into the DetBias
+    - wait until the blue box shows a *DetBias* of 5.0
+    - then enter 1.2 into the *DetBias*
 
 .. important:: 
 
-    Check with an experienced M2 team member as to what the current reliable `Det Bias` value is.
+    Check with an experienced M2 team member as to what the current reliable bias value is.
 
 
 .. image:: images/04_setting_detbias.png
@@ -246,13 +250,13 @@ If you are having issues with the manager or it crashed, you will need to restar
 
 #. When the operator has told you that they have restarted the M2 manager:
     #. Go to your Cleo Mustang Manager screen
-    #. In the drop down menu go to Managers→Off and then again to click Managers->On to to turn the manager off and back on.
+    #. In the drop down menu go to *Managers*→*Off* and then again to click *Managers*->*On* to to turn the manager off and back on.
     #. Re-check the daily cycle to make sure that it is turned off.
 
 #. Restarting the manager *before* biasing: You're done!
 #. Restarting the manager *after* biasing:
     #. Re-check that the det-biases are what you expected them to be.
-    #. Check that the dataXinit buttons are on.
+    #. Check that the *DataXinit* buttons are on.
 
 
 
