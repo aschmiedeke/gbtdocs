@@ -9,7 +9,7 @@ How to observe with MUSTANG-2
 
 1.1 Prepare observing scripts
 -----------------------------
-Before you observe you need to have prepared your observing scripts and chosen your flux calibrators, your OOF sources, and pointing calibrators. For a guide on how to do all of these things see :ref:`this guide <mustang2_obs_scripts>` for instructions on preparing your scripts.
+Before you observe you need to have prepared your observing scripts and chosen your primary/flux calibrators, your OOF sources, and secondary calibrators. For a guide on how to do all of these things see :ref:`this guide <mustang2_obs_scripts>` for instructions on preparing your scripts.
 
 1.2 Observing Log
 -------------------
@@ -138,7 +138,7 @@ Run the ``1_m2setup`` script in AstrID.
 3.5. OOF
 --------
 
-#. Make sure that you have changed ``mySrc`` in ``2_m2oof`` and run the ``2_m2OOF`` script in AstrID. 
+#. Make sure that you have changed ``mySrc`` in ``2_m2oof`` and run the ``2_m2oof`` script in AstrID. 
 
 #. For the first OOF of the night, you need to have ``calSeq=True`` so that a skydip is done as a part of the OOFing process. An OOF will take ~20 minutes to run. 
 
@@ -170,7 +170,7 @@ Run the ``1_m2setup`` script in AstrID.
 3.6 Quick daisy on OOF source
 -----------------------------
 
-#. Run the ``2_m2quickDaisyOOF`` script on your OOF/calibrator source
+#. Run the ``2_m2quickDaisyPrimary`` script on your OOF/calibrator source
     It's best if you can make your OOF source and your calibrator source the same. 
 
 #. Use the m2gui and determine
@@ -181,14 +181,10 @@ Run the ``1_m2setup`` script in AstrID.
 
 #. It's a good idea to check the time streams (see the :ref:`check time streams section <how-tos/receivers/mustang2/mustang2_obs:4.5 Checking Time Streams>` for instructions and examples.)
 
-.. note::
+3.7 Quick daisy on secondary calibrator
+---------------------------------------
 
-    Note that in February ALMA is shutdown so it isn't as useful to observe ALMA grid cals for your flux calibrator source (which we recommend you use as your OOF source). 
-
-3.7 Quick daisy on pointing calibrator
---------------------------------------
-
-#. Run the ``3_m2quickDaisyPC`` script on your pointing source. 
+#. Run the ``3_m2quickDaisySecondary`` script on your secondary calibrator. 
 
 #. Use the m2gui again and determine
     - beam shape (``WidthA`` & ``WidthB``)
@@ -204,7 +200,7 @@ Run the ``1_m2setup`` script in AstrID.
 3.8 Take science data
 ---------------------
 
-Take ~30 minutes of science data followed by a quick daisy on your pointing calibrator. Often this is accomplished by submitting several science scripts (e.g., ``5_science_rX``) in AstrID. For example, often for cluster science each individual science scan is ~8-9 minutes in length. So if you are submitting individual science scans (which ``5_science_rX`` are), you can submit 4 of the science scripts in a row followed by your pointing calibrator scan. 
+Take ~30 minutes of science data followed by a quick daisy on your seconday calibrator. Often this is accomplished by submitting several science scripts (e.g., ``5_science_rX``) in AstrID. For example, often for cluster science each individual science scan is ~8-9 minutes in length. So if you are submitting individual science scans (which ``5_science_rX`` are), you can submit 4 of the science scripts in a row followed by your secondary calibrator scan. 
 
 It's a good idea to check the time streams (see the :ref:`check time streams section <how-tos/receivers/mustang2/mustang2_obs:4.5 Checking Time Streams>` for instructions and examples.)
 
@@ -220,19 +216,35 @@ It's a good idea to check the time streams (see the :ref:`check time streams sec
 3.9 Continue to take science data
 ---------------------------------
 
-#. Continue to do ~30 minutes of science data followed by a quick daisy on the pointing calibrator for the rest of the night. 
+#. Continue to do ~30 minutes of science data followed by a quick daisy on the secondary calibrator for the rest of the night. 
 #. Monitor the beam size (``WidthA`` and ``WidthB``) and the ``Peak_Height`` using the m2gui to determine if you need to OOF again.
 
 .. note:: 
 
-    We note that when observing with MUSTANG-2 on the GBT, the preferred maximum elevation limit of a target if 75 degrees. It is possible to observe targets up to 80 degrees elevation but this is not preferable. The hard limit is around 84 degrees. At these higher elevations, the MUSTNAG-2 beam becomes large because the GBT cannot keep up with the slewing speeds required to map and track the source. Conversely, the preferred minimum elevation is 30 degrees. However, it is possible to but can go lower, but lower than 30 is hard on the hardware.
+    We note that when observing with MUSTANG-2 on the GBT, the preferred maximum elevation limit of a target is 75 degrees. It is possible to observe targets up to 80 degrees elevation but this is not preferable. The hard limit is around 84 degrees. At these higher elevations, the MUSTANG-2 beam becomes large because the GBT cannot keep up with the slewing speeds required to map and track the source. Conversely, the preferred minimum elevation is 30 degrees. However, it is possible to but can go lower, but lower than 30 is hard on the hardware.
 
 .. attention::
 
     Save your wiki observing log often (not only at the end of the observation) to ensure that your notes are being saved!
 
 
-3.10 When to OOF again?
+3.10 Observe primary calibrators
+--------------------------------
+It is safest to observe multiple primary/flux calibrators in an observing session. You should have your OOF source be a primary calibrator but when you observe an additional primary calibrator later in the observing session, the sequence of observing should be:
+- secondary
+- science scans
+- secondary
+- primary calibrator
+- science scans
+- secondary
+
+Primary and secondary calibrators need to be observed as close in time as is feasible.
+
+.. note::
+
+    In February ALMA is shutdown so ALMA grid cals are not observed during February. Therefore, you should observe other flux calibrators besides the ALMA grid calibrators in February. You can use planets (Uranus, Neptune, Jupiter) or small solar system objects. Consult with MUSTANG-2 team about which flux calibrators to use during this time. 
+
+3.11 When to OOF again?
 -----------------------
 
 First, know that there is no right answer and you have to gain experience to get a feel for when to OOF again. But the following is some advice for when to consider OOFing again.
@@ -244,7 +256,7 @@ The ``Peak_Height`` is important as it is related to the efficiency of the teles
 .. admonition:: Optional
     :class: note
 
-    If you don't have much observing time left, once the ``PeakHeight`` is down by more than 15%, instead of redoing the OOF scan, you can do another ``m2QuickDaisy`` on the pointing source to be sure that it is that low, and then do two more science scans until the ``PeakHeight`` has gone down by another 15% (so a cumulative 30%).
+    If you don't have much observing time left, once the ``PeakHeight`` is down by more than 15%, instead of redoing the OOF scan, you can do another ``m2QuickDaisy`` on the secondary source to be sure that it is that low, and then do two more science scans until the ``PeakHeight`` has gone down by another 15% (so a cumulative 30%).
 
 Generally, you want to monitor the size and shape of the beam. If the largest diameter of the beam (whichever of ``WidthA`` or ``WidthB``) is 12-13" you'll want to consider doing another OOF. For more extended sources (like clusters), a slightly more diffuse beam isn't so harmful; you can stretch a beam up to 13" for diffuse sources. But for point sources the beam size matters more so a largest beam width of ~12" is worrisome. Additionally, you should monitor the shape of the beam. If the beam has become quite elliptical (i.e., ``WidthA`` and ``WidthB`` become very different from one another), you'll want to consider doing another OOF. In the case of M2, a nice beam is 9"x9". An elliptical beam is when there is a :math:`≳` 3" difference between ``WidthA`` and ``WidthB``.
 
@@ -256,8 +268,11 @@ If you have a 1/2 hour of a project left, it isn't worth it to OOF again because
 
     Make sure that you are not being fooled by a bad detector or two. A bad detector will affect your measurements of the calibrator. See :ref:`how-tos/receivers/mustang2/mustang2_obs:4.6 Use crmask to Mask Bad Detectors` for how to mask bad detectors. You will see a bad detector in your map as a bright daisy pattern or in the time streams.
 
+.. attention::
 
-3.11 Be aware - Issue with quadrant detector
+    If you change anything about the instrument during an observing session, when you OOF after those changes, make sure that you take a skydip as a part of AutoOOF (i.e., set calseq=True).
+
+3.12 Be aware - Issue with quadrant detector
 --------------------------------------------
 In early 2023 it was discovered that over the past year or two the quadrant detector sometimes isn't working and doesn't write files to ``/home/gbtdata/project_code_sesion/QuadrantDetector`` as we expect. The GUI now will pop up a warning box (``WARNING QD Values are missing for scans: ...``) if it detects that the quadrant detector files are not being written.
 
