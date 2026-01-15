@@ -776,7 +776,7 @@ beam map images and reduced :math:`\chi^{2}` values for the three highest orders
 
 Solutions must be chosen by the observer and manually sent to the active surface. Therefore, it is 
 essential that the Zernike fits and raw AutoOOF data are examined carefully before deciding upon a
-solution. Steps for validating and discerning appropriate solutions can be found in :ref:`AutoOOF_strategy`.
+solution. Steps for validating and discerning appropriate solutions can be found in :ref:`AutoOOF_guide`.
 
 
 Continuum Data Display

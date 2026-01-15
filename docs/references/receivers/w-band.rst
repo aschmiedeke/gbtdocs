@@ -1,3 +1,4 @@
+.. _w_rx:
 
 W-Band receiver
 ---------------

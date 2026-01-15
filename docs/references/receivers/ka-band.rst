@@ -1,3 +1,4 @@
+.. _ka_rx:
 
 Ka-Band receiver
 ----------------
