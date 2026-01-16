@@ -41,6 +41,10 @@ where :math:`el` is the elevation.
 
 To create the gravity-Zernike model, the surface is measured at a large range of elevations with a process called Out Of Focus holography (OOF, defined and explained below in :ref:`explanations/OOF:OOF`). The user can then fit for the coefficients (:math:`A_n`, :math:`B_n`, :math:`C_n`) to determine the amplitude of the contribution of each of the Zernike polynomials to the gravity-Zernike model at each elevation. For the gravity-Zernike model, Zernike polynomials through the 5th order (in total 21 Zernike polynomials). For more details, see PTCS Project Note #76 - Maddalena et al., 2014.
 
+.. note::
+
+	The gravity-Zernike model is an average model of many observations taken in typical conditions in which observers OOF. The temperature range of these observations was ~20-40° F.
+
 With the gravity–Zernike model in hand, the active surface (recommended for observing at frequencies :math:`\geq` 5 GHz/C-band and above) can be enabled so that the effects of gravity on the dish shape at a given elevation are corrected by the software. If the active surface is turned on, these corrections are made automatically (the user does not need to do anything).
 
 Reference and further reading: Frayer et al. 2019 - `GBT Memo 301 <https://library.nrao.edu/public/memos/gbt/GBT_301.pdf>`_
@@ -87,8 +91,8 @@ where :math:`z_{tot}` is the measured surface of the dish (what is actually meas
 
 Once the OOF has been processed, it is incumbent upon the user to examine the solutions, including inspecting the various orders of Zernike thermal solutions (denoted by :math:`z_{n}` where n is the nth order of Zernike thermal solutions). For directions and advice on selecting solutions, see the :ref:`AutoOOF_guide` and in particular the :ref:`how-tos/general_guides/autooof:Inspecting AutoOOF Solutions` section. 
 
-CLEO Active Surface Coefficients
-================================
+OOF Coefficients in Active Surface Application
+==============================================
 The user can view the various versions of Zernike coefficients via CLEO’s Active Surface window. To open the Active Surface window, CLEO -> ``Launch`` -> ``Active Surface…`` which will produce a window like the following:
 
 .. image:: images/OOF/cleo_active_surface/cleo_active_surface.png
@@ -108,6 +112,8 @@ This tab contains the amplitude of the contributions (coefficients) of the first
 .. note::
 
 	``Zero All Thermal Coefficients`` - this sets all Zernike thermal coefficient values to 0. When the thermals are zeroed out and a new OOF is performed, the resulting solution is compared directly to the gravity model, which is useful if an incorrect OOF solution was recently applied; zeroing the Zernike thermal coefficients effectively provides a clean starting point.
+
+.. todo:: retake this image during high frequency observations.
 
 OOF Coef
 --------
