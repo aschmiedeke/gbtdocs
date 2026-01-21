@@ -231,6 +231,7 @@ It's a good idea to check the time streams (see the :ref:`check time streams sec
 3.10 Observe primary calibrators
 --------------------------------
 It is safest to observe multiple primary/flux calibrators in an observing session. You should have your OOF source be a primary calibrator but when you observe an additional primary calibrator later in the observing session, the sequence of observing should be:
+
 - secondary
 - science scans
 - secondary
