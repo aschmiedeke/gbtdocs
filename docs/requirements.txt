@@ -12,7 +12,7 @@ imagesize
 importlib-metadata
 livereload
 numpydoc
-sphinx
+sphinx<9.0.0
 sphinx-autobuild
 sphinx-automodapi
 sphinx-basic-ng
