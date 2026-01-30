@@ -114,8 +114,9 @@ At the end of the day, your catalog needs to have the following permissions: ``-
 
 .. code:: bash
 
-	rsync -v /path/to/cats/* ~penarray/Public/Catalogs/Science_catalogs/yourCatalog.cat --chmod=g+w 
+    rsync -v /path/to/your/cat/yourCatalog.cat ~penarray/Public/Catalogs/Science_catalogs/Catalogs_YourObservingSemester/yourCatalog.cat --chmod=g+w
 
+    
 or if you copied your catalog over to ``/users/penarray/Public/Catalogs/Science_catalogs/Catalogs_YourObservingSemester/`` just simply change the permissions of the catalog with
 
 .. code:: bash
