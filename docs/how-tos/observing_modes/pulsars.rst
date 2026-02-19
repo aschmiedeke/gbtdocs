@@ -58,6 +58,23 @@ Practical step-by-step guides to help perform pulsar observations.
 
             Search Observations
 
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0
+
+        **Cyclic spectroscopy**
+
+	How to obtain the cyclic spectrum of a pulsar
+
+
+        .. button-link:: pulsars/cycspec.html
+            :color: primary
+            :tooltip: Pulsar cyclic spectroscopy
+            :outline:
+            :click-parent:
+
+            Cyclic Spectroscopy Observations
+
 .. toctree::
     :hidden:
 

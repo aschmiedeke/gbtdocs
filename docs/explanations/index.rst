@@ -48,6 +48,19 @@ Big-picture explanations of higher-level concepts. Most useful for building unde
 
             OOF
 
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **What is Cyclic Spectroscopy?** 
+
+        .. button-link:: cycspec.html
+            :color: primary
+            :outline:
+            :click-parent:
+
+            CS
+	    
 .. toctree::
     :maxdepth: 3
     :hidden:
@@ -55,5 +68,6 @@ Big-picture explanations of higher-level concepts. Most useful for building unde
     nrqz
     temperature_scales
     OOF
+    cycspec
 
 

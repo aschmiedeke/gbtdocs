@@ -58,6 +58,23 @@ VEGAS is the backend for spectral line observing. VEGAS can also be used for pul
 
             DCR
 
+	    
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **Cyclic Spectroscopy (CS)** 
+
+        Cyclic spectroscopy backend
+
+        .. button-link:: backends/cycspec.html
+            :color: primary
+            :tooltip: CS
+            :outline:
+            :click-parent:
+
+            CS
+
  
     .. grid-item-card::
         :shadow: md
@@ -113,6 +130,7 @@ VEGAS is the backend for spectral line observing. VEGAS can also be used for pul
     backends/vegas
     backends/vpm
     backends/dcr
+    backends/cycspec
     backends/ccb
     backends/vlbi
     backends/radar

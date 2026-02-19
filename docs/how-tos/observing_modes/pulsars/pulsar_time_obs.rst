@@ -6,27 +6,33 @@ Timing Observations of a Known Pulsar
 
 .. admonition:: When to Use This Quick Guide
 
-    This quick guide can be used to observe known pulsars with well-measured dispersion
-    measures (DMs) and pulsar timing solutions (e.g. as made using TEMPO). The most common
-    use-case is pulsar timing observations. It should not be used to observe fast radio 
-    bursts (FRBs), to search for pulsars, to observe pulsars without well-determined DMs
-    and timing solutions, or when one needs to observe single pulses.
+    This quick guide can be used to observe known pulsars with
+    well-measured dispersion measures (DMs) and pulsar timing
+    solutions (e.g. as made using TEMPO). The most common use-case is
+    pulsar timing observations. It should not be used to observe fast
+    radio bursts (FRBs), to search for pulsars, to observe pulsars
+    without well-determined DMs and timing solutions, or when one
+    needs to observe single pulses.
 
-    This observing setup makes use of coherent dedispersion. Coherent dedispersion is a 
-    technique for completely removing the intrachannel dispersive delay in real time, before
-    data are written to disk. Coherent dedispersion will improve scientific data quality
-    and should be used whenever the DM of a pulsar is known.
+    This observing setup makes use of coherent dedispersion. Coherent
+    dedispersion is a technique for completely removing the
+    intrachannel dispersive delay in real time, before data are
+    written to disk. Coherent dedispersion will improve scientific
+    data quality and should be used whenever the DM of a pulsar is
+    known.
 
 Overview
 ========
 
-First, we will define some example configurations. We take advantage of the fact that 
-configuration parameters are specified as strings that can be broken up into different
-groups and combined when a Configure() command is issued. This allows us to reduce 
-redundant parameter specifications and the opportunities for errors.
+First, we will define some example configurations. We take advantage
+of the fact that configuration parameters are specified as strings
+that can be broken up into different groups and combined when a
+:func:`Configure() <astrid_commands.Configure>` command is
+issued. This allows us to reduce redundant parameter specifications
+and the opportunities for errors.
 
-Next, we provide a complete example of a simple observing script as well as some tips,
-tricks, and use of advanced scripting features.
+Next, we provide a complete example of a simple observing script as
+well as some tips, tricks, and use of advanced scripting features.
 
 Example Configurations
 ======================
@@ -44,8 +50,8 @@ The following configuration string is common to all pulsar modes.
 Receiver-Specific Configuration Keywords
 ----------------------------------------
 
-The following configuration keywords are receiver-specific. In this example, we will
-use the L-Band receiver.
+The following configuration keywords are receiver-specific. In this
+example, we will use the L-Band receiver.
 
 .. literalinclude:: scripts/pulsar_time_obs.py
     :language: python
@@ -57,16 +63,18 @@ use the L-Band receiver.
     
     - Not every receiver has a notch filter.
     - The value of nwin must match the number of rest frequencies.
-    - You should choose a bandwidth that is well-matched to the frequency range of the
-      :ref:`receiver <references/receivers:Receivers>` you are using.
+    - You should choose a bandwidth that is well-matched to the
+    frequency range of the :ref:`receiver
+    <references/receivers:Receivers>` you are using.
 
 
 Common VEGAS Configuration Keywords
 -----------------------------------
 
-The following configuration string specifies keywords are common to both the pulsar 
-fold-mode and calibration scans that we will perform.  In this example, we will use 
-the most frequently used parameters for high-precision pulsar timing.
+The following configuration string specifies keywords are common to
+both the pulsar fold-mode and calibration scans that we will perform.
+In this example, we will use the most frequently used parameters for
+high-precision pulsar timing.
 
 .. literalinclude:: scripts/pulsar_time_obs.py
     :language: python
@@ -76,22 +84,25 @@ the most frequently used parameters for high-precision pulsar timing.
 
 .. note:: 
 
-    - This configuration will result in frequency channels that are approximately 
-      1.5 MHz wide.  
-    - The recommended value of ``tint`` depends on the frequency resolution (i.e. the
-      bandwidth, :math:`BW`, and number of channels, :math:`n_{chan}`). The formula
-      for calculating the recommended integration time :math:`t_{int}` is 
-      :math:`t_{int} = \frac{16 \times n_{chan}}{BW}`.
-    - The recommended value of ``vegas.scale`` depends on the dedispersion mode, bandwidth,
-      and number of channels. See the :ref:`VPM Observing Reference <references/backends/vpm:VPM>`
-      for recommendations for valid combinations of dedispersion mode / bandwidth / 
-      number of channels.
+    - This configuration will result in frequency channels that are
+    approximately 1.5 MHz wide.
+    - The recommended value of ``tint`` depends on the frequency
+      resolution (i.e. the bandwidth, :math:`BW`, and number of
+      channels, :math:`n_{chan}`). The formula for calculating the
+      recommended integration time :math:`t_{int}` is :math:`t_{int} =
+      \frac{16 \times n_{chan}}{BW}`.
+    - The recommended value of ``vegas.scale`` depends on the
+      dedispersion mode, bandwidth, and number of channels. See the
+      :ref:`VPM Observing Reference <references/backends/vpm:VPM>` for
+      recommendations for valid combinations of dedispersion mode /
+      bandwidth / number of channels.
 
     
 VEGAS Keywords Specific to Fold Mode
 ------------------------------------
-These keywords define the setup for observing the known pulsar with a specific period
-and DM value. 
+
+These keywords define the setup for observing the known pulsar with a
+specific period and DM value.
 
 .. literalinclude:: scripts/pulsar_time_obs.py
     :language: python
@@ -102,8 +113,8 @@ and DM value.
 
 .. note:: 
 
-    - vegas.fold_parfile must specify a valid TEMPO1 formatted file specific to your 
-      pulsar of interest.
+    - vegas.fold_parfile must specify a valid TEMPO1 formatted file
+      specific to your pulsar of interest.
     - See these links for more information about the following parameters: 
       :ref:`swmode <references/observing/configure:\`\`swmode\`\` (str)>` and 
       :ref:`noisecal <references/observing/configure:\`\`noisecal\`\` (str)>`.
@@ -111,8 +122,10 @@ and DM value.
 
 VEGAS Keywords Specific to Calibration Scans
 --------------------------------------------
-These keywords specify the setup for taking data that can be used for polarization
-calibration. Not all science cases will require this, but it is recommended.
+
+These keywords specify the setup for taking data that can be used for
+polarization calibration. Not all science cases will require this, but
+it is recommended.
 
 .. literalinclude:: scripts/pulsar_time_obs.py
     :language: python
@@ -121,68 +134,79 @@ calibration. Not all science cases will require this, but it is recommended.
 
 .. note:: 
 
-    - See these links for more information about the following parameters: 
-      :ref:`swmode <references/observing/configure:\`\`swmode\`\` (str)>` and 
-      :ref:`noisecal <references/observing/configure:\`\`noisecal\`\` (str)>`.
+    - See these links for more information about the following
+    parameters: :ref:`swmode
+    <references/observing/configure:\`\`swmode\`\` (str)>` and
+    :ref:`noisecal <references/observing/configure:\`\`noisecal\`\`
+    (str)>`.
 
 
 Observing Scripts
 =================
 
-:numref:`script-pulsar-time-obs` is a complete observing script that will perform
-a polarization calibration scan and a timing observation of a single pulsar.
+:numref:`script-pulsar-time-obs` is a complete observing script that
+will perform a polarization calibration scan and a timing observation
+of a single pulsar.
 
 .. literalinclude:: scripts/pulsar_time_obs.py
     :language: python
     :linenos: 
-    :caption: This script will perform a polarization calibration scan and a timing observation of a single pulsar.
+    :caption: This script will perform a polarization calibration scan
+              and a timing observation of a single pulsar.
     :name: script-pulsar-time-obs
 
 
 .. note:: 
 
-    - We do not balance the IF system between the polarization calibration scan 
-      and the pulsar scan. This ensures that the instrument response does not
-      change between the two scans.
-    - It is highly recommended to perform an :func:`AutoPeakFocus() <astrid_commands.AutoPeakFocus>`
-      at the beginning of your session - this will ensure the telescope is set
-      up correctly in addition to checking the pointing solution. 
+    - We do not balance the IF system between the polarization
+      calibration scan and the pulsar scan. This ensures that the
+      instrument response does not change between the two scans.
+    - It is highly recommended to perform an :func:`AutoPeakFocus()
+      <astrid_commands.AutoPeakFocus>` at the beginning of your
+      session - this will ensure the telescope is set up correctly in
+      addition to checking the pointing solution.
       
       .. note:: 
 
-        The PF800 and PF342 receivers only require an :func:`AutoPeak() <astrid_commands.AutoPeak>`.
+        The PF800 and PF342 receivers only require an
+        :func:`AutoPeak() <astrid_commands.AutoPeak>`.
 
 Tips and Tricks 
 ===============
 
-We strongly recommend that all observers use a par file that they have generated
-themselves using tempo1. Files generated with tempo1 should work without issue. 
-If you are uncertain about the provenance of your par file, you can validate it
-with the following steps:
+We strongly recommend that all observers use a par file that they have
+generated themselves using tempo1. Files generated with tempo1 should
+work without issue.  If you are uncertain about the provenance of your
+par file, you can validate it with the following steps:
 
 - ``tempo -f [your par file] -z -ZPSR=[pulsar name] -ZOBS=1``
-- If there are no issues, tempo will exit without messages and a new file called
-  ``polyco.dat`` should appear in the working directory
-- Depending on which parameters are in the par file, tempo may print ``“WARNING: TZ mode”``
-  - these impact definition of zero pointing phase but will not prevent observations
-- If ``polyco.dat`` is not generated, this is not a valid par file. Contact your GBT 
-  project friend for assistance.
+- If there are no issues, tempo will exit without messages and a new
+  file called ``polyco.dat`` should appear in the working directory
+- Depending on which parameters are in the par file, tempo may print
+  ``“WARNING: TZ mode”``
+  - These impact the definition of zero-phase point but will not
+    prevent observations
+- If ``polyco.dat`` is not generated, this is not a valid par
+  file. Contact your GBT project friend for assistance.
 
 
-Contact your GBT project friend for assistance converting par files from tempo2 to tempo1.
+Contact your GBT project friend for assistance converting par files
+from tempo2 to tempo1.
 
 Observing Multiple Sources
 --------------------------
 
-:numref:`script-pulsar-time-obs-multiple` will automatically observe multiple sources one
-after another. We highlight lines of the script that differ from :numref:`script-pulsar-time-obs`.
+:numref:`script-pulsar-time-obs-multiple` will automatically observe
+multiple sources one after another. We highlight lines of the script
+that differ from :numref:`script-pulsar-time-obs`.
 
 
 .. literalinclude:: scripts/pulsar_time_obs_multiple.py
     :language: python
     :linenos:
     :emphasize-lines: 5-9,46-52,63-84
-    :caption: This script will automatically observe multiple sources one after another.
+    :caption: This script will automatically observe multiple sources
+              one after another.
     :name: script-pulsar-time-obs-multiple
 
 
@@ -190,8 +214,9 @@ after another. We highlight lines of the script that differ from :numref:`script
 Advanced Use of Catalogs
 ------------------------
 
-Here we demonstrate an advanced use of catalogs in which we specify the full path to a 
-parfile for each source and access this in the script.
+Here we demonstrate an advanced use of catalogs in which we specify
+the full path to a parfile for each source and access this in the
+script.
 
 First, we define an example catalog:
 
@@ -200,10 +225,12 @@ First, we define an example catalog:
     :linenos:
 
 
-Now we define the observing script. The “parfile” column from our catalog is read in for
-each source and substituted into the configuration string. The sources will be observed 
-in the order they appear in the catalog. In :numref:`script-pulsar-time-obs-advCatalog`
-we highlight lines of the script that differ from :numref:`script-pulsar-time-obs-multiple`.
+Now we define the observing script. The “parfile” column from our
+catalog is read in for each source and substituted into the
+configuration string. The sources will be observed in the order they
+appear in the catalog. In :numref:`script-pulsar-time-obs-advCatalog`
+we highlight lines of the script that differ from
+:numref:`script-pulsar-time-obs-multiple`.
 
 .. literalinclude:: scripts/pulsar_time_obs_advCatalog.py
     :language: python

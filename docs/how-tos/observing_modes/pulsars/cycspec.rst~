@@ -1,0 +1,29 @@
+.. _cycspec:
+
+############################################
+Cyclic Spectroscopy Observations of a Pulsar
+############################################
+
+.. admonition:: When to Use This Quick Guide
+
+   This quick guide can be used to obtain the cyclic spectrum of known
+   pulsars.  Cyclic spectroscopy (CS) can be used to resolve
+   narrow-bandwidth scintles without sacrificing pulse phase
+   resolution.  Under certain circumstances it can also be used to
+   measure the impulse response function (IRF) of the interstellar
+   medium and deconvolve it from a pulsar's intrinsic profile (i.e.,
+   to remove scattering).  See `Demorest (2011)
+   <https://ui.adsabs.harvard.edu/abs/2011MNRAS.416.2821D/abstract>`_,
+   for an introduction to CS, and `Walker et al.(2013)
+   <https://ui.adsabs.harvard.edu/abs/2013ApJ...779...99W/abstract>`_,
+   `Dolch et al. (2021)
+   <https://ui.adsabs.harvard.edu/abs/2021ApJ...913...98D/abstract>`_,
+   and `Turner et al. (2025)
+   <https://ui.adsabs.harvard.edu/abs/2025ApJ...989..228T/abstract>`_
+   for guidelines on using CS to deconvolve the IRF.
+
+Overview
+========
+
+
+   
