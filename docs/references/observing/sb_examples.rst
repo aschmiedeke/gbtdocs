@@ -50,3 +50,12 @@ In this example we perform frequency-switched observations of the HI 21 cm line 
 :math:`5^\circ \times 5^\circ` region of the sky. We use pixels that are 3' in size and have an integration time of 2 seconds per pixel. We do not observe the while map in this example. This example is available at ``/home/astro-util/projects/GBTog/SBs/example4.py``
 
 .. literalinclude:: scripts/example4.py
+
+
+Cyclic spectroscopy pulsar observations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following script illustrates a common cyclic spectroscopy
+configuration.
+
+.. literalinclude:: scripts/cs_observation.py

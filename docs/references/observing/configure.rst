@@ -491,8 +491,8 @@ circular polarization is desired for these receivers. Allowed values are ``'Line
    The default is ``'Circular'`` for the VLBI and Radar backends and ``'Linear'`` otherwise.
 
 
-``vegas.dm`` (?)
-""""""""""""""""
+``vegas.dm`` (float)
+""""""""""""""""""""
 
 [VPM] Controls the DM used for coherent dedispersion fold and search modes.
 It is not used by any other modes.
@@ -526,24 +526,33 @@ dedispersion fold-modes.
    The parfile must be compatible with the TEMPO1 prediction mode.
 
 
-``vegas.numchan`` (?)
-"""""""""""""""""""""
+``vegas.numchan`` (int)
+"""""""""""""""""""""""
 
 
-[VPM] Sets the number of spectral channels. Care must be taken to not exceed the maximum data rate.
+[VPM] [Cyclic Spectroscopy] Sets the number of spectral channels. Note that this is the number of channels for a single spectral window.
 See :numref:`tab-vpm-coherent-modes` and :numref:`tab-vpm-incoherent-modes`.
+
+.. important::
+
+   When using cyclic spectroscopy (CS), this sets the number of polyphase filterbank channels per spectral window used in the first-stage channelization.
+   
 
 
 ``vegas.obsmode`` (str)
 """""""""""""""""""""""
 
-[VPM] Controls both the dedispersion and observing mode. Allowed values are:
+[VPM] [Cyclic Spectroscopy] Controls both the dedispersion and observing mode. Allowed values are:
 * ``"search"``: Incoherent dedispersion search-mode.
 * ``"fold"``: Incoherent dedispersion fold-mode.
 * ``"cal"``: Incoherent dedispersion cal-mode.
 * ``"coherent_search"``: Coherent dedispersion search-mode.
 * ``"coherent_fold"``: Coherent dedispersion fold-mode.
 * ``"coherent_cal"``: Coherent dedispersion cal-mode.
+
+.. important::
+
+   When using CS the only allowable values are ``"coherent_fold"`` or ``"coherent_cal"``.
 
 
 ``vegas.outbits`` (int)
@@ -560,12 +569,36 @@ values are ``"full_stokes"`` and ``"total_intensity"``, though total intensity
 can only be used in incoherent search-mode.
 
 
-``vegas.scale`` (?)
-"""""""""""""""""""
+``vegas.scale`` (float)
+"""""""""""""""""""""""
 
 [VPM] Controls the VPM internal gain so that the output data is properly scaled for 8-bit values.
 These values are empirically measured and recommended values are listed in :numref:`tab-vpm-coherent-modes`
 and :numref:`tab-vpm-incoherent-modes`..
+
+``vegas.cycspec`` (int)
+"""""""""""""""""""""""
+
+[Cyclic Spectroscopy] A Boolean integer flag (i.e. 1 = True, 0 = False) that controls whether cyclic spectroscopy (CS) is enabled. It will always be 1 when using the CS backend.
+
+.. admonition:: Default
+		
+   The default value is 0.
+
+``vegas.ncyc`` (int)
+""""""""""""""""""""
+
+[Cyclic Spectroscopy] The value of :math:`n_{\rm cyc}`.  Allowable values depend on the value of ``vegas.cycspec_num_bins`` and ``vegas.numchan``.  See :numref:`cs-allowede-modes` for valid parameter combinations.
+
+``vegas.cycspec_num_bins`` (int)
+""""""""""""""""""""""""""""""""
+
+[Cyclic Spectroscopy] The number of pulse profile bins used by the CS backend.  Allowable values depend on the value of ``vegas.ncyc`` and ``vegas.numchan``.  See :numref:`cs-allowed-modes` for valid parameter combinations.
+
+``vegas.cycspec_fold_dumptime`` (float)
+"""""""""""""""""""""""""""""""""""""""
+
+[Cyclic Spectroscopy] The sub-integration time in seconds used by the CS backend.  10 seconds is a typical value.  It must be shorter than the scan length.
 
 
 ``vegas.subband`` (int)

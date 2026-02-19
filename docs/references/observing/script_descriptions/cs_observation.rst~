@@ -1,0 +1,5 @@
+.. literalinclude:: /references/observing/scripts/cs_observing.py
+    :language: python
+    :lines: 4-
+    :caption: An example cyclic spectroscopy observation
+
