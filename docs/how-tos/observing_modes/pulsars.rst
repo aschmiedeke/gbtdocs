@@ -81,6 +81,7 @@ Practical step-by-step guides to help perform pulsar observations.
     pulsars/pulsar_time_obs
     pulsars/pulsar_flux_cal  
     pulsars/pulsar_search
+    pulsars/cycspec
 
 
 

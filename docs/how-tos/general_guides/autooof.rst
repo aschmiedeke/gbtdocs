@@ -76,7 +76,12 @@ See guidance in Argus :ref:`references/receivers/argus:Observing`, but in summar
 
 MUSTANG-2
 ---------
-Use MUSTANG-2 to OOF and obtain pointing and focus corrections. For choosing your OOF sources for MUSTANG-2, see guide on picking :ref:`OOF sources <how-tos/receivers/mustang2/mustang2_obs_scripts:3.2 OOF sources>`. In the :func:`AutoOOF() <astrid_commands.AutoOOF>`, if it is the first OOF for the MUSTANG-2 project set ``calseq=True`` so ``AutoOOF(source,calseq=True)``. When you set ``calseq=True``, this initiates a skydip scan before the OOF scans (skydip is needed for calibration of the data). If you are doing an OOF later in the night then set ``calseq=False`` so that you do not run another skydip. 
+Use MUSTANG-2 to OOF and obtain pointing and focus corrections. For choosing your OOF sources for MUSTANG-2,
+see guide on picking :ref:`OOF sources <how-tos/receivers/mustang2/mustang2_obs_scripts:3.2 OOF source>`.
+In the :func:`AutoOOF() <astrid_commands.AutoOOF>`, if it is the first OOF for the MUSTANG-2 project set 
+``calseq=True`` so ``AutoOOF(source,calseq=True)``. When you set ``calseq=True``, this initiates a skydip
+scan before the OOF scans (skydip is needed for calibration of the data). If you are doing an OOF later in 
+the night then set ``calseq=False`` so that you do not run another skydip. 
 
 The AutoOOF Procedure
 =====================

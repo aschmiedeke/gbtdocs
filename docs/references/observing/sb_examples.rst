@@ -55,7 +55,4 @@ In this example we perform frequency-switched observations of the HI 21 cm line 
 Cyclic spectroscopy pulsar observations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following script illustrates a common cyclic spectroscopy
-configuration.
-
-.. literalinclude:: scripts/cs_observation.py
+.. include:: script_descriptions/cs_observation.rst

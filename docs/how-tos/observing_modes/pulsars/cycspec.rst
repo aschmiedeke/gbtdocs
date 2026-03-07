@@ -12,15 +12,9 @@ Cyclic Spectroscopy Observations of a Pulsar
    resolution.  Under certain circumstances it can also be used to
    measure the impulse response function (IRF) of the interstellar
    medium and deconvolve it from a pulsar's intrinsic profile (i.e.,
-   to remove scattering).  See `Demorest (2011)
-   <https://ui.adsabs.harvard.edu/abs/2011MNRAS.416.2821D/abstract>`_
-   for an introduction to CS, and `Walker et al.(2013)
-   <https://ui.adsabs.harvard.edu/abs/2013ApJ...779...99W/abstract>`_,
-   `Dolch et al. (2021)
-   <https://ui.adsabs.harvard.edu/abs/2021ApJ...913...98D/abstract>`_,
-   and `Turner et al. (2025)
-   <https://ui.adsabs.harvard.edu/abs/2025ApJ...989..228T/abstract>`_
-   for guidelines on using CS to deconvolve the IRF.
+   to remove scattering).  See :cite:t:`Demorest2011` for an introduction to CS, and 
+   :cite:t:`Walker2013`, :cite:t:`Dolch2021`, and :cite:t:`Turner2025` for guidelines
+   on using CS to deconvolve the IRF.
 
 Overview
 ========
@@ -203,7 +197,7 @@ Additional Information
    the system is properly configured using fully processed within the
    first few minutes of your observing session.
 
-You should :ref:`Cyclops <references/backends/cycspec:Using Cyclops to
+You should use :ref:`Cyclops <references/backends/cycspec:Using Cyclops to
 Monitor Your CS Observations>` to monitor data acquisition and
 processing during and after your observation.  Specifically:
 

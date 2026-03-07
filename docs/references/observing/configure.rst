@@ -588,7 +588,7 @@ and :numref:`tab-vpm-incoherent-modes`..
 ``vegas.ncyc`` (int)
 """"""""""""""""""""
 
-[Cyclic Spectroscopy] The value of :math:`n_{\rm cyc}`.  Allowable values depend on the value of ``vegas.cycspec_num_bins`` and ``vegas.numchan``.  See :numref:`cs-allowede-modes` for valid parameter combinations.
+[Cyclic Spectroscopy] The value of :math:`n_{\rm cyc}`.  Allowable values depend on the value of ``vegas.cycspec_num_bins`` and ``vegas.numchan``.  See :numref:`cs-allowed-modes` for valid parameter combinations.
 
 ``vegas.cycspec_num_bins`` (int)
 """"""""""""""""""""""""""""""""

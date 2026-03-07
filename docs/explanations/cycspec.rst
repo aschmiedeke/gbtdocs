@@ -4,8 +4,7 @@ What is Cyclic Spectroscopy?
 Cyclic spectroscopy (CS) is an advanced signal processing technique
 that takes advantage of the period nature of pulsars to simultaneously
 achieve high radio frequency and pulse phase resolution.  The
-application of CS to pulsars is described in Demorest (2011, *MNRAS*,
-416, 4, 2821).
+application of CS to pulsars is described in :cite:t:`Demorest2011`.
 
 Traditional signal processing techniques measure radio-frequency power
 spectra via a Fourier transform.  There are different approaches for
@@ -109,5 +108,10 @@ backend that operates in close-to-real time and that is controlled
 using the standard GBT observing interface (Astrid).  It operates in
 parallel with VEGAS, producing traditional data products and *periodic
 spectra* (which are related to the cylclic spectrum via a Fourier
-transform).  The :ref:`References <references/backends/cycspec/`
-section contains detailed information on how to use the CS backend.
+transform).  
+
+The :ref:`Cyclic Spectroscopy reference <references/backends/cycspec:Cyclic Spectroscopy>`
+section contains detailed technical information on the CS backend.
+
+
+The How-to guide on :ref:`how-tos/observing_modes/pulsars/cycspec:Cyclic Spectroscopy Observations of a Pulsar` contains detailed instructions on how to obtain the cyclic spectrum of known pulsars.

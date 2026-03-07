@@ -27,7 +27,7 @@ and to a dedicated CS processing cluster.  CS can be used with the
 VEGAS, producing one, two, eight, or eight data streams.  Each stream
 is a duplicate copy of the data sent to and processed on a VEGAS Bank.
 CS streams retain this nomenclature (i.e. the data stream associated
-with VEGAS Bank A is also labeled ``A'').  :numref:`cs-system`
+with VEGAS Bank A is also labeled ``A``).  :numref:`cs-system`
 provides a schematic overview of the CS system and its shared
 components with VEGAS.
 
@@ -91,82 +91,11 @@ length of an individual scan and the time it takes to process a scan:
 The latter restriction limits the allowable combination of PFB channel
 bandwidth, the final frequency resolution of the periodic spectrum,
 and the pulse phase resolution.  Allowable parameter combinations are
-shown in :numref:`cs-allowed-modes` .
+shown in :numref:`cs-allowed-modes`.
 
-.. table:: **Maximum Allowable** :math:`\mathbf{n_{\rm cyc}}`
-   :name: cs-allowed-modes
-   
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | |npfb|    | |nbin| | 32  | 64  | 128 | 256 | 512 | 1024 | 2048 |
-   +===========+========+=====+=====+=====+=====+=====+======+======+
-   | **100 MHz Bandwidth Modes**                                    |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **64**    |        | 512 | 512 | 512 | 256 | 256 | 128  | 64   |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **128**   |        | 512 | 512 | 256 | 256 | 128 | 64   | 64   |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **256**   |        | 512 | 256 | 256 | 128 | 64  | 64   | 32   |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **512**   |        | 256 | 128 | 128 | 64  | 64  | 32   |      |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **200 MHz Bandwidth Modes**                                    |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **64**    |        | 256 | 256 | 256 | 256 | 256 | 128  | 128  |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **128**   |        | 512 | 512 | 512 | 256 | 256 | 128  | 64   |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **256**   |        | 512 | 512 | 256 | 256 | 128 | 64   | 64   |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **512**   |        | 512 | 256 | 256 | 128 | 64  | 64   | 32   |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **1024**  |        | 256 | 128 | 128 | 64  | 64  | 32   |      |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **800 MHz Bandwidth Modes**                                    |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **32**    |        | 32  | 32  | 64  | 64  | 32  | 32   | 32   |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **64**    |        | 128 | 128 | 128 | 128 | 128 | 128  | 128  |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **128**   |        | 128 | 256 | 128 | 128 | 128 | 128  | 128  |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **256**   |        | 256 | 256 | 256 | 256 | 256 | 128  | 128  |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **512**   |        | 512 | 512 | 512 | 256 | 256 | 128  | 64   |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **1024**  |        | 512 | 512 | 256 | 256 | 128 | 64   | 64   |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **2048**  |        | 512 | 256 | 256 | 128 | 64  | 64   | 32   |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **4096**  |        | 256 | 128 | 128 | 64  | 64  | 32   |      |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **1500 MHz Bandwidth Modes**                                   |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **64**    |        | 64  | 16  | 32  | 64  | 16  | 16   | 16   |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **128**   |        | 64  | 64  | 64  | 64  | 64  | 64   | 64   |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **256**   |        | 128 | 128 | 128 | 128 | 128 | 128  | 64   |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **512**   |        | 256 | 256 | 128 | 128 | 128 | 64   | 64   |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **1024**  |        | 256 | 256 | 256 | 128 | 128 | 64   | 16   |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **2048**  |        | 256 | 256 | 128 | 128 | 64  | 32   | 8    |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **4096**  |        | 256 | 128 | 64  | 64  | 16  | 4    |      |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **4500 MHz Bandwidth UWBR Modes**                              |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **768**   |        | 128 | 128 | 128 | 128 | 128 | 128  | 64   |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **1536**  |        | 256 | 256 | 128 | 128 | 128 | 64   | 64   |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **3072**  |        | 256 | 256 | 256 | 128 | 128 | 64   | 16   |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **6144**  |        | 256 | 256 | 128 | 128 | 64  | 32   | 8    |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
-   | **12288** |        | 256 | 128 | 64  | 64  | 16  | 4    |      |
-   +-----------+--------+-----+-----+-----+-----+-----+------+------+
+
+.. include:: /material/tables/CS_allowed_modes.tab 
+
 
 Using Cyclops to Monitor Your CS Observations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -228,7 +157,8 @@ Quality Check link will bring you to a page showing more detailed
 information about the quality of the data (see below for details).
 
 The Cyclops Status Page
-""""""""""""""""""""""
+"""""""""""""""""""""""
+
 .. figure:: images/cyclops_status.png
    :name: cs-cyclops-status
    :alt: The Cyclops status page
@@ -272,55 +202,54 @@ The Cyclops Projects Page
 """""""""""""""""""""""""
 
 .. figure:: images/cyclops_projects.png
-   :name: cs-cyclops-projects
-   :alt: The Cyclops projects page
-   :width: 100%
+    :name: cs-cyclops-projects
+    :alt: The Cyclops projects page
+    :width: 100%
 
-   The Cyclops Projects page.  Clicking on a link will take you to a
-   page with project-specific details.
+    The Cyclops Projects page.  Clicking on a link will take you to a
+    page with project-specific details.
 
 A screen shot of the status page is shown in
 :numref:`cs-cyclops-projects`.  Observers can filter based on specific
 strings in the project ID.  Clicking on a project ID will take you to
 a project-specific page with more details (shown in
-:numref:`cs-cyclops_project_details`).  From this page, observers can
+:numref:`cs-cyclops-project-details`).  From this page, observers can
 filter for specific scans and view detailed information on each scan.
 The information presented for each scan is the same as in the Scans
 table in the main Status page.  Again, clicking on a scan number will
 take you to a page with detailed information on that scan.
 
 .. figure:: images/cyclops_project_details.png
-   :name: cs-cyclops-project-details
-   :alt: Cyclops detailed project information
-   :width: 100%
+    :name: cs-cyclops-project-details
+    :alt: Cyclops detailed project information
+    :width: 100%
 
-   A Cyclops page with detailed information about a single project.
-   Clicking on a link will take you to a page with project-specific
-   details.  Clicking on a scan will take you to a page with more
-   detailed information about that specific scan.
+    A Cyclops page with detailed information about a single project.
+    Clicking on a link will take you to a page with project-specific
+    details.  Clicking on a scan will take you to a page with more
+    detailed information about that specific scan.
     
 The Cyclops Scans Pages
-""""""""""""""""""""""
+"""""""""""""""""""""""
 
-Screen shots of the scan pages are shown in :numref:`cs-cyclops-scans`
+Screenshots of the scan pages are shown in :numref:`cs-cyclops-scans`
 (all scans) and :numref:`cs-cyclops-project-scans` (scans associated
 with a specific project).
 
 .. figure:: images/cyclops_scans.png
-   :name: cs-cyclops-scans
-   :alt: The Cyclops scans page
-   :width: 100%
+    :name: cs-cyclops-scans
+    :alt: The Cyclops scans page
+    :width: 100%
 	 
-   The Cyclops Scans page.  This contains information about all CS
-    scans for all projects.
+    The Cyclops Scans page. This contains information about all CS scans for all projects.
 
 
 .. figure:: images/cyclops_project_scans.png
-   :name: cs-cyclops-project-scans
-   :alt: Cyclops project scans page
-   :width: 100%
+    :name: cs-cyclops-project-scans
+    :alt: Cyclops project scans page
+    :width: 100%
 
-   Cyclops scans associated with a specific project.
+    Cyclops scans associated with a specific project.
 
 Clicking on a scan number will take you to a scan-specific page with
 more details (shown in Figs. :numref:`cs-cyclops-scan-details1` and
@@ -360,7 +289,7 @@ should not the following:
   optimal.  If you have doubts, contact the GBT operator.
 
 .. figure:: images/cyclops_scan_details.png
-   :name: cs-cyclops-scan-details
+   :name: cs-cyclops-scan-details1
    :alt: Cyclops scan details page
    :width: 100%
 	   
