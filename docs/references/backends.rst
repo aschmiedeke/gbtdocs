@@ -4,7 +4,7 @@
 Backends
 ########
 
-VEGAS is the backend for spectral line observing. VEGAS can also be used for pulsar observing (VEGAS Pulsar Modes, VPM). The GBT has two continuum backends: The Digital Continuum Receiver (DCR) and the Caltech Continuum Backend (CCB).  There is a single dish mode for the Very Long Baseline Array (VLBA) backend that is available for high time-resolution observations. Planetary radar uses a specialized backend.
+VEGAS is the backend for spectral line observing. VEGAS can also be used for pulsar observing (VEGAS Pulsar Modes, VPM). The Cyclic Spectroscopy backend can also be used for Pulsar observations. The GBT has two continuum backends: The Digital Continuum Receiver (DCR) and the Caltech Continuum Backend (CCB).  There is a single dish mode for the Very Long Baseline Array (VLBA) backend that is available for high time-resolution observations. Planetary radar uses a specialized backend.
 
 .. grid:: 1 2 2 2
 
@@ -25,6 +25,17 @@ VEGAS is the backend for spectral line observing. VEGAS can also be used for pul
 
             VEGAS
 
+
+            
+.. toctree::
+    :maxdepth: 3
+    :hidden:
+
+    backends/vegas
+
+
+.. grid:: 1 2 2 2
+
     .. grid-item-card::
         :shadow: md
         :margin: 2 2 0 0 
@@ -40,23 +51,6 @@ VEGAS is the backend for spectral line observing. VEGAS can also be used for pul
             :click-parent:
 
             VPM
-
-
-    .. grid-item-card::
-        :shadow: md
-        :margin: 2 2 0 0 
-
-        **Digital Continuum Receiver (DCR)** 
-
-        Continuum backend
-
-        .. button-link:: backends/dcr.html
-            :color: primary
-            :tooltip: DCR
-            :outline:
-            :click-parent:
-
-            DCR
 
 	    
     .. grid-item-card::
@@ -75,6 +69,36 @@ VEGAS is the backend for spectral line observing. VEGAS can also be used for pul
 
             CS
 
+
+
+
+
+.. toctree::
+    :maxdepth: 3
+    :hidden:
+
+    backends/vpm
+    backends/cycspec
+    
+
+.. grid:: 1 2 2 2
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **Digital Continuum Receiver (DCR)** 
+
+        Continuum backend
+
+        .. button-link:: backends/dcr.html
+            :color: primary
+            :tooltip: DCR
+            :outline:
+            :click-parent:
+
+            DCR
+
  
     .. grid-item-card::
         :shadow: md
@@ -92,6 +116,17 @@ VEGAS is the backend for spectral line observing. VEGAS can also be used for pul
 
             CCB
 
+
+
+.. toctree::
+    :maxdepth: 3
+    :hidden:
+    
+    backends/dcr
+    backends/ccb
+
+
+.. grid:: 1 2 2 2
 
     .. grid-item-card::
         :shadow: md
@@ -127,11 +162,6 @@ VEGAS is the backend for spectral line observing. VEGAS can also be used for pul
     :maxdepth: 3
     :hidden:
 
-    backends/vegas
-    backends/vpm
-    backends/dcr
-    backends/cycspec
-    backends/ccb
     backends/vlbi
     backends/radar
             
