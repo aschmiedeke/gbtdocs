@@ -151,7 +151,11 @@ Run the ``1_m2setup`` script in AstrID.
 
 3.5. OOF
 --------
+.. attention:: 
 
+    Before and after OOF is a good time to check that the active surface settings are as they should be. See :ref:`Monitoring the Surface Models <explanations/OOF:Monitoring the Surface Models>` 
+    or `M2 active surface documentation <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Active_Surface_Configuration>`_ for what and how to check.
+    
 #. Make sure that you have changed ``mySrc`` in ``2_m2oof`` and run the ``2_m2oof`` script in AstrID. 
 
 #. For the first OOF of the night, you need to have ``calSeq=True`` so that a skydip is done as a part of the OOFing process. An OOF will take ~20 minutes to run. 
