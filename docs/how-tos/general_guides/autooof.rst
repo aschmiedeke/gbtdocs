@@ -6,8 +6,7 @@ AutoOOF Guide
 
 Context
 =======
-AutoOOF is recommended for observing at frequencies of 40 GHz and higher and only available 
-for use with ``Rcvr26_40`` (:ref:`Ka-Band<ka_rx>`), ``Rcvr40_52`` (:ref:`Q-Band <qband_rx>`), ``Rcvr68_92`` (:ref:`W-Band<w_rx>`), ``RcvrArray75_115`` (:ref:`Argus<argus_rx>`), and ``Rcvr_MBA1_5`` (:ref:`MUSTANG-2<mustang2_technical>`). 
+AutoOOF is recommended for observing at frequencies of 40 GHz and higher and only available for use with ``Rcvr26_40`` (:ref:`Ka-Band<ka_rx>`), ``Rcvr40_52`` (:ref:`Q-Band <qband_rx>`), ``Rcvr68_92`` (:ref:`W-Band<w_rx>`), ``RcvrArray75_115`` (:ref:`Argus<argus_rx>`), and ``Rcvr_MBA1_5`` (:ref:`MUSTANG-2<mustang2_technical>`). 
 
 In this guide, you will learn about the steps of the OOF process and how to interpret the results. For information on OOF data display in AstrID, see :ref:`references/astrid:OOF Data Display`. For an explanation of what OOF is conceptually see :ref:`OOF_explanation`.
 
@@ -94,7 +93,7 @@ Below we provide some general information about the OOF process:
 * **Allow approximately 25 minutes for an AutoOOF**.
     * The AutoOOF procedure obtains three consecutive OTF maps; each map takes 5-6 minutes and is at a different focus position.
 * **Use AutoOOF to derive pointing and focus offsets**
-    * The OOF-processing is launched automatically upon completion of the third map, and the result is displayed in the OOF tab of AstrID. It is incumbent upon you, as the observer, to examine the solutions (see guidance in guide below), select a solution, and click the button (in the AstrID *DataDisplay* tab) to send the selected solution to the active surface. It is recommended that when sending the solutions, you use the button in the OOF display tab labeled *After selecting the Zernike solution above (e.g., z4 or z5), click this green button to send the solutions to the telescope*.
+    * The OOF-processing is launched automatically upon completion of the third map, and the result is displayed in the *OOF* tab of AstrID. It is incumbent upon you, as the observer, to examine the solutions (see guidance in guide below), select a solution, and click the button (in the AstrID *DataDisplay* tab) to send the selected solution to the active surface. It is recommended that when sending the solutions, you use the button in the OOF display tab labeled *After selecting the Zernike solution above (e.g., z4 or z5), click this green button to send the solutions to the telescope*.
 
 .. note:: 
 
@@ -753,7 +752,7 @@ See the many examples above (see the first three bad examples of :ref:`how-tos/g
 MUSTANG-2
 ---------
 
-MUSTANG-2 observers use OOF not only for correcting the surface but also for their pointing and focus corrections (as opposed to using an AutoPeakFocus as other receivers do). Below are examples of good, bad, and uncertain OOFs. Additionally, MUSTANG-2 observers use an IDL GUI to check the beam and keep an eye on the data (see :ref:`how-tos/receivers/mustang2/mustang2_obs:4. Checking data with the m2gui`). Thus the *raw data* view in the *DataDisplay* -> *OOF* tab are not of particular use to MUSTANG-2 observers. 
+MUSTANG-2 observers use OOF not only for correcting the surface but also for their pointing and focus corrections (as opposed to using an AutoPeakFocus as other receivers do). Below are examples of good, bad, and uncertain OOFs. Additionally, MUSTANG-2 observers use an IDL GUI to check the beam and keep an eye on the data (see :ref:`this guide <mustang2_gui>`). Thus the *raw data* view in the *DataDisplay* -> *OOF* tab are not of particular use to MUSTANG-2 observers. 
 
 .. note::
 
