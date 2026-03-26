@@ -57,7 +57,7 @@ bandwidth from any receiver to < 4 GHz (up to 8 GHz is available for certain rec
 
 When operating in coherent dedispersion modes with 800 or 1500 MHz of sampled bandwidth, 
 one FPGA sends output to all eight HPCs. Since all the HPCs are in use the maximum total
-bandwidth in coherent dedispersion modes is 1500 MHz, *1250 MHz of which usable.*
+bandwidth in coherent dedispersion modes is 1500 MHz, *1250 MHz of which usable.*  *Coherent dedispersion modes are subject to a maximum allowable dispersion measure (see `below <max-dms>`_).
 
 When operating in coherent dedispersion modes with 100 or 200 MHz of bandwidth, one FPGA 
 sends output to one or two HPCs, respectively. In these cases, additional HPCs will not be 
@@ -453,6 +453,16 @@ between the two backends. Empirically these are less than 1 microsecond.
 
 Note that overlap delays in coherent dedispersion search mode are already applied to the data 
 via a PSRFITS keyword. This was not the case with GUPPI. 
+
+
+Maximum Allowable DMs for Coherent Dedispersion
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The size of the data buffers uses for real-time coherent dedispersion impose a limit on the maximum allowable DM for coherent dedispersion modes.  The exact maximum DM depends on the center observing frequency, the bandwidth, and the number of frequency channels.  Approximate maximum DMs for common receivers and center frequencies are given below.  **Note that the bandwidth and number of frequency channels for UWBR are for a single spectral window.**
+
+
+.. include:: /material/tables/VPM_max_DM.tab
+
 
 
 Putting it All Together
