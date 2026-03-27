@@ -148,7 +148,7 @@ Observing Scripts
 
 .. literalinclude:: scripts/pulsar_search.py
     :language: python
-    :lines: 1-57,66-106
+    :lines: 1-57,66-
     :linenos:
     :caption: Script performing a coherent search.
     :name: script-pulsar-search
@@ -186,7 +186,7 @@ one after another. We highlight lines of the script that differ from :numref:`sc
 .. literalinclude:: scripts/pulsar_search_multiple_src.py
     :language: python
     :linenos:
-    :emphasize-lines: 5-9, 37-43, 47-68
+    :emphasize-lines: 5-7, 40-51, 66-
     :caption: This script will automatically observe multiple sources one after another.
     :name: script-pulsar-search-multiple-src
 
@@ -203,15 +203,21 @@ First, we define an example catalog:
 .. literalinclude:: scripts/pulsar_search_advCatalog.py
     :language: text
     :lines: 1-6
+    :caption: A custom catalog
+    :name: catalog-pulsar-advanced
 
 Now we define the observing script. The ``dm`` column from our catalog is read in for each 
 source and substituted into the configuration string. The sources will be observed in the 
-order they appear in the catalog.
+order they appear in the catalog.  We highlight the relevant lines for advanced use of the catalog.
 
 
 .. literalinclude:: scripts/pulsar_search_advCatalog.py
     :language: python
+    :linenos:
     :lines: 10-
+    :emphasize-lines: 1-2, 54-57, 72
+    :caption: This script uses catalog information in the congfiguration
+    :name: script-pulsar-search-advCatalog
 
 
 Multiple Bank Configuration
@@ -224,6 +230,8 @@ covers the full bandwidth available from this receiver.
 
 .. literalinclude:: scripts/pulsar_search_multiple_bank.py
     :language: python
+    :caption: A multi-bank incoherent dedispersion configuration
+    :name: script-pulsar-search-multi-bank
 
 
 
