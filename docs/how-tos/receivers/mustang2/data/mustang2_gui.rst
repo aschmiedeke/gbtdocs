@@ -3,7 +3,7 @@
 #############
 MUSTANG-2 GUI
 #############
-This guide shows you how to check your data with the MUSTANG-2 GUI during obsevation
+This guide shows you how to check your data with the MUSTANG-2 GUI.
 
 Start the m2gui
 ===============
@@ -31,8 +31,7 @@ Check the Tipping Scan (Skydip)
 
 .. admonition:: What is a Skydip (Tipping Scan)?
 
-    What is a skydip? And what are the plots that we looking at? A skydip is a flat field. If you look at the detector bias curves some are inverted and even those with the same sign will have a different response to bias. We use the fact that the atmosphere is not transparent and has a :math:`\frac{1-\exp^{-\tau}}{\cos(\text{elevation})}` dependence. With a fair guess of the opacity :math:`\tau`, you can do a fit on each detector to get them roughly Kelvin_RJ. These calibrations are used to make maps of known sources and the results scaled to bring them to the correct amplitude.
-
+    See :ref:`this explanation <references/receivers/mustang2/mustang2_raw_data:Enter the skydip>`.
 
 #. **Select tipping scan**
     Under Calibration, click ``Select Tip Scan`` and choose the most recent scan number from the bottom labeled ``Tip`` under ``scan type.`` At the beginning of the night, this should be from scan 1, before the 3 OOF scans (see below image - blue box).
@@ -75,6 +74,9 @@ Check the Tipping Scan (Skydip)
 #. **Continue**
     If the tipping scan and number of live detectors look good.
 
+.. note::
+
+    You might notice that plots of the skydip can show temperatures down to 0 K and even negative temperatures. Recall that MUSTANG-2 is not a total-power instrument, so we don't retain knowledge of an absolute level. The mean level is thus arbitrary. For skydips, we plot the first data point as zero. For all other timestreams, we generally set the mean to zero.
 
 Make Calibrator Map
 ===================
@@ -92,9 +94,6 @@ This will open up an image of the daisy map that you selected. The map should lo
 
 
 What you see at this stage is an image of the daisy scan. In the center is your calibrator source, visible because it is a bright source. Later, when looking at daisy scans of your science source, it's very likely that you will only see a flat map in the center because it's so much more faint.
-
-The units of the color-coding of this map are in Kelvin of the forward beam. The forward beam is calibrated for the estimated sky temperature at that elevation that we gleaned from our tipping scan earlier on in the night. Therefore, the forward beam temperature should hover around zero if everything is calibrated correctly.
-
 
 .. admonition:: What is a Daisy Map?
 
@@ -125,7 +124,7 @@ For tracking the beam, write down the values for ``PEAK_HEIGHT``, ``WIDTHA``, an
 
 .. note::
 
-    When you fit a quick daisy map, the units of ``PEAK_HEIGHT`` that are output in the terminal are in the units of the calibration, which in the GUI the calibration is the skydip which are in units of ``T_RJ``. The units of ``WIDTH`` are arcseconds.
+    When you fit a quick daisy map, the units of ``PEAK_HEIGHT`` that are output in the terminal are in the units of :math:`\mathrm{T}_{\mathrm{RJ,FB}}` (see more details in the :ref:`how-tos/receivers/mustang2/data/mustang2_gui:GUI Units` section above). The units of ``WIDTH`` are arcseconds.
 
 .. note::
 
@@ -133,7 +132,6 @@ For tracking the beam, write down the values for ``PEAK_HEIGHT``, ``WIDTHA``, an
 
 Make Science Maps
 =================
-
 If you would like to make a map of a science scan(s), you can do so by following the same steps as making a map of a calibrator with the following modification
     - under ``Source Type`` select ``Faint Science`` 
 
@@ -153,7 +151,6 @@ If you would like to make a map of a science scan(s), you can do so by following
 
 Make SNR Map
 ------------
-
 You can make an SNR map with the GUI. To do this, first follow the instructions above for making a science scan, once the map has been made, click the ``SNR map`` button. 
 
 .. tab-set:: 
@@ -172,7 +169,6 @@ You can make an SNR map with the GUI. To do this, first follow the instructions 
 
 Checking Time Streams
 =====================
-
 It is a good idea to check the time streams (checking how the sky temperature is changing over time) as well as the maps. Time stream is the same as a TOD (time ordered data).
 
 To check the time steams:
@@ -309,6 +305,24 @@ To view the raw time streams, follow the same process described above; the chara
 
 .. image:: images/gui/glitch_skydip_02_AGBT26A_317_02_s6_raw.png
 
+Weather Info
+============
+When you are ``Online``/doing live observations, you can get information about the current weather by pressing the ``Weather Info`` button. 
+
+.. image:: images/gui/m2gui_weather_info.png
+
+Once you press the ``Weather Info`` button, you should see a plot with information about the wind and separate a radar plot like the following:
+
+.. image:: images/gui/m2gui_weather_info_radar.png
+
+.. note::
+
+    You can produce the radar plot by pressing the ``Weather Info`` button only when you are doing live observations. If you are using the GUI for data inspection after the fact, to produce the radar plot you need to do the following commands in the IDL prompt:
+
+    .. code:: IDL
+
+        summarizeparproj, projsum
+        preside_weather, projsum, onsky=1
 
 m2gui Troubleshooting
 =====================
@@ -344,3 +358,25 @@ If m2gui is slow/not working, you can ssh to another computer and start m2idl an
 m2gui is not making maps
 ------------------------
 When you start the m2gui, you need to be in a directory that you have write access to, otherwise the gui will not make maps. It will display scans but will not make maps. If you have this issue, close the GUI and terminal running m2idl, cd to a directory where you have write permissions and restart m2idl and the GUI.
+
+GUI Units
+=========
+The GUI makes maps in the units of the selected calibration. By *default* the calibration is the skydip which is in units of :math:`\mathrm{T}_{\mathrm{RJ,FB}}` (see :ref:`more info here <references/receivers/mustang2/mustang2_raw_data:Enter the skydip>`).  
+
+If you are curious, there are four map unit options in the GUI: 
+    - :math:`\mathrm{T}_{\mathrm{RJ,FB}}` is the forward beam surface brightness temperature under the Rayleigh-Jeans approximation (the units of the skydip) - this is the default value.
+    - :math:`\mathrm{T}_{\mathrm{RJ,MB}}` is the main beam surface brightness temperature under the Rayleigh-Jeans approximation.
+    - T_CMB is the surface brightness temperature assuming spectral intensity using the Planck function (shape) for T_CMB. See, e.g. Mroczkowski (2019) for a review.
+    - Jy is Janskys.
+
+Calibration files are required to convert a map from its default units, as they contain the necessary unit conversion information. These files are produced by the MUSTANG-2 team during the calibration process, which takes place in the days to weeks after observations are completed. As a result, unit conversion is not available during live observations.
+
+Once calibration is complete, you can change the units in the GUI. To do this, locate the units section highlighted by the red box in the image below and click on “No Cal Loaded” to load the appropriate calibration file for your desired units.
+
+.. image:: images/gui/m2gui_qd_cal_units.png
+
+After loading a calibration file, the available units become selectable, while any units without conversion information are grayed out.
+
+.. attention::
+
+    While unit conversion is possible within the GUI, the MUSTANG-2 team emphasizes that the GUI is intended primarily as a quick-look tool and not as the main interface for working with calibrated data.

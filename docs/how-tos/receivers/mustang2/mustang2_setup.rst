@@ -241,22 +241,8 @@ If you have a short observing session, you can manually enter the biases to save
 If the manager crashed and you need to re-enter the values that were previously calculated, follow the same process but put in your recorded values. 
 
 
-Issues with Manager? Restart the Manager
-========================================
-
-If you are having issues with the manager or it crashed, you will need to restart the M2 manager. To do this, do the following:
-
-#. Ask the operator to restart the MUSTANG manager using TaskMaster, even if you've been told how to do this yourself. Restarting machines through TaskMaster is a responsibility that is supposed to only be held by the operator. But if you need to do it yourself, the instructions on how to do so are `here <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Restart_Manager_by_Hand>`_.
-
-#. When the operator has told you that they have restarted the M2 manager:
-    #. Go to your Cleo Mustang Manager screen
-    #. In the drop down menu go to *Managers*→*Off* and then again to click *Managers*->*On* to to turn the manager off and back on.
-    #. Re-check the daily cycle to make sure that it is turned off.
-
-#. Restarting the manager *before* biasing: You're done!
-#. Restarting the manager *after* biasing:
-    #. Re-check that the det-biases are what you expected them to be.
-    #. Check that the *DataXinit* buttons are on.
-
+Issues with Manager?
+====================
+If you are having issues with the manager or it crashed, you will need to restart the M2 manager. See this documentation for how to :ref:`references/receivers/mustang2/mustang2_manager:Restart the manager`.
 
 

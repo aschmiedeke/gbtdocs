@@ -192,7 +192,7 @@ To find a source that is > 0.5 Jy, do the following in CLEO's Scheduler & SkyVie
     - Enter the time you will be observing in the *UT Date and Time* box
     - Find a source that is showing and is 10-15 deg from your target
 
-Tips for chosing a secondary calibrator:
+Tips for choosing a secondary calibrator:
 	- If a pointing calibrator can also be a bright absolute calibrator, that is worth a few extra degrees of slewing (over a lower brightness close by source). 
 	- If the flux density of a calibrator is above a couple hundred mJy, the most important thing is the proximity to the source. So if you have >1 secondary calibrators that are have a flux above a couple hundred mJy, chose whichever one is the closest. 
 	- You should also take into consideration if the calibrator will be too low/high at any point during your observations.
@@ -214,6 +214,11 @@ Once you know the size of scans that is appropriate for your science, you can ch
 
 In general, the M2 instrument team recommends doing an offset strategy where 4 science scans have the center of their daisy varied in the corners of a 1.5'x1.5' box. This offset strategy helps especially for projects recovering extended signal (that is, separating extended signal from extended, i.e. large-scale noise). There are two advantages to the offset strategy: (1) it seems to reduce the large-scale noise somewhat, and (2) it gives a more uniform noise in the center of the map (more so than with a single pointing). The trade-off is that the coverage is more spread-out, so there's a minor hit to sensitivity/mapping speed. There is an example of the offset strategy in ``5_science_r3p5_offset_4scans``; if you need a different daisy radius you will have to update that script with your requirements.
 
-.. admonition:: General Advice
+4.1 Scan size advice
+--------------------
+By science case:
 
-	The general suggestion for standard cluster science is to do the offset strategy with an r=3.5'. 
+- **Galaxy Clusters:** The general suggestion for standard cluster science is to do the offset strategy with an r=3.5' - see template script named ``5_science_r3p5_offset_4scans``
+- **A Point Source:** The general suggestion for observing a point source is use r=2.5' - see template script named ``5_science_r2p5``
+- **A "large" source like the moon:** Generally a very large scan size, but there is a specific strategy for something like this - talk to the M2 instrument team about this.
+- **Mapping a large area like the galatic center:** There is a specific strategy for something like this - talk to the M2 instrument team about this.
