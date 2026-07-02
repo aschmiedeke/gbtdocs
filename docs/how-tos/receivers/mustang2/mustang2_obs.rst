@@ -318,7 +318,7 @@ If this happens during observing, press ok and ask the operator to restart the q
 
 4. General Advice for Determining “Bad Weather“
 ===============================================
-Once you have some indication of bad weather (bad skydip, bad time streams, or physical weather indication), you will want to make an educated guess as to what the trajectory of the weather/data is in order to determine whether or not to keep observing or give up the time. There are many tools that you can use to an assessment of this trajectory. Consider, do the following suggest that the remainder of your scans would be scientifically useful? (this can be used as a checklist of sorts)
+Once you have some indication of bad weather (bad skydip, bad time streams, or physical weather indication), you will want to make an educated guess as to what the trajectory of the weather/data is in order to determine whether or not to keep observing or give up the time. There are many tools that you can use to an assessment of this trajectory. Consider; "do the following suggest that the remainder of your scans would be scientifically useful?"" (this can be used as a checklist of sorts)
     - Time streams
         - Check the time streams of the science scans as laid out above in :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Checking Time Streams`. Are they wiggly? How wiggly? See examples below in :ref:`how-tos/receivers/mustang2/mustang2_obs:4.1 Examples of effect of bad weather`.
         - How many “bad” science scans have there been in a row?
@@ -333,7 +333,7 @@ Once you have some indication of bad weather (bad skydip, bad time streams, or p
 
     - Weather forecast
         - Ask the operator what the weather is like
-        - Use the m2gui to get :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Weather Info` about the wind and radar
+        - Use the m2gui to get :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Weather Info` about the clouds (through IR) and wind
         - `Weather Underground <https://www.wunderground.com/weather/us/wv/green-bank>`_ for Green Bank, WV
         - `Windy <https://www.windy.com/38.435/-79.818?37.848,-79.818,8>`_ for Green Bank, WV
         - `NOAA <https://forecast.weather.gov/MapClick.php?lat=38.4192&lon=-79.831>`_ for Green Bank, WV
@@ -371,7 +371,13 @@ When making a judgment call as to whether to give up the time due to bad weather
         
     The flip side of overheads (i.e. maybe the project can tolerate bad weather) is that if you are observing the last session (using up all awarded time), any rescheduled observing would all go to overheads. If it’s not the last session, then the advice is to give up the remainder of time for bad weather (if all bad-weather items are checked).
 
-Again, when in doubt you can always call an M2 team member to help you make the call of whether or not to give up the time.
+.. attention::
+
+    When in doubt you can always call an M2 team member to help you make the call of whether or not to give up the time.
+
+Summary
+-------
+As an observer when you see indications of bad weather, the main thing that you want to do is to get a sense of what the trajectory is of the weather. The most concrete "metric" is combining the weather data (gained from sources described above) across scans and determining trends. 
 
 
 4.1 Examples of effect of bad weather

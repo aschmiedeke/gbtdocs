@@ -28,7 +28,7 @@ A filtering with a highpass of 0.06 Hz is, unfortunately, a bit more gentler tha
 
 Transfer Functions for Download
 -------------------------------
-A repository of transfer functions (ascii files) is available `here <https://astrocloud.nrao.edu/s/RAwkBWecPBc7wK7>`_.
+A repository of transfer functions (ascii files) for is available :download:`here </_static/mustang2_documents/transfer_functions.zip>`. In this repository, there are transfer functions for two cases depending on your science goals: 1) standard/moderate filtering, and 2) light filtering - see the README for more information.
 
 Simulating the Effects of Filtering
 -----------------------------------
