@@ -14,52 +14,53 @@ To open up the m2gui, first make sure you are in a directory that you have write
     ~penarray/Public/startm2idl
 
 Once that version of IDL has started execute ``m2gui``.
-    
-After you have opened the m2gui follow these steps to check the tipping scan, monitor the beam shape (``width``, ``widthA``, ``widthB``) and peak of calibrators (``Peak_Height``), or to just check the data.
 
-#. **Go online**
-    Click the ``online`` button.
+Open Project
+------------
+After you have opened the m2gui, if you are on-sky and observing you, to get to the right directory you need to **go online**. To do this, click the ``online`` button.
 
-    .. image:: images/gui/m2gui_01_start_online.png
+.. image:: images/gui/m2gui_01_start_online.png
 
-    .. note:: 
+.. attention:: 
 
-        If you want to open up a previous project that is not the current online project, click ``Browse Projects``, find the project+session in the left hand column, and double click that folder to open it up.
+    You need to wait until the first scan has been taken for the ``online`` button to work.
 
-Check the Tipping Scan (Skydip)
-===============================
+If you want to open up a previous project that is not the current online project, click ``Browse Projects``, find the project+session in the left hand column, and double click that folder to open it up.
 
-.. admonition:: What is a Skydip (Tipping Scan)?
+Check the Tip Scan (A.K.A. Skydip)
+==================================
 
-    See :ref:`this explanation <references/receivers/mustang2/mustang2_raw_data:Enter the skydip>`.
+.. admonition:: What is a tip scan (a.k.a. skydip)?
 
-#. **Select tipping scan**
+    See :ref:`this explanation <references/receivers/mustang2/mustang2_raw_data:Enter the skydip>`. We will refer to these scans as the skydip hereafter.
+
+#. **Select tip scan**
     Under Calibration, click ``Select Tip Scan`` and choose the most recent scan number from the bottom labeled ``Tip`` under ``scan type.`` At the beginning of the night, this should be from scan 1, before the 3 OOF scans (see below image - blue box).
 
     .. image:: images/gui/m2gui_02_select_tip.png
 
 #. **Inspect plots**
-    Many plots will pop up - one for each roach showing the results of the tipping scan for each roach. You can click out of these once they finish unless you are particularly curious about specific roaches. After these plots have been produced, you will see a graph to the right in the main gui window, showing the results of the tip scan - each roach is plotted in black with a fit in green. Check to make sure that it looks reasonable.
+    Many plots will pop up - one for each roach showing the results of the skydip for each roach. You can click out of these once they finish unless you are particularly curious about specific roaches. After these plots have been produced, you will see a graph to the right in the main gui window, showing the results of the skydip- each roach is plotted in black with a fit in green. Check to make sure that it looks reasonable.
 
     .. image:: images/gui/m2gui_03_tip_individ.png
 
-    Example of tipping scans: 
+    Example of skydips: 
 
     .. tab-set::
 
-        .. tab-item:: Good Tip Scan 
+        .. tab-item:: Good Skydip
 
             A good weather skydip. The black lines (one for each roach) should be fairly free of wiggles and the dashed green line (which is the fit) should follow the black lines fairly closely. 
 
             .. image:: images/gui/m2gui_04_tip_scan_good_example.png
 
-        .. tab-item:: Bad Tip Scan 
+        .. tab-item:: Bad Skydip 
 
             A bad weather skydip. The black lines (one for each roach) are full of wiggles and the dashed green line (the fit) is not following the black lines well.
 
             .. image:: images/gui/m2gui_05_tip_scan_bad_example.png
 
-    If the tipping scan doesn’t look right (a lot of wiggles), try running the ``skydip`` script in AstrID. This reruns the tipping scan without having to redo the whole OOF. If it still looks bad, check the weather conditions in CLEO. The weather might not be good enough to observe (consult :ref:`how-tos/receivers/mustang2/mustang2_obs:4. General Advice for Determining “Bad Weather“` for advice). You can also call one of the M2 instrument team and get their advice.
+    If the skydip doesn’t look right (a lot of wiggles), try running the ``skydip`` script in AstrID. This reruns the skydip without having to redo the whole OOF. If it still looks bad, check the weather conditions in CLEO. The weather might not be good enough to observe (consult :ref:`how-tos/receivers/mustang2/mustang2_obs:4. General Advice for Determining “Bad Weather“` for advice). You can also call one of the M2 instrument team and get their advice.
 
 
 #. **Check the number of live detectors**
@@ -72,11 +73,11 @@ Check the Tipping Scan (Skydip)
     Generally it's good to have 170+ live detectors, however it can sometimes be as low as 160 if the tuning step didn't go very well. If you see this number as low as the 150s or 140s (especially if it's lower than that, which it shouldn't be) be sure to contact a M2 team member. You can also try re-tuning (see section A) and hope that that fixes it.
 
 #. **Continue**
-    If the tipping scan and number of live detectors look good.
+    If the skydip and number of live detectors look good.
 
 .. note::
 
-    You might notice that plots of the skydip can show temperatures down to 0 K and even negative temperatures. Recall that MUSTANG-2 is not a total-power instrument, so we don't retain knowledge of an absolute level. The mean level is thus arbitrary. For skydips, we plot the first data point as zero. For all other timestreams, we generally set the mean to zero.
+    You might notice that plots of the skydip can show temperatures down to 0 K and even negative temperatures. Recall that MUSTANG-2 is not a total-power instrument, so we don't retain knowledge of an absolute level. The mean level is thus arbitrary. Usually, we set the mean timestream value to zero.
 
 Make Calibrator Map
 ===================
@@ -307,22 +308,31 @@ To view the raw time streams, follow the same process described above; the chara
 
 Weather Info
 ============
-When you are ``Online``/doing live observations, you can get information about the current weather by pressing the ``Weather Info`` button. 
+When you are ``Online``/doing live observations, you can get information about the current weather from the GUI by pressing the ``Weather Info`` button. 
 
 .. image:: images/gui/m2gui_weather_info.png
 
-Once you press the ``Weather Info`` button, you should see a plot with information about the wind and separate a radar plot like the following:
+Once you press the ``Weather Info`` button, you should see two windows pop up:
+- a ground weather plot
+- a GIF that shows the IR cover (from a GOES satellite) which shows you the cloud cover
 
-.. image:: images/gui/m2gui_weather_info_radar.png
+The ground weather plot will look like the following:
+
+.. image:: images/gui/m2gui_weather_info_plots.png
 
 .. note::
 
-    You can produce the radar plot by pressing the ``Weather Info`` button only when you are doing live observations. If you are using the GUI for data inspection after the fact, to produce the radar plot you need to do the following commands in the IDL prompt:
+    The upper right is plotted only if you’ve made a map for a single scan. The left plot is made for the last (i.e. most recent) scan in the session. With these things in mind, when you click the ``Update Scan List`` button, the next time the ``Weather Info`` is clicked, the updated scan list will be recognized.
 
-    .. code:: IDL
+The IR/cloud cover GIF will look like the following:
 
-        summarizeparproj, projsum
-        preside_weather, projsum, onsky=1
+.. image:: images/gui/m2gui_weather_info_IR_clouds.png
+
+.. note::
+
+    The GIF will be saved in `/home/scratch/username/weather/goes_timelapse/`.
+
+This weather information from the GUI is useful for assessing origins of poor quality data and whether it's worth continuing observations - consult :ref:`how-tos/receivers/mustang2/mustang2_obs:4. General Advice for Determining “Bad Weather“` for advice.
 
 m2gui Troubleshooting
 =====================
@@ -371,7 +381,7 @@ If you are curious, there are four map unit options in the GUI:
 
 Calibration files are required to convert a map from its default units, as they contain the necessary unit conversion information. These files are produced by the MUSTANG-2 team during the calibration process, which takes place in the days to weeks after observations are completed. As a result, unit conversion is not available during live observations.
 
-Once calibration is complete, you can change the units in the GUI. To do this, locate the units section highlighted by the red box in the image below and click on “No Cal Loaded” to load the appropriate calibration file for your desired units.
+Once calibration is complete, you can change the units in the GUI. To do this, locate the units section highlighted by the red box in the image below and click on ``No Cal Loaded`` to load the appropriate calibration file for your desired units.
 
 .. image:: images/gui/m2gui_qd_cal_units.png
 
