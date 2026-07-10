@@ -40,12 +40,18 @@ extensions = ['sphinx.ext.todo',
               'sphinx.ext.autosectionlabel',
               'sphinx_design',
               'sphinx_copybutton',
-              'hoverxref.extension',
+              #'hoverxref.extension',
               'sphinx_idl.domain', 
               'sphinx_idl.auto',
               'sphinxcontrib.bibtex',
               'sphinxcontrib.email',
+              'myst_parser',
 ]
+
+source_suffic = {
+        '.rst': 'restructuredtext',
+        '.md': 'markdown',
+}
 
 suppress_warnings = ['autosectionlabel.*']
 
@@ -158,8 +164,11 @@ html_theme_options = {
     "use_repository_button": True,
     "use_edit_page_button": False,
     "use_issues_button": True,
-    "navigation_depth": 4,
-    "collapse_navigation": True,
+    #"show_nav_level": 3,
+    #"navigation_depth": 4,
+    #"collapse_navigation": True,
+    #"show_toc_level": 2,
+    #"show_navbar_depth": 3,
 }
 
 html_context = {
@@ -169,9 +178,15 @@ html_context = {
     "doc_path": "docs/source",
 }
 
+
+# force sphinx to explicitely track deep toc nodes inside localized context
+toc_object_entries = True
+
+
+
 html_show_sourcelink = False
 
-
+#
 ## for furo theme
 #html_theme_options = {
 #        "light_logo": "GBO-vertical-PGGradient.svg",
