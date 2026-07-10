@@ -20,7 +20,7 @@ sphinx-basic-ng
 sphinx-book-theme
 sphinx-copybutton
 sphinx-design
-#sphinx-hoverxref
+sphinx-hoverxref
 #sphinx-idl
 git+https://github.com/aschmiedeke/sphinx-idl.git@mods
 sphinxcontrib-applehelp
