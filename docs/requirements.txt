@@ -13,14 +13,15 @@ importlib-metadata
 livereload
 myst_parser
 numpydoc
-sphinx==8.2.3
+#sphinx==8.2.3
+sphinx
 sphinx-autobuild
 sphinx-automodapi
 sphinx-basic-ng
 sphinx-book-theme
 sphinx-copybutton
 sphinx-design
-sphinx-hoverxref
+#sphinx-hoverxref
 #sphinx-idl
 git+https://github.com/aschmiedeke/sphinx-idl.git@mods
 sphinxcontrib-applehelp
