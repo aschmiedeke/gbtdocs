@@ -40,7 +40,7 @@ extensions = ['sphinx.ext.todo',
               'sphinx.ext.autosectionlabel',
               'sphinx_design',
               'sphinx_copybutton',
-              #'hoverxref.extension',
+              'hoverxref.extension',
               'sphinx_idl.domain', 
               'sphinx_idl.auto',
               'sphinxcontrib.bibtex',
@@ -180,7 +180,7 @@ html_context = {
 
 
 # force sphinx to explicitely track deep toc nodes inside localized context
-toc_object_entries = True
+#toc_object_entries = True
 
 
 
