@@ -8,3 +8,7 @@ sphinx:
 python:
   install:
     - requirements: docs/requirements.txt
+    # Force the sphinx version
+    - method: pip
+      extra_requirements:
+        - sphinx<9.0.0
