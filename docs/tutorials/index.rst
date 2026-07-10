@@ -29,10 +29,19 @@ Receiver-specific Tutorials
         :link-type: ref
 
         - Setup scheduling blocks.
-        - Calibrate the data.
-        - Grid the data.
 
         Keys: *KFPA*
+
+
+    .. card:: Argus N\ :sub:`2`\ H\ :sup:`+`\ (1-0) Observations
+        :link: argus_n2hp_fsw_tutorial
+        :link-type: ref
+
+        - Setup scheduling blocks.
+        - Calibrate the pointed and mapped data.
+        - Grid the mapped data.
+
+        Keys: *Argus*, *fsw*, *gbtidl*
 
 
 
@@ -42,5 +51,6 @@ Receiver-specific Tutorials
 
    hi_psw_tutorial
    kfpa_nh3_mapping_tutorial
+   argus_n2hp_fsw_tutorial
 
 
