@@ -11,12 +11,16 @@ How to observe with MUSTANG-2
 -----------------------------
 Before you observe you need to have prepared your observing scripts and chosen your primary/flux calibrators, your OOF sources, and secondary calibrators. For a guide on how to do all of these things see :ref:`this guide <mustang2_obs_scripts>` for instructions on preparing your scripts.
 
-1.2 Observing Log
+
+2. Observing Preparation
+========================
+
+2.1 Observing Log
 -------------------
 
 During observing, you are expected to edit the MUSTANG-2 observing run notes wiki and take notes of what's occurred throughout the night.
 
-#. Create a new page and entry at the bottom of the `observing logs wiki <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/NewRunNotes>`_ by clicking "Edit Wiki text" 
+#. Well in advance of your observations, create a new page and entry at the bottom of the `observing logs wiki <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/NewRunNotes>`_ by clicking "Edit Wiki text" 
 
 #. Follow the naming convention of entry above <AGBTsemester_project-code_session-number>, e.g. ``AGBT18A_014_01``
 
@@ -35,11 +39,7 @@ During observing, you are expected to edit the MUSTANG-2 observing run notes wik
     If you don't have permissions yet to edit the wiki and are observing, you can take notes in a text document and email them to the MUSTANG-2 team afterwards to upload to the wiki for you.
 
 
-2. Observing Preparation
-========================
-
-
-2.1 Connect
+2.2 Connect
 -----------
 
 Open and connect to :ref:`VNC session <how-tos/infrastructure/remote-connection:Quick VNC Reference>` or start an XFCE :ref:`FastX session <how-tos/infrastructure/remote-connection:FastX connection>` on ``titania`` or ``ariel`` via FastX.
@@ -49,12 +49,12 @@ Connection Issues?
 The internet at GBO can be intermitent at times. Specifically there are days that the internet goes down for 30-60 seconds at a time quite often. Are you having issues with FastX or your VNC being really laggy? Check `this status page <https://status.gb.nrao.edu/>`__ to see the status of the ssh gateways. See :ref:`these instructions <how-tos/infrastructure/remote-connection:What to do if the GBO network is down/slow>` for FastX and VNC workarounds using Charlottesville to potentially better your connection. 
 
 
-2.2 AstrID 
+2.3 AstrID 
 -----------
 
 Open an AstrID session and navigate to your corresponding MUSTANG-2 project. The MUSTANG-2 instrument team should have already populated your AstrID area with appropriate scripts.
 
-2.3 CLEO
+2.4 CLEO
 --------
 
 The following are suggested CLEO windows to have open during observing:
@@ -101,12 +101,26 @@ The following are suggested CLEO windows to have open during observing:
 
 - Launch → Observer Tools → **Talk and Draw** 
 
-2.4 Reconnect to Roaches
-------------------------
-If you need to reconnect to the roaches (e.g., you tuned a while ago and want to make sure everything is working before you start biasing/observing) execute ``/users/penarray/Public/startMUSTANG.bash <project1> reconnect``. If the tuning was done a while ago, run ``um1.fixIQ()`` on each roach - over many hours temperature drifts will make the tuning less optimal and this will fix it.
+2.5 Checklist if setup was done awhile ago
+-------------------------------------------
+If the setup (tuning, get data flowing, etc.) was done a while ago (several hours) and there is no other M2 project before you, there are a few things you should check before starting to take data.
 
-For more information about the ``./startMUSTANG.bash`` script see `Advanced Useage of the startMUSTANGbash <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Advanced_Usage_of_startMUSTANG.bash>`_.
+2.5.1 Reconnect to Roaches
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+Over many hours temperature drifts will make the tuning less optimal. Therefore if the tuning was done a while ago (several hours), you need to reconnect to the roaches and check the tuning.
 
+To check the tuning:
+    #. To reconnect to the roaches execute ``/users/penarray/Public/startMUSTANG.bash <project1> reconnect`` where ``<project>`` is the project code (e.g., AGBT26A_XXX_sessionNum). For more information about the ``./startMUSTANG.bash`` script see `Advanced Useage of the startMUSTANGbash <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Advanced_Usage_of_startMUSTANG.bash>`_.
+    #. Run ``um1.plotIQ()`` in each roach's terminal.
+    #. If needed, run ``um1.fixIQ()`` per roach.
+
+2.5.2 Check that data is flowing
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Go to the M2 CLEO manager and check that data is flowing (see how to do this and some fixes if data is not flowing :ref:`here <how-tos/receivers/mustang2/mustang2_setup:3. Check that data is flowing>`). 
+
+2.5.3 Check biases
+^^^^^^^^^^^^^^^^^^
+If biases were set manually by hand before the observations, check that they are not 0 in the ``Miscelaneous`` tab of the CLEO M2 manager. If they are 0 it means that the manager likely crashed and you'll need to :ref:`references/receivers/mustang2/mustang2_manager:Restart the manager`.
 
 3. Observing Procedure
 ======================
@@ -115,121 +129,133 @@ For more information about the ``./startMUSTANG.bash`` script see `Advanced Usea
 3.1. Communicate with operator 
 ------------------------------
 
-A few minutes before your observing start time (say 15 minutes, better 30 minutes), get on Talk & Draw, tell the operator who you are and what project you are observing for. Also ask who the operator is. 
+At least 15 minutes before your observing start time, get on Talk & Draw, tell the operator who you are and what project you are observing for. At this point you can also ask who the operator is. 
+
+.. hint:: 
+
+    You can check who the current operator is by checking the `current shift of the operators log <https://dss.gb.nrao.edu/ops/search/current>`_.
 
 3.2. Fill in AstrID info
 ------------------------
 
-In AstrID under ObservationManagement, go to the Run tab and fill in the Observer and Operator information. 
+In AstrID under ``ObservationManagement``, go to the ``Run`` tab and fill in the Observer and Operator information. 
 
+3.3. Fill in weather and correction info in observing log
+---------------------------------------------------------
+Go to your observing log and fill in the following:
 
-3.3. Take control
+- Weather conditions:
+    - Temperature
+    - Humidity
+    - Wind Velocity
+    
+    .. note::
+
+        You can get all of this weather information from the *GbtStatus* tab in AstrID, the "Weather" CLEO application, or from the "Status" CLEO application.
+- The focus and pointing corrections before you submit any corrections:
+    - LFCy - to find this value, look at ``YFC`` in the CLEO Status screen.
+    - Az LPC - to find this value, look at ``Az LPC`` in the CLEO Status screen.
+    - El LPC - to find this value, look at ``El LPC`` in the CLEO Status screen.
+
+.. attention:: 
+
+    If the pointing corrections are >30" ask the operator to zero them out. If you leave large corrections in you likely will not see anything in your OOF scans.
+
+3.4. Take control
 -----------------
 
 Once the member of the M2 instrument team has finished biasing and the operator tells you are in the gateway/gives you the go ahead, in AstrID → File → Real time mode ... → Select ``work online with control of the telescope``.
 
 
-3.4. Configure
+3.5. Configure
 --------------
 
 Run the ``1_m2setup`` script in AstrID.
 
 
-3.5. OOF
+3.6. OOF
 --------
+.. attention:: 
+
+    Before and after OOF is a good time to check that the active surface settings are as they should be. See :ref:`Monitoring the Surface Models <explanations/OOF:Monitoring the Surface Models>` 
+    or `M2 active surface documentation <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Active_Surface_Configuration>`_ for what to check and how to check them.
+
+.. hint::
+
+    If operator asks you if you want to zero out any corrections (they might ask about pointing, focus, and thermals), the M2 instrument team suggests that you keep all the solutions. But make sure that you note in the observing log what the corrections were before the OOF (see :ref:`how-tos/receivers/mustang2/mustang2_obs:3.3. Fill in weather and correction info in observing log`). If you get a bad OOF solution, that is when you can consider zeroing out various corrections.
+    
+OOF procedure:  
 
 #. Make sure that you have changed ``mySrc`` in ``2_m2oof`` and run the ``2_m2oof`` script in AstrID. 
 
 #. For the first OOF of the night, you need to have ``calSeq=True`` so that a skydip is done as a part of the OOFing process. An OOF will take ~20 minutes to run. 
 
 #. Check the OOF results in AstrID → DataDisplay → OOF and re-rerun if necessary. 
-    For M2, we typically apply the z5 corrections. When the corrections are available, press the green button that reads ``After selecting the Zernike solution above, click this green button to send the solutions to the telescope.``
+    For M2, we typically apply the z5 corrections. When the corrections are available, press the button that reads ``After selecting the Zernike solution above, click this green button to send the solutions to the telescope.``
    
     .. note::
         
-        Sometimes OOF may time out and you will get a red screen if this happens. If this happens, re-OOF as this will restart the calculations of the solutions.
+        For advice on what you are looking for in OOF solutions see the :ref:`how-tos/general_guides/autooof:Inspecting AutoOOF Solutions` section of the :ref:`AutoOOF_guide`. For good and bad M2 OOF examples see the :ref:`how-tos/general_guides/autooof:MUSTANG-2` section of the AutoOOF guide.
 
 .. hint:: 
 
     While your OOF is running, it is a good time to:
 
-    - Write down the weather conditions from the GbtStatus tab in AstrID in the observing log 
-        - Pyrgeometer - if working
-        - Temperature
-        - Humidity
-        - IR Cloud Cover
-        - Wind Velocity.
+    - :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Start the m2gui` to check M2 data while observing. It can be useful to start two m2guis: one for analyzing calibrator data and one to analyze science data.
 
-    - :ref:`Start the m2gui <how-tos/receivers/mustang2/mustang2_obs:4. Checking data with the m2gui>` which is used to check M2 data while observing.
+    - In the m2gui
+        - Once the skydip has finished, :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Check the Tipping Scan (Skydip)` and write down the number of live detector in the log.
+        - check what each of the OOF images looks like (see :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Make Calibrator Map`)
+        
+.. note:: 
 
-    - In the m2gui check
-        - the skydip (once this has been executed through the OOF process)
-        - that you can see the OOF images
-              
+   During this initial data acquisition (and to some extent, throughout the night) check your MUSTANG-2 manager CLEO screen, and make sure that the numbers in sections such as ``Frame Cntr`` and ``Roach Data`` are continuing to change with time (if so, the boxes will mostly be blue). However, if they stop (indicated when the boxes turn lavender) then the M2 manager has crashed, and you’ll need to :ref:`references/receivers/mustang2/mustang2_manager:Restart the manager`. Note that M2 manager is known to crash on the 1st scan of a session (the skydip).
 
-3.6 Quick daisy on OOF source
+3.7 Quick daisy on OOF source
 -----------------------------
 
 #. Run the ``2_m2quickDaisyPrimary`` script on your OOF/calibrator source
     It's best if you can make your OOF source and your calibrator source the same. 
 
-#. Use the m2gui and determine
+#. Use the m2gui to :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Fit Calibrator Map` and determine:
     - beam shape (``WidthA`` & ``WidthB``)
     - peak of the source (``Peak_Height``)
      
 #. Record these values in your observing log
 
-#. It's a good idea to check the time streams (see the :ref:`check time streams section <how-tos/receivers/mustang2/mustang2_obs:4.5 Checking Time Streams>` for instructions and examples.)
+#. It's a good idea to check the time streams (see the :ref:`check time streams section <how-tos/receivers/mustang2/data/mustang2_gui:Checking Time Streams>` for instructions and examples)
 
-3.7 Quick daisy on secondary calibrator
+3.8 Quick daisy on secondary calibrator
 ---------------------------------------
 
-#. Run the ``3_m2quickDaisySecondary`` script on your secondary calibrator. 
+#. Run the ``3_m2quickDaisySecondary`` script on your secondary calibrator
 
-#. Use the m2gui again and determine
+#. Use the m2gui again to :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Fit Calibrator Map` and determine:
     - beam shape (``WidthA`` & ``WidthB``)
     - peak of the source (``Peak_Height``)
      
 #. Record these values in your observing log
 
-.. note:: 
+.. note::
 
-   During this initial data acquisition (and to some extent, throughout the night) check your Mustang2 CLEO screen, and make sure that the numbers in sections such as ``Frame Cntr`` and ``Roach Data`` are continuing to change with time (if so, the boxes will mostly be blue). However, if they stop (indicated when the boxes turn lavender) then the Mustang2 manager has crashed, and you’ll need to :ref:`restart it <how-tos/receivers/mustang2/mustang2_obs:7.1 MUSTANG-2 Manager>`.
+    Occasionally, one or more detectors may show glitches in their time streams. These faulty detectors appear as artifacts in the maps and can distort the map’s scaling. As a result, the source may appear fainter than it truly is, and this can lead to a poor fit to a point source or even prevent the GUI from fitting the point source altogether. See :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Use crmask to Mask Bad Detectors` on how to mask the bad detector(s).
  
 
-3.8 Take science data
+3.9 Take science data
 ---------------------
-
 Take ~30 minutes of science data followed by a quick daisy on your seconday calibrator. Often this is accomplished by submitting several science scripts (e.g., ``5_science_rX``) in AstrID. For example, often for cluster science each individual science scan is ~8-9 minutes in length. So if you are submitting individual science scans (which ``5_science_rX`` are), you can submit 4 of the science scripts in a row followed by your secondary calibrator scan. 
 
-It's a good idea to check the time streams (see the :ref:`check time streams section <how-tos/receivers/mustang2/mustang2_obs:4.5 Checking Time Streams>` for instructions and examples.)
+You should check the time streams in the m2gui (see the :ref:`check time streams section <how-tos/receivers/mustang2/data/mustang2_gui:Checking Time Streams>` for instructions and examples) of each science scan. 
 
-.. note:: 
+You can make maps and SNR maps of your science target using the m2gui (see :ref:`make science maps section <how-tos/receivers/mustang2/data/mustang2_gui:Make Science Maps>` for instructions).
 
-    If you try to look at science data in the m2gui, make sure you choose the "faint science" option under ``source type``.
-
-
-.. admonition:: What is ``science_r2p5`` and ``science_r3``?
-
-    ``Science_r2p5`` and ``science_r3`` are the science scans of the observation. The difference between the two is the radius of the scans in arcminutes (one is 2.5' and one is 3' respectively). If you only see science scans, unlabeled otherwise, then they are likely 3' in diameter. Legacy M2 scripts will have labels like ``beauty_r3``.
-
-3.9 Continue to take science data
----------------------------------
-
+3.10 Continue to take science data
+----------------------------------
 #. Continue to do ~30 minutes of science data followed by a quick daisy on the secondary calibrator for the rest of the night. 
 #. Monitor the beam size (``WidthA`` and ``WidthB``) and the ``Peak_Height`` using the m2gui to determine if you need to OOF again.
 
-.. note:: 
-
-    We note that when observing with MUSTANG-2 on the GBT, the preferred maximum elevation limit of a target is 75 degrees. It is possible to observe targets up to 80 degrees elevation but this is not preferable. The hard limit is around 84 degrees. At these higher elevations, the MUSTANG-2 beam becomes large because the GBT cannot keep up with the slewing speeds required to map and track the source. Conversely, the preferred minimum elevation is 30 degrees. However, it is possible to but can go lower, but lower than 30 is hard on the hardware.
-
-.. attention::
-
-    Save your wiki observing log often (not only at the end of the observation) to ensure that your notes are being saved!
-
-
-3.10 Observe primary calibrators
---------------------------------
+3.11 Observing primary calibrators
+----------------------------------
 It is safest to observe multiple primary/flux calibrators in an observing session. You should have your OOF source be a primary calibrator but when you observe an additional primary calibrator later in the observing session, the sequence of observing should be:
 
 - secondary
@@ -243,9 +269,9 @@ Primary and secondary calibrators need to be observed as close in time as is fea
 
 .. note::
 
-    In February ALMA is shutdown so ALMA grid cals are not observed during February. Therefore, you should observe other flux calibrators besides the ALMA grid calibrators in February. You can use planets (Uranus, Neptune, Jupiter) or small solar system objects. Consult with MUSTANG-2 team about which flux calibrators to use during this time. 
+    In February, ALMA is shutdown and thus ALMA grid cals are not observed during this period. See :ref:`how-tos/receivers/mustang2/mustang2_obs_scripts:3.1.1 Primary Calibrators in February` for more information on which flux calibrators to observe during the ALMA shutdown.
 
-3.11 When to OOF again?
+3.12 When to OOF again?
 -----------------------
 
 First, know that there is no right answer and you have to gain experience to get a feel for when to OOF again. But the following is some advice for when to consider OOFing again.
@@ -267,13 +293,9 @@ If you have a 1/2 hour of a project left, it isn't worth it to OOF again because
 
 .. attention::
 
-    Make sure that you are not being fooled by a bad detector or two. A bad detector will affect your measurements of the calibrator. See :ref:`how-tos/receivers/mustang2/mustang2_obs:4.6 Use crmask to Mask Bad Detectors` for how to mask bad detectors. You will see a bad detector in your map as a bright daisy pattern or in the time streams.
+    Make sure that you are not being fooled by a bad detector or two. A bad detector will affect your measurements of the calibrator. See :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Use crmask to Mask Bad Detectors` for how to mask bad detectors. You will see a bad detector in your map as a bright daisy pattern or in the time streams.
 
-.. attention::
-
-    If you change anything about the instrument during an observing session, when you OOF after those changes, make sure that you take a skydip as a part of AutoOOF (i.e., set calseq=True).
-
-3.12 Be aware - Issue with quadrant detector
+3.13 Be aware - Issue with quadrant detector
 --------------------------------------------
 In early 2023 it was discovered that over the past year or two the quadrant detector sometimes isn't working and doesn't write files to ``/home/gbtdata/project_code_sesion/QuadrantDetector`` as we expect. The GUI now will pop up a warning box (``WARNING QD Values are missing for scans: ...``) if it detects that the quadrant detector files are not being written.
 
@@ -285,306 +307,24 @@ If this happens during observing, press ok and ask the operator to restart the q
 
     However if you get a warning about just ONE file, this is not a problem. Most likely the scan is not finished yet. There may be an issue with the quadrant detector only if you get a pop-up notification about SEVERAL scans.
 
-4. Checking data with the m2gui
-===============================
+3.14 Observing Tips and Tricks
+------------------------------
+#. You can open two m2gui windows, one for working with your calibrators and one for making science maps.
 
-4.1 Start-up m2gui
-------------------
+#. Save your wiki observing log often (not only at the end of the observation) to ensure that your notes are being saved!
 
-To open up the m2gui, first make sure you are in a directory that you have write permissions in and then in a terminal execute:
+#. We note that when observing with MUSTANG-2 on the GBT, the preferred maximum elevation limit of a target is 75 degrees. It is possible to observe targets up to 80 degrees elevation but this is not preferable. The hard limit is around 84 degrees. At these higher elevations, the MUSTANG-2 beam becomes large because the GBT cannot keep up with the slewing speeds required to map and track the source. Conversely, the preferred minimum elevation is 30 degrees. However, it is possible to but can go lower, but lower than 30 is hard on the hardware.
 
-.. code:: bash
-                
-    ~penarray/Public/startm2idl
-    m2gui
 
-After you have opened the m2gui follow these steps to check the tipping scan, monitor the beam shape (``width``, ``widthA``, ``widthB``) and peak of calibrators (``Peak_Height``), or to just check the data.
-
-#. **Go online**
-    Click the ``online`` button.
-
-    .. image:: images/m2gui_01_start_online.png
-
-    .. note:: 
-
-        If you want to open up a previous project that is not the current online project, click ``Browse Projects``, find the project+session in the left hand column, and double click that folder to open it up.
-
-4.2 Check Tipping Scan
-----------------------
-
-.. admonition:: What is a Skydip (Tipping Scan)?
-
-    What is a skydip? And what are the plots that we looking at? A skydip is a flat field. If you look at the detector bias curves some are inverted and even those with the same sign will have a different response to bias. We use the fact that the atmosphere is not transparent and has a :math:`\frac{1-\exp^{-\tau}}{\cos(\text{elevation})}` dependence. With a fair guess of the opacity :math:`\tau`, you can do a fit on each detector to get them roughly Kelvin_RJ. These calibrations are used to make maps of known sources and the results scaled to bring them to the correct amplitude.
-
-
-#. **Select tipping scan**
-    Under Calibration, click ``Select Tip Scan`` and choose the most recent scan number from the bottom labeled ``Tip`` under ``scan type.`` At the beginning of the night, this should be from scan 1, before the 3 OOF scans (see below image - blue box).
-
-    .. image:: images/m2gui_02_select_tip.png
-
-#. **Inspect plots**
-    Many plots will pop up - one for each roach showing the results of the tipping scan for each roach. You can click out of these once they finish unless you are particularly curious about specific roaches. After these plots have been produced, you will see a graph to the right in the main gui window, showing the results of the tip scan - each roach is plotted in black with a fit in green. Check to make sure that it looks reasonable.
-
-    .. image:: images/m2gui_03_tip_individ.png
-
-    Example of tipping scans: 
-
-    .. tab-set::
-
-        .. tab-item:: Good Tip Scan 
-
-            A good weather skydip. The black lines (one for each roach) should be fairly free of wiggles and the dashed green line (which is the fit) should follow the black lines fairly closely. 
-
-            .. image:: images/m2gui_04_tip_scan_good_example.png
-
-        .. tab-item:: Bad Tip Scan 
-
-            A bad weather skydip. The black lines (one for each roach) are full of wiggles and the dashed green line (the fit) is not following the black lines well.
-
-            .. image:: images/m2gui_05_tip_scan_bad_example.png
-
-    If the tipping scan doesn’t look right (a lot of wiggles), try running the ``skydip`` script in AstrID. This reruns the tipping scan without having to redo the whole OOF. If it still looks bad, check the weather conditions in CLEO. The weather might not be good enough to observe (consult :ref:`how-tos/receivers/mustang2/mustang2_obs:5. General Advice for Determining “Bad Weather“` for advice). You can also call one of the M2 instrument team and get their advice.
-
-
-#. **Check the number of live detectors**
-    At this stage, check the number of live detectors, as well as throughout the night. Record this in your observing log.
-
-    In the image below, you can see where to check the number of live detectors:
-
-    .. image:: images/m2gui_06_live_detectors.png
-
-    Generally it's good to have 170+ live detectors, however it can sometimes be as low as 160 if the tuning step didn't go very well. If you see this number as low as the 150s or 140s (especially if it's lower than that, which it shouldn't be) be sure to contact a M2 team member. You can also try re-tuning (see section A) and hope that that fixes it.
-
-#. **Continue**
-    If the tipping scan and number of live detectors look good.
-
-
-4.3 Checking the Calibrator/Beam
---------------------------------
-
-#. **Make map**
-    To make a map of a calibrator, after you have run the ``m2quickDaisy`` script on a source in AstrID
-        - Click ``Update Scan List`` to find the source scan number of the source you just observed
-        - Set the ``Scan Numbers`` to the scan number of interest
-        - Set ``Source Type`` to ``Calibrator``
-        - Click ``Make Map``
-
-        .. image:: images/m2gui_07_tip_make_cal_map.png
-
-
-    This will open up an image of the daisy map that you selected. The map should look something like this:
-
-    .. image:: images/m2gui_08_qd_cal.png
-
-
-    What you see at this stage is an image of the daisy scan. In the center is your calibrator source, visible because it is a bright source. Later, when looking at daisy scans of your science source, it's very likely that you will only see a flat map in the center because it's so much more faint.
-
-    The units of the color-coding of this map are in Kelvin of the forward beam. The forward beam is calibrated for the estimated sky temperature at that elevation that we gleaned from our tipping scan earlier on in the night. Therefore, the forward beam temperature should hover around zero if everything is calibrated correctly.
-
-
-    .. admonition:: What is a Daisy Map?
-
-        The maps that the M2 team makes are called daisy scans. This is because they loop many times around a central point, looking somewhat like daisy petals. This emphasizes exposure time on the center of the map, with less exposure on the outside edges of the map, making the center of the map more accurately calibrated. They then use the outside of the map to calibrate the sky temperature and remove these effects in the center of the daisy in later post-processing.
-
-        .. image:: images/daisy_illustration.png
-
-        The lines drawn on the map designate the beam path of the GBT on the sky relative to your source. As you can see, each loop begins at the source, extends out, and then returns to the source. This is done throughout the space around your source. Because every loop returns to your source, this results in a higher exposure time on your source relative to the rest of the sky. However, because the units are in Kelvin of the forward beam, this does not mean a higher temperature, but instead simply less noise in the map.
-
-
-#. **Fit Map**
-    Click ``Fit Map``. 
-
-    .. image:: images/m2gui_09_qd_cal_fit.png
-
-    This will produce the following plots in the gui.
-
-    .. image:: images/m2gui_10_fitmap_gui.png
-
-#. **Check fitting parameters**
-    The fit parameters will be printed out in your terminal.
-
-    .. image:: images/m2gui_11_fitmap_terminal_output.png
-
-    .. note:: 
-
-        The Floating underflow error you see in the output is **not** a concern.
-
-#. **Record values**
-
-   Write down the values for ``PEAK_HEIGHT``, ``WIDTHA``, and ``WIDTHB`` in the observing log to compare to later pointing scans to monitor the beam and decide if you need to re-OOF. 
-
-   .. note::
-
-        When you fit a quick daisy map, the units of ``PEAK_HEIGHT`` that are output in the terminal are in the units of the calibration, which in the GUI the calibration is the skydip which are in units of ``T_RJ``. The units of ``WIDTH`` are arcseconds.
-
-4.4 Make Science Maps
----------------------
-
-If you would like to make a map of a science scan(s), you can do so by following the same steps as making a map of a calibrator with the following modification
-    - under ``Source Type`` select ``Faint Science`` 
-
-.. image:: images/m2gui_12_MOO_1142_3sets_map.png 
-
-.. note::
-
-    The ``Faint Science`` option is for targets that do not have bright sources in the field. If you have bright sources in your science target, you can use the ``Science`` option instead. 
-
-.. note::
-
-    You can add several science scans together by putting them all separated by commas in the scan list. Please note that when you put several science scans together to make a map, it will likely take a while (>5 minutes) to make the map. A suggestion to combat this is to have two GUIs open while observing, one for checking the beam and one for making science maps.
-
-.. note::
-
-    You may not see any signal in your science map in the GUI. This is because. To see what your object looks like and what sort of SNR you are getting, you'll want to look at an SNR map. See instructions on how to do that below.
-
-4.4.1 Make SNR Map
-^^^^^^^^^^^^^^^^^^
-
-You can make an SNR map with the GUI. To do this, first follow the instructions above for making a science scan, once the map has been made, click the ``SNR map`` button. 
-
-.. tab-set:: 
-
-    .. tab-item:: Make SNR Map
-
-        .. image:: images/m2gui_13_make_SNR.png
-
-        To make an SNR map, first make a make of your science scan(s), then click the ``SNR map`` button.
-
-    .. tab-item:: SNR Example
-
-        .. image:: images/m2gui_14_SNR_result.png
-
-        Resulting SNR map from a map of MOO 1142.
-
-4.5 Checking Time Streams
--------------------------
-
-It is a good idea to check the time streams (checking how the sky temperature is changing over time) as well as the maps. To do so:
-
-- Make your map (see :ref:`how-tos/receivers/mustang2/mustang2_obs:4.3 Checking the Calibrator/Beam` or :ref:`how-tos/receivers/mustang2/mustang2_obs:4.4 Make Science Maps`)
-- Click ``show time stream`` button underneath the ``Fit Map`` button after making your map
-    .. image:: images/m2gui_18_show_time_stream_button.png
-
-    .. tab-set:: 
-
-        .. tab-item:: Calibrator Time Stream
-
-            .. image:: images/timestream_calibrator_AGBT23B_005_08_scan9.png
-
-            This is an exemplar time stream for a calibrator source. Notice that you see the point-like source as a gaussian peak in most time streams.
-
-        .. tab-item:: Faint Science Time Stream
-
-            .. image:: images/timestream_faint_sci_good_AGBT23B_005_08_scan13.png
-
-            Faint science time streams (a cluster) in good weather. Notice how nice a flat the time streams are.
-
-.. note::
-
-    There may be detectors that have glitches that are not flagged by the imaging making pipeline used by the GUI. In this case, you can identify the glitchy detector and flag it using `Set crmask` and remake the map.
-
-4.6 Use crmask to Mask Bad Detectors
-------------------------------------
-
-1. **Identify bad detector**. See in image below that detector 60 on roach 3 has a glitch that has not been flagged and thus is throwing off the autoscaling. Note that in this example, type=``Science`` is being used for making a science map which is not correct but is being using for demonstration here.
-
-.. image:: images/crmask01.png
-
-2. **Set crmask**. Click the ``Set crmask`` button and another window will pop up with 4 columns: ``r`` is the detector number and ``c`` stands for column which is the roach number. There is a button next to each detector that is selected or "pressed in" if it is being used and is unselected or "not pressed in" if it is being masked (see images below).
-
-.. tab-set:: 
-
-    .. tab-item:: Default crmask
-
-        .. image:: images/crmask02_default.png
-
-        In this example we find detector 60 on roach 3 or ``r 60 c 3`` and see it is not included in the crmask.
-
-    .. tab-item:: Add detector to crmask
-
-        .. image:: images/crmask03_changed.png
-
-        Click the box next to ``r 60 c 3`` to include it in the detectors that are masked.
-
-.. warning::
-
-    Once you add something to a crmask it will stay included in the mask (in crmask) for future maps.
-
-3. **Remake the map**. Then click ``Make Map`` again and ``Show Time Stream`` after the map has been made to see the effects of adding this detector to the crmask. You can see in the image below that the bad detector has been masked and now one can see the time stream structure better.
-
-.. image:: images/crmask04_set.png
-
-
-4.7 Save FITS image
--------------------
-
-It is possible to save the images that you make in the GUI as a FITS image. Instructions below:
-
-.. tab-set:: 
-
-    .. tab-item:: 1. Set image path.
-
-        .. image:: images/m2gui_15_save_image_path.png
-
-        First you need to set the path where your image will be saved. To do this click in the ``Path`` box marked in red in the image above. 
-
-    .. tab-item:: 2. Set image path via popup.
-
-        .. image:: images/m2gui_16_save_image_path_box.png
-
-        A box will popup where you can set the path and file name. Hit enter to set the path. 
-
-    .. tab-item:: 3. Save image.
-
-        .. image:: images/m2gui_17_save_image.png
-
-        Once you have set the image path, click ``Save FITS image``. 
-
-
-4.8 GUI Troubleshooting
------------------------
-
-4.8.1 m2gui hangs
-^^^^^^^^^^^^^^^^^
-
-If your m2gui is hanging (won't quit), you will need to kill it and open a new window. To kill the GUI, do the following in a terminal:
-
-.. code:: bash
-
-    xkill
-
-This will turn your cursor into an ``x``. Use the ``x`` to click on the GUI window (``xkill`` allows you to select the window of the process you want to kill). Then close the terminal that m2idl is running in to fully kill everything.
-
-If that doesn't work for some reason, you can get the PID of the GUI and kill it manually with the following commands in your terminal:
-
-.. code:: bash
-
-    ps -u
-
-Find the PIDs of startm2gui and idl and kill both.
-
-.. code:: bash
-   
-    kill -9 PID
-
-4.8.2 m2gui is slow
-^^^^^^^^^^^^^^^^^^^
-
-If m2gui is slow/not working, you can ssh to another computer and start m2idl and the GUI from there.
-
-4.8.3 m2gui is not making maps
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When you start the m2gui, you need to be in a directory that you have write access to, otherwise the gui will not make maps. It will display scans but will not make maps. If you have this issue, close the GUI and terminal running m2idl, cd to a directory where you have write permissions and restart m2idl and the GUI.
-
-5. General Advice for Determining “Bad Weather“
-======================================================
-Once you have some indication of bad weather (bad skydip, bad time streams, or physical weather indication), you will want to make an educated guess as to what the trajectory of the weather/data is in order to determine whether or not to keep observing or give up the time. There are many tools that you can use to an assessment of this trajectory. Consider, do the following suggest that the remainder of your scans would be scientifically useful? (this can be used as a checklist of sorts)
+4. General Advice for Determining “Bad Weather“
+===============================================
+Once you have some indication of bad weather (bad skydip, bad time streams, or physical weather indication), you will want to make an educated guess as to what the trajectory of the weather/data is in order to determine whether or not to keep observing or give up the time. There are many tools that you can use to an assessment of this trajectory. Consider; "do the following suggest that the remainder of your scans would be scientifically useful?"" (this can be used as a checklist of sorts)
     - Time streams
-        - Check the time streams of the science scans as laid out above in :ref:`how-tos/receivers/mustang2/mustang2_obs:4.5 Checking Time Streams`. Are they wiggly? How wiggly? See examples below in :ref:`how-tos/receivers/mustang2/mustang2_obs:5.1 Examples of effect of bad weather`.
+        - Check the time streams of the science scans as laid out above in :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Checking Time Streams`. Are they wiggly? How wiggly? See examples below in :ref:`how-tos/receivers/mustang2/mustang2_obs:4.1 Examples of effect of bad weather`.
         - How many “bad” science scans have there been in a row?
 
     - Skydip(s)
-        - How does the first skydip of night look? How wiggly is it? See examples below :ref:`how-tos/receivers/mustang2/mustang2_obs:5.1 Examples of effect of bad weather`.
+        - How does the first skydip of night look? How wiggly is it? See examples below :ref:`how-tos/receivers/mustang2/mustang2_obs:4.1 Examples of effect of bad weather`.
         - If you are seeing indications of bad weather and you decide to OOF again one could add a skydip in to test the weather (calSeq=True).
         - One could even do a one off skydip.
 
@@ -592,8 +332,14 @@ Once you have some indication of bad weather (bad skydip, bad time streams, or p
         - Has the beam been deteriorating?
 
     - Weather forecast
-        - Check https://www.gb.nrao.edu/~rmaddale/Weather/AllOverviews.html.
-        - Check another reputab-itemle weather forecaster (Weather underground, weather.forcast.gov, Windy, etc.)
+        - Ask the operator what the weather is like
+        - Use the m2gui to get :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Weather Info` about the clouds (through IR) and wind
+        - `Weather Underground <https://www.wunderground.com/weather/us/wv/green-bank>`_ for Green Bank, WV
+        - `Windy <https://www.windy.com/38.435/-79.818?37.848,-79.818,8>`_ for Green Bank, WV
+        - `NOAA <https://forecast.weather.gov/MapClick.php?lat=38.4192&lon=-79.831>`_ for Green Bank, WV
+        - `NOAA Atlantic Coast Radar <https://www.star.nesdis.noaa.gov/GOES/sector_band.php?sat=G19&sector=eus&band=GEOCOLOR&length=24>`_
+        - Check the `All High Frequency Overview Plots <https://www.gb.nrao.edu/~rmaddale/Weather/AllOverviews.html>`_ via the DSS
+        - Check other reputable weather forecasters (Weather underground, weather.forcast.gov, Windy, etc.)
 
     - Direct communication with the operator
         - Ask the operator what the weather is like. Since you asked at the beginning of the observation you have one data point.
@@ -625,10 +371,16 @@ When making a judgment call as to whether to give up the time due to bad weather
         
     The flip side of overheads (i.e. maybe the project can tolerate bad weather) is that if you are observing the last session (using up all awarded time), any rescheduled observing would all go to overheads. If it’s not the last session, then the advice is to give up the remainder of time for bad weather (if all bad-weather items are checked).
 
-Again, when in doubt you can always call an M2 team member to help you make the call of whether or not to give up the time.
+.. attention::
+
+    When in doubt you can always call an M2 team member to help you make the call of whether or not to give up the time.
+
+Summary
+-------
+As an observer when you see indications of bad weather, the main thing that you want to do is to get a sense of what the trajectory is of the weather. The most concrete "metric" is combining the weather data (gained from sources described above) across scans and determining trends. 
 
 
-5.1 Examples of effect of bad weather
+4.1 Examples of effect of bad weather
 -------------------------------------
 Here are some examples of science time streams and skydips in good and bad weather.
 
@@ -670,10 +422,11 @@ Skydip
         
     It is difficult to see the affect of weather in calibrator time streams as the signal from the point source is quite bright.
 
-6. Changing M2 Projects/Second M2 Project of the Night
-======================================================
+5. Checklist for Changing M2 Projects
+=====================================
+Multiple M2 projects can be scheduled in a single night. If you are observing for an M2 project that is not the first M2 project of the night (a subsequent M2 project), you need to do the following:
 
-6.1 Check Tuning for Files
+5.1 Check for Tuning Files
 --------------------------
 Tuning files need to be linked to an observing session. This is done one of two ways either:
 - the tuner includes the second project in the tuning process (put the second observing project/session as a second argument separated by a comma in the tuning process)
@@ -700,27 +453,38 @@ where ``old_project_session`` is the full name of the previous M2 project and ``
 
     The last modified file will tell you what the most recent project ID was.
 
-6.2 Configure
+5.2 Check data is flowing
+-------------------------
+Go to the M2 CLEO manager and check that data is flowing (see how to do this and some fixes if data is not flowing :ref:`here <how-tos/receivers/mustang2/mustang2_setup:3. Check that data is flowing>`). 
+
+
+5.3 Determine if you need to OOF
+--------------------------------
+At least 15-30 minutes before your observations, you'll need to get a sense of how the beam is doing and if you need to OOF at the beginning of the project. To do this, (a) ask the observer of the previous M2 project via Talk and Draw how the beam is and if they recommend OOFing, and (b) check the observing log of the previous session to see how the beam is doing.
+
+5.4 Configure
 -------------
 
-When the observing time for the second project starts, you need run ``1_m2setup`` in AstrID again. This is already outlined in the directions.
+When the observing time for the second project starts, you need run ``1_m2setup`` in AstrID as usual.
 
 .. warning::
    
    Some people think they can skip this step when changing from another MUSTANG-2 run. This is not the case. It's very important to still run ``1_m2setup`` at the beginning of your session.
 
-6.3 Skydip/OOF 
---------------
-You need a skydip at the beginning of this project, but you can possibly skip OOFing at the beginning of this second project. You can ask the previous observer when they last did an OOF and what the progression of the beam was.
+5.5 Get a Skydip 
+----------------
+You need a skydip at the beginning of this project. 
 
-- If you need to re-OOF
-    - make sure that ``calSeq=True`` to get a skydip
+You can get this skydip one of two ways:
+- If you need to re-OOF, make sure that ``calSeq=True`` to get a skydip.
+- If you do **not** need to re-OOF, do a stand-alone skydip (typically called ``skydip``) and change ``myAz`` to the Azimuth of whatever your first source will be (calibrator, etc.). The telescope will slew to that Azimuth and do the skydip. 
 
-- If you do **not** need to re-OOF
-    - do a stand-alone skydip and change ``myAz`` to the Azimuth of whatever your first source will be (calibrator, etc.). The telescope will slew to that Az.
+.. note::
+
+    Note that if you run the stand-alone skydip in the m2gui you will see that scan 1 is a "Track" scan and scan 2 is a "Tip" scan. The skydip is scan 2. You only get one scan when you run the skydip as part of an OOF.
 
 
-6.4 Flux calibrator
+5.4 Flux calibrator
 -------------------
 
 You'll also want to still observe your flux calibrator using the ``m2quickdaisy`` script. 
@@ -731,64 +495,51 @@ You'll also want to still observe your flux calibrator using the ``m2quickdaisy`
 
 
     
-7. Observing Troubleshooting
+6. Observing Troubleshooting
 ============================
 
-
-7.1 MUSTANG-2 Manager
+6.1 MUSTANG-2 Manager
 ---------------------
+See M2 manager documentation and typical issues on the :ref:`mustang2_manager` page.
 
-Sometimes the MUSTANG-2 manager refuses to start - you try to start it and you get a failure every time (using TaskMaster or asking the operator to do this for you). 
+6.2 You have less detectors than you are expecting
+--------------------------------------------------
+If have less live detectors than expected (usually found through skydip or seeing many detectors missing from map), :ref:`reconnect to the roaches <how-tos/receivers/mustang2/mustang2_obs:2.5.1 Reconnect to Roaches>` and run ``um1.fixIQ()`` in each roach's terminal. 
 
-The solution is to 
-    - log onto egret
-    - shut the computer down
-    - log onto the iboot bar
-    - power off egret and the housekeeping
-    - leave it off for 30 seconds
-    - turn these back on
-      
-Egret may take a while to reboot but once it does you should be able to restart the manager.
-Assuming this works you should also make sure to press the ``reset heater card`` button on the manager twice.
+.. attention::
+
+    If you change anything about the instrument during an observing session (like bringing detectors back via ``um1.fixIQ()``), when you OOF after those changes, make sure that you take a skydip as a part of AutoOOF (i.e., set calseq=True). More information about the discovery of this procedure `here <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#A_2026_4501_4513>`_.
 
 
-
-8. Closing up for the night
+7. Closing up for the night
 ===========================
 
-8.1 Go offline
+7.1 Go offline
 --------------
 
 In AstrID, go from ``working online`` to ``working offline``:
     - ``File`` → ``Real time mode`` ... → ``work offline``. 
 
 
-8.2 Shutdown M2
-----------------------
+7.2 Shutdown M2
+---------------
 
-For the shutdown process you can either do this **(a) automatically** or **(b) manually**.
+For the shutdown process you can either do this **(a) automatically** or **(b) manually**. For BOTH you need to be in the gateway for MUSTANG-2 (not just the observing gateway).
 
 .. tab-set::
 
     .. tab-item:: Automatic Shutdown
 
-        Execute ONE of the following in a terminal:
+        Execute the following in a terminal:
             .. code:: bash
         
                 /users/penarray/Public/stopMUSTANG.bash 
-
-            OR
-
-            .. code:: bash
-        
-                cd /users/penarray/Public  
-                ./stopMUSTANG.bash
 
     .. tab-item:: Manual Shutdown
 
         #. **Set detector biases to zero**
             - Go to the Mustang Manager in CLEO
-            - Click on the miscellaneous tab-item
+            - Click on the miscellaneous tab
             - In the top middle, you will see 4 rows of Det Bias 1-4, corresponding to the 4 roaches.
             - Unlock the manager
             - roach-by-roach:
@@ -818,7 +569,15 @@ For the shutdown process you can either do this **(a) automatically** or **(b) m
                     between ensuring the cycle is over by the time any observations are likely to come up, yet not so early that 
                     there is no time to work with the receiver in the morning.
 
-8.3 Kill VNC session
+7.3 Finish updates to log 
+-------------------------
+Finish updates to your observing log. It is best to do this while it is all fresh in your memory.
+
+7.4 Send observing summary to M2 team
+-------------------------------------
+Send a short summary of how observing went and a link to the observing log to the M2 instrument team via the google group email address. You can simply just respond to the email thread where observing was coordinated with this information.
+
+7.5 Kill VNC session
 --------------------
 
 Either kill your FastX session or your VNC session via the terminal.

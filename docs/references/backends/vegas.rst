@@ -76,7 +76,7 @@ The data rate for an individual bank can be calculated using
 
 .. math::
 
-   {Data Rate (GB/hr)} = 1.34 \times10^{-5} \cdot\dfrac{n_{channels}\times n_{spw}\times n_{stokes}\times n_{states}}{t_{int}{(seconds)}},
+  \text{Data Rate (GB/hr)} = 1.44 \times10^{-5} \cdot\dfrac{n_{channels}\times n_{spw}\times n_{stokes}\times n_{states}}{t_{int}\text{(seconds)}},
 
 
 where :math:`n_{channels}` is the number of channels per spectral window, :math:`n_{spw}` is the number of spectral windows, :math:`n_{stokes}` is the number of stokes parameters (2 for dual polarization, 4 for full polarization), :math:`n_{states}` is the number of switching states (4 for frequency switching and 2 for total power), and :math:`t_{int}` is the integration time. The total data rate for a project can be calculated by adding the data rates for each bank together.

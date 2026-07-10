@@ -30,7 +30,7 @@ Modeling and Correcting for Gravity
 ===================================
 There are two ways that the user can correct the dish for the deformations in the dish caused by gravity.
 
-The first is the **Finite Element Model** (`FEM <https://gbtdocs.readthedocs.io/en/latest/glossary.html#term-FEM>`_). This theoretical model estimates the effect of gravity on the dish at a given elevation based solely on the telescope’s engineering design. This model is almost always turned on by default(but it is good to check that it is on). 
+The first is the **Finite Element Model** (`FEM <https://gbtdocs.readthedocs.io/en/latest/glossary.html#term-FEM>`_). This theoretical model estimates the effect of gravity on the dish at a given elevation based solely on the telescope’s engineering design. The FEM model is turned on when the active surface is turned on which is for 5 GHz and above. Consequently this means that the FEM model is not used for L-band, S-band, and lower frequencies.
 
 It was found that the FEM did not fully account for the effect of gravity on the dish. Therefore on top of the FEM, GBO staff have put a lot of time and effort into calculating empirical deltas that are a function of elevation to fully correct for the effect of gravity on the dish. We will call these additional gravity corrections to the dish the **gravity-Zernike model** ("gravity model" for short)
 
@@ -81,7 +81,7 @@ When :func:`AutoOOF() <astrid_commands.AutoOOF>` has finished processing, it wil
 
 	An example of a processed OOF from a MUSTANG-2 project. 
 
-The image that is displayed in the left of the OOF tab is the effective shape of the dish and it displays the measured differences (referred to as :math:`\Delta`'s or "deltas") from the current surface to the computed optimal surface. Let’s call this image the "surface delta map". The algorithm takes the raw data of the surface of the dish, fits the 3rd, 4th, and 5th orders of Zernike polynomials to that data, and produces the surface delta map shown in the *OOF* tab. 
+The image that is displayed in the left of the *OOF* tab is the effective shape of the dish and it displays the measured differences (referred to as :math:`\Delta`'s or "deltas") from the current surface to the computed optimal surface. Let’s call this image the "surface delta map". The algorithm takes the raw data of the surface of the dish, fits the 3rd, 4th, and 5th orders of Zernike polynomials to that data, and produces the surface delta map shown in the *OOF* tab. 
 
 For illustration, we express the measured large-scale errors on the dish at a given time and elevation as 
 
@@ -95,11 +95,7 @@ OOF Coefficients in Active Surface Application
 ==============================================
 The user can view the various versions of Zernike coefficients via CLEO’s Active Surface window. To open the Active Surface window, CLEO -> ``Launch`` -> ``Active Surface…`` which will produce a window like the following:
 
-.. image:: images/OOF/cleo_active_surface/cleo_active_surface.png
-
-.. note::
-
-	On the startup screen of the Active Surface, there is a box that says ``FEM model``. This was described in :ref:`Modeling and Correcting for Gravity <explanations/OOF:Modeling and Correcting for Gravity>`. Typically this is on by default, but it is good to check that this is on via this CLEO window.
+.. image:: images/OOF/cleo_active_surface/CLEO_AS_Standard.png
 
 There are many different tabs in Active Surface window and we describe the ones that are pertinent to OOF below.
 
@@ -107,7 +103,7 @@ Zernike Thermal Coef
 --------------------
 This tab contains the amplitude of the contributions (coefficients) of the first 21 zernike polynomials for the thermal contributions to the shape of the dish. This is what is calculated from AutoOOF. When the corrections are sent via AutoOOF, these values should update.
 
-.. image:: images/OOF/cleo_active_surface/cleo_as_thermal.png
+.. image:: images/OOF/cleo_active_surface/CLEO_AS_Zernike_Thermal_Coef.png
 
 .. note::
 
@@ -117,12 +113,41 @@ This tab contains the amplitude of the contributions (coefficients) of the first
 
 OOF Coef
 --------
-The OOF coefficients are the coefficients of the gravity-Zernike model (see explanation in :ref:`Modeling and Correcting for Gravity <explanations/OOF:Modeling and Correcting for Gravity>`). This tab shows the values of the coefficients (A, B, and C) that determine the amplitude of the contribution of the first 21 zernike polynomials to the gravity-Zernike model.
+The OOF coefficients are the coefficients of the gravity-Zernike model (see explanation in :ref:`Modeling and Correcting for Gravity <explanations/OOF:Modeling and Correcting for Gravity>`). This tab shows the values of the coefficients (A, B, and C) that determine the amplitude of the contribution of the first 21 zernike polynomials to the gravity-Zernike model. These will not change from observation to observation as they are a part of a pre-determined model.
 
-.. image:: images/OOF/cleo_active_surface/cleo_as_OOF.png
+.. image:: images/OOF/cleo_active_surface/CLEO_AS_OOF_Coef.png
 
 Zernike Coef
 ------------
-The amplitude of the contributions of the first 21 Zernike polynomials to the shape of the dish. These are the "total Zernikes" that OOF measures.
+The amplitude of the contributions of the first 21 Zernike polynomials to the shape of the dish. These are the "total Zernikes" that OOF measures. When the corrections are sent via AutoOOF, these values should update.
 
-.. image:: images/OOF/cleo_active_surface/cleo_as_zernike.png
+.. image:: images/OOF/cleo_active_surface/CLEO_AS_Zernike_Coef.png
+
+
+Monitoring the Surface Models
+=============================
+For high frequency observations (those that require AutoOOF), there are certain active surface settings that should be on and it is good practice to check that they are on.
+
+Before beginning high-frequency observations, ensure the following active settings are configured in the following way:
+	- The "Zero Offsets" should be on. This ensures that the actuator zeropoints are set
+	- The "FEM Model" should be on. This the Finite Element Model described in :ref:`Modeling and Correcting for Gravity <explanations/OOF:Modeling and Correcting for Gravity>`
+	- The "Zernike Coeff"/"Zernike Offsets" should be on. This is the gravity-Zernike model described in :ref:`Modeling and Correcting for Gravity <explanations/OOF:Modeling and Correcting for Gravity>`
+	- The "Z Thermal Coeff"/"OOF Zernike Mode" should be "Auto".
+
+Then after you have completed an AutoOOF and you have sent your OOF solutions, the "Zernike Thermal Offsets" (there are the thermal corrections dervied by OOF described in the :ref:`AutoOOF procedure section <explanations/OOF:AutoOOF Procedure>`) should be on as well.
+
+You can check these active surface settings, in two ways:
+	- CLEO Status Screen
+
+	.. _fig-oof-status-surface-models:
+	.. figure:: images/OOF/cleo_active_surface/CLEO_Status_ActiveSurface_marked.png
+
+		To check the active surface settings in Status, go to the *Devices* tab (circled in blue), then scroll over until you see "Active Surface." The red box indicates the settings of interest. When high frequency observations start, the "OOF Zernike Mode" should have a green box next to it (this means it is "Auto"). Additionally, "Zero Offsets", "FEM Model", and "Zernike Coeff" should be on (have green boxes next to them). Then once you have completed an AutoOOF "Z Thermal Coeff" should be on as well. This image shows everything that should be on after an OOF.
+
+	- CLEO Active Surface *Standard* tab.
+
+	.. _fig-oof-cleo-surface-models:
+	.. figure:: images/OOF/cleo_active_surface/CLEO_AS_Standard_marked.png
+
+		Blue box indicates where to determine if the "OOF Zernike Mode" is "Auto". The purple box indicates where you can check what surface models are on. When high frequency observations start, "OOF Zernike Mode" = "Auto and "Zero Offsets", "FEM Model", and "Zernike Offsets" should be on (have green boxes next to them). Then once you have completed an AutoOOF "Zernike Thermal Offsets" should be on as well. This image shows everything that should be on after an OOF.
+
