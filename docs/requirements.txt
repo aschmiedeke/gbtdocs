@@ -13,7 +13,7 @@ importlib-metadata
 livereload
 myst_parser
 numpydoc
-sphinx=8.2.3
+sphinx==8.2.3
 sphinx-autobuild
 sphinx-automodapi
 sphinx-basic-ng
