@@ -158,6 +158,8 @@ html_theme_options = {
     "use_repository_button": True,
     "use_edit_page_button": False,
     "use_issues_button": True,
+    "navigation_depth": 4,
+    "collapse_navigation": True,
 }
 
 html_context = {
