@@ -1,25 +1,26 @@
 
-/* Ensure Read the Docs moden Shadow DOM element clears the book theme layout */
-#main-content,
-.bd-content,
-article {
+/* BREAK THE THEME LAYOUT CONSTRAINT */
+/* The sphinx-book-theme locks content layers into isolated stacking positions. */
+/* This forces them to let the native Read the Docs elements display on top. */
+html, 
+body, 
+div.bd-container, 
+div.bd-content, 
+main, 
+article.bd-article {
     position: relative !important;
+    z-index: 1 !important;
 }
 
-/* Force the dynamic pop-up elements completely over the book sidebar and content sheets */
-.readthedocs-addon-link-preview,
-[data-link-preview],
-tool-tip,
-.rtfd-popup {
-    z-index: 99999 !important;
+/* TARGET THE NATIVE INJECTED WEB COMPONENT EXPLICITLY */
+/* Read the Docs injects a custom HTML web component containing the Shadow DOM. */
+/* We elevate the container wrapper itself since we cannot modify its internal CSS. */
+readthedocs-addons,
+.readthedocs-addons,
+#readthedocs-embed-flyout {
+    position: fixed !important;
+    z-index: 2147483647 !important; /* Max mathematical CSS z-index */
 }
-
-/* Update Read the Docs native layout engine variables directly */
-:root {
-    --readthedocs-addon-z-index: 99999 !important;
-}
-
-
 
 
 /*
