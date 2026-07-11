@@ -1,27 +1,24 @@
-
-/* BREAK THE THEME LAYOUT CONSTRAINT */
-/* The sphinx-book-theme locks content layers into isolated stacking positions. */
-/* This forces them to let the native Read the Docs elements display on top. */
-html, 
-body, 
-div.bd-container, 
-div.bd-content, 
-main, 
+/* FORCE THE SPHERICAL CONTAINER TO ALLOW POPUPS */
+/* Chaining these layout properties stops the theme from clipping external elements */
+.bd-container,
+.bd-main,
+.bd-content,
 article.bd-article {
+    overflow: visible !important;
+    contain: none !important;
     position: relative !important;
-    z-index: 1 !important;
 }
 
-/* TARGET THE NATIVE INJECTED WEB COMPONENT EXPLICITLY */
-/* Read the Docs injects a custom HTML web component containing the Shadow DOM. */
-/* We elevate the container wrapper itself since we cannot modify its internal CSS. */
+/* OVERRIDE SHADOW DOM PLACEMENT VIA ROOT ELEMENT CONTROLS */
+/* This directly targets the modern dynamic Web Component used by Read the Docs Addons */
 readthedocs-addons,
 .readthedocs-addons,
-#readthedocs-embed-flyout {
+div[data-link-preview] {
     position: fixed !important;
-    z-index: 2147483647 !important; /* Max mathematical CSS z-index */
+    display: block !important;
+    visibility: visible !important;
+    z-index: 2147483647 !important; /* Max CSS rendering value */
 }
-
 
 /*
  * CSS hacks and small modification for my Sphinx website
