@@ -92,30 +92,30 @@ email_automode = True
 intersphinx_disabled_reftypes = ["*"]
 
 
-hoverxref_api_host = 'https://readthedocs.org'
-hoverxref_auto_ref = True
-hoverxref_domains = ["py"]
-hoverxref_roles = [
-    "option",
-    # Documentation pages
-    # Not supported yet: https://github.com/readthedocs/sphinx-hoverxref/issues/18
-    "doc",
-    # Glossary terms
-    "term",
-]
-hoverxref_role_types = {
-    "mod": "modal",  # for Python Sphinx Domain
-    "doc": "modal",  # for whole docs
-    "class": "tooltip",  # for Python Sphinx Domain
-    "ref": "tooltip",  # for hoverxref_auto_ref config
-    "confval": "tooltip",  # for custom object
-    "term": "tooltip",  # for glossaries
-    "func": "tooltip", # for functions
-}
+#hoverxref_api_host = 'https://readthedocs.org'
+#hoverxref_auto_ref = True
+#hoverxref_domains = ["py"]
+#hoverxref_roles = [
+#    "option",
+#    # Documentation pages
+#    # Not supported yet: https://github.com/readthedocs/sphinx-hoverxref/issues/18
+#    "doc",
+#    # Glossary terms
+#    "term",
+#]
+#hoverxref_role_types = {
+#    "mod": "modal",  # for Python Sphinx Domain
+#    "doc": "modal",  # for whole docs
+#    "class": "tooltip",  # for Python Sphinx Domain
+#    "ref": "tooltip",  # for hoverxref_auto_ref config
+#    "confval": "tooltip",  # for custom object
+#    "term": "tooltip",  # for glossaries
+#    "func": "tooltip", # for functions
+#}
 
-hoverxref_intersphinx = [
-        "dysh"
-]
+#hoverxref_intersphinx = [
+#        "dysh"
+#]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -149,9 +149,10 @@ html_theme = 'sphinx_book_theme'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-html_css_files = [
-    'css/custom.css',
-]
+# I don't think I have this anymore
+#html_css_files = [
+#    'css/custom.css',
+#]
 
 ## for sphinx_book_theme
 
