@@ -156,7 +156,8 @@ html_css_files = [
 
 
 html_js_files = [
-        ('patch-preview.js', {'priority': 950}),
+        #('patch-preview.js', {'priority': 950}),
+        ('rtd-patch.js', {'priority': 200}),        # low priority number ensures it runs early during DOM loading
 ]
 
 ## for sphinx_book_theme
