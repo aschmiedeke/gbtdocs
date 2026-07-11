@@ -151,7 +151,12 @@ html_static_path = ['_static']
 
 # this is located in _'static
 html_css_files = [
-        ('css/custom.css', {'priority': 800}), # ensures the css overrides load last
+        ('css/custom.css', {'priority': 900}), # ensures the css overrides load last
+]
+
+
+html_js_files = [
+        ('patch-preview.js', {'priority': 950}),
 ]
 
 ## for sphinx_book_theme
