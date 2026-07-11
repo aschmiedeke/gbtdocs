@@ -1,24 +1,20 @@
-/* FORCE THE SPHERICAL CONTAINER TO ALLOW POPUPS */
-/* Chaining these layout properties stops the theme from clipping external elements */
+/* Strip theme restrictions blocking the Addon system */
 .bd-container,
 .bd-main,
 .bd-content,
 article.bd-article {
     overflow: visible !important;
     contain: none !important;
-    position: relative !important;
 }
 
-/* OVERRIDE SHADOW DOM PLACEMENT VIA ROOT ELEMENT CONTROLS */
-/* This directly targets the modern dynamic Web Component used by Read the Docs Addons */
+/* Force standard positioning for the web component elements */
 readthedocs-addons,
-.readthedocs-addons,
-div[data-link-preview] {
+readthedocs-linkpreviews {
     position: fixed !important;
     display: block !important;
-    visibility: visible !important;
-    z-index: 2147483647 !important; /* Max CSS rendering value */
+    z-index: 2147483647 !important;
 }
+
 
 /*
  * CSS hacks and small modification for my Sphinx website
