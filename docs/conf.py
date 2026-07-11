@@ -149,10 +149,10 @@ html_theme = 'sphinx_book_theme'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-# I don't think I have this anymore
-#html_css_files = [
-#    'css/custom.css',
-#]
+# this is located in _'static
+html_css_files = [
+    'css/custom.css',
+]
 
 ## for sphinx_book_theme
 

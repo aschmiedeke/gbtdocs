@@ -5,6 +5,15 @@
  */
 
 
+.readthedocs-addon-link-preview,
+[data-link-preview],
+tool-tip,
+.rtfd-popup {
+    z-index: 99999 !important;
+    position: relative;
+}
+
+
 /* Colors and text decoration.
  For example, :black:`text in black` or :blink:`text blinking` in rST. */
 
