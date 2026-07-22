@@ -162,22 +162,40 @@ html_js_files = [
 ]
 
 ## for sphinx_book_theme
+#html_theme_options = {
+#    "logo": {
+#        "image_light": "GBO-vertical-PGGradient.svg",
+#        "image_dark": "GBO-vertical-PGGradient.svg"
+#    },
+#    "repository_url": "https://github.com/aschmiedeke/gbtdocs",
+#    "use_repository_button": True,
+#    "use_edit_page_button": False,
+#    "use_issues_button": True,
+#    #"show_nav_level": 3,
+#    #"navigation_depth": 4,
+#    #"collapse_navigation": True,
+#    #"show_toc_level": 2,
+#    #"show_navbar_depth": 3,
+#}
 
+
+## for pydata-sphinx-theme
 html_theme_options = {
     "logo": {
-        "image_light": "GBO-vertical-PGGradient.svg",
-        "image_dark": "GBO-vertical-PGGradient.svg"
+        "alt_text": "GBTdocs - Home",
+        "image_light": "GBO-Primary-Logo-PGGradient.svg",
+        "image_dark": "GBO-Primary-Logo-PGGradient.svg"
     },
-    "repository_url": "https://github.com/aschmiedeke/gbtdocs",
-    "use_repository_button": True,
-    "use_edit_page_button": False,
-    "use_issues_button": True,
-    #"show_nav_level": 3,
-    #"navigation_depth": 4,
-    #"collapse_navigation": True,
-    #"show_toc_level": 2,
-    #"show_navbar_depth": 3,
+    "back_to_top_button": True,
+    "show_prev_next": False,
+    "content_footer_items": ["last-updated"],
 }
+
+
+html_sidebars = {
+    "**": ["sidebar-collapse", "sidebar-nav-bs"]
+}
+
 
 html_context = {
     "github_user": "aschmiedeke",
