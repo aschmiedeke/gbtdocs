@@ -143,7 +143,7 @@ If you see an RMS :math:`\gtrsim` 400\ :math:`\mu m`, the solutions might still 
 Here is an example of an acceptable OOF solution: 
 
 .. _fig-good-oof-solution:
-.. figure:: images/autoOOF/OOFgoodExample.jpg
+.. figure:: material/autoOOF/OOFgoodExample.jpg
     
     This solution shows broad features (:math:`\pm` 1.5 radians of phase) with a surface RMS of 197\ :math:`\mu m`.
 
@@ -151,7 +151,7 @@ Here is an example of an acceptable OOF solution:
 Here is an example of an unacceptable OOF solution:
 
 .. _fig-bad-oof-solution:
-.. figure:: images/autoOOF/OOFbadExample.jpg
+.. figure:: material/autoOOF/OOFbadExample.jpg
 
     This solution shows steep contour lines (:math:`\pm` 15 radians of phase) and a surface RMS of 626\ :math:`\mu m`. This is likely the result of poor quality raw data and the solution should not be used.
 
@@ -171,12 +171,12 @@ Occasionally, it may be necessary to drop to a lower order of fit if the followi
 * **Anomalous values in the pointing/focus LPC/LFC** for one particular solution, or a significant jump in LPC above a certain Zernike fit order. For example, if the focus (LFCy) values for the z3-z4 solutions are around -3mm, then abruptly jump to +10mm for the z5 solution, then it would be prudent to assume that some or all of the solutions may be invalid. It may be possible to determine which solutions are valid by examining the fitted beam maps for obvious artifacts or deviations from the observed beams.
   
   .. _fig-oof-beammap:
-  .. figure:: images/autoOOF/OOF_fittedbeammap.jpg
+  .. figure:: material/autoOOF/OOF_fittedbeammap.jpg
         
          The AutoOOF fitted beam maps. The observed beams are plotted on the top row with the z3, z4 and z5 fits to the observed beams plotted below. The z3 solution (:math:`2^{\text{nd}}` row down) shows an obvious artifact and should not be used.
 
   .. _fig-oof-beammap-solutions:
-  .. figure:: images/autoOOF/OOF_fittedbeammap_solutions.jpg
+  .. figure:: material/autoOOF/OOF_fittedbeammap_solutions.jpg
          
           Zernike Solutions. Note the significant jump in LPC and the LFC between the z3 and z4 solutions.
 
@@ -191,7 +191,7 @@ Deriving the sixth-order Zernike (z6) solution will require a few additional min
 #. Select *Tools* :math:`\rightarrow` *Options...* from the drop--down menu.
 #. Select the maximum order of fit to process from the *Processing Options* tab of the pop--up window.
 
-   .. image:: images/autoOOF/OOFprocessing_options.jpg
+   .. image:: material/autoOOF/OOFprocessing_options.jpg
 
 
 .. important:: 
@@ -220,12 +220,12 @@ You can view the AutoOOF raw data by selecting the *raw data* button in the uppe
 
 
 .. _fig-good-oof-raw-data:
-.. figure:: images/autoOOF/OOFrawData_goodExample.png
+.. figure:: material/autoOOF/OOFrawData_goodExample.png
 
     A plot of the raw OOF data on a fairly clean Ka-Band+CCB dataset.
 
 .. _fig-bad-oof-raw-data:
-.. figure:: images/autoOOF/OOFrawData_badExample.png
+.. figure:: material/autoOOF/OOFrawData_badExample.png
 
     A plot of the raw OOF data on a source which is too faint in particular in the delta focus = -38 mm and = +38 mm. 
 
@@ -440,15 +440,15 @@ For an example, see the following surface delta maps of a project that OOFed wit
 
     .. tab-item:: z5
 
-        .. image:: images/autoOOF/AGBT20A_322_16_s1_z5_fixedScale.png
+        .. image:: material/autoOOF/AGBT20A_322_16_s1_z5_fixedScale.png
 
     .. tab-item:: z4
 
-        .. image:: images/autoOOF/AGBT20A_322_16_s1_z4_fixedScale.png
+        .. image:: material/autoOOF/AGBT20A_322_16_s1_z4_fixedScale.png
 
     .. tab-item:: z3
 
-        .. image:: images/autoOOF/AGBT20A_322_16_s1_z3_fixedScale.png
+        .. image:: material/autoOOF/AGBT20A_322_16_s1_z3_fixedScale.png
 
 
 You will notice that with all of those the surface delta map looks ok (no sharp edges really), but the surface RMS for z5 is a bit on the high side. The main thing of concern is that the focus offsets are quite high (:math:`\gtrsim|10mm|`). This is a good case in which it is good to inspect the surface corrections with the focus removed. To do this, check the box that says *Show Solutions with Focus Removed*. Once you have done that you can inspect all three orders of Zernike surface delta maps. For this case they look like the following:
@@ -457,15 +457,15 @@ You will notice that with all of those the surface delta map looks ok (no sharp 
 
     .. tab-item:: z5
 
-        .. image:: images/autoOOF/AGBT20A_322_16_s1_z5_focusRemoved.png
+        .. image:: material/autoOOF/AGBT20A_322_16_s1_z5_focusRemoved.png
 
     .. tab-item:: z4
 
-        .. image:: images/autoOOF/AGBT20A_322_16_s1_z4_focusRemoved.png
+        .. image:: material/autoOOF/AGBT20A_322_16_s1_z4_focusRemoved.png
 
     .. tab-item:: z3
 
-        .. image:: images/autoOOF/AGBT20A_322_16_s1_z3_focusRemoved.png
+        .. image:: material/autoOOF/AGBT20A_322_16_s1_z3_focusRemoved.png
 
 .. note:: 
 
@@ -500,13 +500,13 @@ I have a low RMS. What should I do?
 -----------------------------------
 Nothing! It is not bad to have a low RMS. It just means it is a stable night and the difference in the surface between when the surface was last set and now is small. Technically, there isn’t a lower limit for OOF surface RMS solutions; though GBO staff haven't seen one below 40 :math:`\mu\mathrm{m}`. See below for an example of a "low" RMS of 66 :math:`\mu\mathrm{m}` from an Argus observing run:
 
-.. image:: images/autoOOF/AGBT21B_065_03_z5_fixedScale.png
+.. image:: material/autoOOF/AGBT21B_065_03_z5_fixedScale.png
 
 What if OOF fails?
 ------------------
 Sometimes OOF may time out and you will get a red screen like this. 
 
-.. image:: images/autoOOF/OOF_failure_to_process.png
+.. image:: material/autoOOF/OOF_failure_to_process.png
 
 If you get this red screen, this means that for some reason the OOF processing failed. This type of red screen has only been seen during MUSTANG-2 observations so far. OOF processing for M2 can take a while. GFM checks the directory where the processing script puts the solutions for the files and if GFM doesn’t find the solutions after a certain amount of time, it puts up that red screen.
 

@@ -40,7 +40,7 @@ catalog it is also possible to add the sources directly in your scheduling block
 Here is an example of a RA/Dec coordinate system catalog with velocity, showing the header lines of
 the catalog and then 5 sources. The full catalog is available at `/home/astro-util/HIsurvey/HI_survey.cat`.
 
-.. literalinclude:: material/HI_survey.cat
+.. literalinclude:: material/HI_PSW_tutorial/HI_survey.cat
     :language: text
     :lines: 1-4,68-72
   
@@ -58,7 +58,7 @@ We advise to save this catalog as a ``.cat`` file, in a known location. We will 
 At the GBT we use `AstrID` to prepare and execute scheduling blocks. `AstrID` is an application that you can use to edit and submit custom python-based scheduling blocks for GBT observations. `AstrID` is python-based and can incorporate custom user scripts. Here we show the full `AstrID` script, including reference to the HI catalog and the configurations. The script is available at `/home/astro-util/HIsurvey/HI_survey.py`
 
 
-.. literalinclude:: material/HI_survey.py
+.. literalinclude:: material/HI_PSW_tutorial/HI_survey.py
     :language: python
 
 
@@ -75,11 +75,11 @@ To learn how to execute your observing scripts, please follow the :ref:`how-tos/
 
 Recall that after slewing near your source, the script looks for a nearby bright point source and runs a series of Peak (pointing) and Focus scans. When everything is working well, the scans look like this (switch to the DataDisplayTab in AstrID to see them).
 
-.. figure:: material/HI_observing_astrid_DataDisplay_peak.png
+.. figure:: material/HI_PSW_tutorial/HI_observing_astrid_DataDisplay_peak.png
     
     L-Band peak observations. Four scans are taken, two scanning in Azimuth, two scanning in Elevation.
 
-.. figure:: material/HI_observing_astrid_DataDisplay_focus.png
+.. figure:: material/HI_PSW_tutorial/HI_observing_astrid_DataDisplay_focus.png
     
     L-Band focus observation.
 
@@ -90,8 +90,8 @@ Recall that after slewing near your source, the script looks for a nearby bright
    
    A couple examples of this situation are shown below.
 
-   .. image:: material/HI_observing_astrid_DataDisplay_focus_poor_01.png
-   .. image:: material/HI_observing_astrid_DataDisplay_focus_poor_02.png
+   .. image:: material/HI_PSW_tutorial/HI_observing_astrid_DataDisplay_focus_poor_01.png
+   .. image:: material/HI_PSW_tutorial/HI_observing_astrid_DataDisplay_focus_poor_02.png
 
 .. danger::
 
@@ -154,7 +154,7 @@ Open a terminal. At the prompt enter
 
 You should see the following welcome screen:
 
-.. literalinclude:: material/gbtidl_startup.txt
+.. literalinclude:: material/HI_PSW_tutorial/gbtidl_startup.txt
     :language: text
 
 3.1.2 Load files of interest
@@ -178,7 +178,7 @@ Using :idl:pro:`summary` you can get an overview of the content of the file you 
 
 You should see this output: 
 
-.. literalinclude:: material/HI_survey_Session02_summary.txt
+.. literalinclude:: material/HI_PSW_tutorial/HI_survey_Session02_summary.txt
     :language: text
 
 
@@ -205,7 +205,7 @@ Process the first polarization of the on+off pair (scan #270, 271) using :idl:pr
 
 The plotter should open and you should this spectrum: 
 
-.. image:: material/HI_survey_processing_01.png
+.. image:: material/HI_PSW_tutorial/HI_survey_processing_01.png
 
 
 3.1.5.2 Adjust x-axis
@@ -217,7 +217,7 @@ Set the x-axis to an interesting frequency using :idl:pro:`setx`:
 
     setx, 1.396, 1.402
 
-.. image:: material/HI_survey_processing_02.png
+.. image:: material/HI_PSW_tutorial/HI_survey_processing_02.png
 
 
 3.1.5.3 Accumulate results
@@ -238,7 +238,7 @@ Now process the second polarization of the same on+pff pair (scan #270, 271), ag
 
     getps, 270, plnum=1, units='Jy'
 
-.. image:: material/HI_survey_processing_03.png
+.. image:: material/HI_PSW_tutorial/HI_survey_processing_03.png
 
 
 3.1.5.5 Accumulate results
@@ -260,7 +260,7 @@ Using the function :idl:pro:`ave` you can average the two polarizations (i.e. th
     ave
 
 
-.. image:: material/HI_survey_processing_04.png
+.. image:: material/HI_PSW_tutorial/HI_survey_processing_04.png
 
 
 3.1.6 Smooth the result
@@ -272,7 +272,7 @@ Using :idl:pro:`gsmooth` you can smooth your data. Here we also use the ``/decim
 
     gsmooth, 100, /decimate
 
-.. image:: material/HI_survey_processing_05.png
+.. image:: material/HI_PSW_tutorial/HI_survey_processing_05.png
 
 
 3.1.7 Fit the baseline
@@ -290,11 +290,11 @@ To choose the region for baseline fitting, use :idl:pro:`setregion` and mark the
 
 This is what the plotter window will look like after marking the basline regions (white vertical lines) while still in interactive more (green crosshair cursor).
 
-.. image:: material/HI_survey_processing_06.png
+.. image:: material/HI_PSW_tutorial/HI_survey_processing_06.png
 
 This is what the plotter window will look like after exiting the interactive mode. The selected regions are now marked with the cyan rectangular boxes.
 
-.. image:: material/HI_survey_processing_07.png
+.. image:: material/HI_PSW_tutorial/HI_survey_processing_07.png
 
 3.1.7.2 Set order of baseline fit
 '''''''''''''''''''''''''''''''''
@@ -316,7 +316,7 @@ Use :idl:pro:`bshape` to show the fitted baseline
     bshape
 
 
-.. image:: material/HI_survey_processing_08.png
+.. image:: material/HI_PSW_tutorial/HI_survey_processing_08.png
    
 
 3.1.7.4 Subtract the fitted baseline
@@ -328,7 +328,7 @@ To apply, i.e. subtract the fitted baseline from the data, use the command :idl:
 
     baseline
 
-.. image:: material/HI_survey_processing_09.png
+.. image:: material/HI_PSW_tutorial/HI_survey_processing_09.png
 
 
 3.1.8 Switch the x-axis
@@ -340,7 +340,7 @@ Switch the x-axis from frequency to velocity (:idl:pro:`velo`)
 
     velo
 
-.. image:: material/HI_survey_processing_10.png
+.. image:: material/HI_PSW_tutorial/HI_survey_processing_10.png
 
 
 3.1.9 Determine statistics
@@ -356,7 +356,7 @@ Determine the statistics (:idl:pro:`stats`) in the velocity ranges surrounding t
 
     stats, 4000, 4400
 
-.. literalinclude:: material/HI_survey_processing_stats_01.txt
+.. literalinclude:: material/HI_PSW_tutorial/HI_survey_processing_stats_01.txt
     :language: text
 
 
@@ -364,7 +364,7 @@ Determine the statistics (:idl:pro:`stats`) in the velocity ranges surrounding t
 
     stats, 4800, 5200
 
-.. literalinclude:: material/HI_survey_processing_stats_02.txt
+.. literalinclude:: material/HI_PSW_tutorial/HI_survey_processing_stats_02.txt
     :language: text
 
 
@@ -377,7 +377,7 @@ Using the :idl:pro:`awv` (area, width, velocity) routine, determine the line's p
 
     gmeasure, 1, 0.2, brange=4610, erange=4735, rms=0.0039
 
-.. literalinclude:: material/HI_survey_processing_gmeasure.txt
+.. literalinclude:: material/HI_PSW_tutorial/HI_survey_processing_gmeasure.txt
     :language: text
 
 
@@ -410,7 +410,7 @@ Open a terminal. At the prompt enter
 
 You should see the following welcome screen:
 
-.. literalinclude:: material/gbtidl_startup.txt
+.. literalinclude:: material/HI_PSW_tutorial/gbtidl_startup.txt
     :language: text
 
 3.2.2 Load files of interest
@@ -434,7 +434,7 @@ Using :idl:pro:`summary`, you can get an overview of the content of the file you
 
 Here we're showing only the scans of interest for this example. We have two OffOn pairs (scans pairs 295+296, 297+298) and one track scan (scan 299).
 
-.. literalinclude:: material/HI_survey_Session02_summary.txt
+.. literalinclude:: material/HI_PSW_tutorial/HI_survey_Session02_summary.txt
     :language: text
     :lines: 1, 55-59
 
@@ -450,7 +450,7 @@ Here we're showing only the scans of interest for this example. We have two OffO
 
 Here you can see that there is no noise diode (cal) firing during the on + off scans. We're only showing the first few lines of the output, when you run the command, the output list will be a bit longer.
 
-.. literalinclude:: material/HI_survey_Session02_list295.txt
+.. literalinclude:: material/HI_PSW_tutorial/HI_survey_Session02_list295.txt
     :language: text
     :lines: 1-11
 
@@ -458,7 +458,7 @@ Here you can see that there is no noise diode (cal) firing during the on + off s
 
     list, scan=296
 
-.. literalinclude:: material/HI_survey_Session02_list296.txt
+.. literalinclude:: material/HI_PSW_tutorial/HI_survey_Session02_list296.txt
     :language: text
     :lines: 1-11
 
@@ -467,7 +467,7 @@ Here you can see that there is no noise diode (cal) firing during the on + off s
 
     list, scan=299
 
-.. literalinclude:: material/HI_survey_Session02_list299.txt
+.. literalinclude:: material/HI_PSW_tutorial/HI_survey_Session02_list299.txt
     :language: text
 
 3.2.5 Determine :math:`T_{sys}`
@@ -548,7 +548,7 @@ Here you have to use the :idl:pro:`getsigref` command, and explicitly give the c
     ave
 
 
-.. image:: material/HI_survey_processing_11.png
+.. image:: material/HI_PSW_tutorial/HI_survey_processing_11.png
 
 3.2.8 Adjust x-axis
 ^^^^^^^^^^^^^^^^^^^
@@ -559,7 +559,7 @@ Set the x-axis to avoid the edges (:idl:pro:`setx`).
 
     setx, 1.401, 1.412
 
-.. image:: material/HI_survey_processing_12.png
+.. image:: material/HI_PSW_tutorial/HI_survey_processing_12.png
 
 
 3.2.9 Smooth the spectrum
@@ -571,7 +571,7 @@ Using :idl:pro:`gsmooth` you can smooth your data. Here we also use the ``/decim
 
     gsmooth, 100, /decimate
 
-.. image:: material/HI_survey_processing_13.png
+.. image:: material/HI_PSW_tutorial/HI_survey_processing_13.png
 
 
 3.2.10 Remove baseline
@@ -583,7 +583,7 @@ Set regions avoiding the RFI spike (:idl:pro:`setregion`).
 
     setregion
 
-.. image:: material/HI_survey_processing_14.png
+.. image:: material/HI_PSW_tutorial/HI_survey_processing_14.png
 
 Remove baseline (after inspection) using first order polynomial (i.e. a line) using :idl:pro:`nfit`, :idl:pro:`bshape`, and :idl:pro:`baseline`.
 
@@ -593,7 +593,7 @@ Remove baseline (after inspection) using first order polynomial (i.e. a line) us
     GBTIDL -> bshape
     GBTIDL -> baseline
 
-.. image:: material/HI_survey_processing_15.png
+.. image:: material/HI_PSW_tutorial/HI_survey_processing_15.png
 
 3.2.11 Determine statistics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -607,7 +607,7 @@ Determine the statistics in the velocity ranges surrounding the galaxy, i.e. 200
 
     stats, 2000, 2500
 
-.. literalinclude:: material/HI_survey_processing_stats_03.txt
+.. literalinclude:: material/HI_PSW_tutorial/HI_survey_processing_stats_03.txt
     :language: text
 
 
@@ -615,7 +615,7 @@ Determine the statistics in the velocity ranges surrounding the galaxy, i.e. 200
 
     stats, 3500, 4000
 
-.. literalinclude:: material/HI_survey_processing_stats_04.txt
+.. literalinclude:: material/HI_PSW_tutorial/HI_survey_processing_stats_04.txt
     :language: text
 
 
@@ -695,9 +695,9 @@ This example is from the HI survey dataset (http://greenbankobservatory.org/~kon
 * You can download the example script shown below here: |HI_survey_process.pro|
 
 .. |HI_survey_process.pro| replace::
-    :download:`HI_survey_process.pro <material/HI_survey_process.pro>`
+    :download:`HI_survey_process.pro <material/HI_PSW_tutorial/HI_survey_process.pro>`
 
-.. literalinclude:: material/HI_survey_process.pro
+.. literalinclude:: material/HI_PSW_tutorial/HI_survey_process.pro
     :language: idl
 
 
@@ -737,4 +737,4 @@ Once done you should see this output from the code:
 
 As well as this spectrum in the GBTIDL Plotter (separate window)
 
-.. image:: material/HI_survey_processing_16.png
+.. image:: material/HI_PSW_tutorial/HI_survey_processing_16.png
