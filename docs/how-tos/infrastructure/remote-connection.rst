@@ -1,3 +1,5 @@
+.. _connect_to_GBO_network:
+
 ###########################################
 How to connect remotely to the GBO network
 ###########################################

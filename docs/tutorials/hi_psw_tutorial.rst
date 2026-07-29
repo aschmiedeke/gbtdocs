@@ -11,7 +11,7 @@ HI Position Switched (psw) Spectrum
 
     1. setup your scheduling blocks 
     2. execute an HI pointed observation (using position-switching)
-    3. calibrate the data   
+    3. calibrate the data using GBTIDL
 
 
 .. admonition:: What you should already know
@@ -20,15 +20,12 @@ HI Position Switched (psw) Spectrum
     In order to complete this tutorial, you need a GBO computing account. You should be relatively familiar with using the command line, and starting AstrID. 
 
 
-.. admonition:: Data
+.. admonition:: Credit
 
-   This example is from the `HI survey dataset <http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml>`__.
+    The observations and data presented in this tutorial are part of the `New Reference Catalog of Extragalactic HI Observations <http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml>`_ by `Karen <http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml>`_ O'Neil. For more details, see the `survey article <https://greenbankobservatory.org/~koneil/paps/HIsurvey.html>`__.
 
-
-
-
-1 Observation Preparation
-=========================
+1. Observation Preparation
+==========================
 
 1.1 Catalog
 -----------
@@ -38,7 +35,7 @@ in a separate file. This is especially advised if you have a long list of source
 catalog it is also possible to add the sources directly in your scheduling block (not described here). 
 
 Here is an example of a RA/Dec coordinate system catalog with velocity, showing the header lines of
-the catalog and then 5 sources. The full catalog is available at `/home/astro-util/HIsurvey/HI_survey.cat`.
+the catalog and then 5 sources. The full catalog is available at ``/home/astro-util/HIsurvey/HI_survey.cat``.
 
 .. literalinclude:: material/HI_PSW_tutorial/HI_survey.cat
     :language: text
@@ -55,7 +52,7 @@ We advise to save this catalog as a ``.cat`` file, in a known location. We will 
 1.2 Configuration and Observing Scripts
 ---------------------------------------
 
-At the GBT we use `AstrID` to prepare and execute scheduling blocks. `AstrID` is an application that you can use to edit and submit custom python-based scheduling blocks for GBT observations. `AstrID` is python-based and can incorporate custom user scripts. Here we show the full `AstrID` script, including reference to the HI catalog and the configurations. The script is available at `/home/astro-util/HIsurvey/HI_survey.py`
+At the GBT we use `AstrID` to prepare and execute scheduling blocks. `AstrID` is an application that you can use to edit and submit custom python-based scheduling blocks for GBT observations. `AstrID` is python-based and can incorporate custom user scripts. Here we show the full `AstrID` script, including reference to the HI catalog and the configurations. The script is available at ``/home/astro-util/HIsurvey/HI_survey.py``
 
 
 .. literalinclude:: material/HI_PSW_tutorial/HI_survey.py
@@ -110,43 +107,80 @@ Once the AutoPeakFocus routines are complete, the telescope should configure for
 
    The DataDisplay - Spectral Line subtab is often not able to keep up with the incoming data, and so issues with not displaying data can be ignored.
 
-Once your first set of data is written to disk (here when the first ON scan is complete, after 5 minutes),  you should go into gbtidl and look at the data. 
+Once your first set of data is written to disk (here when the first ON scan is complete, after 5 minutes),  you should go into GBTIDL and look at the data. 
 
 .. note:: 
 
-   You cannot look at the fully processed spectrum (ON+OFF) in gbtidl until the ON+OFF pair is complete (after about 10.5 minutes). You can, however, look to see that the data looks ok, using gbtidl and the :code:`gettp, 5` command (where 5 is the scan number of interest). 
+   You cannot look at the fully processed spectrum (ON+OFF) in GBTIDL until the ON+OFF pair is complete (after about 10.5 minutes). You can, however, look to see that the data looks ok, using GBTIDL and the :code:`gettp, 5` command (where 5 is the scan number of interest). 
    
 More information on data processing in the :ref:`next section <tutorials/hi_psw_tutorial:3. Data Reduction>`. Happy Observing!
 
 3. Data Reduction
 =================
+In this section we show two examples of how to process the obtained spectra using GBTIDL:
 
-We will show two examples of how to process the obtained spectra:
+- Example 1: a simple example in which data taken with standard ONOFF command with cals (noise diodes) firing.
+- Example 2: a more complicated example in which many observations were taken with the noise diodes turned off, followed by a short period where the noise diodes are firing. As a result you need to determine :math:`T_{sys}` and then apply it to the on+off scans.
 
-.. admonition:: Example 1
+The data used for this tutorial is part the `New Reference Catalog of Extragalactic HI Observations <http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml>`_ by `Karen <http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml>`_ O'Neil. For more details, see the `survey article <https://greenbankobservatory.org/~koneil/paps/HIsurvey.html>`__. 
 
-    :ref:`Simple example <tutorials/hi_psw_tutorial:3.1 Simple Example>`
-   
-    Data taken with standard ONOFF command with cals (noise diodes) firing.
+There are several setup steps that you will need to do in order to get ready to do data reduction in GBTIDL (detailed below). Since both examples use the same data, the setup is the same for both.
 
+.. note::
 
-.. admonition:: Example 2
+    If instead of/in addition to GBTIDL you would like to use dysh for data reduction and analysis of this data, you can find a tutorial on how to do so `here <https://dysh.readthedocs.io/en/latest/users_guide/hi_survey.html>`__.
 
-    :ref:`More complicated example <tutorials/hi_psw_tutorial:3.2 More Complicated Example>`
-    
-    Many observations were taken with the noise diodes turned off, followed by a short period where the noise diodes are firing. As a result you need to determine :math:`T_{sys}` and then apply it to the on+off scans.
+3.0 Setup
+---------
+Note that this tutorial assumes you will be using GBTIDL for data reduction which can only be used on the GBO network. Thus you will need to have a GBO computing account and :ref:`connect remotely <connect_to_GBO_network>`. 
 
+3.0.1 Set your working directory
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Once you have connected to the GBO network, decide where you want to keep all files related to this analysis. Then open a terminal, then use ``cd`` to navigate to that folder:
 
-3.1 Simple Example
-------------------
+.. code-block:: bash
 
-This simple example is from the `HI survey dataset <http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml>`__. It also matches the observation technique in Observing, example 1. 
+    cd /path/to/your/working_directory
 
+All commands in the rest of this guide assume you are running them from this directory, so make sure you start here each time you work on the data reduction.
 
-3.1.1 Start gbtidl
+3.0.2 Access the data
+^^^^^^^^^^^^^^^^^^^^^
+Since this data set is less than 1 GB, there are several options to access the data: 
+
+.. tab-set::
+
+    .. tab-item:: make symlink to data
+
+        In your working directory, make a symlink to the data with the following command:
+
+        .. code-block:: bash
+
+            ln -s /home/dataproducts/training_data/AGBT04A_008_02 AGBT04A_008_02
+
+    .. tab-item:: copy data
+
+        You can ``rsync`` the data to your preferred location on the GBO network (we suggest your scratch area) with the following command:
+
+        .. code-block:: bash
+
+            rsync -vaz /home/dataproducts/training_data/AGBT04A_008_02.tar.gz /home/scratch/your_username/path/to/
+
+        Then untar the data with ``tar -xzf AGBT04A_008_02.tar.gz``.
+
+.. note::
+
+    You can also download the data from the web using wget
+
+    .. code-block:: bash
+
+            wget https://www.gb.nrao.edu/training_data/AGBT04A_008_02.tar.gz
+
+    Then untar the data with ``tar -xzf AGBT04A_008_02.tar.gz``.
+
+3.0.3 Start GBTIDL
 ^^^^^^^^^^^^^^^^^^
-
-Open a terminal. At the prompt enter
+In the working directory in a terminal, enter
 
 .. code-block:: bash
 
@@ -157,20 +191,22 @@ You should see the following welcome screen:
 .. literalinclude:: material/HI_PSW_tutorial/gbtidl_startup.txt
     :language: text
 
-3.1.2 Load files of interest
+3.0.4 Load files of interest
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-In GBTIDL use :idl:pro:`dirin` to load the files you want to look at: 
+In GBTIDL use :idl:pro:`dirin` to load the files of this project:
 
 .. code-block:: IDL
     
-    dirin, '/home/astro-util/HIsurvey/Session02'
+    dirin, 'AGBT04A_008_02'
 
 
-3.1.3 Look at file content
+3.1 Simple Example
+------------------
+
+3.1.1 Look at file content
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Using :idl:pro:`summary` you can get an overview of the content of the file you have just loaded:
+Using :idl:pro:`summary` you can get an overview of the content of the project you have just loaded:
 
 .. code-block:: IDL
 
@@ -182,7 +218,7 @@ You should see this output:
     :language: text
 
 
-3.1.4 Empty the buffer memory
+3.1.2 Empty the buffer memory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Make sure the buffer memory is empty using :idl:pro:`sclear`: 
@@ -191,10 +227,10 @@ Make sure the buffer memory is empty using :idl:pro:`sclear`:
 
     sclear
 
-3.1.5 Process single on+off pair
+3.1.3 Process single on+off pair
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3.1.5.1 Process first polarization
+3.1.3.1 Process first polarization
 ''''''''''''''''''''''''''''''''''
 
 Process the first polarization of the on+off pair (scan #270, 271) using :idl:pro:`getps`, setting the intensity unit to Jansky.
@@ -208,7 +244,7 @@ The plotter should open and you should this spectrum:
 .. image:: material/HI_PSW_tutorial/HI_survey_processing_01.png
 
 
-3.1.5.2 Adjust x-axis
+3.1.3.2 Adjust x-axis
 '''''''''''''''''''''
 
 Set the x-axis to an interesting frequency using :idl:pro:`setx`:
@@ -220,7 +256,7 @@ Set the x-axis to an interesting frequency using :idl:pro:`setx`:
 .. image:: material/HI_PSW_tutorial/HI_survey_processing_02.png
 
 
-3.1.5.3 Accumulate results
+3.1.3.3 Accumulate results
 ''''''''''''''''''''''''''
 
 Accumulate the results from first polarization in the buffer using :idl:pro:`accum`. 
@@ -229,7 +265,7 @@ Accumulate the results from first polarization in the buffer using :idl:pro:`acc
 
     accum
 
-3.1.5.4 Process second polarization
+3.1.3.4 Process second polarization
 '''''''''''''''''''''''''''''''''''
 
 Now process the second polarization of the same on+pff pair (scan #270, 271), again setting the intensity unit to Jansky.
@@ -241,7 +277,7 @@ Now process the second polarization of the same on+pff pair (scan #270, 271), ag
 .. image:: material/HI_PSW_tutorial/HI_survey_processing_03.png
 
 
-3.1.5.5 Accumulate results
+3.1.3.5 Accumulate results
 ''''''''''''''''''''''''''
 
 Accumulate the results from second polarization in the buffer. 
@@ -251,7 +287,7 @@ Accumulate the results from second polarization in the buffer.
     accum
 
 
-3.1.5.4 Average polarizations
+3.1.3.4 Average polarizations
 '''''''''''''''''''''''''''''
 Using the function :idl:pro:`ave` you can average the two polarizations (i.e. the two spectra you have just accumulated):
 
@@ -263,7 +299,7 @@ Using the function :idl:pro:`ave` you can average the two polarizations (i.e. th
 .. image:: material/HI_PSW_tutorial/HI_survey_processing_04.png
 
 
-3.1.6 Smooth the result
+3.1.4 Smooth the result
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Using :idl:pro:`gsmooth` you can smooth your data. Here we also use the ``/decimate`` option, this will reduce the number of channels in your spectrum.
@@ -275,10 +311,10 @@ Using :idl:pro:`gsmooth` you can smooth your data. Here we also use the ``/decim
 .. image:: material/HI_PSW_tutorial/HI_survey_processing_05.png
 
 
-3.1.7 Fit the baseline
+3.1.5 Fit the baseline
 ^^^^^^^^^^^^^^^^^^^^^^
 
-3.1.7.1 Choose region
+3.1.5.1 Choose region
 '''''''''''''''''''''
 
 To choose the region for baseline fitting, use :idl:pro:`setregion` and mark the start and end of the baseline region on either side of the source interactively. Use the left button of your mouse to mark the region and the right button to exit.
@@ -296,7 +332,7 @@ This is what the plotter window will look like after exiting the interactive mod
 
 .. image:: material/HI_PSW_tutorial/HI_survey_processing_07.png
 
-3.1.7.2 Set order of baseline fit
+3.1.5.2 Set order of baseline fit
 '''''''''''''''''''''''''''''''''
 
 We will use a polynomial baseline fit of order 3 (:idl:pro:`nfit`).
@@ -306,7 +342,7 @@ We will use a polynomial baseline fit of order 3 (:idl:pro:`nfit`).
     nfit, 3
 
 
-3.1.7.3 Show the fitted baseline
+3.1.5.3 Show the fitted baseline
 ''''''''''''''''''''''''''''''''
 
 Use :idl:pro:`bshape` to show the fitted baseline
@@ -319,7 +355,7 @@ Use :idl:pro:`bshape` to show the fitted baseline
 .. image:: material/HI_PSW_tutorial/HI_survey_processing_08.png
    
 
-3.1.7.4 Subtract the fitted baseline
+3.1.5.4 Subtract the fitted baseline
 ''''''''''''''''''''''''''''''''''''
 
 To apply, i.e. subtract the fitted baseline from the data, use the command :idl:pro:`baseline`:
@@ -331,7 +367,7 @@ To apply, i.e. subtract the fitted baseline from the data, use the command :idl:
 .. image:: material/HI_PSW_tutorial/HI_survey_processing_09.png
 
 
-3.1.8 Switch the x-axis
+3.1.6 Switch the x-axis
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Switch the x-axis from frequency to velocity (:idl:pro:`velo`)
@@ -343,11 +379,11 @@ Switch the x-axis from frequency to velocity (:idl:pro:`velo`)
 .. image:: material/HI_PSW_tutorial/HI_survey_processing_10.png
 
 
-3.1.9 Determine statistics
+3.1.7 Determine statistics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-3.1.9.1 RMS
+3.1.7.1 RMS
 '''''''''''
 
 Determine the statistics (:idl:pro:`stats`) in the velocity ranges surrounding the galaxy, i.e. 4000 km/s - 4400 km/s and 4800 km/s - 5200 km/s.
@@ -368,7 +404,7 @@ Determine the statistics (:idl:pro:`stats`) in the velocity ranges surrounding t
     :language: text
 
 
-3.1.9.2 Line properties
+3.1.7.2 Line properties
 '''''''''''''''''''''''
 
 Using the :idl:pro:`awv` (area, width, velocity) routine, determine the line's properties, including the velocity width at 20% of the line's peak velocity.
@@ -381,7 +417,7 @@ Using the :idl:pro:`awv` (area, width, velocity) routine, determine the line's p
     :language: text
 
 
-3.1.10 Compare with online database
+3.1.8 Compare with online database
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Check your results against the online database available `here <http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml>`__.
@@ -390,43 +426,13 @@ Check your results against the online database available `here <http://greenbank
 3.2 More Complicated Example
 ----------------------------
 
-
-This example is from the `HI survey dataset <http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml>`__. 
-
-It also matches the observation technique in Observing, example 1. Note, though, that not all the data in this
-dataset was taken using the standard ONOFF command with the cals (noise diodes) firing. Instead many of the
-observations were taken with the noise diodes turned off, followed by a short scan where the noise diodes are
-firing. As a result you need to determine the Tsys and then apply it to the on+off scans.
+Not all the data in this data set was taken using the standard ONOFF command with the cals (noise diodes) firing. Instead many of the observations were taken with the noise diodes turned off, followed by a short scan where the noise diodes are firing. As a result you need to determine the Tsys and then apply it to the on+off scans.
 
 
-3.2.1 Start gbtidl
-^^^^^^^^^^^^^^^^^^
-
-Open a terminal. At the prompt enter
-
-.. code-block:: bash
-
-   gbtidl
-
-You should see the following welcome screen:
-
-.. literalinclude:: material/HI_PSW_tutorial/gbtidl_startup.txt
-    :language: text
-
-3.2.2 Load files of interest
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-In GBTIDL use :idl:pro:`dirin` to load the files you want to look at:
-
-.. code-block:: IDL
-    
-    dirin, '/home/astro-util/HIsurvey/Session02'
-
-
-3.2.3 Look at file content
+3.2.1 Look at file content
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Using :idl:pro:`summary`, you can get an overview of the content of the file you have just loaded:
+You should have completed all steps in :ref:`next section <tutorials/hi_psw_tutorial:3.0 Setup>`. Now, using :idl:pro:`summary`, you can get an overview of the content of the project you have just loaded:
 
 .. code-block:: IDL
     
@@ -439,7 +445,7 @@ Here we're showing only the scans of interest for this example. We have two OffO
     :lines: 1, 55-59
 
 
-3.2.4 Double-check the scans
+3.2.2 Double-check the scans
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 :idl:pro:`list` allows to list individual scans:
@@ -470,7 +476,7 @@ Here you can see that there is no noise diode (cal) firing during the on + off s
 .. literalinclude:: material/HI_PSW_tutorial/HI_survey_Session02_list299.txt
     :language: text
 
-3.2.5 Determine :math:`T_{sys}`
+3.2.3 Determine :math:`T_{sys}`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We will use the track scan (scan 299) to determine the system temperature, :math:`T_{sys}` for each polarization. The procedure :idl:pro:`gettp` allows us to load those scans:
@@ -491,7 +497,7 @@ We will use the track scan (scan 299) to determine the system temperature, :math
 
     Scan:   299 (IF:0 FD:0 PL:1)    Tsys:  27.40
 
-3.2.6 Empty the buffer memory
+3.2.4 Empty the buffer memory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Make sure the buffer memory is empty using :idl:pro:`sclear`.
@@ -501,7 +507,7 @@ Make sure the buffer memory is empty using :idl:pro:`sclear`.
     sclear
 
 
-3.2.7 Process on+off pairs
+3.2.5 Process on+off pairs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Here you have to use the :idl:pro:`getsigref` command, and explicitly give the command the on and off scan numbers. We then use :idl:pro:`accum` to accumulate the results for both polarizations and :idl:pro:`ave` to average to accumulated spectra into one final spectra.
@@ -550,7 +556,7 @@ Here you have to use the :idl:pro:`getsigref` command, and explicitly give the c
 
 .. image:: material/HI_PSW_tutorial/HI_survey_processing_11.png
 
-3.2.8 Adjust x-axis
+3.2.6 Adjust x-axis
 ^^^^^^^^^^^^^^^^^^^
 
 Set the x-axis to avoid the edges (:idl:pro:`setx`).
@@ -562,7 +568,7 @@ Set the x-axis to avoid the edges (:idl:pro:`setx`).
 .. image:: material/HI_PSW_tutorial/HI_survey_processing_12.png
 
 
-3.2.9 Smooth the spectrum
+3.2.7 Smooth the spectrum
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Using :idl:pro:`gsmooth` you can smooth your data. Here we also use the ``/decimate`` option, this will reduce the number of channels in your spectrum.
@@ -574,7 +580,7 @@ Using :idl:pro:`gsmooth` you can smooth your data. Here we also use the ``/decim
 .. image:: material/HI_PSW_tutorial/HI_survey_processing_13.png
 
 
-3.2.10 Remove baseline
+3.2.8 Remove baseline
 ^^^^^^^^^^^^^^^^^^^^^^
 
 Set regions avoiding the RFI spike (:idl:pro:`setregion`). 
@@ -595,10 +601,10 @@ Remove baseline (after inspection) using first order polynomial (i.e. a line) us
 
 .. image:: material/HI_PSW_tutorial/HI_survey_processing_15.png
 
-3.2.11 Determine statistics
+3.2.9 Determine statistics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3.2.11.1 RMS noise
+3.2.9.1 RMS noise
 ''''''''''''''''''
 
 Determine the statistics in the velocity ranges surrounding the galaxy, i.e. 2000 km/s - 2500 km/s and 3500 km/s - 4000 km/s (:idl:pro:`stats`).
@@ -619,7 +625,7 @@ Determine the statistics in the velocity ranges surrounding the galaxy, i.e. 200
     :language: text
 
 
-3.2.11.2 Line properties
+3.2.9.2 Line properties
 ''''''''''''''''''''''''
 
 Using the :idl:pro:`awv` (area, width, velocity) routine, we can determine the line's properties, including the velocity width at 20% of the line's peak velocity. Here we will use a few methods:
@@ -688,11 +694,7 @@ Using the :idl:pro:`awv` (area, width, velocity) routine, we can determine the l
 
 4. Data Reduction - scripted
 ============================
-
-
-This example is from the HI survey dataset (http://greenbankobservatory.org/~koneil/HIsurvey/index.shtml). 
-
-* You can download the example script shown below here: |HI_survey_process.pro|
+Instead of executing the data reduction above line by line by hand you can instead run a script in GBTIDL to do it all at once. You can download the example script shown below here: |HI_survey_process.pro|. 
 
 .. |HI_survey_process.pro| replace::
     :download:`HI_survey_process.pro <material/HI_PSW_tutorial/HI_survey_process.pro>`
@@ -701,8 +703,7 @@ This example is from the HI survey dataset (http://greenbankobservatory.org/~kon
     :language: idl
 
 
-Let's say you have the script saved as ``HI_survey_process.pro``. You can execute the script doing the following
- in a regular terminal
+Let's say you have the script saved as ``HI_survey_process.pro``. You can execute the script doing the following in a regular terminal: 
 
 .. code-block:: bash
 
