@@ -235,7 +235,7 @@ For all receivers besides MUSTANG-2, each OOF is an RALongMap so each of the spi
 
 Note that if a receiver has 2 or more beams, two beams are used to OOF. In the raw data plots you will see the signal of the source twice: once for each beam. One beam is subtracted from another to make the raw data plots so that is why there are negative spikes. And if you zoom in you will see that the positive and negative spikes aren't exactly lined up. It is because the two beams are going over the source at slightly different times.
 
-How do I know if I have a good SNR for the OOF? Ask yourself, do you see peaks? If yes, you have high SNR. If you just see noise, you don't have high SNR. 
+How do I know if I have a good SNR for the OOF? Ask yourself, do you see peaks? If yes, you have high SNR. If you just see noise, you don't have high SNR. Typically the SNR will be highest in the OOF scan that is closest to in focus (look at what the focus solution is, the LFCy, and whichever delta focus column is closest to the focus value).
 
 .. admonition:: Tip for determining if you have enough SNR for OOFing.
 
@@ -251,7 +251,7 @@ AutoOOF Fitted Beam Map
 It is good to quickly check the fitted beam map. 
 
 .. _fig-example-fitted-beam-map:
-.. figure:: ../../tutorials/material/OOF_tutorial/Argus/AGBT21B_024_40_s3_fitted_beam_map.png
+.. figure:: ../../tutorials/material/OOF_tutorial/Argus/good/AGBT21B_024_40_s3_fitted_beam_map.png
 
     A plot of the fitted beam map for an OOF taken with Argus. 
 
@@ -288,6 +288,10 @@ Also check the:
 
 * the fitted beam maps
     * streaks and/or very non-gaussian = bad
+
+.. note::
+
+    A general philosophy is to apply z5 unless you can find a strong reason as to why you should not apply z5.
 
 Tips and Tricks
 ===============
@@ -432,9 +436,11 @@ For more details about this OOF see the :ref:`MUSTANG2 Good Example 1 <mustang2_
 
 Show Solutions with Focus Removed
 ---------------------------------
-When you are inspecting the surface delta map, there is an option on the right hand side to *Show Solutions with Focus Removed*. OOF solves for the pointing and focus corrections in addition to the surface corrections. *Show Solutions with Focus Removed* allows you to look at the surface corrections with the focus removed. This is particularly useful to do when you have a large focus correction (:math:`|` LFC_Y :math:`| \gtrsim` 10 mm) and/or the focus correction is outside of the range of the focus offsets which is receiver specific (see the "Focus Offset" column of :numref:`tab-receivers-OOF-values`). It is also useful to check when you are unsure if you have good surface corrections (typically when you have indications that the OOF is bad or marginal) as this allows you check the surface delta map with the focus removed to see if the underlying surface corrections are good. 
+When you are inspecting the surface delta map, there is an option on the right hand side to *Show Solutions with Focus Removed*. OOF solves for the pointing and focus corrections in addition to the surface corrections. *Show Solutions with Focus Removed* allows you to look at the surface corrections with the focus removed. This is particularly useful to do when you have a large focus correction (:math:`|` LFC_Y :math:`| \gtrsim` 10 mm) and/or the focus correction is outside of the range of the focus offsets which is receiver specific (see the "Focus Offset" column of :numref:`tab-receivers-OOF-values`). It is also useful to check when you are unsure if you have good surface corrections (typically when you have indications that the OOF is bad or marginal) as this allows you check the surface delta map with the focus removed to see if the underlying surface corrections are good. See the examples below.
 
-For an example, see the following surface delta maps of a project that OOFed with Ka+CCB for different orders of Zernike polynomials.
+Example 1
+^^^^^^^^^
+See the following surface delta maps of a project that OOFed with Ka+CCB for different orders of Zernike polynomials.
 
 .. tab-set::
 
@@ -451,7 +457,7 @@ For an example, see the following surface delta maps of a project that OOFed wit
         .. image:: material/autoOOF/AGBT20A_322_16_s1_z3_fixedScale.png
 
 
-You will notice that with all of those the surface delta map looks ok (no sharp edges really), but the surface RMS for z5 is a bit on the high side. The main thing of concern is that the focus offsets are quite high (:math:`\gtrsim|10mm|`). This is a good case in which it is good to inspect the surface corrections with the focus removed. To do this, check the box that says *Show Solutions with Focus Removed*. Once you have done that you can inspect all three orders of Zernike surface delta maps. For this case they look like the following:
+You will notice that all of these surface delta map look ok (no sharp edges really), but the surface RMS for z5 is a bit on the high side. The main thing of concern is that the focus offsets are quite high (:math:`\gtrsim|10mm|`). This is a good case in which it is good to inspect the surface corrections with the focus removed. To do this, check the box that says *Show Solutions with Focus Removed*. Once you have done that you can inspect all three orders of Zernike surface delta maps. For this case they look like the following:
 
 .. tab-set:: 
 
@@ -476,6 +482,43 @@ For this example, in the main z5 surface delta map you see (a) a spherically sym
 .. note::
 
     If the focus corrections are small, you wont see much of a difference in the focus removed solutions. It is when the focus corrections are larger when the focus removed solutions will be different from the solutions. As a rule of thumb, look at the focus removed solutions when the focus corrections are around what the +-focus positions are for the receiver being used (e.g., 10mm for MUSTANG-2).
+
+Example 2
+^^^^^^^^^
+See the following surface delta maps of a project that did an OOF with Argus.
+
+
+.. tab-set::
+
+    .. tab-item:: z5
+
+        .. image:: ../../tutorials/material/OOF_tutorial/Argus/AGBT21B_228_01_s3_z5.png
+
+    .. tab-item:: z4
+
+        .. image:: ../../tutorials/material/OOF_tutorial/Argus/AGBT21B_228_01_s3_z4.png
+
+    .. tab-item:: z3
+
+        .. image:: ../../tutorials/material/OOF_tutorial/Argus/AGBT21B_228_01_s3_z3.png
+
+You will notice that all of these surface delta maps look ok (wrt to their structure), but there is the characteristic spherical feature in the surface delta map, indicative of the focus being a large contribution to the surface corrections (instead of just the surface). The focus removed solutions look like the following:
+
+.. tab-set::
+
+    .. tab-item:: z5
+
+        .. image:: ../../tutorials/material/OOF_tutorial/Argus/AGBT21B_228_01_s3_z5_focus_removed.png
+
+    .. tab-item:: z4
+
+        .. image:: ../../tutorials/material/OOF_tutorial/Argus/AGBT21B_228_01_s3_z4_focus_removed.png
+
+    .. tab-item:: z3
+
+        .. image:: ../../tutorials/material/OOF_tutorial/Argus/AGBT21B_228_01_s3_z3_focus_removed.png
+
+Notice that the spherical structure is now gone from the *absolute solution with focus removed* in all cases and we see a typical shape of the surface delta maps. In this case, the advice would be to apply z5. 
 
 Examples
 =========

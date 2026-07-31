@@ -8,6 +8,10 @@ OOF Examples
 
     This tutorial will run you through many different OOF results so that you can get a feel for when an OOF solution is (a) good and you can apply it and (b) bad and should not be applied. 
 
+.. note::
+
+    Remember that a general philosophy is to apply z5 unless you can find a strong reason as to why you should not apply z5.
+
 General conditions that produce bad OOFs
 ========================================
 
@@ -247,38 +251,306 @@ Argus
 
     When the weather is good, OOFing with Argus is ok (in that you can get the SNR needed to fit the surface), but when the weather is marginal getting a usable Argus OOF is challenging. Thus, the general guidance is to OOF with Ka if its available.
 
-.. _argus_good:
-
 Good
 ----
+In all of the following good examples the surface delta maps do not have sharp features and the RMS is pretty good, the SNR is generally high and good, and the fitted beam maps look pretty good. The advice in all of these good cases would be to apply z5. 
+
+Example 1
+^^^^^^^^^
 .. tab-set:: 
 
     .. tab-item:: z5
 
-        .. image:: material/OOF_tutorial/Argus/AGBT21B_024_40_s3_z5_fixedScale.png
+        .. image:: material/OOF_tutorial/Argus/good/AGBT21B_024_40_s3_z5_fixedScale.png
 
     .. tab-item:: z4
 
-        .. image:: material/OOF_tutorial/Argus/AGBT21B_024_40_s3_z4_fixedScale.png
+        .. image:: material/OOF_tutorial/Argus/good/AGBT21B_024_40_s3_z4_fixedScale.png
 
     .. tab-item:: z3
 
-        .. image:: material/OOF_tutorial/Argus/AGBT21B_024_40_s3_z3_fixedScale.png
+        .. image:: material/OOF_tutorial/Argus/good/AGBT21B_024_40_s3_z3_fixedScale.png
 
     .. tab-item:: Raw data
 
-        .. image:: material/OOF_tutorial/Argus/AGBT21B_024_40_s3_raw_data.png
+        .. image:: material/OOF_tutorial/Argus/good/AGBT21B_024_40_s3_raw_data.png
+
+        Notice that the focus solution (LFCy) is ~1-2 mm which is closest to the focus scan at +0 mm so that scan has the highest SNR. 
 
     .. tab-item:: Fitted beam map
 
-        .. image:: material/OOF_tutorial/Argus/AGBT21B_024_40_s3_fitted_beam_map.png
+        .. image:: material/OOF_tutorial/Argus/good/AGBT21B_024_40_s3_fitted_beam_map.png
 
-.. _argus_bad:
+
+Example 2
+^^^^^^^^^
+.. tab-set:: 
+
+    .. tab-item:: z5
+
+        .. image:: material/OOF_tutorial/Argus/good/AGBT18B_288_02_s3_z5.png
+
+        Though there are indeed features in this solution they are not terribly sharp so this solution is ok.
+
+    .. tab-item:: z4
+
+        .. image:: material/OOF_tutorial/Argus/good/AGBT18B_288_02_s3_z4.png
+
+    .. tab-item:: z3
+
+        .. image:: material/OOF_tutorial/Argus/good/AGBT18B_288_02_s3_z3.png
+
+    .. tab-item:: Raw data
+
+        .. image:: material/OOF_tutorial/Argus/good/AGBT18B_288_02_s3_raw_data.png
+
+        You'll notice that the OOF scan that has a focus offset of +0 mm has the highest SNR. 
+
+    .. tab-item:: Fitted beam map
+
+        .. image:: material/OOF_tutorial/Argus/good/AGBT18B_288_02_s3_fitted_beam_map.png
+
+        Though the out of focus scans are quite elongated the solutions are still ok. 
+
+Example 3
+^^^^^^^^^
+.. tab-set:: 
+
+    .. tab-item:: z5
+
+        .. image:: material/OOF_tutorial/Argus/good/AGBT21B_228_03_s3_z5.png
+
+        Though there are indeed features in this solution they are not terribly sharp so this solution is ok.
+
+    .. tab-item:: z4
+
+        .. image:: material/OOF_tutorial/Argus/good/AGBT21B_228_03_s3_z4.png
+
+    .. tab-item:: z3
+
+        .. image:: material/OOF_tutorial/Argus/good/AGBT21B_228_03_s3_z3.png
+
+    .. tab-item:: Raw data
+
+        .. image:: material/OOF_tutorial/Argus/good/AGBT21B_228_03_s3_raw_data.png
+
+        The SNR is generally pretty good in these raw data maps, though since the LFCy is ~-1-2 mm the OOF scans at a focus offsets of +0 mm and -10 mm have higher SNR. Additionally, Typically the spikes are right in the center of time range, but in this case notice that the spikes in raw data are offset to the right of the time range. This is indicates that there is a pointing offset which we confirm by looking at the LPCs.
+
+    .. tab-item:: Fitted beam map
+
+        .. image:: material/OOF_tutorial/Argus/good/AGBT21B_228_03_s3_fitted_beam_map.png
+
+
+Example 4
+^^^^^^^^^
+
+.. tab-set:: 
+
+    .. tab-item:: z5
+
+        .. image:: material/OOF_tutorial/Argus/good/AGBT21B_228_05_s3_z5.png
+
+        Yes, this solution looks like a lot of structure and you might think that this solution is no good, but see note below. 
+
+    .. tab-item:: z4
+
+        .. image:: material/OOF_tutorial/Argus/good/AGBT21B_228_05_s3_z4.png
+
+    .. tab-item:: z3
+
+        .. image:: material/OOF_tutorial/Argus/good/AGBT21B_228_05_s3_z3.png
+
+    .. tab-item:: Raw data
+
+        .. image:: material/OOF_tutorial/Argus/good/AGBT21B_228_05_s3_raw_data.png
+
+    .. tab-item:: Fitted beam map
+
+        .. image:: material/OOF_tutorial/Argus/good/AGBT21B_228_05_s3_fitted_beam_map.png
+
+Note that in this example the z5 and z4 appear to be vastly different solutions in terms of structure. But notice that the difference in the RMS between z5 and z4 is quite small (and the LFCys are quite similar as well) so the structure difference you see in the surface delta maps doesn’t really matter because the low RMS is indicating that the surface solutions are not a large difference with how the surface is now. So z5 captures the structure and the advice is to apply z5. 
 
 Bad
 ---
 See the many examples above (see the first three bad examples of :ref:`how-tos/general_guides/autooof:Examples` section).
 
+Example 1
+^^^^^^^^^
+.. tab-set:: 
+
+    .. tab-item:: z5
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_04_s3_z5.png
+
+    .. tab-item:: z4
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_04_s3_z4.png
+
+    .. tab-item:: z3
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_04_s3_z3.png
+
+    .. tab-item:: Raw data
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_04_s3_raw_data.png
+
+    .. tab-item:: Fitted beam map
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_04_s3_fitted_beam_map.png
+
+Notice that surface deltas maps are not great in that they have strong, sharp features and the RMS is high (note that viewing the focus removed solution does not show an improved solution). The SNR is generally good but the fitted beam maps are streaky. Maybe you had some bad weather (clouds and/or high winds) The advice in this situation is to not apply a solution and re-OOF. 
+
+.. tab-set:: 
+
+    .. tab-item:: z5
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_04_s8_z5.png
+
+    .. tab-item:: z4
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_04_s8_z4.png
+
+    .. tab-item:: z3
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_04_s8_z3.png
+
+    .. tab-item:: Raw data
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_04_s8_raw_data.png
+
+    .. tab-item:: Fitted beam map
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_04_s8_fitted_beam_map.png
+
+This OOF would at first be classified as "marginal" because the surface delta maps have some somewhat strong features, the RMS is a bit high (though better than the previous OOF), and there is a relatively large LFCy The spherical feature in the surface delta maps are an indication that the focus correction is dominating the solutions. Let's take a look at the focus removed solutions:
+
+.. tab-set:: 
+
+    .. tab-item:: z5
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_04_s8_z5_focus_removed.png
+
+    .. tab-item:: z4
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_04_s8_z4_focus_removed.png
+
+    .. tab-item:: z3
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_04_s8_z3_focus_removed.png
+
+From the focus removed solutions we can see that indeed the focus was a large contributor to the shape of the surface delta maps and RMS. 
+
+After looking at the focus removed solutions, we can feel confident about applying the z5 correction. Also we notice that the SNR in the raw data plots is good, but the beam maps are rather streaky. There is context here that matters. This Argus project was one in which the science could tolerate marginal/worse weather so it was scheduled in worse weather which can cause bad OOFs. "Marginal"/"bad" weather for high frequency means higher winds which cans cause the streaky beams in the fitted beam maps and/or clouds which causes a higher RMS and strong features in the surface delta map. Therefore with this context the advice is in this situation this OOF is better than the previous OOF and you know you might be in marginal/worse weather so apply z5 and start observing.
+
+Example 2
+^^^^^^^^^
+
+.. tab-set:: 
+
+    .. tab-item:: z5
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_06_s3_z5.png
+
+        Strong, sharp features with high RMS and high LFCy indicating not a good solution.
+
+    .. tab-item:: z4
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_06_s3_z4.png
+
+    .. tab-item:: z3
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_06_s3_z3.png
+
+    .. tab-item:: Raw data
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_06_s3_raw_data.png
+
+    .. tab-item:: Fitted beam map
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_06_s3_fitted_beam_map.png
+
+Notice that surface deltas maps are not great in that they have strong features (especially the z5) and the RMS is high. The SNR is generally good but the fitted beam maps are streaky. Maybe you had some bad weather (clouds and/or high winds). Note that high winds cause a jitter in the beam and make the fitted beam maps have a triangular and streaky appearance. The advice in this situation is to not apply a solution and re-OOF. If HAD to apply a solution the advice would be to apply z4 as z5 not fitting well (high RMS, sharp features in surface delta map, and large LFCy).
+
+.. tab-set:: 
+
+    .. tab-item:: z5
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_06_s8_z5.png
+
+    .. tab-item:: z4
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_06_s8_z4.png
+
+    .. tab-item:: z3
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_06_s8_z3.png
+
+    .. tab-item:: Raw data
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_06_s8_raw_data.png
+
+    .. tab-item:: Fitted beam map
+
+        .. image:: material/OOF_tutorial/Argus/bad/AGBT21B_228_06_s8_fitted_beam_map.png
+
+
+This OOF would at first also be classified as "marginal" because the RMS is a bit high, but it is better than the previous OOF. The SNR is good, but the beam maps are still rather triangular and streaky. Again, the context matters. Again, this Argus project was one in which the science could tolerate marginal/worse weather so it was scheduled in worse weather which can cause bad OOFs. "Marginal"/"bad" weather for high frequency means higher winds which cans cause the streaky beams in the fitted beam maps and/or clouds which causes a higher RMS and strong features in the surface delta map. Therefore with this context the advice is in this situation this OOF is better than the previous OOF and you know you might be in marginal/worse weather so apply z5 and start observing.
+
+Uncertain
+---------
+
+Example 1
+^^^^^^^^^
+
+.. tab-set:: 
+
+    .. tab-item:: z5
+
+        .. image:: material/OOF_tutorial/Argus/uncertain/AGBT18B_288_05_s3_z5.png
+
+    .. tab-item:: z4
+
+        .. image:: material/OOF_tutorial/Argus/uncertain/AGBT18B_288_05_s3_z4.png
+
+    .. tab-item:: z3
+
+        .. image:: material/OOF_tutorial/Argus/uncertain/AGBT18B_288_05_s3_z3.png
+
+    .. tab-item:: Raw data
+
+        .. image:: material/OOF_tutorial/Argus/uncertain/AGBT18B_288_05_s3_raw_data.png
+
+    .. tab-item:: Fitted beam map
+
+        .. image:: material/OOF_tutorial/Argus/uncertain/AGBT18B_288_05_s3_fitted_beam_map.png
+
+This set of OOF results are confusing. One one hand the surface delta maps look ok and the RMS is good. But on the other hand the beam maps are quite elongated. But the main issue to identify is that two out of the three focus offset scans have very low SNR. It is a red flag that there no peaks in + and - 10 mm focus offset scans. There also could have been some sustained high winds due to the streaks in the fitted beam maps. The advice in this situation is if you weren't on the strongest calibrator that is up go to the strongest calibrator and re-OOF. If you are on the strongest calibrator, change to a lower frequency receiver and re-OOF. 
+
+Example 2
+^^^^^^^^^
+.. tab-set:: 
+
+    .. tab-item:: z5
+
+        .. image:: material/OOF_tutorial/Argus/uncertain/AGBT18B_288_03_s3_z5.png
+
+    .. tab-item:: z4
+
+        .. image:: material/OOF_tutorial/Argus/uncertain/AGBT18B_288_03_s3_z4.png
+
+    .. tab-item:: z3
+
+        .. image:: material/OOF_tutorial/Argus/uncertain/AGBT18B_288_03_s3_z3.png
+
+    .. tab-item:: Raw data
+
+        .. image:: material/OOF_tutorial/Argus/uncertain/AGBT18B_288_03_s3_raw_data.png
+
+    .. tab-item:: Fitted beam map
+
+        .. image:: material/OOF_tutorial/Argus/uncertain/AGBT18B_288_03_s3_fitted_beam_map.png
+
+At first glance, these OOF results could be confusing. On one hand, the RMS is good and the SNR in the raw data is good. On the other hand, the observer might think that the surface delta maps are not good, but there isn't anything to worry about in these maps. Additionally some of the fitted beam maps are quite triangular which is indicative of high winds. But overall there is nothing terribly bad about these solutions, so the advice is to apply z5.
 
 MUSTANG-2
 =========
