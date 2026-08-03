@@ -35,6 +35,13 @@ Receiver-specific Tutorials
         Keys: *KFPA*
 
 
+    .. card:: Examples of OOF results
+        :link: oof_tutorial
+        :link-type: ref
+
+        Go through many examples of good, bad, and uncertain OOFs and what to do.
+
+        Keys: *OOF*
 
 .. toctree::
    :maxdepth: 4
@@ -42,5 +49,5 @@ Receiver-specific Tutorials
 
    hi_psw_tutorial
    kfpa_nh3_mapping_tutorial
-
+   oof_tutorial
 

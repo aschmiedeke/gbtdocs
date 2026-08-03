@@ -204,7 +204,7 @@ OOF procedure:
     - :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Start the m2gui` to check M2 data while observing. It can be useful to start two m2guis: one for analyzing calibrator data and one to analyze science data.
 
     - In the m2gui
-        - Once the skydip has finished, :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Check the Tipping Scan (Skydip)` and write down the number of live detector in the log.
+        - Once the skydip has finished, :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Check the Tip Scan (A.K.A. Skydip)` and write down the number of live detector in the log.
         - check what each of the OOF images looks like (see :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Make Calibrator Map`)
         
 .. note:: 
