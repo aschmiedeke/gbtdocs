@@ -282,7 +282,7 @@ able to reach them. The on-call scientist will be able to advise you on how to p
 
 
 3.1 Spectral Line Calibration Observation
--------------------------------------
+-----------------------------------------
 
 After submitting this script, AstrID will set the commanded configuration parameters, slew to the commanded 
 off position and balance the system there. Observers should watch the AstrID output carefully here. The power
