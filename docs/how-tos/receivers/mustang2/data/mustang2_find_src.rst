@@ -22,11 +22,11 @@ Here is an overview of the main applications of ``find_src``:
 	+--------------------------------------------+---------------------------+----------------------------------------------------------------------------------------------+
 	| Intention                                  | Command example           | Notes                                                                                        |
 	+============================================+===========================+==============================================================================================+
-	| Find scans on target (Section 2)           | ``find_src M00_1142*``    | Outputs to screen a list of scans on the target, with flags for bad scans.                   |
+	| Find scans on target (Section 2)           | ``find_src MACS0647*``    | Outputs to screen a list of scans on the target, with flags for bad scans.                   |
 	+--------------------------------------------+---------------------------+----------------------------------------------------------------------------------------------+
-	| Make (calibrated) MIDAS map(s) (Section 3) | ``find_src -m M00_1142*`` | Makes maps per scan and coadds. If filtering parameters aren't specified, defaults are used. |
+	| Make (calibrated) MIDAS map(s) (Section 3) | ``find_src -m MACS0647*`` | Makes maps per scan and coadds. If filtering parameters aren't specified, defaults are used. |
 	+--------------------------------------------+---------------------------+----------------------------------------------------------------------------------------------+
-	| Make (calibrated) TODs (Section 3)         | ``find_src -M M00_1142*`` | Makes calibrated TODs (e.g. for use with WITCH). Data "cleaned", but not filtered.           |
+	| Make (calibrated) TODs (Section 3)         | ``find_src -M MACS0647*`` | Makes calibrated TODs (e.g. for use with WITCH). Data "cleaned", but not filtered.           |
 	+--------------------------------------------+---------------------------+----------------------------------------------------------------------------------------------+
 
 .. :ref:`Find scans on target <how-tos/receivers/mustang2/data/mustang2_find_src:2. Use ``find_src`` to get summary of observing info>`
@@ -55,7 +55,7 @@ Note that the existence of a scan in these files does not imply that it is good 
 
 2.1 Excute ``find_src``
 -----------------------
-To run ``find_src`` to get a summary of the observing information, use the full path to ``find_src`` with a source name after it. For example, if you want to know about any observations of the galaxy cluster MOO J1142+1527, you would execute ``/users/penarray/Public/find_src MOO_1142*``
+To run ``find_src`` to get a summary of the observing information, use the full path to ``find_src`` with a source name after it. For example, if you want to know about any observations of the galaxy cluster MACS0647, you would execute ``/users/penarray/Public/find_src MACS0647*``
 
 .. note:: 
 
@@ -63,11 +63,15 @@ To run ``find_src`` to get a summary of the observing information, use the full 
 
 .. note:: 
 
-	If you are searching for an object by name, you will need to know what the name of the object was in the catalog used by the AstrID scripts when the target was observed. Further, often suffixes are added to the source name in the script (for example when using the offset script it adds `_off_1p5` to the source name). Thus, you'll typically want to add a star to the end of the name. So its best to just add the star by default when searching by source name. For example, ``find_src MOO_1142*``.
+	If you are searching for an object by name, you will need to know what the name of the object was in the catalog used by the AstrID scripts when the target was observed. Further, often suffixes are added to the source name in the script (for example when using the offset script it adds `_off_1p5` to the source name). Thus, you'll typically want to add a star to the end of the name. So its best to just add the star by default when searching by source name. For example, ``find_src MACS0647*``.
 
 If you want to input multiple source names, assuming there are no bugs the source argument can be a comma separated list and each item can contain wildcards. It is easy to get a name wrong (moo1142 is not MOO1142). If you are unsure what names were used in AstrID, the best solution is to search by location.
 
-``find_src`` can also search by RA,Dec which avoids requiring knowing the naming nomenclature used by PI/Scheduling Block.
+``find_src`` can also search by ``RA,Dec`` (in degrees) or ``hh:mm:ss+-dd:mm:ss`` (hour angle) which avoids requiring knowing the naming nomenclature used by PI/Scheduling Block. For example, if you wanted to find the observations for the galaxy cluster MACS0647 (coordinates ``06:47:50.03 +70:14:49.7``), you would search within 1.5' of the cluster center by doing ``/users/penarray/Public/find_src -r 1.5 06:47:50.03+70:14:49.7``. We suggest that you use a search radius of at least 1.5' because with galaxy clusters, often observers use an offset scan strategy that offsets scans 1.5' from the cluster center. 
+
+.. note:: 
+
+	When you search with hour angle coordinates there should be no comma between the coordinates, but when you search with degree coordinates there is a comma. 
 
 2.2 Info Provided by ``find_src`` 
 ---------------------------------
@@ -95,12 +99,12 @@ You can also use ``find_src`` to produce a calibrated MIDAS map of your science 
 ------------------------------------
 
 3.1.1 Default usage
--------------------
+^^^^^^^^^^^^^^^^^^^
 The base command to make calibrated maps via MIDAS is ``/users/penarray/Public/find_src -m <source_name>``.
 
 Notes on using ``find_src`` to make calibrated maps via MIDAS:
 	- it uses ``quickm2map.pro``, which is our legacy MIDAS mapmaker
-	- the most impactful parameter(s) are given by the variable ``ffilt``, whose default value is [0.07,49.0]. The principle concern is the first value, which represents the frequency at which the data (TODs) are high-pass filtered. 0.07 Hz is moderate value. You can try to recover larger scale signal by pushing this down to 0.06 or 0.05, but the maps will tend to also have larger noise (and less white noise) by doing this. It is exceedingly rare that below 0.05 is advantageous. To change the default high-pass value to, say, 0.06, you can run ``find_src -m MOO_1142* -f 0.06``.
+	- the most impactful parameter(s) are given by the variable ``ffilt``, whose default value is [0.07,49.0]. The principle concern is the first value, which represents the frequency at which the data (TODs) are high-pass filtered. 0.07 Hz is moderate value. You can try to recover larger scale signal by pushing this down to 0.06 or 0.05, but the maps will tend to also have larger noise (and less white noise) by doing this. It is exceedingly rare that below 0.05 is advantageous. To change the default high-pass value to, say, 0.06, you can run ``find_src -m MACS0647* -f 0.06``.
 	- another impactful parameter can be ``PCA``, whose default value is 3. This indicates the number of principle components which are removed from the TODs. A higher number indicates greater filtering, though the changes are usually not that substantial. There is not a single option that allows the user to change this (easily, directly).
 	- You may also want to run ``find_src -m -N <source_name>``, where the ``N`` will produce additional figures (added to a ``Figures/`` subfolder of the output path) and an ascii (txt) output with a name similar to ``NoisePerScan_MIDAS_0f070-to-49f0Hz_.txt``.  The figures and output may help the user assess data quality beyond what may be previously noted (e.g. regarding scans that crash IDL or that have otherwise been flagged by the MUSTANG-2 team). The user can compile a list of bad scans and supply them with ``find_src -b <file_of_bad_scans>``.
 
@@ -114,12 +118,12 @@ Notes on using ``find_src`` to make calibrated maps via MIDAS:
 
 .. note::
 
-	``find_src`` will by default include ALL scans that have been calibrated and match the source name or location (within search radius). So if you want specific scans and/or sessions to be excluded you need to explicitly tell ``find_src`` that.
+	``find_src`` will by default include ALL scans that have been calibrated and match the source name or location (within search radius). So if you want specific scans and/or sessions to be excluded you need to explicitly tell ``find_src`` that. For example to make calibrated MIDAS maps of MACS0647 from just TGBT25B_608_12 the command would be ``/users/penarray/Public/find_src -m -p TGBT25B_608_12 MACS0647*``. It's easy for the mind to think "ah, -m means to make a map, and I want to make a map of MACS 0647, so the -m option takes an argument." But this is not how the script works. ``find_src`` takes the argument of an object (or location). That is, ``find_src`` needs to know to search for the scans on (e.g.) MACS 0647 whether or not you make a map.
 
 3.1.2 Editing MIDAS parameters
-------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 To change the defaults more broadly, you may wish to make a copy of ``/users/penarray/Public/m2/reduction_scripts/shell_integration/MIDAS_conf.pro`` to an appropriate directory (where you have write permission), and perhaps alter the name as you see fit. For this example, suppose user emoravec copies the configuration module to ``/users/emoravec/MIDAS_emoravec_conf.pro``. After editing parameter values in the copied file, this can be run with find_src as 
-``/users/penarray/Public/m2/reduction_scripts/shell_integration/find_src -m MOO_1142* -C /users/emoravec/MIDAS_emoravec_conf.pro``
+``/users/penarray/Public/m2/reduction_scripts/shell_integration/find_src -m MACS0647* -C /users/emoravec/MIDAS_emoravec_conf.pro``
 
 What changes might one make to the configuration file (module)? As above, you could change the values of ``PCA``. Anything 2 or higher is fine. ``PCA=1`` will actually revert to PCA=3 inside quickm2map.pro. This is done largely because PCA=1 should be equivalent to subtracting a common-mode, which is done by setting the input keyword cmsub to anything non-zero (generally just 1). That is, if using ``cmsub``, it’s best to set ``PCA=0`` and ``cmsub=1``. You also have the option to set a polynomial timescale with the variable poltime. By setting ``poltime`` (which only works with cmsub), the polynomial order will be calculated such that variations on the timescale of ``poltime`` should roughly be fitted. It’s suggest that you keep ``poltime`` above the scan period (e.g. ``poltime=30`` corresponds to 30 seconds, and is generally fine. Larger values will correspond to fewer modes being fit and subtracted, i.e. less filtering.)
 

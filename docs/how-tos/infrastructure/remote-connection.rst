@@ -354,7 +354,6 @@ You will need to establish a SSH tunnel and start a VNC viewer in order to view 
 
     .. tab-item:: Mac OS
 
-
         To establish an SSH tunnel, open a terminal on your Mac and type:
  
         .. code-block:: bash
