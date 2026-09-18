@@ -11,45 +11,67 @@ Learning-oriented lessons that take you through a series of steps to complete a 
 Receiver-specific Tutorials
 ===========================
 
-.. card-carousel:: 2 
+.. grid:: 1 2 2 2
 
-    .. card:: HI Position Switched (psw) Data
-        :link: hi_psw_tutorial
-        :link-type: ref
-             
-        - Setup scheduling blocks. 
-        - Calibrate the data.
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        HI Position Switched (psw) Data 
+
+        - Setup scheduling blocks
+        - Calibrate the data
+
+        Keys: *L-Band*, *psw*, *gbtidl*  
+
+        .. button-link:: hi_psw_tutorial.html
+            :color: primary
+            :tooltip: HI psw tutorial
+            :outline:
+            :click-parent:
+
+            HI psw tutorial
 
 
-        Keys: *L-Band*, *psw*, *gbtidl* 
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        NH\ :sub:`3` Mapping Observations using KFPA 
+
+        - Setup scheduling blocks
+        - Calibrate the data
+
+        Keys: *KFPA*, *psw*, *gbtidl*, *gbtgridder*  
+
+        .. button-link:: kfpa_nh3_mapping_tutorial.html
+            :color: primary
+            :tooltip: KFPA mapping tutorial
+            :outline:
+            :click-parent:
+
+            KFPA mapping tutorial
 
 
-    .. card:: NH\ :sub:`3` Mapping Observations using KFPA
-        :link: kfpa_nh3_mapping_tutorial
-        :link-type: ref
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
 
-        - Setup scheduling blocks.
-
-        Keys: *KFPA*
-
-
-    .. card:: Argus N\ :sub:`2`\ H\ :sup:`+`\ (1-0) Observations
-        :link: argus_n2hp_fsw_tutorial
-        :link-type: ref
+        Argus N\ :sub:`2`\ H\ :sup:`+`\ (1-0) Observations 
 
         - Setup scheduling blocks.
         - Calibrate the pointed and mapped data.
         - Grid the mapped data.
 
-        Keys: *Argus*, *fsw*, *gbtidl*
+        Keys: *Argus*, *fsw*, *gbtidl*, *gbtgridder*  
 
-    .. card:: Examples of OOF results
-        :link: oof_tutorial
-        :link-type: ref
+        .. button-link:: argus_n2hp_fsw_tutorial.html
+            :color: primary
+            :tooltip: Argus fsw tutorial
+            :outline:
+            :click-parent:
 
-        Go through many examples of good, bad, and uncertain OOFs and what to do.
-
-        Keys: *OOF*
+            Argus fsw tutorial
 
 
 .. toctree::
@@ -59,6 +81,39 @@ Receiver-specific Tutorials
    hi_psw_tutorial
    kfpa_nh3_mapping_tutorial
    argus_n2hp_fsw_tutorial
+
+
+=============================
+Observing technique Tutorials
+=============================
+
+
+.. grid:: 1 2 2 2
+
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        Examples of OOF results
+
+        - Examples of good, bad, uncertain OOFs.
+        - Learn what to do in each case.
+
+        Keys: *OOF*, *examples*  
+
+        .. button-link:: oof_tutorial.html
+            :color: primary
+            :tooltip: OOF tutorial
+            :outline:
+            :click-parent:
+
+            OOF tutorial
+
+
+
+.. toctree::
+   :maxdepth: 4
+   :hidden:
 
    oof_tutorial
 

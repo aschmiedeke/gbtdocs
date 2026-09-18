@@ -4,6 +4,12 @@
 Argus N\ :sub:`2` H\ :sup:`+`\ (1-0) Observations
 #################################################
 
+.. warning:: 
+
+   The following tutorial is currently under construction. You are welcome to read it, but please keep in mind that formatting 
+   and/or information will be changed imminently. Thank you!
+
+
 This tutorial walks you through the process of observing N2H+ with Argus on the GBT in frequency-switching mode. In this
 tutorial we will walk through observational setup, observing strategy, and data reduction resulting in a dataset that is ready
 for scientific analysis. 
@@ -85,7 +91,8 @@ you which of the AutoOOF capable receivers are currently installed.
 .. admonition:: Links to more information available on GBTdocs
 
    - an :ref:`Explanation of Out-of-focus (OOF) Holography <explanations/OOF:An Explanation of OOF>`
-   - an :ref:`AutoOOF Guide <how-tos/general_guides/autooof:AutoOOF Guide>` 
+   - an :ref:`AutoOOF Guide <how-tos/general_guides/autooof:AutoOOF Guide>`
+   - an :ref:`OOF Tutorial <tutorials/oof_tutorial:OOF Examples>` showing many OOF examples 
 
 
 
@@ -113,15 +120,9 @@ you will need to run an additional peak-focus sequence on your primary calibrato
 .. admonition:: Focus offset measurement
 
    Information on how to calculate the focus offset between Argus and your pointing receiver is available 
-   :ref:`here <how-tos/receivers/argus/argus_obs:2.3 Determine focus offset>`.
-
-
-.. todo:: Add script for peak focus measurement with receivers X, Ka, KFPA, or Q on primary calibrator.
-
-
-.. todo:: Add script for peak focus measurement with receivers X, Ka, KFPA or Q on secondary calibrator. 
-
-
+   :ref:`here <how-tos/receivers/argus/argus_obs:2.3 Determine focus offset>`. Scripts to run peak and focus
+   measurements with the receivers X, Ka, KFPA or Q on the primary and secondary calibrator are available at the same
+   link. 
 
 
 Science Observations
@@ -150,12 +151,10 @@ For the frequency-switched observations of N2H+ presented in this tutorial we us
   * We also have to define the switching period (``swper``) and the switching frequencies (``swfreq``)
 
 * VEGAS is setup for VEGAS mode 5, i.e. bandwidth of 187.5 MHz and 65536 channels. This provides a spectral resolution of
-  2.9 kHz.
+  2.9 kHz. An overview of the different VEGAS modes is available in :numref:`tab-vegas-modes`.
 
 * Since we are observing below 100 GHz, we are using the recommended lower sideband (``'LSB'``). 
 * Argus is a single polarization receiver. The only polarization option available is ``'Linear'``. 
-
-.. todo:: Add reference to VEGAS spectral line mode table. 
 
 
 
@@ -421,9 +420,8 @@ beam. All other beams (if configured to collect data), effectively perform drift
 configured to obtain data with all 16 beams. As mentioned before, beam 10 was the tracking beam.
 
 To process each single Track scan, we utilize the procedure `argus_fsw.pro`. This procedure calibrates the spectrum to
-the T\ :sub:`A`\ :sup:`*` temperature scale. 
-
-.. todo:: Add link to temperature scale explanation.
+the T\ :sub:`A`\ :sup:`*` temperature scale. An in-depth explanation of the temperature scales is available :ref:`here
+<explanations/temperature_scales:Temperature Scales and Telescope Efficiences>`.
 
 
 .. code-block:: idl
@@ -542,9 +540,9 @@ To process the map scans (scans 37-60). The map scans were bracketed with vane c
 61+62, indicating that the atmospheric conditions were stable during those measurements.
 
 To calibrate the map scans, we will utilize the procedure `argus_mapfsw.pro`. This procedure calibrates the spectrum to
-the  T\ :sub:`A`\ :sup:`*` temperature scale. 
-
-.. todo:: Add link to temperature scale explanation.
+the  T\ :sub:`A`\ :sup:`*` temperature scale. An in-depth explanation of the temperature scales is available :ref:`here
+<explanations/temperature_scales:Temperature Scales and Telescope Efficiences>`.
+ 
 
 Before we can run the procedure, we need to update the baseline fitting parameters. Here we will utilize the results
 from fitting a baseline to the pointed track observations. Open the procedure `argus_mapfsw.pro` using your favorite
