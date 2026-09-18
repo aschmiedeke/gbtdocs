@@ -29,7 +29,6 @@ for scientific analysis.
 .. admonition:: Data
 
    The data we will be working with in this tutorial was obtained during the Fall 2022 GBT Observer Training Workshop. 
-   The raw sdfits files are accessible at ADD PATH HERE.
 
 
 
