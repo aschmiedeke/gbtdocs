@@ -1,0 +1,42 @@
+Collecting arguments and data... 
+Loading data ... 
+    keep_beam_00.fits
+    keep_beam_01.fits
+    keep_beam_02.fits
+    keep_beam_03.fits
+    keep_beam_04.fits
+    keep_beam_05.fits
+    keep_beam_06.fits
+    keep_beam_07.fits
+    keep_beam_08.fits
+    keep_beam_09.fits
+    keep_beam_10.fits
+    keep_beam_11.fits
+    keep_beam_12.fits
+    keep_beam_13.fits
+    keep_beam_14.fits
+    keep_beam_15.fits
+Data Extracted Successfully.
+
+ Please note that this gridding will be done using a monochromatic beam ie. using a single frequency (color) for the convolution kernel. 
+
+
+
+ Your parameters were either user specified or assumed to be the following. Please review: 
+
+Name          Value
+--------      ---------
+Kernel        gauss
+Telescope     GBT
+Projection    SFL
+Input Chan.   0:4095
+# Output Chan. 4096
+# of spec.    28800
+Image size    128x94
+Beam_FWHM     0.0022119375382944973
+
+ If you need more info, type 'N' and run again with `--verbose 4` flag 
+
+ Would you like to continue with these parameters? 
+ 'Y' for yes, 'N' for no.  
+
