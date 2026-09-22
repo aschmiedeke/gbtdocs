@@ -10,6 +10,8 @@ This guide contains instructions for the recommended observing procedure for the
 
 .. admonition:: Change Log
 
+    2026-09-21:
+       - Updates for the 26B observing semester (incl. more generalized observing scripts)
     2024-01-04: 
        - Adjusted instructions to reflect change of available receivers
        - Modified code snippet in :ref:`how-tos/receivers/argus/argus_obs:3.1 Pointing and Focus Correction` to apply  :math:`\Delta_\text{focus}` when switching from Argus to "peak/focus receiver"        
@@ -38,16 +40,28 @@ In the "ObservationManagement Log" in Astrid, make sure you see the lines "CIF P
 .. image:: images/astrid_argusOn_check.png
 
 
+.. admonition:: Troubleshooting
+
+    If CIF and LNA power remain off, open a terminal and check that you can ping the instrument, ``ping argus``. If
+    nothing comes back, ask the operator to "Run the resetbox on Argus". This should bring back the network connection. 
+
+    If the network connection to Argus works fine, have the operator call the instrument friend or on-call scientist for 
+    assistance. 
+
+
+
 2. Primary Calibrator
 =====================
 
-Go to your primary calibrator (the brightest calibrator available at the time of your observations).
+Go to your primary calibrator (i.e., the brightest calibrator available at the time of your observations).
 
 
 2.1 Set the surface
 -------------------
 
-Run **AutoOOF** using *Ka-band* to set the surface (you can use Argus, if your calibrator is strong enough; e.g. 0319+4130 is a very strong calibrator that Argus can use for autooof).
+Run **AutoOOF** using *Ka-band*, *Q-band* or *Argus* to set the surface. Technically you can run an AutoOOF with Ka-band, Q-band, W-band, Argus, and MUSTANG-2m, however using W-band over Argus does not gain much, and MUSTANG-2 needs a dedicated startup procedure by the instrument team that takes about 1h before the instrument can be used. You can use Argus if your calibrator is strong enough; e.g. 0319+4130 is a very strong calibrator that Argus can use for AutoOOF. If they are available, we recommend to use either *Ka-band*, followed by *Q-band*. 
+
+The observing script remains the same, irrespective of which receiver is in focus.
     
 .. code-block:: python
 
@@ -55,14 +69,13 @@ Run **AutoOOF** using *Ka-band* to set the surface (you can use Argus, if your c
     Catalog('/home/astro-util/astridcats/wband_pointing.cat')
 
     source = '0319+4130'                            # replace with your calibrator
-    Break("Ask the operator to switch to Ka-Band") 
     AutoOOF(source)
 
 
 2.2. Absolute flux calibration, focus reference
 -----------------------------------------------
 
-Run **AutoPeakFocus** and **AutoPeak** using *Argus* at your target frequency for absolute flux calibration. You can optionally use `elAzOrder=True`, which will run the elevation pointing scans first, followed by the azimuth pointing scans. We typically have larger offsets in elevation than in azimuth, so using this option facilitates finding the pointing solutions.
+Run **AutoPeak**, **Focus** and **AutoPeak** using *Argus* at your target frequency for absolute flux calibration. You can optionally use `elAzOrder=True`, which will run the elevation pointing scans first, followed by the azimuth pointing scans. We typically have larger offsets in elevation than in azimuth, so using this option facilitates finding the pointing solutions.
 
 
 .. code-block:: python
@@ -81,22 +94,58 @@ Run **AutoPeakFocus** and **AutoPeak** using *Argus* at your target frequency fo
     AutoPeak(source, frequency=freq_argus, elAzOrder=True)
 
 
+Make sure you take notes of the peak heights of all four peak scans of the second **AutoPeak()**. At this point the
+surface of the telescope should be set optimally, the telescope is pointed correctly and in focus. So we can compare the
+height of the second set of peak scans with the strength of the calibrator in the ALMA calibrator catalog. 
+
+
+.. todo:: Describe how to do this in a new argus how-to guide and link this here.
+
+
+
 2.3 Determine focus offset
 --------------------------
 
-Run **AutoPeakFocus** using *Ka-Band* to determine the focus offset between Argus (at your frequency) and Ka-Band (at the standard Ka-Band pointing frequency).
+If you do not have a strong calibrator nearby your science target (i.e., within 10 degrees), we recommend switching to a lower frequency receiver for pointing and focus calibration on a secondary calibrator. This also usually allows to reduce the slew time between science target and calibrator. However, when you use a different receiver than Argus for pointing and focus, you will need to measure the focus offset between the two receivers. 
+
+Run **AutoPeakFocus** using either *Ka-Band*, *X-Band*, *KFPA*, *Q-Band* (whichever is available, in that order; we will call this receiver the "pointing receiver) to determine the focus offset between Argus (at your observing frequency) and your "pointing receiver" (at its standard pointing frequency).
          
 .. code-block:: python
 
-    source = '0319+4130'                            # replace with your calibrator
-    Break("Ask the operator to switch to Ka-Band. Click yes when Ka-Band is in place.")
-    SetValues("ScanCoordinator", {"receiver": "Rcvr26_40"})
-    SetValues("LO1", {"restFrequency_A": 32000})
+    primaryCalibrator = '0319+4130'         # replace with your calibrator
 
-    AutoPeakFocus(source)
+    Break("Have you switched to the desired receiver? (KFPA, X, Ka, or Q?)")
+
+    rcvr = GetValue("Antenna", "receiver")
+
+    if rcvr == 'Rcvr8_10':
+        # configure X
+        SetValues("ScanCoordinator", {"receiver": "Rcvr8_10"})
+        SetValues("LO1",{"restFrequency_A":9000})
+    elif rcvr == 'RcvrArray18_26':
+        # configure KFPA
+        SetValues("ScanCoordinator", {"receiver": "RcvrArray18_26"})
+        SetValues("LO1",{"restFrequency_A":25000})
+    elif rcvr == 'Rcvr26_40':
+        # configure Ka
+        SetValues("ScanCoordinator", {"receiver": "Rcvr26_40"})
+        SetValues("LO1",{"restFrequency_A":32000})
+    elif rcvr == 'Rcvr40_52':
+        # configure Q
+        SetValues("ScanCoordinator", {"receiver": "Rcvr40_52"})
+        SetValues("LO1",{"restFrequency_A":43000})
+
+    AutoPeakFocus(primaryCalibrator) 
+
+    Break ("Ask the operator to switch back to Argus. Click yes when Argus is in place.")
+
+    #configure Argus
+    SetValues("ScanCoordinator", {"receiver": "RcvrArray75_115"})
+    SetValues("LO1",{"restFrequency_A":freq})
 
 
-Step 2.2 provides :math:`\text{focus}_\text{Argus}` at your target frequency and Step 2.3 provides :math:`\text{focus}_\text{Ka, primary}`. Using those two numbers we can calculate the focus offset, :math:`\Delta_\text{focus}`, as :math:`\Delta_\text{focus} = \text{focus}_\text{Argus} - \text{focus}_\text{Ka, primary}`. Determining the focus offset with a single decimal point is sufficient. 
+
+Step 2.2 provides :math:`\text{focus}_\text{Argus}` at your target frequency and Step 2.3 provides :math:`\text{focus}_\text{pointing receiver, primary}`. Using those two numbers we can calculate the focus offset, :math:`\Delta_\text{focus}`, as :math:`\Delta_\text{focus} = \text{focus}_\text{Argus} - \text{focus}_\text{pointing receiver, primary}`. Determining the focus offset with a single decimal point is sufficient. 
 
 
 .. admonition:: Example
@@ -104,7 +153,7 @@ Step 2.2 provides :math:`\text{focus}_\text{Argus}` at your target frequency and
 
     :math:`\text{focus}_\text{Argus} = -4 \text{ mm}`
 
-    :math:`\text{focus}_\text{Ka, primary} = -1 \text{ mm}`
+    :math:`\text{focus}_\text{pointing receiver, primary} = -1 \text{ mm}`
     
     :math:`\Delta_\text{focus} = -4 \text{ mm} - (-1 \text{ mm}) = -3 \text{ mm}`
 
@@ -114,49 +163,80 @@ Step 2.2 provides :math:`\text{focus}_\text{Argus}` at your target frequency and
 3. Secondary Calibrator
 =======================
 
-Go to your secondary calibrator (nearby your science target, i.e. within ~30 deg in Az and ~10-20 deg in El, the closer the better to minimize slew times).
+Go to your secondary calibrator (nearby your science target, i.e. within ~10 deg in Az and El, the closer the better to minimize slew times).
 
 
 3.1 Pointing and Focus Correction
 ---------------------------------
 
-Run **AutoPeakFocus** using *Ka-Band*, this script will at the end automatically apply your determined :math:`\Delta_\text{focus}`. If you have the run the script more than once, please make sure you comment out line 14 ``SetValues("Antenna",{"local_focus_correction,Y": new_lfc}`` before re-issuing the script, to avoid adjusting the focus multiple times. 
+Run **AutoPeakFocus** using your pointing receiver (*Ka-Band*, *X-Band*, *KFPA*, *Q-Band*), this script will at the end automatically apply your determined :math:`\Delta_\text{focus}`. If you have the run the script more than once in a row, please make sure you comment out line 42 ``SetValues("Antenna",{"local_focus_correction,Y": new_lfc}`` before re-issuing the script, to avoid adjusting the focus multiple times. 
 
 
 .. code-block:: python
     :linenos:
 
+
+    ## (1) determine FocusArgus and Focus[X,Ka,KFPA or Q] on primary calibrator
+    ##      (a) you get FocusArgus from script 11
+    ##      (b) you get Focus[X,Ka,KFPA or Q] from script 12
+    ## (2) calculate deltaFocus
+
+    ## deltaFocus = FocusArgus - Focus[X, Ka, KFPA or Q]
+    ## example:
+    ## deltaFocus= 5.1                  # in mm; 2023-12-16 Anika; Argus 2.7, KFPA -2.4
+    deltaFocus = 0.0                    # in mm; REPLACE WITH YOUR VALUE
+
     Catalog('/home/astro-util/astridcats/kband_pointing.cat')
 
-    source = '0336+3218'                    # replace with your calibrator
+    secondaryCalibrator = '0336+3218'       # replace with your calibrator
     freq_argus = 93173.0                    # replace with your target frequency in MHz
-    delta_focus = 4.0                       # replace with your focus offset value in mm
+
+    
+    Break("Have you switched to the desired receiver? (KFPA, X, Ka, or Q?)")
+
+    rcvr = GetValue("Antenna", "receiver")
+
+    if rcvr == 'Rcvr8_10':
+        # configure X
+        SetValues("ScanCoordinator", {"receiver": "Rcvr8_10"})
+        SetValues("LO1",{"restFrequency_A":9000})
+    elif rcvr == 'RcvrArray18_26':
+        # configure KFPA
+        SetValues("ScanCoordinator", {"receiver": "RcvrArray18_26"})
+        SetValues("LO1",{"restFrequency_A":25000})
+    elif rcvr == 'Rcvr26_40':
+        # configure Ka
+        SetValues("ScanCoordinator", {"receiver": "Rcvr26_40"})
+        SetValues("LO1",{"restFrequency_A":32000})
+    elif rcvr == 'Rcvr40_52':
+        # configure Q
+        SetValues("ScanCoordinator", {"receiver": "Rcvr40_52"})
+        SetValues("LO1",{"restFrequency_A":43000})
 
 
-    Break("Ask the operator to switch to Ka-Band. Click yes when Ka-Band is in place.")
-    SetValues("ScanCoordinator", {"receiver": "Rcvr26_40"})
-    SetValues("LO1", {"restFrequency_A": 32000})
-    # adjust focus for Ka-Band
+    # adjust the focus properly for [X, KFPA, Ka or Q]
     lfc = float(GetValue("Antenna", "local_focus_correction,Y"))
-    new_lfc = lfc - delta_focus
-    SetValues("Antenna",{"local_focus_correction,Y": new_lfc})
+    new_lfc = lfc -deltaFocus
+    SetValues("Antenna", {"local_focus_correction,Y": new_lfc})
 
-    AutoPeakFocus(source)
+    AutoPeakFocus(secondaryCalibrator) 
 
-    Break("Ask the operator to switch back to Argus. Click yes when Argus is in place.")
+    Break ("Ask the operator to switch back to Argus. Click yes when Argus is in place.")
+
+    #configure Argus
     SetValues("ScanCoordinator", {"receiver": "RcvrArray75_115"})
-    SetValues("LO1", {"restFrequency_A": freq_argus})
+    SetValues("LO1",{"restFrequency_A": freq_argus})
 
-    # adjust the focus for next Argus observations
+    # adjust the focus properly for Argus
     lfc = float(GetValue("Antenna", "local_focus_correction,Y"))
-    new_lfc = lfc + delta_focus
-    SetValues("Antenna",{"local_focus_correction,Y": new_lfc})
+    new_lfc = lfc +deltaFocus
+    SetValues("Antenna", {"local_focus_correction,Y": new_lfc})
 
-    print ""
-    Comment("----------------"
-    Comment("LFC-Y changed from %f to %f   (shift of %f mm)" % (float(lfc), float(new_lfc), float(delta_focus)))
-    Comment("----------------"
-    print ""
+    Comment("")
+    Comment("-------------------------------")
+    Comment("LFC changed  from %f  to  %f     (shift of %f  mm)"  %(float(lfc), float(new_lfc), float(deltaFocus)))
+    Comment("--------------------------------")
+    Comment("")
 
 
 
@@ -168,9 +248,9 @@ If you don't use the code snippet provided in :ref:`how-tos/receivers/argus/argu
 .. admonition:: Example
     :class: note
 
-    :math:`\text{focus}_\text{Ka, secondary} = +2 \text{ mm}`
+    :math:`\text{focus}_\text{pointing receiver, secondary} = +2 \text{ mm}`
 
-    :math:`\text{LFC} = \text{focus}_\text{Ka, secondary} + \Delta_\text{focus} = +2 \text{ mm} + (-3 \text{ mm}) = -1 \text{ mm}`
+    :math:`\text{LFC} = \text{focus}_\text{pointing receiver, secondary} + \Delta_\text{focus} = +2 \text{ mm} + (-3 \text{ mm}) = -1 \text{ mm}`
 
 To add this LFC value in the system, you have to be in the "DataDisplay" Tab in Astrid, and there in the subtab "Focus". Then click "Tools" in the top left menu of the Astrid applications and choose "Options".
 
