@@ -376,7 +376,7 @@ The GUI makes maps in the units of the selected calibration. By *default* the ca
 If you are curious, there are four map unit options in the GUI: 
     - :math:`\mathrm{T}_{\mathrm{RJ,FB}}` is the forward beam surface brightness temperature under the Rayleigh-Jeans approximation (the units of the skydip) - this is the default value.
     - :math:`\mathrm{T}_{\mathrm{RJ,MB}}` is the main beam surface brightness temperature under the Rayleigh-Jeans approximation.
-    - T_CMB is the surface brightness temperature assuming spectral intensity using the Planck function (shape) for T_CMB. See, e.g. Mroczkowski (2019) for a review.
+    - :math:`\mathrm{T}_{\mathrm{CMB}}` is the surface brightness temperature assuming spectral intensity using the Planck function (shape) for :math:`\mathrm{T}_{\mathrm{CMB}}`. See, e.g. Mroczkowski (2019) for a review.
     - Jy is Janskys.
 
 Calibration files are required to convert a map from its default units, as they contain the necessary unit conversion information. These files are produced by the MUSTANG-2 team during the calibration process, which takes place in the days to weeks after observations are completed. As a result, unit conversion is not available during live observations.
