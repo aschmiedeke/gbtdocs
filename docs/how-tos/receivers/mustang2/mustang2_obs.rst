@@ -17,6 +17,14 @@ Before you observe you need to have prepared your observing scripts and chosen y
 
 2.1 Observing Log
 -------------------
+.. attention::
+
+    As of September 15, 2026 the NRAO wiki is an internal-only or intranet site, accessible only from the private network (or through a VPN/remote-access connection). This means that you can only access the observing logs from a FastX or VNC connection, or configuring your browser to use a proxy. If you go to create an observing log without being on the NRAO/GBO network you will get a "403 error: Forbidden" error.
+
+    To access the `observing logs wiki <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/NewRunNotes>`_ page from your FastX or VNC connection, in your remote connection simply open an internet browser (for example to open firefox just type ``firefox &`` in the terminal) and go to the observing log wiki. 
+
+    You can also configure a browser to use a SOCKS proxy through an SSH tunnel on your home computer. The tunnel would be ``ssh -D localhost:8123 ssh.gb.nrao.edu`` then you need to configure your browser to use that tunnel for accessing the wiki (you can use extensions like FoxyProxy for this). The easiest thing during observing will be to access the observing log via your FastX or VNC connection. 
+
 
 During observing, you are expected to edit the MUSTANG-2 observing run notes wiki and take notes of what's occurred throughout the night.
 
