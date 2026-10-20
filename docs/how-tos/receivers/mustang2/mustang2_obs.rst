@@ -111,7 +111,7 @@ Over many hours temperature drifts will make the tuning less optimal. Therefore 
 
 To check the tuning:
     #. To reconnect to the roaches execute ``/users/penarray/Public/startMUSTANG.bash <project1> reconnect`` where ``<project>`` is the project code (e.g., AGBT26A_XXX_sessionNum). For more information about the ``./startMUSTANG.bash`` script see `Advanced Useage of the startMUSTANGbash <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Advanced_Usage_of_startMUSTANG.bash>`_.
-    #. Run ``um1.plotIQ()`` in each roach's terminal.
+    #. Run ``um1.IQplot()`` in each roach's terminal.
     #. If needed, run ``um1.fixIQ()`` per roach.
 
 2.5.2 Check that data is flowing
@@ -524,7 +524,7 @@ In AstrID, go from ``working online`` to ``working offline``:
 7.2 Shutdown M2
 ---------------
 
-For the shutdown process you can either do this **(a) automatically** or **(b) manually**. For BOTH you need to be in the gateway for MUSTANG-2 (not just the observing gateway).
+For the shutdown process you can either do this **(a) automatically** or **(b) manually**. For BOTH you need to be in the gateway for MUSTANG-2 (not just the observing gateway). If you are not, you will not be able to execute the script and/or unlock the CLEO M2 manager. To get in the gateway for M2, simply ask the operator, "Could you please put me in the gateway for MUSTANG-2 so that I can shutdown M2?"
 
 .. tab-set::
 
@@ -568,6 +568,34 @@ For the shutdown process you can either do this **(a) automatically** or **(b) m
                     This is the time of day that the daily cycle starts measured in fraction of a day (UT).  0.65 is a nice balance 
                     between ensuring the cycle is over by the time any observations are likely to come up, yet not so early that 
                     there is no time to work with the receiver in the morning.
+
+7.2.1 Shutdown script troubleshooting
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+As of 2025, the shutdown script will sometimes execute but end with the following error
+
+.. code-block:: pytb 
+
+    Traceback (most recent call last):
+  File "/users/penarray/Public/startMUSTANG.py", line 195, in <module>
+    turnOff(manager)
+  File "/users/penarray/Public/startMUSTANG.py", line 84, in turnOff
+    manager.set_value("dataXmit"+r,0)
+  File "/home/sparrow/24.4/lib/python/gbt/ygor/GrailClient.py", line 702, in set_value
+    return self.cl.set_value(self.dev, path, value, force)
+  File "/home/sparrow/24.4/lib/python/gbt/ygor/GrailClient.py", line 510, in set_value
+    if self.cl.set_value(device, path, value, force) != 'OK':
+  File "/home/sparrow/24.4/sparrow/monctrl-sparrow-env/lib/python2.7/site-packages/SOAPpy/Client.py", line 540, in __call__
+    return self.__r_call(*args, **kw)
+  File "/home/sparrow/24.4/sparrow/monctrl-sparrow-env/lib/python2.7/site-packages/SOAPpy/Client.py", line 562, in __r_call
+    self.__hd, self.__ma)
+  File "/home/sparrow/24.4/sparrow/monctrl-sparrow-env/lib/python2.7/site-packages/SOAPpy/Client.py", line 475, in __call
+    raise p
+    SOAPpy.Types.faultType: <Fault SOAP-ENV:Server: Device error: Rcvr_MBA1_5.Rcvr_MBA1_5: No value received after subscribing to parameter dataXmitB>
+    Failed to connect/turn off settings in MUSTANG manager - please check these
+    MUSTANG2 is shutdown
+
+Usually what this means is that steps 3 and 4 from the manual shutdown (components have been turned off and the daily cycle parameters have been set), but that the biases have not been set to 0 and the data transmission has not been turned off. If you wait a while you may see the ``DataXinit`` for each roach in the CLEO M2 manager screen slowly turn off, but its best to go ahead and turn them off manually. You will also need to set the biases to 0 manually. To both set the biases to 0 and turn of data transmission, check that you are in the gateway for M2 then follow the instructions for "Manual Shutdown" in :ref:`Shutdown M2 <how-tos/receivers/mustang2/mustang2_obs:7.2 Shutdown M2>` above for numbers 1 and 2. 
+
 
 7.3 Finish updates to log 
 -------------------------

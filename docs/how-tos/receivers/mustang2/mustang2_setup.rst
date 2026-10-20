@@ -38,15 +38,10 @@ Detailed M2 instrument team instructions on tuning and biasing that can be used 
 #. **Check that the array is cool and not cycling**
     Go the CLEO M2 housekeeping tab and check that the array temperature is ~400mK. Also check that the "Cycle State" on the left side of the window is IDLE and not in stages 1-5. If it is in a "stage" this means that it is cycling. If either the temperature of the array is warm or it is cycling, the array is not ready and/or not cool enough for tuning yet. 
 
-#. **Change directories** to where the startup + tuning script is
-    .. code:: bash
-
-        cd /users/penarray/Public
-
 #. **Run script**
     .. code:: bash
 
-        ./startMUSTANG.bash projectCode_sessionNumber
+        /users/penarray/Public/startMUSTANG.bash projectCode_sessionNumber
 
 
     where ``projectCode`` is your proposal number (e.g. ``AGBT18A_014``) and ``sessionNumber`` is your current (AstrID) session number (e.g. ``01``). The session number is **not** the source code from the DSS e-mail. It is very important to get this right or data reduction will fail to pick up the tuning which in turn affects focusing. Check https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/NewRunNotes to see how many sessions have already been observed for this project. 

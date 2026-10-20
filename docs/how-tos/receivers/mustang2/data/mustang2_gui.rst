@@ -7,6 +7,10 @@ This guide shows you how to check your data with the MUSTANG-2 GUI.
 
 Start the m2gui
 ===============
+.. note::
+
+    If you are actively observing on titania or ariel, it is best to ssh to another computer (e.g., ``ssh euclid``) to start up the gui. Titania and ariel don't have a lot of processing power.
+
 To open up the m2gui, first make sure you are in a directory that you have write permissions in and then in a terminal execute:
 
 .. code:: bash
