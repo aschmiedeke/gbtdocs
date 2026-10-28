@@ -95,7 +95,12 @@ where :math:`n_{\text{pol}}` is the number of polarization products (4 for full 
 
 The following tables list all currently supported VPM modes and the vegas.scale values for each.
 Observers should still use the :ref:`references/backends/vpm:VPM Observing Tools` to check the value
-of vegas.scale for their particular observing setup.
+of vegas.scale for their particular observing setup. 
+Note that three 1500-MHz windows are used to cover the full bandwidth of the ultrawideband receiver (UWBR).
+The center frequency of each window is tuned such that the windows overlap by 187.5 MHz,
+thus ensuring continuous coverage of the full observing band.
+These center frequencies are 1225, 2350, and 3475 MHz.
+Therefore, when using UWBR, one should select the most appropriate 1500-MHz bandwidth observing mode."
 
 
 .. include:: /material/tables/VPM_coherent_modes.tab
@@ -386,7 +391,7 @@ listed as lustre clients at `this website <https://greenbankobservatory.org/port
 
 In **coherent dedispersion modes** data are written to
 
-``/lustre/gbtdata/<projectID>/VEGAS_CODD/<bankID>``,
+``/stor/pulsar/gbtdata/<projectID>/VEGAS_CODD/<bankID>``,
 
 where 
 
@@ -395,7 +400,7 @@ where
 
 In **incoherent dedispersion modes** data are written to
 
-``/lustre/gbtdata/<projectID>/VEGAS/<bankID>``
+``/stor/pulsar/gbtdata/<projectID>/VEGAS/<bankID>``
 
 File names follow the forms:
 

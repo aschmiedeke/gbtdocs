@@ -1,7 +1,7 @@
 .. |icon-open| image:: images/DTopen.jpg
 
-
 .. _astrid:
+
 Astronomer's Integrated Desktop (AstrID)
 ----------------------------------------
 

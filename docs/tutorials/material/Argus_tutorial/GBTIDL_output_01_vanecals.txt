@@ -1,0 +1,68 @@
+GBTIDL -> vanecal, 10
+Scan:    10 (IF:0 FD:9 PL:0)    Tsys:   1.00
+(zenith) Opacity(93.168089,59795.169) = 0.3929
+AtmTsys(93.168089,59795.169) = 95.9261
+Tatm(93.168089,59795.169) = 289.0423
+fdnum, beam, Tsys*[K]:        0           1       285.09885
+fdnum, beam, Tsys*[K]:        1           2       226.48593
+fdnum, beam, Tsys*[K]:        2           3       232.80958
+fdnum, beam, Tsys*[K]:        3           4       273.67937
+fdnum, beam, Tsys*[K]:        4           5       228.63467
+fdnum, beam, Tsys*[K]:        5           6       274.72375
+fdnum, beam, Tsys*[K]:        6           7       217.85602
+fdnum, beam, Tsys*[K]:        7           8       238.14182
+fdnum, beam, Tsys*[K]:        8           9       232.05761
+fdnum, beam, Tsys*[K]:        9          10       222.55392
+fdnum, beam, Tsys*[K]:       10          11       221.29446
+fdnum, beam, Tsys*[K]:       11          12       245.67560
+fdnum, beam, Tsys*[K]:       12          13       229.10080
+fdnum, beam, Tsys*[K]:       13          14       221.68882
+fdnum, beam, Tsys*[K]:       14          15       237.94824
+fdnum, beam, Tsys*[K]:       15          16       218.53617
+Tcal, Twarm, tatm:       298.00355       296.84999      289.042
+GBTIDL -> vanecal, 35
+Scan:    35 (IF:0 FD:9 PL:0)    Tsys:   1.00
+(zenith) Opacity(93.168080,59795.189) = 0.3973
+AtmTsys(93.168080,59795.189) = 95.3262
+Tatm(93.168080,59795.189) = 288.5006
+fdnum, beam, Tsys*[K]:        0           1       288.78719
+fdnum, beam, Tsys*[K]:        1           2       229.16524
+fdnum, beam, Tsys*[K]:        2           3       235.28959
+fdnum, beam, Tsys*[K]:        3           4       276.70912
+fdnum, beam, Tsys*[K]:        4           5       231.59214
+fdnum, beam, Tsys*[K]:        5           6       275.75921
+fdnum, beam, Tsys*[K]:        6           7       219.42320
+fdnum, beam, Tsys*[K]:        7           8       240.81813
+fdnum, beam, Tsys*[K]:        8           9       235.61771
+fdnum, beam, Tsys*[K]:        9          10       226.24732
+fdnum, beam, Tsys*[K]:       10          11       224.77892
+fdnum, beam, Tsys*[K]:       11          12       249.08931
+fdnum, beam, Tsys*[K]:       12          13       234.36098
+fdnum, beam, Tsys*[K]:       13          14       224.71696
+fdnum, beam, Tsys*[K]:       14          15       240.92477
+fdnum, beam, Tsys*[K]:       15          16       222.37462
+Tcal, Twarm, tatm:       296.60277       295.74999      288.501
+GBTIDL -> vanecal, 61
+Scan:    61 (IF:0 FD:9 PL:0)    Tsys:   1.00
+(zenith) Opacity(93.168075,59795.201) = 0.3999
+AtmTsys(93.168075,59795.201) = 95.3201
+Tatm(93.168075,59795.201) = 288.1756
+fdnum, beam, Tsys*[K]:        0           1       295.79197
+fdnum, beam, Tsys*[K]:        1           2       235.96737
+fdnum, beam, Tsys*[K]:        2           3       241.97596
+fdnum, beam, Tsys*[K]:        3           4       284.67886
+fdnum, beam, Tsys*[K]:        4           5       239.41615
+fdnum, beam, Tsys*[K]:        5           6       287.72770
+fdnum, beam, Tsys*[K]:        6           7       225.28118
+fdnum, beam, Tsys*[K]:        7           8       247.97437
+fdnum, beam, Tsys*[K]:        8           9       242.92076
+fdnum, beam, Tsys*[K]:        9          10       232.87521
+fdnum, beam, Tsys*[K]:       10          11       231.09287
+fdnum, beam, Tsys*[K]:       11          12       256.20640
+fdnum, beam, Tsys*[K]:       12          13       240.95913
+fdnum, beam, Tsys*[K]:       13          14       231.83502
+fdnum, beam, Tsys*[K]:       14          15       249.74152
+fdnum, beam, Tsys*[K]:       15          16       228.64926
+Tcal, Twarm, tatm:       296.61934       295.64999      288.176
+GBTIDL -> 
+

@@ -46,7 +46,7 @@ Explanations of the daisy parameters you need to understand:
 	* ``daisyScanDur`` - the total duration in seconds of the scan. 
 		* For science scans, we know that "the Daisy scan will produce an approximately closed circular pattern on the sky after 22 radial oscillation periods" so in the M2 template scripts for science targets ``daisyScanDur`` is set by ``daisyScanDur=daisyRadPd*22.0`` and you will not have to change this as you will be updating ``daisyRadPd``. So for science scans, the total science scan duration is 8.5-9.25 minutes.
 		* For calibrator scans, we use something called a "quick daisy." Insteaad of completing the full, 22 radial oscillation periods, we only do 4.5. The calibrator scans are meant to be a quick check of a point source so do not need the full 22 radial oscillations. We typically have ~190-200 detectors online during a given observation so the 4.5 radial oscillations of the point source are enough for calibration. Note that ``daisyRad=1.5`` for these "quick daisies." Thus, in total ``daisyScanDur=daisyRadPd*4.5`` for a quick daisy which amounts to ~1.5 minutes.
-	* ``lissHw`` is the lissajous dithering half-width in arcminutes. As stated above, the MUSTANG-2 standard scan is the combination of a smallish lissajous box scan and a larger daisy scan. ``lissHW`` is essentially the size of that lissajous box. A smaller lissajous pattern spreads out the coverage. If you want to cover a large area ``lissHW`` can be made larger, but if you are trying to concentrate integration time in the center r=2' then keep ``lissHW`` small. For most MUSTANG-2 targets which are ~4' across ``lissHW`` is not so important but for very large target (e.g., the Moon) then you would get a big, array-sized peak in the coverage map for small ``lissHW``. So in short except in extreme cases ``lissHW`` is not important. ``lissHW`` is set for you in the template scripts so that you don't have to worry about this.
+	* ``lissHw`` is the lissajous dithering half-width in arcminutes. As stated above, the MUSTANG-2 standard scan is the combination of a smallish lissajous box scan and a larger daisy scan. ``lissHW`` is essentially the size of that lissajous box. If you want to cover a large area ``lissHW`` can be made larger, but if you are trying to concentrate integration time in the center r=2' then keep ``lissHW`` small. For most MUSTANG-2 targets which are ~4' across ``lissHW`` is not so important but for very large target (e.g., the Moon) then you would get a big, array-sized peak in the coverage map for small ``lissHW``. So in short except in extreme cases ``lissHW`` is not important. ``lissHW`` is set for you in the template scripts so that you don't have to worry about this.
 
 Note that you can use ``~bmason/mustangPub/daisycalc.py`` to help determine appropriate parameters.
 
@@ -135,9 +135,19 @@ You are expected to have your calibrator sources planned out **at least a few ho
 -----------------------
 You will need to observe at least one "primary calibrator" during your observing session. A primary calibrator is an absolute flux calibrator. Observing an absolute flux calibrator ensures that flux calibration can be done. It is preferable that you observe 2-3 flux calibrators per observing session. But if your science goals can be met with a 10-20% error in your flux measurement, you can observe only one flux calibrator. In general, you will want to find the flux calibrators that are closest to your source.
 
-Where can you find primary/flux calibrators? You can use any of the ALMA grid cals listed in the following catalog: ``/users/penarray/Public/Catalogs/alma_gridcal.cat``. You can check the `ALMA Calibrator Source Catalogs <https://almascience.nrao.edu/sc/>`_ for the current flux density levels in Band 3 of the ALMA grid calibrators listed in ``/users/penarray/Public/Catalogs/alma_gridcal.cat`` (the flux density values listed in the CLEO catalog are quite old). Uranus and Neptune, especially Uranus, are also good flux calibrators. 
+Where can you find primary/flux calibrators? The standard for M2 observing is that you use one of the ALMA grid calibrators (or grid cals) for flux calibration. The ALMA grid cals are bright radio calibrators that ALMA monitors regularly. 
 
-Find a few primary source calibrators (beyond your OOF source) and add them to the ``m2quickDaisy`` script.
+You can find suitable primary calibrators using CLEO's Scheduler & Skyview and doing the following:
+	- Click *Catalog...* in the upper right-hand corner
+	- Click *Add/Select/DeSelect Catalogs ...*
+	- Select *mustang_alma_gridcals*
+	- Click *Apply*
+
+The "Intensity" value that is listed in the Scheduler and Skyview catalog is the minimum flux. If you open up `/home/astro-util/astridcats/mustang_alma_gridcals.cat` in a text viewer there are more columns that are of use (e.g., the date of the minimum flux, the flux of the source in May 2026, and the frequency of the observation).
+
+You can check the `ALMA Calibrator Source Catalogs <https://almascience.nrao.edu/sc/>`_ for the current flux density levels in Band 3 of the ALMA grid calibrators. Uranus and Neptune, especially Uranus, are also good flux calibrators. 
+
+You'll want to find a few primary source calibrators (that are roughly near your source and/or on the way to/from your source) and add them to either the ``3_m2quickDaisyPrimary`` or the extra ``m2quickDaisy`` script.
 
 3.1.1 Primary Calibrators in February
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -155,7 +165,7 @@ Consult with MUSTANG-2 team about which flux calibrators to use during this time
 
 3.2 OOF source
 --------------
-It is efficient to use a primary calibrator as your first OOF source of the night. In general a flux above 1 Jy at 90GHz is preferable, however good results have been obtained on weaker sources. Again, you can use CLEO's Scheduler and Skyview to find an ALMA grid cal source or other source that is > 1 Jy but you should check `ALMA Calibrator Source Catalogs <https://almascience.nrao.edu/sc/>`_ to make sure its flux is actually > 1 Jy. 
+It is efficient to use a primary calibrator as your first OOF source of the night. In general a flux above 1 Jy at 90GHz is preferable, however good results have been obtained on weaker sources. Again, you can use CLEO's Scheduler and Skyview to find an ALMA grid cal source or other source that has a minimum flux of 1 Jy. It is good practice to check what a recent flux measurement is of the source to make sure it is currently at least 1 Jy. You can do this by either a) opening up ``/home/astro-util/astridcats/mustang_alma_gridcals.cat`` and looking at the value in ``S_latest`` (which is the most recent flux as of May 2026) or b) check most recent 90 GHz (Band 3) flux via `ALMA Calibrator Source Catalogs <https://almascience.nrao.edu/sc/>`_ 
 
 The main quality of a good OOF source is that it is a bright point source at 90 GHz. You want to avoid sources that have structure like Saturn or 3C273 (M87). Out of the planets Uranus and Neptune are the only planets that can be used as an OOF source. Note that Uranus is brighter than Neptune and can also be used as an absolute flux calibrator. Neptune is not particularly bright (< 1 Jy) so it is not a bad choice to OOF on, but there can be better choices. If you happen to have something brighter nearby (say an ALMA calibrator) - OOF on that instead. In general, when trying to decide whether to OOF on a planet, if convenience factors (e.g., if you get the telescope near a planet and it will take a while to slew to something else that is out of the way) overrides other factors, use planets. 
 
@@ -177,7 +187,7 @@ Secondary calibrators are used to:
 
 The secondary calibrators need to be "nearby" your science target. This is driven by the need for reference pointing but both the need for a reference pointing and tracking changes in the telescope gain matter. 
 
-**A secondary calibrator should be within 10-15 degrees of your target and > 0.5 Jy.** 
+**A secondary calibrator should be within 10-15 degrees of your target and have a minimum flux of > 0.25 Jy (250 mJy).** 
 
 You can find suitable secondary calibrators using CLEO's Scheduler & Skyview and doing the following:
 	- Click *Catalog...* in the upper right-hand corner
@@ -185,18 +195,22 @@ You can find suitable secondary calibrators using CLEO's Scheduler & Skyview and
 	- Select *mustang_pointing*
 	- Click *Apply*
 
-To find a source that is > 0.5 Jy, do the following in CLEO's Scheduler & SkyView:
-    - Go to the box in the right-hand corner that says *Source Intensity Range* and in the *Min* box put 0.5
+To find a source that has a minimum flux > 0.25 Jy, do the following in CLEO's Scheduler & SkyView:
+    - Go to the box in the right-hand corner that says *Source Intensity Range* and in the *Min* box enter 0.25
     - Hit enter
     - Load your science source catalog
     - Enter the time you will be observing in the *UT Date and Time* box
     - Find a source that is showing and is 10-15 deg from your target
 
-Tips for chosing a secondary calibrator:
-	- If a pointing calibrator can also be a bright absolute calibrator, that is worth a few extra degrees of slewing (over a lower brightness close by source). 
-	- If the flux density of a calibrator is above a couple hundred mJy, the most important thing is the proximity to the source. So if you have >1 secondary calibrators that are have a flux above a couple hundred mJy, chose whichever one is the closest. 
+.. note::
+
+	Like with ``mustang_alma_gridcals`` the "Intensity" value displayed in Scheduler & Skyview are a minimum intensity. If you open up ``/home/astro-util/astridcats/mustang_pointing.cat`` in a text viewer there are more columns that are of use (e.g., the date of the minimum flux, the most recent flux measurement of the source as of May 2026 - ``S_latest``, and the frequency of the observation). Note that ``Flux_source == "PSCALS4.7"`` there won't be an ALMA measurement of minimum flux.
+
+Tips for choosing a secondary calibrator:
+	- If a secondary calibrator can also be a bright absolute calibrator, that is worth a few extra degrees of slewing (over a lower brightness close by source). 
+	- If the flux density of a calibrator is above a couple hundred mJy, the most important thing is the proximity to the source. So if you have >1 secondary calibrators that are have a flux above a couple hundred mJy, chose whichever one is the closest. We should be able to see a source that is as low as 100 mJy in 90 seconds. You could even do a longer scan daisy scan on something that is faint.
+	- The flux that is displayed in Scheduler & Skyview is a minimum and a lot of the calibrator sources are variable. If you are worried that your secondary calibrator might not be bright enough, you can select two secondary calibrators: one that is fainter nearby and one that is brighter but further away. You can then test on the fly if the faint one is bright enough by doing the following observing plan: flux cal, bright pointing, faint brighter, science target. Then you can chose which one to use. You can also check the most recent flux of the source in the ``S_latest`` column of ``/home/astro-util/astridcats/mustang_pointing.cat``.
 	- You should also take into consideration if the calibrator will be too low/high at any point during your observations.
-	- Let's say you have no nearby secondary calibrator options that have fluxes > 0.5 Jy. You can check to see if there are any sources that are > 0.1 Jy nearby (change your minimum of the source intensity range in Scheduler & Skyview to 0.1 instead of 0.5). If you find a suitable source nearby, you can do a longer quick daisy scan on faint nearby secondary (a source that has a flux of 0.1 Jy). 
 	- When in doubt, reach out to the M2 instrument team for help. 
 
 
@@ -212,8 +226,13 @@ Once you know the size of scans that is appropriate for your science, you can ch
 
     Legacy M2 scripts will have labels like ``beauty_r3``, instead of ``5_science_rX``.
 
-In general, the M2 instrument team recommends doing an offset strategy where 4 science scans have the center of their daisy varied in the corners of a 1.5'x1.5' box. This offset strategy helps especially for projects recovering extended signal (that is, separating extended signal from extended, i.e. large-scale noise). There are two advantages to the offset strategy: (1) it seems to reduce the large-scale noise somewhat, and (2) it gives a more uniform noise in the center of the map (more so than with a single pointing). The trade-off is that the coverage is more spread-out, so there's a minor hit to sensitivity/mapping speed. There is an example of the offset strategy in ``5_science_r3p5_offset_4scans``; if you need a different daisy radius you will have to update that script with your requirements.
+In general, the M2 instrument team recommends doing an offset strategy where 4 science scans have :math:`\pm` 1.5' added to the RA and Dec of the target each. For example, the first scan is (RA+1.5',Dec),  the second scan is (RA-1.5',Dec), the third scan is (RA,Dec+1.5'), and so forth.. This offset strategy helps especially for projects recovering extended signal (that is, separating extended signal from extended, i.e. large-scale noise). There are two advantages to the offset strategy: (1) it seems to reduce the large-scale noise somewhat, and (2) it gives a more uniform noise in the center of the map (more so than with a single pointing). The trade-off is that the coverage is more spread-out, so there's a minor hit to sensitivity/mapping speed. There is an example of the offset strategy in ``5_science_r3p5_offset_4scans``; if you need a different daisy radius you will have to update that script with your requirements.
 
-.. admonition:: General Advice
+4.1 Scan size advice
+--------------------
+By science case:
 
-	The general suggestion for standard cluster science is to do the offset strategy with an r=3.5'. 
+- **Galaxy Clusters:** The general suggestion for standard cluster science is to do the offset strategy with an r=3.5' - see template script named ``5_science_r3p5_offset_4scans``. The offset strategy is 4 sets of scans with :math:`\pm` 1.5' added to the RA and Dec each. 
+- **A Point Source:** The general suggestion for observing a point source is use r=2.5' - see template script named ``5_science_r2p5``
+- **A "large" source like the moon:** Generally a very large scan size, but there is a specific strategy for something like this - talk to the M2 instrument team about this.
+- **Mapping a large area like the galatic center:** There is a specific strategy for something like this - talk to the M2 instrument team about this.

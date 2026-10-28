@@ -17,7 +17,7 @@ Latest 30 minutes before the start of your observing session (give it more time 
         If the fontsize in talk&draw is unreadably small, close all open CLEO applications and run :code:`xrandr --dpi 96` in a terminal. Then reopen your CLEO application.
 
 
-    .. image:: material/observing_talkDraw.png
+    .. image:: material/gbt_observing/observing_talkDraw.png
 
 #. Contact the telescope operator 30 minutes before the start of your observing session
     * either via talk & draw or
@@ -27,11 +27,11 @@ Latest 30 minutes before the start of your observing session (give it more time 
 #. Start AstrID, type :code:`astrid` in a terminal
     * Choose "Work Offline" mode when prompted
 
-      .. image:: material/observing_astridMode_offline.png
+      .. image:: material/gbt_observing/observing_astridMode_offline.png
 
 #. In AstrID: 
     * Make sure all your scripts are ready to go:
-        .. image:: material/observing_astrid_ObservationManagementTab_Edit.png    
+        .. image:: material/gbt_observing/observing_astrid_ObservationManagementTab_Edit.png    
 
     * Fill in your project details in the ObservationManagement Run Tab
         * Enter your project (if not there already)
@@ -42,15 +42,15 @@ Latest 30 minutes before the start of your observing session (give it more time 
 
         * Enter the telescope operator's name. 
 
-        .. image:: material/observing_astrid_ObservationManagementTab_Run_01.png
+        .. image:: material/gbt_observing/observing_astrid_ObservationManagementTab_Run_01.png
 
 Observing
 =========
 
 Once the operator lets you know your observing time has started and they give you security access (put you in the "gateway"), you should 
     #. Put your Astrid into *online with control of the telescope* mode
-        .. image:: material/observing_astridMode_change.png
-        .. image:: material/observing_astridMode_onlineControl.png
+        .. image:: material/gbt_observing/observing_astridMode_change.png
+        .. image:: material/gbt_observing/observing_astridMode_onlineControl.png
 
     #. Load your observing script and submit it
-        .. image:: material/observing_astrid_ObservationManagementTab_Run_02.png
+        .. image:: material/gbt_observing/observing_astrid_ObservationManagementTab_Run_02.png

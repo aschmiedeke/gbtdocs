@@ -1,3 +1,5 @@
+.. _connect_to_GBO_network:
+
 ###########################################
 How to connect remotely to the GBO network
 ###########################################
@@ -351,7 +353,6 @@ You will need to establish a SSH tunnel and start a VNC viewer in order to view 
 .. tab-set::
 
     .. tab-item:: Mac OS
-
 
         To establish an SSH tunnel, open a terminal on your Mac and type:
  

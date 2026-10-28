@@ -11,12 +11,24 @@ How to observe with MUSTANG-2
 -----------------------------
 Before you observe you need to have prepared your observing scripts and chosen your primary/flux calibrators, your OOF sources, and secondary calibrators. For a guide on how to do all of these things see :ref:`this guide <mustang2_obs_scripts>` for instructions on preparing your scripts.
 
-1.2 Observing Log
+
+2. Observing Preparation
+========================
+
+2.1 Observing Log
 -------------------
+.. attention::
+
+    As of September 15, 2026 the NRAO wiki is an internal-only or intranet site, accessible only from the private network (or through a VPN/remote-access connection). This means that you can only access the observing logs from a FastX or VNC connection, or configuring your browser to use a proxy. If you go to create an observing log without being on the NRAO/GBO network you will get a "403 error: Forbidden" error.
+
+    To access the `observing logs wiki <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/NewRunNotes>`_ page from your FastX or VNC connection, in your remote connection simply open an internet browser (for example to open firefox just type ``firefox &`` in the terminal) and go to the observing log wiki. 
+
+    You can also configure a browser to use a SOCKS proxy through an SSH tunnel on your home computer. The tunnel would be ``ssh -D localhost:8123 ssh.gb.nrao.edu`` then you need to configure your browser to use that tunnel for accessing the wiki (you can use extensions like FoxyProxy for this). The easiest thing during observing will be to access the observing log via your FastX or VNC connection. 
+
 
 During observing, you are expected to edit the MUSTANG-2 observing run notes wiki and take notes of what's occurred throughout the night.
 
-#. Create a new page and entry at the bottom of the `observing logs wiki <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/NewRunNotes>`_ by clicking "Edit Wiki text" 
+#. Well in advance of your observations, create a new page and entry at the bottom of the `observing logs wiki <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/NewRunNotes>`_ by clicking "Edit Wiki text" 
 
 #. Follow the naming convention of entry above <AGBTsemester_project-code_session-number>, e.g. ``AGBT18A_014_01``
 
@@ -35,11 +47,7 @@ During observing, you are expected to edit the MUSTANG-2 observing run notes wik
     If you don't have permissions yet to edit the wiki and are observing, you can take notes in a text document and email them to the MUSTANG-2 team afterwards to upload to the wiki for you.
 
 
-2. Observing Preparation
-========================
-
-
-2.1 Connect
+2.2 Connect
 -----------
 
 Open and connect to :ref:`VNC session <how-tos/infrastructure/remote-connection:Quick VNC Reference>` or start an XFCE :ref:`FastX session <how-tos/infrastructure/remote-connection:FastX connection>` on ``titania`` or ``ariel`` via FastX.
@@ -49,12 +57,12 @@ Connection Issues?
 The internet at GBO can be intermitent at times. Specifically there are days that the internet goes down for 30-60 seconds at a time quite often. Are you having issues with FastX or your VNC being really laggy? Check `this status page <https://status.gb.nrao.edu/>`__ to see the status of the ssh gateways. See :ref:`these instructions <how-tos/infrastructure/remote-connection:What to do if the GBO network is down/slow>` for FastX and VNC workarounds using Charlottesville to potentially better your connection. 
 
 
-2.2 AstrID 
+2.3 AstrID 
 -----------
 
 Open an AstrID session and navigate to your corresponding MUSTANG-2 project. The MUSTANG-2 instrument team should have already populated your AstrID area with appropriate scripts.
 
-2.3 CLEO
+2.4 CLEO
 --------
 
 The following are suggested CLEO windows to have open during observing:
@@ -101,26 +109,26 @@ The following are suggested CLEO windows to have open during observing:
 
 - Launch → Observer Tools → **Talk and Draw** 
 
-2.4 Checklist if setup was done awhile ago
+2.5 Checklist if setup was done awhile ago
 -------------------------------------------
 If the setup (tuning, get data flowing, etc.) was done a while ago (several hours) and there is no other M2 project before you, there are a few things you should check before starting to take data.
 
-2.4.1 Reconnect to Roaches
---------------------------
+2.5.1 Reconnect to Roaches
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 Over many hours temperature drifts will make the tuning less optimal. Therefore if the tuning was done a while ago (several hours), you need to reconnect to the roaches and check the tuning.
 
 To check the tuning:
     #. To reconnect to the roaches execute ``/users/penarray/Public/startMUSTANG.bash <project1> reconnect`` where ``<project>`` is the project code (e.g., AGBT26A_XXX_sessionNum). For more information about the ``./startMUSTANG.bash`` script see `Advanced Useage of the startMUSTANGbash <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Advanced_Usage_of_startMUSTANG.bash>`_.
-    #. Run ``um1.plotIQ()`` in each roach's terminal.
+    #. Run ``um1.IQplot()`` in each roach's terminal.
     #. If needed, run ``um1.fixIQ()`` per roach.
 
-2.4.2 Check that data is flowing
---------------------------------
+2.5.2 Check that data is flowing
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Go to the M2 CLEO manager and check that data is flowing (see how to do this and some fixes if data is not flowing :ref:`here <how-tos/receivers/mustang2/mustang2_setup:3. Check that data is flowing>`). 
 
-2.4.3 Check biases
-------------------
-If biases were set manually by hand before the observations, check that they are not 0 in the ``Miscelaneous`` tab of the CLEO M2 manager. If they are 0 it means that the manager likely crashed.
+2.5.3 Check biases
+^^^^^^^^^^^^^^^^^^
+If biases were set manually by hand before the observations, check that they are not 0 in the ``Miscelaneous`` tab of the CLEO M2 manager. If they are 0 it means that the manager likely crashed and you'll need to :ref:`references/receivers/mustang2/mustang2_manager:Restart the manager`.
 
 3. Observing Procedure
 ======================
@@ -129,65 +137,89 @@ If biases were set manually by hand before the observations, check that they are
 3.1. Communicate with operator 
 ------------------------------
 
-A few minutes before your observing start time (say 15 minutes, better 30 minutes), get on Talk & Draw, tell the operator who you are and what project you are observing for. Also ask who the operator is. 
+At least 15 minutes before your observing start time, get on Talk & Draw, tell the operator who you are and what project you are observing for. At this point you can also ask who the operator is. 
+
+.. hint:: 
+
+    You can check who the current operator is by checking the `current shift of the operators log <https://dss.gb.nrao.edu/ops/search/current>`_.
 
 3.2. Fill in AstrID info
 ------------------------
 
-In AstrID under ObservationManagement, go to the Run tab and fill in the Observer and Operator information. 
+In AstrID under ``ObservationManagement``, go to the ``Run`` tab and fill in the Observer and Operator information. 
 
+3.3. Fill in weather and correction info in observing log
+---------------------------------------------------------
+Go to your observing log and fill in the following:
 
-3.3. Take control
+- Weather conditions:
+    - Temperature
+    - Humidity
+    - Wind Velocity
+    
+    .. note::
+
+        You can get all of this weather information from the *GbtStatus* tab in AstrID, the "Weather" CLEO application, or from the "Status" CLEO application.
+- The focus and pointing corrections before you submit any corrections:
+    - LFCy - to find this value, look at ``YFC`` in the CLEO Status screen.
+    - Az LPC - to find this value, look at ``Az LPC`` in the CLEO Status screen.
+    - El LPC - to find this value, look at ``El LPC`` in the CLEO Status screen.
+
+.. attention:: 
+
+    If the pointing corrections are >30" ask the operator to zero them out. If you leave large corrections in you likely will not see anything in your OOF scans.
+
+3.4. Take control
 -----------------
 
 Once the member of the M2 instrument team has finished biasing and the operator tells you are in the gateway/gives you the go ahead, in AstrID → File → Real time mode ... → Select ``work online with control of the telescope``.
 
 
-3.4. Configure
+3.5. Configure
 --------------
 
 Run the ``1_m2setup`` script in AstrID.
 
 
-3.5. OOF
+3.6. OOF
 --------
 .. attention:: 
 
     Before and after OOF is a good time to check that the active surface settings are as they should be. See :ref:`Monitoring the Surface Models <explanations/OOF:Monitoring the Surface Models>` 
-    or `M2 active surface documentation <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Active_Surface_Configuration>`_ for what and how to check.
+    or `M2 active surface documentation <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Active_Surface_Configuration>`_ for what to check and how to check them.
+
+.. hint::
+
+    If operator asks you if you want to zero out any corrections (they might ask about pointing, focus, and thermals), the M2 instrument team suggests that you keep all the solutions. But make sure that you note in the observing log what the corrections were before the OOF (see :ref:`how-tos/receivers/mustang2/mustang2_obs:3.3. Fill in weather and correction info in observing log`). If you get a bad OOF solution, that is when you can consider zeroing out various corrections.
     
+OOF procedure:  
+
 #. Make sure that you have changed ``mySrc`` in ``2_m2oof`` and run the ``2_m2oof`` script in AstrID. 
 
 #. For the first OOF of the night, you need to have ``calSeq=True`` so that a skydip is done as a part of the OOFing process. An OOF will take ~20 minutes to run. 
 
 #. Check the OOF results in AstrID → DataDisplay → OOF and re-rerun if necessary. 
-    For M2, we typically apply the z5 corrections. When the corrections are available, press the green button that reads ``After selecting the Zernike solution above, click this green button to send the solutions to the telescope.``
+    For M2, we typically apply the z5 corrections. When the corrections are available, press the button that reads ``After selecting the Zernike solution above, click this green button to send the solutions to the telescope.``
    
     .. note::
         
-        Sometimes OOF may time out and you will get a red screen if this happens. If this happens, re-OOF as this will restart the calculations of the solutions.
+        For advice on what you are looking for in OOF solutions see the :ref:`how-tos/general_guides/autooof:Inspecting AutoOOF Solutions` section of the :ref:`AutoOOF_guide`. For good and bad M2 OOF examples see the :ref:`how-tos/general_guides/autooof:MUSTANG-2` section of the AutoOOF guide.
 
 .. hint:: 
 
     While your OOF is running, it is a good time to:
 
-    - Write down the weather conditions in the observing log 
-        - Temperature
-        - Humidity
-        - Wind Velocity
-        Note that you can get this weather information from the *GbtStatus* tab in AstrID, the "Weather" CLEO application, or from the "Status" CLEO application.
-
-    - :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Start the m2gui` to check M2 data while observing.
+    - :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Start the m2gui` to check M2 data while observing. It can be useful to start two m2guis: one for analyzing calibrator data and one to analyze science data.
 
     - In the m2gui
-        - Once the skydip has finished, :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Check the Tipping Scan (Skydip)` and write down the number of live detector in the log.
+        - Once the skydip has finished, :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Check the Tip Scan (A.K.A. Skydip)` and write down the number of live detector in the log.
         - check what each of the OOF images looks like (see :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Make Calibrator Map`)
         
 .. note:: 
 
-   During this initial data acquisition (and to some extent, throughout the night) check your MUSTANG-2 manager CLEO screen, and make sure that the numbers in sections such as ``Frame Cntr`` and ``Roach Data`` are continuing to change with time (if so, the boxes will mostly be blue). However, if they stop (indicated when the boxes turn lavender) then the Mustang2 manager has crashed, and you’ll need to :ref:`restart it <how-tos/receivers/mustang2/mustang2_obs:6.1 MUSTANG-2 Manager>`. The M2 manager is known to crash on the 1st scan of a session.
+   During this initial data acquisition (and to some extent, throughout the night) check your MUSTANG-2 manager CLEO screen, and make sure that the numbers in sections such as ``Frame Cntr`` and ``Roach Data`` are continuing to change with time (if so, the boxes will mostly be blue). However, if they stop (indicated when the boxes turn lavender) then the M2 manager has crashed, and you’ll need to :ref:`references/receivers/mustang2/mustang2_manager:Restart the manager`. Note that M2 manager is known to crash on the 1st scan of a session (the skydip).
 
-3.6 Quick daisy on OOF source
+3.7 Quick daisy on OOF source
 -----------------------------
 
 #. Run the ``2_m2quickDaisyPrimary`` script on your OOF/calibrator source
@@ -201,7 +233,7 @@ Run the ``1_m2setup`` script in AstrID.
 
 #. It's a good idea to check the time streams (see the :ref:`check time streams section <how-tos/receivers/mustang2/data/mustang2_gui:Checking Time Streams>` for instructions and examples)
 
-3.7 Quick daisy on secondary calibrator
+3.8 Quick daisy on secondary calibrator
 ---------------------------------------
 
 #. Run the ``3_m2quickDaisySecondary`` script on your secondary calibrator
@@ -217,7 +249,7 @@ Run the ``1_m2setup`` script in AstrID.
     Occasionally, one or more detectors may show glitches in their time streams. These faulty detectors appear as artifacts in the maps and can distort the map’s scaling. As a result, the source may appear fainter than it truly is, and this can lead to a poor fit to a point source or even prevent the GUI from fitting the point source altogether. See :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Use crmask to Mask Bad Detectors` on how to mask the bad detector(s).
  
 
-3.8 Take science data
+3.9 Take science data
 ---------------------
 Take ~30 minutes of science data followed by a quick daisy on your seconday calibrator. Often this is accomplished by submitting several science scripts (e.g., ``5_science_rX``) in AstrID. For example, often for cluster science each individual science scan is ~8-9 minutes in length. So if you are submitting individual science scans (which ``5_science_rX`` are), you can submit 4 of the science scripts in a row followed by your secondary calibrator scan. 
 
@@ -225,12 +257,12 @@ You should check the time streams in the m2gui (see the :ref:`check time streams
 
 You can make maps and SNR maps of your science target using the m2gui (see :ref:`make science maps section <how-tos/receivers/mustang2/data/mustang2_gui:Make Science Maps>` for instructions).
 
-3.9 Continue to take science data
----------------------------------
+3.10 Continue to take science data
+----------------------------------
 #. Continue to do ~30 minutes of science data followed by a quick daisy on the secondary calibrator for the rest of the night. 
 #. Monitor the beam size (``WidthA`` and ``WidthB``) and the ``Peak_Height`` using the m2gui to determine if you need to OOF again.
 
-3.10 Observing primary calibrators
+3.11 Observing primary calibrators
 ----------------------------------
 It is safest to observe multiple primary/flux calibrators in an observing session. You should have your OOF source be a primary calibrator but when you observe an additional primary calibrator later in the observing session, the sequence of observing should be:
 
@@ -247,7 +279,7 @@ Primary and secondary calibrators need to be observed as close in time as is fea
 
     In February, ALMA is shutdown and thus ALMA grid cals are not observed during this period. See :ref:`how-tos/receivers/mustang2/mustang2_obs_scripts:3.1.1 Primary Calibrators in February` for more information on which flux calibrators to observe during the ALMA shutdown.
 
-3.11 When to OOF again?
+3.12 When to OOF again?
 -----------------------
 
 First, know that there is no right answer and you have to gain experience to get a feel for when to OOF again. But the following is some advice for when to consider OOFing again.
@@ -271,7 +303,7 @@ If you have a 1/2 hour of a project left, it isn't worth it to OOF again because
 
     Make sure that you are not being fooled by a bad detector or two. A bad detector will affect your measurements of the calibrator. See :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Use crmask to Mask Bad Detectors` for how to mask bad detectors. You will see a bad detector in your map as a bright daisy pattern or in the time streams.
 
-3.12 Be aware - Issue with quadrant detector
+3.13 Be aware - Issue with quadrant detector
 --------------------------------------------
 In early 2023 it was discovered that over the past year or two the quadrant detector sometimes isn't working and doesn't write files to ``/home/gbtdata/project_code_sesion/QuadrantDetector`` as we expect. The GUI now will pop up a warning box (``WARNING QD Values are missing for scans: ...``) if it detects that the quadrant detector files are not being written.
 
@@ -283,7 +315,7 @@ If this happens during observing, press ok and ask the operator to restart the q
 
     However if you get a warning about just ONE file, this is not a problem. Most likely the scan is not finished yet. There may be an issue with the quadrant detector only if you get a pop-up notification about SEVERAL scans.
 
-3.13 Observing Tips and Tricks
+3.14 Observing Tips and Tricks
 ------------------------------
 #. You can open two m2gui windows, one for working with your calibrators and one for making science maps.
 
@@ -294,7 +326,7 @@ If this happens during observing, press ok and ask the operator to restart the q
 
 4. General Advice for Determining “Bad Weather“
 ===============================================
-Once you have some indication of bad weather (bad skydip, bad time streams, or physical weather indication), you will want to make an educated guess as to what the trajectory of the weather/data is in order to determine whether or not to keep observing or give up the time. There are many tools that you can use to an assessment of this trajectory. Consider, do the following suggest that the remainder of your scans would be scientifically useful? (this can be used as a checklist of sorts)
+Once you have some indication of bad weather (bad skydip, bad time streams, or physical weather indication), you will want to make an educated guess as to what the trajectory of the weather/data is in order to determine whether or not to keep observing or give up the time. There are many tools that you can use to an assessment of this trajectory. Consider; "do the following suggest that the remainder of your scans would be scientifically useful?"" (this can be used as a checklist of sorts)
     - Time streams
         - Check the time streams of the science scans as laid out above in :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Checking Time Streams`. Are they wiggly? How wiggly? See examples below in :ref:`how-tos/receivers/mustang2/mustang2_obs:4.1 Examples of effect of bad weather`.
         - How many “bad” science scans have there been in a row?
@@ -309,11 +341,12 @@ Once you have some indication of bad weather (bad skydip, bad time streams, or p
 
     - Weather forecast
         - Ask the operator what the weather is like
-        - Check the `All High Frequency Overview Plots <https://www.gb.nrao.edu/~rmaddale/Weather/AllOverviews.html>`_ via the DSS
+        - Use the m2gui to get :ref:`how-tos/receivers/mustang2/data/mustang2_gui:Weather Info` about the clouds (through IR) and wind
         - `Weather Underground <https://www.wunderground.com/weather/us/wv/green-bank>`_ for Green Bank, WV
         - `Windy <https://www.windy.com/38.435/-79.818?37.848,-79.818,8>`_ for Green Bank, WV
         - `NOAA <https://forecast.weather.gov/MapClick.php?lat=38.4192&lon=-79.831>`_ for Green Bank, WV
         - `NOAA Atlantic Coast Radar <https://www.star.nesdis.noaa.gov/GOES/sector_band.php?sat=G19&sector=eus&band=GEOCOLOR&length=24>`_
+        - Check the `All High Frequency Overview Plots <https://www.gb.nrao.edu/~rmaddale/Weather/AllOverviews.html>`_ via the DSS
         - Check other reputable weather forecasters (Weather underground, weather.forcast.gov, Windy, etc.)
 
     - Direct communication with the operator
@@ -346,7 +379,13 @@ When making a judgment call as to whether to give up the time due to bad weather
         
     The flip side of overheads (i.e. maybe the project can tolerate bad weather) is that if you are observing the last session (using up all awarded time), any rescheduled observing would all go to overheads. If it’s not the last session, then the advice is to give up the remainder of time for bad weather (if all bad-weather items are checked).
 
-Again, when in doubt you can always call an M2 team member to help you make the call of whether or not to give up the time.
+.. attention::
+
+    When in doubt you can always call an M2 team member to help you make the call of whether or not to give up the time.
+
+Summary
+-------
+As an observer when you see indications of bad weather, the main thing that you want to do is to get a sense of what the trajectory is of the weather. The most concrete "metric" is combining the weather data (gained from sources described above) across scans and determining trends. 
 
 
 4.1 Examples of effect of bad weather
@@ -469,63 +508,11 @@ You'll also want to still observe your flux calibrator using the ``m2quickdaisy`
 
 6.1 MUSTANG-2 Manager
 ---------------------
-The MUSTANG-2 manager is run on the computer egret and we typically interface with the manager through CLEO. 
-
-.. image:: images/m2_manager_good_state_MAT_marked.png
-
-At the bottom of the manager, you will see MAT each in a box (marked in image above by black box). These boxes show the state of the following: M = manager, A = accessor, and T = transporter. If the boxes are green, they are up and running. If any of them are red, they are down. You can check on the status of and reboot the manager and transporter on egret (see instructions `here <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Restart_Manager_by_Hand>`_).
-
-
-6.1.1 Manager not starting
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Sometimes the MUSTANG-2 manager refuses to start (i.e., you try to start it and you get a failure every time either by using TaskMaster or asking the operator to do this for you).
-
-The solution is to 
-    - log onto egret
-    - shut the computer down
-    - log onto the iboot bar
-    - power off egret and the housekeeping
-    - leave it off for 30 seconds
-    - turn these back on
-      
-Egret may take a while to reboot but once it does you should be able to restart the manager.
-Assuming this works you should also make sure to press the ``reset heater card`` button on the manager twice.
-
-6.1.2 CLEO M2 Manager Status
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-A typical, good state for the M2 manager is *Status* = "Warning" and *State* = "Ready."
-
-MAT are red
-~~~~~~~~~~~
-There can be situations where one of the MAT are red or all are red. When all red, *Status* will be "Unknown" (and pink) and *State* will be "NotConnected" (pink). 
-
-.. image:: images/m2_manager_MAT_red.png
-
-In this case, the manager has crashed and you'll need to check on the status and perhaps restart the manager by hand (see instructions `here <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Restart_Manager_by_Hand>`_). And if only M or T are red, you should still check their status on egret.
-
-Boxes are yellow
-~~~~~~~~~~~~~~~~
-.. image:: images/m2_manager_yellow.png
-
-The manager is out of sync. Simply enter in some command (like turn the daily cycle off then on again) and it should resync.
-
-Boxes are pink
-~~~~~~~~~~~~~~
-
-.. image:: images/m2_manager_off_state_pink.png
-
-The manager is out of sync. Simply enter in some command (like turn the daily cycle off then on again) and it should resync.
-
-When the *State* = "Off" (see previous image), you need to go to the menu for the M2 manager that says *Managers* and click "On."
-
-6.1.3 Manager crashes on 1st scan
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-It is a known issue that sometimes the manager will crash on the first scan (the skydip). A classic telltale sign of the manager crashing is that the biases are set to 0 and data is not flowing. Check the status of the manager in CLEO and on egret (see instructions `here <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Restart_Manager_by_Hand>`_).
+See M2 manager documentation and typical issues on the :ref:`mustang2_manager` page.
 
 6.2 You have less detectors than you are expecting
 --------------------------------------------------
-If have less live detectors than expected (usually found through skydip or seeing many detectors missing from map), :ref:`reconnect to the roaches <how-tos/receivers/mustang2/mustang2_obs:2.4.1 Reconnect to Roaches>` and run ``um1.fixIQ()`` in each roach's terminal. 
+If have less live detectors than expected (usually found through skydip or seeing many detectors missing from map), :ref:`reconnect to the roaches <how-tos/receivers/mustang2/mustang2_obs:2.5.1 Reconnect to Roaches>` and run ``um1.fixIQ()`` in each roach's terminal. 
 
 .. attention::
 
@@ -545,7 +532,7 @@ In AstrID, go from ``working online`` to ``working offline``:
 7.2 Shutdown M2
 ---------------
 
-For the shutdown process you can either do this **(a) automatically** or **(b) manually**. For BOTH you need to be in the gateway for MUSTANG-2 (not just the observing gateway).
+For the shutdown process you can either do this **(a) automatically** or **(b) manually**. For BOTH you need to be in the gateway for MUSTANG-2 (not just the observing gateway). If you are not, you will not be able to execute the script and/or unlock the CLEO M2 manager. To get in the gateway for M2, simply ask the operator, "Could you please put me in the gateway for MUSTANG-2 so that I can shutdown M2?"
 
 .. tab-set::
 
@@ -589,6 +576,34 @@ For the shutdown process you can either do this **(a) automatically** or **(b) m
                     This is the time of day that the daily cycle starts measured in fraction of a day (UT).  0.65 is a nice balance 
                     between ensuring the cycle is over by the time any observations are likely to come up, yet not so early that 
                     there is no time to work with the receiver in the morning.
+
+7.2.1 Shutdown script troubleshooting
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+As of 2025, the shutdown script will sometimes execute but end with the following error
+
+.. code-block:: pytb 
+
+    Traceback (most recent call last):
+  File "/users/penarray/Public/startMUSTANG.py", line 195, in <module>
+    turnOff(manager)
+  File "/users/penarray/Public/startMUSTANG.py", line 84, in turnOff
+    manager.set_value("dataXmit"+r,0)
+  File "/home/sparrow/24.4/lib/python/gbt/ygor/GrailClient.py", line 702, in set_value
+    return self.cl.set_value(self.dev, path, value, force)
+  File "/home/sparrow/24.4/lib/python/gbt/ygor/GrailClient.py", line 510, in set_value
+    if self.cl.set_value(device, path, value, force) != 'OK':
+  File "/home/sparrow/24.4/sparrow/monctrl-sparrow-env/lib/python2.7/site-packages/SOAPpy/Client.py", line 540, in __call__
+    return self.__r_call(*args, **kw)
+  File "/home/sparrow/24.4/sparrow/monctrl-sparrow-env/lib/python2.7/site-packages/SOAPpy/Client.py", line 562, in __r_call
+    self.__hd, self.__ma)
+  File "/home/sparrow/24.4/sparrow/monctrl-sparrow-env/lib/python2.7/site-packages/SOAPpy/Client.py", line 475, in __call
+    raise p
+    SOAPpy.Types.faultType: <Fault SOAP-ENV:Server: Device error: Rcvr_MBA1_5.Rcvr_MBA1_5: No value received after subscribing to parameter dataXmitB>
+    Failed to connect/turn off settings in MUSTANG manager - please check these
+    MUSTANG2 is shutdown
+
+Usually what this means is that steps 3 and 4 from the manual shutdown (components have been turned off and the daily cycle parameters have been set), but that the biases have not been set to 0 and the data transmission has not been turned off. If you wait a while you may see the ``DataXinit`` for each roach in the CLEO M2 manager screen slowly turn off, but its best to go ahead and turn them off manually. You will also need to set the biases to 0 manually. To both set the biases to 0 and turn of data transmission, check that you are in the gateway for M2 then follow the instructions for "Manual Shutdown" in :ref:`Shutdown M2 <how-tos/receivers/mustang2/mustang2_obs:7.2 Shutdown M2>` above for numbers 1 and 2. 
+
 
 7.3 Finish updates to log 
 -------------------------

@@ -38,15 +38,10 @@ Detailed M2 instrument team instructions on tuning and biasing that can be used 
 #. **Check that the array is cool and not cycling**
     Go the CLEO M2 housekeeping tab and check that the array temperature is ~400mK. Also check that the "Cycle State" on the left side of the window is IDLE and not in stages 1-5. If it is in a "stage" this means that it is cycling. If either the temperature of the array is warm or it is cycling, the array is not ready and/or not cool enough for tuning yet. 
 
-#. **Change directories** to where the startup + tuning script is
-    .. code:: bash
-
-        cd /users/penarray/Public
-
 #. **Run script**
     .. code:: bash
 
-        ./startMUSTANG.bash projectCode_sessionNumber
+        /users/penarray/Public/startMUSTANG.bash projectCode_sessionNumber
 
 
     where ``projectCode`` is your proposal number (e.g. ``AGBT18A_014``) and ``sessionNumber`` is your current (AstrID) session number (e.g. ``01``). The session number is **not** the source code from the DSS e-mail. It is very important to get this right or data reduction will fail to pick up the tuning which in turn affects focusing. Check https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/NewRunNotes to see how many sessions have already been observed for this project. 
@@ -241,22 +236,8 @@ If you have a short observing session, you can manually enter the biases to save
 If the manager crashed and you need to re-enter the values that were previously calculated, follow the same process but put in your recorded values. 
 
 
-Issues with Manager? Restart the Manager
-========================================
-
-If you are having issues with the manager or it crashed, you will need to restart the M2 manager. To do this, do the following:
-
-#. Ask the operator to restart the MUSTANG manager using TaskMaster, even if you've been told how to do this yourself. Restarting machines through TaskMaster is a responsibility that is supposed to only be held by the operator. But if you need to do it yourself, the instructions on how to do so are `here <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Restart_Manager_by_Hand>`_.
-
-#. When the operator has told you that they have restarted the M2 manager:
-    #. Go to your Cleo Mustang Manager screen
-    #. In the drop down menu go to *Managers*→*Off* and then again to click *Managers*->*On* to to turn the manager off and back on.
-    #. Re-check the daily cycle to make sure that it is turned off.
-
-#. Restarting the manager *before* biasing: You're done!
-#. Restarting the manager *after* biasing:
-    #. Re-check that the det-biases are what you expected them to be.
-    #. Check that the *DataXinit* buttons are on.
-
+Issues with Manager?
+====================
+If you are having issues with the manager or it crashed, you will need to restart the M2 manager. See this documentation for how to :ref:`references/receivers/mustang2/mustang2_manager:Restart the manager`.
 
 
