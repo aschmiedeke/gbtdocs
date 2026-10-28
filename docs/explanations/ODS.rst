@@ -15,5 +15,7 @@ The use ODS mitigation is **required** for some GBT receivers, and
 recommended for others.  See :ref:`receivers` for an up-to-date list
 of receivers for which ODS is required and recommended.
 
+**Observing teams MUST adhere to** `GBO policies <https://greenbankobservatory.org/portal/policies/>`_ **regarding preparing their scripts and catalogs in advance and  certifying that their projects and scripts/catalogs are ready to  observe.**
+
 GBT observers should consult :ref:`ods-instructions` for detailed
 instructions on how to use ODS.

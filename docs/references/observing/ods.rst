@@ -28,7 +28,7 @@ sources *per observing session*.  Method 2. **must** be used for
 projects that are observing *five or more sources per observing
 session*.
  
-**Regardless of which method is used, observing teams MUST adhere to GBO policies regarding preparing their scripts and catalogs in  advance and certifying that their projects and scripts/catalogs are ready to observe.**
+**Regardless of which method is used, observing teams MUST adhere to** `GBO policies <https://greenbankobservatory.org/portal/policies/>`_ **regarding preparing their scripts and catalogs in advance and  certifying that their projects and scripts/catalogs are ready to  observe.**
 
 Each method is explained in detail below.
 
