@@ -24,3 +24,5 @@ The frequency range of the X-band receiver is approximately 7.8 – 12.0 GHz.
 There is a single noise diode which operates at ~5% and ~20% of the system temperature (in 'low-cal' and 'high-cal' modes, respectively)
 for flux calibration.
 
+
+*Operational Data Sharing is recommended when using the S-Band receiver.*  See :ref:`ods-instructions` for detailed instructions.
