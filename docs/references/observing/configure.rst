@@ -455,7 +455,7 @@ Used to determine the number of spectral channels that VEGAS will provide. Avail
 All receivers below 12 GHz have two noise diodes for calibration signals -- one with an
 equivalent brightness temperature at roughly one tenth the system temperature (``'lo'`` 
 value). and one nearly equal to the system temperature (``'hi'`` value). This keyword
-specifies which noise diode is to be used. Allowed values are ``'low'``, ``'hi'``, and 
+specifies which noise diode is to be used. Allowed values are ``'lo'``, ``'hi'``, and 
 ``'off'``.
 
 .. admonition:: Default
