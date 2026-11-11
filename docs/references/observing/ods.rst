@@ -7,9 +7,15 @@ Operational Data Sharing (`ODS
 <https://science.nrao.edu/facilities/vla/docs/manuals/obsguide/ods-system>`_)
 is system for mitigating the effects of some satellite RFI that can
 impact data quality and, in some cases, damage frontend receiver
-components.  **ODS is required when observing with certain receivers**
-and recommended for some others (see :ref:`receivers` for an
-up-to-date list).
+components.  **ODS is required when observing with the following
+receivers (also see :ref:`receivers`)**:
+
+* UWBR (``Rcvr_2500``)
+* S-Band (``Rcvr2_3``)
+
+ODS is *recommended* for the following receivers:
+
+* X-Band (``Rcvr8_10``)
 
 When a project requiring ODS mitigation is scheduled in the GBT
 Dynamic Scheduling System (DSS) then an automated system will attempt

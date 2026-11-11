@@ -1,0 +1,9 @@
+.. list-table:: ODS Watchdog Angular Separation Tolerance
+   :header-rows: 1
+
+   * - Receiver
+     - Tolerance (deg)
+   * - UWBR
+     - 1.5
+   * - S-Band
+     - 1.5
