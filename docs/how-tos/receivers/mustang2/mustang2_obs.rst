@@ -15,8 +15,32 @@ Before you observe you need to have prepared your observing scripts and chosen y
 2. Observing Preparation
 ========================
 
-2.1 Observing Log
--------------------
+2.1 DSS Sessions to Observing Session and Target
+------------------------------------------------
+When your project is scheduled, you will get an email titled "Your GBT project has been scheduled (date of observations) (project code)."
+
+**Determining Observing Session Number**
+
+What is scheduled is a DSS session. The DSS sessions are the sessions that you made when you put in a proposal which are typically either one target or a set of targets grouped by RA. In the email below the MUSTANG-2 project DSS session (see red box) that got scheduled was GBT26B-169 - 05 (see green box). 
+
+.. image:: images/scheduling_email.png
+
+The observing session number, is the number of times that the project has been observed. So to determine what the observing session is, simply go to the `M2 observing log page <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/NewRunNotes>`_ and see what the last observing session was for this project and increment by 1 - that is your observing session number.
+
+
+**Determining Observing Target**
+
+To determine what target you are observing from the scheduled DSS Session, first determine the DSS session number. In the email below the MUSTANG-2 project DSS session (see red box) that got scheduled was GBT26B-169 - 05 (see green box). 
+
+.. image:: images/scheduling_email.png
+
+Then go to the DSS project page and find that session number under *Project Sessions*. Then look at the coordinates of the source(s) in that session which will tell you which target(s) you will be observing (hopefully the PI has named the targets in a logical way in their catalog). See green box below for the case of the schedule DSS session GBT26B-169 - 05.
+
+.. image:: images/AGBT26B_169_sessions.png
+
+
+2.2 Observing Log
+-----------------
 .. attention::
 
     As of September 15, 2026 the NRAO wiki is an internal-only or intranet site, accessible only from the private network (or through a VPN/remote-access connection). This means that you can only access the observing logs from a FastX or VNC connection, or configuring your browser to use a proxy. If you go to create an observing log without being on the NRAO/GBO network you will get a "403 error: Forbidden" error.
@@ -47,7 +71,7 @@ During observing, you are expected to edit the MUSTANG-2 observing run notes wik
     If you don't have permissions yet to edit the wiki and are observing, you can take notes in a text document and email them to the MUSTANG-2 team afterwards to upload to the wiki for you.
 
 
-2.2 Connect
+2.3 Connect
 -----------
 
 Open and connect to :ref:`VNC session <how-tos/infrastructure/remote-connection:Quick VNC Reference>` or start an XFCE :ref:`FastX session <how-tos/infrastructure/remote-connection:FastX connection>` on ``titania`` or ``ariel`` via FastX.
@@ -57,12 +81,12 @@ Connection Issues?
 The internet at GBO can be intermitent at times. Specifically there are days that the internet goes down for 30-60 seconds at a time quite often. Are you having issues with FastX or your VNC being really laggy? Check `this status page <https://status.gb.nrao.edu/>`__ to see the status of the ssh gateways. See :ref:`these instructions <how-tos/infrastructure/remote-connection:What to do if the GBO network is down/slow>` for FastX and VNC workarounds using Charlottesville to potentially better your connection. 
 
 
-2.3 AstrID 
+2.4 AstrID 
 -----------
 
 Open an AstrID session and navigate to your corresponding MUSTANG-2 project. The MUSTANG-2 instrument team should have already populated your AstrID area with appropriate scripts.
 
-2.4 CLEO
+2.5 CLEO
 --------
 
 The following are suggested CLEO windows to have open during observing:
@@ -109,11 +133,11 @@ The following are suggested CLEO windows to have open during observing:
 
 - Launch → Observer Tools → **Talk and Draw** 
 
-2.5 Checklist if setup was done awhile ago
+2.6 Checklist if setup was done awhile ago
 -------------------------------------------
 If the setup (tuning, get data flowing, etc.) was done a while ago (several hours) and there is no other M2 project before you, there are a few things you should check before starting to take data.
 
-2.5.1 Reconnect to Roaches
+2.6.1 Reconnect to Roaches
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 Over many hours temperature drifts will make the tuning less optimal. Therefore if the tuning was done a while ago (several hours), you need to reconnect to the roaches and check the tuning.
 
@@ -122,11 +146,11 @@ To check the tuning:
     #. Run ``um1.IQplot()`` in each roach's terminal.
     #. If needed, run ``um1.fixIQ()`` per roach.
 
-2.5.2 Check that data is flowing
+2.6.2 Check that data is flowing
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Go to the M2 CLEO manager and check that data is flowing (see how to do this and some fixes if data is not flowing :ref:`here <how-tos/receivers/mustang2/mustang2_setup:3. Check that data is flowing>`). 
+Go to the M2 CLEO manager and check that data is flowing (see how to do this and some fixes if data is not flowing :ref:`here <how-tos/receivers/mustang2/mustang2_setup:4. Check that data is flowing>`). 
 
-2.5.3 Check biases
+2.6.3 Check biases
 ^^^^^^^^^^^^^^^^^^
 If biases were set manually by hand before the observations, check that they are not 0 in the ``Miscelaneous`` tab of the CLEO M2 manager. If they are 0 it means that the manager likely crashed and you'll need to :ref:`references/receivers/mustang2/mustang2_manager:Restart the manager`.
 
@@ -137,11 +161,11 @@ If biases were set manually by hand before the observations, check that they are
 3.1. Communicate with operator 
 ------------------------------
 
-At least 15 minutes before your observing start time, get on Talk & Draw, tell the operator who you are and what project you are observing for. At this point you can also ask who the operator is. 
+At least 15 minutes before your observing start time, get on Talk & Draw, tell the operator who you are and what project you are observing for.  Also ask the operator to put you in the gateway for MUSTANG-2 as well. 
 
 .. hint:: 
 
-    You can check who the current operator is by checking the `current shift of the operators log <https://dss.gb.nrao.edu/ops/search/current>`_.
+    At this point you can also ask who the operator is. You can check who the current operator is by checking the `current shift of the operators log <https://dss.gb.nrao.edu/ops/search/current>`_.
 
 3.2. Fill in AstrID info
 ------------------------
@@ -218,6 +242,10 @@ OOF procedure:
 .. note:: 
 
    During this initial data acquisition (and to some extent, throughout the night) check your MUSTANG-2 manager CLEO screen, and make sure that the numbers in sections such as ``Frame Cntr`` and ``Roach Data`` are continuing to change with time (if so, the boxes will mostly be blue). However, if they stop (indicated when the boxes turn lavender) then the M2 manager has crashed, and you’ll need to :ref:`references/receivers/mustang2/mustang2_manager:Restart the manager`. Note that M2 manager is known to crash on the 1st scan of a session (the skydip).
+
+.. note::
+
+    You can find documentation on :ref:`how-tos/receivers/mustang2/mustang2_obs:6.3 Some OOF Issues` below.
 
 3.7 Quick daisy on OOF source
 -----------------------------
@@ -463,7 +491,7 @@ where ``old_project_session`` is the full name of the previous M2 project and ``
 
 5.2 Check data is flowing
 -------------------------
-Go to the M2 CLEO manager and check that data is flowing (see how to do this and some fixes if data is not flowing :ref:`here <how-tos/receivers/mustang2/mustang2_setup:3. Check that data is flowing>`). 
+Go to the M2 CLEO manager and check that data is flowing (see how to do this and some fixes if data is not flowing :ref:`here <how-tos/receivers/mustang2/mustang2_setup:4. Check that data is flowing>`). 
 
 
 5.3 Determine if you need to OOF
@@ -501,7 +529,6 @@ You'll also want to still observe your flux calibrator using the ``m2quickdaisy`
 
     This is another thing people think they can skip, but it makes reduction later more difficult. Check the beam with this flux calibrator.
 
-
     
 6. Observing Troubleshooting
 ============================
@@ -512,11 +539,19 @@ See M2 manager documentation and typical issues on the :ref:`mustang2_manager` p
 
 6.2 You have less detectors than you are expecting
 --------------------------------------------------
-If have less live detectors than expected (usually found through skydip or seeing many detectors missing from map), :ref:`reconnect to the roaches <how-tos/receivers/mustang2/mustang2_obs:2.5.1 Reconnect to Roaches>` and run ``um1.fixIQ()`` in each roach's terminal. 
+If have less live detectors than expected (usually found through skydip or seeing many detectors missing from map), :ref:`reconnect to the roaches <how-tos/receivers/mustang2/mustang2_obs:2.6.1 Reconnect to Roaches>` and run ``um1.fixIQ()`` in each roach's terminal. 
 
 .. attention::
 
     If you change anything about the instrument during an observing session (like bringing detectors back via ``um1.fixIQ()``), when you OOF after those changes, make sure that you take a skydip as a part of AutoOOF (i.e., set calseq=True). More information about the discovery of this procedure `here <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#A_2026_4501_4513>`_.
+
+6.3 Some OOF Issues
+-------------------
+If OOF is not working and you are not the first M2 project of the night the tuning setup may be the cause. Check tuning directory for tuning folder/files (see :ref:`instructions <how-tos/receivers/mustang2/mustang2_setup:3. Run startup + tuning script>` at end of this section on how to do this), and if you end up having to make symlink, increment session number and start again. 
+
+If you can't send corrections and astrid is hung, click around until astrid is live again. If you've had to restart astrid, you should be able to harvest existing solutions by typing in the first scan in the sequence in the little box (the very first, including the skydip if there was one) and clicking different z orders. If that doesn't work, you can try re-solving. You should see the usual things (IDL then python running on the appropriate computers, files in sX-1-db-00(n+1) etc).
+
+If you are doing another OOF after you have messed around with the tuning, make sure you do a skydip with the OOF after you have messed around with the tuning. See `a writeup of such a case here <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#A_2026_4501_4513>`_.
 
 
 7. Closing up for the night

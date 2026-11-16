@@ -50,11 +50,33 @@ To restart the manager, do the following:
     #. In the drop down menu go to *Managers*→*Off* and then again to click *Managers*->*On* to to turn the manager off and back on.
     #. Re-check the daily cycle to make sure that it is turned off.
 
-#. Restarting the manager *before* biasing: You're done!
+In addition to the above, below is what you need to check if you are restarting the manager before or after biasing has been done:
 
-#. Restarting the manager *after* biasing:
-    #. Re-check that the det-biases are what you expected them to be.
-    #. Check that the *DataXinit* buttons are on.
+.. tab-set:: 
+
+    .. tab-item:: After Biasing
+
+        In the *Miscelaneous* tab check :
+            #. that the *DataXinit* buttons are on. 
+            #. that the *Num Chan* is 64.
+            #. if the detbias values are what you expect them to be. If they are not (say they are 0), re-enter the biases. First drive the roaches to normal by entering 5 in each *Det Bias* box and hit enter. Then enter the values that were determined by the detbias script (you can find this in the log)..
+
+    .. tab-item:: Before Biasing
+
+        You're done!
+
+In addition to the above, if you are restarting the manager and you have also power cycled the roaches, enter the following in a terminal for a quicker startup that loads the last parameters: ``/users/penarray/Public/startMUSTANG.bash <project_session> restart``
+
+
+.. tab-set:: 
+
+    .. tab-item:: After Biasing
+
+        In the *Miscelaneous* tab check :
+            #. that the *DataXinit* buttons are on. 
+            #. that the *Num Chan* is 64.
+            #. if the detbias values are what you expect them to be. If they are not (say they are 0), re-enter the biases. First drive the roaches to normal by entering 5 in each *Det Bias* box and hit enter. Then enter the values that were determined by the detbias script (you can find this in the log)..
+
 
 Manager not starting
 --------------------
