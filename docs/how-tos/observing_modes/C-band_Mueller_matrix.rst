@@ -78,10 +78,10 @@ To determine the values for `startOffset`, `scanDuration` and `tint` you should 
 
 .. math::
 
-    \mbox{tint}=\frac{\mbox{HPBW}}{(2\times\mbox{startOffset})/(\mbox{scanDuration})}\frac{1}{\mbox{num samples}}
+    \mbox{tint}=\frac{\mbox{HPBW}}{(2\times\mbox{startOffset})/(\mbox{scanDuration})}\frac{1}{\mbox{#samples}},
 
 
-with HPBW the half power beam width at the lowest observing frequency, and `# samples` the number of data points over the beam.
+with ``HPBW`` the half power beam width at the lowest observing frequency, and ``#samples`` the number of data points over the beam.
 If you want to observe a point source, the full beam response might not be important, but if your source is extended you will want to map your beam. 
 In this example we will assume you are interested in the full beam response, so we will set `# samples=5`.
 For the lenght of the spider legs you want to make sure that there will be enough blank sky to calibrate the observations.
