@@ -31,7 +31,7 @@ DR21   20:39:01.01 +42:22:50.2
 DR21_2 20:39:00.27 +42:23:42.9
 """
 
-Catalog(source_catalog)  # Only needed for validation purposes in AstrID.
+Catalog(source_catalog)      # Only needed for validation purposes in AstrID.
 
 
 Balance()
@@ -51,15 +51,11 @@ Slew(source)
 execfile("/home/astro-util/projects/Argus/OBS/argus_vanecal")
 
 # map the region
-RALongMap(
-    source,
+RALongMap(source,
     Offset("J2000", 120.0 / 3600.0, 0.0, cosv=True),
     Offset("J2000", 0.0, 120.0 / 3600.0, cosv=True),
     Offset("J2000", 0.0, 5.0 / 3600.0, cosv=True),
-    scanDuration=30.0,
-    beamName="C",
-    start=1,
-    stop=24,
+    scanDuration=30.0, beamName='C', start=1, stop=24,
 )
 
 execfile("/home/astro-util/projects/Argus/OBS/argus_vanecal")
