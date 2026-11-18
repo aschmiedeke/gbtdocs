@@ -45,7 +45,7 @@ These guides provide information on how to use GBO infrastructure.
 
         .. button-link:: infrastructure/python-3-upgrade-guide.html
             :color: primary
-            :tooltip: Comprehensive guide for the GBT upgrade to Python 3
+            :tooltip: Guide for GBT upgrade to Python 3
             :outline:
             :click-parent:
 
