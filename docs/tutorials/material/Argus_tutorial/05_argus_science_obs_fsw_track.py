@@ -51,4 +51,4 @@ execfile("/home/astro-util/projects/Argus/OBS/argus_vanecal")
 
 # track single position
 for i in range(5):
-    Track(source, endOffset=None, scanDuration=60.0, beamName="10")
+    Track(source, endOffset=None, scanDuration=60.0, beamName='10')
