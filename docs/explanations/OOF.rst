@@ -74,7 +74,7 @@ AutoOOF Procedure
 
 .. attention:: 
 
-  While we are in the testing and development phase of Python 3, you may access the upgraded version of AstrID, which features UI changes from this section. See :ref:`how-tos/infrastructure/python-3-upgrade-guide:Astrid` for more details.
+  While we are in the testing and development phase of Python 3, you may access the upgraded version of AstrID, which features UI changes from this section. See :ref:`how-tos/infrastructure/python-3-upgrade-guide:py3 Astrid` for more details.
 
 According to the recommended :ref:`AutoOOF_guide`, AutoOOF is recommended for observing at frequencies of 40 GHz and higher and only available for use with Rcvr26_40 (Ka–band), Rcvr40_52 (Q–band), Rcvr68_92 (W-band), RcvrArray75_115 (Argus), and Rcvr_MBA1_5 (MUSTANG-2).
 
