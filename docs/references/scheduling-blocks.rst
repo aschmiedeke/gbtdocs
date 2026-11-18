@@ -97,6 +97,22 @@ if you were counting). You do not need to add a suffix to your SB name (such as 
 
             Catalog
 
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        **Operational Data Sharing** 
+
+        Reference material for using Operational Data Sharing (ODS)
+
+        .. button-link:: observing/ods.html
+            :color: primary
+            :tooltip: Opertional Data Sharing
+            :outline:
+            :click-parent:
+
+            ODS
+	    
 
     .. grid-item-card::
         :shadow: md
@@ -121,6 +137,7 @@ if you were counting). You do not need to add a suffix to your SB name (such as 
 
     observing/configure
     observing/catalog
+    observing/ods
     observing/scan_types
 
 

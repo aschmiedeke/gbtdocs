@@ -1,0 +1,198 @@
+% Compiled module: ARGUS_FSW_COADD.
+% Compiled module: GETATMOS.
+Scan:    37 (IF:0 FD:9 PL:0)    Tsys:   1.00
+Scan:    37 (IF:0 FD:9 PL:0)    Tsys:   1.00
+% ACCUMAVE: Average of :         150 spectra
+Scan:    37 (IF:0 FD:0 PL:0)    Tsys:   1.00
+Scan:    37 (IF:0 FD:0 PL:0)    Tsys:   1.00
+beam and scan number       0      37
+% ACCUMAVE: Average of :         150 spectra
+Scan:    38 (IF:0 FD:0 PL:0)    Tsys:   1.00
+Scan:    38 (IF:0 FD:0 PL:0)    Tsys:   1.00
+beam and scan number       0      38
+% ACCUMAVE: Average of :         150 spectra
+Scan:    39 (IF:0 FD:0 PL:0)    Tsys:   1.00
+Scan:    39 (IF:0 FD:0 PL:0)    Tsys:   1.00
+beam and scan number       0      39
+% ACCUMAVE: Average of :         150 spectra
+Scan:    37 (IF:0 FD:1 PL:0)    Tsys:   1.00
+Scan:    37 (IF:0 FD:1 PL:0)    Tsys:   1.00
+beam and scan number       1      37
+% ACCUMAVE: Average of :         150 spectra
+Scan:    38 (IF:0 FD:1 PL:0)    Tsys:   1.00
+Scan:    38 (IF:0 FD:1 PL:0)    Tsys:   1.00
+beam and scan number       1      38
+% ACCUMAVE: Average of :         150 spectra
+Scan:    39 (IF:0 FD:1 PL:0)    Tsys:   1.00
+Scan:    39 (IF:0 FD:1 PL:0)    Tsys:   1.00
+beam and scan number       1      39
+% ACCUMAVE: Average of :         150 spectra
+Scan:    37 (IF:0 FD:2 PL:0)    Tsys:   1.00
+Scan:    37 (IF:0 FD:2 PL:0)    Tsys:   1.00
+beam and scan number       2      37
+% ACCUMAVE: Average of :         150 spectra
+Scan:    38 (IF:0 FD:2 PL:0)    Tsys:   1.00
+Scan:    38 (IF:0 FD:2 PL:0)    Tsys:   1.00
+beam and scan number       2      38
+% ACCUMAVE: Average of :         150 spectra
+Scan:    39 (IF:0 FD:2 PL:0)    Tsys:   1.00
+Scan:    39 (IF:0 FD:2 PL:0)    Tsys:   1.00
+beam and scan number       2      39
+% ACCUMAVE: Average of :         150 spectra
+Scan:    37 (IF:0 FD:3 PL:0)    Tsys:   1.00
+Scan:    37 (IF:0 FD:3 PL:0)    Tsys:   1.00
+beam and scan number       3      37
+% ACCUMAVE: Average of :         150 spectra
+Scan:    38 (IF:0 FD:3 PL:0)    Tsys:   1.00
+Scan:    38 (IF:0 FD:3 PL:0)    Tsys:   1.00
+beam and scan number       3      38
+% ACCUMAVE: Average of :         150 spectra
+Scan:    39 (IF:0 FD:3 PL:0)    Tsys:   1.00
+Scan:    39 (IF:0 FD:3 PL:0)    Tsys:   1.00
+beam and scan number       3      39
+% ACCUMAVE: Average of :         150 spectra
+Scan:    37 (IF:0 FD:4 PL:0)    Tsys:   1.00
+Scan:    37 (IF:0 FD:4 PL:0)    Tsys:   1.00
+beam and scan number       4      37
+% ACCUMAVE: Average of :         150 spectra
+Scan:    38 (IF:0 FD:4 PL:0)    Tsys:   1.00
+Scan:    38 (IF:0 FD:4 PL:0)    Tsys:   1.00
+beam and scan number       4      38
+% ACCUMAVE: Average of :         150 spectra
+Scan:    39 (IF:0 FD:4 PL:0)    Tsys:   1.00
+Scan:    39 (IF:0 FD:4 PL:0)    Tsys:   1.00
+beam and scan number       4      39
+% ACCUMAVE: Average of :         150 spectra
+Scan:    37 (IF:0 FD:5 PL:0)    Tsys:   1.00
+Scan:    37 (IF:0 FD:5 PL:0)    Tsys:   1.00
+beam and scan number       5      37
+% ACCUMAVE: Average of :         150 spectra
+Scan:    38 (IF:0 FD:5 PL:0)    Tsys:   1.00
+Scan:    38 (IF:0 FD:5 PL:0)    Tsys:   1.00
+beam and scan number       5      38
+% ACCUMAVE: Average of :         150 spectra
+Scan:    39 (IF:0 FD:5 PL:0)    Tsys:   1.00
+Scan:    39 (IF:0 FD:5 PL:0)    Tsys:   1.00
+beam and scan number       5      39
+% ACCUMAVE: Average of :         150 spectra
+Scan:    37 (IF:0 FD:6 PL:0)    Tsys:   1.00
+Scan:    37 (IF:0 FD:6 PL:0)    Tsys:   1.00
+beam and scan number       6      37
+% ACCUMAVE: Average of :         150 spectra
+Scan:    38 (IF:0 FD:6 PL:0)    Tsys:   1.00
+Scan:    38 (IF:0 FD:6 PL:0)    Tsys:   1.00
+beam and scan number       6      38
+% ACCUMAVE: Average of :         150 spectra
+Scan:    39 (IF:0 FD:6 PL:0)    Tsys:   1.00
+Scan:    39 (IF:0 FD:6 PL:0)    Tsys:   1.00
+beam and scan number       6      39
+% ACCUMAVE: Average of :         150 spectra
+Scan:    37 (IF:0 FD:7 PL:0)    Tsys:   1.00
+Scan:    37 (IF:0 FD:7 PL:0)    Tsys:   1.00
+beam and scan number       7      37
+% ACCUMAVE: Average of :         150 spectra
+Scan:    38 (IF:0 FD:7 PL:0)    Tsys:   1.00
+Scan:    38 (IF:0 FD:7 PL:0)    Tsys:   1.00
+beam and scan number       7      38
+% ACCUMAVE: Average of :         150 spectra
+Scan:    39 (IF:0 FD:7 PL:0)    Tsys:   1.00
+Scan:    39 (IF:0 FD:7 PL:0)    Tsys:   1.00
+beam and scan number       7      39
+% ACCUMAVE: Average of :         150 spectra
+Scan:    37 (IF:0 FD:8 PL:0)    Tsys:   1.00
+Scan:    37 (IF:0 FD:8 PL:0)    Tsys:   1.00
+beam and scan number       8      37
+% ACCUMAVE: Average of :         150 spectra
+Scan:    38 (IF:0 FD:8 PL:0)    Tsys:   1.00
+Scan:    38 (IF:0 FD:8 PL:0)    Tsys:   1.00
+beam and scan number       8      38
+% ACCUMAVE: Average of :         150 spectra
+Scan:    39 (IF:0 FD:8 PL:0)    Tsys:   1.00
+Scan:    39 (IF:0 FD:8 PL:0)    Tsys:   1.00
+beam and scan number       8      39
+% ACCUMAVE: Average of :         150 spectra
+Scan:    37 (IF:0 FD:9 PL:0)    Tsys:   1.00
+Scan:    37 (IF:0 FD:9 PL:0)    Tsys:   1.00
+beam and scan number       9      37
+% ACCUMAVE: Average of :         150 spectra
+Scan:    38 (IF:0 FD:9 PL:0)    Tsys:   1.00
+Scan:    38 (IF:0 FD:9 PL:0)    Tsys:   1.00
+beam and scan number       9      38
+% ACCUMAVE: Average of :         150 spectra
+Scan:    39 (IF:0 FD:9 PL:0)    Tsys:   1.00
+Scan:    39 (IF:0 FD:9 PL:0)    Tsys:   1.00
+beam and scan number       9      39
+% ACCUMAVE: Average of :         150 spectra
+Scan:    37 (IF:0 FD:10 PL:0)    Tsys:   1.00
+Scan:    37 (IF:0 FD:10 PL:0)    Tsys:   1.00
+beam and scan number      10      37
+% ACCUMAVE: Average of :         150 spectra
+Scan:    38 (IF:0 FD:10 PL:0)    Tsys:   1.00
+Scan:    38 (IF:0 FD:10 PL:0)    Tsys:   1.00
+beam and scan number      10      38
+% ACCUMAVE: Average of :         150 spectra
+Scan:    39 (IF:0 FD:10 PL:0)    Tsys:   1.00
+Scan:    39 (IF:0 FD:10 PL:0)    Tsys:   1.00
+beam and scan number      10      39
+% ACCUMAVE: Average of :         150 spectra
+Scan:    37 (IF:0 FD:11 PL:0)    Tsys:   1.00
+Scan:    37 (IF:0 FD:11 PL:0)    Tsys:   1.00
+beam and scan number      11      37
+% ACCUMAVE: Average of :         150 spectra
+Scan:    38 (IF:0 FD:11 PL:0)    Tsys:   1.00
+Scan:    38 (IF:0 FD:11 PL:0)    Tsys:   1.00
+beam and scan number      11      38
+% ACCUMAVE: Average of :         150 spectra
+Scan:    39 (IF:0 FD:11 PL:0)    Tsys:   1.00
+Scan:    39 (IF:0 FD:11 PL:0)    Tsys:   1.00
+beam and scan number      11      39
+% ACCUMAVE: Average of :         150 spectra
+Scan:    37 (IF:0 FD:12 PL:0)    Tsys:   1.00
+Scan:    37 (IF:0 FD:12 PL:0)    Tsys:   1.00
+beam and scan number      12      37
+% ACCUMAVE: Average of :         150 spectra
+Scan:    38 (IF:0 FD:12 PL:0)    Tsys:   1.00
+Scan:    38 (IF:0 FD:12 PL:0)    Tsys:   1.00
+beam and scan number      12      38
+% ACCUMAVE: Average of :         150 spectra
+Scan:    39 (IF:0 FD:12 PL:0)    Tsys:   1.00
+Scan:    39 (IF:0 FD:12 PL:0)    Tsys:   1.00
+beam and scan number      12      39
+% ACCUMAVE: Average of :         150 spectra
+Scan:    37 (IF:0 FD:13 PL:0)    Tsys:   1.00
+Scan:    37 (IF:0 FD:13 PL:0)    Tsys:   1.00
+beam and scan number      13      37
+% ACCUMAVE: Average of :         150 spectra
+Scan:    38 (IF:0 FD:13 PL:0)    Tsys:   1.00
+Scan:    38 (IF:0 FD:13 PL:0)    Tsys:   1.00
+beam and scan number      13      38
+% ACCUMAVE: Average of :         150 spectra
+Scan:    39 (IF:0 FD:13 PL:0)    Tsys:   1.00
+Scan:    39 (IF:0 FD:13 PL:0)    Tsys:   1.00
+beam and scan number      13      39
+% ACCUMAVE: Average of :         150 spectra
+Scan:    37 (IF:0 FD:14 PL:0)    Tsys:   1.00
+Scan:    37 (IF:0 FD:14 PL:0)    Tsys:   1.00
+beam and scan number      14      37
+% ACCUMAVE: Average of :         150 spectra
+Scan:    38 (IF:0 FD:14 PL:0)    Tsys:   1.00
+Scan:    38 (IF:0 FD:14 PL:0)    Tsys:   1.00
+beam and scan number      14      38
+% ACCUMAVE: Average of :         150 spectra
+Scan:    39 (IF:0 FD:14 PL:0)    Tsys:   1.00
+Scan:    39 (IF:0 FD:14 PL:0)    Tsys:   1.00
+beam and scan number      14      39
+% ACCUMAVE: Average of :         150 spectra
+Scan:    37 (IF:0 FD:15 PL:0)    Tsys:   1.00
+Scan:    37 (IF:0 FD:15 PL:0)    Tsys:   1.00
+beam and scan number      15      37
+% ACCUMAVE: Average of :         150 spectra
+Scan:    38 (IF:0 FD:15 PL:0)    Tsys:   1.00
+Scan:    38 (IF:0 FD:15 PL:0)    Tsys:   1.00
+beam and scan number      15      38
+% ACCUMAVE: Average of :         150 spectra
+Scan:    39 (IF:0 FD:15 PL:0)    Tsys:   1.00
+Scan:    39 (IF:0 FD:15 PL:0)    Tsys:   1.00
+beam and scan number      15      39
+% ACCUMAVE: Average of :          48 spectra
+

@@ -1,0 +1,6 @@
+GBTIDL -> nreg = !g.nregion  
+GBTIDL -> print, nreg
+           4
+GBTIDL -> regs = !g.regions
+GBTIDL -> print, regs[0:2*nreg-1]
+         622        1668        1820        2218        2389        2788        2936        4009

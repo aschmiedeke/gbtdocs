@@ -40,12 +40,18 @@ extensions = ['sphinx.ext.todo',
               'sphinx.ext.autosectionlabel',
               'sphinx_design',
               'sphinx_copybutton',
-              'hoverxref.extension',
+              #'hoverxref.extension',
               'sphinx_idl.domain', 
               'sphinx_idl.auto',
               'sphinxcontrib.bibtex',
               'sphinxcontrib.email',
+              'myst_parser',
 ]
+
+source_suffic = {
+        '.rst': 'restructuredtext',
+        '.md': 'markdown',
+}
 
 suppress_warnings = ['autosectionlabel.*']
 
@@ -86,30 +92,30 @@ email_automode = True
 intersphinx_disabled_reftypes = ["*"]
 
 
-hoverxref_api_host = 'https://readthedocs.org'
-hoverxref_auto_ref = True
-hoverxref_domains = ["py"]
-hoverxref_roles = [
-    "option",
-    # Documentation pages
-    # Not supported yet: https://github.com/readthedocs/sphinx-hoverxref/issues/18
-    "doc",
-    # Glossary terms
-    "term",
-]
-hoverxref_role_types = {
-    "mod": "modal",  # for Python Sphinx Domain
-    "doc": "modal",  # for whole docs
-    "class": "tooltip",  # for Python Sphinx Domain
-    "ref": "tooltip",  # for hoverxref_auto_ref config
-    "confval": "tooltip",  # for custom object
-    "term": "tooltip",  # for glossaries
-    "func": "tooltip", # for functions
-}
+#hoverxref_api_host = 'https://readthedocs.org'
+#hoverxref_auto_ref = True
+#hoverxref_domains = ["py"]
+#hoverxref_roles = [
+#    "option",
+#    # Documentation pages
+#    # Not supported yet: https://github.com/readthedocs/sphinx-hoverxref/issues/18
+#    "doc",
+#    # Glossary terms
+#    "term",
+#]
+#hoverxref_role_types = {
+#    "mod": "modal",  # for Python Sphinx Domain
+#    "doc": "modal",  # for whole docs
+#    "class": "tooltip",  # for Python Sphinx Domain
+#    "ref": "tooltip",  # for hoverxref_auto_ref config
+#    "confval": "tooltip",  # for custom object
+#    "term": "tooltip",  # for glossaries
+#    "func": "tooltip", # for functions
+#}
 
-hoverxref_intersphinx = [
-        "dysh"
-]
+#hoverxref_intersphinx = [
+#        "dysh"
+#]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -143,8 +149,15 @@ html_theme = 'sphinx_book_theme'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
+# this is located in _'static
 html_css_files = [
-    'css/custom.css',
+        ('css/custom.css', {'priority': 900}), # ensures the css overrides load last
+]
+
+
+html_js_files = [
+        #('patch-preview.js', {'priority': 950}),
+        ('rtd-patch.js', {'priority': 200}),        # low priority number ensures it runs early during DOM loading
 ]
 
 ## for sphinx_book_theme
@@ -158,6 +171,11 @@ html_theme_options = {
     "use_repository_button": True,
     "use_edit_page_button": False,
     "use_issues_button": True,
+    #"show_nav_level": 3,
+    #"navigation_depth": 4,
+    #"collapse_navigation": True,
+    #"show_toc_level": 2,
+    #"show_navbar_depth": 3,
 }
 
 html_context = {
@@ -167,9 +185,15 @@ html_context = {
     "doc_path": "docs/source",
 }
 
+
+# force sphinx to explicitely track deep toc nodes inside localized context
+#toc_object_entries = True
+
+
+
 html_show_sourcelink = False
 
-
+#
 ## for furo theme
 #html_theme_options = {
 #        "light_logo": "GBO-vertical-PGGradient.svg",

@@ -1,0 +1,123 @@
+% Compiled module: GETATMOS.
+Scan:    37 (IF:0 FD:9 PL:0)    Tsys:   1.00
+Scan:    37 (IF:0 FD:9 PL:0)    Tsys:   1.00
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       37/      60 integration:        0/      75
+saving fdnum        0 scanline:       37/      60 integration:       20/      75
+saving fdnum        0 scanline:       37/      60 integration:       40/      75
+saving fdnum        0 scanline:       37/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       38/      60 integration:        0/      75
+saving fdnum        0 scanline:       38/      60 integration:       20/      75
+saving fdnum        0 scanline:       38/      60 integration:       40/      75
+saving fdnum        0 scanline:       38/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       39/      60 integration:        0/      75
+saving fdnum        0 scanline:       39/      60 integration:       20/      75
+saving fdnum        0 scanline:       39/      60 integration:       40/      75
+saving fdnum        0 scanline:       39/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       40/      60 integration:        0/      75
+saving fdnum        0 scanline:       40/      60 integration:       20/      75
+saving fdnum        0 scanline:       40/      60 integration:       40/      75
+saving fdnum        0 scanline:       40/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       41/      60 integration:        0/      75
+saving fdnum        0 scanline:       41/      60 integration:       20/      75
+saving fdnum        0 scanline:       41/      60 integration:       40/      75
+saving fdnum        0 scanline:       41/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       42/      60 integration:        0/      75
+saving fdnum        0 scanline:       42/      60 integration:       20/      75
+saving fdnum        0 scanline:       42/      60 integration:       40/      75
+saving fdnum        0 scanline:       42/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       43/      60 integration:        0/      75
+saving fdnum        0 scanline:       43/      60 integration:       20/      75
+saving fdnum        0 scanline:       43/      60 integration:       40/      75
+saving fdnum        0 scanline:       43/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       44/      60 integration:        0/      75
+saving fdnum        0 scanline:       44/      60 integration:       20/      75
+saving fdnum        0 scanline:       44/      60 integration:       40/      75
+saving fdnum        0 scanline:       44/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       45/      60 integration:        0/      75
+saving fdnum        0 scanline:       45/      60 integration:       20/      75
+saving fdnum        0 scanline:       45/      60 integration:       40/      75
+saving fdnum        0 scanline:       45/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       46/      60 integration:        0/      75
+saving fdnum        0 scanline:       46/      60 integration:       20/      75
+saving fdnum        0 scanline:       46/      60 integration:       40/      75
+saving fdnum        0 scanline:       46/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       47/      60 integration:        0/      75
+saving fdnum        0 scanline:       47/      60 integration:       20/      75
+saving fdnum        0 scanline:       47/      60 integration:       40/      75
+saving fdnum        0 scanline:       47/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       48/      60 integration:        0/      75
+saving fdnum        0 scanline:       48/      60 integration:       20/      75
+saving fdnum        0 scanline:       48/      60 integration:       40/      75
+saving fdnum        0 scanline:       48/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       49/      60 integration:        0/      75
+saving fdnum        0 scanline:       49/      60 integration:       20/      75
+saving fdnum        0 scanline:       49/      60 integration:       40/      75
+saving fdnum        0 scanline:       49/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       50/      60 integration:        0/      75
+saving fdnum        0 scanline:       50/      60 integration:       20/      75
+saving fdnum        0 scanline:       50/      60 integration:       40/      75
+saving fdnum        0 scanline:       50/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       51/      60 integration:        0/      75
+saving fdnum        0 scanline:       51/      60 integration:       20/      75
+saving fdnum        0 scanline:       51/      60 integration:       40/      75
+saving fdnum        0 scanline:       51/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       52/      60 integration:        0/      75
+saving fdnum        0 scanline:       52/      60 integration:       20/      75
+saving fdnum        0 scanline:       52/      60 integration:       40/      75
+saving fdnum        0 scanline:       52/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       53/      60 integration:        0/      75
+saving fdnum        0 scanline:       53/      60 integration:       20/      75
+saving fdnum        0 scanline:       53/      60 integration:       40/      75
+saving fdnum        0 scanline:       53/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       54/      60 integration:        0/      75
+saving fdnum        0 scanline:       54/      60 integration:       20/      75
+saving fdnum        0 scanline:       54/      60 integration:       40/      75
+saving fdnum        0 scanline:       54/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       55/      60 integration:        0/      75
+saving fdnum        0 scanline:       55/      60 integration:       20/      75
+saving fdnum        0 scanline:       55/      60 integration:       40/      75
+saving fdnum        0 scanline:       55/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       56/      60 integration:        0/      75
+saving fdnum        0 scanline:       56/      60 integration:       20/      75
+saving fdnum        0 scanline:       56/      60 integration:       40/      75
+saving fdnum        0 scanline:       56/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       57/      60 integration:        0/      75
+saving fdnum        0 scanline:       57/      60 integration:       20/      75
+saving fdnum        0 scanline:       57/      60 integration:       40/      75
+saving fdnum        0 scanline:       57/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       58/      60 integration:        0/      75
+saving fdnum        0 scanline:       58/      60 integration:       20/      75
+saving fdnum        0 scanline:       58/      60 integration:       40/      75
+saving fdnum        0 scanline:       58/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       59/      60 integration:        0/      75
+saving fdnum        0 scanline:       59/      60 integration:       20/      75
+saving fdnum        0 scanline:       59/      60 integration:       40/      75
+saving fdnum        0 scanline:       59/      60 integration:       60/      75
+% ACCUMAVE: Average of :         150 spectra
+saving fdnum        0 scanline:       60/      60 integration:        0/      75
+saving fdnum        0 scanline:       60/      60 integration:       20/      75
+saving fdnum        0 scanline:       60/      60 integration:       40/      75
+saving fdnum        0 scanline:       60/      60 integration:       60/      75

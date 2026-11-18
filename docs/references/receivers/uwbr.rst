@@ -1,4 +1,20 @@
 Ultra-wideband Receiver (UWBR)
 ------------------------------
 
-UWBR has an instantaneous bandwidth of 3.3 GHz and bandwidth ratio of nearly 6:1, much higher than other GBT receivers. It uses a quad-ridge feed horn design with a quartz dielectric insert and an outer corrugated ring to provide good sensitivity over the full observing band. It is optimized for high-precision pulsar timing, where the wide bandwidth enables precise measurement and correction of interstellar medium effects. UWBR is also useful for observations of broadband transient sources (such as fast radio bursts), and regions that are rich in molecular lines over frequencies of 0.7-4 GHz (such as radio recombination lines). However, the sensitivity of UWBR is lower than other receivers at any given frequency, so science cases that do not require UWBR's wide instantaneous bandwidth will typically benefit from using a receiver with narrower bandwidth. A permanent 2.30 - 2.36 GHz notch filter is installed to block known RFI.
+UWBR has an instantaneous bandwidth of 3.3 GHz and bandwidth ratio of
+nearly 6:1, much higher than other GBT receivers. It uses a quad-ridge
+feed horn design with a quartz dielectric insert and an outer
+corrugated ring to provide good sensitivity over the full observing
+band. It is optimized for high-precision pulsar timing, where the wide
+bandwidth enables precise measurement and correction of interstellar
+medium effects. UWBR is also useful for observations of broadband
+transient sources (such as fast radio bursts), and regions that are
+rich in molecular lines over frequencies of 0.7-4 GHz (such as radio
+recombination lines). However, the sensitivity of UWBR is lower than
+other receivers at any given frequency, so science cases that do not
+require UWBR's wide instantaneous bandwidth will typically benefit
+from using a receiver with narrower bandwidth. A permanent 2.30 - 2.36
+GHz notch filter is installed to block known RFI.
+
+**Operational Data Sharing MUST be used when observing with UWBR.**
+ See :ref:`ods-instructions` for detailed instructions.

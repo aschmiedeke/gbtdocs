@@ -8,7 +8,6 @@ The following are members of the MUSTANG-2 Instrument Team and should be include
 - Simon Dicker
 - Saianeesh Haridas
 - Giovanni Isopi
-- Ian Lowe
 - Luca Di Mascolo
 - Brian Mason
 - Emily Moravec

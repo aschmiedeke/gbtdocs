@@ -30,15 +30,47 @@ The technical justification on a proposal should reference publicly available ma
 
 	If you are targeting a specific S/N for your proposal and you have an extended object, you must account for/explore the effect of filtering and include the results of your exploration in your technical justification. You can run simulations using `M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_, run your own simulations, or consult the instrument team.
 
-Requirements for MUSTANG-2 technical justification:
-	1. You must explain in detail how you arrived at the total observing time. If you used equations, please include those and the progression of how you used any equations in how you arrived at your final time request. 
-	2. You must consider the effect of filtering (this is used in MUSTANG-2 data reduction pipelines Minkasi or MIDAS) on your data. Please include discussion of these effects in your technical justification. If you run simulations using `M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_ then filtering is taken into account and you can simply say this.
-	3. You must account for overheads - see :ref:`Overhead observing constraints <how-tos/receivers/mustang2/mustang2_proposal:Overhead observing constraints>` below.
-	4. You must have a MUSTANG-2 instrument team member read through the technical justification and sign off on it **before you submit your proposal** as this is the only technical review a MUSTANG-2 proposal will get. 
+Requirements of things you must do/address in the technical justification of a MUSTANG-2 proposal:
+	1. You must have a MUSTANG-2 instrument team member read through the technical justification and sign off on it **before you submit your proposal** as this is the only technical review a MUSTANG-2 proposal will get. 
+	2. You must explain in detail how you arrived at the total observing time. If you used equations, please include those and the progression of how you used any equations in how you arrived at your final time request. 
+	3. You must account for overheads - see :ref:`Overheads <how-tos/receivers/mustang2/mustang2_proposal:Overheads>` below.
+	4. You must consider the effect of filtering (this is used in MUSTANG-2 data reduction pipelines Minkasi or MIDAS) on your data. Please include discussion of these effects in your technical justification. If you run simulations using `M2_ProposalTools <https://m2-tj.readthedocs.io/en/latest/index.html>`_ then filtering is taken into account and you can simply say this.
+	5. If you are observing a galaxy cluster, you should address point source contamination and how you plan to deal with point source contamination. You can put this either in the science justification and/or in the "Observing time" section of the technical justification. 
 
-Overhead observing constraints
--------------------------------
-The overhead for MUSTANG-2 is dominated by initial setup and calibration. We generally recommend a minimum session length of 2 hours. Allowing for weather and calibration and observing overheads, observers should conservatively allow an observing efficiency of 50% (or 100% overheads relative to on-target time). Thus in the end to account for setup and calibration time to get thier final time request the user should multiply thier on-target time by a factor of 2. 
+
+Text to put in proposal technical justification boxes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Below are suggestions for how to fill out the technical justification boxes in the NRAO proposal tool.
+
+**"Observing time"**: Here lay out your time request justification. You must explain in detail how you arrived at the total observing time (how you arrived at the total integration time, the overheads you assumed, and how you plan to break your observing time into sessions). If you used equations, please include those and the progression of how you used any equations in how you arrived at your final time request. If you used, any of the notebooks from this :ref:`Guide <how-tos/receivers/mustang2/mustang2_calc_obs_time:How to Calculate Observing Time Required for MUSTANG-2>`, state that you used ``M2_ProposalTools`` and the name of the notebook that you used. State the input parameter that you put into the notebook(s) and the resulting integration time. Then state the total time requested including overheads. And lastly please provide the exact output of the notebook. For example the default print out in the ``M2_t_cluster_detection.ipynb`` notebook is
+
+.. code:: python
+
+	----- Cluster Properties -----  
+	M500 (1e14): 3.0  
+	Redshift: 1.0  
+	----- Signal Peak Stats -----  
+	Unfiltered y peak: 9.619897496889924e-05  
+	Beam-convolved y peak: 8.860120011199452e-05  
+	Filtered y peak: 4.829389221185476e-05  
+	Filtered peak, uK: -159.3698442991207  
+	Filtered peak, uJy/beam: -122.7578530412146  
+	----- Telescope Time Stats -----  
+	Your target sensitivity or 1-sigma level in uJy/beam is: 17.536836148744943  
+	On-source time to 7 sigma peak detection (hrs): 10.56446  
+	Total telescope time for this cluster (hrs): 21.25
+
+**"Mapping"**: Please include here the information about the scan size you plan to use. For eexample, "We will use the typical cluster mapping and scan pattern typical with MUSTANG-2 observations. We will do sets of 4 lissajous "daisy" scans with r=X' in an offset pattern."
+
+**"RFI"**: "Currently RFI does not affect M2 data in a significant way."
+
+**"Overhead"**: If you used the standard factor of 2 for overheads, you can say "Standard factor of 2 for MUSTANG-2 observations." However, if the integration time for your source is small use the strategy laid out in the :ref:`Overheads <how-tos/receivers/mustang2/mustang2_proposal:Overheads>` section and explain that in detail here.
+
+Overheads
+---------
+The overhead for MUSTANG-2 is dominated by initial setup and calibration. We generally recommend a minimum session length of 1.5-2 hours. Allowing for weather and calibration and observing overheads, observers should conservatively allow an observing efficiency of 50% (or 100% overheads relative to on-target time). Thus in the end to account for setup and calibration time to get thier final time request the user should multiply thier on-target time by a factor of 2. 
+
+However, sometimes the integration times for a source are quite small (on the order of minutes) and the proposer may only have one or a few sources per session. In this case, the proposer should assume a minimum session length is 90 minutes with 1 hour of total overheads (10 minutes for setup, 10 minutes for slew, 30 minutes for OOF, and 10 minutes for absolute calibration). Then 10 minutes of slew and calibration per source.
 
 Source visibility considerations
 --------------------------------

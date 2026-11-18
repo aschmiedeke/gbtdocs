@@ -209,7 +209,7 @@ and integrated flux density of the HI source are measured.
     .. code-block:: IDL
 
         filein, ’ngc5291.fits’
-summary
+        summary
 
     Calibrate and accumulate the data for each scan, and for each polarization:
 
@@ -401,9 +401,9 @@ spectrum to disk.
     .. code-block:: IDL
 
         ave
-    setregion
-    nfit, 3
-    baseline
+        setregion
+        nfit, 3
+        baseline
 
 * Alternative reduction:
     Get the data into GBTIDL and show a summary of the scans:

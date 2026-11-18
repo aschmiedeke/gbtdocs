@@ -1,0 +1,26 @@
+GBTIDL -> vanecal, 10                                          
+% Compiled module: VANECAL.
+Scan:    10 (IF:0 FD:9 PL:0)    Tsys:   1.00
+% Compiled module: GETATMOS.
+(zenith) Opacity(93.168089,59795.169) = 0.3929
+AtmTsys(93.168089,59795.169) = 95.9261
+Tatm(93.168089,59795.169) = 289.0423
+fdnum, beam, Tsys*[K]:        0           1       285.09885
+fdnum, beam, Tsys*[K]:        1           2       226.48593
+fdnum, beam, Tsys*[K]:        2           3       232.80958
+fdnum, beam, Tsys*[K]:        3           4       273.67937
+fdnum, beam, Tsys*[K]:        4           5       228.63467
+fdnum, beam, Tsys*[K]:        5           6       274.72375
+fdnum, beam, Tsys*[K]:        6           7       217.85602
+fdnum, beam, Tsys*[K]:        7           8       238.14182
+fdnum, beam, Tsys*[K]:        8           9       232.05761
+fdnum, beam, Tsys*[K]:        9          10       222.55392
+fdnum, beam, Tsys*[K]:       10          11       221.29446
+fdnum, beam, Tsys*[K]:       11          12       245.67560
+fdnum, beam, Tsys*[K]:       12          13       229.10080
+fdnum, beam, Tsys*[K]:       13          14       221.68882
+fdnum, beam, Tsys*[K]:       14          15       237.94824
+fdnum, beam, Tsys*[K]:       15          16       218.53617
+Tcal, Twarm, tatm:       298.00355       296.84999      289.042
+GBTIDL -> 
+

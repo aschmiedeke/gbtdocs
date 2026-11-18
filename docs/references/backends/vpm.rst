@@ -57,7 +57,7 @@ bandwidth from any receiver to < 4 GHz (up to 8 GHz is available for certain rec
 
 When operating in coherent dedispersion modes with 800 or 1500 MHz of sampled bandwidth, 
 one FPGA sends output to all eight HPCs. Since all the HPCs are in use the maximum total
-bandwidth in coherent dedispersion modes is 1500 MHz, *1250 MHz of which usable.*
+bandwidth in coherent dedispersion modes is 1500 MHz, *1250 MHz of which usable.*  *Coherent dedispersion modes are subject to a maximum allowable dispersion measure (see `below <max-dms>`_).
 
 When operating in coherent dedispersion modes with 100 or 200 MHz of bandwidth, one FPGA 
 sends output to one or two HPCs, respectively. In these cases, additional HPCs will not be 
@@ -95,7 +95,12 @@ where :math:`n_{\text{pol}}` is the number of polarization products (4 for full 
 
 The following tables list all currently supported VPM modes and the vegas.scale values for each.
 Observers should still use the :ref:`references/backends/vpm:VPM Observing Tools` to check the value
-of vegas.scale for their particular observing setup.
+of vegas.scale for their particular observing setup. 
+Note that three 1500-MHz windows are used to cover the full bandwidth of the ultrawideband receiver (UWBR).
+The center frequency of each window is tuned such that the windows overlap by 187.5 MHz,
+thus ensuring continuous coverage of the full observing band.
+These center frequencies are 1225, 2350, and 3475 MHz.
+Therefore, when using UWBR, one should select the most appropriate 1500-MHz bandwidth observing mode."
 
 
 .. include:: /material/tables/VPM_coherent_modes.tab
@@ -386,7 +391,7 @@ listed as lustre clients at `this website <https://greenbankobservatory.org/port
 
 In **coherent dedispersion modes** data are written to
 
-``/lustre/gbtdata/<projectID>/VEGAS_CODD/<bankID>``,
+``/stor/pulsar/gbtdata/<projectID>/VEGAS_CODD/<bankID>``,
 
 where 
 
@@ -395,7 +400,7 @@ where
 
 In **incoherent dedispersion modes** data are written to
 
-``/lustre/gbtdata/<projectID>/VEGAS/<bankID>``
+``/stor/pulsar/gbtdata/<projectID>/VEGAS/<bankID>``
 
 File names follow the forms:
 
@@ -453,6 +458,16 @@ between the two backends. Empirically these are less than 1 microsecond.
 
 Note that overlap delays in coherent dedispersion search mode are already applied to the data 
 via a PSRFITS keyword. This was not the case with GUPPI. 
+
+
+Maximum Allowable DMs for Coherent Dedispersion
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The size of the data buffers uses for real-time coherent dedispersion impose a limit on the maximum allowable DM for coherent dedispersion modes.  The exact maximum DM depends on the center observing frequency, the bandwidth, and the number of frequency channels.  Approximate maximum DMs for common receivers and center frequencies are given below.  **Note that the bandwidth and number of frequency channels for UWBR are for a single spectral window.**
+
+
+.. include:: /material/tables/VPM_max_DM.tab
+
 
 
 Putting it All Together

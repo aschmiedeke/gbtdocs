@@ -1,4 +1,5 @@
 .. _dss:
+
 Dynamic Scheduling System
 -------------------------
 
@@ -89,7 +90,7 @@ of the observer to keep the projects eligible for scheduling as much as possible
 
 
 Guidelines for the use of blackouts
-''''''''''''''''''''''''''''''''''
+'''''''''''''''''''''''''''''''''''
 
 While blackout dates give observers control of the scheduling process, efficient GBT operation
 requires that not too much time be blacked out or disabled. It is especially important that 

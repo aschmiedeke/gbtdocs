@@ -54,7 +54,7 @@ OOF
 ===
 Despite the corrections for the effects of gravity on the dish, there are still large-scale errors that remain (e.g., from differential heating or small errors in the gravity model). In order to correct for these, we use use Out Of Focus (OOF implemented as :func:`AutoOOF() <astrid_commands.AutoOOF>`) mapping (holography) observations of bright point sources to derive the shape of the surface using Zernike polynomials and correct for all other deviations away from perfect parabola in the surface.
 
-How this works is that the :func:`AutoOOF() <astrid_commands.AutoOOF>` procedure takes scans of a bright, compact point source (bright and point source are important!). Specifically, ssing the subreflector, :func:`AutoOOF() <astrid_commands.AutoOOF>` makes 3 maps of the bright point source, in order: a map in focus (shown in left of the image below), a map out of focus in the positive direction (typically 10 mm, shown in middle of the image below), and a map out of focus in the minus direction (typically -10 mm, shown in right of the image below). 
+How this works is that the :func:`AutoOOF() <astrid_commands.AutoOOF>` procedure takes scans of a bright, compact point source (bright and point source are important!). Specifically, ssing the subreflector, :func:`AutoOOF() <astrid_commands.AutoOOF>` makes 3 maps of the bright point source, in order: a map in focus (shown in left of the image below), a map out of focus in the positive direction (shown in middle of the image below), and a map out of focus in the minus direction (shown in right of the image below). The value of the focus offset is receiver specific (see the "Focus Offset" column of :numref:`tab-receivers-OOF-values` for the exact values).
 
 .. image:: images/OOF/OOF_scans.png
 

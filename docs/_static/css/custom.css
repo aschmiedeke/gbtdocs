@@ -1,3 +1,21 @@
+/* Strip theme restrictions blocking the Addon system */
+.bd-container,
+.bd-main,
+.bd-content,
+article.bd-article {
+    overflow: visible !important;
+    contain: none !important;
+}
+
+/* Force standard positioning for the web component elements */
+readthedocs-addons,
+readthedocs-linkpreviews {
+    position: fixed !important;
+    display: block !important;
+    z-index: 2147483647 !important;
+}
+
+
 /*
  * CSS hacks and small modification for my Sphinx website
  * :copyright: Copyright 2013-2016 Lilian Besson

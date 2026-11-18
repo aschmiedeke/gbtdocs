@@ -1,19 +1,21 @@
 # Load a source catalog
 # pulsars_all_GBT is a built-in catalog
 psr_catalog = Catalog(pulsars_all_GBT)
-# load in your catalog of globular clusters
+# Load in your catalog of globular clusters; update this to point to
+# your catalog
 gc_catalog = Catalog('valid/path/to/my_gc_catalog.cat')
 
-
-# test scan source
+# Test scan source
 test_source = 'B1933+16'
-# target of interest
-gc_source = 'GlobClusterX'
+# Target of interest
+source = 'GlobClusterX'
 
 # Search for pulsars for 30 minutes or until a UTC stop time
 use_stop_time = True
 pulsar_scan_length = 60 * 30
 stop_time = '21:00:00'
+
+cal_scan_length = 65
 
 
 # Define config strings
@@ -49,22 +51,53 @@ vegas.scale = 13035
 vegas.polnmode = 'total_intensity'
 """
 
+config_incoherent_cal = """
+vegas.obsmode = 'cal'
+swmode = 'tp' 
+noisecal = 'lo'
+tint = 40.96e-6
+vegas.numchan = 2048
+vegas.scale = 13035
+vegas.polnmode = 'total_intensity'
+"""
+
 ResetConfig()
 
 # Pointing/focus corrections using a source close to the pulsar
-AutoPeakFocus(location = source)
+AutoPeakFocus(location = test_source)
 
-Slew(source)
 
-# Configure for VEGAS observations
-Configure(config_common + config_LBand + config_incoherent_search)
-
+# Slew to the test source
+Slew(test_source)
+# Configure for a calibration scan
+Configure(config_common + config_CBand + config_incoherent_cal)
 # Balance the IF system
 Balance()
 Balance()
+# Take a calibration scan
+Track(test_source, None, cal_scan_length)
 
+# Configure for a search-mode scan
+Configure(config_common + config_CBand + config_incoherent_search)
+# Take test data
+Track(test_source, None, cal_scan_length)
+
+
+# Slew to the pulsar source
+Slew(source)
+# Configure for a calibration scan
+Configure(config_common + config_CBand + config_incoherent_cal)
+# Balance the IF system
+Balance()
+Balance()
+# Take a calibration scan
+Track(source, None, cal_scan_length)
+
+# Configure for a search-mode scan
+Configure(config_common + config_CBand + config_incoherent_search)
 # Take pulsar search data
 if use_stop_time:
-      Track(source, None, stopTime = stop_time)
+      Track(source, None, stopTime=stop_time)
 else:
       Track(source, None, pulsar_scan_length)
+

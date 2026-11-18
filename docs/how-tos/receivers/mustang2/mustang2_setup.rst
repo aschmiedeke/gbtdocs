@@ -25,28 +25,23 @@ Detailed M2 instrument team instructions on tuning and biasing that can be used 
 
 
 1. Preparation
---------------   
+--------------
 
 1. Start an observing VNC
 
 2. Ask the operator to put you in the gateway for M2
 
 
-2. Run startup + tuning script
+3. Run startup + tuning script
 ------------------------------
 
 #. **Check that the array is cool and not cycling**
     Go the CLEO M2 housekeeping tab and check that the array temperature is ~400mK. Also check that the "Cycle State" on the left side of the window is IDLE and not in stages 1-5. If it is in a "stage" this means that it is cycling. If either the temperature of the array is warm or it is cycling, the array is not ready and/or not cool enough for tuning yet. 
 
-#. **Change directories** to where the startup + tuning script is
-    .. code:: bash
-
-        cd /users/penarray/Public
-
 #. **Run script**
     .. code:: bash
 
-        ./startMUSTANG.bash projectCode_sessionNumber
+        /users/penarray/Public/startMUSTANG.bash projectCode_sessionNumber
 
 
     where ``projectCode`` is your proposal number (e.g. ``AGBT18A_014``) and ``sessionNumber`` is your current (AstrID) session number (e.g. ``01``). The session number is **not** the source code from the DSS e-mail. It is very important to get this right or data reduction will fail to pick up the tuning which in turn affects focusing. Check https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/NewRunNotes to see how many sessions have already been observed for this project. 
@@ -58,7 +53,7 @@ Detailed M2 instrument team instructions on tuning and biasing that can be used 
     .. note:: 
         If there are to be two MUSTANG-2 projects observed in the coming night, you should include both projects/sessions separated by a comma: 
 
-        ``./startMUSTANG.bash FirstProjectCode_SessionNumber,SecondProjectCode_SessionNumber``
+        ``/users/penarray/Public/startMUSTANG.bash FirstProjectCode_SessionNumber,SecondProjectCode_SessionNumber``
     
     See further documentation about ``./startMUSTANG.bash`` at https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Newest_Method_45_25_473_472022 under the "Advanced Usage of startMUSTANG.bash heading" (e.g., how to reconnect to the tuning during observing).
 
@@ -117,12 +112,15 @@ Detailed M2 instrument team instructions on tuning and biasing that can be used 
 
         where \# is the roach number. It may take a while for the ssh to go through (several minutes). Once the ssh goes through, in the ipython session for that roach you can redo the tuning by doing the ``um1=startDAQ()`` command. Simply type in um1= and do the up arrow to find the command; you are looking for a command that looks like ``um1=startDAQ(rootdir=rootdir, SaveDir=SaveDir, project=proj, doVNA=False, logLevel=”DEBUG”, tuneKwds=tuneKwds,…)``. If that does not work, you will have to do restart the tuning process using the same project code and session number.
 
-
 #. **Check the IQ, Flux Ramp, and Phase Response plots output** by the script.
     See https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/TuningResults for explanations and examples of good and bad tuning results.
 
+#. **If you have tuned for two or more M2 projects, check tuning files**
 
-3. Check that data is flowing
+If you have tuned for two or more M2 projects, you should check that the second and/or third tuning directories exist. To do this, `cd /home/gbtlogs/Rcvr_MBA1_5tuning/` then check that the project directories exist. Also check that within the project directories that the ``mustangr1-X`` directories have data within them beyond a ``current_tuning.txt`` file. If the project directories do not exist and/or the ``mustangr1-X`` don't have data, make the project directory a symlink (see directions above) to the first directory that has the tuning in them.
+
+
+4. Check that data is flowing
 -----------------------------
 Go to the Mustang Manager in CLEO. Click the miscellaneous tab, and click the *Locked* on the bottom left of the window to unlock the regular features, then also unlock advanced features by clicking the *Locked* next to *Advanced Features*.
 
@@ -241,22 +239,8 @@ If you have a short observing session, you can manually enter the biases to save
 If the manager crashed and you need to re-enter the values that were previously calculated, follow the same process but put in your recorded values. 
 
 
-Issues with Manager? Restart the Manager
-========================================
-
-If you are having issues with the manager or it crashed, you will need to restart the M2 manager. To do this, do the following:
-
-#. Ask the operator to restart the MUSTANG manager using TaskMaster, even if you've been told how to do this yourself. Restarting machines through TaskMaster is a responsibility that is supposed to only be held by the operator. But if you need to do it yourself, the instructions on how to do so are `here <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Restart_Manager_by_Hand>`_.
-
-#. When the operator has told you that they have restarted the M2 manager:
-    #. Go to your Cleo Mustang Manager screen
-    #. In the drop down menu go to *Managers*→*Off* and then again to click *Managers*->*On* to to turn the manager off and back on.
-    #. Re-check the daily cycle to make sure that it is turned off.
-
-#. Restarting the manager *before* biasing: You're done!
-#. Restarting the manager *after* biasing:
-    #. Re-check that the det-biases are what you expected them to be.
-    #. Check that the *DataXinit* buttons are on.
-
+Issues with Manager?
+====================
+See typicaly issues and manager documentation on the :ref:`mustang2_manager` page. In particular if you are having issues with the manager or it crashed, you will need to restart the M2 manager. See this documentation for how to :ref:`references/receivers/mustang2/mustang2_manager:Restart the manager`.
 
 

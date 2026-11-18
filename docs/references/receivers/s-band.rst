@@ -14,6 +14,4 @@ There is choice between two noise diodes with different levels (~10% or ~100% of
 A superconducting notch filter is permanently installed immediately after the first amplifiers and covers the range 2.3-2.36 GHz. 
 This filter suppresses interference from the Sirius and XM satellite radio transmissions.
 
-
-
-
+**Operational Data Sharing MUST be used when observing with the S-Band receiver.**  See :ref:`ods-instructions` for detailed instructions.
