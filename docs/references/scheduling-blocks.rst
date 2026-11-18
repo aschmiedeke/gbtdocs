@@ -53,7 +53,7 @@ simple text editor reminiscent of Notepad (MS Windows), or you can choose to wri
 SB outside of AstrID and use the "Observations Management" import option in AstrID to
 upload it into the database. 
 
-Choose a discriptive name for your SB, such as "map_G11.0"or "pointfocus", which will 
+Choose a descriptive name for your SB, such as "map_G11.0"or "pointfocus", which will 
 remind you of the science you are trying to accomplsh by running that block. Names such
 as "test" or "new" are not descriptive and should be avoided. The name you choose can
 be up to 96 characters long, and can contain white spaces, so you may have an SB name

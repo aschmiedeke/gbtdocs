@@ -3,12 +3,12 @@ GBT IF system
 #############
 
 
-This is a simplified flow diagram of the GBT IF system routing
+This is a simplified flow diagram of the GBT IF system routing:
 
 .. image:: images/IFsystem_routing.png
 
 
-This is a simplified flow chart of the GBT IF system
+This is a simplified flow chart of the GBT IF system:
 
 .. image:: images/IFsystem.jpg
 
