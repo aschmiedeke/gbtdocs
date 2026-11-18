@@ -35,6 +35,23 @@ These guides provide information on how to use GBO infrastructure.
             Remote connections
 
 
+    .. grid-item-card::
+        :shadow: md
+        :margin: 2 2 0 0 
+
+        :octicon:`terminal;3em;green` **Python 3 Upgrade** 
+
+        How to upgrade your scripts for Python 3
+
+        .. button-link:: infrastructure/python-3-upgrade-guide.html
+            :color: primary
+            :tooltip: Comprehensive guide for the GBT upgrade to Python 3
+            :outline:
+            :click-parent:
+
+            Python 3
+
+
 .. toctree::
     :hidden:
     :maxdepth: 3
