@@ -6,6 +6,9 @@ MUSTANG-2 How-To Guides
 
 Practical step-by-step guides to help you use MUSTANG-2. 
 
+..
+  python3mark Not adding a visible note here but M2 scripts may have some changes to the underlying execfile calls. Will have to double check with Emily once M2 has gone through more Py3 observing procedures.
+
 ----------------
 
 .. grid:: 1 2 2 2
