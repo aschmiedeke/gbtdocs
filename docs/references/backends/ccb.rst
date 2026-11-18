@@ -125,7 +125,7 @@ The basic template SB are:
 
 .. attention:: 
 
-  These scripts feature functionality that will no longer be supported when the observatory moves to fully to Python 3. See :ref:`how-tos/infrastructure/python-3-upgrade-guide:Scheduling Blocks` for more details.
+  These scripts feature functionality that will no longer be supported when the GReen Bank Observatory switch from Python 2 to Python 3 is completed. See :ref:`how-tos/infrastructure/python-3-upgrade-guide:Scheduling Blocks` for more details.
 
 .. tab-set::
 
