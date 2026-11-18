@@ -17,7 +17,7 @@ OOF Examples
 
 .. attention:: 
 
-  While we are in the testing and development phase of Python 3, you may access the upgraded version of AstrID, which features UI changes from this section. See :ref:`how-tos/infrastructure/python-3-upgrade-guide:Astrid` for more details.
+  While we are in the testing and development phase of Python 3, you may access the upgraded version of AstrID, which features UI changes from this section. See :ref:`how-tos/infrastructure/python-3-upgrade-guide:py3 Astrid` for more details.
 
 General conditions that produce bad OOFs
 ========================================
