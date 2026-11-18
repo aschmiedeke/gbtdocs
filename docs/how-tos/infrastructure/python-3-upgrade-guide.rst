@@ -30,7 +30,7 @@ Those of you that have ever gone through a Python 2 -> 3 conversion are aware th
     - Python 3 print statements are an actual function call and require parentheses around the argument. So, ``print "Performing Observation"`` becomes ``print("Perfoming observation")``
 
 - execfile
-    - Technically, execfile is not supported in Python 3. However, the exact replacement is quite verbose, so we have written a wrapper function that performs the same purpose under the hood. Thus, you do not need to replace any ``execfile()`` commands. **However, you will still need to update and verify the Python code in the files called by this procedure.**
+    - Technically, :func:`execfile() <astrid_commands.execfile>` is not supported in Python 3. However, the exact replacement is quite verbose, so we have written a wrapper function that performs the same purpose under the hood. Thus, you do not need to replace any :func:`execfile() <astrid_commands.execfile>` commands. **However, you will still need to update and verify the Python code in the files called by this procedure.**
 
 - Integer and float division
     - Scheduling blocks that use Python 2 division to dynamically determine observing parameters such as number of loops, length of scans, etc. should be carefully inspected to ensure the division is still working correctly. In Python 2, two integers divided with a single division sign will return the floored integer result, so ``9/5 = 1`` under this scheme. Float division can be forced in Python 2 by making one/both of the numbers a float, like so: ``9./5 = 1.8``. In Python 3, float division is always enforced whenever there is a single division sign, so the equation ``9/5`` would now return ``1.8`` by default. You can force integer division by using 2 division signs, like so: ``9//5 = 1``. If you are using this kind of functionality in your scheduling blocks, please ensure you are correctly performing integer or float division wherever you intend to.
@@ -46,14 +46,14 @@ Those of you that have ever gone through a Python 2 -> 3 conversion are aware th
         else:
             cal_source = '3C48'
 
-    If ``GetLST()`` returns "None", which is standard behavior when validating scripts offline, this snippet would run fine in Python 2 without errors, because the ``NoneType`` can be mathematically compared to the integer 14. In Python 3, this would fail, as "None" cannot be meaningfully compared to a number. There is unfortunately no way to automatically detect this until validation, so you will have to be aware of this change if you are using this functionality in your scripts. You can handle this case gracefully by instead conditionally substituting a valid datatype:
+    If :func:`GetLST() <astrid_commands.getLST>` returns "None", which is standard behavior when validating scripts offline, this snippet would run fine in Python 2 without errors, because the ``NoneType`` can be mathematically compared to the integer 14. In Python 3, this would fail, as "None" cannot be meaningfully compared to a number. There is unfortunately no way to automatically detect this until validation, so you will have to be aware of this change if you are using this functionality in your scripts. You can handle this case gracefully by instead conditionally substituting a valid datatype:
 
     .. code-block:: python
 
         mylst = GetLST()
         if mylst is None: mylst = 0.0
 
-You can make all of these changes by using the script ``2to3``, which is currently downloaded on the GB filesystem. See :ref:`how-tos/infrastructure/python-3-upgrade-guide:What you need to do` for clear instructions on how to do this. Please note that the "turtle" database that holds these scripts is read/writeable in both systems, so if you are updating your scheduling blocks to Python 3, take care not to overwrite old Python 2 scripts. ``2to3`` allows you to add an suffix to the filename that will help you avoid this. See :ref:`how-tos/infrastructure/python-3-upgrade-guide:What is NOT changing` for items you will not have to worry about.
+You can make all of these changes by using the script ``2to3``, which is currently downloaded on the GB filesystem. See :ref:`how-tos/infrastructure/python-3-upgrade-guide:What you need to do` for instructions on how to do this. Please note that the "turtle" database that holds these scripts is read/writeable in both systems, so if you are updating your scheduling blocks to Python 3, take care not to overwrite old Python 2 scripts. ``2to3`` allows you to add an suffix to the filename that will help you avoid this. See :ref:`how-tos/infrastructure/python-3-upgrade-guide:What is NOT changing` for items you will not have to worry about.
 
 
 py3 AstrID
@@ -94,7 +94,7 @@ py3 GFM
 
 The GBT FITS Monitor (GFM) is mostly staying the same, but there are a few changes to note. First, it is much easier to change settings for Peak and Focus analysis. By going to the "GFM" dropdown from the top bar, you can open settings for either type of scan, and change as many options as you would like in any tab of the dialog window that pops up before saving, such as heuristics and fitting acceptance criteria. You can also use this dropdown box to send your own corrections to the telescope.
 
-Next, because of unresolved line length issues, the Peak and Focus fit summaries that show up in the log are minimized into ellipses "...". If you want to view the fit results, you can show them  by hovering your mouse over the last ellipsis. These numbers are also printed to the terminal you that you opened AstrID in.
+Next, because of unresolved line length issues, the Peak and Focus fit summaries that show up in the log are minimized into ellipses "...". If you want to view the fit results, you can show them  by hovering your mouse over the last ellipsis. These numbers are also printed to the terminal that you opened AstrID in.
 
 .. image:: images/astrid3.png
 
@@ -113,9 +113,9 @@ What is NOT changing
 
 There are a lot of changes described in this document, but this section lays out what will not change. First of all, the GBT Monitor and Control (M&C) system will not be changing, it is not written in Python. This includes all CLEO windows and Device Manager software, except for a few pyCLEO windows which are already in Python 3 (X-band manager, for example). These will continue to work just as before. The Dynamic Scheduling System (DSS) is also not changing; the GBT will be scheduled just as before and you will be notified via email when you have observations coming up.
 
-As mentioned in :ref:`how-tos/infrastructure/python-3-upgrade-guide:Scheduling Blocks`, the ``execfile`` function will not change; we have written a wrapper to perform the same functionality despite not natively being supported in Python 3.
+As mentioned in :ref:`how-tos/infrastructure/python-3-upgrade-guide:Scheduling Blocks`, the :func:`execfile() <astrid_commands.execfile>` function will not change; we have written a wrapper to perform the same functionality despite not natively being supported in Python 3.
 
-All GBT Procedures will remain the same as well. These are ``OnOff``, ``Track``, ``AutoPeakFocus``, for example and anything exhaustively listed in :ref:references/observing/sb_commands:Scheduling Block Commands`. If your scheduling block only contains procedures, there are no changes you need to make. Further, Catalog files and configuration strings are still formatted the same exact way.
+All GBT Procedures will remain the same as well. These are e.g. :func:`OnOff() <astrid_commands.OnOff>`, :func:`Track() <astrid_commands.Track>`, :func:`AutoPeakFocus() <astrid_commands.AutoPeakFocus>` and anything exhaustively listed in :ref:`references/observing/sb_commands:Scheduling Block Commands`. If your scheduling block only contains these regular procedures, there are no changes you need to make. Further, Catalog files and configuration strings are still formatted the same exact way.
 
 Other downstream analysis programs including GBTIDL, dysh, GBTgridder, etc. will not change.
 
@@ -138,9 +138,9 @@ What you need to do
 	    $ 2to3 -n -w --add-suffix='3' -x execfile example.py
 
 	This will create a new Python 3 file with the "3" suffix only if there are any changes that need to be made. If there are no changes, no new file will be made. This will also ignore the "execfile" rule. After this, you can import the new script back into your AstrID project area.
-- Take a look at the external scripts your scheduling blocks call using ``execfile()`` and ensure they are upgraded and validated.
+- Take a look at the external scripts your scheduling blocks call using :func:`execfile() <astrid_commands.execfile>` and ensure they are upgraded and validated.
 - Try the new AstrID and familiarize yourself with the UI.
-- If you are PI of an operator-run project, we require that you update your scripts, check over the instructions for any changes that may have to be made, and run the first Python 3 session of your project yourself. If there are any changes to be made to instructions, send them along to your project friend for approval.
+- If you are the PI of an operator-run project, we require that you update your scripts, check the instructions for any changes that may have to be made, and run the first Python 3 session of your project yourself. If there are any changes to be made to instructions, send them along to your project friend for approval.
 - If you have any other questions about the Python 3 upgrade, talk to your project friend or send a HelpDesk ticket at https://help.nrao.edu/. 
 
 _
