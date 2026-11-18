@@ -55,7 +55,7 @@ How-to Guides
 -------------
 Go :ref:`here <mustang2-howtos>` for guides on how set-up and observe with MUSTANG-2 and information on MUSTANG-2 data products/reduction.
 
-Technical Aspects
+Technical Details
 -----------------
 .. grid:: 1 2 2 2
 
@@ -143,6 +143,14 @@ Technical Aspects
     mustang2/mustang2_raw_data
     mustang2/mustang2_manager
 
+Credit for Publication
+----------------------
+If you publish results from MUSTANG-2 data, please see :ref:`the list of acknowledgements and citations <mustang2_credit>` you should use.
+
+.. toctree::
+    :hidden:
+
+    mustang2/mustang2_credit
 
 Useful References
 -----------------

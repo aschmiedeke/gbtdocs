@@ -116,8 +116,7 @@ Detailed M2 instrument team instructions on tuning and biasing that can be used 
     See https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/TuningResults for explanations and examples of good and bad tuning results.
 
 #. **If you have tuned for two or more M2 projects, check tuning files**
-
-If you have tuned for two or more M2 projects, you should check that the second and/or third tuning directories exist. To do this, `cd /home/gbtlogs/Rcvr_MBA1_5tuning/` then check that the project directories exist. Also check that within the project directories that the ``mustangr1-X`` directories have data within them beyond a ``current_tuning.txt`` file. If the project directories do not exist and/or the ``mustangr1-X`` don't have data, make the project directory a symlink (see directions above) to the first directory that has the tuning in them.
+    If you have tuned for two or more M2 projects, you should check that the second and/or third tuning directories exist. To do this, `cd /home/gbtlogs/Rcvr_MBA1_5tuning/` then check that the project directories exist. Also check that within the project directories that the ``mustangr1-X`` directories have data within them beyond a ``current_tuning.txt`` file. If the project directories do not exist and/or the ``mustangr1-X`` don't have data, make the project directory a symlink (see directions above) to the first directory that has the tuning in them.
 
 
 4. Check that data is flowing
@@ -175,17 +174,12 @@ Biasing
 
 All previous steps (tuning) can take place in the 1-hour prep before your allotted observing time, i.e. before you are given control of the GBT. However, **biasing must be done on blank sky**, therefore **you must have control of the telescope** for this and all subsequent steps (else just seeing the subreflector/ground spill over). You must be on your own account, logged onto titania or ariel, and also have permission to be in the gateway from the operator.
 
-#. **Navigate to the proper directory where the biasing script lives** 
-    .. code:: bash
-
-        cd /users/penarray/Public/
-
 #. **Run the bias script**
     .. code:: bash
    
-        ./take_det_bias.bash projectCode_sessionNumber
+        /users/penarray/Public/take_det_bias.bash projectCode_sessionNumber
 
-    where ``projectCode_sessionNumber`` is e.g. ``AGBT18A_014_01``. 
+    where ``projectCode_sessionNumber`` is (e.g. ``AGBT18A_014_01``). 
     
     .. note:: 
 
