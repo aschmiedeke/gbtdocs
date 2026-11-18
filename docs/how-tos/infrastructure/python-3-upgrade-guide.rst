@@ -56,7 +56,7 @@ Those of you that have ever gone through a Python 2 -> 3 conversion are aware th
 You can make all of these changes by using the script ``2to3``, which is currently downloaded on the GB filesystem. See :ref:`how-tos/infrastructure/python-3-upgrade-guide:What you need to do` for clear instructions on how to do this. Please note that the "turtle" database that holds these scripts is read/writeable in both systems, so if you are updating your scheduling blocks to Python 3, take care not to overwrite old Python 2 scripts. ``2to3`` allows you to add an suffix to the filename that will help you avoid this. See :ref:`how-tos/infrastructure/python-3-upgrade-guide:What is NOT changing` for items you will not have to worry about.
 
 
-AstrID
+py3 AstrID
 =====================
 
 The Astronomer's Integrated Desktop (AstrID) and the data analysis application GBT FITS Monitor (GFM) are written in Python 2, which necessitates a full upgrade of these applications as well. At the time of deployment to the user community, AstrID 3 should provide the same functionality as AstrID 2. You can open the Python 3 version of AstrID simply by typing 
@@ -89,7 +89,7 @@ You will see that extra information has been added to the Scheduling Block list 
 
 
 
-GFM
+py3 GFM
 =====================
 
 The GBT FITS Monitor (GFM) is mostly staying the same, but there are a few changes to note. First, it is much easier to change settings for Peak and Focus analysis. By going to the "GFM" dropdown from the top bar, you can open settings for either type of scan, and change as many options as you would like in any tab of the dialog window that pops up before saving, such as heuristics and fitting acceptance criteria. You can also use this dropdown box to send your own corrections to the telescope.
