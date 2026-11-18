@@ -12,7 +12,7 @@ Green Bank Observatory systems have been on Python 2 for a long time. Python 2 h
 
 
 What is Changing
-***********************
+****************
 
 
 Operational Procedure
@@ -22,7 +22,7 @@ While the Python 3 system is still undergoing testing, it will coexist with the 
 
 
 Scheduling Blocks
-=====================
+=================
 
 Those of you that have ever gone through a Python 2 -> 3 conversion are aware that there are many changes in the way certain functions and syntax works. So, your scheduling blocks will most likely need to be updated. Here is a list of the most likely changes that will have to happen in your scheduling blocks.
 
@@ -57,7 +57,7 @@ You can make all of these changes by using the script ``2to3``, which is current
 
 
 py3 AstrID
-=====================
+==========
 
 The Astronomer's Integrated Desktop (AstrID) and the data analysis application GBT FITS Monitor (GFM) are written in Python 2, which necessitates a full upgrade of these applications as well. At the time of deployment to the user community, AstrID 3 should provide the same functionality as AstrID 2. You can open the Python 3 version of AstrID simply by typing 
 
@@ -90,7 +90,7 @@ You will see that extra information has been added to the Scheduling Block list 
 
 
 py3 GFM
-=====================
+=======
 
 The GBT FITS Monitor (GFM) is mostly staying the same, but there are a few changes to note. First, it is much easier to change settings for Peak and Focus analysis. By going to the "GFM" dropdown from the top bar, you can open settings for either type of scan, and change as many options as you would like in any tab of the dialog window that pops up before saving, such as heuristics and fitting acceptance criteria. You can also use this dropdown box to send your own corrections to the telescope.
 
@@ -108,7 +108,7 @@ At an expert level, some users (mostly GBO Staff) use software that imports func
 
 
 What is NOT changing
-==========================
+====================
 
 
 There are a lot of changes described in this document, but this section lays out what will not change. First of all, the GBT Monitor and Control (M&C) system will not be changing, it is not written in Python. This includes all CLEO windows and Device Manager software, except for a few pyCLEO windows which are already in Python 3 (X-band manager, for example). These will continue to work just as before. The Dynamic Scheduling System (DSS) is also not changing; the GBT will be scheduled just as before and you will be notified via email when you have observations coming up.
@@ -129,7 +129,7 @@ Other than making the effort to update your scheduling blocks and become familia
 
 
 What you need to do
-***********************
+*******************
 
 - Take a look at your scheduling blocks for active projects and update them to Python 3, taking care not to overwrite your Python 2 scheduling blocks. To do this using 2to3, export the script to disk, then run:
 
