@@ -211,14 +211,6 @@ Here are some screenshots of what we saw in AstrID's DataDisplay tab during the 
 AutoOOF with Ka-Band
 --------------------
 
-..
-  python3mark
-
-.. attention:: 
-
-  While we are in the testing and development phase of Python 3, you may access the upgraded version of AstrID, which features UI changes from this section. See :ref:`how-tos/infrastructure/python-3-upgrade-guide:Astrid` for more details.
-
-
 .. image:: material/Argus_tutorial/Argus_tutorial_observing_oof_z5.png
 
 .. image:: material/Argus_tutorial/Argus_tutorial_observing_oof_z4.png
