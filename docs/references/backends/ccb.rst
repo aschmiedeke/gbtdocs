@@ -136,7 +136,7 @@ The basic template SB are:
 
     .. tab-item:: ccbRALongMap.turtle
 
-        .. literalinclude:: material/ccbRaLongMap.turtle
+        .. literalinclude:: material/ccbRALongMap.turtle
             :language: python
 
 

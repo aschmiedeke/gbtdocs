@@ -72,6 +72,10 @@ To learn how to execute your observing scripts, please follow the :ref:`how-tos/
 
 Recall that after slewing near your source, the script looks for a nearby bright point source and runs a series of Peak (pointing) and Focus scans. When everything is working well, the scans look like this (switch to the DataDisplayTab in AstrID to see them).
 
+..
+  python3mark (technically peak focus screens are very similar right now so I won't make a visible remark, but there may be need to update these in Feb 2027)
+
+
 .. figure:: material/HI_PSW_tutorial/HI_observing_astrid_DataDisplay_peak.png
     
     L-Band peak observations. Four scans are taken, two scanning in Azimuth, two scanning in Elevation.

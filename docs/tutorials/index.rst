@@ -116,5 +116,3 @@ Observing technique Tutorials
    :hidden:
 
    oof_tutorial
-
-
