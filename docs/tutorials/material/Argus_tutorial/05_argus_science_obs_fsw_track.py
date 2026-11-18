@@ -30,7 +30,7 @@ HEAD = NAME RA DEC
 DR21 20:39:01.01 +42:22:50.2
 """
 
-Catalog(source_catalog)  # Only needed for validation purposes in AstrID.
+Catalog(source_catalog)      # Only needed for validation purposes in AstrID.
 
 
 Balance()
