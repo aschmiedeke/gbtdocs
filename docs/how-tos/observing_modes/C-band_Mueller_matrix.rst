@@ -78,7 +78,7 @@ To determine the values for `startOffset`, `scanDuration` and `tint` you should 
 
 .. math::
 
-    \mbox{tint}=\frac{\mbox{HPBW}}{(2\times\mbox{startOffset})/(\mbox{scanDuration})}\frac{1}{\mbox{# samples}}
+    \mbox{tint}=\frac{\mbox{HPBW}}{(2\times\mbox{startOffset})/(\mbox{scanDuration})}\frac{1}{\mbox{num samples}}
 
 
 with HPBW the half power beam width at the lowest observing frequency, and `# samples` the number of data points over the beam.

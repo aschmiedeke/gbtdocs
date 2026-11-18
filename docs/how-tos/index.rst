@@ -57,6 +57,7 @@ These guides provide information on how to use GBO infrastructure.
     :maxdepth: 3
 
     infrastructure/remote-connection
+    infrastructure/python-3-upgrade-guide
 
 
 General Guides
