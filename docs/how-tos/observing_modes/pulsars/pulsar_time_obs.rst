@@ -63,9 +63,7 @@ example, we will use the L-Band receiver.
     
     - Not every receiver has a notch filter.
     - The value of nwin must match the number of rest frequencies.
-    - You should choose a bandwidth that is well-matched to the
-    frequency range of the :ref:`receiver
-    <references/receivers:Receivers>` you are using.
+    - You should choose a bandwidth that is well-matched to the frequency range of the :ref:`receiver <references/receivers:Receivers>` you are using.
 
 
 Common VEGAS Configuration Keywords
@@ -84,18 +82,9 @@ high-precision pulsar timing.
 
 .. note:: 
 
-    - This configuration will result in frequency channels that are
-    approximately 1.5 MHz wide.
-    - The recommended value of ``tint`` depends on the frequency
-      resolution (i.e. the bandwidth, :math:`BW`, and number of
-      channels, :math:`n_{chan}`). The formula for calculating the
-      recommended integration time :math:`t_{int}` is :math:`t_{int} =
-      \frac{16 \times n_{chan}}{BW}`.
-    - The recommended value of ``vegas.scale`` depends on the
-      dedispersion mode, bandwidth, and number of channels. See the
-      :ref:`VPM Observing Reference <references/backends/vpm:VPM>` for
-      recommendations for valid combinations of dedispersion mode /
-      bandwidth / number of channels.
+    - This configuration will result in frequency channels that are approximately 1.5 MHz wide.
+    - The recommended value of ``tint`` depends on the frequency resolution (i.e. the bandwidth, :math:`BW`, and number of channels, :math:`n_{chan}`). The formula for calculating the recommended integration time :math:`t_{int}` is :math:`t_{int} = \frac{16 \times n_{chan}}{BW}`.
+    - The recommended value of ``vegas.scale`` depends on the dedispersion mode, bandwidth, and number of channels. See the :ref:`VPM ObservingReference <references/backends/vpm:VPM>` for recommendations for valid combinations of dedispersion mode / bandwidth / number of channels.
 
     
 VEGAS Keywords Specific to Fold Mode
@@ -134,11 +123,7 @@ it is recommended.
 
 .. note:: 
 
-    - See these links for more information about the following
-    parameters: :ref:`swmode
-    <references/observing/configure:\`\`swmode\`\` (str)>` and
-    :ref:`noisecal <references/observing/configure:\`\`noisecal\`\`
-    (str)>`.
+    - See these links for more information about the following parameters: :ref:`swmode <references/observing/configure:\`\`swmode\`\` (str)>` and :ref:`noisecal <references/observing/configure:\`\`noisecal\`\` (str)>`.
 
 
 Observing Scripts
@@ -180,14 +165,10 @@ work without issue.  If you are uncertain about the provenance of your
 par file, you can validate it with the following steps:
 
 - ``tempo -f [your par file] -z -ZPSR=[pulsar name] -ZOBS=1``
-- If there are no issues, tempo will exit without messages and a new
-  file called ``polyco.dat`` should appear in the working directory
-- Depending on which parameters are in the par file, tempo may print
-  ``“WARNING: TZ mode”``
-  - These impact the definition of zero-phase point but will not
-    prevent observations
-- If ``polyco.dat`` is not generated, this is not a valid par
-  file. Contact your GBT project friend for assistance.
+- If there are no issues, tempo will exit without messages and a new file called ``polyco.dat`` should appear in the working directory
+- Depending on which parameters are in the par file, tempo may print ``“WARNING: TZ mode”``
+  - These impact the definition of zero-phase point but will not prevent observations.
+- If ``polyco.dat`` is not generated, this is not a valid parfile. Contact your GBT project friend for assistance.
 
 
 Contact your GBT project friend for assistance converting par files

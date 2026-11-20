@@ -211,7 +211,6 @@ Here are some screenshots of what we saw in AstrID's DataDisplay tab during the 
 AutoOOF with Ka-Band
 --------------------
 
-
 .. image:: material/Argus_tutorial/Argus_tutorial_observing_oof_z5.png
 
 .. image:: material/Argus_tutorial/Argus_tutorial_observing_oof_z4.png

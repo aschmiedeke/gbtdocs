@@ -229,6 +229,9 @@ guide. Here we show what would be expected to happen when carrying out the scrip
 3.0 Point and Focus
 -------------------
 
+..
+  python3mark (technically peak focus screens are very similar right now so I won't make a visible remark, but there may be need to update these in Feb 2027)
+
 Once this script is submitted, AstrID will reset all configuration parameters to their default values,
 configure for the provided configuration string and then search for an appropriate source near the target
 position. Once this is found, AstrID will perform four pointing scans, followed by a focus scan (assuming

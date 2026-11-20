@@ -68,6 +68,14 @@ Resources for Further Reading:
 
 AutoOOF Procedure
 =================
+
+..
+  python3mark
+
+.. attention:: 
+
+  While we are in the testing and development phase of Python 3, you may access the upgraded version of AstrID, which features UI changes from this section. See :ref:`how-tos/infrastructure/python-3-upgrade-guide:py3 Astrid` for more details.
+
 According to the recommended :ref:`AutoOOF_guide`, AutoOOF is recommended for observing at frequencies of 40 GHz and higher and only available for use with Rcvr26_40 (Ka–band), Rcvr40_52 (Q–band), Rcvr68_92 (W-band), RcvrArray75_115 (Argus), and Rcvr_MBA1_5 (MUSTANG-2).
 
 :func:`AutoOOF() <astrid_commands.AutoOOF>` is currently only executed for observing projects at night time. In general, it will take 20-25 minutes to do an :func:`AutoOOF() <astrid_commands.AutoOOF>`. The :func:`AutoOOF() <astrid_commands.AutoOOF>` procedure takes three 5-6 minute on-the-fly maps at different focus positions (typically at focus, +10 mm, and -10mm). For details on how long OOF solutions remain valid in varying conditions see :ref:`how-tos/general_guides/autooof:How long does an OOF solution remain valid?`.

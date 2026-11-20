@@ -32,8 +32,8 @@ Run the script below and then make sure Argus is turned on.
     # this will turn on CIF/LNA if necessary
 
     SetValues("RcvrArray75_115", {"presets": "on"})
-    print "CIF Power: ", GetValue("RcvrArray75_115", "cif_power")
-    print "LNA Power: ", GetValue("RcvrArray75_115", "lna_power")
+    print("CIF Power: ", GetValue("RcvrArray75_115", "cif_power"))
+    print("LNA Power: ", GetValue("RcvrArray75_115", "lna_power"))
 
 In the "ObservationManagement Log" in Astrid, make sure you see the lines "CIF Power: on" and "LNA Power: on". If not, reissue the startup script above.
 
@@ -242,6 +242,13 @@ Run **AutoPeakFocus** using your pointing receiver (*Ka-Band*, *X-Band*, *KFPA*,
 
 3.2 Add the focus correction factor manually
 --------------------------------------------
+
+..
+  python3mark
+
+.. attention:: 
+
+  While we are in the testing and development phase of Python 3, you may access the upgraded version of AstrID, which features UI changes from this section. See :ref:`how-tos/infrastructure/python-3-upgrade-guide:Astrid` for more details.
 
 If you don't use the code snippet provided in :ref:`how-tos/receivers/argus/argus_obs:3.1 Pointing and Focus Correction` to add the focus offset, :math:`\Delta_\text{focus}` you calculated in step 2.3 to the determined focus correction, LFC, you will need to do it manually. 
 

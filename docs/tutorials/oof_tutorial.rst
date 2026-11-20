@@ -12,6 +12,13 @@ OOF Examples
 
     Remember that a general philosophy is to apply z5 unless you can find a strong reason as to why you should not apply z5.
 
+..
+  python3mark
+
+.. attention:: 
+
+  While we are in the testing and development phase of Python 3, you may access the upgraded version of AstrID, which features UI changes from this section. See :ref:`how-tos/infrastructure/python-3-upgrade-guide:py3 Astrid` for more details.
+
 General conditions that produce bad OOFs
 ========================================
 

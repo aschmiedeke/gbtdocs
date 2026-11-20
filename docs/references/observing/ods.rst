@@ -311,11 +311,11 @@ The ODS Watchdog
 
 ODS mitigation requests will be issued when following one of the two
 methods described above.  However, in the event that the GBT is
-commanded to carry out an scan at a location for which ODS mitigation
+commanded to carry out a scan at a location for which ODS mitigation
 is not active then an ODS watchdog program will issue a warning
-message via the :ref:`CLEO <cleo>q` Messages application.
+message via the :ref:`CLEO <cleo>` Messages application.
 
-The watchdog will issue a warning message when the following
+This watchdog will issue a warning message when the following
 conditions are met:
 
 1. A receiver requiring ODS protection is in focus.  See

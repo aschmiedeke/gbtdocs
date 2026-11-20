@@ -108,6 +108,8 @@ scheduling blocks for both are in ``/users/bmason/ccbPub``.
     observing scripts and make only the changes that are required! Relatively innocuous changes
     can make the data difficult or impossible to calibrate with existing analysis software.
 
+
+
     
 The basic template SB are:
 
@@ -118,6 +120,12 @@ The basic template SB are:
   raster maps. Your project friend will help tailor these to your project's needs, should  
   you choose this approach.
 
+..
+  python3mark
+
+.. attention:: 
+
+  These scripts feature functionality that will no longer be supported when the GReen Bank Observatory switch from Python 2 to Python 3 is completed. See :ref:`how-tos/infrastructure/python-3-upgrade-guide:Scheduling Blocks` for more details.
 
 .. tab-set::
 
@@ -128,7 +136,7 @@ The basic template SB are:
 
     .. tab-item:: ccbRALongMap.turtle
 
-        .. literalinclude:: material/ccbRaLongMap.turtle
+        .. literalinclude:: material/ccbRALongMap.turtle
             :language: python
 
 

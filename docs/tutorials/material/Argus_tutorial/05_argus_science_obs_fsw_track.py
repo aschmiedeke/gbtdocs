@@ -1,4 +1,4 @@
-#source defined from a catalogue
+# source defined from a catalogue
 
 ResetConfig()
 
@@ -30,25 +30,25 @@ HEAD = NAME RA DEC
 DR21 20:39:01.01 +42:22:50.2
 """
 
-Catalog(source_catalog)         # Only needed for validation purposes in AstrID.
+Catalog(source_catalog)      # Only needed for validation purposes in AstrID.
 
 
 Balance()
 
 yigvolt, sampleTime = GetSample("RcvrArray75_115", "YIGData,lo_power")
-print "" 
-print "******************************" 
-print "YIG voltage:   ", yigvolt
-print "Sample time: ", sampleTime
-print "******************************"
-print "" 
-Break("Check YIG LO power (if <0.1 V, then reconfigure)" )
+print("")
+print("******************************")
+print("YIG voltage:   ", yigvolt)
+print("Sample time: ", sampleTime)
+print("******************************")
+print("")
+Break("Check YIG LO power (if <0.1 V, then reconfigure)")
 
 source = "DR21"
-Slew (source)
+Slew(source)
 
 execfile("/home/astro-util/projects/Argus/OBS/argus_vanecal")
 
-#track single position 
+# track single position
 for i in range(5):
-    Track (source, endOffset=None, scanDuration=60.0, beamName='10')
+    Track(source, endOffset=None, scanDuration=60.0, beamName='10')
