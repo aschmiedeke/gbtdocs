@@ -4,7 +4,7 @@
 MUSTANG-2 data
 ##############
 
-Here are the current options for obtaining and working with MUSTANG-2 data. Unless the PI is well-versed in working with MUSTANG-2 data, most often PIs request one or more of the :ref:`deliverables <mustang2_deliv>` that the MUSTANG-2 team offers. One can also do a quick, simple reduction (see Basic Reduction below). 
+Here are the current options for obtaining and working with MUSTANG-2 data. 
 
 ----------------
 
@@ -16,7 +16,7 @@ Here are the current options for obtaining and working with MUSTANG-2 data. Unle
 
         :octicon:`archive;3em;green` **Deliverables**
 
-        Description of deliverables.
+        Description of deliverables. Unless the PI is well-versed in working with MUSTANG-2 data, most often PIs request one or more of these deliverables.
    
         .. button-link:: data/mustang2_deliverables.html
             :color: primary

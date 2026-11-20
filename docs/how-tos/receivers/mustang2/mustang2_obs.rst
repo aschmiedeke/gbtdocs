@@ -17,27 +17,19 @@ Before you observe you need to have prepared your observing scripts and chosen y
 
 2.1 DSS Sessions to Observing Session and Target
 ------------------------------------------------
-When your project is scheduled, you will get an email titled "Your GBT project has been scheduled (date of observations) (project code)."
-
-**Determining Observing Session Number**
-
-What is scheduled is a DSS session. The DSS sessions are the sessions that you made when you put in a proposal which are typically either one target or a set of targets grouped by RA. In the email below the MUSTANG-2 project DSS session (see red box) that got scheduled was GBT26B-169 - 05 (see green box). 
+When your project is scheduled, you will get an email titled "Your GBT project has been scheduled (date of observations) (project code)." What is scheduled is a DSS session. The DSS sessions are the sessions that you made when you put in a proposal which are typically either one target or a set of targets grouped by RA. In the email below the MUSTANG-2 project DSS session (see red box) that got scheduled was GBT26B-169 - 05 (see green box). 
 
 .. image:: images/scheduling_email.png
 
+**Determining Observing Session Number**
 The observing session number, is the number of times that the project has been observed. So to determine what the observing session is, simply go to the `M2 observing log page <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/NewRunNotes>`_ and see what the last observing session was for this project and increment by 1 - that is your observing session number.
 
 
 **Determining Observing Target**
 
-To determine what target you are observing from the scheduled DSS Session, first determine the DSS session number. In the email below the MUSTANG-2 project DSS session (see red box) that got scheduled was GBT26B-169 - 05 (see green box). 
-
-.. image:: images/scheduling_email.png
-
-Then go to the DSS project page and find that session number under *Project Sessions*. Then look at the coordinates of the source(s) in that session which will tell you which target(s) you will be observing (hopefully the PI has named the targets in a logical way in their catalog). See green box below for the case of the schedule DSS session GBT26B-169 - 05.
+To determine what target you are observing from the scheduled DSS Session, first determine the DSS session number (see above example). Then go to the `DSS <https://dss.gb.nrao.edu>`_ project page and find that session number under *Project Sessions*. Then look at the coordinates of the source(s) in that session which will tell you which target(s) you will be observing (hopefully the PI has named the targets in a logical way in their catalog). See green box below for the case of the schedule DSS session GBT26B-169 - 05.
 
 .. image:: images/AGBT26B_169_sessions.png
-
 
 2.2 Observing Log
 -----------------
@@ -142,9 +134,19 @@ If the setup (tuning, get data flowing, etc.) was done a while ago (several hour
 Over many hours temperature drifts will make the tuning less optimal. Therefore if the tuning was done a while ago (several hours), you need to reconnect to the roaches and check the tuning.
 
 To check the tuning:
-    #. To reconnect to the roaches execute ``/users/penarray/Public/startMUSTANG.bash <project1> reconnect`` where ``<project>`` is the project code (e.g., AGBT26A_XXX_sessionNum). For more information about the ``./startMUSTANG.bash`` script see `Advanced Useage of the startMUSTANGbash <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Advanced_Usage_of_startMUSTANG.bash>`_.
-    #. Run ``um1.IQplot()`` in each roach's terminal.
-    #. If needed, run ``um1.fixIQ()`` per roach.
+
+#. To reconnect to the roaches, execute::
+
+       /users/penarray/Public/startMUSTANG.bash <project> reconnect
+
+   where ``<project>`` is the project code (e.g., AGBT26A_XXX_sessionNum).
+   For more information about the ``./startMUSTANG.bash`` script, see
+   `Advanced Usage of the startMUSTANGbash <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Advanced_Usage_of_startMUSTANG.bash>`_.
+
+#. Run ``um1.IQplot()`` in each roach's terminal.
+
+#. If needed (see `examples here <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/TuningResults>`_),
+   run ``um1.fixIQ()`` per roach.
 
 2.6.2 Check that data is flowing
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

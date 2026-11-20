@@ -16,11 +16,23 @@ A typical, good state for the M2 manager is *Status* = "Warning" (yellow colorin
 
 MAT are red
 -----------
-There can be situations where one of the MAT are red or all are red. When all red, *Status* will be "Unknown" (and pink) and *State* will be "NotConnected" (pink). 
+There can be situations where one of the MAT are red or all of them are red. When either all of them are red or just the M are red, *Status* will be "Unknown" (and pink) and *State* will be "NotConnected" (pink). See examples below:
 
-.. image:: images/manager/m2_manager_MAT_red.png
+**Example: MAT are all red** - see red box below
 
-In this case, the manager has crashed and you'll need to check on the status and perhaps restart the manager by hand (see instructions `here <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Restart_Manager_by_Hand>`_). And if only M or T are red, you should still check their status on egret.
+.. image:: images/manager/m2_manager_MAT_red_marked.png
+
+|
+
+**Example: M is red** - see red box below
+
+.. image:: images/manager/m2_manager_M_red_marked.png
+
+In both of these cases, the manager has crashed. You'll need to check on its status and likely restart the manager by hand (see instructions `here <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Restart_Manager_by_Hand>`_). 
+
+.. note::
+
+    If only A or T are red, you should check their status on egret.
 
 Boxes are yellow
 ----------------
@@ -80,18 +92,7 @@ In addition to the above, if you are restarting the manager and you have also po
 
 Manager not starting
 --------------------
-Sometimes the MUSTANG-2 manager refuses to start (i.e., you try to start it and you get a failure every time either by using TaskMaster or asking the operator to do this for you).
-
-The solution is to 
-    - log onto egret
-    - shut the computer down
-    - log onto the iboot bar
-    - power off egret and the housekeeping
-    - leave it off for 30 seconds
-    - turn these back on
-      
-Egret may take a while to reboot but once it does you should be able to restart the manager.
-Assuming this works you should also make sure to press the ``reset heater card`` button on the manager twice.
+Sometimes the MUSTANG-2 manager refuses to start (i.e., you try to start it and you get a failure every time either by using TaskMaster or asking the operator to do this for you). See instructions `here <https://safe.nrao.edu/wiki/bin/view/GB/Pennarray/OnGbtOps#Manager_refuses_to_connect>`_.
 
 Manager crashes on 1st scan
 ---------------------------
